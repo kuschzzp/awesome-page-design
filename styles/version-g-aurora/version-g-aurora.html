@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pulse - 版本G：Aurora Gradient（流光极光）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0f0f1a;
+  --card: rgba(20,20,40,0.6);
+  --card-hover: rgba(30,30,60,0.7);
+  --text: #e8e8f0;
+  --text2: #a0a0b8;
+  --text3: #606080;
+  --aurora1: #00ffaa;
+  --aurora2: #7b68ee;
+  --aurora3: #ff6ec7;
+  --aurora4: #00d4ff;
+  --border: rgba(255,255,255,0.06);
+  --glow: 0 0 40px rgba(0,212,255,0.15);
+  --glow2: 0 0 60px rgba(123,104,238,0.12);
+  --radius: 24px;
+  --radius-sm: 16px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6;
+  min-height: 100vh; overflow-x: hidden;
+}
+.aurora-bg {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.aurora-blob {
+  position: absolute; border-radius: 50%; filter: blur(120px);
+  animation: drift 20s ease-in-out infinite;
+}
+.aurora-blob:nth-child(1) {
+  width: 60vw; height: 60vh; top: -10%; left: -10%;
+  background: radial-gradient(circle, rgba(0,255,170,0.12), transparent 70%);
+  animation-delay: 0s;
+}
+.aurora-blob:nth-child(2) {
+  width: 50vw; height: 50vh; top: 20%; right: -15%;
+  background: radial-gradient(circle, rgba(123,104,238,0.15), transparent 70%);
+  animation-delay: -5s;
+}
+.aurora-blob:nth-child(3) {
+  width: 40vw; height: 40vh; bottom: 10%; left: 10%;
+  background: radial-gradient(circle, rgba(255,110,199,0.1), transparent 70%);
+  animation-delay: -10s;
+}
+.aurora-blob:nth-child(4) {
+  width: 35vw; height: 35vh; bottom: -10%; right: 20%;
+  background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%);
+  animation-delay: -15s;
+}
+@keyframes drift {
+  0%,100% { transform: translate(0,0) scale(1); }
+  25% { transform: translate(30px,-20px) scale(1.05); }
+  50% { transform: translate(-20px,30px) scale(0.95); }
+  75% { transform: translate(20px,20px) scale(1.02); }
+}
+::selection { background: var(--aurora4); color: #000; }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15,15,26,0.5);
+  backdrop-filter: blur(30px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-logo {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--aurora1), var(--aurora4));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 12px; color: #0f0f1a;
+}
+.nav-title { font-size: 18px; font-weight: 700; letter-spacing: -0.03em; }
+.nav-title span { color: var(--aurora4); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--aurora4); }
+.nav-links a.active { color: var(--aurora1); }
+.nav-links a.active::after {
+  content: ''; position: absolute; bottom: -2px; left: 50%; right: 50%;
+  width: 0; height: 2px; background: var(--aurora1);
+  border-radius: 1px; transition: all 0.3s;
+  left: 0; right: 0;
+}
+
+.main {
+  position: relative; z-index: 1;
+  margin-top: 56px; padding: 40px 32px;
+  max-width: 1200px; margin-left: auto; margin-right: auto;
+}
+
+.hero { margin-bottom: 48px; }
+.hero-inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
+
+.hero-main {
+  background: var(--card); backdrop-filter: blur(20px);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 40px; box-shadow: var(--glow), var(--glow2);
+  cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.hero-main:hover {
+  background: var(--card-hover);
+  box-shadow: 0 0 60px rgba(0,255,170,0.2), 0 0 80px rgba(0,212,255,0.15);
+  transform: translateY(-3px);
+}
+.hero-main .aurora-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--aurora1), var(--aurora4), var(--aurora2), var(--aurora3));
+  animation: shimmer 3s linear infinite;
+  background-size: 200% 100%;
+}
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 14px; border-radius: 20px;
+  background: rgba(0,255,170,0.1); border: 1px solid rgba(0,255,170,0.2);
+  font-size: 12px; font-weight: 600; color: var(--aurora1); margin-bottom: 18px;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px; background: var(--aurora1); border-radius: 50%;
+  animation: pulse2 1.5s infinite;
+}
+@keyframes pulse2 { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+.hero-title {
+  font-size: 30px; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.2; margin-bottom: 16px;
+}
+.hero-desc { color: var(--text2); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+.hero-meta { display: flex; gap: 20px; color: var(--text3); font-size: 13px; }
+.hero-meta .glow-badge {
+  padding: 2px 10px; border-radius: 12px;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15);
+  color: var(--aurora4); font-weight: 500;
+}
+
+.hero-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.hero-side {
+  background: var(--card); backdrop-filter: blur(16px);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 24px; flex: 1; cursor: pointer; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.hero-side:hover {
+  background: var(--card-hover);
+  box-shadow: var(--glow);
+  transform: translateY(-2px);
+}
+.hero-side::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  border-radius: 0;
+}
+.hero-side:nth-child(1)::before { background: var(--aurora2); }
+.hero-side:nth-child(2)::before { background: var(--aurora1); }
+.hero-side:nth-child(3)::before { background: var(--aurora4); }
+.hero-side .side-tag {
+  font-size: 11px; font-weight: 600; margin-bottom: 8px;
+}
+.hero-side:nth-child(1) .side-tag { color: var(--aurora2); }
+.hero-side:nth-child(2) .side-tag { color: var(--aurora1); }
+.hero-side:nth-child(3) .side-tag { color: var(--aurora4); }
+.hero-side .side-title {
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  line-height: 1.4; margin-bottom: 12px;
+}
+.hero-side .side-meta { color: var(--text3); font-size: 12px; }
+
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title .glow-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--aurora4);
+  box-shadow: 0 0 12px var(--aurora4);
+}
+
+.section-filters { display: flex; gap: 8px; }
+.filter-btn {
+  padding: 6px 16px; background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; color: var(--text2); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.25s;
+}
+.filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.12); }
+.filter-btn.active {
+  background: rgba(0,212,255,0.1); color: var(--aurora4);
+  border-color: rgba(0,212,255,0.25);
+  box-shadow: 0 0 20px rgba(0,212,255,0.1);
+}
+
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+
+.news-card {
+  background: var(--card); backdrop-filter: blur(16px);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 24px; cursor: pointer; transition: all 0.3s;
+  position: relative;
+}
+.news-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+.news-card .card-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 600; margin-bottom: 14px;
+}
+.news-card .card-tag.hot { background: rgba(255,110,199,0.1); color: var(--aurora3); border: 1px solid rgba(255,110,199,0.2); }
+.news-card .card-tag.new { background: rgba(0,255,170,0.1); color: var(--aurora1); border: 1px solid rgba(0,255,170,0.2); }
+.news-card .card-tag.policy { background: rgba(0,212,255,0.1); color: var(--aurora4); border: 1px solid rgba(0,212,255,0.2); }
+.news-card .card-tag.app { background: rgba(123,104,238,0.1); color: var(--aurora2); border: 1px solid rgba(123,104,238,0.2); }
+.news-card .card-title {
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  line-height: 1.4; margin-bottom: 12px;
+}
+.news-card .card-excerpt { color: var(--text2); font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+.news-card .card-footer {
+  display: flex; justify-content: space-between;
+  color: var(--text3); font-size: 12px;
+}
+
+.trending { margin-bottom: 48px; }
+.trending-list { display: flex; flex-direction: column; gap: 14px; }
+.trending-item {
+  background: var(--card); backdrop-filter: blur(12px);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 16px 24px; display: flex; align-items: center; gap: 16px;
+  cursor: pointer; transition: all 0.25s;
+}
+.trending-item:hover {
+  background: var(--card-hover);
+  transform: translateX(8px);
+  box-shadow: 0 0 30px rgba(0,212,255,0.08);
+}
+.trending-rank {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--aurora4);
+}
+.trending-title { font-size: 14px; font-weight: 500; flex: 1; }
+.trending-count {
+  font-size: 12px; color: var(--text3);
+  padding: 2px 10px; border-radius: 12px;
+  background: rgba(0,255,170,0.06); border: 1px solid rgba(0,255,170,0.12);
+}
+
+.subscribe-bar {
+  background: var(--card); backdrop-filter: blur(20px);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 32px; margin-bottom: 48px;
+  box-shadow: var(--glow), var(--glow2);
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.subscribe-bar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--aurora1), var(--aurora4), var(--aurora2));
+  animation: shimmer 4s linear infinite;
+  background-size: 200% 100%;
+}
+.subscribe-bar .sub-title {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+}
+.subscribe-bar .sub-desc { color: var(--text2); font-size: 14px; }
+.subscribe-bar .sub-form { display: flex; gap: 12px; }
+.subscribe-bar .sub-input {
+  padding: 10px 18px; background: rgba(15,15,26,0.5);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+  color: var(--text); font-size: 14px; outline: none; width: 220px;
+  transition: border-color 0.2s;
+}
+.subscribe-bar .sub-input:focus { border-color: rgba(0,212,255,0.3); }
+.subscribe-bar .sub-input::placeholder { color: var(--text3); }
+.subscribe-bar .sub-btn {
+  padding: 10px 24px; background: linear-gradient(135deg, var(--aurora1), var(--aurora4));
+  border: none; border-radius: 14px; color: #0f0f1a;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: all 0.25s;
+}
+.subscribe-bar .sub-btn:hover {
+  box-shadow: 0 0 30px rgba(0,255,170,0.3);
+  transform: translateY(-2px);
+}
+
+.footer {
+  border-top: 1px solid var(--border); padding: 32px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  color: var(--text3); font-size: 12px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--aurora4); }
+
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .nav-links { gap: 16px; }
+  .main { padding: 24px 16px; }
+  .hero-main { padding: 28px; }
+  .hero-title { font-size: 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .subscribe-bar { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .subscribe-bar .sub-form { width: 100%; }
+  .subscribe-bar .sub-input { flex: 1; width: auto; }
+  .footer { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="aurora-bg">
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">AI</div>
+    <div class="nav-title">AI <span>Pulse</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">首页</a>
+    <a href="#">大模型</a>
+    <a href="#">应用</a>
+    <a href="#">研究</a>
+    <a href="#">政策</a>
+  </div>
+</nav>
+
+<main class="main">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="aurora-stripe"></div>
+        <div class="hero-tag"><div class="hero-tag-dot"></div>突发新闻</div>
+        <div class="hero-title">GPT-5 正式发布：多模态推理能力实现质的飞跃</div>
+        <div class="hero-desc">OpenAI 今日发布 GPT-5 模型，在多模态理解、长链推理和代码生成方面实现了前所未有的突破。该模型在多项基准测试中超越人类表现，标志着 AI 能力的新里程碑。</div>
+        <div class="hero-meta">
+          <span>3 分钟前</span>
+          <span class="glow-badge">12.4k 阅读</span>
+          <span>OpenAI 官方</span>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="hero-side"><div class="side-tag">大模型</div><div class="side-title">谷歌 DeepMind 发布 Gemini 2.0，原生多模态架构重新定义 AI 交互</div><div class="side-meta">2 小时前 · 8.2k</div></div>
+        <div class="hero-side"><div class="side-tag">行业动态</div><div class="side-title">中国 AI 产业规模突破万亿，大模型应用落地加速</div><div class="side-meta">5 小时前 · 6.5k</div></div>
+        <div class="hero-side"><div class="side-tag">研究前沿</div><div class="side-title">MIT 团队实现神经符号推理融合，AI 逻辑能力迎来突破</div><div class="side-meta">8 小时前 · 4.1k</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="subscribe-bar">
+    <div>
+      <div class="sub-title">订阅 AI Pulse</div>
+      <div class="sub-desc">每日 AI 资讯直达你的邮箱，不错过任何重要动态</div>
+    </div>
+    <div class="sub-form">
+      <input class="sub-input" type="email" placeholder="your@email.com">
+      <button class="sub-btn">订阅</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-title"><div class="glow-dot"></div>最新资讯</div>
+      <div class="section-filters">
+        <button class="filter-btn active">全部</button>
+        <button class="filter-btn">大模型</button>
+        <button class="filter-btn">应用</button>
+        <button class="filter-btn">研究</button>
+        <button class="filter-btn">政策</button>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card"><div class="card-tag hot">热门</div><div class="card-title">Anthropic 发布 Claude 4：推理深度与安全对齐双突破</div><div class="card-excerpt">新模型在复杂推理任务上表现惊人，同时引入了革命性的宪法 AI 2.0 框架。</div><div class="card-footer"><span>Anthropic</span><span>1h</span></div></div>
+      <div class="news-card"><div class="card-tag new">新鲜</div><div class="card-title">苹果 MLX 框架开源：本地大模型推理性能提升 3 倍</div><div class="card-excerpt">苹果正式开源 MLX 框架，Mac 用户可在本地高效运行大模型。</div><div class="card-footer"><span>Apple ML</span><span>2h</span></div></div>
+      <div class="news-card"><div class="card-tag policy">政策</div><div class="card-title">欧盟 AI 法案正式生效：全球最严 AI 监管框架落地</div><div class="card-excerpt">法案对高风险 AI 系统实施严格透明度和安全要求。</div><div class="card-footer"><span>EU</span><span>3h</span></div></div>
+      <div class="news-card"><div class="card-tag app">应用</div><div class="card-title">AI 医疗诊断系统获 FDA 批准，准确率超越资深医师</div><div class="card-excerpt">基于深度学习的诊断系统在癌症早期检测中达到 97.3% 准确率。</div><div class="card-footer"><span>MedAI</span><span>4h</span></div></div>
+      <div class="news-card"><div class="card-tag hot">热门</div><div class="card-title">Meta 开源 Llama 4：参数规模 400B，性能媲美商业模型</div><div class="card-excerpt">Meta 最新开源模型在多项基准测试中与 GPT-4 持平。</div><div class="card-footer"><span>Meta AI</span><span>5h</span></div></div>
+      <div class="news-card"><div class="card-tag new">新鲜</div><div class="card-title">量子计算 + AI：IBM 量子神经网络实现首次商用突破</div><div class="card-excerpt">IBM 将量子计算与神经网络结合，在药物分子模拟中取得突破。</div><div class="card-footer"><span>IBM</span><span>6h</span></div></div>
+    </div>
+  </section>
+
+  <section class="trending">
+    <div class="section-header"><div class="section-title"><div class="glow-dot"></div>热门趋势</div></div>
+    <div class="trending-list">
+      <div class="trending-item"><div class="trending-rank">01</div><div class="trending-title">GPT-5 发布引发行业震动，多家公司紧急调整战略</div><div class="trending-count">24.5k</div></div>
+      <div class="trending-item"><div class="trending-rank">02</div><div class="trending-title">开源 vs 商用：Llama 4 发布后社区激烈辩论</div><div class="trending-count">18.3k</div></div>
+      <div class="trending-item"><div class="trending-rank">03</div><div class="trending-title">欧盟 AI 法案落地，硅谷巨头如何应对？</div><div class="trending-count">15.1k</div></div>
+      <div class="trending-item"><div class="trending-rank">04</div><div class="trending-title">AI 医疗获批：临床 AI 应用进入新纪元</div><div class="trending-count">12.7k</div></div>
+      <div class="trending-item"><div class="trending-rank">05</div><div class="trending-title">量子 AI 商用化：算力革命的开始？</div><div class="trending-count">9.8k</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>AI Pulse © 2026</div>
+  <div class="footer-links"><a href="#">关于</a><a href="#">投稿</a><a href="#">API</a><a href="#">隐私</a></div>
+</footer>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

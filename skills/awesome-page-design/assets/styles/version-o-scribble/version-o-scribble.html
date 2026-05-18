@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pulse - Human Scribble 版本</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Permanent+Marker&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FFF8F0;
+  --paper: #FFFDF7;
+  --cream: #F5ECD7;
+  --pencil: #2B2B2B;
+  --pencil-light: #666;
+  --ink: #1A3A5C;
+  --ink-light: #4A7A9C;
+  --highlight-yellow: rgba(255,220,0,0.25);
+  --highlight-green: rgba(0,220,100,0.15);
+  --highlight-pink: rgba(255,100,150,0.15);
+  --scribble-red: #E74C3C;
+  --scribble-blue: #3498DB;
+  --scribble-green: #27AE60;
+  --scribble-orange: #F39C12;
+  --scribble-purple: #8E44AD;
+  --doodle-line: 2px solid var(--pencil);
+  --transition: 0.3s ease;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--pencil);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(0,0,0,0.02) 28px, rgba(0,0,0,0.02) 29px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(0,0,0,0.02) 28px, rgba(0,0,0,0.02) 29px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.scribble-decoration {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scribble-decoration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.scribble-decoration:nth-child(1) {
+  top: 5%; right: 3%; width: 120px; height: 80px;
+}
+
+.scribble-decoration:nth-child(2) {
+  bottom: 15%; left: 2%; width: 100px; height: 60px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 32px;
+  position: relative;
+  z-index: 2;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+nav .logo {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 26px;
+  color: var(--ink);
+  position: relative;
+}
+
+nav .logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  height: 3px;
+  background: var(--scribble-red);
+  border-radius: 2px;
+  transform: rotate(-1deg);
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 6px;
+}
+
+nav .nav-links a {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 12px;
+  position: relative;
+  transition: var(--transition);
+}
+
+nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  right: 2px;
+  height: 2px;
+  background: var(--scribble-blue);
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: 1px;
+}
+
+nav .nav-links a:hover::after {
+  opacity: 1;
+  height: 3px;
+}
+
+nav .nav-links a:hover {
+  color: var(--scribble-blue);
+}
+
+.hero {
+  background: var(--paper);
+  padding: 40px;
+  margin-bottom: 24px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px dashed var(--pencil);
+  border-radius: 4px;
+  opacity: 0.15;
+}
+
+.hero .hand-note {
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
+  color: var(--scribble-red);
+  position: absolute;
+  top: -8px;
+  right: 24px;
+  transform: rotate(3deg);
+}
+
+.hero .headline {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 38px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.hero .headline .underline-sketch {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: var(--highlight-yellow);
+  border-radius: 2px;
+  transform: rotate(-1deg);
+}
+
+.hero .headline .doodle-star {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--scribble-orange);
+  transform: rotate(15deg);
+}
+
+.hero .subtitle {
+  font-size: 16px;
+  color: var(--pencil-light);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.hero .subtitle .highlight {
+  background: var(--highlight-yellow);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.hero .tag-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.hero .tag {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border: 2px solid;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.hero .tag:hover {
+  transform: rotate(-2deg) scale(1.05);
+}
+
+.hero .tag.tag-red { border-color: var(--scribble-red); color: var(--scribble-red); background: rgba(231,76,60,0.08); }
+.hero .tag.tag-blue { border-color: var(--scribble-blue); color: var(--scribble-blue); background: rgba(52,152,219,0.08); }
+.hero .tag.tag-green { border-color: var(--scribble-green); color: var(--scribble-green); background: rgba(39,174,96,0.08); }
+.hero .tag.tag-orange { border-color: var(--scribble-orange); color: var(--scribble-orange); background: rgba(243,156,18,0.08); }
+.hero .tag.tag-purple { border-color: var(--scribble-purple); color: var(--scribble-purple); background: rgba(142,68,173,0.08); }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section-header h2 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.section-header .scribble-line {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--scribble-green);
+  border-radius: 2px;
+  transform: rotate(-2deg);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--paper);
+  padding: 20px;
+  position: relative;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1.5px solid var(--pencil);
+  border-radius: 2px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: rotate(-1deg) translateY(-4px);
+  background: var(--cream);
+}
+
+.card:hover::before {
+  border-color: var(--scribble-blue);
+  opacity: 0.5;
+}
+
+.card .doodle-number {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--scribble-orange);
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  transform: rotate(-8deg);
+  opacity: 0.6;
+}
+
+.card .category-scribble {
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: inline-block;
+  position: relative;
+}
+
+.card .category-scribble::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.card .category-scribble.cat-llm { color: var(--scribble-purple); }
+.card .category-scribble.cat-llm::after { background: var(--scribble-purple); opacity: 0.4; }
+.card .category-scribble.cat-vision { color: var(--scribble-red); }
+.card .category-scribble.cat-vision::after { background: var(--scribble-red); opacity: 0.4; }
+.card .category-scribble.cat-chip { color: var(--scribble-blue); }
+.card .category-scribble.cat-chip::after { background: var(--scribble-blue); opacity: 0.4; }
+.card .category-scribble.cat-ethics { color: var(--scribble-orange); }
+.card .category-scribble.cat-ethics::after { background: var(--scribble-orange); opacity: 0.4; }
+.card .category-scribble.cat-startup { color: var(--scribble-green); }
+.card .category-scribble.cat-startup::after { background: var(--scribble-green); opacity: 0.4; }
+.card .category-scribble.cat-robot { color: var(--ink); }
+.card .category-scribble.cat-robot::after { background: var(--ink); opacity: 0.4; }
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--pencil);
+  margin-bottom: 8px;
+}
+
+.card h3 .sketch-underline {
+  background: var(--highlight-yellow);
+  padding: 0 2px;
+  border-radius: 1px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--pencil-light);
+  line-height: 1.5;
+}
+
+.card .card-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 14px;
+  color: var(--ink-light);
+}
+
+.card .card-meta .hot-scribble {
+  color: var(--scribble-red);
+  font-weight: 700;
+}
+
+.featured-card {
+  grid-column: span 2;
+  background: var(--cream);
+  padding: 24px;
+  position: relative;
+}
+
+.featured-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px dashed var(--scribble-red);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.featured-card::after {
+  content: '★ important!';
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--scribble-red);
+  transform: rotate(-4deg);
+  background: var(--highlight-yellow);
+  padding: 2px 8px;
+}
+
+.featured-card h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.featured-card p {
+  font-size: 14px;
+  color: var(--pencil-light);
+}
+
+.featured-card .corner-doodle {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--scribble-blue);
+  opacity: 0.3;
+  transform: rotate(12deg);
+}
+
+.daily-digest {
+  background: var(--paper);
+  padding: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.daily-digest::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px solid var(--pencil);
+  border-radius: 2px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.daily-digest .notebook-label {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--scribble-green);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.daily-digest .notebook-label::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--scribble-green);
+  opacity: 0.3;
+}
+
+.digest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.digest-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.5);
+  border-left: 3px solid;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.digest-item:hover {
+  background: var(--highlight-yellow);
+  transform: translateX(4px);
+}
+
+.digest-item.di-purple { border-left-color: var(--scribble-purple); }
+.digest-item.di-blue { border-left-color: var(--scribble-blue); }
+.digest-item.di-green { border-left-color: var(--scribble-green); }
+.digest-item.di-red { border-left-color: var(--scribble-red); }
+
+.digest-item .di-time {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--scribble-blue);
+  min-width: 52px;
+}
+
+.digest-item .di-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pencil);
+}
+
+.trend-section {
+  background: var(--paper);
+  padding: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.trend-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1.5px dashed var(--scribble-blue);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.trend-section h3 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.trend-sketch-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.trend-sketch-bar .ts-label {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.trend-sketch-bar .ts-track {
+  flex: 1;
+  height: 20px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.trend-sketch-bar .ts-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.trend-sketch-bar .ts-fill.fill-purple { background: var(--scribble-purple); opacity: 0.6; }
+.trend-sketch-bar .ts-fill.fill-red { background: var(--scribble-red); opacity: 0.6; }
+.trend-sketch-bar .ts-fill.fill-blue { background: var(--scribble-blue); opacity: 0.6; }
+.trend-sketch-bar .ts-fill.fill-orange { background: var(--scribble-orange); opacity: 0.6; }
+.trend-sketch-bar .ts-fill.fill-green { background: var(--scribble-green); opacity: 0.6; }
+
+.trend-sketch-bar .ts-value {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--pencil-light);
+}
+
+.subscribe-section {
+  background: var(--cream);
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.subscribe-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px dashed var(--scribble-red);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.subscribe-section .sketch-note {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: var(--scribble-red);
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  transform: rotate(5deg);
+}
+
+.subscribe-section h2 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.subscribe-section p {
+  font-size: 14px;
+  color: var(--pencil-light);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.subscribe-form input {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  padding: 8px 16px;
+  background: var(--paper);
+  border: 2px solid var(--pencil);
+  border-radius: 2px;
+  color: var(--pencil);
+  outline: none;
+  min-width: 220px;
+}
+
+.subscribe-form input:focus {
+  border-color: var(--scribble-blue);
+  border-style: dashed;
+}
+
+.subscribe-form button {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 16px;
+  padding: 8px 20px;
+  background: var(--scribble-blue);
+  color: white;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.subscribe-form button:hover {
+  background: var(--ink);
+  transform: rotate(-2deg);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  position: relative;
+}
+
+footer .f-note {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: var(--pencil-light);
+}
+
+footer .f-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+footer .f-links a {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  position: relative;
+  transition: var(--transition);
+}
+
+footer .f-links a:hover {
+  color: var(--scribble-blue);
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 768px) {
+  .hero .headline { font-size: 28px; }
+  .featured-card { grid-column: span 1; }
+  nav .nav-links { gap: 4px; }
+  .subscribe-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <div class="logo">AI Pulse</div>
+    <div class="nav-links">
+      <a href="#">首页</a>
+      <a href="#">新闻</a>
+      <a href="#">趋势</a>
+      <a href="#">工具</a>
+      <a href="#">社区</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hand-note">今天的内容超棒！→</div>
+    <div class="headline">
+      每日AI资讯
+      <span class="underline-sketch"></span>
+      <span class="doodle-star">★</span>
+    </div>
+    <div class="subtitle">用<span class="highlight">手写</span>的温度追踪AI前沿——每一条新闻都像是写在笔记本上的<span class="highlight">笔记</span>，真实、温暖、有人味儿。</div>
+    <div class="tag-row">
+      <div class="tag tag-red">🔥 热门</div>
+      <div class="tag tag-purple">🤖 大模型</div>
+      <div class="tag tag-red">👁️ 视觉AI</div>
+      <div class="tag tag-blue">🧠 芯片</div>
+      <div class="tag tag-orange">⚖️ 伦理</div>
+      <div class="tag tag-green">🚀 创业</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>今日AI热点</h2>
+    <div class="scribble-line"></div>
+  </div>
+
+  <div class="news-grid">
+    <div class="featured-card">
+      <span class="corner-doodle">🤖</span>
+      <div class="category-scribble cat-llm">LLM</div>
+      <h3>GPT-5发布：多模态推理能力实现<span class="sketch-underline">质的飞跃</span></h3>
+      <p>OpenAI最新模型在代码生成、数学推理和多语言理解方面均超越前代，API定价下调30%，中小企业迎来AI集成新浪潮。</p>
+      <div class="card-meta">
+        <span>2小时前</span>
+        <span class="hot-scribble">🔥 爆热！</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="doodle-number">2</span>
+      <div class="category-scribble cat-vision">视觉AI</div>
+      <h3>谷歌Gemini Pro Vision：实时<span class="sketch-underline">视频理解</span>上线</h3>
+      <p>毫秒级延迟下识别场景、物体和动作，安防与自动驾驶领域率先试用。</p>
+      <div class="card-meta">
+        <span>3小时前</span>
+        <span class="hot-scribble">96°</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="doodle-number">3</span>
+      <div class="category-scribble cat-chip">芯片</div>
+      <h3>NVIDIA H200量产：<span class="sketch-underline">推理成本</span>降50%</h3>
+      <p>HBM3e内存架构推理吞吐量翻倍，大模型部署门槛进一步降低。</p>
+      <div class="card-meta">
+        <span>5小时前</span>
+        <span>82°</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="doodle-number">4</span>
+      <div class="category-scribble cat-ethics">伦理</div>
+      <h3>欧盟AI法案生效：<span class="sketch-underline">全球首部</span>AI监管法律</h3>
+      <p>高风险AI需合规审计，生成式AI需标注来源，科技公司调整策略应对新规。</p>
+      <div class="card-meta">
+        <span>6小时前</span>
+        <span>68°</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="doodle-number">5</span>
+      <div class="category-scribble cat-startup">创业</div>
+      <h3>Mistral AI完成<span class="sketch-underline">6亿欧元</span>B轮融资</h3>
+      <p>法国AI独角兽估值60亿欧元，开源大模型战略获资本市场强力认可。</p>
+      <div class="card-meta">
+        <span>8小时前</span>
+        <span>54°</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="doodle-number">6</span>
+      <div class="category-scribble cat-robot">机器人</div>
+      <h3>Optimus Gen-3：<span class="sketch-underline">工厂部署</span>突破500台</h3>
+      <p>续航4倍提升，精密操作精度0.1mm，已在全球12座超级工厂部署。</p>
+      <div class="card-meta">
+        <span>10小时前</span>
+        <span>42°</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="daily-digest">
+    <div class="notebook-label">📝 每日速递 · 笔记本版</div>
+    <div class="digest-list">
+      <div class="digest-item di-purple">
+        <span class="di-time">09:30</span>
+        <span class="di-text">Anthropic发布Claude 4：上下文窗口扩展至500K tokens</span>
+      </div>
+      <div class="digest-item di-blue">
+        <span class="di-time">10:15</span>
+        <span class="di-text">DeepMind新研究：AI对抗性攻击防御框架获ICML最佳论文</span>
+      </div>
+      <div class="digest-item di-green">
+        <span class="di-time">11:00</span>
+        <span class="di-text">联合国AI治理峰会：130国签署《全球AI合作宣言》</span>
+      </div>
+      <div class="digest-item di-red">
+        <span class="di-time">14:20</span>
+        <span class="di-text">Meta开源LLaMA 4：70B参数模型性能逼近GPT-4水平</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>热度趋势</h2>
+    <div class="scribble-line"></div>
+  </div>
+
+  <div class="trend-section">
+    <h3>本周AI话题热度 ✏️</h3>
+    <div class="trend-sketch-bar">
+      <span class="ts-label">LLM</span>
+      <div class="ts-track"><div class="ts-fill fill-purple" style="width:92%;"></div></div>
+      <span class="ts-value">92%</span>
+    </div>
+    <div class="trend-sketch-bar">
+      <span class="ts-label">视觉AI</span>
+      <div class="ts-track"><div class="ts-fill fill-red" style="width:78%;"></div></div>
+      <span class="ts-value">78%</span>
+    </div>
+    <div class="trend-sketch-bar">
+      <span class="ts-label">芯片</span>
+      <div class="ts-track"><div class="ts-fill fill-blue" style="width:65%;"></div></div>
+      <span class="ts-value">65%</span>
+    </div>
+    <div class="trend-sketch-bar">
+      <span class="ts-label">伦理</span>
+      <div class="ts-track"><div class="ts-fill fill-orange" style="width:53%;"></div></div>
+      <span class="ts-value">53%</span>
+    </div>
+    <div class="trend-sketch-bar">
+      <span class="ts-label">机器人</span>
+      <div class="ts-track"><div class="ts-fill fill-green" style="width:41%;"></div></div>
+      <span class="ts-value">41%</span>
+    </div>
+  </div>
+
+  <div class="subscribe-section">
+    <div class="sketch-note">别错过！→</div>
+    <h2>订阅 AI Pulse ✏️</h2>
+    <p>每天手写版AI前沿，直达邮箱~</p>
+    <div class="subscribe-form">
+      <input type="email" placeholder="写上你的邮箱~">
+      <button>Subscribe! ✏️</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-note">✏️ AI Pulse © 2026 · 用手写的温度追踪AI</div>
+    <div class="f-links">
+      <a href="#">关于</a>
+      <a href="#">隐私</a>
+      <a href="#">联系</a>
+      <a href="#">RSS</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

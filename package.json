@@ -1,0 +1,34 @@
+{
+  "name": "awesome-page-design",
+  "version": "0.1.0",
+  "description": "A Codex skill and visual style prompt library for distinctive website and web app design.",
+  "license": "MIT",
+  "type": "commonjs",
+  "skills": "./skills/",
+  "files": [
+    ".codex-plugin/",
+    "skills/",
+    "styles/",
+    "previews/",
+    "scripts/",
+    "README.md"
+  ],
+  "scripts": {
+    "styles:systems": "node scripts/generate-system-inspired-styles.js",
+    "previews": "node scripts/generate-previews.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuschzzp/awesome-page-design.git"
+  },
+  "keywords": [
+    "codex-skill",
+    "web-design",
+    "style-guide",
+    "design-system",
+    "ui"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

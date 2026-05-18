@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pulse - 版本E：Glassmorphism（毛玻璃通透）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --grad1: #667eea;
+  --grad2: #764ba2;
+  --grad3: #f093fb;
+  --grad4: #4facfe;
+  --glass: rgba(255,255,255,0.15);
+  --glass2: rgba(255,255,255,0.25);
+  --glass3: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.18);
+  --text: #ffffff;
+  --text2: rgba(255,255,255,0.75);
+  --text3: rgba(255,255,255,0.5);
+  --accent: #00d4ff;
+  --accent2: #7c5cfc;
+  --shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0c0e1a 0%, #1a1c3a 30%, #2d1b69 60%, #0c0e1a 100%);
+  color: var(--text); line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(102,126,234,0.3), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ''; position: fixed; bottom: -30%; right: -10%; width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(240,147,251,0.2), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+::selection { background: var(--accent); color: #000; }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--glass3);
+  backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-logo {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--grad1), var(--grad3));
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; color: white;
+}
+.nav-title { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+.nav-title span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+.main {
+  position: relative; z-index: 1;
+  margin-top: 56px; padding: 40px 32px;
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+
+.hero { margin-bottom: 40px; }
+.hero-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 32px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  background: var(--glass2);
+}
+
+.hero-main { position: relative; }
+.hero-main .glow {
+  position: absolute; top: 0; right: 0; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,212,255,0.15), transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; background: rgba(255,59,48,0.15);
+  border: 1px solid rgba(255,59,48,0.3); border-radius: 20px;
+  font-size: 12px; font-weight: 600; color: #ff6b6b; margin-bottom: 16px;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px; background: #ff6b6b; border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-title {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.3; margin-bottom: 14px;
+}
+.hero-desc { color: var(--text2); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.hero-meta { display: flex; gap: 16px; color: var(--text3); font-size: 12px; }
+
+.hero-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.hero-side { flex: 1; }
+.hero-side .side-tag {
+  font-size: 10px; font-weight: 600; color: var(--accent);
+  margin-bottom: 8px; display: inline-flex; align-items: center; gap: 4px;
+}
+.hero-side .side-tag::before {
+  content: ''; width: 3px; height: 10px; background: var(--accent);
+  border-radius: 2px;
+}
+.hero-side .side-title {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+  line-height: 1.4; margin-bottom: 10px;
+}
+.hero-side .side-meta { color: var(--text3); font-size: 11px; }
+
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+}
+.section-filters { display: flex; gap: 8px; }
+.filter-pill {
+  padding: 5px 14px; background: var(--glass); border: 1px solid var(--border);
+  border-radius: 20px; color: var(--text2); font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.filter-pill:hover { color: var(--text); }
+.filter-pill.active {
+  background: rgba(0,212,255,0.15); color: var(--accent);
+  border-color: rgba(0,212,255,0.3);
+}
+
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+
+.news-card .card-tag {
+  display: inline-block; padding: 3px 8px; border-radius: 12px;
+  font-size: 10px; font-weight: 600; margin-bottom: 12px;
+}
+.news-card .card-tag.hot { background: rgba(255,59,48,0.15); color: #ff6b6b; }
+.news-card .card-tag.new { background: rgba(52,199,89,0.15); color: #4ade80; }
+.news-card .card-tag.policy { background: rgba(255,149,0,0.15); color: #fb923c; }
+.news-card .card-tag.app { background: rgba(124,92,252,0.15); color: #a78bfa; }
+.news-card .card-title {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+  line-height: 1.35; margin-bottom: 10px;
+}
+.news-card .card-excerpt {
+  color: var(--text2); font-size: 12px; line-height: 1.6; margin-bottom: 14px;
+}
+.news-card .card-footer {
+  display: flex; justify-content: space-between;
+  color: var(--text3); font-size: 11px;
+}
+
+.trending { margin-bottom: 40px; }
+.trending-list { display: flex; flex-direction: column; gap: 12px; }
+.trending-item {
+  background: var(--glass); backdrop-filter: blur(12px);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+  cursor: pointer; transition: all 0.25s;
+}
+.trending-item:hover {
+  background: var(--glass2); transform: translateX(6px);
+}
+.trending-rank {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: var(--accent);
+}
+.trending-title { font-size: 13px; font-weight: 500; flex: 1; }
+.trending-count { color: var(--text3); font-size: 11px; }
+
+.subscribe-bar {
+  background: var(--glass); backdrop-filter: blur(16px);
+  border: 1px solid var(--border); border-radius: 24px;
+  padding: 24px 32px; display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 40px;
+  box-shadow: var(--shadow);
+}
+.subscribe-bar .sub-text {
+  font-size: 14px; font-weight: 600;
+}
+.subscribe-bar .sub-desc { color: var(--text2); font-size: 12px; }
+.subscribe-bar .sub-form { display: flex; gap: 10px; }
+.subscribe-bar .sub-input {
+  padding: 8px 16px; background: var(--glass); border: 1px solid var(--border);
+  border-radius: 12px; color: var(--text); font-size: 12px;
+  outline: none; width: 200px;
+}
+.subscribe-bar .sub-input::placeholder { color: var(--text3); }
+.subscribe-bar .sub-btn {
+  padding: 8px 20px; background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none; border-radius: 12px; color: white;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+}
+
+.footer {
+  border-top: 1px solid var(--border); padding: 32px;
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  color: var(--text3); font-size: 12px;
+}
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--text3); text-decoration: none; }
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .nav-links { gap: 16px; }
+  .main { padding: 24px 16px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .subscribe-bar { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .subscribe-bar .sub-form { width: 100%; }
+  .subscribe-bar .sub-input { width: auto; flex: 1; }
+  .footer { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">AI</div>
+    <div class="nav-title">AI <span>Pulse</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">首页</a>
+    <a href="#">大模型</a>
+    <a href="#">应用</a>
+    <a href="#">研究</a>
+    <a href="#">政策</a>
+  </div>
+</nav>
+
+<main class="main">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="glass-card hero-main">
+        <div class="glow"></div>
+        <div class="hero-tag"><div class="hero-tag-dot"></div>突发新闻</div>
+        <div class="hero-title">GPT-5 正式发布：多模态推理能力实现质的飞跃</div>
+        <div class="hero-desc">OpenAI 今日发布 GPT-5 模型，在多模态理解、长链推理和代码生成方面实现了前所未有的突破。该模型在多项基准测试中超越人类表现，标志着 AI 能力的新里程碑。</div>
+        <div class="hero-meta">
+          <span>3 分钟前</span>
+          <span>12.4k 阅读</span>
+          <span>OpenAI 官方</span>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="glass-card hero-side">
+          <div class="side-tag">大模型</div>
+          <div class="side-title">谷歌 DeepMind 发布 Gemini 2.0，原生多模态架构重新定义 AI 交互</div>
+          <div class="side-meta">2 小时前 · 8.2k</div>
+        </div>
+        <div class="glass-card hero-side">
+          <div class="side-tag">行业动态</div>
+          <div class="side-title">中国 AI 产业规模突破万亿，大模型应用落地加速</div>
+          <div class="side-meta">5 小时前 · 6.5k</div>
+        </div>
+        <div class="glass-card hero-side">
+          <div class="side-tag">研究前沿</div>
+          <div class="side-title">MIT 团队实现神经符号推理融合，AI 逻辑能力迎来突破</div>
+          <div class="side-meta">8 小时前 · 4.1k</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="subscribe-bar">
+    <div>
+      <div class="sub-text">订阅 AI Pulse 每日推送</div>
+      <div class="sub-desc">AI 资讯直达邮箱，不错过任何重要动态</div>
+    </div>
+    <div class="sub-form">
+      <input class="sub-input" type="email" placeholder="your@email.com">
+      <button class="sub-btn">订阅</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-title">最新资讯</div>
+      <div class="section-filters">
+        <button class="filter-pill active">全部</button>
+        <button class="filter-pill">大模型</button>
+        <button class="filter-pill">应用</button>
+        <button class="filter-pill">研究</button>
+        <button class="filter-pill">政策</button>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="glass-card news-card"><div class="card-tag hot">热门</div><div class="card-title">Anthropic 发布 Claude 4：推理深度与安全对齐双突破</div><div class="card-excerpt">新模型在复杂推理任务上表现惊人，同时引入了革命性的宪法 AI 2.0 框架。</div><div class="card-footer"><span>Anthropic</span><span>1 小时前</span></div></div>
+      <div class="glass-card news-card"><div class="card-tag new">新鲜</div><div class="card-title">苹果 MLX 框架开源：本地大模型推理性能提升 3 倍</div><div class="card-excerpt">苹果正式开源 MLX 框架，Mac 用户可在本地高效运行大模型。</div><div class="card-footer"><span>Apple ML</span><span>2 小时前</span></div></div>
+      <div class="glass-card news-card"><div class="card-tag policy">政策</div><div class="card-title">欧盟 AI 法案正式生效：全球最严 AI 监管框架落地</div><div class="card-excerpt">法案对高风险 AI 系统实施严格透明度和安全要求。</div><div class="card-footer"><span>EU</span><span>3 小时前</span></div></div>
+      <div class="glass-card news-card"><div class="card-tag app">应用</div><div class="card-title">AI 医疗诊断系统获 FDA 批准，准确率超越资深医师</div><div class="card-excerpt">基于深度学习的诊断系统在癌症早期检测中达到 97.3% 准确率。</div><div class="card-footer"><span>MedAI</span><span>4 小时前</span></div></div>
+      <div class="glass-card news-card"><div class="card-tag hot">热门</div><div class="card-title">Meta 开源 Llama 4：参数规模 400B，性能媲美商业模型</div><div class="card-excerpt">Meta 最新开源模型在多项基准测试中与 GPT-4 持平。</div><div class="card-footer"><span>Meta AI</span><span>5 小时前</span></div></div>
+      <div class="glass-card news-card"><div class="card-tag new">新鲜</div><div class="card-title">量子计算 + AI：IBM 量子神经网络实现首次商用突破</div><div class="card-excerpt">IBM 将量子计算与神经网络结合，在药物分子模拟中取得突破。</div><div class="card-footer"><span>IBM</span><span>6 小时前</span></div></div>
+    </div>
+  </section>
+
+  <section class="trending">
+    <div class="section-header"><div class="section-title">热门趋势</div></div>
+    <div class="trending-list">
+      <div class="trending-item"><div class="trending-rank">01</div><div class="trending-title">GPT-5 发布引发行业震动，多家公司紧急调整战略</div><div class="trending-count">24.5k</div></div>
+      <div class="trending-item"><div class="trending-rank">02</div><div class="trending-title">开源 vs 商用：Llama 4 发布后社区激烈辩论</div><div class="trending-count">18.3k</div></div>
+      <div class="trending-item"><div class="trending-rank">03</div><div class="trending-title">欧盟 AI 法案落地，硅谷巨头如何应对？</div><div class="trending-count">15.1k</div></div>
+      <div class="trending-item"><div class="trending-rank">04</div><div class="trending-title">AI 医疗获批：临床 AI 应用进入新纪元</div><div class="trending-count">12.7k</div></div>
+      <div class="trending-item"><div class="trending-rank">05</div><div class="trending-title">量子 AI 商用化：算力革命的开始？</div><div class="trending-count">9.8k</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>AI Pulse © 2026</div>
+  <div class="footer-links"><a href="#">关于</a><a href="#">投稿</a><a href="#">API</a><a href="#">隐私</a></div>
+</footer>
+
+<script>
+document.querySelectorAll('.filter-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

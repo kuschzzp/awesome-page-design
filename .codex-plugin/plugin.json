@@ -1,0 +1,40 @@
+{
+  "name": "awesome-page-design",
+  "version": "0.1.0",
+  "description": "A visual style prompt library for distinctive website and web app design.",
+  "author": {
+    "name": "kuschzzp",
+    "url": "https://github.com/kuschzzp"
+  },
+  "homepage": "https://github.com/kuschzzp/awesome-page-design",
+  "repository": "https://github.com/kuschzzp/awesome-page-design",
+  "license": "MIT",
+  "keywords": [
+    "web-design",
+    "visual-style",
+    "design-system",
+    "ui",
+    "codex-skill"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Awesome Page Design",
+    "shortDescription": "Distinct visual styles for web UI work",
+    "longDescription": "Use Awesome Page Design to choose and apply reusable visual style directions for websites, web apps, dashboards, landing pages, admin panels, and components without copying fixed sample layouts.",
+    "developerName": "kuschzzp",
+    "category": "Design",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use awesome-page-design to choose a distinctive visual style for this website.",
+      "Apply one of the awesome-page-design styles to this page without copying the sample layout."
+    ],
+    "websiteURL": "https://github.com/kuschzzp/awesome-page-design",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "brandColor": "#4F46E5",
+    "screenshots": []
+  }
+}

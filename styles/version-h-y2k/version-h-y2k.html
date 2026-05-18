@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pulse - 版本H：Retro Y2K 千禧复古</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #e0e7ff;
+  --bg2: #c7d2fe;
+  --card: #ffffff;
+  --text: #312e81;
+  --text2: #4338ca;
+  --text3: #6366f1;
+  --cyan: #06b6d4;
+  --magenta: #ec4899;
+  --lime: #84cc16;
+  --orange: #fb923c;
+  --border: #312e81;
+  --glow-cyan: 0 0 8px #06b6d4, 0 0 20px rgba(6,182,212,0.3);
+  --glow-magenta: 0 0 8px #ec4899, 0 0 20px rgba(236,72,153,0.3);
+  --radius: 0;
+  --radius2: 4px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Chakra Petch', monospace;
+  background: var(--bg); color: var(--text); line-height: 1.5;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+::selection { background: var(--cyan); color: #000; }
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--card); border-bottom: 2px solid var(--border);
+  padding: 0 32px; height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--lime), var(--cyan));
+  animation: scanline 8s linear infinite;
+  background-size: 200% 100%;
+}
+@keyframes scanline { 0%{background-position:0%} 100%{background-position:-200%} }
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-logo {
+  width: 32px; height: 32px; background: var(--cyan); border: 2px solid var(--border);
+  border-radius: var(--radius2); display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; color: #000; font-family: monospace;
+}
+.nav-title { font-size: 16px; font-weight: 700; letter-spacing: 0.05em; }
+.nav-title span { color: var(--magenta); }
+.nav-links { display: flex; gap: 4px; }
+.nav-link {
+  padding: 4px 12px; border: 1px solid var(--border); border-radius: var(--radius2);
+  font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; color: var(--text);
+  background: var(--card); transition: all 0.1s; font-family: monospace;
+}
+.nav-link:hover { background: var(--cyan); color: #000; }
+.nav-link.active { background: var(--magenta); color: #fff; border-color: var(--border); }
+.nav-status {
+  font-size: 11px; font-family: monospace; color: var(--cyan);
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-status .dot {
+  width: 8px; height: 8px; background: var(--lime); border-radius: 50%;
+  animation: blink2 1s infinite;
+}
+@keyframes blink2 { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+
+.hero { margin-bottom: 32px; }
+.hero-inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+
+.hero-main {
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius2); padding: 32px; position: relative;
+  cursor: pointer; transition: all 0.2s;
+}
+.hero-main:hover { box-shadow: var(--glow-cyan); }
+.hero-main .scan-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; background: var(--magenta); color: #fff;
+  border: 1px solid var(--border); border-radius: var(--radius2);
+  font-size: 11px; font-weight: 700; font-family: monospace; margin-bottom: 14px;
+}
+.hero-title {
+  font-size: 26px; font-weight: 700; letter-spacing: 0.02em;
+  line-height: 1.25; margin-bottom: 14px;
+}
+.hero-title .accent { color: var(--cyan); }
+.hero-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 18px; }
+.hero-meta {
+  display: flex; gap: 12px; font-size: 12px; font-family: monospace;
+  color: var(--text3);
+}
+.hero-meta .tag {
+  padding: 2px 8px; background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius2); font-weight: 600;
+}
+
+.hero-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.hero-side {
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius2); padding: 20px; flex: 1;
+  cursor: pointer; transition: all 0.2s;
+}
+.hero-side:hover { box-shadow: var(--glow-magenta); }
+.hero-side .side-tag {
+  font-size: 10px; font-weight: 700; font-family: monospace;
+  margin-bottom: 8px; display: inline-block;
+  padding: 2px 6px; border: 1px solid var(--border); border-radius: var(--radius2);
+}
+.hero-side .side-tag.cyan { background: var(--cyan); color: #000; }
+.hero-side .side-tag.lime { background: var(--lime); color: #000; }
+.hero-side .side-tag.magenta { background: var(--magenta); color: #fff; }
+.hero-side .side-title { font-size: 14px; font-weight: 700; line-height: 1.35; margin-bottom: 8px; }
+.hero-side .side-meta { font-size: 11px; color: var(--text3); font-family: monospace; }
+
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-size: 18px; font-weight: 700; letter-spacing: 0.05em;
+  font-family: monospace; display: flex; align-items: center; gap: 8px;
+}
+.section-title .marker {
+  width: 20px; height: 20px; background: var(--lime); border: 1px solid var(--border);
+  border-radius: var(--radius2); display: flex; align-items: center;
+  justify-content: center; font-size: 10px; font-weight: 700; color: #000;
+  font-family: monospace;
+}
+
+.section-filters { display: flex; gap: 4px; }
+.filter-btn {
+  padding: 4px 10px; background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius2); font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: monospace; transition: all 0.1s;
+}
+.filter-btn:hover { background: var(--bg2); }
+.filter-btn.active { background: var(--cyan); color: #000; }
+
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+
+.news-card {
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius2); padding: 20px;
+  cursor: pointer; transition: all 0.2s;
+}
+.news-card:hover { box-shadow: var(--glow-cyan); transform: translateY(-2px); }
+.news-card .card-tag {
+  display: inline-block; padding: 2px 6px; border: 1px solid var(--border);
+  border-radius: var(--radius2); font-size: 9px; font-weight: 700;
+  font-family: monospace; margin-bottom: 12px;
+}
+.news-card .card-tag.hot { background: var(--magenta); color: #fff; }
+.news-card .card-tag.new { background: var(--lime); color: #000; }
+.news-card .card-tag.policy { background: var(--orange); color: #000; }
+.news-card .card-tag.app { background: var(--cyan); color: #000; }
+.news-card .card-title { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 10px; }
+.news-card .card-excerpt { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 12px; }
+.news-card .card-footer {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--text3); font-family: monospace; font-weight: 600;
+}
+
+.trending { margin-bottom: 32px; }
+.trending-list { display: flex; flex-direction: column; gap: 10px; }
+.trending-item {
+  background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius2); padding: 12px 16px;
+  display: flex; align-items: center; gap: 14px;
+  cursor: pointer; transition: all 0.2s;
+}
+.trending-item:hover { box-shadow: var(--glow-magenta); }
+.trending-rank {
+  width: 28px; height: 28px; background: var(--cyan); border: 1px solid var(--border);
+  border-radius: var(--radius2); display: flex; align-items: center;
+  justify-content: center; font-size: 12px; font-weight: 700; color: #000;
+  font-family: monospace;
+}
+.trending-title { font-size: 13px; font-weight: 600; flex: 1; }
+.trending-count {
+  font-size: 10px; font-weight: 700; color: var(--text3); font-family: monospace;
+}
+
+.subscribe {
+  background: var(--bg2); border: 2px solid var(--border);
+  border-radius: var(--radius2); padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 32px; position: relative;
+}
+.subscribe::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--lime), var(--cyan));
+}
+.subscribe .sub-title { font-size: 14px; font-weight: 700; font-family: monospace; }
+.subscribe .sub-desc { font-size: 12px; color: var(--text3); font-family: monospace; }
+.subscribe .sub-form { display: flex; gap: 8px; }
+.subscribe .sub-input {
+  padding: 6px 12px; background: var(--card); border: 2px solid var(--border);
+  border-radius: var(--radius2); font-size: 12px; font-family: monospace;
+  outline: none; width: 160px; color: var(--text);
+}
+.subscribe .sub-input::placeholder { color: var(--text3); }
+.subscribe .sub-btn {
+  padding: 6px 16px; background: var(--lime); color: #000;
+  border: 2px solid var(--border); border-radius: var(--radius2);
+  font-size: 12px; font-weight: 700; font-family: monospace; cursor: pointer;
+  transition: all 0.1s;
+}
+.subscribe .sub-btn:hover { background: var(--cyan); }
+
+.footer {
+  border-top: 2px solid var(--border); padding: 24px 32px;
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 600; font-family: monospace;
+}
+.footer-links { display: flex; gap: 12px; }
+.footer-links a { color: var(--text); text-decoration: none; }
+.footer-links a:hover { color: var(--cyan); }
+
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .nav-links { gap: 4px; }
+  .nav-status { display: none; }
+  .main { padding: 24px 16px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .subscribe { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .subscribe .sub-form { width: 100%; }
+  .subscribe .sub-input { flex: 1; width: auto; }
+  .footer { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">AI</div>
+    <div class="nav-title">AI <span>Pulse</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="nav-link active">首页</a>
+    <a href="#" class="nav-link">大模型</a>
+    <a href="#" class="nav-link">应用</a>
+    <a href="#" class="nav-link">研究</a>
+    <a href="#" class="nav-link">政策</a>
+  </div>
+  <div class="nav-status"><div class="dot"></div>LIVE</div>
+</nav>
+
+<main class="main">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="scan-bar"></div>
+        <div class="hero-tag">▶ 突发</div>
+        <div class="hero-title">GPT-5 正式发布：<span class="accent">多模态推理</span>实现质的飞跃</div>
+        <div class="hero-desc">OpenAI 今日发布 GPT-5 模型，在多模态理解、长链推理和代码生成方面实现了前所未有的突破。该模型在多项基准测试中超越人类表现，标志着 AI 能力的新里程碑。</div>
+        <div class="hero-meta">
+          <span class="tag">3m</span>
+          <span class="tag">12.4k</span>
+          <span>OpenAI</span>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="hero-side"><div class="side-tag cyan">LLM</div><div class="side-title">谷歌 DeepMind 发布 Gemini 2.0，原生多模态架构重新定义 AI 交互</div><div class="side-meta">2h · 8.2k</div></div>
+        <div class="hero-side"><div class="side-tag lime">行业</div><div class="side-title">中国 AI 产业规模突破万亿，大模型应用落地加速</div><div class="side-meta">5h · 6.5k</div></div>
+        <div class="hero-side"><div class="side-tag magenta">研究</div><div class="side-title">MIT 团队实现神经符号推理融合，AI 逻辑能力迎来突破</div><div class="side-meta">8h · 4.1k</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="subscribe">
+    <div>
+      <div class="sub-title">[ SUBSCRIBE ]</div>
+      <div class="sub-desc">每日 AI 资讯直达邮箱</div>
+    </div>
+    <div class="sub-form">
+      <input class="sub-input" type="email" placeholder="email@domain.com">
+      <button class="sub-btn">GO</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-title"><div class="marker">N</div>LATEST_NEWS</div>
+      <div class="section-filters">
+        <button class="filter-btn active">ALL</button>
+        <button class="filter-btn">LLM</button>
+        <button class="filter-btn">APP</button>
+        <button class="filter-btn">RESEARCH</button>
+        <button class="filter-btn">POLICY</button>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card"><div class="card-tag hot">HOT</div><div class="card-title">Anthropic 发布 Claude 4：推理深度与安全对齐双突破</div><div class="card-excerpt">新模型在复杂推理任务上表现惊人，引入宪法 AI 2.0。</div><div class="card-footer"><span>Anthropic</span><span>1h</span></div></div>
+      <div class="news-card"><div class="card-tag new">NEW</div><div class="card-title">苹果 MLX 框架开源：本地推理性能提升 3 倍</div><div class="card-excerpt">Mac 用户可在本地高效运行大模型。</div><div class="card-footer"><span>Apple</span><span>2h</span></div></div>
+      <div class="news-card"><div class="card-tag policy">POL</div><div class="card-title">欧盟 AI 法案正式生效：全球最严监管框架落地</div><div class="card-excerpt">高风险 AI 系统面临严格透明度要求。</div><div class="card-footer"><span>EU</span><span>3h</span></div></div>
+      <div class="news-card"><div class="card-tag app">APP</div><div class="card-title">AI 医疗诊断获 FDA 批准，准确率超越资深医师</div><div class="card-excerpt">深度学习癌症检测达 97.3% 准确率。</div><div class="card-footer"><span>MedAI</span><span>4h</span></div></div>
+      <div class="news-card"><div class="card-tag hot">HOT</div><div class="card-title">Meta 开源 Llama 4：400B 参数媲美商业模型</div><div class="card-excerpt">基准测试与 GPT-4 持平。</div><div class="card-footer"><span>Meta</span><span>5h</span></div></div>
+      <div class="news-card"><div class="card-tag new">NEW</div><div class="card-title">量子 + AI：IBM 神经网络首次商用突破</div><div class="card-excerpt">药物分子模拟取得突破性进展。</div><div class="card-footer"><span>IBM</span><span>6h</span></div></div>
+    </div>
+  </section>
+
+  <section class="trending">
+    <div class="section-header"><div class="section-title"><div class="marker">T</div>TRENDING</div></div>
+    <div class="trending-list">
+      <div class="trending-item"><div class="trending-rank">01</div><div class="trending-title">GPT-5 发布引发行业震动</div><div class="trending-count">24.5k</div></div>
+      <div class="trending-item"><div class="trending-rank">02</div><div class="trending-title">开源 vs 商用：Llama 4 后社区辩论</div><div class="trending-count">18.3k</div></div>
+      <div class="trending-item"><div class="trending-rank">03</div><div class="trending-title">欧盟 AI 法案落地，硅谷如何应对</div><div class="trending-count">15.1k</div></div>
+      <div class="trending-item"><div class="trending-rank">04</div><div class="trending-title">AI 医疗获批进入新纪元</div><div class="trending-count">12.7k</div></div>
+      <div class="trending-item"><div class="trending-rank">05</div><div class="trending-title">量子 AI 商用化：算力革命</div><div class="trending-count">9.8k</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>AI_PULSE v2026.05</div>
+  <div class="footer-links"><a href="#">ABOUT</a><a href="#">SUBMIT</a><a href="#">API</a><a href="#">PRIVACY</a></div>
+</footer>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

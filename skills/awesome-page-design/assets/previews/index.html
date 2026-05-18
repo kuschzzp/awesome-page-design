@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Style Templates Previews :: Terminal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --card: #141414;
+  --text: #00ff41;
+  --text2: #00cc33;
+  --text3: #006622;
+  --cyan: #00e5ff;
+  --red: #ff0040;
+  --orange: #ff8c00;
+  --border: #00ff41;
+  --border2: #003311;
+  --glow: 0 0 6px rgba(0,255,65,0.4);
+  --radius: 2px;
+}
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  line-height: 1.6;
+  background-image: repeating-linear-gradient(0deg, rgba(0,255,65,0.03) 0px, rgba(0,255,65,0.03) 1px, transparent 1px, transparent 2px);
+}
+::selection { background: var(--cyan); color: #000; }
+.shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.terminal-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 42px;
+  margin: -24px -24px 24px;
+  padding: 0 24px;
+  background: rgba(17,17,17,0.96);
+  border-bottom: 1px solid var(--border2);
+}
+.prompt { font-size: 12px; font-weight: 700; white-space: nowrap; }
+.prompt .cyan { color: var(--cyan); }
+.prompt .muted { color: var(--text3); font-weight: 500; }
+.cursor {
+  width: 8px;
+  height: 14px;
+  background: var(--text);
+  animation: cursor-blink 1s step-end infinite;
+}
+@keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.header {
+  margin: 0 0 18px;
+  padding: 22px 24px;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+}
+.header::before {
+  content: '$ ls ./styles --preview --format=png';
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text3);
+  font-size: 11px;
+}
+h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-shadow: 0 0 8px rgba(0,255,65,0.28);
+}
+h1::before { content: '> '; color: var(--cyan); }
+.meta {
+  margin: 10px 0 0;
+  color: var(--text2);
+  font-size: 12px;
+}
+.meta .warn { color: var(--orange); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+.card {
+  display: block;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: var(--border);
+  box-shadow: var(--glow);
+  transform: translateY(-1px);
+}
+.card-head,
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  font-size: 10px;
+  border-bottom: 1px solid var(--border2);
+}
+.card-foot {
+  border-top: 1px solid var(--border2);
+  border-bottom: 0;
+}
+.rank { color: var(--cyan); font-weight: 700; }
+.path { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text3); }
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 1200;
+  object-fit: cover;
+  object-position: top;
+  background: #050505;
+  filter: saturate(0.82) contrast(1.05);
+}
+.card-foot span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+  font-weight: 700;
+}
+.status { color: var(--text3); font-weight: 700; }
+.status::before { content: '['; color: var(--cyan); }
+.status::after { content: ']'; color: var(--cyan); }
+.footer {
+  margin-top: 18px;
+  padding: 14px 4px 0;
+  color: var(--text3);
+  font-size: 10px;
+}
+.footer::before { content: '// '; color: var(--cyan); }
+@media (max-width: 640px) {
+  .shell { padding: 16px; }
+  .terminal-bar { margin: -16px -16px 16px; padding: 0 16px; }
+  .prompt { white-space: normal; }
+  .grid { grid-template-columns: 1fr; }
+  .header { padding: 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="terminal-bar">
+      <div class="prompt"><span class="cyan">❯</span> web-style-templates <span class="muted">/ previews</span></div>
+      <div class="cursor" aria-hidden="true"></div>
+    </div>
+    <header class="header">
+      <h1>Web Style Templates Previews</h1>
+      <p class="meta">25 PNG detected · viewport 1440x1200 · theme=<span class="warn">terminal-hacker</span></p>
+    </header>
+    <main class="grid">
+      <a class="card" href="../styles/version-a-classic/version-a-classic.png">
+        <div class="card-head"><span class="rank">01</span><span class="path">./version-a-classic.png</span></div>
+        <img src="../styles/version-a-classic/version-a-classic.png" alt="version-a-classic preview" loading="lazy">
+        <div class="card-foot"><span>version-a-classic</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-b-grid/version-b-grid.png">
+        <div class="card-head"><span class="rank">02</span><span class="path">./version-b-grid.png</span></div>
+        <img src="../styles/version-b-grid/version-b-grid.png" alt="version-b-grid preview" loading="lazy">
+        <div class="card-foot"><span>version-b-grid</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-c-feed/version-c-feed.png">
+        <div class="card-head"><span class="rank">03</span><span class="path">./version-c-feed.png</span></div>
+        <img src="../styles/version-c-feed/version-c-feed.png" alt="version-c-feed preview" loading="lazy">
+        <div class="card-foot"><span>version-c-feed</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-d-bento/version-d-bento.png">
+        <div class="card-head"><span class="rank">04</span><span class="path">./version-d-bento.png</span></div>
+        <img src="../styles/version-d-bento/version-d-bento.png" alt="version-d-bento preview" loading="lazy">
+        <div class="card-foot"><span>version-d-bento</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-e-glass/version-e-glass.png">
+        <div class="card-head"><span class="rank">05</span><span class="path">./version-e-glass.png</span></div>
+        <img src="../styles/version-e-glass/version-e-glass.png" alt="version-e-glass preview" loading="lazy">
+        <div class="card-foot"><span>version-e-glass</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-f-brutalism/version-f-brutalism.png">
+        <div class="card-head"><span class="rank">06</span><span class="path">./version-f-brutalism.png</span></div>
+        <img src="../styles/version-f-brutalism/version-f-brutalism.png" alt="version-f-brutalism preview" loading="lazy">
+        <div class="card-foot"><span>version-f-brutalism</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-g-aurora/version-g-aurora.png">
+        <div class="card-head"><span class="rank">07</span><span class="path">./version-g-aurora.png</span></div>
+        <img src="../styles/version-g-aurora/version-g-aurora.png" alt="version-g-aurora preview" loading="lazy">
+        <div class="card-foot"><span>version-g-aurora</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-h-y2k/version-h-y2k.png">
+        <div class="card-head"><span class="rank">08</span><span class="path">./version-h-y2k.png</span></div>
+        <img src="../styles/version-h-y2k/version-h-y2k.png" alt="version-h-y2k preview" loading="lazy">
+        <div class="card-foot"><span>version-h-y2k</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-i-swiss/version-i-swiss.png">
+        <div class="card-head"><span class="rank">09</span><span class="path">./version-i-swiss.png</span></div>
+        <img src="../styles/version-i-swiss/version-i-swiss.png" alt="version-i-swiss preview" loading="lazy">
+        <div class="card-foot"><span>version-i-swiss</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-j-terminal/version-j-terminal.png">
+        <div class="card-head"><span class="rank">10</span><span class="path">./version-j-terminal.png</span></div>
+        <img src="../styles/version-j-terminal/version-j-terminal.png" alt="version-j-terminal preview" loading="lazy">
+        <div class="card-foot"><span>version-j-terminal</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-k-clay/version-k-clay.png">
+        <div class="card-head"><span class="rank">11</span><span class="path">./version-k-clay.png</span></div>
+        <img src="../styles/version-k-clay/version-k-clay.png" alt="version-k-clay preview" loading="lazy">
+        <div class="card-foot"><span>version-k-clay</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-l-cutealism/version-l-cutealism.png">
+        <div class="card-head"><span class="rank">12</span><span class="path">./version-l-cutealism.png</span></div>
+        <img src="../styles/version-l-cutealism/version-l-cutealism.png" alt="version-l-cutealism preview" loading="lazy">
+        <div class="card-foot"><span>version-l-cutealism</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-m-stark/version-m-stark.png">
+        <div class="card-head"><span class="rank">13</span><span class="path">./version-m-stark.png</span></div>
+        <img src="../styles/version-m-stark/version-m-stark.png" alt="version-m-stark preview" loading="lazy">
+        <div class="card-foot"><span>version-m-stark</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-n-skeuomorph/version-n-skeuomorph.png">
+        <div class="card-head"><span class="rank">14</span><span class="path">./version-n-skeuomorph.png</span></div>
+        <img src="../styles/version-n-skeuomorph/version-n-skeuomorph.png" alt="version-n-skeuomorph preview" loading="lazy">
+        <div class="card-foot"><span>version-n-skeuomorph</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-o-scribble/version-o-scribble.png">
+        <div class="card-head"><span class="rank">15</span><span class="path">./version-o-scribble.png</span></div>
+        <img src="../styles/version-o-scribble/version-o-scribble.png" alt="version-o-scribble preview" loading="lazy">
+        <div class="card-foot"><span>version-o-scribble</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-p-material-you/version-p-material-you.png">
+        <div class="card-head"><span class="rank">16</span><span class="path">./version-p-material-you.png</span></div>
+        <img src="../styles/version-p-material-you/version-p-material-you.png" alt="version-p-material-you preview" loading="lazy">
+        <div class="card-foot"><span>version-p-material-you</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-q-fluent-cloud/version-q-fluent-cloud.png">
+        <div class="card-head"><span class="rank">17</span><span class="path">./version-q-fluent-cloud.png</span></div>
+        <img src="../styles/version-q-fluent-cloud/version-q-fluent-cloud.png" alt="version-q-fluent-cloud preview" loading="lazy">
+        <div class="card-foot"><span>version-q-fluent-cloud</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-r-carbon-enterprise/version-r-carbon-enterprise.png">
+        <div class="card-head"><span class="rank">18</span><span class="path">./version-r-carbon-enterprise.png</span></div>
+        <img src="../styles/version-r-carbon-enterprise/version-r-carbon-enterprise.png" alt="version-r-carbon-enterprise preview" loading="lazy">
+        <div class="card-foot"><span>version-r-carbon-enterprise</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-s-polaris-commerce/version-s-polaris-commerce.png">
+        <div class="card-head"><span class="rank">19</span><span class="path">./version-s-polaris-commerce.png</span></div>
+        <img src="../styles/version-s-polaris-commerce/version-s-polaris-commerce.png" alt="version-s-polaris-commerce preview" loading="lazy">
+        <div class="card-foot"><span>version-s-polaris-commerce</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-t-atlassian-workbench/version-t-atlassian-workbench.png">
+        <div class="card-head"><span class="rank">20</span><span class="path">./version-t-atlassian-workbench.png</span></div>
+        <img src="../styles/version-t-atlassian-workbench/version-t-atlassian-workbench.png" alt="version-t-atlassian-workbench preview" loading="lazy">
+        <div class="card-foot"><span>version-t-atlassian-workbench</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-u-gov-service/version-u-gov-service.png">
+        <div class="card-head"><span class="rank">21</span><span class="path">./version-u-gov-service.png</span></div>
+        <img src="../styles/version-u-gov-service/version-u-gov-service.png" alt="version-u-gov-service preview" loading="lazy">
+        <div class="card-foot"><span>version-u-gov-service</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-v-spectrum-creative/version-v-spectrum-creative.png">
+        <div class="card-head"><span class="rank">22</span><span class="path">./version-v-spectrum-creative.png</span></div>
+        <img src="../styles/version-v-spectrum-creative/version-v-spectrum-creative.png" alt="version-v-spectrum-creative preview" loading="lazy">
+        <div class="card-foot"><span>version-v-spectrum-creative</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-w-lightning-crm/version-w-lightning-crm.png">
+        <div class="card-head"><span class="rank">23</span><span class="path">./version-w-lightning-crm.png</span></div>
+        <img src="../styles/version-w-lightning-crm/version-w-lightning-crm.png" alt="version-w-lightning-crm preview" loading="lazy">
+        <div class="card-foot"><span>version-w-lightning-crm</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-x-primer-dev/version-x-primer-dev.png">
+        <div class="card-head"><span class="rank">24</span><span class="path">./version-x-primer-dev.png</span></div>
+        <img src="../styles/version-x-primer-dev/version-x-primer-dev.png" alt="version-x-primer-dev preview" loading="lazy">
+        <div class="card-foot"><span>version-x-primer-dev</span><span class="status">READY</span></div>
+      </a>
+      <a class="card" href="../styles/version-y-ant-pro/version-y-ant-pro.png">
+        <div class="card-head"><span class="rank">25</span><span class="path">./version-y-ant-pro.png</span></div>
+        <img src="../styles/version-y-ant-pro/version-y-ant-pro.png" alt="version-y-ant-pro preview" loading="lazy">
+        <div class="card-foot"><span>version-y-ant-pro</span><span class="status">READY</span></div>
+      </a>
+    </main>
+    <footer class="footer">click any preview to open the full PNG artifact</footer>
+  </div>
+</body>
+</html>
