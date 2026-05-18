@@ -1,44 +1,55 @@
-# Awesome Page Design — 25 Visual Style Prompts for Websites
+# Awesome Page Design
 
-> A reusable visual style prompt library for website and web app development. It captures color, typography, borders, radius, shadows, motion, texture, and component tone so future projects can start from a distinctive visual direction instead of another generic default UI.
+> 25 reusable visual style prompts for websites and web apps. Built for Codex, Claude Code, OpenCode, and other agentic coding clients that need a distinctive page direction instead of another generic default UI.
 
----
+[![Agent Skill](https://img.shields.io/badge/Agent%20Skill-awesome--page--design-4F46E5)](./skills/awesome-page-design/SKILL.md)
+[![Styles](https://img.shields.io/badge/styles-25-111827)](./styles)
+[![License: MIT](https://img.shields.io/badge/license-MIT-10B981)](./LICENSE)
 
-## Overview
+## What This Is
 
-This repository is not a real AI news product or a complete business system. **AI Pulse** is shared demo content used to compare all styles under the same information structure.
+`awesome-page-design` is a **visual style Skill** for agents and frontend developers. It contains 25 website visual languages. Each one includes:
 
-The real goal is to provide a reusable **website visual style prompt library**. When starting a new website or web app, pick a visual direction from this library, then transfer its color, typography, border, radius, shadow, motion, surface, state, and component tone into the actual product.
+- A single-file HTML preview that can be opened directly in a browser
+- A design system note
+- Transferable colors, typography, radius, borders, shadows, motion, and component tone
+- A `SKILL.md` entry that can be read by Codex, Claude Code, OpenCode, and other clients that support Agent Skills
 
-**Important principle:** this project does not provide fixed page layout templates. The HTML files exist only as preview and screenshot carriers. Real product layout, information architecture, module order, grid strategy, and responsive behavior should be designed around the user's needs, workflow, and content priority.
+This is not a page template library, and it is not a real AI news product. **AI Pulse** is only shared demo content used to compare all 25 styles under the same information structure.
 
-Each style includes:
+## When To Use It
 
-- **A complete HTML preview** — a single-file page that can be opened directly in a browser.
-- **A design system note** — visual rules covering color, type, borders, shadows, component tone, variants, and usage guidance.
-- **A PNG preview** — a static screenshot for quick review without opening the HTML.
+- You are building a website, dashboard, SaaS product, admin panel, landing page, portfolio, or component library
+- You want a clear visual direction instead of default Tailwind / Ant / Bootstrap aesthetics
+- You want an agent to choose a style first, then redesign the real product layout around actual requirements
+- You need to migrate a visual style into React, Next.js, Vue, or plain HTML
 
----
+## Core Principle
 
-## Goals
+**Reuse the visual language. Do not copy the sample layout.**
 
-- **Capture reusable visual language:** every version is a transferable style direction, not just a page.
-- **Accelerate project starts:** choose a visual tone early, then design the real layout around the product.
-- **Avoid repetitive websites:** vary color, typography, borders, radius, depth, decoration, and interaction details.
-- **Connect design and implementation:** HTML previews show the look; Markdown notes describe how to reuse it.
-- **Support framework migration:** selected styles can be moved into React, Next.js, Vue, or other frontend stacks.
+The sample HTML files exist to preview each style. Real product layout, information architecture, module order, grid strategy, and responsive behavior should be designed around your product, content priority, and user workflow.
 
----
+Reusable:
 
-## Codex Skill Installation
+- Color system
+- Typography and density
+- Radius, borders, shadows, and glow
+- Surface texture and decoration rules
+- Component personality for buttons, cards, inputs, navigation, and tables
+- Hover, focus, selected, disabled, loading, and alert states
 
-This repository is packaged as the `awesome-page-design` Skill. After it is pushed to GitHub, install it with the general `skills` CLI:
+Not reusable as-is:
 
-```bash
-npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesome-page-design -a codex
-```
+- Sample page layout
+- AI Pulse content structure
+- Module order
+- Navigation model
+- Fixed grid strategy
 
-Skill structure:
+## Quick Start
+
+This repository uses an open Agent Skills directory structure:
 
 ```text
 skills/
@@ -49,53 +60,155 @@ skills/
     └── assets/
 ```
 
-`skills/awesome-page-design/SKILL.md` is the skill entry point. Full HTML, Markdown, and PNG preview assets live under `skills/awesome-page-design/assets/`. `.codex-plugin/plugin.json` declares Codex plugin metadata and the skills directory.
+After installation, use prompts like:
 
----
+```text
+Use $awesome-page-design to choose a distinctive visual style for this dashboard.
+Apply one of the awesome-page-design styles to this landing page without copying the sample layout.
+Use awesome-page-design to make this admin panel feel professional but less generic.
+```
+
+## Install With npx skills
+
+> Note: the CLI command is `skills`, not `skill`. People may casually say "npx skill", but the actual command is `npx skills ...`.
+
+### List available skills in this repository
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design --list
+```
+
+### Install for Codex
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesome-page-design -a codex
+```
+
+### Install for Claude Code
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesome-page-design -a claude-code
+```
+
+### Install for OpenCode
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesome-page-design -a opencode
+```
+
+### Install for multiple clients
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesome-page-design -a codex -a claude-code -a opencode
+```
+
+### Install into the current project instead of globally
+
+Remove `-g`:
+
+```bash
+npx skills add https://github.com/kuschzzp/awesome-page-design --skill awesome-page-design -a codex
+```
+
+### Install from a local checkout
+
+Useful while developing or testing this repository:
+
+```bash
+npx skills add ./ -g --skill awesome-page-design -a codex
+```
+
+### Common management commands
+
+```bash
+# List installed skills
+npx skills list -g
+
+# Update a skill
+npx skills update awesome-page-design -g
+
+# Remove a skill
+npx skills remove awesome-page-design -g
+```
+
+## Client Compatibility
+
+`awesome-page-design` follows the generic `SKILL.md` + `references/` + `assets/` structure. It does not depend on Codex-only behavior, so it can be installed through `npx skills` into multiple clients that support Agent Skills.
+
+Supported or suitable targets:
+
+| Client | `--agent` value | Notes |
+|---|---|---|
+| Codex | `codex` | Recommended; this repository includes Codex plugin metadata |
+| Claude Code | `claude-code` | Installable as a local Skill through `npx skills` |
+| OpenCode | `opencode` | Installable through `npx skills` |
+| Cursor | `cursor` | Can be installed as a generic Agent Skill |
+| Windsurf | `windsurf` | Can be installed as a generic Agent Skill |
+| Other agents | Client-dependent | Any client that can read `SKILL.md` and resource folders can adapt it |
+
+Claude web / Claude.ai, API usage, and other non-local CLI environments depend on the platform's own Skill import mechanism. This repository currently provides a source-style Skill structure and does not package a separate `.skill` artifact.
+
+References:
+
+- [Vercel Labs skills CLI](https://github.com/vercel-labs/skills)
+- [Anthropic Skills repository](https://github.com/anthropics/skills)
 
 ## Style Catalog
 
-| Version | Style | Description | Mode | Path |
-|:---:|---|---|:---:|---|
-| A | Classic News | Classic editorial news portal with Inter and indigo accents | Light | `styles/version-a-classic/` |
-| B | Card Grid | Dashboard-like card grid with search and stats | Light | `styles/version-b-grid/` |
-| C | Feed Layout | Social feed style with single-column cards and light interactions | Light | `styles/version-c-feed/` |
-| D | Bento Grid | Apple-like bento surfaces with large radius and restrained depth | Light | `styles/version-d-bento/` |
-| E | Glassmorphism | Dark purple glassmorphism with translucent panels and cyan glow | Dark | `styles/version-e-glass/` |
-| F | Neo-Brutalism | Warm yellow neo-brutalism with thick borders and hard shadows | Light | `styles/version-f-brutalism/` |
-| G | Aurora Gradient | Dark aurora gradients with glow and futuristic energy | Dark | `styles/version-g-aurora/` |
-| H | Retro Y2K | Retro Y2K with candy gradients, sparkles, and display type | Light | `styles/version-h-y2k/` |
-| I | Swiss Editorial | Swiss editorial style with white space, red accent, and strict grid | Light | `styles/version-i-swiss/` |
-| J | Terminal Hacker | Hacker terminal style with black canvas, green glow, and monospace type | Dark | `styles/version-j-terminal/` |
-| K | Claymorphism | Claymorphism with lavender surfaces and soft inner/outer shadows | Light | `styles/version-k-clay/` |
-| L | Cute-alism | Cute-brutal mix with neon yellow, pink hard shadows, and sticker energy | Light | `styles/version-l-cutealism/` |
-| M | Resonant Stark | Premium dark minimalism with thin type, subtle glow, and whitespace | Dark | `styles/version-m-stark/` |
-| N | Light Skeuomorphism | Light skeuomorphism with Apple gray, embossed surfaces, and inset controls | Light | `styles/version-n-skeuomorph/` |
-| O | Human Scribble | Human scribble style with paper texture, dashed borders, and marker highlights | Light | `styles/version-o-scribble/` |
-| P | Material You | Material 3-inspired dynamic color, rounded surfaces, and large actions | Light | `styles/version-p-material-you/` |
-| Q | Fluent Cloud | Fluent 2-inspired neutral UI with Segoe type and light app depth | Light | `styles/version-q-fluent-cloud/` |
-| R | Carbon Enterprise | IBM Carbon-inspired gray hierarchy, blue actions, and dense enterprise UI | Light | `styles/version-r-carbon-enterprise/` |
-| S | Polaris Commerce | Shopify Polaris-inspired commerce admin with warm neutrals and green actions | Light | `styles/version-s-polaris-commerce/` |
-| T | Atlassian Workbench | Atlassian-inspired collaboration workbench with blue actions and lozenges | Light | `styles/version-t-atlassian-workbench/` |
-| U | Gov Service | GOV.UK-inspired service UI with high contrast, blue links, and yellow focus | Light | `styles/version-u-gov-service/` |
-| V | Spectrum Creative | Adobe Spectrum-inspired creative panels, indigo accents, and media grids | Light | `styles/version-v-spectrum-creative/` |
-| W | Lightning CRM | Salesforce Lightning-inspired CRM shell with compact business cards | Light | `styles/version-w-lightning-crm/` |
-| X | Primer Dev | GitHub Primer-inspired developer UI with repo cards and code-oriented tone | Light | `styles/version-x-primer-dev/` |
-| Y | Ant Pro | Ant Design Pro-inspired admin UI with blue primary color and fine table borders | Light | `styles/version-y-ant-pro/` |
+| Version | Style | Best For | Visual Language |
+|:---:|---|---|---|
+| A | Classic News | News, content sites, authority pages | Light blue-gray canvas, indigo accent, Inter, fine borders, soft shadows |
+| B | Card Grid | Dashboards, catalogs, overview pages | Card grid rhythm, search, stats, lightweight data tone |
+| C | Feed Layout | Feeds, communities, updates, article streams | Single-column feed, cyan accent, expandable cards, soft dividers |
+| D | Bento Grid | Product showcases, Apple-like overview pages | Apple gray, blue accent, large radius, bento surfaces |
+| E | Glassmorphism | Immersive dark landing pages, AI products | Deep purple gradient, translucent glass, cyan highlights, blur |
+| F | Neo-Brutalism | Bold campaigns, indie products, playful utilities | Warm yellow, thick black borders, hard shadows, saturated labels |
+| G | Aurora Gradient | Futuristic products, AI tools, premium dark experiences | Dark canvas, aurora gradients, soft glow, drifting motion |
+| H | Retro Y2K | Music, fashion, youth culture, campaigns | Candy gradients, neon details, retro display type, sparkle energy |
+| I | Swiss Editorial | Portfolios, cultural sites, serious content | Pure white, red accent, Helvetica, strict grid, no shadow |
+| J | Terminal Hacker | Developer tools, CLI products, security, open source | Black canvas, terminal green, monospace, scanlines |
+| K | Claymorphism | Education, wellness, friendly SaaS | Lavender background, Nunito type, soft inner and outer shadows |
+| L | Cute-alism | Playful brands, creator tools, youth products | Neon yellow, pink hard shadow, sticker mood, soft-hard contrast |
+| M | Resonant Stark | Premium dark portfolios, art, high-end teasers | Near-black, thin type, subtle glow, extreme whitespace |
+| N | Light Skeuomorphism | Apple-like tools, device apps, tactile UI | Apple gray, embossed surfaces, inset controls |
+| O | Human Scribble | Workshops, education, maker pages, notes | Warm paper, hand-drawn fonts, dashed borders, marker highlights |
+| P | Material You | Android-like apps, general tools, lifestyle products | Material 3 purple, dynamic color feel, rounded surfaces |
+| Q | Fluent Cloud | Productivity tools, cloud consoles, desktop apps | Segoe UI, neutral surfaces, blue action color, light depth |
+| R | Carbon Enterprise | Enterprise software, data platforms, industrial systems | IBM-like grays, blue action color, square boundaries, high density |
+| S | Polaris Commerce | Merchant tools, ecommerce admin, operations | Warm neutrals, green actions, resource-list clarity |
+| T | Atlassian Workbench | Collaboration tools, project management, team dashboards | Collaborative blue, lozenge tags, workbench surfaces |
+| U | Gov Service | Public service, legal, forms, accessibility-first sites | High contrast, black dividers, blue links, yellow focus states |
+| V | Spectrum Creative | Creative software, asset managers, media tools | Adobe-like neutral UI, indigo accent, media grids |
+| W | Lightning CRM | CRM, sales tools, support, customer operations | Light app shell, Salesforce-like blue, compact business cards |
+| X | Primer Dev | Developer platforms, docs, repos, issue trackers | GitHub-like borders, blue links, monospace labels |
+| Y | Ant Pro | Enterprise admin, management consoles, data tables | Ant Design blue, thin borders, white cards, stable states |
 
----
+## Choose By Product Type
 
-## How To Use
+| Product Need | Recommended Styles |
+|---|---|
+| Tech SaaS dashboard | D, P, Q, Y |
+| Enterprise admin / data platform | R, W, Y, Q |
+| News or editorial media | A, I |
+| Developer tools / API platforms | J, X |
+| Ecommerce operations / merchant admin | S, Y |
+| Government / public service / serious forms | U |
+| Dark AI / data product | E, G, M |
+| Creative studio / portfolio | F, O, V |
+| Youth or trend brand | H, L |
+| Friendly rounded product | K, N, P |
 
-1. **Choose by product tone:** for example, a SaaS dashboard can reference D/P/Y, a creative studio can reference F/O/V, and a dark AI product can reference E/G/M.
-2. **Open the HTML or PNG preview:** evaluate color, typography, texture, density, and component shape.
-3. **Read the matching design system note:** extract color variables, type scale, radius, border, shadow, state, and motion rules.
-4. **Redesign the real product layout:** do not copy the AI Pulse sample structure or page composition.
-5. **Keep style consistency:** reuse the selected visual variables and component tone across future screens.
+## How To Apply A Style
 
----
+1. Pick 1-3 candidate styles from the catalog or matching table.
+2. Open the matching HTML or PNG preview and evaluate the overall mood.
+3. Read the matching design system note and extract visual tokens.
+4. Create CSS variables or theme tokens in the real project.
+5. Map those tokens onto real components such as buttons, cards, inputs, navigation, and tables.
+6. Redesign the actual page structure around the product. Do not copy the AI Pulse sample layout.
+7. Check accessibility, especially contrast, focus states, and motion intensity.
 
-## Preview
+## Local Preview
 
 Open any HTML file directly:
 
@@ -103,19 +216,17 @@ Open any HTML file directly:
 open styles/version-j-terminal/version-j-terminal.html
 ```
 
-Or open the preview gallery:
+Open the preview gallery:
 
 ```bash
 open previews/index.html
 ```
 
-All pages are single-file static HTML with inline CSS. Some fonts are loaded through Google Fonts CDN.
-
----
+All pages are single-file static HTML with inline CSS. Some fonts are loaded through Google Fonts CDN and will fall back to system fonts when offline.
 
 ## Generate PNG Previews
 
-The repository includes a dependency-free screenshot script. It calls local Chrome in headless mode to generate one PNG for every HTML file under `styles/` and refreshes `previews/index.html`.
+The repository includes a screenshot script that calls local Chrome in headless mode. It generates one PNG for every HTML file under `styles/` and refreshes `previews/index.html`.
 
 ```bash
 npm run previews
@@ -139,28 +250,40 @@ Custom Chrome path:
 CHROME_PATH="/path/to/Google Chrome" npm run previews
 ```
 
----
+## Repository Structure
 
-## Quick Matching
+```text
+awesome-page-design/
+├── .codex-plugin/
+│   └── plugin.json
+├── skills/
+│   └── awesome-page-design/
+│       ├── SKILL.md
+│       ├── agents/
+│       │   └── openai.yaml
+│       ├── references/
+│       │   ├── style-index.md
+│       │   ├── usage-principles.md
+│       │   └── styles/
+│       └── assets/
+│           ├── previews/
+│           └── styles/
+├── styles/
+│   ├── version-a-classic/
+│   ├── version-b-grid/
+│   └── ...
+├── previews/
+│   └── index.html
+├── scripts/
+│   ├── generate-previews.js
+│   └── generate-system-inspired-styles.js
+├── package.json
+└── README.md
+```
 
-| Product Need | Recommended Styles |
-|---|---|
-| Tech SaaS dashboard | D, P, Q, Y |
-| Enterprise admin system | R, W, Y, Q |
-| News or editorial media | A, I |
-| Developer tools | J, X |
-| Commerce operations | S, Y |
-| Public service or government | U |
-| Dark AI or data product | E, G, M |
-| Creative studio or portfolio | F, O, V |
-| Youth or trend brand | H, L |
-| Friendly rounded product | K, N, P |
+## What's In Each Design System Note
 
----
-
-## Design System Notes
-
-Each design note usually covers:
+Each style note usually covers 14 sections:
 
 | # | Topic |
 |---:|---|
@@ -169,7 +292,7 @@ Each design note usually covers:
 | 3 | Typography system |
 | 4 | Borders, radius, shadows, and glow |
 | 5 | Decorative elements and interaction details |
-| 6 | Visual rhythm and spacing hints, not fixed layout |
+| 6 | Visual rhythm and spacing hints |
 | 7 | Responsive strategy |
 | 8 | Component quick reference |
 | 9 | CSS variables and code snippets |
@@ -179,18 +302,25 @@ Each design note usually covers:
 | 13 | Motion and micro-interactions |
 | 14 | Implementation guidelines and caveats |
 
----
-
 ## Maintenance Notes
 
 - Keep one folder per style.
-- Each style folder should contain one HTML file, one design system Markdown file, and one PNG preview.
+- Each style folder should keep its HTML, design system Markdown, and PNG preview aligned.
+- If `styles/` changes, sync the same resources into `skills/awesome-page-design/assets/styles/`.
+- If the style list changes, update `skills/awesome-page-design/references/style-index.md`.
 - Do not describe sample layouts as fixed templates.
-- If `styles/` is updated, sync the same resources into `skills/awesome-page-design/assets/styles/`.
-- Keep `skills/awesome-page-design/references/style-index.md` aligned with the README style list.
+- Keep `SKILL.md` concise. Put detailed material in `references/` and `assets/`.
 
----
+## Development Commands
+
+```bash
+# Generate system-inspired styles
+npm run styles:systems
+
+# Generate all PNG previews
+npm run previews
+```
 
 ## License
 
-MIT
+[MIT](./LICENSE)

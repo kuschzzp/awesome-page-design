@@ -32,6 +32,32 @@ This is a visual style prompt library, not a page layout template library. Do no
 - `assets/styles/`: full HTML, markdown, and PNG preview assets.
 - `assets/previews/index.html`: preview gallery.
 
+## Previewing The Included HTML
+
+When the user wants to preview the integrated examples after installing this skill, help them locate the installed skill directory and open the bundled HTML files from the `assets/` folder.
+
+Primary preview entry:
+
+- `assets/previews/index.html`: gallery of all style previews.
+
+Individual style examples:
+
+- `assets/styles/version-a-classic/version-a-classic.html`
+- `assets/styles/version-j-terminal/version-j-terminal.html`
+- Use the same pattern for other style folders.
+
+Recommended local commands when the client has shell access:
+
+```bash
+# From inside the installed awesome-page-design skill directory
+open assets/previews/index.html
+
+# Or open a single style example
+open assets/styles/version-j-terminal/version-j-terminal.html
+```
+
+If the client cannot open local files directly, tell the user the exact installed file path and ask them to open it in their browser. These HTML files are static single-file previews; no build step or dev server is required. Some examples load fonts from Google Fonts and will fall back to system fonts when offline.
+
 ## When Applying A Style
 
 Extract only what is relevant to the current project:
