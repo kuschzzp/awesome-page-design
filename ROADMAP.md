@@ -9,9 +9,11 @@ This roadmap is intentionally practical. It describes how the project should gro
 The current Skill includes:
 
 - 25 visual style directions.
-- HTML and PNG previews for every style.
+- 20 page layout frameworks.
+- HTML and PNG previews for every visual style and layout framework.
 - Design system notes under `references/styles/`.
-- A bilingual preview gallery with copyable style prompts.
+- Layout framework notes under `references/layouts/`.
+- A bilingual preview gallery with copyable style and layout prompts.
 - A local preview server for source checkouts and installed Skill directories.
 
 The current rule remains the foundation:
@@ -216,9 +218,10 @@ Every new asset should pass these checks:
 
 ### v0.4: Page Framework Library
 
-- Add 8-12 page framework patterns.
-- Add layout preview assets and manuals.
-- Teach the Skill how to combine visual styles with page frameworks.
+- Expand beyond the initial 20 page framework patterns.
+- Keep layout preview assets visually and structurally distinct, not palette swaps.
+- Add stronger framework-specific required states and mobile collapse examples.
+- Teach the Skill to recommend style + layout combinations more explicitly by product type.
 
 ### v0.5: Component Pattern Library
 

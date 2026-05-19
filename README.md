@@ -2,14 +2,15 @@
 
 # Awesome Page Design
 
-**25 visual style prompts for agent-built websites and web apps.**
+**25 visual style prompts and 20 layout frameworks for agent-built websites and web apps.**
 
-Give Codex, Claude Code, OpenCode, Cursor, Windsurf, and other coding agents a stronger visual direction before they start building UI.
+Give Codex, Claude Code, OpenCode, Cursor, Windsurf, and other coding agents stronger visual and structural direction before they start building UI.
 
-[简体中文](./README.zh-CN.md) · [Roadmap](./ROADMAP.md) · [Skill Entry](./skills/awesome-page-design/SKILL.md) · [Preview Gallery](./skills/awesome-page-design/assets/previews/index.html) · [Style Index](./skills/awesome-page-design/references/style-index.md)
+[简体中文](./README.zh-CN.md) · [Roadmap](./ROADMAP.md) · [Skill Entry](./skills/awesome-page-design/SKILL.md) · [Preview Gallery](./skills/awesome-page-design/assets/previews/index.html) · [Style Index](./skills/awesome-page-design/references/style-index.md) · [Layout Index](./skills/awesome-page-design/references/layout-index.md)
 
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-awesome--page--design-4F46E5)](./skills/awesome-page-design/SKILL.md)
 [![Styles](https://img.shields.io/badge/styles-25-111827)](./skills/awesome-page-design/assets/styles)
+[![Layouts](https://img.shields.io/badge/layouts-20-3157D5)](./skills/awesome-page-design/assets/layouts)
 [![License: MIT](https://img.shields.io/badge/license-MIT-10B981)](./LICENSE)
 
 </div>
@@ -18,9 +19,9 @@ Give Codex, Claude Code, OpenCode, Cursor, Windsurf, and other coding agents a s
 
 ## What Is Awesome Page Design?
 
-Awesome Page Design is a visual style Skill for agentic coding tools and frontend developers.
+Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers.
 
-It gives an agent a reusable library of 25 web visual directions: colors, typography, borders, radius, shadows, textures, motion, component tone, and state rules. The goal is simple: help new websites and web apps avoid the same generic default UI.
+It gives an agent a reusable library of 25 web visual directions and 20 page layout frameworks. Visual styles cover colors, typography, borders, radius, shadows, textures, motion, component tone, and state rules. Layout frameworks cover information hierarchy, navigation models, page density, responsive behavior, and required states. The goal is simple: help new websites and web apps avoid the same generic default UI.
 
 This is **not** a fixed page-template library. The bundled HTML files use a shared **AI Daily Brief** demo content set under the **AI Pulse** brand only so every style can be compared against the same information structure. In real projects, agents should reuse the visual language and redesign the actual layout around the product.
 
@@ -67,18 +68,20 @@ After installation, ask your agent to use the skill:
 ```text
 Use $awesome-page-design to choose a distinctive visual style for this dashboard.
 Apply one of the awesome-page-design styles to this landing page without copying the sample layout.
+Combine an awesome-page-design visual style with a layout framework for this analytics page.
 Use awesome-page-design to make this admin panel feel professional but less generic.
 ```
 
 The skill will guide the agent to:
 
 1. Read the usage principles.
-2. Choose 2-3 candidate styles from the catalog.
-3. Read the matching design system note.
-4. Apply the chosen style through concrete CSS variables, theme tokens, or component classes.
-5. Redesign the real product layout instead of copying the sample HTML.
+2. Choose 2-3 candidate visual styles from the catalog.
+3. Choose a page layout framework when the task needs structure.
+4. Read the matching style and layout notes.
+5. Apply the chosen style through concrete CSS variables, theme tokens, or component classes.
+6. Redesign the real product layout instead of copying the sample HTML.
 
-## Preview The Styles
+## Preview Styles And Layouts
 
 Start a local preview server from the repository:
 
@@ -92,7 +95,7 @@ Then open the URL printed by the command:
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-The gallery includes all 25 styles, English and Chinese UI switching, copyable style prompts, and direct links to every HTML example.
+The gallery includes all 25 visual styles and 20 layout frameworks, English and Chinese UI switching, copyable style/layout prompts, and direct links to every HTML example.
 
 When the skill is installed into a client, package scripts may not be available. From the installed `awesome-page-design` skill directory, start the bundled static server:
 
@@ -111,6 +114,7 @@ Fallback direct file entry points are still available from the repository root:
 ```bash
 open skills/awesome-page-design/assets/previews/index.html
 open skills/awesome-page-design/assets/styles/version-j-terminal/version-j-terminal.html
+open skills/awesome-page-design/assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html
 ```
 
 Inside an installed skill, the same files live under `assets/`:
@@ -118,6 +122,7 @@ Inside an installed skill, the same files live under `assets/`:
 ```bash
 open assets/previews/index.html
 open assets/styles/version-j-terminal/version-j-terminal.html
+open assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html
 ```
 
 The examples are static single-file HTML pages. Some styles load fonts from Google Fonts and fall back to system fonts when offline.
@@ -132,11 +137,14 @@ skills/awesome-page-design/
 ├── references/
 │   ├── usage-principles.md          # How to use the library correctly
 │   ├── style-index.md               # Short catalog of all styles
-│   └── styles/                      # Full design system notes
+│   ├── layout-index.md              # Short catalog of page layout frameworks
+│   ├── styles/                      # Full design system notes
+│   └── layouts/                     # Full layout framework notes
 └── assets/
     ├── previews/
     │   └── index.html               # Preview gallery
-    └── styles/                      # HTML and PNG preview assets
+    ├── styles/                      # Visual style HTML and PNG preview assets
+    └── layouts/                     # Layout framework HTML and PNG preview assets
 ```
 
 ## Style Catalog
@@ -184,6 +192,45 @@ skills/awesome-page-design/
 | Youth or trend brand | H, L |
 | Friendly rounded product | K, N, P |
 
+## Layout Frameworks
+
+Layout frameworks describe page structure and workflow. They can be used alone or combined with any visual style.
+
+| ID | Layout Framework | Best For |
+|---|---|---|
+| L01 | Dense Admin Dashboard | Internal tools, operations, metrics, management systems |
+| L02 | SaaS Landing Page | Product marketing, startups, conversion pages |
+| L03 | AI Copilot Workspace | AI apps, agent tools, assistant-driven workflows |
+| L04 | Developer Docs Portal | API docs, SDK docs, technical guides |
+| L05 | Editorial News Homepage | Media, content sites, research digests |
+| L06 | Ecommerce Admin Console | Merchant tools, orders, inventory, fulfillment |
+| L07 | CRM Sales Workspace | Sales, support, customer operations |
+| L08 | Analytics Command Center | BI, monitoring, finance, product analytics |
+| L09 | Portfolio Case Study | Studios, personal portfolios, agency work |
+| L10 | Settings Console | Security, integrations, permissions, account config |
+| L11 | Onboarding Wizard | Setup flows, imports, activation |
+| L12 | Marketplace Catalog | App stores, templates, resources, product catalogs |
+| L13 | Admin Overview Command Center | SaaS admin homepages, executive operations overview |
+| L14 | Master Detail Admin Table | Resource management, users, approvals, database-like admin UI |
+| L15 | Operations Timeline Console | Incident operations, deployments, support workflows |
+| L16 | Personal Portfolio Home | Designers, engineers, consultants, personal brand sites |
+| L17 | Personal Writing Home | Blogs, newsletters, independent researchers, creators |
+| L18 | Corporate Homepage | B2B companies, professional services, corporate sites |
+| L19 | Corporate Services Site | Agencies, consultancies, solution providers |
+| L20 | Enterprise Product Overview | Platform websites, product suites, trust-heavy product pages |
+
+Each layout has its own static HTML preview and PNG screenshot under `skills/awesome-page-design/assets/layouts/`. These previews are intentionally structurally distinct: dashboards, docs, commerce, CRM, analytics, case studies, settings, onboarding, and catalogs should not collapse into the same generic card grid.
+
+The layout previews are high-fidelity structural references, not wireframes. They include realistic hierarchy, density, status areas, supporting context, and product-like content so agents can understand the difference between page frameworks before adapting them to a real project.
+
+Example combined prompt:
+
+```text
+Use awesome-page-design visual style: Version R - Carbon Enterprise.
+Use layout framework: L01 - Dense Admin Dashboard.
+Apply both, but design the actual layout around the product requirements.
+```
+
 ## Usage Rules For Agents
 
 The skill has one non-negotiable rule:
@@ -198,6 +245,7 @@ Reusable:
 - Button, tag, card, input, table, navigation, and empty-state personality
 - Hover, focus, selected, disabled, loading, and alert states
 - Motion timing and texture rules
+- Layout hierarchy, navigation model, density, responsive behavior, and required states
 
 Not reusable as requirements:
 
@@ -206,11 +254,11 @@ Not reusable as requirements:
 - Module order
 - Grid strategy
 - Sample content structure
-- Navigation model
+- Exact navigation labels and sample menu items
 
 ## Generate Preview Images
 
-The repository includes a screenshot script that calls local Chrome in headless mode. It generates one PNG for every HTML file under `skills/awesome-page-design/assets/styles/` and refreshes `skills/awesome-page-design/assets/previews/index.html`.
+The repository includes a screenshot script that calls local Chrome in headless mode. It generates one PNG for every visual style and layout framework HTML file, then refreshes `skills/awesome-page-design/assets/previews/index.html`.
 
 ```bash
 npm run previews

@@ -2,14 +2,15 @@
 
 # Awesome Page Design
 
-**为 Agent 构建的网站与 Web App 准备的 25 种视觉风格提示库。**
+**为 Agent 构建的网站与 Web App 准备的 25 种视觉风格提示库和 20 套页面布局框架。**
 
-让 Codex、Claude Code、OpenCode、Cursor、Windsurf 等编码 Agent 在开始写 UI 前，先拥有更明确、更有辨识度的视觉方向。
+让 Codex、Claude Code、OpenCode、Cursor、Windsurf 等编码 Agent 在开始写 UI 前，先拥有更明确、更有辨识度的视觉与结构方向。
 
-[English](./README.md) · [Roadmap](./ROADMAP.md) · [Skill 入口](./skills/awesome-page-design/SKILL.md) · [预览页](./skills/awesome-page-design/assets/previews/index.html) · [风格索引](./skills/awesome-page-design/references/style-index.md)
+[English](./README.md) · [Roadmap](./ROADMAP.md) · [Skill 入口](./skills/awesome-page-design/SKILL.md) · [预览页](./skills/awesome-page-design/assets/previews/index.html) · [风格索引](./skills/awesome-page-design/references/style-index.md) · [布局索引](./skills/awesome-page-design/references/layout-index.md)
 
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-awesome--page--design-4F46E5)](./skills/awesome-page-design/SKILL.md)
 [![Styles](https://img.shields.io/badge/styles-25-111827)](./skills/awesome-page-design/assets/styles)
+[![Layouts](https://img.shields.io/badge/layouts-20-3157D5)](./skills/awesome-page-design/assets/layouts)
 [![License: MIT](https://img.shields.io/badge/license-MIT-10B981)](./LICENSE)
 
 </div>
@@ -18,9 +19,9 @@
 
 ## 这是什么？
 
-Awesome Page Design 是一个面向 Agent 编码工具和前端开发者的视觉风格 Skill。
+Awesome Page Design 是一个面向 Agent 编码工具和前端开发者的 UI 设计 Skill。
 
-它为 Agent 提供 25 套可复用的网站视觉方向，包含颜色、字体、边框、圆角、阴影、纹理、动效、组件气质和状态规则。目标很简单：让新网站和 Web App 不再长得像同一套默认 UI。
+它为 Agent 提供 25 套可复用的网站视觉方向和 20 套页面布局框架。视觉风格包含颜色、字体、边框、圆角、阴影、纹理、动效、组件气质和状态规则；布局框架包含信息层级、导航模型、页面密度、响应式行为和必备状态。目标很简单：让新网站和 Web App 不再长得像同一套默认 UI。
 
 这不是固定页面模板库。仓库里的 HTML 使用 **AI Pulse** 品牌下的 **AI Daily Brief** 统一示例内容，只是为了让所有风格能在同一信息结构下对比。真实项目里，Agent 应该复用视觉语言，并根据产品重新设计页面结构。
 
@@ -67,18 +68,20 @@ npx skills add ./ -g --skill awesome-page-design -a codex
 ```text
 Use $awesome-page-design to choose a distinctive visual style for this dashboard.
 Apply one of the awesome-page-design styles to this landing page without copying the sample layout.
+Combine an awesome-page-design visual style with a layout framework for this analytics page.
 用 awesome-page-design 给这个管理后台选一个不普通但仍然专业的视觉方向。
 ```
 
 Skill 会引导 Agent：
 
 1. 阅读使用原则。
-2. 从风格目录里选择 2-3 个候选方向。
-3. 阅读对应设计系统文档。
-4. 把选定风格翻译成 CSS 变量、主题 token 或组件类。
-5. 根据真实产品重新设计布局，而不是复制示例 HTML。
+2. 从风格目录里选择 2-3 个候选视觉方向。
+3. 在需要页面结构时选择一个布局框架。
+4. 阅读对应风格和布局文档。
+5. 把选定风格翻译成 CSS 变量、主题 token 或组件类。
+6. 根据真实产品重新设计布局，而不是复制示例 HTML。
 
-## 预览风格
+## 预览风格和布局
 
 在仓库根目录启动本地预览服务：
 
@@ -92,7 +95,7 @@ npm run preview:serve
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-预览页包含 25 个风格、中英文切换、可复制的风格提示词，以及每个 HTML 示例的直接入口。
+预览页包含 25 个视觉风格和 20 个布局框架，支持中英文切换、可复制的风格/布局提示词，以及每个 HTML 示例的直接入口。
 
 安装到客户端后，可能没有 package scripts。进入已安装的 `awesome-page-design` Skill 目录，启动 Skill 自带的静态服务：
 
@@ -111,6 +114,7 @@ http://127.0.0.1:<port>/assets/previews/
 ```bash
 open skills/awesome-page-design/assets/previews/index.html
 open skills/awesome-page-design/assets/styles/version-j-terminal/version-j-terminal.html
+open skills/awesome-page-design/assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html
 ```
 
 在已安装的 Skill 里，同样的文件位于 `assets/`：
@@ -118,6 +122,7 @@ open skills/awesome-page-design/assets/styles/version-j-terminal/version-j-termi
 ```bash
 open assets/previews/index.html
 open assets/styles/version-j-terminal/version-j-terminal.html
+open assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html
 ```
 
 这些示例都是静态单文件 HTML。部分风格会从 Google Fonts 加载字体，离线时会回退到系统字体。
@@ -132,11 +137,14 @@ skills/awesome-page-design/
 ├── references/
 │   ├── usage-principles.md          # 正确使用方式
 │   ├── style-index.md               # 所有风格的短索引
-│   └── styles/                      # 完整设计系统文档
+│   ├── layout-index.md              # 页面布局框架短索引
+│   ├── styles/                      # 完整设计系统文档
+│   └── layouts/                     # 完整布局框架文档
 └── assets/
     ├── previews/
     │   └── index.html               # 预览索引
-    └── styles/                      # HTML 和 PNG 预览资源
+    ├── styles/                      # 视觉风格 HTML 和 PNG 预览资源
+    └── layouts/                     # 布局框架 HTML 和 PNG 预览资源
 ```
 
 ## 风格目录
@@ -184,6 +192,45 @@ skills/awesome-page-design/
 | 年轻潮流品牌 | H, L |
 | 友好圆润产品 | K, N, P |
 
+## 页面布局框架
+
+布局框架描述页面结构和工作流。它可以单独使用，也可以和任意视觉风格组合。
+
+| ID | 布局框架 | 适合场景 |
+|---|---|---|
+| L01 | Dense Admin Dashboard | 内部工具、运营后台、指标和管理系统 |
+| L02 | SaaS Landing Page | 产品营销、创业公司、转化页 |
+| L03 | AI Copilot Workspace | AI 应用、Agent 工具、助手驱动工作流 |
+| L04 | Developer Docs Portal | API 文档、SDK 文档、技术指南 |
+| L05 | Editorial News Homepage | 媒体、内容站、研究摘要 |
+| L06 | Ecommerce Admin Console | 商家工具、订单、库存、履约 |
+| L07 | CRM Sales Workspace | 销售、客服、客户运营 |
+| L08 | Analytics Command Center | BI、监控、金融、产品分析 |
+| L09 | Portfolio Case Study | 工作室、个人作品集、案例展示 |
+| L10 | Settings Console | 安全、集成、权限、账号配置 |
+| L11 | Onboarding Wizard | 设置流程、导入、账号激活 |
+| L12 | Marketplace Catalog | 应用商店、模板、资源、产品目录 |
+| L13 | Admin Overview Command Center | 后台首页、SaaS 控制台、管理层运营总览 |
+| L14 | Master Detail Admin Table | 资源管理、用户列表、审批队列、数据库式后台 |
+| L15 | Operations Timeline Console | 事件运营、发布追踪、客服和履约流程 |
+| L16 | Personal Portfolio Home | 设计师、工程师、顾问、个人品牌网站 |
+| L17 | Personal Writing Home | 博客、Newsletter、独立研究者、创作者主页 |
+| L18 | Corporate Homepage | B2B 企业、专业服务、企业形象官网 |
+| L19 | Corporate Services Site | 机构、咨询公司、解决方案服务商 |
+| L20 | Enterprise Product Overview | 平台官网、企业产品矩阵、高信任产品介绍页 |
+
+每个布局框架都有独立的静态 HTML 预览和 PNG 截图，位于 `skills/awesome-page-design/assets/layouts/`。这些预览刻意拉开结构差异：后台、文档、电商、CRM、分析大屏、案例页、设置、引导流程和市场目录不应该都长成同一种卡片网格。
+
+这些布局预览是高保真的结构参考，不是线框图。它们包含真实的层级、信息密度、状态区域、上下文侧栏和产品化示例内容，方便 Agent 在应用到真实项目之前理解不同页面框架的差异。
+
+组合提示词示例：
+
+```text
+Use awesome-page-design visual style: Version R - Carbon Enterprise.
+Use layout framework: L01 - Dense Admin Dashboard.
+Apply both, but design the actual layout around the product requirements.
+```
+
 ## Agent 使用规则
 
 这个 Skill 有一条不可违反的规则：
@@ -198,6 +245,7 @@ skills/awesome-page-design/
 - 按钮、标签、卡片、输入框、表格、导航、空状态的组件气质
 - hover、focus、selected、disabled、loading、alert 状态
 - 动效节奏和纹理规则
+- 布局层级、导航模型、信息密度、响应式行为和必备状态
 
 不要当作需求复用：
 
@@ -206,11 +254,11 @@ skills/awesome-page-design/
 - 模块顺序
 - 栅格策略
 - 示例内容结构
-- 导航模型
+- 精确导航标签和示例菜单项
 
 ## 生成预览图
 
-项目提供截图脚本，会调用本机 Chrome 无头模式，为 `skills/awesome-page-design/assets/styles/` 下每个 HTML 生成 PNG，并刷新 `skills/awesome-page-design/assets/previews/index.html`。
+项目提供截图脚本，会调用本机 Chrome 无头模式，为每个视觉风格和布局框架 HTML 生成 PNG，并刷新 `skills/awesome-page-design/assets/previews/index.html`。
 
 ```bash
 npm run previews
@@ -237,7 +285,7 @@ npm run styles:systems
 # 生成 PNG 预览
 npm run previews
 
-# 以本地 URL 方式预览风格库
+# 以本地 URL 方式预览风格和布局库
 npm run preview:serve
 ```
 

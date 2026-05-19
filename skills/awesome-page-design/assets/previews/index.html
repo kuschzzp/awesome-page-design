@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Style Templates Previews</title>
+<title>Awesome Page Design Previews</title>
 <style>
 * { box-sizing: border-box; }
 body {
@@ -66,12 +66,52 @@ h1 {
   background: #4f46e5;
   color: #ffffff;
 }
+.controls {
+  max-width: 1440px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+}
+.tabs button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #667085;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tabs button.active {
+  background: #1f2937;
+  color: #ffffff;
+}
+.count {
+  color: #667085;
+  font-size: 13px;
+}
 .grid {
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
+}
+.grid[hidden] {
+  display: none;
 }
 .card {
   overflow: hidden;
@@ -156,6 +196,8 @@ h1 {
   body { padding: 16px; }
   .header { display: block; }
   .lang-toggle { margin-top: 14px; }
+  .controls { display: block; }
+  .count { margin-top: 10px; }
   .grid { grid-template-columns: 1fr; gap: 16px; }
 }
 </style>
@@ -164,15 +206,22 @@ h1 {
   <header class="header">
     <div>
       <h1>Web Style Templates Previews</h1>
-      <p class="meta">25 previews, viewport 1440x1200</p>
-      <p class="hint">Compare the styles visually. Click <strong>Copy style prompt</strong>, send it to your AI agent, and it can apply that style without copying the sample layout.</p>
+      <p class="meta">45 previews, viewport 1440x1200</p>
+      <p class="hint">Compare visual styles and layout frameworks. Copy a prompt, send it to your AI agent, and it can apply the chosen direction without copying the sample content.</p>
     </div>
     <div class="lang-toggle" aria-label="Language">
       <button type="button" class="active" data-lang="en">EN</button>
       <button type="button" data-lang="zh">中文</button>
     </div>
   </header>
-  <main class="grid">
+  <section class="controls" aria-label="Preview category">
+    <div class="tabs">
+      <button type="button" class="active" data-tab="styles" data-i18n="tabStyles">Visual Styles</button>
+      <button type="button" data-tab="layouts" data-i18n="tabLayouts">Layout Frameworks</button>
+    </div>
+    <div class="count" data-i18n="sectionCount">25 visual styles, 20 layout frameworks</div>
+  </section>
+  <main class="grid" data-panel="styles">
       <article class="card">
         <a class="preview" href="../styles/version-a-classic/version-a-classic.html" aria-label="Open Version A Classic News HTML preview">
           <img src="../styles/version-a-classic/version-a-classic.png" alt="Version A - Classic News preview" loading="lazy">
@@ -524,27 +573,319 @@ h1 {
         </div>
       </article>
   </main>
+  <main class="grid" data-panel="layouts" hidden>
+      <article class="card">
+        <a class="preview" href="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.html" aria-label="Open L01 Dense Admin Dashboard HTML preview">
+          <img src="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.png" alt="L01 - Dense Admin Dashboard preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L01</div>
+          <h2><span data-en="Dense Admin Dashboard" data-zh="密集管理后台">Dense Admin Dashboard</span></h2>
+          <p data-en="operations dashboards, KPI monitoring, data-heavy internal tools" data-zh="运营仪表盘、KPI 监控、数据密集型后台">operations dashboards, KPI monitoring, data-heavy internal tools</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L01 - Dense Admin Dashboard. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L01 - Dense Admin Dashboard（密集管理后台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l02-saas-landing-page/l02-saas-landing-page.html" aria-label="Open L02 SaaS Landing Page HTML preview">
+          <img src="../layouts/l02-saas-landing-page/l02-saas-landing-page.png" alt="L02 - SaaS Landing Page preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L02</div>
+          <h2><span data-en="SaaS Landing Page" data-zh="SaaS 落地页">SaaS Landing Page</span></h2>
+          <p data-en="product marketing, conversion pages, feature-led websites" data-zh="产品官网、转化落地页、功能导向网站">product marketing, conversion pages, feature-led websites</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L02 - SaaS Landing Page. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L02 - SaaS Landing Page（SaaS 落地页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l02-saas-landing-page/l02-saas-landing-page.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.html" aria-label="Open L03 AI Copilot Workspace HTML preview">
+          <img src="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.png" alt="L03 - AI Copilot Workspace preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L03</div>
+          <h2><span data-en="AI Copilot Workspace" data-zh="AI Copilot 工作台">AI Copilot Workspace</span></h2>
+          <p data-en="AI assistants, writing tools, review workflows, command centers" data-zh="AI 助手、写作工具、审核流程、任务工作台">AI assistants, writing tools, review workflows, command centers</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L03 - AI Copilot Workspace. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L03 - AI Copilot Workspace（AI Copilot 工作台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.html" aria-label="Open L04 Developer Docs Portal HTML preview">
+          <img src="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.png" alt="L04 - Developer Docs Portal preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L04</div>
+          <h2><span data-en="Developer Docs Portal" data-zh="开发者文档门户">Developer Docs Portal</span></h2>
+          <p data-en="API docs, SDK guides, developer platforms, technical content" data-zh="API 文档、SDK 指南、开发者平台、技术内容">API docs, SDK guides, developer platforms, technical content</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L04 - Developer Docs Portal. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L04 - Developer Docs Portal（开发者文档门户）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.html" aria-label="Open L05 Editorial News Homepage HTML preview">
+          <img src="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.png" alt="L05 - Editorial News Homepage preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L05</div>
+          <h2><span data-en="Editorial News Homepage" data-zh="编辑部新闻首页">Editorial News Homepage</span></h2>
+          <p data-en="newsrooms, magazines, research publishing, content hubs" data-zh="新闻站、杂志、研究发布、内容中心">newsrooms, magazines, research publishing, content hubs</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L05 - Editorial News Homepage. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L05 - Editorial News Homepage（编辑部新闻首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.html" aria-label="Open L06 Ecommerce Admin Console HTML preview">
+          <img src="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.png" alt="L06 - Ecommerce Admin Console preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L06</div>
+          <h2><span data-en="Ecommerce Admin Console" data-zh="电商管理控制台">Ecommerce Admin Console</span></h2>
+          <p data-en="merchant tools, order management, inventory and fulfillment UI" data-zh="商家工具、订单管理、库存和履约界面">merchant tools, order management, inventory and fulfillment UI</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L06 - Ecommerce Admin Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L06 - Ecommerce Admin Console（电商管理控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.html" aria-label="Open L07 CRM Sales Workspace HTML preview">
+          <img src="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.png" alt="L07 - CRM Sales Workspace preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L07</div>
+          <h2><span data-en="CRM Sales Workspace" data-zh="CRM 销售工作台">CRM Sales Workspace</span></h2>
+          <p data-en="sales pipelines, account views, task queues, customer timelines" data-zh="销售漏斗、客户详情、任务队列、客户时间线">sales pipelines, account views, task queues, customer timelines</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L07 - CRM Sales Workspace. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L07 - CRM Sales Workspace（CRM 销售工作台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l08-analytics-command-center/l08-analytics-command-center.html" aria-label="Open L08 Analytics Command Center HTML preview">
+          <img src="../layouts/l08-analytics-command-center/l08-analytics-command-center.png" alt="L08 - Analytics Command Center preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L08</div>
+          <h2><span data-en="Analytics Command Center" data-zh="分析指挥中心">Analytics Command Center</span></h2>
+          <p data-en="metrics exploration, BI dashboards, anomaly and trend analysis" data-zh="指标探索、BI 仪表盘、异常和趋势分析">metrics exploration, BI dashboards, anomaly and trend analysis</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L08 - Analytics Command Center. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L08 - Analytics Command Center（分析指挥中心）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l08-analytics-command-center/l08-analytics-command-center.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.html" aria-label="Open L09 Portfolio Case Study HTML preview">
+          <img src="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.png" alt="L09 - Portfolio Case Study preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L09</div>
+          <h2><span data-en="Portfolio Case Study" data-zh="作品集案例页">Portfolio Case Study</span></h2>
+          <p data-en="designer portfolios, agency case studies, product storytelling" data-zh="设计师作品集、机构案例、产品叙事页">designer portfolios, agency case studies, product storytelling</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L09 - Portfolio Case Study. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L09 - Portfolio Case Study（作品集案例页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l10-settings-console/l10-settings-console.html" aria-label="Open L10 Settings Console HTML preview">
+          <img src="../layouts/l10-settings-console/l10-settings-console.png" alt="L10 - Settings Console preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L10</div>
+          <h2><span data-en="Settings Console" data-zh="设置控制台">Settings Console</span></h2>
+          <p data-en="admin settings, team permissions, billing and security pages" data-zh="后台设置、团队权限、账单和安全页面">admin settings, team permissions, billing and security pages</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L10 - Settings Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L10 - Settings Console（设置控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l10-settings-console/l10-settings-console.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.html" aria-label="Open L11 Onboarding Wizard HTML preview">
+          <img src="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.png" alt="L11 - Onboarding Wizard preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L11</div>
+          <h2><span data-en="Onboarding Wizard" data-zh="引导流程">Onboarding Wizard</span></h2>
+          <p data-en="setup flows, product activation, guided data collection" data-zh="初始化设置、产品激活、分步信息收集">setup flows, product activation, guided data collection</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L11 - Onboarding Wizard. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L11 - Onboarding Wizard（引导流程）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.html" aria-label="Open L12 Marketplace Catalog HTML preview">
+          <img src="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.png" alt="L12 - Marketplace Catalog preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L12</div>
+          <h2><span data-en="Marketplace Catalog" data-zh="市场目录">Marketplace Catalog</span></h2>
+          <p data-en="plugin stores, app catalogs, template libraries, resource discovery" data-zh="插件市场、应用目录、模板库、资源发现">plugin stores, app catalogs, template libraries, resource discovery</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L12 - Marketplace Catalog. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L12 - Marketplace Catalog（市场目录）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.html" aria-label="Open L13 Admin Overview Command Center HTML preview">
+          <img src="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.png" alt="L13 - Admin Overview Command Center preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L13</div>
+          <h2><span data-en="Admin Overview Command Center" data-zh="后台总览指挥台">Admin Overview Command Center</span></h2>
+          <p data-en="executive admin homepages, SaaS consoles, cross-team status overview" data-zh="后台首页、SaaS 控制台、跨团队状态总览">executive admin homepages, SaaS consoles, cross-team status overview</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L13 - Admin Overview Command Center. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L13 - Admin Overview Command Center（后台总览指挥台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.html" aria-label="Open L14 Master Detail Admin Table HTML preview">
+          <img src="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.png" alt="L14 - Master Detail Admin Table preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L14</div>
+          <h2><span data-en="Master Detail Admin Table" data-zh="主从详情管理表格">Master Detail Admin Table</span></h2>
+          <p data-en="resource management, user lists, approval queues, database-like admin UI" data-zh="资源管理、用户列表、审批队列、数据库式后台">resource management, user lists, approval queues, database-like admin UI</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L14 - Master Detail Admin Table. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L14 - Master Detail Admin Table（主从详情管理表格）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.html" aria-label="Open L15 Operations Timeline Console HTML preview">
+          <img src="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.png" alt="L15 - Operations Timeline Console preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L15</div>
+          <h2><span data-en="Operations Timeline Console" data-zh="运营时间线控制台">Operations Timeline Console</span></h2>
+          <p data-en="incident operations, deployment tracking, fulfillment and support workflows" data-zh="事件运营、发布追踪、履约和客服流程">incident operations, deployment tracking, fulfillment and support workflows</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L15 - Operations Timeline Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L15 - Operations Timeline Console（运营时间线控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.html" aria-label="Open L16 Personal Portfolio Home HTML preview">
+          <img src="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.png" alt="L16 - Personal Portfolio Home preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L16</div>
+          <h2><span data-en="Personal Portfolio Home" data-zh="个人作品集首页">Personal Portfolio Home</span></h2>
+          <p data-en="designers, engineers, consultants, personal brand websites" data-zh="设计师、工程师、顾问、个人品牌网站">designers, engineers, consultants, personal brand websites</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L16 - Personal Portfolio Home. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L16 - Personal Portfolio Home（个人作品集首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l17-personal-writing-home/l17-personal-writing-home.html" aria-label="Open L17 Personal Writing Home HTML preview">
+          <img src="../layouts/l17-personal-writing-home/l17-personal-writing-home.png" alt="L17 - Personal Writing Home preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L17</div>
+          <h2><span data-en="Personal Writing Home" data-zh="个人写作主页">Personal Writing Home</span></h2>
+          <p data-en="blogs, newsletters, independent researchers, creator homepages" data-zh="博客、Newsletter、独立研究者、创作者主页">blogs, newsletters, independent researchers, creator homepages</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L17 - Personal Writing Home. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L17 - Personal Writing Home（个人写作主页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l17-personal-writing-home/l17-personal-writing-home.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l18-corporate-homepage/l18-corporate-homepage.html" aria-label="Open L18 Corporate Homepage HTML preview">
+          <img src="../layouts/l18-corporate-homepage/l18-corporate-homepage.png" alt="L18 - Corporate Homepage preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L18</div>
+          <h2><span data-en="Corporate Homepage" data-zh="企业官网首页">Corporate Homepage</span></h2>
+          <p data-en="B2B companies, professional services, corporate presence sites" data-zh="B2B 企业、专业服务、企业形象官网">B2B companies, professional services, corporate presence sites</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L18 - Corporate Homepage. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L18 - Corporate Homepage（企业官网首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l18-corporate-homepage/l18-corporate-homepage.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l19-corporate-services-site/l19-corporate-services-site.html" aria-label="Open L19 Corporate Services Site HTML preview">
+          <img src="../layouts/l19-corporate-services-site/l19-corporate-services-site.png" alt="L19 - Corporate Services Site preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L19</div>
+          <h2><span data-en="Corporate Services Site" data-zh="企业服务官网">Corporate Services Site</span></h2>
+          <p data-en="agencies, consultancies, solution providers, service-led companies" data-zh="机构、咨询公司、解决方案服务商、服务型企业">agencies, consultancies, solution providers, service-led companies</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L19 - Corporate Services Site. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L19 - Corporate Services Site（企业服务官网）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l19-corporate-services-site/l19-corporate-services-site.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="preview" href="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.html" aria-label="Open L20 Enterprise Product Overview HTML preview">
+          <img src="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.png" alt="L20 - Enterprise Product Overview preview" loading="lazy">
+        </a>
+        <div class="card-body">
+          <div class="card-kicker"><span data-i18n="layout">Layout</span> L20</div>
+          <h2><span data-en="Enterprise Product Overview" data-zh="企业产品介绍页">Enterprise Product Overview</span></h2>
+          <p data-en="platform websites, enterprise product suites, trust-heavy product pages" data-zh="平台官网、企业产品矩阵、高信任产品介绍页">platform websites, enterprise product suites, trust-heavy product pages</p>
+          <div class="actions">
+            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L20 - Enterprise Product Overview. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L20 - Enterprise Product Overview（企业产品介绍页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
+            <a href="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.html" data-i18n="openHtml">Open HTML</a>
+          </div>
+        </div>
+      </article>
+  </main>
   <script>
   const copy = {
     en: {
-      title: 'Web Style Templates Previews',
-      meta: '25 previews, viewport 1440x1200',
-      hint: 'Compare the styles visually. Click <strong>Copy style prompt</strong>, send it to your AI agent, and it can apply that style without copying the sample layout.',
+      title: 'Awesome Page Design Previews',
+      meta: '45 previews, viewport 1440x1200',
+      hint: 'Compare visual styles and layout frameworks. Copy a prompt, send it to your AI agent, and it can apply the chosen direction without copying the sample content.',
+      tabStyles: 'Visual Styles',
+      tabLayouts: 'Layout Frameworks',
+      sectionCount: '25 visual styles, 20 layout frameworks',
       version: 'Version',
+      layout: 'Layout',
       copy: 'Copy style prompt',
+      copyLayout: 'Copy layout prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
       promptFallback: 'Copy this style prompt:'
     },
     zh: {
-      title: '网页视觉风格预览',
-      meta: '25 个预览，视口 1440x1200',
-      hint: '直观看图比较所有风格。点击 <strong>复制风格提示词</strong>，发送给你的 AI，它会应用该风格的视觉语言但不复制示例布局。',
+      title: 'Awesome Page Design 预览',
+      meta: '45 个预览，视口 1440x1200',
+      hint: '直观看图比较视觉风格和布局框架。点击复制提示词，发送给你的 AI，它会应用选定方向但不复制示例内容。',
+      tabStyles: '视觉风格',
+      tabLayouts: '布局框架',
+      sectionCount: '25 个视觉风格，20 个布局框架',
       version: '版本',
+      layout: '布局',
       copy: '复制风格提示词',
+      copyLayout: '复制布局提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
-      promptFallback: '复制这个风格提示词：'
+      promptFallback: '复制这个提示词：'
     }
   };
   let activeLang = 'en';
@@ -566,19 +907,33 @@ h1 {
     });
   }
 
+  function applyTab(tab) {
+    document.querySelectorAll('[data-panel]').forEach((panel) => {
+      panel.hidden = panel.dataset.panel !== tab;
+    });
+    document.querySelectorAll('[data-tab]').forEach((button) => {
+      button.classList.toggle('active', button.dataset.tab === tab);
+    });
+  }
+
   document.querySelectorAll('.lang-toggle button').forEach((button) => {
     button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+  });
+
+  document.querySelectorAll('[data-tab]').forEach((button) => {
+    button.addEventListener('click', () => applyTab(button.dataset.tab));
   });
 
   document.querySelectorAll('[data-copy-en]').forEach((button) => {
     button.addEventListener('click', async () => {
       const value = button.getAttribute(activeLang === 'zh' ? 'data-copy-zh' : 'data-copy-en');
+      const copyKey = button.dataset.copyKind === 'layout' ? 'copyLayout' : 'copy';
       try {
         await navigator.clipboard.writeText(value);
         button.textContent = copy[activeLang].copied;
         button.classList.add('copied');
         setTimeout(() => {
-          button.textContent = copy[activeLang].copy;
+          button.textContent = copy[activeLang][copyKey];
           button.classList.remove('copied');
         }, 1600);
       } catch {

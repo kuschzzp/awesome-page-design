@@ -1,7 +1,7 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A Codex skill and visual style prompt library for distinctive website and web app design.",
+  "description": "A Codex skill for distinctive web UI visual styles and layout frameworks.",
   "license": "MIT",
   "type": "commonjs",
   "skills": "./skills/",
@@ -25,6 +25,7 @@
     "codex-skill",
     "web-design",
     "style-guide",
+    "layout-frameworks",
     "design-system",
     "ui"
   ],
