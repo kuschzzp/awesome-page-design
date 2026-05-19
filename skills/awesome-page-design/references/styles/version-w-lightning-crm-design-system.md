@@ -1,92 +1,74 @@
-# Lightning CRM 设计系统文档
+# Version W - Lightning CRM Design System
 
-> 基于 `lightning-crm` 的网站视觉风格提示。参考来源：Salesforce Lightning Design System（https://www.lightningdesignsystem.com/）。本文件用于学习和迁移设计语言，不复制任何品牌页面或商标资产。
+> This file documents a visual style prompt, not a fixed page layout. The sample HTML is only a preview carrier for comparing the 25 styles with a shared AI Daily Brief content set.
 
----
+## 1. Style Definition And Core Mood
 
-## 重要使用原则
+Lightning CRM is a light web UI direction for CRM, sales tools, customer operations. Its visual personality is business-ready, compact, operational. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
-本文件提供的是视觉风格提示，不是固定页面布局方案。示例 HTML 的页面结构仅用于统一展示和截图，不应在真实项目中照搬。后续开发时，应根据用户需求、业务流程、内容优先级和设备场景重新设计页面布局；可复用的是配色、字体、圆角、边框、阴影、质感、状态和动效等视觉语言。
+## 2. Color System
 
----
-
-## 1. 风格定义与核心精神
-
-**Lightning CRM** 的核心是：Salesforce Lightning 式浅灰应用壳、蓝色主操作、紧凑业务卡。
-
-- 适合将成熟设计系统的视觉秩序迁移到自有产品中
-- 强调可复用的颜色、字体、间距、组件和状态规则
-- 保留参考系统的气质，但使用中性的 AI Pulse 示例内容
-- 后续项目应替换品牌、图标和真实业务结构
-
-## 2. 色彩体系
-
-| 角色 | 变量 | 色值 | 用途 |
-|---|---|---|---|
-| 页面背景 | `--bg` | `#f3f2f2` | 全局背景 |
-| 主 Surface | `--surface` | `#ffffff` | 卡片、面板、导航 |
-| 次级 Surface | `--surface-2` | `#fafaf9` | 弱背景、按钮、分区 |
-| 主文字 | `--text` | `#080707` | 标题和正文 |
-| 辅助文字 | `--muted` | `#706e6b` | 摘要、时间、说明 |
-| 主操作色 | `--accent` | `#0176d3` | 按钮、链接、重点数字 |
-| 深强调色 | `--accent-2` | `#014486` | hover、深色强调 |
-| 分割线 | `--line` | `#dddbda` | 边框和分隔 |
-| 弱强调背景 | `--soft` | `#eef4ff` | 标签、选中态、浅色区域 |
-
-## 3. 排版体系
-
-- 字体栈：`-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif`
-- Hero 标题：34-68px，行高 1.02，强调第一屏识别度
-- 卡片标题：20px / 1.25，用于列表扫描
-- 正文：14-17px，保持工具型页面可读性
-- 标签和 meta：12-13px，承担信息分类而非装饰
-
-## 4. 边框 / 圆角 / 阴影体系
-
-| 项目 | 值 | 用法 |
-|---|---|---|
-| 大圆角 | `6px` | Hero、卡片、面板 |
-| 小圆角 | `4px` | Logo、标签、按钮 |
-| 阴影 | `0 2px 2px rgba(0,0,0,0.10)` | 主要容器深度 |
-| 边框 | `1px solid var(--line)` | 所有可分组模块 |
-
-## 5. 装饰元素 / 交互细节
-
-- 主按钮使用 `--accent`，次按钮使用 `--surface-2`
-- 标签使用 `--soft` + `--accent`，保证分类可扫读
-- 卡片 hover 可按项目需要增加轻微上移、边框强调或背景变化
-- 避免过度复刻参考系统的品牌符号，仅迁移颜色、字体、质感和状态原则
-
-## 6. 视觉节奏 / 间距提示（非固定布局）
-
-
-> 以下布局内容仅用于解释示例 HTML 如何展示该风格，不是后续项目必须采用的页面结构。真实项目应重新做信息架构和布局设计。
-
-- 本文件不规定真实项目的页面布局
-- 示例 HTML 的模块顺序、栏宽、网格和响应式仅用于预览截图
-- 可参考的是该风格的密度倾向、留白气质和组件间距感
-- 真实项目应根据用户任务、业务流程、内容优先级和设备场景重新设计布局
-- 如果需要更紧凑，可降低卡片内边距；如果需要品牌展示，可增加留白和标题层级
-
-## 7. 响应式策略
-
-| 断点 | 行为 |
+| Token | Value |
 |---|---|
-| >900px | 顶部导航、Hero、统计行、双列内容同时展示 |
-| <=900px | 导航换行，统计卡和内容流改为单列 |
-| <=640px | 可进一步压缩 padding、隐藏低优先级 meta |
+| `--bg` | `#f3f2f2` |
+| `--surface` | `#ffffff` |
+| `--surface-2` | `#fafaf9` |
+| `--text` | `#080707` |
+| `--muted` | `#706e6b` |
+| `--accent` | `#0176d3` |
+| `--accent-2` | `#014486` |
+| `--line` | `#dddbda` |
+| `--soft` | `#eef4ff` |
+| `--success` | `#2e844a` |
+| `--warning` | `#ba0517` |
+| `--radius` | `6px` |
+| `--radius-sm` | `4px` |
+| `--shadow` | `0 2px 2px rgba(0,0,0,0.10)` |
+| `--font` | `-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif` |
 
-## 8. 组件速查表
+Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
 
-| 组件 | 结构 | 视觉规则 |
-|---|---|---|
-| Topline | Logo + 产品名 + 导航 | 使用 Surface、边框和系统圆角 |
-| Hero | Eyebrow + H1 + Lead + Actions | 最大化风格识别 |
-| Stat | 数字 + 标签 | 强调色数字，辅助色标签 |
-| News Card | 标签 + 标题 + 摘要 + meta | 同一信息结构适配不同风格 |
-| Panel | 标题 + 趋势列表 | 右侧辅助信息区 |
+## 3. Typography System
 
-## 9. CSS 变量 / 代码片段
+- Choose the font stack used by the HTML preview as the primary reference.
+- Keep headings compact and high-confidence.
+- Keep body copy readable at normal dashboard and editorial densities.
+- Use label text for metadata, tags, timestamps, and status indicators.
+
+## 4. Borders, Radius, Shadows, And Glow
+
+The style language is: light app shell, Salesforce-like blue, compact business cards and statuses. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+
+## 5. Decorative Elements And Interaction Details
+
+Decorative details should reinforce the style rather than become layout requirements. Hover, selected, focus, disabled, and loading states should use the same accent and surface treatment as the base components.
+
+## 6. Visual Rhythm And Spacing Hints
+
+Use the preview as a density reference only. Do not copy its information architecture, module order, grid strategy, or navigation model. Rebuild spacing around the actual user task.
+
+## 7. Responsive Strategy
+
+- Preserve the style's visual hierarchy across desktop and mobile.
+- Collapse dense grids into single-column or two-column structures when needed.
+- Keep touch targets accessible.
+- Avoid text overlap and preserve readable line lengths.
+
+## 8. Component Quick Reference
+
+| Component | Guidance |
+|---|---|
+| Navigation | Match the preview's surface, border, and active-state treatment. |
+| Buttons | Use the accent color and radius rules from the style. |
+| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
+| Tags | Use compact metadata styling with clear category contrast. |
+| Inputs | Keep focus states visible and aligned with the accent system. |
+| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
+| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
+
+## 9. CSS Variables And Code Snippets
+
+Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
@@ -99,47 +81,40 @@
   --accent-2: #014486;
   --line: #dddbda;
   --soft: #eef4ff;
+  --success: #2e844a;
+  --warning: #ba0517;
   --radius: 6px;
   --radius-sm: 4px;
+  --shadow: 0 2px 2px rgba(0,0,0,0.10);
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 ```
 
-## 10. 适用 / 不适用场景
+Then map those variables onto real product components instead of copying the sample sections.
 
-适用：
-- 适合销售、客服、客户成功等需要紧凑业务状态表达的产品
-- 需要快速建立成熟视觉秩序的中后台或内容产品
-- 希望从公开设计系统中借鉴风格原则的项目
+## 10. Suitable And Unsuitable Use Cases
 
-不适用：
-- 必须高度艺术化、强品牌营销的首页
-- 需要完全遵循某品牌官方规范的商业项目
-- 没有能力维护一致组件和状态规则的小型一次性页面
+Best suited for CRM, sales tools, customer operations. Avoid using this style when the brand, audience, or product density conflicts with its personality: business-ready, compact, operational.
 
-## 11. 与其他风格对比
+## 11. Comparison With Other Styles
 
-- 相比已有 A-O 风格，本风格更贴近成熟产品设计系统
-- 重点不是视觉噱头，而是可落地的组件规则和页面秩序
-- 可以作为真实项目的基础风格，再叠加行业品牌资产
+Compared with the rest of the library, Lightning CRM is defined by light app shell, Salesforce-like blue, compact business cards and statuses. It should feel different from generic neutral dashboards while still remaining usable in production.
 
-## 12. 变体建议
+## 12. Variant Suggestions
 
-- 暗色版：保留 accent，反转 surface 层级
-- 行业版：替换标签色和统计色，布局仍按具体业务重新设计
-- 高密度版：降低 padding 到 16px，卡片标题改 18px
-- 营销版：放大 Hero，减少右侧面板信息密度
+- A restrained variant with fewer decorative effects.
+- A high-density variant for operational dashboards.
+- A landing-page variant with stronger hero imagery.
+- A dark or light companion theme when the product requires both modes.
 
-## 13. 动效 / 微交互
+## 13. Motion And Micro-Interactions
 
-- 按钮 hover：背景切换到 `--accent-2`
-- 卡片 hover：轻微阴影或边框加深
-- 选中态：使用 `--soft` 作为背景
-- 焦点态：使用 `--accent` 外描边，政府/医疗类项目需额外强化可访问性
+Use short, functional motion. Hover transitions should confirm interactivity. Loading and alert states should remain readable. Avoid decorative motion that competes with the primary content.
 
-## 14. 实施指南 / 注意事项
+## 14. Implementation Guidelines
 
-- 先抽取 CSS 变量，再开发组件
-- 不要混入其他风格的圆角、阴影和标签风格
-- 真实项目中应替换 AI Pulse 内容和导航结构
-- 如果使用参考系统名称，只能作为内部说明，不应作为对外品牌宣称
-- 优先保证文字对比度和键盘焦点可见
+1. Reuse the visual language, not the sample layout.
+2. Start with tokens for background, surface, text, muted text, accent, border, radius, shadow, and focus.
+3. Apply tokens to real product components.
+4. Preserve accessibility, contrast, and visible focus.
+5. Keep the AI Daily Brief sample content out of production code unless the user explicitly asks for demo content.

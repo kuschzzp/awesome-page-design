@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Pulse - 版本B：卡片网格布局（亮色）</title>
+<title>AI Pulse - Version B: Card Grid</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -237,50 +237,50 @@ body {
 
 <div class="top-bar">
   <div class="brand"><div class="brand-icon">AI</div><div class="brand-name">AI <em>Pulse</em></div></div>
-  <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="搜索 AI 资讯..."></div>
-  <div class="top-actions"><div class="live-label"><div class="live-dot"></div>实时更新</div><button class="btn-subscribe">订阅日报</button></div>
+  <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search AI news..."></div>
+  <div class="top-actions"><div class="live-label"><div class="live-dot"></div>Live</div><button class="btn-subscribe">Subscribe</button></div>
 </div>
 
 <div class="container">
   <div class="category-bar">
-    <button class="cat-btn active">全部</button>
-    <button class="cat-btn">热门</button>
-    <button class="cat-btn">大模型</button>
-    <button class="cat-btn">AI 应用</button>
-    <button class="cat-btn">研究</button>
-    <button class="cat-btn">政策</button>
-    <button class="cat-btn">创业</button>
-    <button class="cat-btn">观点</button>
+    <button class="cat-btn active">All</button>
+    <button class="cat-btn">Trending</button>
+    <button class="cat-btn">Models</button>
+    <button class="cat-btn">AI Applications</button>
+    <button class="cat-btn">Research</button>
+    <button class="cat-btn">Policy</button>
+    <button class="cat-btn">Startups</button>
+    <button class="cat-btn">Opinion</button>
   </div>
 
   <div class="featured-grid">
-    <div class="feat-card large"><div class="feat-label breaking">突发</div><div class="feat-title">GPT-5 正式发布：多模态推理实现质的飞跃，多项基准超越人类</div><div class="feat-desc">OpenAI 今日正式发布 GPT-5 模型。该模型在多模态理解、长链推理和代码生成方面实现了前所未有的突破，标志着 AI 能力进入全新阶段。</div><div class="feat-meta"><span>3 分钟前</span><span>12.4k 阅读</span><span>OpenAI</span></div></div>
-    <div class="feat-card"><div class="feat-label trending">热门</div><div class="feat-title">Anthropic Claude 4：推理深度与安全对齐双突破</div><div class="feat-desc">新模型在复杂推理任务上表现惊人，同时引入宪法 AI 2.0 框架。</div><div class="feat-meta"><span>1 小时前</span><span>8.1k</span></div></div>
-    <div class="feat-card"><div class="feat-label research">研究</div><div class="feat-title">MIT 神经符号推理融合：AI 逻辑能力重大突破</div><div class="feat-desc">MIT 团队成功融合神经网络与符号推理，在逻辑推理任务上取得突破性进展。</div><div class="feat-meta"><span>8 小时前</span><span>4.1k</span></div></div>
-    <div class="feat-card"><div class="feat-label trending">热门</div><div class="feat-title">Meta Llama 4 开源：400B 参数媲美商业模型</div><div class="feat-desc">开源社区里程碑，多项基准与 GPT-4 持平。</div><div class="feat-meta"><span>5 小时前</span><span>9.2k</span></div></div>
-    <div class="feat-card"><div class="feat-label policy">政策</div><div class="feat-title">欧盟 AI 法案正式生效，全球最严监管落地</div><div class="feat-desc">高风险 AI 系统面临严格透明度和安全要求，影响全球合规策略。</div><div class="feat-meta"><span>3 小时前</span><span>6.3k</span></div></div>
+    <div class="feat-card large"><div class="feat-label breaking">Breaking</div><div class="feat-title">AI Daily Brief: Foundation Models Move From Demos To Daily Operations</div><div class="feat-desc">Today's AI news is focused on practical deployment: multimodal agents are entering office workflows, smaller open models are moving to devices, and enterprises are tightening governance around production systems.</div><div class="feat-meta"><span>3 min ago</span><span>12.4k reads</span><span>OpenAI</span></div></div>
+    <div class="feat-card"><div class="feat-label trending">Trending</div><div class="feat-title">Anthropic expands reasoning depth and safety controls in Claude</div><div class="feat-desc">Anthropic expands reasoning depth and safety controls in Claude</div><div class="feat-meta"><span>1 hr ago</span><span>8.1k</span></div></div>
+    <div class="feat-card"><div class="feat-label research">Research</div><div class="feat-title">Neuro-symbolic research improves structured reasoning benchmarks</div><div class="feat-desc">Neuro-symbolic research improves structured reasoning benchmarks</div><div class="feat-meta"><span>8 hrs ago</span><span>4.1k</span></div></div>
+    <div class="feat-card"><div class="feat-label trending">Trending</div><div class="feat-title">Open model releases intensify the debate over local and hosted AI</div><div class="feat-desc">Open model releases intensify the debate over local and hosted AI</div><div class="feat-meta"><span>5 hrs ago</span><span>9.2k</span></div></div>
+    <div class="feat-card"><div class="feat-label policy">Policy</div><div class="feat-title">EU AI rules push high-risk systems toward stronger transparency</div><div class="feat-desc">EU AI rules push high-risk systems toward stronger transparency</div><div class="feat-meta"><span>3 hrs ago</span><span>6.3k</span></div></div>
   </div>
 
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-label">今日资讯</div><div class="stat-value purple">128</div><div class="stat-change">+23% 较昨日</div></div>
-    <div class="stat-card"><div class="stat-label">活跃模型</div><div class="stat-value green">47</div><div class="stat-change">+5 新发布</div></div>
-    <div class="stat-card"><div class="stat-label">本周论文</div><div class="stat-value blue">312</div><div class="stat-change">+18% 较上周</div></div>
-    <div class="stat-card"><div class="stat-label">热门讨论</div><div class="stat-value red">2.4k</div><div class="stat-change">+41% 较昨日</div></div>
+    <div class="stat-card"><div class="stat-label">AI Daily Brief</div><div class="stat-value purple">128</div><div class="stat-change">AI design tools become part of product delivery</div></div>
+    <div class="stat-card"><div class="stat-label">Active Models</div><div class="stat-value green">47</div><div class="stat-change">+5 New</div></div>
+    <div class="stat-card"><div class="stat-label">Papers This Week</div><div class="stat-value blue">312</div><div class="stat-change">+18% vs last week</div></div>
+    <div class="stat-card"><div class="stat-label">Trending</div><div class="stat-value red">2.4k</div><div class="stat-change">Multimodal agents begin handling complex office workflows</div></div>
   </div>
 
   <div class="card-grid">
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#129504;</div></div><div class="card-tag model">大模型</div><div class="card-title">谷歌 DeepMind 发布 Gemini 2.0</div><div class="card-excerpt">原生多模态架构重新定义 AI 交互方式，支持实时视频理解与生成。</div><div class="card-time">2 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#128241;</div></div><div class="card-tag app">AI 应用</div><div class="card-title">AI 医疗诊断获 FDA 批准</div><div class="card-excerpt">深度学习诊断系统癌症检测准确率 97.3%，正式获批临床使用。</div><div class="card-time">4 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#127823;</div></div><div class="card-tag model">大模型</div><div class="card-title">苹果 MLX 框架开源</div><div class="card-excerpt">Mac 本地大模型推理性能提升 3 倍，M 系列芯片优化显著。</div><div class="card-time">2 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#128300;</div></div><div class="card-tag research">研究</div><div class="card-title">量子神经网络首次商用突破</div><div class="card-excerpt">IBM 量子计算与神经网络结合，在药物分子模拟取得突破。</div><div class="card-time">6 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#129302;</div></div><div class="card-tag app">AI 应用</div><div class="card-title">自动驾驶 L5 级别首次获批</div><div class="card-excerpt">Waymo 全无人驾驶在加州获得 L5 商用许可，行业里程碑。</div><div class="card-time">7 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#128161;</div></div><div class="card-tag policy">观点</div><div class="card-title">Yann LeCun：自监督学习是未来</div><div class="card-excerpt">Meta AI 首席科学家阐述自监督学习路线图，质疑大模型方向。</div><div class="card-time">9 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#128640;</div></div><div class="card-tag app">创业</div><div class="card-title">AI Agent 创业赛道融资超 50 亿</div><div class="card-excerpt">2026 年 AI Agent 初创公司融资总额突破 50 亿美元，赛道火热。</div><div class="card-time">10 小时前</div></div>
-    <div class="card"><div class="card-img"><div class="card-img-icon">&#9889;</div></div><div class="card-tag model">大模型</div><div class="card-title">Mistral 推出欧洲最强开源模型</div><div class="card-excerpt">Mistral Large 3 开源发布，欧洲 AI 独立路线的重要一步。</div><div class="card-time">12 小时前</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#129504;</div></div><div class="card-tag model">Models</div><div class="card-title">Google DeepMind previews Gemini 2.0 with native multimodal interaction</div><div class="card-excerpt">Google DeepMind previews Gemini 2.0 with native multimodal interaction</div><div class="card-time">2 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#128241;</div></div><div class="card-tag app">AI Applications</div><div class="card-title">Clinical AI tools move closer to everyday diagnostic workflows</div><div class="card-excerpt">Clinical AI tools move closer to everyday diagnostic workflows</div><div class="card-time">4 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#127823;</div></div><div class="card-tag model">Models</div><div class="card-title">Open model releases intensify the debate over local and hosted AI</div><div class="card-excerpt">Apple's MLX stack improves local inference on consumer devices</div><div class="card-time">2 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#128300;</div></div><div class="card-tag research">Research</div><div class="card-title">Quantum-assisted AI research shows promise in molecular simulation</div><div class="card-excerpt">Quantum-assisted AI research shows promise in molecular simulation</div><div class="card-time">6 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#129302;</div></div><div class="card-tag app">AI Applications</div><div class="card-title">Autonomous driving approvals renew debate over safety validation</div><div class="card-excerpt">Autonomous driving approvals renew debate over safety validation</div><div class="card-time">7 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#128161;</div></div><div class="card-tag policy">Opinion</div><div class="card-title">Researchers revisit self-supervised learning as a long-term path</div><div class="card-excerpt">Open model releases intensify the debate over local and hosted AI</div><div class="card-time">9 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#128640;</div></div><div class="card-tag app">Startups</div><div class="card-title">AI-native SaaS teams shift pricing from seats to delivered outcomes</div><div class="card-excerpt">AI-native SaaS teams shift pricing from seats to delivered outcomes</div><div class="card-time">10 hrs ago</div></div>
+    <div class="card"><div class="card-img"><div class="card-img-icon">&#9889;</div></div><div class="card-tag model">Models</div><div class="card-title">Open model releases intensify the debate over local and hosted AI</div><div class="card-excerpt">Open model releases intensify the debate over local and hosted AI</div><div class="card-time">12 hrs ago</div></div>
   </div>
 </div>
 
-<div class="footer-bar"><span>AI Pulse 2026 · 每日精选 AI 资讯</span><span>关于 · 投稿 · API · 隐私</span></div>
+<div class="footer-bar"><span>AI Pulse 2026 · AI Daily Brief</span><span>About · Submit · API · Privacy</span></div>
 
 <script>
 document.querySelectorAll('.cat-btn').forEach(btn => {

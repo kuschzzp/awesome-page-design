@@ -8,14 +8,14 @@
   "files": [
     ".codex-plugin/",
     "skills/",
-    "styles/",
-    "previews/",
-    "scripts/",
-    "README.md"
+    "README.md",
+    "README.zh-CN.md",
+    "ROADMAP.md"
   ],
   "scripts": {
     "styles:systems": "node scripts/generate-system-inspired-styles.js",
-    "previews": "node scripts/generate-previews.js"
+    "previews": "node scripts/generate-previews.js",
+    "preview:serve": "node scripts/serve-preview.js"
   },
   "repository": {
     "type": "git",

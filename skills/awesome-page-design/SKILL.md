@@ -29,12 +29,36 @@ This is a visual style prompt library, not a page layout template library. Do no
 - `references/style-index.md`: concise index of all A-Y styles.
 - `references/usage-principles.md`: rules for using the library correctly.
 - `references/styles/*.md`: full style manuals copied from the project.
-- `assets/styles/`: full HTML, markdown, and PNG preview assets.
+- `assets/styles/`: full HTML and PNG preview assets.
 - `assets/previews/index.html`: preview gallery.
 
 ## Previewing The Included HTML
 
-When the user wants to preview the integrated examples after installing this skill, help them locate the installed skill directory and open the bundled HTML files from the `assets/` folder.
+When the user wants to preview the integrated examples, provide a browser URL rather than only a filesystem path whenever possible.
+
+If running from the source repository, start the local static preview server and give the user the URL:
+
+```bash
+npm run preview:serve
+```
+
+Then provide:
+
+```text
+http://127.0.0.1:<port>/assets/previews/
+```
+
+If the skill is installed inside a client, package scripts may not be available. In that case, run the bundled skill-local preview server from the installed `awesome-page-design` skill directory:
+
+```bash
+node scripts/serve-preview.js
+```
+
+Then provide:
+
+```text
+http://127.0.0.1:<port>/assets/previews/
+```
 
 Primary preview entry:
 
@@ -46,7 +70,7 @@ Individual style examples:
 - `assets/styles/version-j-terminal/version-j-terminal.html`
 - Use the same pattern for other style folders.
 
-Recommended local commands when the client has shell access:
+Fallback local commands when the client has shell access but cannot start a URL server:
 
 ```bash
 # From inside the installed awesome-page-design skill directory
@@ -57,6 +81,28 @@ open assets/styles/version-j-terminal/version-j-terminal.html
 ```
 
 If the client cannot open local files directly, tell the user the exact installed file path and ask them to open it in their browser. These HTML files are static single-file previews; no build step or dev server is required. Some examples load fonts from Google Fonts and will fall back to system fonts when offline.
+
+## Style Selection Preview Flow
+
+When the user has not chosen a style yet, offer to open the preview gallery so they can compare all 25 styles visually.
+
+Use this flow:
+
+1. Prefer starting a local static server and giving the user a URL.
+2. Use `http://127.0.0.1:<port>/assets/previews/` when running from the source repository or an installed skill directory.
+3. Open `assets/previews/index.html` only when URL serving is not available.
+4. Ask the user to copy a style prompt from the gallery and send it back.
+5. After the user chooses a style, read the matching manual in `references/styles/`.
+6. Apply the selected style's visual language, not the sample layout.
+
+The gallery cards are designed to expose copyable prompts such as:
+
+```text
+Use awesome-page-design style: Version J - Terminal Hacker.
+Apply its visual language, but do not copy the sample layout.
+```
+
+If the client can open files, open the gallery for the user. If it cannot, provide the exact path and say: "Open this preview gallery, copy the style prompt you like, and send it back to me."
 
 ## When Applying A Style
 

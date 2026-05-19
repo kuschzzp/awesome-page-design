@@ -1,304 +1,73 @@
-# Resonant Stark 设计系统文档
+# Version M - Resonant Stark Design System
 
-> 从 HTML 文件 `version-m-stark.html` 中提取的完整设计规范
+> This file documents a visual style prompt, not a fixed page layout. The sample HTML is only a preview carrier for comparing the 25 styles with a shared AI Daily Brief content set.
 
----
+## 1. Style Definition And Core Mood
 
-## 重要使用原则
+Resonant Stark is a dark web UI direction for premium dark portfolios, art, high-end product teasers. Its visual personality is quiet, premium, meditative. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
-本文件提供的是视觉风格提示，不是固定页面布局方案。示例 HTML 的页面结构仅用于统一展示和截图，不应在真实项目中照搬。后续开发时，应根据用户需求、业务流程、内容优先级和设备场景重新设计页面布局；可复用的是配色、字体、圆角、边框、阴影、质感、状态和动效等视觉语言。
+## 2. Color System
 
----
+| Token | Value |
+|---|---|
+| `--bg` | `#0A0A0B` |
+| `--surface` | `#141416` |
+| `--surface-2` | `#1C1C1F` |
+| `--border` | `rgba(255,255,255,0.06)` |
+| `--text` | `#FAFAFA` |
+| `--text-secondary` | `#8A8A8E` |
+| `--text-muted` | `#5A5A5E` |
+| `--accent` | `#C8B8FF` |
+| `--accent-2` | `#FFB8C8` |
+| `--accent-3` | `#B8FFD8` |
+| `--gradient-1` | `linear-gradient(135deg, rgba(200,184,255,0.08), rgba(255,184,200,0.04))` |
+| `--gradient-2` | `linear-gradient(180deg, rgba(200,184,255,0.03), transparent)` |
+| `--transition` | `0.4s cubic-bezier(0.25, 0.1, 0.25, 1)` |
+| `--transition-fast` | `0.2s cubic-bezier(0.25, 0.1, 0.25, 1)` |
 
-## 1. 风格定义与核心精神
+Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
 
-**风格名称**：Resonant Stark（共振极简）
+## 3. Typography System
 
-**核心精神**：极致克制的暗色极简主义。以近乎黑色的背景为画布，用极低透明度的边框与渐变构建"几乎看不见但确实存在"的视觉层次。信息呈现如低频共振——安静、持续、不喧哗。三个柔和的淡彩点缀色（薰衣草紫、暖粉、薄荷绿）在暗场中如微光信号般闪烁，为冰冷的极简注入一丝人文温度。
+- Choose the font stack used by the HTML preview as the primary reference.
+- Keep headings compact and high-confidence.
+- Keep body copy readable at normal dashboard and editorial densities.
+- Use label text for metadata, tags, timestamps, and status indicators.
 
-**设计哲学关键词**：
-- **克制**：所有装饰元素的透明度不超过 0.08，永远"少一点"
-- **共振**：微光 orb 漂浮动画模拟信号的低频共振，暗示信息的持续流动
-- **极薄**：字重 200-400、线条 1-2px、间距紧凑——一切都"薄"
-- **信号感**：JetBrains Mono 等宽字体用于时间、类别、计数器等元数据，赋予"数据信号"的视觉语义
+## 4. Borders, Radius, Shadows, And Glow
 
-**情绪谱系**：冷酷 → 安静 → 温暖微光（从左到右，主基调偏左）
-
----
+The style language is: near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
-## 2. 色彩体系
+## 5. Decorative Elements And Interaction Details
 
-### 2.1 调色板
+Decorative details should reinforce the style rather than become layout requirements. Hover, selected, focus, disabled, and loading states should use the same accent and surface treatment as the base components.
 
-| 变量名 | 色值 | 色系 | 用途 | 透明度使用 |
-|---|---|---|---|---|
-| `--bg` | `#0A0A0B` | 近纯黑 | 页面主背景 | — |
-| `--surface` | `#141416` | 深灰 | 卡片/面板背景 | — |
-| `--surface-2` | `#1C1C1F` | 中深灰 | 悬浮态卡片背景 | — |
-| `--border` | `rgba(255,255,255,0.06)` | 白微光 | 所有边框/分隔线 | 6% |
-| `--text` | `#FAFAFA` | 近白 | 主文本 | — |
-| `--text-secondary` | `#8A8A8E` | 灰 | 次级文本/描述 | — |
-| `--text-muted` | `#5A5A5E` | 深灰 | 时间戳/元数据 | — |
-| `--accent` | `#C8B8FF` | 薰衣草紫 | 主强调色/类别标签 | 5%-10% 用于背景 |
-| `--accent-2` | `#FFB8C8` | 暖粉 | 热度指标/暖调点缀 | 4% 用于背景 |
-| `--accent-3` | `#B8FFD8` | 薄荷绿 | 速递图标/冷调点缀 | 3% 用于背景 |
+## 6. Visual Rhythm And Spacing Hints
 
-### 2.2 背景色彩层级推导公式
+Use the preview as a density reference only. Do not copy its information architecture, module order, grid strategy, or navigation model. Rebuild spacing around the actual user task.
 
-```
-层级亮度递进：
-  bg       = #0A0A0B  (L≈3)   → 基准：最暗
-  surface  = bg + 10  = #141416 (L≈8)   → ΔL ≈ +5
-  surface-2 = bg + 18 = #1C1C1F (L≈12)  → ΔL ≈ +4
+## 7. Responsive Strategy
 
-规律：每升一层，亮度增量递减（+5 → +4），形成非线性暗场层次。
-```
+- Preserve the style's visual hierarchy across desktop and mobile.
+- Collapse dense grids into single-column or two-column structures when needed.
+- Keep touch targets accessible.
+- Avoid text overlap and preserve readable line lengths.
 
-### 2.3 强调色透明度梯度
+## 8. Component Quick Reference
 
-| 场景 | 透明度 | 示例 |
-|---|---|---|
-| orb 浮光背景 | 3%-5% | `rgba(200,184,255,0.05)` |
-| 渐变叠加层 | 4%-8% | `rgba(200,184,255,0.08)` |
-| 悬浮态背景 | 5%-10% | `rgba(200,184,255,0.05)` / `0.1` |
-| 边框悬浮态 | 10%-15% | `rgba(200,184,255,0.15)` |
-| 线条装饰（divider::before） | 50% | accent @ opacity 0.5 |
+| Component | Guidance |
+|---|---|
+| Navigation | Match the preview's surface, border, and active-state treatment. |
+| Buttons | Use the accent color and radius rules from the style. |
+| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
+| Tags | Use compact metadata styling with clear category contrast. |
+| Inputs | Keep focus states visible and aligned with the accent system. |
+| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
+| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
 
-**推导公式**：强调色在暗场中的可见度 = 饱和度 × 透明度 × (1 - 背景亮度/100)。薰衣草紫饱和度中等，需更高透明度才能可见；薄荷绿饱和度高，3% 即可感知。
+## 9. CSS Variables And Code Snippets
 
-### 2.4 色彩使用规则
-
-1. **绝不使用纯白边框**：所有边框统一为 `rgba(255,255,255,0.06)`，保持"几乎隐形"
-2. **强调色三色分工**：
-   - `--accent`（薰衣草紫）：主交互色、类别标签、悬浮反馈、导航下划线
-   - `--accent-2`（暖粉）：热度数据、情感化标记
-   - `--accent-3`（薄荷绿）：时间线/速递类信息、冷调数据
-3. **文本三阶灰度**：`#FAFAFA`（主体）→ `#8A8A8E`（描述）→ `#5A5A5E`（元数据），严格不跳阶
-4. **渐变仅用于极低透明度背景**：gradient-1/2 的透明度 ≤ 8%，绝不让渐变成为视觉主角
-
----
-
-## 3. 排版体系
-
-### 3.1 字体栈
-
-| 用途 | 字体 | 回退 |
-|---|---|---|
-| 主文本 | `Inter` | `-apple-system, sans-serif` |
-| 代码/元数据 | `JetBrains Mono` | `monospace` |
-
-**字体权重加载**：
-- Inter: 200, 300, 400, 500, 600
-- JetBrains Mono: 300, 400
-
-### 3.2 字号规范
-
-| 元素 | 字号 | 字重 | 字间距 | 行高 |
-|---|---|---|---|---|
-| Hero 标题 h1 | 52px | 200 | -1px | 1.15 |
-| Featured 标题 h2 | 28px | 300 | -0.5px | 1.25 |
-| Section 标题 h2 | 22px | 300 | -0.5px | — |
-| 订阅标题 h2 | 22px | 200 | -0.5px | — |
-| 新闻标题 h3 | 16px | 400 | -0.3px | 1.4 |
-| 摘要 excerpt | 13px | 300 | — | 1.5 |
-| 副标题 subtitle | 16px | 300 | — | — |
-| Featured 正文 p | 14px | 300 | — | 1.6 |
-| Digest 标题 h4 | 14px | 400 | — | 1.4 |
-| 导航链接 | 13px | 400 | 1px | — |
-| Logo | 18px | 200 | 3px | — |
-| 标签/类别 | 10-11px | 300 | 1-4px | — |
-| 时间/元数据 | 11px | 300 | — | — |
-| 计数器 counter | 12px | — | — | — |
-| 按钮 | 11px | 400 | 2px | — |
-| 输入框 | 12px | 300 | — | — |
-| Footer 文本 | 11-12px | 300 | — | — |
-| Hero label | 11px | 300 | 4px | — |
-
-### 3.3 字重使用规则
-
-| 层级 | 字重 | 用途 |
-|---|---|---|
-| 极轻 | 200 | Hero 标题、Logo、订阅标题 |
-| 轻 | 300 | 正文、描述、摘要、元数据、标签 |
-| 常规 | 400 | 新闻标题、导航、按钮、Digest 标题 |
-| 中 | 500 | 未大量使用，预留 |
-| 半粗 | 600 | 未大量使用，预留 |
-
-**核心原则**：整页最大字重不超过 400（仅标题和导航），主体阅读内容一律 300，营造"薄纸"感。
-
-### 3.4 字间距策略
-
-- **大标题（h1）**：负间距 -1px，收紧视觉密度
-- **中标题**：负间距 -0.3px ~ -0.5px
-- **标签/元数据**：正间距 1-4px，展开信号感
-- **正文**：无额外字间距，保持自然阅读节奏
-
----
-
-## 4. 边框/圆角/阴影体系
-
-### 4.1 边框
-
-| 元素 | 边框规格 | 说明 |
-|---|---|---|
-| 通用边框 | `1px solid rgba(255,255,255,0.06)` | 几乎不可见的"幽灵边框" |
-| 标签 .tag | `1px solid var(--border)` | 悬浮时变为 `1px solid var(--accent)` |
-| Featured 卡片 | `1px solid var(--border)` | 悬浮时 `rgba(200,184,255,0.15)` |
-| Digest 卡片 | `1px solid var(--border)` | 悬浮时 `rgba(200,184,255,0.1)` |
-| 输入框 | `1px solid var(--border)` | focus 时 `1px solid var(--accent)` |
-| 按钮 | `1px solid var(--accent)` | 透明底+紫线框 |
-| 新闻分隔线 | `1px solid var(--border)` | 列表项底部 |
-
-### 4.2 圆角
-
-| 元素 | 圆角 | 说明 |
-|---|---|---|
-| Featured 卡片 | 16px | 最大圆角，唯一"大块面" |
-| Digest 卡片 | 12px | 中等圆角 |
-| 标签 .tag | 20px | 药丸形 |
-| 按钮/输入框 | 24px | 全圆角药丸 |
-| orb 浮光 | 50% | 圆形 |
-| Logo dot | 50% | 圆形 |
-
-**规律**：圆角从 12px → 16px → 20px → 24px → 50% 递增，对应交互元素体积递减（大卡片16px，小药丸24px）。
-
-### 4.3 阴影
-
-此风格**几乎不使用 box-shadow**。视觉层次完全依赖：
-1. 背景色亮度差（bg → surface → surface-2）
-2. 极低透明度边框
-3. 微光 orb 的 `filter: blur(120px)` 模拟环境光
-
-唯一隐含阴影：导航栏 `backdrop-filter: blur(20px)` + 半透明背景模拟的毛玻璃效果。
-
----
-
-## 5. 装饰元素/交互细节
-
-### 5.1 装饰元素清单
-
-| 元素 | 描述 | 视觉特征 |
-|---|---|---|
-| **微光 Orb** | 3个固定定位的圆形浮光 | blur(120px)、3%-5% 透明度、20s 周期漂移动画 |
-| **Divider::before** | 分隔线左端紫色短线 | 60px 宽、accent 色、50% 透明度 |
-| **Featured 卡片顶部线** | 卡片上缘渐变线 | `linear-gradient(90deg, accent, transparent)` |
-| **Subscribe::before** | 订阅区上方渐变线 | `linear-gradient(90deg, transparent, accent, transparent)` @ 30% |
-| **Logo dot** | Logo旁脉冲小圆点 | 6px、accent色、3s脉冲动画 |
-| **新闻项左侧线** | 悬浮时出现的2px紫线 | 从0高度→100%高度动画 |
-
-### 5.2 交互反馈模式
-
-| 交互 | 反馈 | 参数 |
-|---|---|---|
-| 导航链接悬浮 | 文字变白 + 下方1px紫线展开 | `width: 0 → 100%`，`transition: 0.4s` |
-| 新闻项悬浮 | 左侧2px紫线 + 微渐变背景 + 左缩进20px | `height: 0 → 100%`，`padding-left: 0 → 20px` |
-| 标签悬浮 | 边框变色 + 文字变紫 + 5%紫底 | 边框 accent、背景 `rgba(accent,0.05)` |
-| Featured卡片悬浮 | 边框透明度升高 | `0.06 → 0.15` |
-| Digest卡片悬浮 | 边框微亮 + 背景升层 | border `0.1`、背景 `surface-2` |
-| 输入框聚焦 | 边框变紫 + 背景升层 | border accent、bg surface-2 |
-| 按钮 | 透明底 → 10%紫底 | `rgba(accent,0.1)` |
-| Footer链接 | 灰→紫 | color accent |
-
-**核心交互哲学**：所有悬浮反馈都是"微微亮起"——从隐形到微可见，而非从暗到亮。变化幅度极小（透明度差 ≤ 0.09），保持克制。
-
----
-
-## 6. 示例布局/间距观察（非固定方案）
-
-
-> 以下布局内容仅用于解释示例 HTML 如何展示该风格，不是后续项目必须采用的页面结构。真实项目应重新做信息架构和布局设计。
-
-### 6.1 容器与全局间距
-
-| 参数 | 值 | 说明 |
-|---|---|---|
-| 容器最大宽 | 1100px | 主内容区 |
-| 容器内边距 | 40px | 左右 |
-| Nav 内边距 | 28px 0 | 上下 |
-| Nav 链接间距 | 32px | 水平 gap |
-| Hero 上内边距 | 80px | 顶部留白 |
-| Hero 下内边距 | 60px | 底部留白 |
-| Section 标题下间距 | 32px | margin-bottom |
-| Section 之间间距 | 48px | margin-top |
-| Subscribe 区域 | 64px 顶部 + 48px 内部 | 双层间距 |
-
-### 6.2 网格布局
-
-| 组件 | 布局方式 | 规格 |
-|---|---|---|
-| 新闻列表 | Grid | `80px 1fr auto`，gap 20px |
-| Digest 网格 | Grid | `1fr 1fr`，gap 24px |
-| 标签行 | Flex | gap 12px |
-| Footer | Flex | `space-between` |
-
-### 6.3 内部间距
-
-| 元素 | 内边距 | 说明 |
-|---|---|---|
-| Featured 卡片 | 40px | 大面块大间距 |
-| Digest 卡片 | 24px | 中等 |
-| 新闻项 | 28px 0 | 纵向间距 |
-| 订阅输入框 | 12px 20px | 横松纵紧 |
-| 订阅按钮 | 12px 24px | — |
-| 标签 | 6px 16px | — |
-
-**间距规律**：采用 4px 基数的间距体系（4, 6, 8, 12, 16, 20, 24, 28, 32, 40, 48, 60, 64, 80），无奇数值。
-
----
-
-## 7. 响应式策略
-
-### 7.1 断点
-
-| 断点 | 值 | 策略 |
-|---|---|---|
-| 移动端 | ≤ 768px | 单列布局 |
-
-### 7.2 移动端适配规则
-
-| 元素 | 桌面 | 移动端 | 变化 |
-|---|---|---|---|
-| 容器内边距 | 40px | 20px | 减半 |
-| Hero h1 | 52px | 32px | 缩 62% |
-| Digest 网格 | 2列 | 1列 | 单列 |
-| Nav 间距 | 32px | 16px | 减半 |
-| 新闻 Grid | 3列(80/1/auto) | 2列(60/1) | 去掉 meta 列 |
-| 新闻 meta 列 | 显示 | `display: none` | 隐藏 |
-| 订阅表单 | 水平 Flex | 垂直 Column | 折叠 |
-| Footer | 水平 | 垂直 + 16px gap | 折叠 |
-
-**策略特征**：极简响应式——仅一个断点，无中间态。移动端策略是"去掉次要信息"而非"重新排列"。
-
----
-
-## 8. 组件速查表
-
-| 组件 | HTML 类名 | 关键样式 | 用途 |
-|---|---|---|---|
-| 微光背景 | `.micro-glow .orb` | fixed定位、blur(120px)、3色5%透明、动画 | 全页氛围光 |
-| 导航栏 | `nav` | sticky、blur(20px)、85%黑底 | 顶部固定导航 |
-| Logo | `nav .logo` | 200字重、3px间距 | 品牌标识 |
-| Logo dot | `nav .logo .dot` | 6px圆、pulse动画 | 活动信号 |
-| Hero | `.hero` | 80px顶距 | 首屏标题区 |
-| Hero label | `.hero .label` | JetBrains Mono、11px、4px间距 | 时间标签 |
-| Hero 标题 | `.hero h1` | 52px、200字重 | 主标题 |
-| 标签 | `.hero .tag` | 药丸形、Mono字体 | 分类筛选 |
-| 分隔线 | `.divider` | 1px、紫左端60px | 区域分隔 |
-| Section 标题 | `.section-header` | Flex space-between | 区域标题行 |
-| 计数器 | `.counter` | Mono 12px、muted色 | 数量标注 |
-| 新闻项 | `.news-item` | Grid 3列、悬浮左线+渐变 | 新闻条目 |
-| Featured 卡片 | `.featured-card` | surface底、16px圆角、顶部渐变线 | 重点新闻 |
-| Digest 卡片 | `.digest-card` | surface底、12px圆角 | 速递条目 |
-| 趋势条 | `.trend-row` | 2px高进度条 | 热度数据 |
-| 订阅区 | `.subscribe-section` | 居中、渐变分隔线 | 邮件订阅 |
-| 输入框 | `.subscribe-form input` | 药丸形、Mono字体 | 邮箱输入 |
-| 按钮 | `.subscribe-form button` | 透明底+紫线框+药丸形 | 提交按钮 |
-
----
-
-## 9. CSS变量/代码片段
-
-### 9.1 完整 CSS 变量定义
+Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
@@ -319,183 +88,31 @@
 }
 ```
 
-### 9.2 关键动画
+Then map those variables onto real product components instead of copying the sample sections.
 
-```css
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+## 10. Suitable And Unsuitable Use Cases
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
+Best suited for premium dark portfolios, art, high-end product teasers. Avoid using this style when the brand, audience, or product density conflicts with its personality: quiet, premium, meditative.
 
-@keyframes orb-drift {
-  0%, 100% { transform: translate(0,0); }
-  33% { transform: translate(30px, -20px); }
-  66% { transform: translate(-20px, 30px); }
-}
-```
+## 11. Comparison With Other Styles
 
-### 9.3 关键过渡曲线
+Compared with the rest of the library, Resonant Stark is defined by near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines. It should feel different from generic neutral dashboards while still remaining usable in production.
 
-- **常规过渡**：`0.4s cubic-bezier(0.25, 0.1, 0.25, 1)` — 慢起慢收，丝滑感
-- **快速过渡**：`0.2s cubic-bezier(0.25, 0.1, 0.25, 1)` — 即时反馈
-- **趋势条动画**：`1s cubic-bezier(0.25, 0.1, 0.25, 1)` — 数据可视化专用
+## 12. Variant Suggestions
 
-### 9.4 毛玻璃导航栏
+- A restrained variant with fewer decorative effects.
+- A high-density variant for operational dashboards.
+- A landing-page variant with stronger hero imagery.
+- A dark or light companion theme when the product requires both modes.
 
-```css
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(10,10,11,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-```
+## 13. Motion And Micro-Interactions
 
----
+Use short, functional motion. Hover transitions should confirm interactivity. Loading and alert states should remain readable. Avoid decorative motion that competes with the primary content.
 
-## 10. 适用/不适用场景
+## 14. Implementation Guidelines
 
-### 10.1 适用场景
-
-- **AI/科技资讯平台**：暗色极简与科技感天然契合
-- **数据监控仪表盘**：低对比度层次适合长时间盯视
-- **开发者工具文档站**：Mono字体+暗色符合开发者审美
-- **极简个人博客**：内容驱动、装饰极少的场景
-- **夜间模式专属产品**：天生暗色，无需额外适配
-- **高端品牌展示页**：克制的视觉语言传递品质感
-
-### 10.2 不适用场景
-
-- **儿童/教育产品**：暗色+低对比度不适合活泼场景
-- **电商购物页面**：需要高视觉刺激促转化
-- **大众新闻门户**：普通用户对暗色+极低对比度接受度低
-- **需要强视觉引导的落地页**：缺乏足够的视觉锚点
-- **老年人/视障用户产品**：文本对比度在次级/元数据层级偏低
-- **内容密集型长文章**：缺乏段落间的强视觉分隔
-
----
-
-## 11. 与其他风格对比
-
-| 维度 | Resonant Stark | Glassmorphism | Neo-Brutalism | Terminal Hacker | Swiss Editorial |
-|---|---|---|---|---|---|
-| **背景** | 近纯黑 #0A0A0B | 半透明+渐变 | 白/亮色 | 纯黑 #000 | 白/浅灰 |
-| **边框** | 6%白透明(隐形) | 1px白透明 | 3-4px黑粗线 | 1px绿线 | 无边框 |
-| **圆角** | 12-24px | 16-24px | 0-4px | 0-2px | 0px |
-| **阴影** | 无(box-shadow) | 多层模糊阴影 | 硬偏移阴影 | 无 | 极少 |
-| **字重** | 200-400 | 400-600 | 700-900 | 400-700 | 300-700 |
-| **强调色** | 3柔和淡彩 | 白/蓝渐变 | 黑+1亮色 | 绿(#0f0) | 红/黑 |
-| **氛围** | 安静微光 | 通透玻璃 | 噪音冲击 | 代码终端 | 理性克制 |
-| **装饰** | orb浮光 | 磨砂玻璃 | 粗线+偏移 | CRT扫描线 | 网格系统 |
-| **交互反馈** | 微亮(Δα≤0.09) | 玻璃变亮 | 颜色跳变 | 文字闪烁 | 位移/缩放 |
-
-| 维度 | Resonant Stark | Aurora Gradient | Bento Grid | Retro Y2K | Claymorphism |
-|---|---|---|---|---|---|
-| **层次构建** | 亮度差3层 | 渐变叠加 | 网格分块 | 装饰堆叠 | 内外双阴影 |
-| **信息密度** | 低-中 | 中 | 高 | 高 | 中 |
-| **情感基调** | 冷静 | 浪漫 | 结构化 | 好玩 | 温暖柔软 |
-| **动态程度** | 极慢(20s周期) | 中(渐变动画) | 低 | 高(闪烁) | 低 |
-
----
-
-## 12. 变体建议
-
-### 12.1 Resonant Stark — Warm Shift
-
-将三强调色替换为暖色调：
-- `--accent`: `#FFD4A8`（暖金）
-- `--accent-2`: `#FFA07A`（浅珊瑚）
-- `--accent-3`: `#FFE4B5`（莫卡金）
-
-适用：生活方式/时尚资讯平台。
-
-### 12.2 Resonant Stark — High Signal
-
-提高对比度和信号强度：
-- `--border`: `rgba(255,255,255,0.12)`（边框可见度翻倍）
-- `--text-secondary`: `#A0A0A4`（次级文本亮度+15）
-- `--accent` 透明度从 5% 提升至 15%
-
-适用：需要更强可读性的数据仪表盘。
-
-### 12.3 Resonant Stark — Mono Only
-
-去掉 Inter，全站使用 JetBrains Mono：
-- 所有文本统一等宽
-- 字间距全局 +2px
-- 药丸标签变为矩形标签（圆角 4px）
-
-适用：纯开发者工具/终端美学产品。
-
-### 12.4 Resonant Stark — Light Inversion
-
-反转色彩体系为亮色模式：
-- `--bg`: `#F8F8FA`
-- `--surface`: `#FFFFFF`
-- `--border`: `rgba(0,0,0,0.04)`
-- `--text`: `#1A1A1A`
-- 强调色不变但透明度提高至 10%-20%
-
-适用：需要日间模式的场景。
-
----
-
-## 13. 动效/微交互
-
-### 13.1 动效清单
-
-| 动效名 | 类型 | 时长 | 曲线 | 触发 | 描述 |
-|---|---|---|---|---|---|
-| `orb-drift` | 持续动画 | 20s | ease-in-out | 自动 | 3个orb低频漂浮，模拟信号共振 |
-| `fade-up` | 入场动画 | 1s | 默认 | 页面加载 | Hero元素依次上浮入场（0.2s-0.8s延迟） |
-| `pulse-dot` | 持续动画 | 3s | ease-in-out | 自动 | Logo圆点脉冲呼吸 |
-| 导航下划线 | 过渡 | 0.4s | cubic-bezier(0.25,0.1,0.25,1) | hover | 线条从0→100%宽度展开 |
-| 新闻左线 | 过渡 | 0.4s | 同上 | hover | 2px线从0→100%高度展开 |
-| 新闻悬浮缩进 | 过渡 | 0.4s | 同上 | hover | 左padding增加20px |
-| 标签边框变色 | 过渡 | 0.2s | 快速曲线 | hover | border→accent |
-| 卡片边框变亮 | 过渡 | 0.4s | 常规曲线 | hover | 透明度升高 |
-| 趋势条宽度 | 过渡 | 1s | cubic-bezier(0.25,0.1,0.25,1) | 页面加载 | 进度条从0→目标宽度 |
-
-### 13.2 动效设计原则
-
-1. **慢即是安静**：orb-drift 20秒周期、趋势条 1秒展开——所有动画都偏慢
-2. **延迟入场**：Hero元素依次延迟 0.2s/0.4s/0.6s/0.8s，制造"信息逐一浮现"感
-3. **微位移**：fade-up 仅 16px 上移，而非大距离弹跳
-4. **脉冲而非闪烁**：Logo dot 使用脉冲（scale 1→1.2、opacity 0.6→1），而非硬切换
-5. **过渡曲线统一**：所有过渡使用同一 cubic-bezier(0.25, 0.1, 0.25, 1)，保证全局节奏一致
-
----
-
-## 14. 实施指南/注意事项
-
-### 14.1 实施优先级
-
-1. **首先设置 CSS 变量**：所有颜色、渐变、过渡曲线必须在 `:root` 中定义
-2. **字体加载**：Inter + JetBrains Mono 需通过 Google Fonts 异步加载，确保 200/300/400 权重可用
-3. **微光 Orb**：需在 `<body>` 最顶层放置 `.micro-glow` 容器，`pointer-events: none` + `z-index: 0`
-4. **导航毛玻璃**：必须同时声明 `backdrop-filter` 和 `-webkit-backdrop-filter`
-5. **font-smoothing**：body 必须设置 `-webkit-font-smoothing: antialiased`，否则浅字重在暗底上会发粗
-
-### 14.2 注意事项
-
-- **对比度合规**：`--text-muted` (#5A5A5E) 在 `--bg` (#0A0A0B) 上的对比度约为 3.5:1，**未达到 WCAG AA 标准(4.5:1)**。如果需要无障碍合规，应将 muted 调至 `#7A7A7E` 或更高
-- **backdrop-filter 兼容性**：Firefox 默认不支持，需在 `about:config` 中开启，或提供 fallback（纯色半透明背景）
-- **JetBrains Mono 性能**：等宽字体文件较大，建议仅加载 300/400 两个权重
-- **orb blur 性能**：`filter: blur(120px)` 在低端设备上可能造成性能问题，建议提供 `@media (prefers-reduced-motion: reduce)` 降级方案
-- **滚动行为**：`html { scroll-behavior: smooth }` 在某些浏览器中可能干扰 JavaScript 滚动定位
-- **sticky 导航**：需确保 nav 的父容器没有 `overflow: hidden`，否则 sticky 会失效
-
-### 14.3 扩展建议
-
-- 增加 `--transition-slow: 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)` 用于大面积过渡
-- 增加 `--radius-xs: 4px` 用于极小元素
-- 增加 `--surface-3: #242428` 用于更深层次的悬浮态
-- 为新闻列表增加 `nth-child` 延迟入场动画
-- 考虑增加暗色模式下的 focus-visible 样式（紫色轮廓环）
+1. Reuse the visual language, not the sample layout.
+2. Start with tokens for background, surface, text, muted text, accent, border, radius, shadow, and focus.
+3. Apply tokens to real product components.
+4. Preserve accessibility, contrast, and visible focus.
+5. Keep the AI Daily Brief sample content out of production code unless the user explicitly asks for demo content.

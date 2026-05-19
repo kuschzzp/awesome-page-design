@@ -2,9 +2,10 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { execFileSync } = require("node:child_process");
 
 const rootDir = path.resolve(__dirname, "..");
-const stylesDir = path.join(rootDir, "styles");
+const stylesDir = path.join(rootDir, "skills", "awesome-page-design", "assets", "styles");
 
 const stories = [
   {
@@ -711,9 +712,12 @@ function main() {
 
     const base = `version-${style.version.toLowerCase()}-${style.slug}`;
     fs.writeFileSync(path.join(dir, `${base}.html`), htmlFor(style));
-    fs.writeFileSync(path.join(dir, `${base}-design-system.md`), mdFor(style));
     console.log(`created ${dirName}`);
   }
+
+  execFileSync(process.execPath, [path.join(__dirname, "localize-english-content.js")], {
+    stdio: "inherit",
+  });
 }
 
 main();
