@@ -29,6 +29,7 @@ This is a UI decision library, not a copy-paste template library. Do not copy sa
 7. If the user does not name a layout framework, recommend 1-2 layout candidates based on the page type and workflow.
 8. Implement the UI by combining the selected visual language with the selected layout framework while adapting both to the actual task.
 9. For exact visual comparison, use the PNG and HTML examples in `assets/styles/<style-folder>/` and `assets/layouts/<layout-folder>/`.
+10. When candidate styles or layouts are in the same family, apply the similarity guardrails in `references/style-index.md` and `references/layout-index.md` before recommending one.
 
 ## Reference Navigation
 
@@ -62,6 +63,29 @@ When combining, explain:
 - which visual style is being reused
 - which layout framework is being reused
 - which parts are newly designed for the user's content and workflow
+
+## Similarity Guardrails
+
+Some visual styles and layout frameworks intentionally belong to the same product-system family. Do not treat them as interchangeable.
+
+For mature system-inspired visual styles:
+
+- Use Q - Fluent Cloud for productivity-app command bars, split panes, search, and activity surfaces.
+- Use R - Carbon Enterprise for square, dense, diagnostic enterprise data grids.
+- Use S - Polaris Commerce for merchant resource lists, bulk actions, fulfillment, and order drawers.
+- Use T - Atlassian Workbench for planning boards, work items, lozenge tags, and team collaboration.
+- Use W - Lightning CRM for record pages, paths, related lists, account context, and activity timelines.
+- Use X - Primer Dev for repositories, file trees, code blocks, issues, labels, and developer workflows.
+- Use Y - Ant Pro for query forms, table toolbars, drawers, management consoles, and neutral admin states.
+
+For similar layout families:
+
+- Use L01 for dense management action: filters, KPI scan, priority table, and action queue.
+- Use L08 for analytical exploration: dimension tabs, charts, anomalies, drill-down, and segment comparison.
+- Use L13 for executive/admin overview: cross-team status, leadership exceptions, workload map, and decision prompts.
+- Use L06 for ecommerce operations: saved views, bulk actions, fulfillment lanes, order table, and order drawer.
+- Use L14 for table-first resource management: saved views, columns, selected row, bulk edit, and detail inspector.
+- Use L15 for event operations: timeline stream, queue rail, SLA clock, escalation state, and runbook progress.
 
 ## Previewing The Included HTML
 

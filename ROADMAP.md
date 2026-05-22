@@ -13,6 +13,7 @@ The current Skill includes:
 - HTML and PNG previews for every visual style and layout framework.
 - Design system notes under `references/styles/`.
 - Layout framework notes under `references/layouts/`.
+- Similarity guardrails in `SKILL.md`, `style-index.md`, and `layout-index.md` so related system styles and admin layouts remain distinguishable.
 - A bilingual preview gallery with copyable style and layout prompts.
 - A local preview server for source checkouts and installed Skill directories.
 
@@ -89,6 +90,7 @@ Acceptance criteria:
 - The style has a clear reason to exist.
 - It is not just a palette swap.
 - It includes usable typography, surfaces, states, and component tone.
+- It has a clear distinction from nearby styles in the same family, especially mature product-system styles.
 - It works at desktop and mobile widths.
 - It does not depend on a fixed layout.
 
@@ -116,6 +118,7 @@ Each framework should include:
 - Recommended component mix.
 - Failure modes to avoid.
 - Compatible visual style families.
+- Similarity guardrails that explain how it differs from nearby frameworks.
 
 Agents should be able to combine one visual style with one page framework:
 
@@ -180,6 +183,7 @@ Future versions of `SKILL.md` should help agents choose combinations more reliab
 - If the user asks for page structure, pick a page framework first.
 - If the user asks for a specific UI element, pick a component pattern first.
 - If multiple categories apply, combine them explicitly and explain the mapping.
+- When multiple candidates are similar, apply the guardrails from the style and layout indexes before recommending one.
 - Always avoid copying demo content or sample layout as production requirements.
 
 ## Quality Bar
@@ -194,6 +198,7 @@ Every new asset should pass these checks:
 - Preview server returns a URL under `/assets/previews/`.
 - Generated screenshots are nonblank and visually representative.
 - The style or pattern can be described in one clear sentence.
+- Adjacent styles or layouts can be differentiated by workflow, component mix, and information structure, not only by palette.
 
 ## Suggested Milestones
 
@@ -209,6 +214,7 @@ Every new asset should pass these checks:
 - Generate preview metadata from catalogs.
 - Add a documented style contribution checklist.
 - Add basic link and count validation scripts.
+- Add automated similarity checks for preview screenshots and catalog metadata.
 
 ### v0.3: More Visual Styles
 

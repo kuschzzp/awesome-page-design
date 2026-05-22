@@ -93,6 +93,87 @@ h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; letter-spacing: 0; }
 .trend strong { display: block; font-size: 14px; }
 .trend span { color: var(--muted); font-size: 12px; }
 .footer { color: var(--muted); font-size: 13px; padding: 24px 4px 6px; }
+.material-shell, .fluent-window, .carbon-console, .polaris-admin, .atlassian-board, .gov-service, .spectrum-workbench, .lightning-record, .primer-repo, .ant-admin {
+  margin-bottom: 18px;
+}
+.material-shell { position: relative; display: grid; grid-template-columns: 72px 1fr; gap: 16px; }
+.material-rail { display: grid; gap: 10px; align-content: start; padding: 14px; background: var(--surface-2); border-radius: 32px; }
+.material-rail span, .fab { display: grid; place-items: center; min-height: 48px; border-radius: 999px; background: var(--soft); color: var(--accent); font-weight: 800; }
+.fab { position: absolute; right: 18px; bottom: 18px; width: 58px; border: 0; background: var(--accent); color: white; font-size: 28px; box-shadow: var(--shadow); }
+.segment { display: inline-flex; padding: 4px; margin-bottom: 14px; background: var(--surface-2); border-radius: 999px; }
+.segment button { border: 0; padding: 9px 16px; border-radius: 999px; background: transparent; font: inherit; }
+.segment .active { background: var(--accent); color: white; }
+.tonal-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 14px; }
+.tonal-card { min-height: 150px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.tonal-card.large { background: var(--soft); }
+.tonal-card b { display: block; font-size: 38px; color: var(--accent); }
+.command-bar { display: grid; grid-template-columns: auto auto auto 1fr minmax(260px, 360px); gap: 8px; padding: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.command-bar button, .command-bar input { min-height: 36px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); padding: 0 12px; font: inherit; }
+.fluent-split { display: grid; grid-template-columns: 260px 1fr 220px; gap: 14px; margin-top: 14px; }
+.mail-list, .reading-pane, .activity-pane { padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.mail-list p, .activity-pane p { margin: 10px 0 0; padding: 10px; border-radius: var(--radius-sm); color: var(--muted); }
+.mail-list .active { background: var(--soft); color: var(--text); }
+.inline-actions { display: flex; gap: 10px; margin-top: 20px; }
+.carbon-tabs { display: flex; background: #262626; color: #c6c6c6; }
+.carbon-tabs span { padding: 14px 18px; border-right: 1px solid #393939; }
+.carbon-tabs .active { background: var(--accent); color: white; }
+.carbon-grid { display: grid; grid-template-columns: 1fr 280px; gap: 0; background: var(--surface); border: 1px solid var(--line); }
+.carbon-table, .carbon-side { padding: 22px; }
+.carbon-side { background: var(--surface-2); border-left: 1px solid var(--line); }
+.carbon-table table, .ant-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.carbon-table th, .carbon-table td, .ant-table th, .ant-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); }
+.carbon-side p { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 12px; }
+.resource-header, .bulk-bar, .resource-list article, .board-toolbar, .record-head, .repo-head, .ant-table header { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.polaris-admin, .atlassian-board, .lightning-record, .primer-repo, .ant-admin { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+.bulk-bar { justify-content: flex-start; flex-wrap: wrap; padding: 12px; margin: 14px 0; background: var(--surface-2); border-radius: var(--radius-sm); }
+.resource-list { display: grid; gap: 10px; }
+.resource-list article { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.resource-list em { color: var(--accent); font-style: normal; font-weight: 700; }
+.lozenge { display: inline-flex; align-items: center; min-height: 22px; padding: 2px 8px; border-radius: 4px; background: var(--soft); color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.lozenge.green { background: #dcfff1; color: #216e4e; }
+.lozenge.blue { background: #e9f2ff; color: #0c66e4; }
+.board-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.board-columns section { padding: 12px; background: var(--surface-2); border-radius: var(--radius-sm); }
+.board-columns article { margin-top: 12px; padding: 14px; background: var(--surface); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.board-columns h4 { margin: 10px 0 6px; font-size: 15px; }
+.gov-warning { display: flex; gap: 14px; padding: 14px; margin-bottom: 18px; background: var(--soft); color: var(--text); border-left: 8px solid var(--text); }
+.gov-two-col { display: grid; grid-template-columns: 1fr 320px; gap: 28px; border-top: 4px solid var(--text); padding-top: 22px; }
+.gov-two-col article, .gov-two-col aside { padding: 0; border: 0; }
+.spectrum-workbench { display: grid; grid-template-columns: 64px 1fr 260px; gap: 14px; padding: 14px; background: #2c2c2c; color: #f8f8f8; border-radius: var(--radius); }
+.tool-rail, .properties { background: #1f1f1f; border-radius: var(--radius-sm); padding: 12px; }
+.tool-rail { display: grid; gap: 10px; align-content: start; }
+.tool-rail span { display: grid; place-items: center; height: 42px; background: #3b3b3b; border-radius: 8px; }
+.asset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.asset-grid article { padding: 10px; background: #f8f8f8; color: #292929; border-radius: var(--radius-sm); }
+.asset-thumb { display: block; aspect-ratio: 1.25; border-radius: 12px; margin-bottom: 10px; background: linear-gradient(135deg, #5258e4, #ff7eb6); }
+.thumb-2 { background: linear-gradient(135deg, #00a7e1, #98f5e1); }
+.thumb-3 { background: linear-gradient(135deg, #111827, #d8d8d8); }
+.properties label { display: grid; gap: 6px; margin-top: 12px; color: #d8d8d8; }
+.properties input { min-height: 34px; border: 1px solid #4b4b4b; background: #303030; color: white; border-radius: 8px; padding: 0 10px; }
+.object-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 6px; background: var(--accent); color: white; font-weight: 800; }
+.record-head > div { display: flex; align-items: center; gap: 12px; }
+.path { display: grid; grid-template-columns: repeat(4, 1fr); margin: 16px 0; overflow: hidden; border-radius: 999px; }
+.path span { padding: 10px; background: var(--surface-2); text-align: center; color: var(--muted); }
+.path .active { background: var(--accent); color: white; }
+.record-grid { display: grid; grid-template-columns: 1fr 280px; gap: 14px; }
+.related-list, .activity-timeline { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.related-list p { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px; }
+.activity-timeline p { padding-left: 14px; border-left: 3px solid var(--accent); }
+.repo-head { align-items: end; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.repo-head nav { display: flex; gap: 8px; }
+.repo-head span { padding: 8px 10px; border-radius: 6px; }
+.repo-head .active { background: var(--soft); color: var(--accent); }
+.repo-layout { display: grid; grid-template-columns: 220px 1fr 240px; gap: 14px; padding-top: 14px; }
+.file-tree, .code-panel, .issue-panel { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); padding: 14px; }
+.code-toolbar { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.code-panel pre { overflow: auto; margin: 12px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.7; }
+.label { display: inline-flex; padding: 2px 7px; margin-right: 6px; border-radius: 999px; background: #ddf4ff; color: #0969da; font-weight: 700; }
+.label.purple { background: #fbefff; color: #8250df; }
+.query-form { display: grid; grid-template-columns: repeat(3, 1fr) auto auto; gap: 12px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.query-form label { display: grid; gap: 6px; color: var(--muted); font-size: 13px; }
+.query-form input { min-height: 36px; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0 10px; font: inherit; }
+.ant-table { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.ant-table header { padding: 16px 18px; border-bottom: 1px solid var(--line); }
 
 .fluent body, body.fluent { background: radial-gradient(circle at 15% 10%, #dcecff, transparent 32%), radial-gradient(circle at 90% 0%, #f6e7ff, transparent 28%), #f5f5f5; }
 .fluent .nav, .fluent .card, .fluent .panel { backdrop-filter: blur(18px) saturate(1.4); }
@@ -104,6 +185,9 @@ h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; letter-spacing: 0; }
   .nav { flex-wrap: wrap; }
   .hero { padding: 28px; }
   .stats, .content, .news { grid-template-columns: 1fr; }
+  .material-shell, .tonal-grid, .fluent-split, .carbon-grid, .board-columns, .gov-two-col, .spectrum-workbench, .record-grid, .repo-layout, .query-form { grid-template-columns: 1fr; }
+  .command-bar { grid-template-columns: 1fr 1fr; }
+  .fab { position: static; width: 100%; margin-top: 12px; }
 }
 </style>
 </head>
@@ -125,53 +209,13 @@ h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; letter-spacing: 0; }
       <div class="visual"><span></span><span></span><span></span></div>
     </section>
 
-    <section class="stats">
-      <div class="stat"><b>128</b><span>AI Daily Brief</span></div>
-      <div class="stat"><b>47</b><span>Active Models</span></div>
-      <div class="stat"><b>312</b><span>Papers This Week</span></div>
-      <div class="stat"><b>24k</b><span>Trending</span></div>
-    </section>
-
-    <section class="content">
-      <div class="news">
-<article class="card">
-        <span class="tag">Teams are using AI to move from requirements to prototypes, visual systems, and frontend implementation notes in one shared loop.</span>
-        <h3>Open model releases intensify the debate over local and hosted AI</h3>
-        <p>New AI workflow systems can move across documents, spreadsheets, email, and code repositories while preserving task context.</p>
-        <div class="meta">1 hr ago · 8.1k reads</div>
-      </article>
-<article class="card">
-        <span class="tag">Applications</span>
-        <h3>Model evaluation, prompt review, permission control, and output tracing are becoming long-running platform capabilities.</h3>
-        <p>AI design tools become part of product delivery</p>
-        <div class="meta">2 hrs ago · 7.6k reads</div>
-      </article>
-<article class="card">
-        <span class="tag">Research</span>
-        <h3>AI design tools become part of product delivery</h3>
-        <p>New AI workflow systems can move across documents, spreadsheets, email, and code repositories while preserving task context.</p>
-        <div class="meta">4 hrs ago · 5.9k reads</div>
-      </article>
-<article class="card">
-        <span class="tag">Research</span>
-        <h3>Products for support, sales, and legal review are moving toward pricing based on completed tasks and measurable results.</h3>
-        <p>Teams are using AI to move from requirements to prototypes, visual systems, and frontend implementation notes in one shared loop.</p>
-        <div class="meta">6 hrs ago · 4.8k reads</div>
-      </article>
-<article class="card">
-        <span class="tag">AI-native SaaS teams shift pricing from seats to delivered outcomes</span>
-        <h3>AI-native SaaS teams shift pricing from seats to delivered outcomes</h3>
-        <p>Model evaluation, prompt review, permission control, and output tracing are becoming long-running platform capabilities.</p>
-        <div class="meta">8 hrs ago · 4.2k reads</div>
-      </article>
+    <section class="fluent-window">
+      <div class="command-bar"><button>New</button><button>Share</button><button>Archive</button><span></span><input value="Search brief workspace"></div>
+      <div class="fluent-split">
+        <aside class="mail-list"><b>Focused brief</b><p class="active">Model reliability review</p><p>Policy digest refresh</p><p>Revenue analytics note</p><p>Research watchlist</p></aside>
+        <article class="reading-pane"><span class="tag">Review</span><h3>Production models move toward verified intermediate steps</h3><p>AI design tools become part of product delivery</p><div class="inline-actions"><button>Approve</button><button class="button secondary">Comment</button></div></article>
+        <aside class="activity-pane"><b>Activity</b><p>3 mentions</p><p>2 files attached</p><p>1 approval pending</p></aside>
       </div>
-      <aside class="panel">
-        <h2>Trending</h2>
-        <div class="trend"><div class="rank">01</div><div><strong>Multimodal agents begin handling complex office workflows</strong><span>24.5k discussions</span></div></div>
-        <div class="trend"><div class="rank">02</div><div><strong>Products for support, sales, and legal review are moving toward pricing based on completed tasks and measurable results.</strong><span>18.3k discussions</span></div></div>
-        <div class="trend"><div class="rank">03</div><div><strong>AI design tools become part of product delivery</strong><span>15.1k discussions</span></div></div>
-        <div class="trend"><div class="rank">04</div><div><strong>Model evaluation, prompt review, permission control, and output tracing are becoming long-running platform capabilities.</strong><span>12.7k discussions</span></div></div>
-      </aside>
     </section>
 
     <footer class="footer">Version Q · Fluent Cloud · Web Style Templates</footer>

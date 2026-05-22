@@ -236,18 +236,48 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   gap: 10px;
   margin: 12px 0;
 }
+.layout-v2 .dash-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #cbd5e1;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+}
+.layout-v2 .dash-filters label {
+  display: grid;
+  gap: 4px;
+  color: #334155;
+  font-size: 12px;
+}
+.layout-v2 .dash-filters input {
+  min-height: 34px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  padding: 0 10px;
+}
 .layout-v2 .dash-main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 12px;
 }
 .layout-v2 .dash-table table { font-size: 12px; }
-.layout-v2 .alert-feed p {
+.layout-v2 .action-queue p {
   margin: 10px 0;
   padding: 12px;
   color: #334155;
   background: #f8fafc;
   border-left: 4px solid #ef4444;
+}
+.layout-v2 .action-queue b,
+.layout-v2 .action-queue span {
+  display: block;
+}
+.layout-v2 .action-queue span {
+  margin-top: 4px;
+  color: #64748b;
 }
 .layout-v2.layout-landing {
   background: linear-gradient(135deg, #fff7ed, #eff6ff);
@@ -442,7 +472,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .commerce-filters,
 .layout-v2 .order-drawer,
-.layout-v2 .order-board article {
+.layout-v2 .order-workbench {
   padding: 18px;
   background: #fff;
   border: 1px solid #fde68a;
@@ -452,23 +482,54 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   display: block;
   margin: 18px 0;
 }
-.layout-v2 .order-board {
+.layout-v2 .order-workbench {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-content: start;
 }
-.layout-v2 .order-board article {
-  min-height: 210px;
+.layout-v2 .fulfillment-lanes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.layout-v2 .fulfillment-lanes article {
+  min-height: 150px;
+  padding: 16px;
   display: grid;
   align-content: space-between;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
 }
-.layout-v2 .order-board b,
-.layout-v2 .order-board span,
-.layout-v2 .order-board em {
+.layout-v2 .fulfillment-lanes b,
+.layout-v2 .fulfillment-lanes span,
+.layout-v2 .fulfillment-lanes em {
   display: block;
 }
-.layout-v2 .order-board span { font-size: 34px; font-weight: 900; }
+.layout-v2 .fulfillment-lanes span { font-size: 34px; font-weight: 900; }
+.layout-v2 .order-workbench table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.layout-v2 .order-workbench th,
+.layout-v2 .order-workbench td {
+  padding: 12px;
+  text-align: left;
+  border-top: 1px solid #fde68a;
+}
+.layout-v2 .drawer-steps {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.layout-v2 .drawer-steps span {
+  padding: 10px;
+  border-radius: 6px;
+  background: #fef3c7;
+}
+.layout-v2 .drawer-steps .done { color: #166534; }
+.layout-v2 .drawer-steps .active { color: #fff; background: #ca8a04; }
 .layout-v2 .crm-board {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -526,6 +587,22 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .analytics-top h1,
 .layout-v2 .analytics-wall h2 { color: #fff; }
+.layout-v2 .analysis-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.layout-v2 .analysis-tabs span {
+  padding: 10px 12px;
+  color: #bfdbfe;
+  background: rgba(15,23,42,.92);
+  border: 1px solid rgba(147,197,253,.22);
+  border-radius: 999px;
+}
+.layout-v2 .analysis-tabs .active {
+  color: #020617;
+  background: #7dd3fc;
+}
 .layout-v2 .filter-chips span {
   display: inline-flex;
   margin-left: 8px;
@@ -792,6 +869,24 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   gap: 14px;
   margin-bottom: 16px;
 }
+.layout-v2 .executive-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.layout-v2 .executive-strip article {
+  padding: 16px;
+  color: #312e81;
+  background: #e0e7ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+}
+.layout-v2 .executive-strip b,
+.layout-v2 .executive-strip span {
+  display: block;
+}
+.layout-v2 .executive-strip span { margin-top: 6px; color: #475569; }
 .layout-v2 .admin-overview-panels {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
@@ -841,9 +936,35 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .table-toolbar {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto auto;
   gap: 10px;
   margin-bottom: 14px;
+}
+.layout-v2 .selected-row {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.layout-v2 .field-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+.layout-v2 .field-list label {
+  display: grid;
+  gap: 6px;
+  color: #64748b;
+  font-size: 12px;
+}
+.layout-v2 .field-list input {
+  min-height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0 10px;
 }
 .layout-v2 .ops-timeline-shell {
   min-height: 100vh;
@@ -852,7 +973,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .ops-summary {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   margin: 18px 0;
 }
@@ -883,10 +1004,40 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 .layout-v2 .timeline-stream article {
   border-left: 6px solid #3157d5;
 }
+.layout-v2 .timeline-stream article.critical {
+  border-left-color: #dc2626;
+  background: #fff7ed;
+}
 .layout-v2 .timeline-stream time {
   color: #3157d5;
   font-weight: 800;
 }
+.layout-v2 .sla-meter {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid #d9e2ec;
+}
+.layout-v2 .sla-meter i {
+  display: block;
+  height: 10px;
+  width: 68%;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444);
+}
+.layout-v2 .runbook {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+}
+.layout-v2 .runbook li {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+.layout-v2 .runbook .done { color: #166534; background: #dcfce7; }
+.layout-v2 .runbook .active { color: #1d4ed8; background: #dbeafe; }
 .layout-v2 .personal-portfolio-page {
   max-width: 1180px;
   margin: 0 auto;
@@ -1738,6 +1889,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .hero h1, .lead h1, .case-hero h1, .market-hero h1 { font-size: 38px; }
   .layout-v2 .dash-board { margin-left: 0; }
   .layout-v2 .dash-rail { position: static; width: auto; }
+  .layout-v2 .dash-filters,
   .layout-v2 .dash-kpis,
   .layout-v2 .dash-main,
   .layout-v2 .saas-hero,
@@ -1746,7 +1898,9 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .layout-v2 .paper-grid,
   .layout-v2 .paper-columns,
   .layout-v2 .commerce-console,
+  .layout-v2 .fulfillment-lanes,
   .layout-v2 .crm-board,
+  .layout-v2 .analysis-tabs,
   .layout-v2 .signal-grid,
   .layout-v2 .case-artifact,
   .layout-v2 .case-story,
@@ -1756,6 +1910,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .layout-v2 .marketplace-page,
   .layout-v2 .market-grid,
   .layout-v2 .admin-overview-shell,
+  .layout-v2 .executive-strip,
   .layout-v2 .admin-overview-grid,
   .layout-v2 .admin-overview-panels,
   .layout-v2 .master-detail-shell,
@@ -1776,12 +1931,12 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 <body class="layout-v2 layout-master-detail">
 <main class="master-detail-shell">
         <header class="master-detail-top"><div><p class="eyebrow">L14</p><h1>Resource management</h1></div><div><button class="secondary">Import</button><button>Create record</button></div></header>
-        <aside class="master-filters"><b>Views</b><a class="active">All records</a><a>Needs review</a><a>Recently changed</a><a>Archived</a><b>Filters</b><span>Status: Active</span><span>Owner: Editorial Ops</span></aside>
-        <section class="master-table"><div class="table-toolbar"><input value="Search records"><button>Filter</button></div><table>
+        <aside class="master-filters"><b>Saved views</b><a class="active">All records</a><a>Needs review</a><a>Recently changed</a><a>Archived</a><b>Column sets</b><span>Operational</span><span>Governance</span><span>Audit trail</span></aside>
+        <section class="master-table"><div class="table-toolbar"><input value="Search records"><button>Filter</button><button class="secondary">Columns</button><button class="secondary">Bulk edit</button></div><div class="selected-row">1 selected · Homepage package · Open inspector</div><table>
     <thead><tr><th>Story</th><th>Owner</th><th>Status</th><th>Impact</th></tr></thead>
-    <tbody><tr><td>Homepage package</td><td>Maya</td><td><span class="pill">Active</span></td><td>High</td></tr><tr><td>Newsletter segment</td><td>Eli</td><td><span class="pill">Review</span></td><td>Medium</td></tr><tr><td>Trial cohort</td><td>Noah</td><td><span class="pill">Draft</span></td><td>High</td></tr><tr><td>Archive policy</td><td>Ava</td><td><span class="pill">Active</span></td><td>Low</td></tr><tr><td>Push campaign</td><td>Iris</td><td><span class="pill">Queued</span></td><td>Medium</td></tr><tr><td>Audio brief</td><td>Kai</td><td><span class="pill">Active</span></td><td>High</td></tr><tr><td>Opinion forum</td><td>Lena</td><td><span class="pill">Review</span></td><td>Medium</td></tr><tr><td>Source library</td><td>Owen</td><td><span class="pill">Active</span></td><td>Low</td></tr></tbody>
+    <tbody><tr><td>Homepage package</td><td>Maya</td><td><span class="pill">Selected</span></td><td>High</td></tr><tr><td>Newsletter segment</td><td>Eli</td><td><span class="pill">Review</span></td><td>Medium</td></tr><tr><td>Trial cohort</td><td>Noah</td><td><span class="pill">Draft</span></td><td>High</td></tr><tr><td>Archive policy</td><td>Ava</td><td><span class="pill">Active</span></td><td>Low</td></tr><tr><td>Push campaign</td><td>Iris</td><td><span class="pill">Queued</span></td><td>Medium</td></tr><tr><td>Audio brief</td><td>Kai</td><td><span class="pill">Active</span></td><td>High</td></tr><tr><td>Opinion forum</td><td>Lena</td><td><span class="pill">Review</span></td><td>Medium</td></tr><tr><td>Source library</td><td>Owen</td><td><span class="pill">Active</span></td><td>Low</td></tr></tbody>
   </table></section>
-        <aside class="detail-inspector"><h2>Homepage package</h2><p>Primary resource for the daily news homepage, connected to audience segments and revenue reporting.</p><div class="metric"><span>Linked items</span><strong>18</strong><em>synced</em></div><div class="metric"><span>Risk</span><strong>Medium</strong><em>review</em></div><div class="inspector-list"><b>Recent activity</b><p>Maya updated the audience rule.</p><p>Noah attached revenue report.</p><p>Ava approved source changes.</p></div></aside>
+        <aside class="detail-inspector"><h2>Homepage package</h2><p>Primary resource for the daily news homepage, connected to audience segments and revenue reporting.</p><div class="metric"><span>Linked items</span><strong>18</strong><em>synced</em></div><div class="metric"><span>Risk</span><strong>Medium</strong><em>review</em></div><div class="field-list"><label>Owner<input value="Maya Chen"></label><label>Status<input value="Selected"></label><label>Review date<input value="May 22"></label></div><div class="inspector-list"><b>Recent activity</b><p>Maya updated the audience rule.</p><p>Noah attached revenue report.</p><p>Ava approved source changes.</p></div></aside>
       </main>
 </body>
 </html>

@@ -270,6 +270,103 @@ function extractTokens(html) {
     .slice(0, 18);
 }
 
+function componentGuidance(meta) {
+  const specific = {
+    P: [
+      ["Navigation", "Use rounded app navigation, tonal rails, segmented controls, and large touch-friendly actions."],
+      ["Buttons", "Prefer pill buttons and floating primary actions with Material-like state layers."],
+      ["Surfaces", "Use large rounded tonal cards instead of thin enterprise panels."],
+      ["Inputs", "Use filled or outlined inputs with visible focus and generous vertical rhythm."],
+      ["Tables", "Avoid table-first composition unless the product explicitly needs dense admin work."],
+      ["Empty states", "Use tonal illustration blocks and clear next actions."],
+    ],
+    Q: [
+      ["Navigation", "Use command bars, split panes, search boxes, and productivity-app grouping."],
+      ["Buttons", "Keep controls compact with squared rounded corners and familiar desktop-app spacing."],
+      ["Cards", "Use glassy or translucent panes only where they support hierarchy."],
+      ["Tags", "Use subtle status text rather than saturated badges."],
+      ["Inputs", "Make search and command input first-class surfaces."],
+      ["Tables", "Pair lists with reading panes or activity panes."],
+    ],
+    R: [
+      ["Navigation", "Use dark utility bars, tabs, and square enterprise navigation."],
+      ["Buttons", "Use hard rectangular actions with clear hierarchy."],
+      ["Cards", "Prefer flat panels, data grids, diagnostics, and dense rows over soft cards."],
+      ["Tags", "Use restrained operational labels with strong contrast."],
+      ["Inputs", "Keep filters compact and aligned to grid columns."],
+      ["Tables", "Make tables, row states, and diagnostic side panels the core pattern."],
+    ],
+    S: [
+      ["Navigation", "Use merchant saved views, resource-list navigation, and bulk action bars."],
+      ["Buttons", "Use green primary actions for commerce operations and subdued secondary actions."],
+      ["Cards", "Use order/resource rows more often than generic marketing cards."],
+      ["Tags", "Use fulfillment, inventory, payment, and risk statuses."],
+      ["Inputs", "Prioritize filters, saved views, and search within resource lists."],
+      ["Tables", "Combine resource lists with order drawers and bulk operations."],
+    ],
+    T: [
+      ["Navigation", "Use workbench navigation, boards, issue grouping, and project context."],
+      ["Buttons", "Keep actions practical and compact."],
+      ["Cards", "Use task cards inside columns, not generic content cards."],
+      ["Tags", "Use lozenge tags for status, priority, sprint, and ownership."],
+      ["Inputs", "Support quick filtering by owner, project, sprint, and state."],
+      ["Tables", "Prefer boards and issue lists; tables should feel secondary."],
+    ],
+    U: [
+      ["Navigation", "Use direct service navigation with plain links and strong focus states."],
+      ["Buttons", "Use high-contrast rectangular start and submit actions."],
+      ["Cards", "Avoid decorative cards; prefer forms, warnings, and task sections."],
+      ["Tags", "Use official status text and warning panels rather than decorative badges."],
+      ["Inputs", "Labels, help text, validation, and focus visibility are mandatory."],
+      ["Tables", "Use plain, accessible tables with strong borders when data is required."],
+    ],
+    V: [
+      ["Navigation", "Use tool rails, property panels, media grids, and creative workspace framing."],
+      ["Buttons", "Keep actions compact and tool-like."],
+      ["Cards", "Use asset tiles and preview canvases instead of business cards."],
+      ["Tags", "Use metadata chips for file type, state, and export status."],
+      ["Inputs", "Use property fields, sliders, and panel controls."],
+      ["Tables", "Prefer asset grids; use tables only for metadata-heavy asset management."],
+    ],
+    W: [
+      ["Navigation", "Use record headers, object icons, paths, related lists, and activity timelines."],
+      ["Buttons", "Keep CRM actions compact and record-scoped."],
+      ["Cards", "Use business record panels and related-list cards."],
+      ["Tags", "Use stage, account, task, and case status labels."],
+      ["Inputs", "Support inline fields and record-detail editing."],
+      ["Tables", "Use related lists and compact record tables."],
+    ],
+    X: [
+      ["Navigation", "Use repo tabs, file trees, issue navigation, and code-oriented sections."],
+      ["Buttons", "Use restrained actions with developer-platform clarity."],
+      ["Cards", "Use code panels, file lists, issue cards, and contribution surfaces."],
+      ["Tags", "Use issue labels, language dots, and monospace metadata."],
+      ["Inputs", "Search should support repos, files, issues, and commands."],
+      ["Tables", "Use file lists, diffs, issue tables, and audit logs."],
+    ],
+    Y: [
+      ["Navigation", "Use admin shells, query forms, table toolbars, drawers, and management sections."],
+      ["Buttons", "Use blue primary actions, neutral secondary actions, and clear disabled states."],
+      ["Cards", "Keep cards neutral; the table and form controls should carry the workflow."],
+      ["Tags", "Use stable status tags with restrained color."],
+      ["Inputs", "Use search, select, date, and owner filters in query forms."],
+      ["Tables", "Make data tables, row actions, pagination, and drawers central."],
+    ],
+  };
+
+  const rows = specific[meta.version] || [
+    ["Navigation", "Match the preview's surface, border, and active-state treatment."],
+    ["Buttons", "Use the accent color and radius rules from the style."],
+    ["Cards", "Preserve the style's depth model: shadow, border, glass, glow, or flat grid."],
+    ["Tags", "Use compact metadata styling with clear category contrast."],
+    ["Inputs", "Keep focus states visible and aligned with the accent system."],
+    ["Tables", "For dense products, prefer clear borders, row states, and restrained typography."],
+    ["Empty states", "Reuse the style's icon tone, surface treatment, and text density."],
+  ];
+
+  return rows.map(([component, guidance]) => `| ${component} | ${guidance} |`).join("\n");
+}
+
 function designSystemMarkdown(meta, html) {
   const tokens = extractTokens(html);
   const tokenRows = tokens.length
@@ -325,13 +422,7 @@ Use the preview as a density reference only. Do not copy its information archite
 
 | Component | Guidance |
 |---|---|
-| Navigation | Match the preview's surface, border, and active-state treatment. |
-| Buttons | Use the accent color and radius rules from the style. |
-| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
-| Tags | Use compact metadata styling with clear category contrast. |
-| Inputs | Keep focus states visible and aligned with the accent system. |
-| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
-| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
+${componentGuidance(meta)}
 
 ## 9. CSS Variables And Code Snippets
 

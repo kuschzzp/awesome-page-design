@@ -38,6 +38,16 @@ These previews are high-fidelity structural references rather than wireframes. T
 - Combine both when the user asks for a complete page or app experience.
 - Do not copy any sample section order as a hard requirement. Adapt the framework to the user's content and task flow.
 
+## Similarity Guardrails
+
+- Use L01 for dense management action: filters, KPI scan, priority table, and action queue.
+- Use L08 for analytical exploration: dimension tabs, charts, anomaly/drill-down panels, and segment comparison.
+- Use L13 for executive/admin overview: cross-team status, leadership exceptions, workload map, and decision prompts.
+- Use L06 for ecommerce operations: saved views, bulk actions, fulfillment lanes, order table, and order drawer.
+- Use L14 for table-first resource management: saved views, column controls, selected row, bulk edit, and detail inspector.
+- Use L15 for event operations: timeline stream, queue rail, SLA clock, escalation state, and runbook progress.
+- Use L02 for conversion-led SaaS marketing, L18 for company credibility, L19 for service/process selling, and L20 for enterprise product-suite overview.
+
 ## Combination Prompt
 
 ```text

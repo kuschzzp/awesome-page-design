@@ -79,7 +79,8 @@ The skill will guide the agent to:
 3. Choose a page layout framework when the task needs structure.
 4. Read the matching style and layout notes.
 5. Apply the chosen style through concrete CSS variables, theme tokens, or component classes.
-6. Redesign the real product layout instead of copying the sample HTML.
+6. Apply similarity guardrails when candidate styles or layouts belong to the same product-system family.
+7. Redesign the real product layout instead of copying the sample HTML.
 
 ## Preview Styles And Layouts
 
@@ -192,6 +193,18 @@ skills/awesome-page-design/
 | Youth or trend brand | H, L |
 | Friendly rounded product | K, N, P |
 
+## Avoid Similar-Looking Choices
+
+Some styles intentionally belong to mature product-system families, but they should not become the same blue SaaS shell:
+
+- Q - Fluent Cloud: command bars, split panes, search, activity surfaces, and productivity-app UI.
+- R - Carbon Enterprise: square, dense, diagnostic enterprise data grids.
+- S - Polaris Commerce: merchant resource lists, bulk actions, fulfillment states, and order drawers.
+- T - Atlassian Workbench: planning boards, work items, lozenge tags, and team collaboration flows.
+- W - Lightning CRM: record pages, paths, related lists, account context, and activity timelines.
+- X - Primer Dev: repositories, file trees, code blocks, issues, labels, and developer workflows.
+- Y - Ant Pro: query forms, table toolbars, drawers, management consoles, and neutral admin states.
+
 ## Layout Frameworks
 
 Layout frameworks describe page structure and workflow. They can be used alone or combined with any visual style.
@@ -222,6 +235,8 @@ Layout frameworks describe page structure and workflow. They can be used alone o
 Each layout has its own static HTML preview and PNG screenshot under `skills/awesome-page-design/assets/layouts/`. These previews are intentionally structurally distinct: dashboards, docs, commerce, CRM, analytics, case studies, settings, onboarding, and catalogs should not collapse into the same generic card grid.
 
 The layout previews are high-fidelity structural references, not wireframes. They include realistic hierarchy, density, status areas, supporting context, and product-like content so agents can understand the difference between page frameworks before adapting them to a real project.
+
+Similar layout families also have distinct roles: L01 is for filters, KPI scanning, priority tables, and action queues; L08 is for analytical dimensions, charts, anomalies, and drill-down; L13 is for executive/admin overview and decision prompts; L06 is for ecommerce fulfillment; L14 is for table-first resource management; L15 is for event timelines, SLA, and runbooks.
 
 Example combined prompt:
 

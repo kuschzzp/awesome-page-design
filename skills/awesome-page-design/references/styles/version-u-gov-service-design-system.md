@@ -58,13 +58,12 @@ Use the preview as a density reference only. Do not copy its information archite
 
 | Component | Guidance |
 |---|---|
-| Navigation | Match the preview's surface, border, and active-state treatment. |
-| Buttons | Use the accent color and radius rules from the style. |
-| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
-| Tags | Use compact metadata styling with clear category contrast. |
-| Inputs | Keep focus states visible and aligned with the accent system. |
-| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
-| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
+| Navigation | Use direct service navigation with plain links and strong focus states. |
+| Buttons | Use high-contrast rectangular start and submit actions. |
+| Cards | Avoid decorative cards; prefer forms, warnings, and task sections. |
+| Tags | Use official status text and warning panels rather than decorative badges. |
+| Inputs | Labels, help text, validation, and focus visibility are mandatory. |
+| Tables | Use plain, accessible tables with strong borders when data is required. |
 
 ## 9. CSS Variables And Code Snippets
 

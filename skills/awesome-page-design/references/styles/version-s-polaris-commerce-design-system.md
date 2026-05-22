@@ -58,13 +58,12 @@ Use the preview as a density reference only. Do not copy its information archite
 
 | Component | Guidance |
 |---|---|
-| Navigation | Match the preview's surface, border, and active-state treatment. |
-| Buttons | Use the accent color and radius rules from the style. |
-| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
-| Tags | Use compact metadata styling with clear category contrast. |
-| Inputs | Keep focus states visible and aligned with the accent system. |
-| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
-| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
+| Navigation | Use merchant saved views, resource-list navigation, and bulk action bars. |
+| Buttons | Use green primary actions for commerce operations and subdued secondary actions. |
+| Cards | Use order/resource rows more often than generic marketing cards. |
+| Tags | Use fulfillment, inventory, payment, and risk statuses. |
+| Inputs | Prioritize filters, saved views, and search within resource lists. |
+| Tables | Combine resource lists with order drawers and bulk operations. |
 
 ## 9. CSS Variables And Code Snippets
 

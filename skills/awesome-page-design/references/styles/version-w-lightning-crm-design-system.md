@@ -58,13 +58,12 @@ Use the preview as a density reference only. Do not copy its information archite
 
 | Component | Guidance |
 |---|---|
-| Navigation | Match the preview's surface, border, and active-state treatment. |
-| Buttons | Use the accent color and radius rules from the style. |
-| Cards | Preserve the style's depth model: shadow, border, glass, glow, or flat grid. |
-| Tags | Use compact metadata styling with clear category contrast. |
-| Inputs | Keep focus states visible and aligned with the accent system. |
-| Tables | For dense products, prefer clear borders, row states, and restrained typography. |
-| Empty states | Reuse the style's icon tone, surface treatment, and text density. |
+| Navigation | Use record headers, object icons, paths, related lists, and activity timelines. |
+| Buttons | Keep CRM actions compact and record-scoped. |
+| Cards | Use business record panels and related-list cards. |
+| Tags | Use stage, account, task, and case status labels. |
+| Inputs | Support inline fields and record-detail editing. |
+| Tables | Use related lists and compact record tables. |
 
 ## 9. CSS Variables And Code Snippets
 

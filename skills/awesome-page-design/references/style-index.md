@@ -40,3 +40,15 @@ This index summarizes all available styles. Read the matching full manual in `re
 - Need expressive campaign energy: F, G, H, L, or O.
 - Need premium dark restraint: M.
 - Need friendly rounded product UI: D, K, N, or P.
+
+## Similarity Guardrails
+
+Some styles intentionally sit in the mature product-system family, but they should not collapse into the same blue SaaS shell:
+
+- Choose Q when the page needs a productivity-app command bar, split panes, activity surfaces, and Windows/Office-like depth.
+- Choose R when the page needs dense enterprise data grids, square geometry, diagnostics, and industrial clarity.
+- Choose S when the page needs merchant resource lists, bulk actions, fulfillment states, and order/inventory workflows.
+- Choose T when the page needs planning boards, issue cards, lozenge status tags, and team collaboration flows.
+- Choose W when the page needs CRM records, paths, related lists, account context, and activity timelines.
+- Choose X when the page needs repository browsing, code blocks, issue labels, file trees, and developer workflows.
+- Choose Y when the page needs enterprise admin query forms, data tables, drawers, and neutral management-console states.

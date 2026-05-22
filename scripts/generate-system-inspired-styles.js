@@ -390,6 +390,107 @@ const styles = [
   },
 ];
 
+function renderStyleSpecificContent(style, storyCards) {
+  switch (style.bodyClass) {
+    case "material":
+      return `<section class="material-shell">
+      <aside class="material-rail"><span>⌂</span><span>◷</span><span>□</span><span>⋯</span></aside>
+      <div class="material-feed">
+        <div class="segment"><button class="active">For you</button><button>Briefs</button><button>Saved</button></div>
+        <section class="tonal-grid">
+          <article class="tonal-card large"><span class="tag">应用</span><h3>今日智能体工作区</h3><p>用大圆角色块承载任务、提醒和推荐操作，保留 Android 式亲和感。</p></article>
+          <article class="tonal-card"><b>128</b><span>今日资讯</span></article>
+          <article class="tonal-card"><b>47</b><span>活跃模型</span></article>
+          <article class="tonal-card"><b>312</b><span>本周论文</span></article>
+        </section>
+      </div>
+      <button class="fab">+</button>
+    </section>`;
+    case "fluent":
+      return `<section class="fluent-window">
+      <div class="command-bar"><button>New</button><button>Share</button><button>Archive</button><span></span><input value="Search brief workspace"></div>
+      <div class="fluent-split">
+        <aside class="mail-list"><b>Focused brief</b><p class="active">Model reliability review</p><p>Policy digest refresh</p><p>Revenue analytics note</p><p>Research watchlist</p></aside>
+        <article class="reading-pane"><span class="tag">Review</span><h3>Production models move toward verified intermediate steps</h3><p>命令栏、分栏阅读区和轻透明 Surface 更贴近生产力软件，而不是通用卡片页。</p><div class="inline-actions"><button>Approve</button><button class="button secondary">Comment</button></div></article>
+        <aside class="activity-pane"><b>Activity</b><p>3 mentions</p><p>2 files attached</p><p>1 approval pending</p></aside>
+      </div>
+    </section>`;
+    case "carbon":
+      return `<section class="carbon-console">
+      <div class="carbon-tabs"><span class="active">Overview</span><span>Runs</span><span>Incidents</span><span>Governance</span></div>
+      <div class="carbon-grid">
+        <section class="carbon-table"><h3>Model operations</h3><table><thead><tr><th>System</th><th>Status</th><th>Risk</th><th>SLA</th></tr></thead><tbody><tr><td>Claims review</td><td>Running</td><td>Low</td><td>99.8%</td></tr><tr><td>Prompt audit</td><td>Queued</td><td>Medium</td><td>96.1%</td></tr><tr><td>Data sync</td><td>Blocked</td><td>High</td><td>88.4%</td></tr><tr><td>Evaluation</td><td>Running</td><td>Low</td><td>99.1%</td></tr></tbody></table></section>
+        <aside class="carbon-side"><b>Diagnostic</b>${["Trace gap", "Policy drift", "Human review"].map((item) => `<p>${item}<span>open</span></p>`).join("")}</aside>
+      </div>
+    </section>`;
+    case "polaris":
+      return `<section class="polaris-admin">
+      <header class="resource-header"><div><h3>Order resources</h3><p>商家后台应突出资源列表、批量操作和履约状态。</p></div><button>Fulfill selected</button></header>
+      <div class="bulk-bar"><label><input type="checkbox" checked> 3 selected</label><span>Payment captured</span><span>Inventory ready</span><span>Fraud check clear</span></div>
+      <div class="resource-list">${["Morning Brief Pack", "Market Desk Bundle", "Policy Annual", "Campus Edition"].map((item, index) => `<article><b>${item}</b><span>${42 - index * 7} orders</span><em>${index === 1 ? "Needs review" : "Ready"}</em></article>`).join("")}</div>
+    </section>`;
+    case "atlassian":
+      return `<section class="atlassian-board">
+      <header class="board-toolbar"><h3>Team delivery board</h3><div><span class="lozenge blue">Sprint 18</span><span class="lozenge green">On track</span></div></header>
+      <div class="board-columns">${["To do", "In progress", "Review"].map((col, colIndex) => `<section><b>${col}</b>${stories.slice(colIndex, colIndex + 3).map((item) => `<article><span class="lozenge">${item.tag}</span><h4>${item.title}</h4><p>${item.meta}</p></article>`).join("")}</section>`).join("")}</div>
+    </section>`;
+    case "gov":
+      return `<section class="gov-service">
+      <div class="gov-warning"><b>Important</b><span>Check eligibility before submitting this AI safety report.</span></div>
+      <div class="gov-two-col">
+        <article><h3>Report a model deployment risk</h3><p>政务服务风格应优先呈现任务、表单、帮助文本和强可访问焦点，而不是产品卡片。</p><button class="button">Start now</button></article>
+        <aside><b>Before you start</b><ul><li>Organisation registration number</li><li>Responsible officer contact</li><li>Evidence of model evaluation</li></ul></aside>
+      </div>
+    </section>`;
+    case "spectrum":
+      return `<section class="spectrum-workbench">
+      <aside class="tool-rail"><span>V</span><span>T</span><span>C</span><span>L</span></aside>
+      <section class="asset-grid">${Array.from({ length: 9 }, (_, i) => `<article><span class="asset-thumb thumb-${(i % 3) + 1}"></span><b>Brief visual ${i + 1}</b></article>`).join("")}</section>
+      <aside class="properties"><b>Properties</b><label>Opacity<input value="82%"></label><label>Blend<input value="Screen"></label><label>Export<input value="Web preview"></label></aside>
+    </section>`;
+    case "lightning":
+      return `<section class="lightning-record">
+      <header class="record-head"><div><span class="object-icon">AC</span><div><h3>Regional Newsroom</h3><p>Account · Media group</p></div></div><button>New task</button></header>
+      <div class="path">${["Prospect", "Qualified", "Proposal", "Closed"].map((item, i) => `<span class="${i === 2 ? "active" : ""}">${item}</span>`).join("")}</div>
+      <div class="record-grid"><section class="related-list"><b>Related opportunities</b>${["Editorial AI Suite", "Audience Signals", "Compliance Add-on"].map((item) => `<p>${item}<span>$42K</span></p>`).join("")}</section><aside class="activity-timeline"><b>Activity</b><p>Call logged</p><p>Proposal sent</p><p>Legal review due</p></aside></div>
+    </section>`;
+    case "primer":
+      return `<section class="primer-repo">
+      <header class="repo-head"><h3>awesome-page-design</h3><nav><span class="active">Code</span><span>Issues</span><span>Pull requests</span><span>Actions</span></nav></header>
+      <div class="repo-layout"><aside class="file-tree"><b>Files</b><p>skills/</p><p>references/</p><p>assets/</p><p>scripts/</p></aside><article class="code-panel"><div class="code-toolbar">SKILL.md <span>main</span></div><pre>Use awesome-page-design style:
+ Version X - Primer Dev
+ Repo browser
+ Issue labels
+ Code review surfaces</pre></article><aside class="issue-panel"><b>Open issues</b><p><span class="label">bug</span> Preview link</p><p><span class="label purple">docs</span> Style guardrail</p></aside></div>
+    </section>`;
+    case "ant":
+      return `<section class="ant-admin">
+      <form class="query-form"><label>Keyword<input value="AI safety"></label><label>Status<input value="Published"></label><label>Owner<input value="Editorial Ops"></label><button>Search</button><button class="button secondary">Reset</button></form>
+      <div class="ant-table"><header><b>Management table</b><button>Create</button></header><table><thead><tr><th>Name</th><th>Owner</th><th>Status</th><th>Updated</th><th>Action</th></tr></thead><tbody><tr><td>Model audit</td><td>Maya</td><td><span class="tag">Active</span></td><td>Today</td><td>View</td></tr><tr><td>Policy tracker</td><td>Noah</td><td><span class="tag">Review</span></td><td>Yesterday</td><td>View</td></tr><tr><td>Research brief</td><td>Iris</td><td><span class="tag">Draft</span></td><td>May 18</td><td>View</td></tr></tbody></table></div>
+    </section>`;
+    default:
+      return `<section class="stats">
+      <div class="stat"><b>128</b><span>今日资讯</span></div>
+      <div class="stat"><b>47</b><span>活跃模型</span></div>
+      <div class="stat"><b>312</b><span>本周论文</span></div>
+      <div class="stat"><b>24k</b><span>热门讨论</span></div>
+    </section>
+
+    <section class="content">
+      <div class="news">
+${storyCards}
+      </div>
+      <aside class="panel">
+        <h2>热门趋势</h2>
+        <div class="trend"><div class="rank">01</div><div><strong>Agent 工作流平台进入采购清单</strong><span>24.5k 讨论</span></div></div>
+        <div class="trend"><div class="rank">02</div><div><strong>端侧模型生态加速分化</strong><span>18.3k 讨论</span></div></div>
+        <div class="trend"><div class="rank">03</div><div><strong>AI 治理工具成为基础设施</strong><span>15.1k 讨论</span></div></div>
+        <div class="trend"><div class="rank">04</div><div><strong>设计系统开始接入生成式规范</strong><span>12.7k 讨论</span></div></div>
+      </aside>
+    </section>`;
+  }
+}
+
 function htmlFor(style) {
   const p = style.palette;
   const storyCards = stories
@@ -499,12 +600,96 @@ h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; letter-spacing: 0; }
 .trend strong { display: block; font-size: 14px; }
 .trend span { color: var(--muted); font-size: 12px; }
 .footer { color: var(--muted); font-size: 13px; padding: 24px 4px 6px; }
+.material-shell, .fluent-window, .carbon-console, .polaris-admin, .atlassian-board, .gov-service, .spectrum-workbench, .lightning-record, .primer-repo, .ant-admin {
+  margin-bottom: 18px;
+}
+.material-shell { position: relative; display: grid; grid-template-columns: 72px 1fr; gap: 16px; }
+.material-rail { display: grid; gap: 10px; align-content: start; padding: 14px; background: var(--surface-2); border-radius: 32px; }
+.material-rail span, .fab { display: grid; place-items: center; min-height: 48px; border-radius: 999px; background: var(--soft); color: var(--accent); font-weight: 800; }
+.fab { position: absolute; right: 18px; bottom: 18px; width: 58px; border: 0; background: var(--accent); color: white; font-size: 28px; box-shadow: var(--shadow); }
+.segment { display: inline-flex; padding: 4px; margin-bottom: 14px; background: var(--surface-2); border-radius: 999px; }
+.segment button { border: 0; padding: 9px 16px; border-radius: 999px; background: transparent; font: inherit; }
+.segment .active { background: var(--accent); color: white; }
+.tonal-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 14px; }
+.tonal-card { min-height: 150px; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.tonal-card.large { background: var(--soft); }
+.tonal-card b { display: block; font-size: 38px; color: var(--accent); }
+.command-bar { display: grid; grid-template-columns: auto auto auto 1fr minmax(260px, 360px); gap: 8px; padding: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.command-bar button, .command-bar input { min-height: 36px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); padding: 0 12px; font: inherit; }
+.fluent-split { display: grid; grid-template-columns: 260px 1fr 220px; gap: 14px; margin-top: 14px; }
+.mail-list, .reading-pane, .activity-pane { padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.mail-list p, .activity-pane p { margin: 10px 0 0; padding: 10px; border-radius: var(--radius-sm); color: var(--muted); }
+.mail-list .active { background: var(--soft); color: var(--text); }
+.inline-actions { display: flex; gap: 10px; margin-top: 20px; }
+.carbon-tabs { display: flex; background: #262626; color: #c6c6c6; }
+.carbon-tabs span { padding: 14px 18px; border-right: 1px solid #393939; }
+.carbon-tabs .active { background: var(--accent); color: white; }
+.carbon-grid { display: grid; grid-template-columns: 1fr 280px; gap: 0; background: var(--surface); border: 1px solid var(--line); }
+.carbon-table, .carbon-side { padding: 22px; }
+.carbon-side { background: var(--surface-2); border-left: 1px solid var(--line); }
+.carbon-table table, .ant-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.carbon-table th, .carbon-table td, .ant-table th, .ant-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); }
+.carbon-side p { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 12px; }
+.resource-header, .bulk-bar, .resource-list article, .board-toolbar, .record-head, .repo-head, .ant-table header { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.polaris-admin, .atlassian-board, .lightning-record, .primer-repo, .ant-admin { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+.bulk-bar { justify-content: flex-start; flex-wrap: wrap; padding: 12px; margin: 14px 0; background: var(--surface-2); border-radius: var(--radius-sm); }
+.resource-list { display: grid; gap: 10px; }
+.resource-list article { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.resource-list em { color: var(--accent); font-style: normal; font-weight: 700; }
+.lozenge { display: inline-flex; align-items: center; min-height: 22px; padding: 2px 8px; border-radius: 4px; background: var(--soft); color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.lozenge.green { background: #dcfff1; color: #216e4e; }
+.lozenge.blue { background: #e9f2ff; color: #0c66e4; }
+.board-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.board-columns section { padding: 12px; background: var(--surface-2); border-radius: var(--radius-sm); }
+.board-columns article { margin-top: 12px; padding: 14px; background: var(--surface); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.board-columns h4 { margin: 10px 0 6px; font-size: 15px; }
+.gov-warning { display: flex; gap: 14px; padding: 14px; margin-bottom: 18px; background: var(--soft); color: var(--text); border-left: 8px solid var(--text); }
+.gov-two-col { display: grid; grid-template-columns: 1fr 320px; gap: 28px; border-top: 4px solid var(--text); padding-top: 22px; }
+.gov-two-col article, .gov-two-col aside { padding: 0; border: 0; }
+.spectrum-workbench { display: grid; grid-template-columns: 64px 1fr 260px; gap: 14px; padding: 14px; background: #2c2c2c; color: #f8f8f8; border-radius: var(--radius); }
+.tool-rail, .properties { background: #1f1f1f; border-radius: var(--radius-sm); padding: 12px; }
+.tool-rail { display: grid; gap: 10px; align-content: start; }
+.tool-rail span { display: grid; place-items: center; height: 42px; background: #3b3b3b; border-radius: 8px; }
+.asset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.asset-grid article { padding: 10px; background: #f8f8f8; color: #292929; border-radius: var(--radius-sm); }
+.asset-thumb { display: block; aspect-ratio: 1.25; border-radius: 12px; margin-bottom: 10px; background: linear-gradient(135deg, #5258e4, #ff7eb6); }
+.thumb-2 { background: linear-gradient(135deg, #00a7e1, #98f5e1); }
+.thumb-3 { background: linear-gradient(135deg, #111827, #d8d8d8); }
+.properties label { display: grid; gap: 6px; margin-top: 12px; color: #d8d8d8; }
+.properties input { min-height: 34px; border: 1px solid #4b4b4b; background: #303030; color: white; border-radius: 8px; padding: 0 10px; }
+.object-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 6px; background: var(--accent); color: white; font-weight: 800; }
+.record-head > div { display: flex; align-items: center; gap: 12px; }
+.path { display: grid; grid-template-columns: repeat(4, 1fr); margin: 16px 0; overflow: hidden; border-radius: 999px; }
+.path span { padding: 10px; background: var(--surface-2); text-align: center; color: var(--muted); }
+.path .active { background: var(--accent); color: white; }
+.record-grid { display: grid; grid-template-columns: 1fr 280px; gap: 14px; }
+.related-list, .activity-timeline { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.related-list p { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px; }
+.activity-timeline p { padding-left: 14px; border-left: 3px solid var(--accent); }
+.repo-head { align-items: end; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.repo-head nav { display: flex; gap: 8px; }
+.repo-head span { padding: 8px 10px; border-radius: 6px; }
+.repo-head .active { background: var(--soft); color: var(--accent); }
+.repo-layout { display: grid; grid-template-columns: 220px 1fr 240px; gap: 14px; padding-top: 14px; }
+.file-tree, .code-panel, .issue-panel { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); padding: 14px; }
+.code-toolbar { display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.code-panel pre { overflow: auto; margin: 12px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.7; }
+.label { display: inline-flex; padding: 2px 7px; margin-right: 6px; border-radius: 999px; background: #ddf4ff; color: #0969da; font-weight: 700; }
+.label.purple { background: #fbefff; color: #8250df; }
+.query-form { display: grid; grid-template-columns: repeat(3, 1fr) auto auto; gap: 12px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.query-form label { display: grid; gap: 6px; color: var(--muted); font-size: 13px; }
+.query-form input { min-height: 36px; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0 10px; font: inherit; }
+.ant-table { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.ant-table header { padding: 16px 18px; border-bottom: 1px solid var(--line); }
 ${style.cssExtra}
 @media (max-width: 900px) {
   .topline { align-items: flex-start; flex-direction: column; padding: 16px; }
   .nav { flex-wrap: wrap; }
   .hero { padding: 28px; }
   .stats, .content, .news { grid-template-columns: 1fr; }
+  .material-shell, .tonal-grid, .fluent-split, .carbon-grid, .board-columns, .gov-two-col, .spectrum-workbench, .record-grid, .repo-layout, .query-form { grid-template-columns: 1fr; }
+  .command-bar { grid-template-columns: 1fr 1fr; }
+  .fab { position: static; width: 100%; margin-top: 12px; }
 }
 </style>
 </head>
@@ -526,25 +711,7 @@ ${style.cssExtra}
       <div class="visual"><span></span><span></span><span></span></div>
     </section>
 
-    <section class="stats">
-      <div class="stat"><b>128</b><span>今日资讯</span></div>
-      <div class="stat"><b>47</b><span>活跃模型</span></div>
-      <div class="stat"><b>312</b><span>本周论文</span></div>
-      <div class="stat"><b>24k</b><span>热门讨论</span></div>
-    </section>
-
-    <section class="content">
-      <div class="news">
-${storyCards}
-      </div>
-      <aside class="panel">
-        <h2>热门趋势</h2>
-        <div class="trend"><div class="rank">01</div><div><strong>Agent 工作流平台进入采购清单</strong><span>24.5k 讨论</span></div></div>
-        <div class="trend"><div class="rank">02</div><div><strong>端侧模型生态加速分化</strong><span>18.3k 讨论</span></div></div>
-        <div class="trend"><div class="rank">03</div><div><strong>AI 治理工具成为基础设施</strong><span>15.1k 讨论</span></div></div>
-        <div class="trend"><div class="rank">04</div><div><strong>设计系统开始接入生成式规范</strong><span>12.7k 讨论</span></div></div>
-      </aside>
-    </section>
+    ${renderStyleSpecificContent(style, storyCards)}
 
     <footer class="footer">Version ${style.version} · ${style.name} · Web Style Templates</footer>
   </main>

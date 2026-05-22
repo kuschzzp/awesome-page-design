@@ -434,8 +434,9 @@ function renderLayoutBodyV2(layout) {
       return `<aside class="dash-rail"><b>ID</b><span>01</span><span>Desk</span><span>Pulse</span><span>Risk</span><span>Ops</span></aside>
       <main class="dash-board">
         <header class="dash-status"><p><strong>${layout.id}</strong> ${layout.name}</p><p>Live newsroom operations console</p><button>Export</button></header>
+        <section class="dash-filters"><label>Date <input value="Today"></label><label>Desk <input value="All desks"></label><label>Priority <input value="High and medium"></label><button>Apply filters</button></section>
         <section class="dash-kpis">${renderMetric("Stories live", "128", "+18")}${renderMetric("Review queue", "34", "-7")}${renderMetric("SLA health", "98%", "stable")}${renderMetric("Paid lift", "7.4%", "+1.2%")}${renderMetric("Alerts", "9", "open")}</section>
-        <section class="dash-main"><div class="panel dash-table"><h2>Priority workstream</h2>${renderTable(newsRows)}</div><aside class="panel alert-feed"><h2>Alert feed</h2><p>Energy story velocity exceeded threshold.</p><p>Subscriber edition needs legal review.</p><p>Politics desk has three stale drafts.</p><p>Homepage slot opens in 22 minutes.</p></aside></section>
+        <section class="dash-main"><div class="panel dash-table"><h2>Priority workstream</h2>${renderTable(newsRows)}</div><aside class="panel action-queue"><h2>Action queue</h2><p><b>Assign</b><span>Energy story to senior editor</span></p><p><b>Review</b><span>Subscriber edition legal note</span></p><p><b>Publish</b><span>Homepage slot opens in 22 minutes</span></p><p><b>Escalate</b><span>Politics desk stale drafts</span></p></aside></section>
       </main>`;
     case "landing":
       return `<main class="saas-page">
@@ -463,9 +464,9 @@ function renderLayoutBodyV2(layout) {
     case "commerce":
       return `<main class="commerce-console">
         <header class="commerce-top"><div><p class="eyebrow">${layout.id}</p><h1>Daily edition store operations</h1></div><button>Create bundle</button></header>
-        <aside class="commerce-filters"><b>Filters</b><label><input type="checkbox" checked> Delayed fulfillment</label><label><input type="checkbox"> Low inventory</label><label><input type="checkbox" checked> Subscriber bundles</label><label><input type="checkbox"> Gift orders</label></aside>
-        <section class="order-board"><article><b>Morning Brief Pack</b><span>42 orders</span><em>Inventory ready</em></article><article><b>Market Desk Bundle</b><span>18 orders</span><em>Needs review</em></article><article><b>Policy Watch Annual</b><span>73 orders</span><em>Billing check</em></article><article><b>Student Edition</b><span>29 orders</span><em>Shipping today</em></article></section>
-        <aside class="order-drawer"><h2>Order drawer</h2><p>Priority subscriber bundle is waiting on final stock confirmation.</p>${renderMetric("Items", "42", "ready")}${renderMetric("Fulfillment", "86%", "+9")}</aside>
+        <aside class="commerce-filters"><b>Saved views</b><label><input type="checkbox" checked> Delayed fulfillment</label><label><input type="checkbox"> Low inventory</label><label><input type="checkbox" checked> Subscriber bundles</label><label><input type="checkbox"> Gift orders</label><b>Bulk action</b><button>Print labels</button><button class="secondary">Hold shipment</button></aside>
+        <section class="order-workbench"><div class="fulfillment-lanes"><article><b>Paid</b><span>42</span><em>ready to pick</em></article><article><b>Packed</b><span>18</span><em>label needed</em></article><article><b>Shipped</b><span>73</span><em>in transit</em></article></div><table><thead><tr><th>Order</th><th>Customer</th><th>Inventory</th><th>Fulfillment</th></tr></thead><tbody><tr><td>#1842 Brief Pack</td><td>Maya Chen</td><td>Ready</td><td><span class="pill">Pick</span></td></tr><tr><td>#1841 Market Bundle</td><td>Noah Park</td><td>Low stock</td><td><span class="pill">Hold</span></td></tr><tr><td>#1839 Policy Annual</td><td>Ava Lin</td><td>Ready</td><td><span class="pill">Pack</span></td></tr><tr><td>#1838 Campus Edition</td><td>Iris Cole</td><td>Ready</td><td><span class="pill">Ship</span></td></tr></tbody></table></section>
+        <aside class="order-drawer"><h2>Order drawer</h2><p>Priority subscriber bundle is waiting on final stock confirmation.</p>${renderMetric("Items", "42", "ready")}${renderMetric("Fulfillment", "86%", "+9")}<div class="drawer-steps"><span class="done">Paid</span><span class="active">Pick</span><span>Pack</span><span>Ship</span></div></aside>
       </main>`;
     case "crm":
       return `<main class="crm-board">
@@ -477,7 +478,8 @@ function renderLayoutBodyV2(layout) {
     case "analytics":
       return `<main class="analytics-wall">
         <header class="analytics-top"><div><p class="eyebrow">${layout.id}</p><h1>Reader intelligence command center</h1></div><div class="filter-chips"><span>Today</span><span>Subscribers</span><span>Politics</span><span>Mobile</span></div></header>
-        <section class="signal-grid"><div class="signal-hero"><h2>Engaged minutes</h2><strong>3.8M</strong><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chart-caption"><span>06:00</span><span>Noon</span><span>18:00</span></div></div><div class="signal-stack">${renderMetric("Churn risk", "4.1%", "-0.6%")}${renderMetric("Story velocity", "18/hr", "+3")}${renderMetric("Paywall lift", "11%", "+2.1%")}<article class="segment-card"><h2>Top segment</h2><strong>Policy subscribers</strong><p>High retention, rising comments, strong mobile readership.</p></article></div><aside class="anomaly-list"><h2>Anomalies</h2><p><b>Mobile</b> homepage visits spiked.</p><p><b>Markets</b> story retention dipped.</p><p><b>Comments</b> crossed moderation threshold.</p><p><b>Revenue</b> trial conversions rose in the morning cohort.</p></aside></section>
+        <section class="analysis-tabs"><span class="active">Acquisition</span><span>Retention</span><span>Revenue</span><span>Content quality</span></section>
+        <section class="signal-grid"><div class="signal-hero"><h2>Engaged minutes</h2><strong>3.8M</strong><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chart-caption"><span>06:00</span><span>Noon</span><span>18:00</span></div></div><div class="signal-stack">${renderMetric("Churn risk", "4.1%", "-0.6%")}${renderMetric("Story velocity", "18/hr", "+3")}${renderMetric("Paywall lift", "11%", "+2.1%")}<article class="segment-card"><h2>Top segment</h2><strong>Policy subscribers</strong><p>High retention, rising comments, strong mobile readership.</p></article></div><aside class="anomaly-list"><h2>Drill-down</h2><p><b>Mobile</b> homepage visits spiked.</p><p><b>Markets</b> story retention dipped.</p><p><b>Comments</b> crossed moderation threshold.</p><p><b>Revenue</b> trial conversions rose in the morning cohort.</p></aside></section>
       </main>`;
     case "portfolio":
       return `<main class="case-study">
@@ -505,20 +507,20 @@ function renderLayoutBodyV2(layout) {
     case "admin-overview":
       return `<main class="admin-overview-shell">
         <aside class="admin-overview-menu"><b>Command</b><a class="active">Overview</a><a>Teams</a><a>Workflows</a><a>Revenue</a><a>System health</a></aside>
-        <section class="admin-overview-main"><header><p class="eyebrow">${layout.id}</p><h1>Operational command center</h1><button>Run review</button></header><section class="admin-overview-hero"><div><h2>Today needs attention</h2><p>Three teams have crossed review thresholds. Subscriber operations remain stable.</p></div><strong>86</strong></section><section class="admin-overview-grid">${renderMetric("Active teams", "14", "+2")}${renderMetric("Pending approvals", "27", "-8")}${renderMetric("Revenue pulse", "$182K", "+12%")}${renderMetric("Health score", "94", "good")}</section><section class="admin-overview-panels"><article><h2>Workload map</h2><div class="heatmap">${Array.from({ length: 24 }, (_, i) => `<i class="level-${(i % 4) + 1}"></i>`).join("")}</div></article><article><h2>Leadership notes</h2><p>Prioritize policy desk handoff and subscription trial cleanup before the afternoon planning block.</p></article></section></section>
+        <section class="admin-overview-main"><header><p class="eyebrow">${layout.id}</p><h1>Operational command center</h1><button>Run review</button></header><section class="admin-overview-hero"><div><h2>Today needs attention</h2><p>Three teams have crossed review thresholds. Subscriber operations remain stable.</p></div><strong>86</strong></section><section class="executive-strip"><article><b>Decision needed</b><span>Policy handoff owner</span></article><article><b>Risk trend</b><span>2 teams rising</span></article><article><b>Leadership note</b><span>Review before 14:00</span></article></section><section class="admin-overview-grid">${renderMetric("Active teams", "14", "+2")}${renderMetric("Pending approvals", "27", "-8")}${renderMetric("Revenue pulse", "$182K", "+12%")}${renderMetric("Health score", "94", "good")}</section><section class="admin-overview-panels"><article><h2>Workload map</h2><div class="heatmap">${Array.from({ length: 24 }, (_, i) => `<i class="level-${(i % 4) + 1}"></i>`).join("")}</div></article><article><h2>Exception brief</h2><p>Prioritize policy desk handoff and subscription trial cleanup before the afternoon planning block.</p><ol><li>Assign one owner</li><li>Clear legal review</li><li>Confirm revenue impact</li></ol></article></section></section>
       </main>`;
     case "master-detail":
       return `<main class="master-detail-shell">
         <header class="master-detail-top"><div><p class="eyebrow">${layout.id}</p><h1>Resource management</h1></div><div><button class="secondary">Import</button><button>Create record</button></div></header>
-        <aside class="master-filters"><b>Views</b><a class="active">All records</a><a>Needs review</a><a>Recently changed</a><a>Archived</a><b>Filters</b><span>Status: Active</span><span>Owner: Editorial Ops</span></aside>
-        <section class="master-table"><div class="table-toolbar"><input value="Search records"><button>Filter</button></div>${renderTable([["Homepage package", "Maya", "Active", "High"], ["Newsletter segment", "Eli", "Review", "Medium"], ["Trial cohort", "Noah", "Draft", "High"], ["Archive policy", "Ava", "Active", "Low"], ["Push campaign", "Iris", "Queued", "Medium"], ["Audio brief", "Kai", "Active", "High"], ["Opinion forum", "Lena", "Review", "Medium"], ["Source library", "Owen", "Active", "Low"]])}</section>
-        <aside class="detail-inspector"><h2>Homepage package</h2><p>Primary resource for the daily news homepage, connected to audience segments and revenue reporting.</p>${renderMetric("Linked items", "18", "synced")}${renderMetric("Risk", "Medium", "review")}<div class="inspector-list"><b>Recent activity</b><p>Maya updated the audience rule.</p><p>Noah attached revenue report.</p><p>Ava approved source changes.</p></div></aside>
+        <aside class="master-filters"><b>Saved views</b><a class="active">All records</a><a>Needs review</a><a>Recently changed</a><a>Archived</a><b>Column sets</b><span>Operational</span><span>Governance</span><span>Audit trail</span></aside>
+        <section class="master-table"><div class="table-toolbar"><input value="Search records"><button>Filter</button><button class="secondary">Columns</button><button class="secondary">Bulk edit</button></div><div class="selected-row">1 selected · Homepage package · Open inspector</div>${renderTable([["Homepage package", "Maya", "Selected", "High"], ["Newsletter segment", "Eli", "Review", "Medium"], ["Trial cohort", "Noah", "Draft", "High"], ["Archive policy", "Ava", "Active", "Low"], ["Push campaign", "Iris", "Queued", "Medium"], ["Audio brief", "Kai", "Active", "High"], ["Opinion forum", "Lena", "Review", "Medium"], ["Source library", "Owen", "Active", "Low"]])}</section>
+        <aside class="detail-inspector"><h2>Homepage package</h2><p>Primary resource for the daily news homepage, connected to audience segments and revenue reporting.</p>${renderMetric("Linked items", "18", "synced")}${renderMetric("Risk", "Medium", "review")}<div class="field-list"><label>Owner<input value="Maya Chen"></label><label>Status<input value="Selected"></label><label>Review date<input value="May 22"></label></div><div class="inspector-list"><b>Recent activity</b><p>Maya updated the audience rule.</p><p>Noah attached revenue report.</p><p>Ava approved source changes.</p></div></aside>
       </main>`;
     case "ops-timeline":
       return `<main class="ops-timeline-shell">
         <header class="ops-timeline-top"><p class="eyebrow">${layout.id}</p><h1>Operations timeline</h1><button>Escalate</button></header>
-        <section class="ops-summary">${renderMetric("Open incidents", "6", "-2")}${renderMetric("Deployments", "11", "+4")}${renderMetric("Support load", "74%", "steady")}</section>
-        <section class="ops-board"><aside class="ops-lanes"><b>Queues</b><span class="active">Live incidents</span><span>Scheduled changes</span><span>Customer impact</span><span>Resolved</span></aside><div class="timeline-stream"><article><time>08:20</time><h2>Homepage alert acknowledged</h2><p>Editor traffic spike routed to standby review team.</p><small>Owner: Maya · Severity: medium</small></article><article><time>09:05</time><h2>Subscriber sync delayed</h2><p>Retry window opened, data integrity checks passed.</p><small>Owner: Eli · Watch window: 15 min</small></article><article><time>10:40</time><h2>Policy desk handoff</h2><p>New approval owner assigned for the afternoon edition.</p><small>Owner: Noah · Next checkpoint: 11:20</small></article><article><time>11:10</time><h2>Audio edition queued</h2><p>Publishing pipeline ready after transcript validation.</p><small>Owner: Iris · Status: green</small></article></div><aside class="ops-detail"><h2>Current runbook</h2><p>Follow escalation tier two if queue delay exceeds 20 minutes.</p><ul><li>Confirm impact radius</li><li>Assign single owner</li><li>Publish status note</li></ul><button>Open runbook</button></aside></section>
+        <section class="ops-summary">${renderMetric("Open incidents", "6", "-2")}${renderMetric("Deployments", "11", "+4")}${renderMetric("Support load", "74%", "steady")}${renderMetric("SLA clock", "18m", "left")}</section>
+        <section class="ops-board"><aside class="ops-lanes"><b>Queues</b><span class="active">Live incidents</span><span>Scheduled changes</span><span>Customer impact</span><span>Resolved</span><div class="sla-meter"><i></i><small>Tier 2 escalation window</small></div></aside><div class="timeline-stream"><article class="critical"><time>08:20</time><h2>Homepage alert acknowledged</h2><p>Editor traffic spike routed to standby review team.</p><small>Owner: Maya · Severity: medium</small></article><article><time>09:05</time><h2>Subscriber sync delayed</h2><p>Retry window opened, data integrity checks passed.</p><small>Owner: Eli · Watch window: 15 min</small></article><article><time>10:40</time><h2>Policy desk handoff</h2><p>New approval owner assigned for the afternoon edition.</p><small>Owner: Noah · Next checkpoint: 11:20</small></article><article><time>11:10</time><h2>Audio edition queued</h2><p>Publishing pipeline ready after transcript validation.</p><small>Owner: Iris · Status: green</small></article></div><aside class="ops-detail"><h2>Current runbook</h2><p>Follow escalation tier two if queue delay exceeds 20 minutes.</p><ol class="runbook"><li class="done">Confirm impact radius</li><li class="active">Assign single owner</li><li>Publish status note</li><li>Close incident review</li></ol><button>Open runbook</button></aside></section>
       </main>`;
     case "personal-portfolio":
       return `<main class="personal-portfolio-page">
@@ -794,18 +796,48 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   gap: 10px;
   margin: 12px 0;
 }
+.layout-v2 .dash-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #cbd5e1;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+}
+.layout-v2 .dash-filters label {
+  display: grid;
+  gap: 4px;
+  color: #334155;
+  font-size: 12px;
+}
+.layout-v2 .dash-filters input {
+  min-height: 34px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  padding: 0 10px;
+}
 .layout-v2 .dash-main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 12px;
 }
 .layout-v2 .dash-table table { font-size: 12px; }
-.layout-v2 .alert-feed p {
+.layout-v2 .action-queue p {
   margin: 10px 0;
   padding: 12px;
   color: #334155;
   background: #f8fafc;
   border-left: 4px solid #ef4444;
+}
+.layout-v2 .action-queue b,
+.layout-v2 .action-queue span {
+  display: block;
+}
+.layout-v2 .action-queue span {
+  margin-top: 4px;
+  color: #64748b;
 }
 .layout-v2.layout-landing {
   background: linear-gradient(135deg, #fff7ed, #eff6ff);
@@ -1000,7 +1032,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .commerce-filters,
 .layout-v2 .order-drawer,
-.layout-v2 .order-board article {
+.layout-v2 .order-workbench {
   padding: 18px;
   background: #fff;
   border: 1px solid #fde68a;
@@ -1010,23 +1042,54 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   display: block;
   margin: 18px 0;
 }
-.layout-v2 .order-board {
+.layout-v2 .order-workbench {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-content: start;
 }
-.layout-v2 .order-board article {
-  min-height: 210px;
+.layout-v2 .fulfillment-lanes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.layout-v2 .fulfillment-lanes article {
+  min-height: 150px;
+  padding: 16px;
   display: grid;
   align-content: space-between;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
 }
-.layout-v2 .order-board b,
-.layout-v2 .order-board span,
-.layout-v2 .order-board em {
+.layout-v2 .fulfillment-lanes b,
+.layout-v2 .fulfillment-lanes span,
+.layout-v2 .fulfillment-lanes em {
   display: block;
 }
-.layout-v2 .order-board span { font-size: 34px; font-weight: 900; }
+.layout-v2 .fulfillment-lanes span { font-size: 34px; font-weight: 900; }
+.layout-v2 .order-workbench table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.layout-v2 .order-workbench th,
+.layout-v2 .order-workbench td {
+  padding: 12px;
+  text-align: left;
+  border-top: 1px solid #fde68a;
+}
+.layout-v2 .drawer-steps {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.layout-v2 .drawer-steps span {
+  padding: 10px;
+  border-radius: 6px;
+  background: #fef3c7;
+}
+.layout-v2 .drawer-steps .done { color: #166534; }
+.layout-v2 .drawer-steps .active { color: #fff; background: #ca8a04; }
 .layout-v2 .crm-board {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -1084,6 +1147,22 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .analytics-top h1,
 .layout-v2 .analytics-wall h2 { color: #fff; }
+.layout-v2 .analysis-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.layout-v2 .analysis-tabs span {
+  padding: 10px 12px;
+  color: #bfdbfe;
+  background: rgba(15,23,42,.92);
+  border: 1px solid rgba(147,197,253,.22);
+  border-radius: 999px;
+}
+.layout-v2 .analysis-tabs .active {
+  color: #020617;
+  background: #7dd3fc;
+}
 .layout-v2 .filter-chips span {
   display: inline-flex;
   margin-left: 8px;
@@ -1350,6 +1429,24 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   gap: 14px;
   margin-bottom: 16px;
 }
+.layout-v2 .executive-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.layout-v2 .executive-strip article {
+  padding: 16px;
+  color: #312e81;
+  background: #e0e7ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+}
+.layout-v2 .executive-strip b,
+.layout-v2 .executive-strip span {
+  display: block;
+}
+.layout-v2 .executive-strip span { margin-top: 6px; color: #475569; }
 .layout-v2 .admin-overview-panels {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
@@ -1399,9 +1496,35 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .table-toolbar {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto auto;
   gap: 10px;
   margin-bottom: 14px;
+}
+.layout-v2 .selected-row {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.layout-v2 .field-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+.layout-v2 .field-list label {
+  display: grid;
+  gap: 6px;
+  color: #64748b;
+  font-size: 12px;
+}
+.layout-v2 .field-list input {
+  min-height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0 10px;
 }
 .layout-v2 .ops-timeline-shell {
   min-height: 100vh;
@@ -1410,7 +1533,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 }
 .layout-v2 .ops-summary {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   margin: 18px 0;
 }
@@ -1441,10 +1564,40 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
 .layout-v2 .timeline-stream article {
   border-left: 6px solid #3157d5;
 }
+.layout-v2 .timeline-stream article.critical {
+  border-left-color: #dc2626;
+  background: #fff7ed;
+}
 .layout-v2 .timeline-stream time {
   color: #3157d5;
   font-weight: 800;
 }
+.layout-v2 .sla-meter {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid #d9e2ec;
+}
+.layout-v2 .sla-meter i {
+  display: block;
+  height: 10px;
+  width: 68%;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444);
+}
+.layout-v2 .runbook {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+}
+.layout-v2 .runbook li {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+.layout-v2 .runbook .done { color: #166534; background: #dcfce7; }
+.layout-v2 .runbook .active { color: #1d4ed8; background: #dbeafe; }
 .layout-v2 .personal-portfolio-page {
   max-width: 1180px;
   margin: 0 auto;
@@ -2296,6 +2449,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .hero h1, .lead h1, .case-hero h1, .market-hero h1 { font-size: 38px; }
   .layout-v2 .dash-board { margin-left: 0; }
   .layout-v2 .dash-rail { position: static; width: auto; }
+  .layout-v2 .dash-filters,
   .layout-v2 .dash-kpis,
   .layout-v2 .dash-main,
   .layout-v2 .saas-hero,
@@ -2304,7 +2458,9 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .layout-v2 .paper-grid,
   .layout-v2 .paper-columns,
   .layout-v2 .commerce-console,
+  .layout-v2 .fulfillment-lanes,
   .layout-v2 .crm-board,
+  .layout-v2 .analysis-tabs,
   .layout-v2 .signal-grid,
   .layout-v2 .case-artifact,
   .layout-v2 .case-story,
@@ -2314,6 +2470,7 @@ label input[type="checkbox"] { width: auto; min-height: auto; margin-right: 8px;
   .layout-v2 .marketplace-page,
   .layout-v2 .market-grid,
   .layout-v2 .admin-overview-shell,
+  .layout-v2 .executive-strip,
   .layout-v2 .admin-overview-grid,
   .layout-v2 .admin-overview-panels,
   .layout-v2 .master-detail-shell,
