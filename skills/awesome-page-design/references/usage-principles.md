@@ -32,6 +32,27 @@ The non-reusable parts are:
 
 Those must be redesigned for the user's real product and workflow.
 
+## Preview Selection Gate
+
+When the user describes a UI request without naming a visual style or layout framework, the agent should not jump straight into final implementation. First turn the request into a short selection brief, then open or provide the preview gallery so the user can choose.
+
+The selection brief should cover:
+
+- product type
+- page type or primary workflow
+- mood
+- information density
+- light or dark preference when known
+
+For complete pages or app screens, confirm both:
+
+- one visual style prompt
+- one layout framework prompt
+
+The user may also delegate the choice to the agent. In that case, recommend a small shortlist, explain why the options differ, apply the similarity guardrails from the style and layout indexes, and ask for confirmation before final implementation.
+
+If local previews cannot be opened, use `style-index.md` and `layout-index.md` as the text fallback for selection.
+
 ## Selection Heuristics
 
 Use restrained system-like styles for enterprise tools, admin systems, data-heavy apps, and operational dashboards.

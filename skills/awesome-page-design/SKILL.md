@@ -11,6 +11,28 @@ Use this skill to choose and apply visual style directions and page layout frame
 
 This is a UI decision library, not a copy-paste template library. Do not copy sample HTML layouts as the target product layout. Reuse visual style language and layout framework principles, then design the actual structure around the user's product, content priority, workflows, and device needs.
 
+## Required Preview Selection Gate
+
+When the user describes a UI request but has not already chosen a visual style or layout framework, pause before implementing the final UI. First help the user select from the preview gallery.
+
+Use this gate for complete pages, app screens, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce consoles, CRM workspaces, analytics pages, portfolios, onboarding flows, and any task where visual direction or page structure is still undecided.
+
+Required flow:
+
+1. Summarize the user's request as a short selection brief:
+   - product type
+   - primary workflow or page type
+   - desired mood
+   - expected information density
+   - light or dark preference when known
+2. Open or provide the preview gallery URL using the instructions in `Previewing The Included HTML`.
+3. Ask the user to choose by copying a style prompt and, for complete pages or structured screens, a layout prompt from the gallery.
+4. Do not implement the final UI until the user has selected the needed style/layout or has explicitly delegated the choice to the agent.
+5. If the user says the agent should choose, recommend 2-3 style candidates and 1-2 layout candidates, explain the differences briefly, apply the similarity guardrails, and ask for confirmation before final implementation.
+6. If the client cannot open local previews, provide text candidates from `references/style-index.md` and `references/layout-index.md` as the fallback selection surface.
+
+Only skip this gate when the user has already named a specific style/layout, asks only for analysis/review, asks for a tiny component that does not need page-level direction, or explicitly says to choose and proceed without confirmation.
+
 ## Workflow
 
 1. Read `references/usage-principles.md` before applying this library.
@@ -18,18 +40,19 @@ This is a UI decision library, not a copy-paste template library. Do not copy sa
    - visual style only
    - layout framework only
    - both visual style and layout framework
-3. For visual style, read `references/style-index.md` to choose candidate styles.
-4. For page structure, read `references/layout-index.md` to choose candidate layout frameworks.
-5. If the user names a version, style, layout ID, or layout framework, read the matching file in `references/styles/` or `references/layouts/`.
-6. If the user does not name a style, recommend 2-3 visual style candidates based on:
+3. If the needed style or layout is not already selected, run the `Required Preview Selection Gate` before final implementation.
+4. For visual style, read `references/style-index.md` to choose candidate styles.
+5. For page structure, read `references/layout-index.md` to choose candidate layout frameworks.
+6. If the user names a version, style, layout ID, or layout framework, read the matching file in `references/styles/` or `references/layouts/`.
+7. If the user explicitly delegates style choice to the agent, recommend 2-3 visual style candidates based on:
    - product type: marketing, SaaS, admin, developer tool, editorial, commerce, portfolio
    - mood: serious, playful, premium, technical, warm, official, experimental
    - density: sparse editorial, normal product UI, dense operations UI
    - light or dark preference
-7. If the user does not name a layout framework, recommend 1-2 layout candidates based on the page type and workflow.
-8. Implement the UI by combining the selected visual language with the selected layout framework while adapting both to the actual task.
-9. For exact visual comparison, use the PNG and HTML examples in `assets/styles/<style-folder>/` and `assets/layouts/<layout-folder>/`.
-10. When candidate styles or layouts are in the same family, apply the similarity guardrails in `references/style-index.md` and `references/layout-index.md` before recommending one.
+8. If the user explicitly delegates layout choice to the agent, recommend 1-2 layout candidates based on the page type and workflow.
+9. Implement the UI by combining the selected visual language with the selected layout framework while adapting both to the actual task.
+10. For exact visual comparison, use the PNG and HTML examples in `assets/styles/<style-folder>/` and `assets/layouts/<layout-folder>/`.
+11. When candidate styles or layouts are in the same family, apply the similarity guardrails in `references/style-index.md` and `references/layout-index.md` before recommending one.
 
 ## Reference Navigation
 
@@ -148,17 +171,19 @@ If the client cannot open local files directly, tell the user the exact installe
 
 ## Style And Layout Preview Flow
 
-When the user has not chosen a style or layout yet, offer to open the preview gallery so they can compare all 25 visual styles and 20 layout frameworks.
+When the user has not chosen a style or layout yet, open or provide the preview gallery before implementing the final UI so they can compare all 25 visual styles and 20 layout frameworks. Treat this as a required selection step, not a casual optional link, unless the user has explicitly delegated the choice.
 
 Use this flow:
 
-1. Prefer starting a local static server and giving the user a URL.
-2. Use `http://127.0.0.1:<port>/assets/previews/` when running from the source repository or an installed skill directory.
-3. Open `assets/previews/index.html` only when URL serving is not available.
-4. Ask the user to copy a style prompt or layout prompt from the gallery and send it back.
-5. After the user chooses a style, read the matching manual in `references/styles/`.
-6. After the user chooses a layout framework, read the matching manual in `references/layouts/`.
-7. Apply the selected style's visual language and selected layout framework principles, not the sample layout or sample content.
+1. Create a short selection brief from the user's request.
+2. Prefer starting a local static server and giving the user a URL.
+3. Use `http://127.0.0.1:<port>/assets/previews/` when running from the source repository or an installed skill directory.
+4. Open `assets/previews/index.html` only when URL serving is not available.
+5. Ask the user to copy a style prompt or layout prompt from the gallery and send it back.
+6. For complete pages or screens, require both a visual style and a layout framework unless the user only asked for one category.
+7. After the user chooses a style, read the matching manual in `references/styles/`.
+8. After the user chooses a layout framework, read the matching manual in `references/layouts/`.
+9. Apply the selected style's visual language and selected layout framework principles, not the sample layout or sample content.
 
 The gallery cards are designed to expose copyable prompts such as:
 
@@ -175,6 +200,20 @@ Apply its structure, navigation model, density, hierarchy, and required states, 
 ```
 
 If the client can open files, open the gallery for the user. If it cannot, provide the exact path and say: "Open this preview gallery, copy the style or layout prompt you like, and send it back to me."
+
+If the user asks the agent to choose instead of opening the gallery, present a short shortlist rather than a single hidden choice. Example response shape:
+
+```text
+Your request looks like: B2B SaaS analytics dashboard, dense operations workflow, serious/technical tone, light UI.
+
+Open the preview gallery and pick one style + one layout:
+http://127.0.0.1:4173/assets/previews/
+
+Good starting points if you want me to choose:
+- Style R - Carbon Enterprise: best for dense diagnostic tables.
+- Style Q - Fluent Cloud: best for productivity split panes and command bars.
+- Layout L08 - Analytics Command Center: best for charts, anomalies, and drill-down.
+```
 
 ## Layout Framework Selection Flow
 

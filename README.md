@@ -75,12 +75,20 @@ Use awesome-page-design to make this admin panel feel professional but less gene
 The skill will guide the agent to:
 
 1. Read the usage principles.
-2. Choose 2-3 candidate visual styles from the catalog.
-3. Choose a page layout framework when the task needs structure.
-4. Read the matching style and layout notes.
-5. Apply the chosen style through concrete CSS variables, theme tokens, or component classes.
-6. Apply similarity guardrails when candidate styles or layouts belong to the same product-system family.
-7. Redesign the real product layout instead of copying the sample HTML.
+2. Summarize your request as a short selection brief.
+3. Open or provide the preview gallery when no style/layout has been chosen yet.
+4. Ask you to copy a style prompt and, for complete pages, a layout prompt from the gallery.
+5. Recommend a small candidate shortlist only when you explicitly ask the agent to choose.
+6. Read the matching style and layout notes.
+7. Apply the chosen style through concrete CSS variables, theme tokens, or component classes.
+8. Apply similarity guardrails when candidate styles or layouts belong to the same product-system family.
+9. Redesign the real product layout instead of copying the sample HTML.
+
+### Required Selection Gate
+
+For full pages and app screens, the Skill should not silently pick a final look after you describe the requirement. It should first send you to the preview gallery so you can compare the 25 visual styles and 20 layout frameworks, then continue after you select the prompts you want.
+
+If you prefer the agent to choose, say so explicitly. The agent should then propose 2-3 style candidates and 1-2 layout candidates, explain the trade-offs briefly, and ask for confirmation before final implementation.
 
 ## Preview Styles And Layouts
 

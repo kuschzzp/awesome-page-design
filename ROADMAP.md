@@ -14,6 +14,7 @@ The current Skill includes:
 - Design system notes under `references/styles/`.
 - Layout framework notes under `references/layouts/`.
 - Similarity guardrails in `SKILL.md`, `style-index.md`, and `layout-index.md` so related system styles and admin layouts remain distinguishable.
+- A required preview selection gate in `SKILL.md` so agents pause after the user's requirement, open or provide the gallery, and wait for style/layout selection unless explicitly delegated.
 - A bilingual preview gallery with copyable style and layout prompts.
 - A local preview server for source checkouts and installed Skill directories.
 
@@ -177,12 +178,13 @@ The gallery should remain static and offline-friendly.
 
 ## Skill Behavior Improvements
 
-Future versions of `SKILL.md` should help agents choose combinations more reliably:
+`SKILL.md` should keep helping agents choose combinations reliably:
 
 - If the user asks for general UI design, pick a visual style first.
 - If the user asks for page structure, pick a page framework first.
 - If the user asks for a specific UI element, pick a component pattern first.
 - If multiple categories apply, combine them explicitly and explain the mapping.
+- If the user has not chosen a style or layout, use the preview selection gate before final implementation.
 - When multiple candidates are similar, apply the guardrails from the style and layout indexes before recommending one.
 - Always avoid copying demo content or sample layout as production requirements.
 
@@ -207,6 +209,7 @@ Every new asset should pass these checks:
 - Keep the current 25 visual styles.
 - Maintain one source of assets under `skills/awesome-page-design/`.
 - Keep README, Chinese README, preview server, and install docs stable.
+- Keep the preview selection gate clear enough that installed agents know when to wait for user choice.
 
 ### v0.2: Catalog And Contribution Workflow
 
