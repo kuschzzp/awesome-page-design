@@ -5,305 +5,257 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Pulse - Version I: Swiss Editorial</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #fafafa;
-  --card: #ffffff;
-  --text: #111111;
-  --text2: #555555;
-  --text3: #999999;
-  --accent: #e63946;
-  --rule: #111111;
-  --radius: 0;
+  --paper: #f7f7f4;
+  --ink: #111111;
+  --muted: #555;
+  --faint: #8c8c8c;
+  --red: #ed3345;
+  --blue: #1f5eff;
+  --green: #008a5b;
 }
-html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
-  background: var(--bg); color: var(--text); line-height: 1.55;
-  min-height: 100vh; font-weight: 400;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, Helvetica, Arial, sans-serif;
 }
-::selection { background: var(--accent); color: white; }
-
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: var(--card); border-bottom: 1px solid var(--rule);
-  padding: 0 48px; height: 48px;
-  display: flex; align-items: center; justify-content: space-between;
+.masthead {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 220px;
+  align-items: center;
+  min-height: 58px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
 }
-.nav-brand { font-size: 13px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
-.nav-brand span { color: var(--accent); }
-.nav-links { display: flex; gap: 32px; }
-.nav-links a {
-  color: var(--text2); text-decoration: none; font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--text); }
-.nav-links a.active { color: var(--accent); }
-.nav-date {
-  font-size: 10px; font-weight: 500; color: var(--text3);
-  letter-spacing: 0.05em; font-family: monospace;
-}
-
-.main { max-width: 960px; margin: 0 auto; padding: 48px 32px; }
-
-.hero { margin-bottom: 48px; }
-.hero-inner { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
-.hero-main { position: relative; }
-.hero-main .headline {
-  font-size: 42px; font-weight: 900; letter-spacing: -0.04em;
-  line-height: 1.05; margin-bottom: 16px;
-}
-.hero-main .headline .red { color: var(--accent); }
-.hero-main .lead {
-  font-size: 16px; color: var(--text2); line-height: 1.6;
-  margin-bottom: 20px; max-width: 560px;
-}
-.hero-main .byline {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-  text-transform: uppercase; color: var(--text3);
-  display: flex; align-items: center; gap: 16px;
-  border-top: 1px solid var(--rule); padding-top: 12px;
-}
-.hero-main .byline .tag {
-  padding: 2px 6px; background: var(--accent); color: white;
-  font-size: 9px; letter-spacing: 0.1em;
-}
-
-.hero-sidebar { display: flex; flex-direction: column; gap: 0; }
-.hero-side {
-  padding: 16px 0; border-bottom: 1px solid var(--rule);
-  cursor: pointer; transition: background 0.15s; flex: 1;
-}
-.hero-side:hover { background: rgba(230,57,70,0.04); padding-left: 8px; }
-.hero-side .cat {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
-}
-.hero-side .title {
-  font-size: 15px; font-weight: 700; letter-spacing: -0.02em;
-  line-height: 1.35; margin-bottom: 4px;
-}
-.hero-side .meta {
-  font-size: 10px; color: var(--text3); font-family: monospace;
-}
-
-.divider {
-  height: 4px; background: var(--rule); margin-bottom: 32px;
-}
-
-.section-header {
-  display: flex; align-items: baseline; justify-content: space-between;
-  margin-bottom: 24px; border-bottom: 2px solid var(--rule); padding-bottom: 8px;
-}
-.section-title {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
+.brand {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .18em;
   text-transform: uppercase;
 }
-.section-filters { display: flex; gap: 16px; }
-.filter-link {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--text3); cursor: pointer;
-  text-decoration: none; transition: color 0.15s;
+.brand span { color: var(--red); }
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
 }
-.filter-link:hover { color: var(--text); }
-.filter-link.active { color: var(--accent); }
-
-.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 48px; }
-
-.news-card {
-  padding: 20px 16px; border-right: 1px solid var(--rule);
-  cursor: pointer; transition: background 0.15s;
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
-.news-card:last-child { border-right: none; }
-.news-card:hover { background: rgba(230,57,70,0.04); }
-.news-card .card-cat {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; margin-bottom: 10px;
+.nav .active { color: var(--red); }
+.date {
+  justify-self: end;
+  color: var(--faint);
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-.news-card .card-cat.hot { color: var(--accent); }
-.news-card .card-cat.new { color: #22c55e; }
-.news-card .card-cat.policy { color: #f97316; }
-.news-card .card-cat.app { color: #3b82f6; }
-.news-card .card-title {
-  font-size: 16px; font-weight: 700; letter-spacing: -0.02em;
-  line-height: 1.3; margin-bottom: 8px;
+.page {
+  padding: 18px 12px 42px;
 }
-.news-card .card-excerpt {
-  font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 10px;
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0;
+  border-bottom: 4px solid var(--ink);
 }
-.news-card .card-footer {
-  font-size: 10px; color: var(--text3); font-family: monospace;
-  letter-spacing: 0.02em;
+.headline {
+  grid-column: span 8;
+  padding: 22px 28px 22px 0;
+  border-right: 1px solid var(--ink);
 }
-
-.trending { margin-bottom: 48px; }
-.trending-header {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
-  text-transform: uppercase; border-bottom: 2px solid var(--rule);
-  padding-bottom: 8px; margin-bottom: 16px;
+.headline h1 {
+  max-width: 1080px;
+  font-size: clamp(70px, 8.8vw, 138px);
+  line-height: .84;
+  letter-spacing: -.065em;
 }
-.trending-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.trending-item {
-  padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
-  display: flex; align-items: baseline; gap: 12px;
-  cursor: pointer; transition: background 0.15s;
+.headline h1 span { color: var(--red); }
+.headline p {
+  max-width: 920px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.55;
 }
-.trending-item:hover { padding-left: 8px; background: rgba(230,57,70,0.04); }
-.trending-rank {
-  font-size: 24px; font-weight: 900; color: var(--accent); line-height: 1;
-  width: 40px;
+.meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
-.trending-title { font-size: 13px; font-weight: 600; flex: 1; letter-spacing: -0.01em; }
-.trending-count { font-size: 10px; color: var(--text3); font-family: monospace; }
-
-.subscribe {
-  background: var(--accent); color: white; padding: 24px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 48px;
+.meta b {
+  padding: 3px 7px;
+  background: var(--red);
+  color: white;
 }
-.subscribe .sub-title {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 4px;
+.side {
+  grid-column: span 4;
+  display: grid;
 }
-.subscribe .sub-desc { font-size: 13px; opacity: 0.85; }
-.subscribe .sub-form { display: flex; gap: 8px; }
-.subscribe .sub-input {
-  padding: 8px 14px; background: white; border: none;
-  font-size: 12px; outline: none; width: 200px; color: var(--text);
+.side article {
+  min-height: 160px;
+  padding: 20px 0 20px 26px;
+  border-bottom: 1px solid var(--ink);
 }
-.subscribe .sub-input::placeholder { color: var(--text3); }
-.subscribe .sub-btn {
-  padding: 8px 20px; background: var(--text); color: white;
-  border: none; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+.side article:last-child { border-bottom: 0; }
+.cat {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
-
-.footer {
-  border-top: 4px solid var(--rule); padding: 24px 48px;
-  max-width: 960px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+.side h2 {
+  margin-top: 12px;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -.035em;
 }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { color: var(--text3); text-decoration: none; }
-.footer-links a:hover { color: var(--accent); }
-
-@media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .news-grid { grid-template-columns: repeat(2, 1fr); }
+.side p {
+  margin-top: 10px;
+  color: var(--faint);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-@media (max-width: 768px) {
-  .nav { padding: 0 16px; }
-  .nav-links { gap: 16px; }
-  .main { padding: 32px 16px; }
-  .hero-main .headline { font-size: 32px; }
-  .news-grid { grid-template-columns: 1fr; }
-  .news-card { border-right: none; border-bottom: 1px solid var(--rule); }
-  .trending-list { grid-template-columns: 1fr; }
-  .subscribe { flex-direction: column; gap: 16px; align-items: flex-start; }
-  .subscribe .sub-form { width: 100%; }
-  .subscribe .sub-input { flex: 1; width: auto; }
-  .footer { flex-direction: column; gap: 16px; }
+.red-band {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  margin: 32px 0;
+  padding: 22px 32px;
+  background: var(--red);
+  color: white;
+}
+.red-band b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.red-band input {
+  min-height: 42px;
+  width: 240px;
+  border: 0;
+  padding: 0 12px;
+  font: inherit;
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+}
+.section-head h2 {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.filters {
+  display: flex;
+  gap: 16px;
+  color: var(--faint);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.filters span:first-child { color: var(--red); }
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-left: 1px solid var(--ink);
+}
+.story {
+  min-height: 248px;
+  padding: 24px 18px;
+  border-right: 1px solid var(--ink);
+}
+.story:nth-child(n + 5) {
+  border-top: 1px solid var(--ink);
+}
+.story h3 {
+  margin-top: 18px;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+}
+.story p {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.story small {
+  display: block;
+  margin-top: 20px;
+  color: var(--faint);
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.cat.green { color: var(--green); }
+.cat.blue { color: var(--blue); }
+.cat.orange { color: #e56b00; }
+@media (max-width: 980px) {
+  .masthead { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+  .nav { justify-content: start; overflow: auto; }
+  .date { justify-self: start; }
+  .headline, .side { grid-column: span 12; border-right: 0; }
+  .side article { padding-left: 0; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story { border-bottom: 1px solid var(--ink); }
+  .red-band { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-brand">AI <span>PULSE</span></div>
-  <div class="nav-links">
-    <a href="#" class="active">Home</a>
-    <a href="#">Models</a>
-    <a href="#">Applications</a>
-    <a href="#">Research</a>
-    <a href="#">Policy</a>
-  </div>
-  <div class="nav-date" id="dateEl"></div>
-</nav>
-
-<main class="main">
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-main">
-        <div class="headline">AI Daily Brief: <span class="red">Daily Operations</span></div>
-        <div class="lead">Today's AI news is focused on practical deployment: multimodal agents are entering office workflows, smaller open models are moving to devices, and enterprises are tightening governance around production systems.</div>
-        <div class="byline">
-          <span class="tag">Breaking</span>
-          <span>3 min ago</span>
-          <span>12.4k reads</span>
-          <span>OpenAI Official</span>
-        </div>
-      </div>
-      <div class="hero-sidebar">
-        <div class="hero-side"><div class="cat">Models</div><div class="title">Google DeepMind previews Gemini 2.0 with native multimodal interaction</div><div class="meta">2h · 8.2k</div></div>
-        <div class="hero-side"><div class="cat">Industry</div><div class="title">AI adoption broadens as enterprises move pilots into production</div><div class="meta">5h · 6.5k</div></div>
-        <div class="hero-side"><div class="cat">Research</div><div class="title">Neuro-symbolic research improves structured reasoning benchmarks</div><div class="meta">8h · 4.1k</div></div>
-      </div>
-    </div>
+<header class="masthead">
+  <div class="brand">AI <span>Pulse</span></div>
+  <nav class="nav"><a class="active" href="#">Home</a><a href="#">Models</a><a href="#">Applications</a><a href="#">Research</a><a href="#">Policy</a></nav>
+  <div class="date">2026.05.26</div>
+</header>
+<main class="page">
+  <section class="issue-grid">
+    <article class="headline">
+      <h1>AI Daily Brief: <span>Daily Operations</span></h1>
+      <p>Today's AI news is focused on practical deployment: multimodal agents enter office workflows, smaller models move to devices, and enterprises tighten governance around production systems.</p>
+      <div class="meta"><b>Breaking</b><span>3 min ago</span><span>12.4k reads</span><span>OpenAI official</span></div>
+    </article>
+    <aside class="side">
+      <article><span class="cat">Models</span><h2>Google DeepMind previews native multimodal interaction.</h2><p>2h · 8.2k</p></article>
+      <article><span class="cat">Industry</span><h2>AI adoption broadens as enterprises move pilots into production.</h2><p>5h · 6.5k</p></article>
+      <article><span class="cat">Research</span><h2>Benchmarks improve structured reasoning checks.</h2><p>8h · 4.1k</p></article>
+    </aside>
   </section>
-
-  <div class="divider"></div>
-
-  <div class="subscribe">
-    <div>
-      <div class="sub-title">Subscribe AI Pulse</div>
-      <div class="sub-desc">Open small models accelerate on-device inference</div>
-    </div>
-    <div class="sub-form">
-      <input class="sub-input" type="email" placeholder="your@email.com">
-      <button class="sub-btn">Subscribe</button>
-    </div>
-  </div>
-
-  <section>
-    <div class="section-header">
-      <div class="section-title">AI Daily Brief</div>
-      <div class="section-filters">
-        <a class="filter-link active">All</a>
-        <a class="filter-link">Models</a>
-        <a class="filter-link">Applications</a>
-        <a class="filter-link">Research</a>
-        <a class="filter-link">Policy</a>
-      </div>
-    </div>
-    <div class="news-grid">
-      <div class="news-card"><div class="card-cat hot">Trending</div><div class="card-title">Anthropic expands reasoning depth and safety controls in Claude</div><div class="card-excerpt">Anthropic expands reasoning depth and safety controls in Claude</div><div class="card-footer">Anthropic · 1h</div></div>
-      <div class="news-card"><div class="card-cat new">New</div><div class="card-title">Open model releases intensify the debate over local and hosted AI</div><div class="card-excerpt">Apple's MLX stack improves local inference on consumer devices</div><div class="card-footer">Apple · 2h</div></div>
-      <div class="news-card"><div class="card-cat policy">Policy</div><div class="card-title">EU AI rules push high-risk systems toward stronger transparency</div><div class="card-excerpt">EU AI rules push high-risk systems toward stronger transparency</div><div class="card-footer">EU · 3h</div></div>
-      <div class="news-card"><div class="card-cat app">Applications</div><div class="card-title">Clinical AI tools move closer to everyday diagnostic workflows</div><div class="card-excerpt">Clinical AI tools move closer to everyday diagnostic workflows</div><div class="card-footer">MedAI · 4h</div></div>
-      <div class="news-card"><div class="card-cat hot">Trending</div><div class="card-title">Open model releases intensify the debate over local and hosted AI</div><div class="card-excerpt">Teams are using AI to move from requirements to prototypes, visual systems, and frontend implementation notes in one shared loop.</div><div class="card-footer">Meta · 5h</div></div>
-      <div class="news-card"><div class="card-cat new">New</div><div class="card-title">Quantum-assisted AI research shows promise in molecular simulation</div><div class="card-excerpt">Quantum-assisted AI research shows promise in molecular simulation</div><div class="card-footer">IBM · 6h</div></div>
-    </div>
+  <section class="red-band">
+    <div><b>Subscribe AI Pulse</b><span>Open small models accelerate on-device inference</span></div>
+    <input value="your@email.com">
   </section>
-
-  <section class="trending">
-    <div class="trending-header">Trending</div>
-    <div class="trending-list">
-      <div class="trending-item"><div class="trending-rank">1</div><div class="trending-title">AI Daily Brief: Foundation Models Move From Demos To Daily Operations</div><div class="trending-count">24.5k</div></div>
-      <div class="trending-item"><div class="trending-rank">2</div><div class="trending-title">Open model releases intensify the debate over local and hosted AI</div><div class="trending-count">18.3k</div></div>
-      <div class="trending-item"><div class="trending-rank">3</div><div class="trending-title">EU AI rules push high-risk systems toward stronger transparency</div><div class="trending-count">15.1k</div></div>
-      <div class="trending-item"><div class="trending-rank">4</div><div class="trending-title">Multimodal agents begin handling complex office workflows</div><div class="trending-count">12.7k</div></div>
-      <div class="trending-item"><div class="trending-rank">5</div><div class="trending-title">Quantum-assisted AI research shows promise in molecular simulation</div><div class="trending-count">9.8k</div></div>
-      <div class="trending-item"><div class="trending-rank">6</div><div class="trending-title">Anthropic expands reasoning depth and safety controls in Claude</div><div class="trending-count">8.1k</div></div>
-    </div>
+  <header class="section-head"><h2>AI Daily Brief</h2><div class="filters"><span>All</span><span>Models</span><span>Applications</span><span>Research</span><span>Policy</span></div></header>
+  <section class="story-grid">
+    <article class="story"><span class="cat">Trending</span><h3>Anthropic expands reasoning depth and safety controls in Claude.</h3><p>Anthropic expands reasoning depth and safety controls in Claude.</p><small>Anthropic · 1h</small></article>
+    <article class="story"><span class="cat green">New</span><h3>Open model releases intensify the debate over local and hosted AI.</h3><p>Apple's MLX stack improves local inference on consumer devices.</p><small>Apple ML · 2h</small></article>
+    <article class="story"><span class="cat orange">Policy</span><h3>EU AI rules push high-risk systems toward stronger transparency.</h3><p>EU AI rules push high-risk systems toward stronger transparency.</p><small>EU · 3h</small></article>
+    <article class="story"><span class="cat blue">Applications</span><h3>Clinical AI tools move closer to everyday diagnostic workflows.</h3><p>Clinical AI tools move closer to everyday diagnostic workflows.</p><small>MedAI · 4h</small></article>
+    <article class="story"><span class="cat">Trending</span><h3>Teams use AI to move from requirements to prototypes.</h3><p>Visual systems, frontend implementation notes, and review loops converge.</p><small>Meta · 5h</small></article>
+    <article class="story"><span class="cat green">New</span><h3>Quantum-assisted AI research shows promise in simulation.</h3><p>Quantum-assisted AI research shows promise in molecular simulation.</p><small>IBM · 6h</small></article>
+    <article class="story"><span class="cat orange">Governance</span><h3>Procurement teams demand stronger audit trails for model use.</h3><p>Enterprise buyers ask for logs, role controls, and evidence exports.</p><small>Ops · 7h</small></article>
+    <article class="story"><span class="cat blue">Tools</span><h3>Developer copilots shift toward task-level automation.</h3><p>Tool calling, review gates, and source-linked traces define new workflows.</p><small>Dev · 8h</small></article>
   </section>
 </main>
-
-<footer class="footer">
-  <div>AI Pulse © 2026</div>
-  <div class="footer-links"><a href="#">About</a><a href="#">Submit</a><a href="#">API</a><a href="#">Privacy</a></div>
-</footer>
-
-<script>
-const d = new Date();
-document.getElementById('dateEl').textContent = `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
-document.querySelectorAll('.filter-link').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-link').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-</script>
 </body>
 </html>

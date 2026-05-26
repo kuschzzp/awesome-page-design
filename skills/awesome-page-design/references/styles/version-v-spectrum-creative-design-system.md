@@ -4,26 +4,29 @@
 
 ## 1. Style Definition And Core Mood
 
-Spectrum Creative is a light web UI direction for creative software, media tools, asset managers. Its visual personality is creative, tool-like, media-aware. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
+Spectrum Creative is a dark creative-workspace UI direction for creative software, media tools, and asset managers. Its visual personality is creative, tool-like, canvas-first, and media-aware. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
 ## 2. Color System
 
 | Token | Value |
 |---|---|
-| `--bg` | `#f8f8f8` |
-| `--surface` | `#ffffff` |
-| `--surface-2` | `#f1f1f1` |
-| `--text` | `#292929` |
-| `--muted` | `#6d6d6d` |
+| `--bg` | `#202020` |
+| `--surface` | `#2f2f2f` |
+| `--surface-2` | `#1f1f1f` |
+| `--text` | `#f8f8f8` |
+| `--muted` | `#bdbdbd` |
 | `--accent` | `#5258e4` |
-| `--accent-2` | `#4046ca` |
-| `--line` | `#d8d8d8` |
-| `--soft` | `#eeeeff` |
+| `--accent-2` | `#8ea0ff` |
+| `--line` | `#474747` |
+| `--soft` | `#34345f` |
 | `--success` | `#12805c` |
 | `--warning` | `#d7373f` |
+| `--media-rose` | `#ff7eb6` |
+| `--media-cyan` | `#65f4e6` |
+| `--media-yellow` | `#ffe172` |
 | `--radius` | `18px` |
 | `--radius-sm` | `10px` |
-| `--shadow` | `0 6px 20px rgba(0,0,0,0.08)` |
+| `--shadow` | `0 18px 40px rgba(0,0,0,0.22)` |
 | `--font` | `'Adobe Clean', 'Segoe UI', Arial, sans-serif` |
 
 Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
@@ -37,7 +40,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: Adobe-like neutral UI, indigo accent, creative panels and media grids. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: dark creative tool rail, layer stack, artboard canvas, review pins, properties inspector, and media asset grid. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -71,20 +74,23 @@ Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
-  --bg: #f8f8f8;
-  --surface: #ffffff;
-  --surface-2: #f1f1f1;
-  --text: #292929;
-  --muted: #6d6d6d;
+  --bg: #202020;
+  --surface: #2f2f2f;
+  --surface-2: #1f1f1f;
+  --text: #f8f8f8;
+  --muted: #bdbdbd;
   --accent: #5258e4;
-  --accent-2: #4046ca;
-  --line: #d8d8d8;
-  --soft: #eeeeff;
+  --accent-2: #8ea0ff;
+  --line: #474747;
+  --soft: #34345f;
   --success: #12805c;
   --warning: #d7373f;
+  --media-rose: #ff7eb6;
+  --media-cyan: #65f4e6;
+  --media-yellow: #ffe172;
   --radius: 18px;
   --radius-sm: 10px;
-  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --shadow: 0 18px 40px rgba(0,0,0,0.22);
   --font: 'Adobe Clean', 'Segoe UI', Arial, sans-serif;
 }
 ```
@@ -93,11 +99,11 @@ Then map those variables onto real product components instead of copying the sam
 
 ## 10. Suitable And Unsuitable Use Cases
 
-Best suited for creative software, media tools, asset managers. Avoid using this style when the brand, audience, or product density conflicts with its personality: creative, tool-like, media-aware.
+Best suited for creative software, media tools, and asset managers. Avoid using this style when the brand, audience, or product density conflicts with its personality: creative, tool-like, canvas-first, and media-aware.
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Spectrum Creative is defined by Adobe-like neutral UI, indigo accent, creative panels and media grids. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Spectrum Creative is defined by a dark creative tool rail, layer stack, artboard canvas, review pins, properties inspector, and media asset grid. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

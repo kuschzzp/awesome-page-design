@@ -4,7 +4,7 @@
 
 ## 1. Style Definition And Core Mood
 
-Lightning CRM is a light web UI direction for CRM, sales tools, customer operations. Its visual personality is business-ready, compact, operational. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
+Lightning CRM is a China CRM-like web UI direction for CRM, sales tools, and customer operations. Its visual personality is business-ready, compact, operational, and record-centered. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
 ## 2. Color System
 
@@ -37,7 +37,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: light app shell, Salesforce-like blue, compact business cards and statuses. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: China CRM-like blue side rail, customer 360, sales path, account profile, opportunity lists, follow-up timeline, receipt, and approval panels. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -93,11 +93,11 @@ Then map those variables onto real product components instead of copying the sam
 
 ## 10. Suitable And Unsuitable Use Cases
 
-Best suited for CRM, sales tools, customer operations. Avoid using this style when the brand, audience, or product density conflicts with its personality: business-ready, compact, operational.
+Best suited for CRM, sales tools, and customer operations. Avoid using this style when the brand, audience, or product density conflicts with its personality: business-ready, compact, operational, and record-centered.
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Lightning CRM is defined by light app shell, Salesforce-like blue, compact business cards and statuses. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Lightning CRM is defined by a China CRM-like blue side rail, customer 360 context, sales path, account profile, opportunity lists, and follow-up timeline. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

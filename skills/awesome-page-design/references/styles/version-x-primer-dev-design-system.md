@@ -4,7 +4,7 @@
 
 ## 1. Style Definition And Core Mood
 
-Primer Dev is a light web UI direction for developer platforms, docs, repo browsers, issue trackers. Its visual personality is developer-native, structured, repository-like. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
+Primer Dev is a light developer-platform UI direction for repositories, docs, source browsers, package hubs, plugin directories, issue trackers, CI surfaces, and release pages. Its visual personality is developer-native, structured, repository-like, and text-and-state driven. The preview uses a GitHub-style repository header, repo tabs, stats pills, CI status cards, branch toolbar, file list, README panel, about sidebar, release card, issue labels, language dots, activity strip, and security/status panels. Reuse that repo-browser language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
 ## 2. Color System
 
@@ -37,7 +37,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: GitHub-like borders, blue links, monospace labels, code-oriented sections. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: GitHub-like borders, repo tabs, CI status cards, branch toolbars, file lists, README panels, blue links, issue labels, release cards, and code-oriented metadata. Preserve the depth model that defines the style. Avoid decorative SaaS dashboards when a repository, file tree, README, issue list, release surface, or action status would be clearer.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -45,7 +45,7 @@ Decorative details should reinforce the style rather than become layout requirem
 
 ## 6. Visual Rhythm And Spacing Hints
 
-Use the preview as a density reference only. Do not copy its information architecture, module order, grid strategy, or navigation model. Rebuild spacing around the actual user task.
+Use the preview as a density reference only. It demonstrates a developer product surface: repo identity at the top, navigation tabs, CI/review summary cards, file table, README body, sidebar metadata, release information, issue labels, and workflow status strips. Do not copy its information architecture directly; rebuild spacing and grouping around the actual developer workflow.
 
 ## 7. Responsive Strategy
 
@@ -58,9 +58,9 @@ Use the preview as a density reference only. Do not copy its information archite
 
 | Component | Guidance |
 |---|---|
-| Navigation | Use repo tabs, file trees, issue navigation, and code-oriented sections. |
+| Navigation | Use repo tabs, branch/file toolbars, file trees, issue navigation, action tabs, and code-oriented sections. |
 | Buttons | Use restrained actions with developer-platform clarity. |
-| Cards | Use code panels, file lists, issue cards, and contribution surfaces. |
+| Cards | Use CI cards, README panels, file lists, release cards, issue cards, language summaries, and contribution surfaces. |
 | Tags | Use issue labels, language dots, and monospace metadata. |
 | Inputs | Search should support repos, files, issues, and commands. |
 | Tables | Use file lists, diffs, issue tables, and audit logs. |
@@ -93,11 +93,11 @@ Then map those variables onto real product components instead of copying the sam
 
 ## 10. Suitable And Unsuitable Use Cases
 
-Best suited for developer platforms, docs, repo browsers, issue trackers. Avoid using this style when the brand, audience, or product density conflicts with its personality: developer-native, structured, repository-like.
+Best suited for developer platforms, docs, repo browsers, package hubs, plugin directories, issue trackers, API portals, CI dashboards, and release pages. Avoid using this style when the brand, audience, or product density conflicts with its personality: developer-native, structured, repository-like.
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Primer Dev is defined by GitHub-like borders, blue links, monospace labels, code-oriented sections. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Primer Dev is defined by its repo header, navigation tabs, CI cards, branch toolbar, file list, README panel, release sidebar, issue labels, activity strip, and code metadata. It should feel like a developer platform, not a generic neutral dashboard.
 
 ## 12. Variant Suggestions
 

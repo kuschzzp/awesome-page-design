@@ -6,12 +6,14 @@ Use this framework for portfolios, studio case studies, product launch stories, 
 
 ## Structure
 
-- Project hero with name, role, timeframe, and outcome.
-- Problem/context section.
-- Process or exploration section.
-- Visual evidence: screens, artifacts, diagrams, or prototypes.
-- Results and metrics.
-- Reflection or lessons.
+- Portfolio navigation and next-project action.
+- Sticky project metadata with role, team, timeline, and shipped scope.
+- Narrative hero that states the product problem and audience.
+- Visual evidence: prototype frame, artifacts, diagrams, or shipped screens.
+- Outcome panel with multiple metrics.
+- Problem, research, design move, and result story cards.
+- Evidence strip that names research artifacts, prototype diffs, and release metrics.
+- Reflection, lessons, or what shipped section.
 - Next project navigation.
 
 ## Required States
@@ -36,3 +38,4 @@ I Swiss Editorial, M Resonant Stark, V Spectrum Creative, O Human Scribble, F Ne
 - Generic marketing copy without project evidence.
 - Hiding outcomes.
 - Overusing cards inside a story.
+- Presenting a portfolio case study as only a hero and four generic cards.

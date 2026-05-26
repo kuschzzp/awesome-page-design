@@ -6,12 +6,14 @@ Use this framework for merchant tools, order management, inventory systems, prod
 
 ## Structure
 
-- App shell with store/account context.
-- Resource list with filters, saved views, and bulk actions.
-- Status chips for order, inventory, payment, or fulfillment state.
-- Detail drawer or detail page for selected resource.
-- Activity timeline and notes.
-- Primary operational actions near the resource context.
+- App shell with store/account context and primary order actions.
+- Saved views, filters, and bulk actions in the left rail.
+- Order analytics strip for volume, item count, returns, and fulfillment speed.
+- Search/filter/sort/column toolbar above the resource table.
+- Fulfillment lanes for paid, packed, shipped, and returns states.
+- Order table with channel, inventory, fulfillment chip, and total.
+- Detail drawer for selected order, customer context, fulfillment progress, notes, and staff actions.
+- Inventory alerts, fulfillment timeline, and operational notes below the table.
 
 ## Required States
 
@@ -20,6 +22,8 @@ Use this framework for merchant tools, order management, inventory systems, prod
 - Empty resource list.
 - Sync/import progress.
 - Destructive action confirmation.
+- Selected order drawer state.
+- Inventory risk or hold state.
 
 ## Responsive Behavior
 
@@ -35,4 +39,5 @@ S Polaris Commerce, Y Ant Pro, W Lightning CRM, Q Fluent Cloud.
 
 - Marketing page composition.
 - Status labels without clear meaning.
+- Large empty panels that do not support order work.
 - Actions far away from selected resources.

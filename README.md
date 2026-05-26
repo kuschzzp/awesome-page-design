@@ -61,6 +61,26 @@ npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesom
 npx skills add ./ -g --skill awesome-page-design -a codex
 ```
 
+### Update An Installed Skill
+
+Update the globally installed skill to the latest version:
+
+```bash
+npx skills update awesome-page-design -g -y
+```
+
+Update the project-installed skill instead:
+
+```bash
+npx skills update awesome-page-design -p -y
+```
+
+Update all installed global skills:
+
+```bash
+npx skills update -g -y
+```
+
 ## Quick Start
 
 After installation, ask your agent to use the skill:
@@ -144,6 +164,7 @@ skills/awesome-page-design/
 ├── agents/
 │   └── openai.yaml                  # Agent metadata
 ├── references/
+│   ├── workflow.md                  # Required preview selection and implementation workflow
 │   ├── usage-principles.md          # How to use the library correctly
 │   ├── style-index.md               # Short catalog of all styles
 │   ├── layout-index.md              # Short catalog of page layout frameworks
@@ -163,12 +184,12 @@ skills/awesome-page-design/
 | A | Classic News | News, content sites, authority pages | Light blue-gray canvas, indigo accent, Inter, fine borders, soft shadows |
 | B | Card Grid | Dashboards, catalogs, overview pages | Card grid rhythm, search, stats, lightweight data tone |
 | C | Feed Layout | Feeds, communities, updates, article streams | Single-column feed, cyan accent, expandable cards, soft dividers |
-| D | Bento Grid | Product showcases, Apple-like overview pages | Apple gray, blue accent, large radius, bento surfaces |
-| E | Glassmorphism | Immersive dark landing pages, AI products | Deep purple gradient, translucent glass, cyan highlights, blur |
+| D | Bento Grid | Product showcases, operational product overviews | Left-edge app rail, full-bleed bento wall, unequal tiles, compact top tabs |
+| E | Glassmorphism | Immersive dark landing pages, AI products | Liquid glass cockpit, translucent dock, atmospheric grid, luminous orb |
 | F | Neo-Brutalism | Bold campaigns, indie products, playful utilities | Warm yellow, thick black borders, hard shadows, saturated labels |
 | G | Aurora Gradient | Futuristic products, AI tools, premium dark experiences | Dark canvas, aurora gradients, soft glow, drifting motion |
 | H | Retro Y2K | Music, fashion, youth culture, campaigns | Candy gradients, neon details, retro display type, sparkle energy |
-| I | Swiss Editorial | Portfolios, cultural sites, serious content | Pure white, red accent, Helvetica, strict grid, no shadow |
+| I | Swiss Editorial | Portfolios, cultural sites, serious content | Tight 12-column editorial grid, red-black hierarchy, rule lines, minimal gutters |
 | J | Terminal Hacker | Developer tools, CLI products, security, open source | Black canvas, terminal green, monospace, scanlines |
 | K | Claymorphism | Education, wellness, friendly SaaS | Lavender background, Nunito type, soft inner and outer shadows |
 | L | Cute-alism | Playful brands, creator tools, youth products | Neon yellow, pink hard shadow, sticker mood, soft-hard contrast |
@@ -176,15 +197,15 @@ skills/awesome-page-design/
 | N | Light Skeuomorphism | Apple-like tools, device apps, tactile UI | Apple gray, embossed surfaces, inset controls |
 | O | Human Scribble | Workshops, education, maker pages, notes | Warm paper, hand-drawn fonts, dashed borders, marker highlights |
 | P | Material You | Android-like apps, general tools, lifestyle products | Material 3 purple, dynamic color feel, rounded surfaces |
-| Q | Fluent Cloud | Productivity tools, cloud consoles, desktop apps | Segoe UI, neutral surfaces, blue action color, light depth |
-| R | Carbon Enterprise | Enterprise software, data platforms, industrial systems | IBM-like grays, blue action color, square boundaries, high density |
-| S | Polaris Commerce | Merchant tools, ecommerce admin, operations | Warm neutrals, green actions, resource-list clarity |
-| T | Atlassian Workbench | Collaboration tools, project management, team dashboards | Collaborative blue, lozenge tags, workbench surfaces |
-| U | Gov Service | Public service, legal, forms, accessibility-first sites | High contrast, black dividers, blue links, yellow focus states |
-| V | Spectrum Creative | Creative software, asset managers, media tools | Adobe-like neutral UI, indigo accent, media grids |
-| W | Lightning CRM | CRM, sales tools, support, customer operations | Light app shell, Salesforce-like blue, compact business cards |
-| X | Primer Dev | Developer platforms, docs, repos, issue trackers | GitHub-like borders, blue links, monospace labels |
-| Y | Ant Pro | Enterprise admin, management consoles, data tables | Ant Design blue, thin borders, white cards, stable states |
+| Q | Fluent Cloud | Productivity tools, cloud consoles, desktop apps | Icon rail, app nav, command bar, message bar, split panes, presence |
+| R | Carbon Enterprise | Enterprise software, data platforms, industrial systems | Dark enterprise side nav, tabbed command area, dense table, diagnostic queue |
+| S | Polaris Commerce | Merchant tools, ecommerce admin, operations | Merchant side nav, saved views, filter toolbar, bulk action bar, resource rows |
+| T | Atlassian Workbench | Collaboration tools, project management, team dashboards | Jira-like project nav, sprint columns, lozenge issue cards, detail panel |
+| U | Gov Service | Public service, legal, forms, accessibility-first sites | GOV.UK-style header, beta and warning bars, task list, summary list |
+| V | Spectrum Creative | Creative software, asset managers, media tools | Dark creative rail, layer stack, artboard canvas, review pins, properties inspector |
+| W | Lightning CRM | CRM, sales tools, support, customer operations | China CRM-like blue rail, customer 360, sales path, account profile, opportunities |
+| X | Primer Dev | Developer platforms, docs, repos, issue trackers | GitHub-style repo header, repo tabs, branch toolbar, file list, README panel |
+| Y | Ant Pro | Enterprise admin, management consoles, data tables | Ant Design Pro shell, query form, KPI cards, ProTable, drawer, timeline |
 
 ## Pick A Style By Product Type
 
@@ -232,7 +253,7 @@ Layout frameworks describe page structure and workflow. They can be used alone o
 | L11 | Onboarding Wizard | Setup flows, imports, activation |
 | L12 | Marketplace Catalog | App stores, templates, resources, product catalogs |
 | L13 | Admin Overview Command Center | SaaS admin homepages, executive operations overview |
-| L14 | Master Detail Admin Table | Resource management, users, approvals, database-like admin UI |
+| L14 | Master Detail Admin Table | Evidence libraries, resource management, approvals, database-like admin UI |
 | L15 | Operations Timeline Console | Incident operations, deployments, support workflows |
 | L16 | Personal Portfolio Home | Designers, engineers, consultants, personal brand sites |
 | L17 | Personal Writing Home | Blogs, newsletters, independent researchers, creators |

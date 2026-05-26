@@ -37,7 +37,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: Ant Design blue, thin borders, neutral enterprise surfaces, stable states. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: Ant Design Pro shell, breadcrumb header, query form, KPI cards, alert, ProTable, drawer details, steps, timeline, and quick actions. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -97,7 +97,7 @@ Best suited for enterprise admin, data tables, management consoles. Avoid using 
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Ant Pro is defined by Ant Design blue, thin borders, neutral enterprise surfaces, stable states. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Ant Pro is defined by an Ant Design Pro shell, breadcrumb header, query form, KPI cards, alert, ProTable, drawer details, steps, timeline, and quick actions. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

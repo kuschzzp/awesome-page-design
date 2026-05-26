@@ -4,30 +4,23 @@
 
 ## 1. Style Definition And Core Mood
 
-Bento Grid is a light web UI direction for product showcases, Apple-like overview pages. Its visual personality is polished, spacious, product-led. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
+Bento Grid is a light web UI direction for product showcases and operational product overviews. Its visual personality is full-bleed, modular, product-led, and dense enough to avoid empty hero whitespace. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
 ## 2. Color System
 
 | Token | Value |
 |---|---|
-| `--bg` | `#f5f5f7` |
-| `--card` | `#ffffff` |
-| `--card-dark` | `#1d1d1f` |
-| `--text` | `#1d1d1f` |
-| `--text2` | `#6e6e73` |
-| `--text3` | `#86868b` |
-| `--blue` | `#0071e3` |
-| `--blue-bg` | `rgba(0,113,227,0.08)` |
-| `--green` | `#34c759` |
-| `--green-bg` | `rgba(52,199,89,0.08)` |
-| `--red` | `#ff3b30` |
-| `--red-bg` | `rgba(255,59,48,0.08)` |
-| `--orange` | `#ff9500` |
-| `--orange-bg` | `rgba(255,149,0,0.08)` |
-| `--purple` | `#af52de` |
-| `--purple-bg` | `rgba(175,82,222,0.08)` |
-| `--border` | `rgba(0,0,0,0.04)` |
-| `--radius` | `20px` |
+| `--bg` | `#f4f2ee` |
+| `--ink` | `#101114` |
+| `--muted` | `#6d6f75` |
+| `--line` | `#d7d2c8` |
+| `--panel` | `#ffffff` |
+| `--soft` | `#ebe6dc` |
+| `--blue` | `#2458ff` |
+| `--green` | `#0f8a5f` |
+| `--orange` | `#d97706` |
+| `--red` | `#e23b45` |
+| `--radius` | `18px` |
 
 Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
 
@@ -40,7 +33,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: Apple gray, blue accent, large radius, bento surfaces. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: left-edge app rail, full-bleed bento wall, unequal product tiles, metric blocks, and compact top tabs. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -75,24 +68,17 @@ Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
-  --bg: #f5f5f7;
-  --card: #ffffff;
-  --card-dark: #1d1d1f;
-  --text: #1d1d1f;
-  --text2: #6e6e73;
-  --text3: #86868b;
-  --blue: #0071e3;
-  --blue-bg: rgba(0,113,227,0.08);
-  --green: #34c759;
-  --green-bg: rgba(52,199,89,0.08);
-  --red: #ff3b30;
-  --red-bg: rgba(255,59,48,0.08);
-  --orange: #ff9500;
-  --orange-bg: rgba(255,149,0,0.08);
-  --purple: #af52de;
-  --purple-bg: rgba(175,82,222,0.08);
-  --border: rgba(0,0,0,0.04);
-  --radius: 20px;
+  --bg: #f4f2ee;
+  --ink: #101114;
+  --muted: #6d6f75;
+  --line: #d7d2c8;
+  --panel: #ffffff;
+  --soft: #ebe6dc;
+  --blue: #2458ff;
+  --green: #0f8a5f;
+  --orange: #d97706;
+  --red: #e23b45;
+  --radius: 18px;
 }
 ```
 
@@ -100,11 +86,11 @@ Then map those variables onto real product components instead of copying the sam
 
 ## 10. Suitable And Unsuitable Use Cases
 
-Best suited for product showcases, Apple-like overview pages. Avoid using this style when the brand, audience, or product density conflicts with its personality: polished, spacious, product-led.
+Best suited for product showcases and operational product overview pages. Avoid using this style when the brand, audience, or product density conflicts with its personality: full-bleed, modular, product-led, and high-signal.
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Bento Grid is defined by Apple gray, blue accent, large radius, bento surfaces. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Bento Grid is defined by a left-edge app rail, full-bleed bento wall, unequal tiles, metric blocks, and compact top tabs. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

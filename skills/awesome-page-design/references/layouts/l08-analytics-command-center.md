@@ -6,12 +6,13 @@ Use this framework for analytics, monitoring, finance dashboards, product metric
 
 ## Structure
 
-- Global filter bar with date range, segment, and scope.
-- KPI grid for summary signals.
-- Chart matrix grouped by question or workflow.
-- Drill-down table for raw records.
-- Annotation or insight panel.
-- Export/share controls.
+- Global variable/filter bar with date range, segment, scope, and comparison controls.
+- KPI strip for summary signals with change indicators.
+- Main chart panel tied to a specific question.
+- Secondary panels for top segment, heatmap, and anomaly drill-down.
+- Event stream for live operational changes.
+- Annotation, correlation notes, notebook, and sharing controls.
+- Drill-down table or raw-record area when the product requires auditability.
 
 ## Required States
 
@@ -20,6 +21,8 @@ Use this framework for analytics, monitoring, finance dashboards, product metric
 - Comparison mode.
 - Drill-down selected state.
 - Data freshness indicator.
+- Event-stream state for new data arrivals.
+- Shared dashboard or notebook state.
 
 ## Responsive Behavior
 
@@ -34,5 +37,6 @@ R Carbon Enterprise, Q Fluent Cloud, Y Ant Pro, G Aurora Gradient, J Terminal Ha
 ## Avoid
 
 - Decorative charts without clear questions.
+- Single oversized chart with thin supporting context.
 - Too many colors without semantic meaning.
 - Metrics that cannot be traced to detail.

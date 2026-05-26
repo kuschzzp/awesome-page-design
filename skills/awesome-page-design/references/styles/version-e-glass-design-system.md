@@ -10,20 +10,17 @@ Glassmorphism is a dark web UI direction for immersive dark landing pages, AI pr
 
 | Token | Value |
 |---|---|
-| `--grad1` | `#667eea` |
-| `--grad2` | `#764ba2` |
-| `--grad3` | `#f093fb` |
-| `--grad4` | `#4facfe` |
-| `--glass` | `rgba(255,255,255,0.15)` |
-| `--glass2` | `rgba(255,255,255,0.25)` |
-| `--glass3` | `rgba(255,255,255,0.08)` |
-| `--border` | `rgba(255,255,255,0.18)` |
-| `--text` | `#ffffff` |
-| `--text2` | `rgba(255,255,255,0.75)` |
-| `--text3` | `rgba(255,255,255,0.5)` |
-| `--accent` | `#00d4ff` |
-| `--accent2` | `#7c5cfc` |
-| `--shadow` | `0 8px 32px rgba(0,0,0,0.12)` |
+| `--bg` | `#080b12` |
+| `--ink` | `#f8fbff` |
+| `--muted` | `rgba(229,238,255,.68)` |
+| `--faint` | `rgba(229,238,255,.44)` |
+| `--glass` | `rgba(255,255,255,.105)` |
+| `--glass-strong` | `rgba(255,255,255,.16)` |
+| `--line` | `rgba(255,255,255,.18)` |
+| `--cyan` | `#7dd3fc` |
+| `--lime` | `#bef264` |
+| `--rose` | `#f0abfc` |
+| `--amber` | `#fde68a` |
 
 Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
 
@@ -36,7 +33,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: deep purple gradient, translucent glass, cyan highlights, blur and glow. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: liquid glass cockpit, translucent dock, atmospheric grid, luminous orb, readable frosted panels, and dark blue-green depth. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -71,20 +68,17 @@ Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
-  --grad1: #667eea;
-  --grad2: #764ba2;
-  --grad3: #f093fb;
-  --grad4: #4facfe;
-  --glass: rgba(255,255,255,0.15);
-  --glass2: rgba(255,255,255,0.25);
-  --glass3: rgba(255,255,255,0.08);
-  --border: rgba(255,255,255,0.18);
-  --text: #ffffff;
-  --text2: rgba(255,255,255,0.75);
-  --text3: rgba(255,255,255,0.5);
-  --accent: #00d4ff;
-  --accent2: #7c5cfc;
-  --shadow: 0 8px 32px rgba(0,0,0,0.12);
+  --bg: #080b12;
+  --ink: #f8fbff;
+  --muted: rgba(229,238,255,.68);
+  --faint: rgba(229,238,255,.44);
+  --glass: rgba(255,255,255,.105);
+  --glass-strong: rgba(255,255,255,.16);
+  --line: rgba(255,255,255,.18);
+  --cyan: #7dd3fc;
+  --lime: #bef264;
+  --rose: #f0abfc;
+  --amber: #fde68a;
 }
 ```
 
@@ -96,7 +90,7 @@ Best suited for immersive dark landing pages, AI products, visual experiments. A
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Glassmorphism is defined by deep purple gradient, translucent glass, cyan highlights, blur and glow. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Glassmorphism is defined by a liquid glass cockpit, translucent dock, atmospheric grid, luminous orb, readable frosted panels, and dark blue-green depth. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

@@ -6,11 +6,12 @@ Use this framework for product marketing pages that need to explain value, build
 
 ## Structure
 
-- Navigation with product identity, links, and primary CTA.
-- Hero with clear offer, supporting copy, and action.
-- Social proof or customer signals.
+- Navigation with product identity, product/workflow/security links, and dual CTAs.
+- Hero with a direct conversion offer, supporting copy, action pair, and proof metrics.
+- Product mockup that shows real operational states instead of a decorative illustration.
+- Social proof or customer signals immediately after the hero.
 - Feature sections grouped by user outcome.
-- Product workflow or screenshot area.
+- Workflow preview that explains the product journey and handoffs.
 - Pricing, plans, or value comparison.
 - FAQ and final CTA.
 
@@ -35,4 +36,5 @@ D Bento Grid, G Aurora Gradient, E Glassmorphism, P Material You, F Neo-Brutalis
 
 - Vague headlines.
 - Feature grids that repeat the same layout too many times.
+- Decorative product screenshots that do not reveal what the SaaS actually does.
 - Copying dashboard layouts into a marketing page.

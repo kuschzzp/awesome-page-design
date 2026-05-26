@@ -37,7 +37,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: Segoe UI, neutral surfaces, blue action color, light depth and command bars. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: icon rail, app navigation, command bar, message bar, split panes, presence, agenda, and shared files. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -97,7 +97,7 @@ Best suited for Microsoft-like productivity tools, cloud apps. Avoid using this 
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Fluent Cloud is defined by Segoe UI, neutral surfaces, blue action color, light depth and command bars. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Fluent Cloud is defined by icon rails, app navigation, command bars, message bars, split panes, presence, agenda, and shared files. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

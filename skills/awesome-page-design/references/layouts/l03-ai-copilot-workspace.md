@@ -6,10 +6,9 @@ Use this framework for AI products where the user works with a main artifact whi
 
 ## Structure
 
-- Main work canvas for the primary artifact.
-- Copilot panel for chat, suggestions, and reasoning summaries.
-- Context rail for files, entities, memory, or selected objects.
-- Task queue or run history.
+- Left context rail for active runs, sources, memories, reviewers, and prior tasks.
+- Main artifact canvas with an action toolbar, source-backed content block, evidence chips, claim review cards, artifact metadata, citation map, approval path, and run queue.
+- Right copilot panel for chat, tool calls, reasoning summaries, and approval cards.
 - Tool/action bar tied to the active artifact.
 - Status area for running, blocked, completed, and failed tasks.
 
@@ -20,6 +19,8 @@ Use this framework for AI products where the user works with a main artifact whi
 - Human approval or confirmation state.
 - Failed tool call with retry.
 - Context missing state.
+- Diff or compare state before applying AI edits.
+- Citation coverage state that separates linked sources from missing evidence.
 
 ## Responsive Behavior
 
@@ -35,4 +36,5 @@ J Terminal Hacker, X Primer Dev, G Aurora Gradient, Q Fluent Cloud, V Spectrum C
 
 - Chat-only layout when the product has real artifacts.
 - Hiding task status.
+- Leaving the artifact canvas half-empty when the workflow needs review context.
 - Treating AI output as final without review paths.

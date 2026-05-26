@@ -61,6 +61,26 @@ npx skills add https://github.com/kuschzzp/awesome-page-design -g --skill awesom
 npx skills add ./ -g --skill awesome-page-design -a codex
 ```
 
+### 更新已安装的 Skill
+
+更新全局安装的最新版：
+
+```bash
+npx skills update awesome-page-design -g -y
+```
+
+如果是项目级安装，使用：
+
+```bash
+npx skills update awesome-page-design -p -y
+```
+
+更新所有全局安装的 Skills：
+
+```bash
+npx skills update -g -y
+```
+
 ## 快速开始
 
 安装后，可以这样让 Agent 使用：
@@ -144,6 +164,7 @@ skills/awesome-page-design/
 ├── agents/
 │   └── openai.yaml                  # Agent 元数据
 ├── references/
+│   ├── workflow.md                  # 必选预览、选择和实现工作流
 │   ├── usage-principles.md          # 正确使用方式
 │   ├── style-index.md               # 所有风格的短索引
 │   ├── layout-index.md              # 页面布局框架短索引
@@ -163,12 +184,12 @@ skills/awesome-page-design/
 | A | Classic News | 新闻、内容站、权威信息页 | 浅灰蓝底、Indigo 强调、Inter、细边框、柔和阴影 |
 | B | Card Grid | 仪表盘、目录页、概览页 | 卡片网格、搜索、统计卡、轻量数据感 |
 | C | Feed Layout | 信息流、社区、动态、文章流 | 单列 Feed、Cyan 强调、可展开卡片、软分割 |
-| D | Bento Grid | 产品展示、Apple 风概览页 | Apple 灰、蓝色强调、大圆角、Bento 表面 |
-| E | Glassmorphism | 沉浸式暗色落地页、AI 产品 | 深紫渐变、半透明玻璃、Cyan 高光、blur |
+| D | Bento Grid | 产品展示、运营型产品概览页 | 左侧贴边应用栏、全宽 Bento 墙、不等宽卡片、紧凑顶部标签 |
+| E | Glassmorphism | 沉浸式暗色落地页、AI 产品 | 液态玻璃驾驶舱、半透明 Dock、氛围网格、发光球体 |
 | F | Neo-Brutalism | 强品牌活动、独立产品、趣味工具 | 暖黄底、粗黑边框、硬阴影、高饱和标签 |
 | G | Aurora Gradient | 未来感产品、AI 工具、高级暗色体验 | 暗色画布、极光渐变、柔光、漂移动效 |
 | H | Retro Y2K | 音乐、潮流、青年文化、活动页 | 糖果渐变、霓虹、复古标题字、星光 |
-| I | Swiss Editorial | 作品集、文化机构、严肃内容 | 白底、红色强调、Helvetica、严格网格、无阴影 |
+| I | Swiss Editorial | 作品集、文化机构、严肃内容 | 紧凑 12 栏编辑网格、红黑层级、细分割线、极小页边距 |
 | J | Terminal Hacker | 开发者工具、CLI、安全、开源 | 黑底、终端绿、等宽字体、扫描线 |
 | K | Claymorphism | 教育、健康、友好型 SaaS | 薰衣草底、Nunito、软内外阴影 |
 | L | Cute-alism | 玩法品牌、创作者工具、年轻产品 | 荧光黄、粉色硬阴影、贴纸感、软硬碰撞 |
@@ -176,15 +197,15 @@ skills/awesome-page-design/
 | N | Light Skeuomorphism | Apple 风工具、设备应用、触感 UI | Apple 灰、浮雕表面、内凹控件 |
 | O | Human Scribble | 工作坊、教育、Maker、手写笔记 | 暖纸色、手绘字体、虚线边框、荧光笔 |
 | P | Material You | Android 风应用、通用工具、生活方式产品 | Material 3 紫、动态色感、圆润 Surface |
-| Q | Fluent Cloud | 生产力工具、云控制台、桌面应用 | Segoe UI、中性色、蓝色操作、轻景深 |
-| R | Carbon Enterprise | 企业软件、数据平台、工业系统 | IBM 灰阶、蓝色操作、方正边界、高密度 |
-| S | Polaris Commerce | 电商后台、商家工具、运营系统 | 温和中性色、绿色操作、资源列表清晰 |
-| T | Atlassian Workbench | 协作工具、项目管理、团队看板 | 协作蓝、Lozenge 标签、工作台表面 |
-| U | Gov Service | 政务、公共服务、法律、表单 | 高对比、黑色分割、蓝链接、黄色焦点 |
-| V | Spectrum Creative | 创作软件、素材管理、媒体工具 | Adobe 风中性 UI、靛蓝强调、媒体网格 |
-| W | Lightning CRM | CRM、销售、客服、客户运营 | 浅灰应用壳、Salesforce 蓝、紧凑业务卡 |
-| X | Primer Dev | 开发者平台、文档、仓库、Issue | GitHub 风边框、蓝链接、等宽标签 |
-| Y | Ant Pro | 企业中台、管理后台、数据表格 | Ant 蓝、细边框、白卡片、稳定状态 |
+| Q | Fluent Cloud | 生产力工具、云控制台、桌面应用 | 图标边栏、应用导航、命令栏、消息条、分栏、在线状态 |
+| R | Carbon Enterprise | 企业软件、数据平台、工业系统 | 暗色企业边栏、标签命令区、高密表格、诊断队列 |
+| S | Polaris Commerce | 电商后台、商家工具、运营系统 | 商家边栏、保存视图、筛选工具栏、批量操作栏、资源列表 |
+| T | Atlassian Workbench | 协作工具、项目管理、团队看板 | Jira 式项目导航、Sprint 列、Lozenge 任务卡、详情面板 |
+| U | Gov Service | 政务、公共服务、法律、表单 | GOV.UK 式页头、beta 和警示条、任务清单、摘要列表 |
+| V | Spectrum Creative | 创作软件、素材管理、媒体工具 | 暗色创意工具栏、图层栈、画板画布、审阅标记、属性面板 |
+| W | Lightning CRM | CRM、销售、客服、客户运营 | 中国 CRM 式蓝色边栏、客户 360、销售路径、客户档案、商机列表 |
+| X | Primer Dev | 开发者平台、文档、仓库、Issue | GitHub 式仓库页头、仓库标签、分支工具栏、文件列表、README 面板 |
+| Y | Ant Pro | 企业中台、管理后台、数据表格 | Ant Design Pro 外壳、查询表单、KPI 卡、ProTable、抽屉、时间线 |
 
 ## 按产品类型选择
 
@@ -232,7 +253,7 @@ skills/awesome-page-design/
 | L11 | Onboarding Wizard | 设置流程、导入、账号激活 |
 | L12 | Marketplace Catalog | 应用商店、模板、资源、产品目录 |
 | L13 | Admin Overview Command Center | 后台首页、SaaS 控制台、管理层运营总览 |
-| L14 | Master Detail Admin Table | 资源管理、用户列表、审批队列、数据库式后台 |
+| L14 | Master Detail Admin Table | 证据库、资源管理、审批队列、数据库式后台 |
 | L15 | Operations Timeline Console | 事件运营、发布追踪、客服和履约流程 |
 | L16 | Personal Portfolio Home | 设计师、工程师、顾问、个人品牌网站 |
 | L17 | Personal Writing Home | 博客、Newsletter、独立研究者、创作者主页 |

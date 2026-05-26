@@ -4,7 +4,7 @@
 
 ## 1. Style Definition And Core Mood
 
-Carbon Enterprise is a light web UI direction for serious enterprise software, analytics, dense operations UI. Its visual personality is serious, systematic, dense. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
+Carbon Enterprise is a dense enterprise UI direction for serious enterprise software, analytics, and operations systems. Its visual personality is industrial, systematic, square, and diagnostic. Reuse its visual language while designing the actual product structure around user goals, content priority, and workflow requirements.
 
 ## 2. Color System
 
@@ -37,7 +37,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: IBM-like grays, blue action color, square grid, high-density clarity. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: dark enterprise side nav, tabbed command area, five-metric strip, dense data table, diagnostic queue, and control summary. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -93,11 +93,11 @@ Then map those variables onto real product components instead of copying the sam
 
 ## 10. Suitable And Unsuitable Use Cases
 
-Best suited for serious enterprise software, analytics, dense operations UI. Avoid using this style when the brand, audience, or product density conflicts with its personality: serious, systematic, dense.
+Best suited for serious enterprise software, analytics, and dense operations UI. Avoid using this style when the brand, audience, or product density conflicts with its personality: industrial, systematic, square, and diagnostic.
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Carbon Enterprise is defined by IBM-like grays, blue action color, square grid, high-density clarity. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Carbon Enterprise is defined by dark enterprise navigation, tabbed command surfaces, dense data tables, diagnostic queues, and square control panels. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

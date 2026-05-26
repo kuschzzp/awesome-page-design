@@ -10,14 +10,13 @@ Swiss Editorial is a light web UI direction for portfolios, cultural sites, desi
 
 | Token | Value |
 |---|---|
-| `--bg` | `#fafafa` |
-| `--card` | `#ffffff` |
-| `--text` | `#111111` |
-| `--text2` | `#555555` |
-| `--text3` | `#999999` |
-| `--accent` | `#e63946` |
-| `--rule` | `#111111` |
-| `--radius` | `0` |
+| `--paper` | `#f7f7f4` |
+| `--ink` | `#111111` |
+| `--muted` | `#555` |
+| `--faint` | `#8c8c8c` |
+| `--red` | `#ed3345` |
+| `--blue` | `#1f5eff` |
+| `--green` | `#008a5b` |
 
 Use the background, surface, text, accent, border, and state tokens as the starting point for product theme variables. Keep semantic roles stable even when adapting the palette.
 
@@ -30,7 +29,7 @@ Use the background, surface, text, accent, border, and state tokens as the start
 
 ## 4. Borders, Radius, Shadows, And Glow
 
-The style language is: pure white, red accent, Helvetica, strict grid, no shadow. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
+The style language is: tight 12-column editorial grid, red-black typographic hierarchy, rule lines, minimal page gutters, and no decorative shadow. Preserve the depth model that defines the style. If the style uses square borders, avoid soft cards. If it uses glow or glass, keep contrast and focus visibility intact.
 
 ## 5. Decorative Elements And Interaction Details
 
@@ -65,14 +64,13 @@ Start by translating the extracted tokens into project-level theme variables:
 
 ```css
 :root {
-  --bg: #fafafa;
-  --card: #ffffff;
-  --text: #111111;
-  --text2: #555555;
-  --text3: #999999;
-  --accent: #e63946;
-  --rule: #111111;
-  --radius: 0;
+  --paper: #f7f7f4;
+  --ink: #111111;
+  --muted: #555;
+  --faint: #8c8c8c;
+  --red: #ed3345;
+  --blue: #1f5eff;
+  --green: #008a5b;
 }
 ```
 
@@ -84,7 +82,7 @@ Best suited for portfolios, cultural sites, design studios, serious content. Avo
 
 ## 11. Comparison With Other Styles
 
-Compared with the rest of the library, Swiss Editorial is defined by pure white, red accent, Helvetica, strict grid, no shadow. It should feel different from generic neutral dashboards while still remaining usable in production.
+Compared with the rest of the library, Swiss Editorial is defined by a tight 12-column editorial grid, red-black typographic hierarchy, rule lines, minimal page gutters, and no decorative shadow. It should feel different from generic neutral dashboards while still remaining usable in production.
 
 ## 12. Variant Suggestions
 

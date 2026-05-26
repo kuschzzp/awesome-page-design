@@ -7,11 +7,13 @@ Use this framework for account settings, admin configuration, security controls,
 ## Structure
 
 - Settings navigation grouped by domain.
-- Page title and concise description.
+- Page title, concise description, and save/cancel action group.
+- Unsaved-change or validation banner when edits affect users.
+- Summary metrics for members, roles, integrations, and audit events.
 - Form sections with clear save/cancel behavior.
-- Permission, role, or integration panels.
+- Permission, role, security, or integration panels.
 - Audit log or recent changes when relevant.
-- Danger zone for destructive actions.
+- Danger zone with explicit destructive controls.
 
 ## Required States
 
@@ -20,6 +22,8 @@ Use this framework for account settings, admin configuration, security controls,
 - Disabled permissions.
 - Connected/disconnected integration.
 - Destructive confirmation.
+- Audit event or recent change state.
+- Security policy or publishing gate state.
 
 ## Responsive Behavior
 
@@ -36,3 +40,4 @@ Q Fluent Cloud, Y Ant Pro, R Carbon Enterprise, U Gov Service, X Primer Dev.
 - Hiding destructive actions without clear path.
 - Mixing unrelated settings in one page.
 - Saving without visible feedback.
+- Settings screens that end after one form and leave the workspace visually empty.

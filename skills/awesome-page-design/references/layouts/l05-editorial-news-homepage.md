@@ -6,11 +6,12 @@ Use this framework for media sites, newsletters, research digests, and editorial
 
 ## Structure
 
-- Masthead with categories and search.
-- Lead story area.
-- Secondary story grid.
-- Topic rails or category sections.
-- Trending or most-read list.
+- Full-width masthead with edition metadata and category navigation.
+- Lead story area with dominant hierarchy and byline.
+- Field image or visual package that supports the lead.
+- Latest/live rail for fast scanning.
+- Secondary story grid with distinct category labels.
+- Most-read, editorial desk, or subscriber modules below the fold.
 - Newsletter signup or subscription module.
 - Footer with editorial links.
 
@@ -34,5 +35,6 @@ A Classic News, I Swiss Editorial, O Human Scribble, M Resonant Stark.
 ## Avoid
 
 - Equal visual weight for every story.
+- Large side gutters that make a news homepage feel unfinished.
 - Dashboard-like metric cards unless editorially relevant.
 - Navigation that competes with reading hierarchy.
