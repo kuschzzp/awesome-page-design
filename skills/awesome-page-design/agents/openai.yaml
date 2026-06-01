@@ -1,7 +1,7 @@
 interface:
   display_name: "Awesome Page Design"
-  short_description: "Distinct web visual styles and layouts"
+  short_description: "Distinct web visual styles"
   brand_color: "#4F46E5"
-  default_prompt: "Use $awesome-page-design to choose a distinctive visual style and layout framework for this website, then apply them without copying sample layouts."
+  default_prompt: "Use $awesome-page-design to choose a distinctive visual style for this website, then apply it without copying sample layouts."
 policy:
   allow_implicit_invocation: true

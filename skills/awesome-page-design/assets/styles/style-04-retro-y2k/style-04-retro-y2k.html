@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style 04 - Retro Y2K</title>
+<style>
+* { box-sizing: border-box; }
+:root {
+  --bg: #fff0fb;
+  --surface: #ffffff;
+  --text: #26113d;
+  --muted: #7c3aed;
+  --primary: #ff2db2;
+  --accent: #00d9ff;
+  --border: #ffb6ef;
+  --radius: 22px;
+  --shadow: 0 22px 70px rgba(255, 45, 178, .24);
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+body.dark-theme,
+body.linear-futurism,
+body.liquid-glass,
+body.acid-design {
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent), transparent 72%), transparent 32%),
+    radial-gradient(circle at 80% 12%, color-mix(in srgb, var(--primary), transparent 86%), transparent 26%),
+    var(--bg);
+}
+body.gradient-pop {
+  background:
+    radial-gradient(circle at 18% 12%, #ff7adf 0, transparent 32%),
+    radial-gradient(circle at 82% 10%, #67e8f9 0, transparent 28%),
+    linear-gradient(135deg, #fff7ed, #fdf2f8 48%, #ecfeff);
+}
+body.retro-computing {
+  font-family: "Courier New", ui-monospace, monospace;
+  background-image:
+    linear-gradient(rgba(31,19,0,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31,19,0,.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+body.neo-brutalism h1,
+body.retro-computing h1,
+body.acid-design h1 {
+  text-transform: uppercase;
+}
+body.acid-design h1 {
+  text-shadow: 2px 0 #00e5ff, -2px 0 #ff00f5, 0 0 32px rgba(214,255,0,.24);
+}
+button, input { font: inherit; }
+a { color: inherit; }
+.page {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+.nav {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+}
+.mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--bg);
+  background: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .55);
+  box-shadow: none;
+}
+.links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.links a {
+  text-decoration: none;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+button, .button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  color: var(--bg);
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: calc(var(--radius) * .6);
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+button.secondary, .button.secondary {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--border);
+}
+button:hover, .button:hover { transform: translateY(-2px); }
+body.neo-brutalism button,
+body.retro-computing button {
+  box-shadow: 4px 4px 0 var(--border);
+}
+.hero {
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+  gap: 30px;
+  align-items: center;
+  padding: 48px 0;
+}
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(52px, 7vw, 112px);
+  line-height: .9;
+  letter-spacing: 0;
+}
+.lede {
+  max-width: 660px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.65;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+}
+.proof span {
+  display: block;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .55);
+  color: var(--muted);
+  box-shadow: none;
+}
+.proof strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 22px;
+}
+.showcase {
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+body.liquid-glass .showcase,
+body.liquid-glass .panel,
+body.liquid-glass .feature,
+body.liquid-glass .workspace {
+  backdrop-filter: blur(22px) saturate(1.4);
+}
+.media {
+  width: 100%;
+  height: 280px;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .68);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent), white 10%), color-mix(in srgb, var(--primary), transparent 35%)),
+    var(--image);
+  background-size: cover;
+  background-position: center;
+  filter: none;
+}
+.floating-card {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: min(280px, 58%);
+  padding: 16px;
+  background: color-mix(in srgb, var(--surface), transparent 6%);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .65);
+  box-shadow: var(--shadow);
+}
+.floating-card b,
+.floating-card span {
+  display: block;
+}
+.floating-card span {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.status-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.status-row i {
+  height: 68px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .5);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 22%), transparent),
+    color-mix(in srgb, var(--surface), var(--bg) 18%);
+}
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  margin: 36px 0 16px;
+}
+.section-head h2 {
+  max-width: 760px;
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.08;
+}
+.section-head p {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.feature, .panel, .workspace {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+.feature {
+  min-height: 210px;
+  padding: 20px;
+}
+.feature b {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 28px;
+  color: var(--bg);
+  background: var(--primary);
+  border-radius: calc(var(--radius) * .45);
+}
+.feature h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+.feature p,
+.panel p,
+.workspace p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.workspace {
+  margin-top: 16px;
+  padding: 18px;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tabs button {
+  min-height: 36px;
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--border);
+}
+.tabs button.active {
+  color: var(--bg);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 16px;
+}
+.panel {
+  padding: 18px;
+}
+.panel h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+.chart {
+  height: 190px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--bg), var(--surface) 28%);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .65);
+}
+.chart i {
+  flex: 1;
+  min-width: 16px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, var(--accent), var(--primary));
+}
+.list {
+  display: grid;
+  gap: 10px;
+}
+.list button {
+  width: 100%;
+  justify-content: space-between;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--bg) 18%);
+  border-color: var(--border);
+}
+.list button span {
+  color: var(--muted);
+  font-weight: 600;
+}
+.modal {
+  position: fixed;
+  inset: auto 24px 24px auto;
+  z-index: 10;
+  width: min(360px, calc(100vw - 48px));
+  padding: 18px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.modal[hidden] { display: none; }
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.related a {
+  padding: 10px 12px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * .5);
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .page { width: min(100% - 28px, 720px); }
+  .nav, .links, .actions { align-items: flex-start; }
+  .nav { display: grid; }
+  .links { flex-wrap: wrap; }
+  .hero, .demo-grid { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding: 28px 0; }
+  .proof, .features { grid-template-columns: 1fr; }
+  .section-head { display: block; }
+  .section-head p { margin-top: 12px; }
+  h1 { font-size: clamp(42px, 15vw, 76px); }
+}
+</style>
+</head>
+<body class="retro-y2k">
+  <main class="page">
+    <nav class="nav" aria-label="Example navigation">
+      <div class="brand"><span class="mark">04</span><span>Signal Studio</span></div>
+      <div class="links">
+        <a href="#features">Features</a>
+        <a href="#workspace">Workspace</a>
+        <a href="#features">Style notes</a>
+      </div>
+      <div class="actions">
+        <button class="secondary" type="button" data-open-modal>Preview notes</button>
+        <a class="button" href="#workspace">Explore demo</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Style 04 · 复古 Y2K</p>
+        <h1>Retro Y2K</h1>
+        <p class="lede">Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.</p>
+        <div class="hero-actions">
+          <button type="button" data-copy>Copy style prompt</button>
+          <button class="secondary" type="button" data-open-modal>View design notes</button>
+        </div>
+        <div class="proof">
+          <span><strong>Color</strong>#ff2db2 / #00d9ff</span>
+          <span><strong>Radius</strong>22px surfaces</span>
+          <span><strong>Best for</strong>music, fashion, youth culture, playful campaigns</span>
+        </div>
+      </div>
+      <aside class="showcase" aria-label="Visual style sample">
+        <div class="media" role="img" aria-label="Retro Y2K visual reference" style="--image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&auto=format&fit=crop')"></div>
+        <div class="floating-card">
+          <b>Live launch board</b>
+          <span>Clickable preview surface showing how navigation, cards, data, and actions inherit this style.</span>
+        </div>
+        <div class="status-row"><i></i><i></i><i></i></div>
+      </aside>
+    </section>
+
+    <section id="features">
+      <div class="section-head">
+        <h2>Reusable visual decisions for real product pages.</h2>
+        <p>糖果渐变、霓虹细节、复古标题字、星光能量和千禧年数字乐观感。 Use the style language, then redesign the actual page around the user's content.</p>
+      </div>
+      <div class="features">
+        <article class="feature"><b>01</b><h3>Surface System</h3><p>Background, cards, borders, shadows, and focus states are tuned to the selected visual language.</p></article>
+        <article class="feature"><b>02</b><h3>Component Tone</h3><p>Buttons, tabs, stats, panels, and list rows show how the style behaves in interactive UI.</p></article>
+        <article class="feature"><b>03</b><h3>Content Density</h3><p>The example includes real sections, metrics, image media, and supporting context instead of a thin hero only.</p></article>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace">
+      <div class="tabs" aria-label="Demo tabs">
+        <button type="button" class="active" data-tab="launch">Launch</button>
+        <button type="button" data-tab="metrics">Metrics</button>
+        <button type="button" data-tab="assets">Assets</button>
+      </div>
+      <div class="demo-grid">
+        <article class="panel">
+          <h3 data-demo-title>Launch workflow</h3>
+          <p data-demo-copy>Plan a first viewport, select the visual hierarchy, validate the core call to action, and then translate the chosen style into tokens.</p>
+          <div class="chart" aria-hidden="true">
+            <i style="height:42%"></i><i style="height:68%"></i><i style="height:54%"></i><i style="height:86%"></i><i style="height:72%"></i><i style="height:92%"></i><i style="height:63%"></i>
+          </div>
+        </article>
+        <aside class="panel">
+          <h3>Action queue</h3>
+          <div class="list">
+            <button type="button" data-open-modal><b>Audit contrast</b><span>Ready</span></button>
+            <button type="button" data-open-modal><b>Review mobile crop</b><span>2 notes</span></button>
+            <button type="button" data-open-modal><b>Export prompt</b><span>Click</span></button>
+          </div>
+        </aside>
+      </div>
+      <div class="related"><a href="../style-09-tech-minimal/style-09-tech-minimal.html">09. Tech Minimal</a><a href="../style-10-dark-theme/style-10-dark-theme.html">10. Dark Theme</a><a href="../style-11-structured-lines/style-11-structured-lines.html">11. Structured Lines</a></div>
+    </section>
+
+  </main>
+
+  <aside class="modal" hidden data-modal>
+    <h3>Style 04: Retro Y2K</h3>
+    <ul><li>Use playful shine and neon in controlled zones.</li><li>Pair expressive display type with readable body copy.</li><li>Keep nostalgia bright, not cluttered.</li></ul>
+    <button type="button" data-close-modal>Close</button>
+  </aside>
+
+  <script>
+  const prompt = "Use awesome-page-design style: Style 04 - Retro Y2K (复古 Y2K). Apply its visual language: Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism. Do not copy the sample layout; adapt color, typography, surfaces, components, and interaction states to the real product.";
+  const modal = document.querySelector('[data-modal]');
+  const demo = {
+    launch: ['Launch workflow', 'Plan a first viewport, select the visual hierarchy, validate the core call to action, and then translate the chosen style into tokens.'],
+    metrics: ['Metric review', 'Compare conversion, readability, image loading, state coverage, and mobile density before final implementation.'],
+    assets: ['Asset direction', 'Use real product imagery, brand photography, or carefully matched abstract media when visuals help the page communicate faster.']
+  };
+  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => modal.hidden = false));
+  document.querySelector('[data-close-modal]').addEventListener('click', () => modal.hidden = true);
+  document.querySelector('[data-copy]').addEventListener('click', async (event) => {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      event.currentTarget.textContent = 'Copied';
+      setTimeout(() => event.currentTarget.textContent = 'Copy style prompt', 1300);
+    } catch {
+      window.prompt('Copy this style prompt:', prompt);
+    }
+  });
+  document.querySelectorAll('[data-tab]').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-tab]').forEach((node) => node.classList.toggle('active', node === button));
+      document.querySelector('[data-demo-title]').textContent = demo[button.dataset.tab][0];
+      document.querySelector('[data-demo-copy]').textContent = demo[button.dataset.tab][1];
+    });
+  });
+  </script>
+</body>
+</html>

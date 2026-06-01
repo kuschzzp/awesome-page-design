@@ -1,35 +1,36 @@
 ---
 name: awesome-page-design
-description: Use this skill as a page design assistant whenever the user is designing, building, reviewing, or improving a website, web app, dashboard, landing page, admin panel, product page, docs portal, ecommerce console, CRM workspace, analytics screen, portfolio, onboarding flow, or UI component that needs visual direction or page structure. It helps choose and apply color systems, typography, spacing, surfaces, component tone, layout frameworks, navigation models, information density, responsive behavior, and required states. Trigger it even if the user only says the page should look better, less generic, more elegant, more professional, or less AI-generated. Before final implementation, guide the user to preview the included style/layout gallery and choose a visual style and, for full pages, a layout framework unless they explicitly delegate the choice.
+description: Use this skill as a page design assistant whenever the user is designing, building, reviewing, or improving a website, web app, dashboard, landing page, admin panel, product page, docs portal, ecommerce console, CRM workspace, analytics screen, portfolio, onboarding flow, or UI component that needs visual direction. It helps choose and apply color systems, typography, spacing, surfaces, borders, radius, shadows, glass/metal/soft material effects, component tone, interaction states, information density, image direction, and page mood. Trigger it even if the user only says the page should look better, more elegant, more professional, less generic, less AI-generated, more playful, more futuristic, more minimal, or closer to a named visual reference. Before final implementation, guide the user to preview the included visual style gallery and choose one style unless they explicitly delegate the choice.
 ---
 
 # Awesome Page Design
 
-Use this skill to guide page design decisions before and during UI implementation.
+Use this skill to make deliberate page design decisions before and during UI implementation.
 
 ## Core Rule
 
-This is a UI decision library, not a copy-paste template library. Do not copy sample HTML layouts as the target product layout. Reuse visual style language and layout framework principles, then design the actual structure around the user's product, content priority, workflows, and device needs.
+This is a visual direction library, not a copy-paste template library. Reuse the selected visual language, then design the actual page structure around the user's product, content priority, workflow, and device needs.
+
+The bundled HTML previews are richer clickable examples so the user can judge the style. They are not production layouts to clone.
 
 ## Required Workflow
 
 Follow `references/workflow.md` for the full workflow. The short version is:
 
-1. Understand the page design task: product type, page/screen type, primary workflow, target audience, density, mood, and light/dark preference.
-2. Decide whether the task needs a visual style, a layout framework, or both.
-3. If the user has not already chosen the needed style/layout, run the preview selection gate before final implementation.
-4. Read `references/usage-principles.md`.
-5. Read `references/style-index.md` and/or `references/layout-index.md` to select or validate candidates.
-6. After a style or layout is chosen, read the matching file in `references/styles/` or `references/layouts/`.
-7. Apply the chosen color, typography, spacing, surface, component, navigation, density, and state guidance to the user's real product.
-8. Redesign page structure around the actual content and workflow; do not copy preview HTML or sample content.
-9. Before finishing implementation, check the verification checklist in `references/workflow.md`.
+1. Understand the page design task: product type, page/screen type, primary workflow, audience, density, mood, light/dark preference, and image needs.
+2. If the user has not already chosen a visual style, run the preview selection gate before final implementation.
+3. Read `references/usage-principles.md`.
+4. Read `references/style-index.md` to select or validate candidates.
+5. After a style is chosen, read the matching file in `references/styles/`.
+6. Apply the chosen color, typography, spacing, surface, border, radius, shadow/glow/material, component, imagery, and state guidance to the user's real product.
+7. Redesign page structure around the actual content and workflow; do not copy preview HTML or sample content.
+8. Before finishing implementation, check the verification checklist in `references/workflow.md`.
 
 ## Preview Selection Gate
 
-When the user describes a UI request but has not already chosen a visual style or layout framework, pause before implementing the final UI. First help the user select from the preview gallery.
+When the user describes a UI request but has not already chosen a visual style, pause before implementing the final UI. First help the user select from the preview gallery.
 
-Use this gate for complete pages, app screens, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce consoles, CRM workspaces, analytics pages, portfolios, onboarding flows, and any task where visual direction or page structure is still undecided.
+Use this gate for complete pages, app screens, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce consoles, CRM workspaces, analytics pages, portfolios, onboarding flows, and any task where visual direction is still undecided.
 
 Required flow:
 
@@ -38,71 +39,60 @@ Required flow:
    - primary workflow or page type
    - desired mood
    - expected information density
-   - light or dark preference when known
+   - light, dark, or mixed preference when known
+   - whether images/photography are useful
 2. Open or provide the preview gallery URL using the instructions in `Previewing The Included HTML`.
-3. Ask the user to choose by copying a style prompt and, for complete pages or structured screens, a layout prompt from the gallery.
-4. Do not implement the final UI until the user has selected the needed style/layout or has explicitly delegated the choice to the agent.
-5. If the user says the agent should choose, recommend 2-3 style candidates and 1-2 layout candidates, explain the differences briefly, apply the similarity guardrails, and ask for confirmation before final implementation.
-6. If the client cannot open local previews, provide text candidates from `references/style-index.md` and `references/layout-index.md` as the fallback selection surface.
+3. Ask the user to choose by copying one style prompt from the gallery.
+4. Do not implement the final UI until the user has selected a style or has explicitly delegated the choice to the agent.
+5. If the user says the agent should choose, recommend 2-3 style candidates, explain the differences briefly, apply the similarity guardrails, and ask for confirmation before final implementation unless the user explicitly says to proceed.
+6. If the client cannot open local previews, provide text candidates from `references/style-index.md` as the fallback selection surface.
 
-Only skip this gate when the user has already named a specific style/layout, asks only for analysis/review, asks for a tiny component that does not need page-level direction, or explicitly says to choose and proceed without confirmation.
+Only skip this gate when the user has already named a specific style, asks only for analysis/review, asks for a tiny component that does not need page-level direction, or explicitly says to choose and proceed without confirmation.
 
 ## Reference Navigation
 
 - `references/workflow.md`: required design, preview selection, implementation, and verification workflow.
-- `references/style-index.md`: concise index of all A-Y styles.
-- `references/layout-index.md`: concise index of page layout frameworks.
+- `references/style-index.md`: concise index of the 21 visual styles, numbered continuously from Style 01 to Style 21.
 - `references/usage-principles.md`: rules for using the library correctly.
-- `references/styles/*.md`: full style manuals copied from the project.
-- `references/layouts/*.md`: page framework manuals for structure, responsive behavior, and required states.
+- `references/styles/*.md`: full style manuals with tokens and application guidance.
 - `assets/styles/`: visual style HTML and PNG preview assets.
-- `assets/layouts/`: layout framework HTML and PNG preview assets.
-- `assets/previews/index.html`: preview gallery for visual styles and layout frameworks.
+- `assets/previews/index.html`: preview gallery for the 21 visual styles.
 
-## Choosing Style Versus Layout
+## Current Style Set
 
-Use visual styles when the user asks about look, brand mood, color, typography, surfaces, motion, or component personality.
-
-Use layout frameworks when the user asks about page type, page structure, workflow, information architecture, dashboard composition, landing-page sections, docs layout, settings pages, onboarding, catalogs, CRM workspaces, or analytics pages.
-
-Use both when the user asks for a complete page or app screen.
-
-Example combination:
-
-```text
-Use awesome-page-design visual style: Version R - Carbon Enterprise.
-Use layout framework: L01 - Dense Admin Dashboard.
-Apply both, but design the actual layout around the product requirements.
-```
-
-When combining, explain:
-
-- which visual style is being reused
-- which layout framework is being reused
-- which parts are newly designed for the user's content and workflow
+- Style 01 - Card Grid: light neutral card grid rhythm for dashboards, catalogs, and overview pages.
+- Style 02 - Block Brutalism: warm yellow, hard black borders, blocky controls, and campaign energy.
+- Style 03 - Aurora Gradient: dark canvas, aurora color fields, soft glow, and premium AI atmosphere.
+- Style 04 - Retro Y2K: candy gradients, neon details, retro display type, and sparkle energy.
+- Style 05 - Swiss Editorial: tight editorial grid, red-black hierarchy, rule lines, and disciplined content rhythm.
+- Style 06 - Terminal Hacker: black canvas, terminal green, monospace, scanlines, and developer credibility.
+- Style 07 - Cute-alism: neon yellow, pink hard shadows, sticker-like objects, and soft-hard contrast.
+- Style 08 - Resonant Stark: near-black canvas, thin type, subtle glow, extreme whitespace, and premium restraint.
+- Style 09 - Tech Minimal: large whitespace, few colors, single visual focus, modern sans-serif UI.
+- Style 10 - Dark Theme: dark background, high contrast, one bright accent.
+- Style 11 - Structured Lines: fine line frames, professional structure, clear hierarchy.
+- Style 12 - Material Design: layered tonal cards, large radius, orderly surfaces.
+- Style 13 - Bento Layout: modular card zones inspired by widget-like composition.
+- Style 14 - Neumorphism: soft light, inset depth, rounded tactile controls.
+- Style 15 - Liquid Glass: frosted transparency, blur, layered futuristic surfaces.
+- Style 16 - Retro Computing: pixel mood, old OS chrome, 80s/early desktop cues.
+- Style 17 - Neo-Brutalism: thick lines, strong clashes, giant type, controlled tension.
+- Style 18 - Linear Futurism: dark precision, glowing borders, sci-fi SaaS polish.
+- Style 19 - Gradient Pop: bright gradients, tech/trend energy, eye-catching hero.
+- Style 20 - Soft Pop: friendly playful color, doodle/cartoon mood, elastic rounded forms.
+- Style 21 - Acid Design: chrome/metal sheen, laser light, distorted dark sci-fi energy.
 
 ## Similarity Guardrails
 
-Some visual styles and layout frameworks intentionally belong to the same product-system family. Do not treat them as interchangeable.
+Do not let nearby styles collapse into the same generic page:
 
-For mature system-inspired visual styles:
-
-- Use Q - Fluent Cloud for productivity-app command bars, split panes, search, and activity surfaces.
-- Use R - Carbon Enterprise for square, dense, diagnostic enterprise data grids.
-- Use S - Polaris Commerce for merchant resource lists, bulk actions, fulfillment, and order drawers.
-- Use T - Atlassian Workbench for planning boards, work items, lozenge tags, and team collaboration.
-- Use W - Lightning CRM for record pages, paths, related lists, account context, and activity timelines.
-- Use X - Primer Dev for repositories, file trees, code blocks, issues, labels, and developer workflows.
-- Use Y - Ant Pro for query forms, table toolbars, drawers, management consoles, and neutral admin states.
-
-For similar layout families:
-
-- Use L01 for dense management action: filters, KPI scan, priority table, and action queue.
-- Use L08 for analytical exploration: dimension tabs, charts, anomalies, drill-down, and segment comparison.
-- Use L13 for executive/admin overview: cross-team status, leadership exceptions, workload map, and decision prompts.
-- Use L06 for ecommerce operations: saved views, bulk actions, fulfillment lanes, order table, and order drawer.
-- Use L14 for table-first resource management: saved views, columns, selected row, bulk edit, and detail inspector.
-- Use L15 for event operations: timeline stream, queue rail, SLA clock, escalation state, and runbook progress.
+- Style 03, Style 08, Style 10, Style 15, Style 18, and Style 21 can all be dark or atmospheric. Keep them distinct by deciding whether the page needs aurora mood, stark restraint, high-contrast darkness, glass material, product precision, or acid experimentation.
+- Style 09, Style 11, and Style 12 can all be professional, but they differ by whitespace, structural linework, and Material-style elevation.
+- Style 02 and Style 17 are both brutalist. Use Style 02 for the original warm block campaign style, and Style 17 for stronger collision, giant type, and controlled chaos.
+- Style 04 and Style 16 both reference retro culture. Use Style 04 for Y2K neon/candy energy, and Style 16 for pixel/old-operating-system texture.
+- Style 07 and Style 20 are both playful. Use Style 07 for neon sticker contrast, and Style 20 for softer friendly pop and doodle/cartoon tone.
+- Style 13 is a modular visual composition language. Use its bento card logic without forcing every product into the sample grid.
+- Style 02, Style 04, Style 07, Style 16, Style 17, Style 19, Style 20, and Style 21 carry strong personality. Use them only when the product, audience, or campaign can support expressive design.
 
 ## Previewing The Included HTML
 
@@ -134,19 +124,13 @@ http://127.0.0.1:<port>/assets/previews/
 
 Primary preview entry:
 
-- `assets/previews/index.html`: gallery of all visual style and layout framework previews.
+- `assets/previews/index.html`: gallery of all visual style previews.
 
 Individual style examples:
 
-- `assets/styles/version-a-classic/version-a-classic.html`
-- `assets/styles/version-j-terminal/version-j-terminal.html`
-- Use the same pattern for other style folders.
-
-Individual layout examples:
-
-- `assets/layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.html`
-- `assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html`
-- Use the same pattern for other layout folders.
+- `assets/styles/style-01-card-grid/style-01-card-grid.html`
+- `assets/styles/style-18-linear-futurism/style-18-linear-futurism.html`
+- Use the same `assets/styles/style-XX-name/style-XX-name.html` pattern for other styles.
 
 Fallback local commands when the client has shell access but cannot start a URL server:
 
@@ -155,30 +139,10 @@ Fallback local commands when the client has shell access but cannot start a URL 
 open assets/previews/index.html
 
 # Or open a single style example
-open assets/styles/version-j-terminal/version-j-terminal.html
-
-# Or open a single layout example
-open assets/layouts/l08-analytics-command-center/l08-analytics-command-center.html
+open assets/styles/style-01-card-grid/style-01-card-grid.html
 ```
 
-If the client cannot open local files directly, tell the user the exact installed file path and ask them to open it in their browser. These HTML files are static single-file previews; no build step or dev server is required. Some examples load fonts from Google Fonts and will fall back to system fonts when offline.
-
-## Layout Framework Selection Flow
-
-When the user asks for page structure, choose a layout framework from `references/layout-index.md`.
-
-Use this flow:
-
-1. Identify the page type and primary workflow.
-2. Recommend 1-2 layout frameworks.
-3. Read the selected framework in `references/layouts/`.
-4. Combine it with a visual style when the user wants a complete design.
-5. Adapt section order, navigation, density, and responsive behavior to the real product.
-6. Include required states from the layout framework.
-
-Do not treat layout frameworks as wireframes to copy exactly. Treat them as structural guidance.
-Use the layout previews under `assets/layouts/` only to compare structural differences. The included layout previews are intentionally different from one another so the user can distinguish page types quickly.
-The layout previews are high-fidelity references with realistic hierarchy, density, status areas, supporting context, and product-like content. They demonstrate how a framework can feel as a real interface, but the final implementation must still be redesigned around the user's own product and workflow.
+If the client cannot open local files directly, tell the user the exact installed file path and ask them to open it in their browser. These HTML files are static single-file previews. Some examples load remote media; allow a few seconds before screenshotting.
 
 ## When Applying A Style
 
@@ -186,20 +150,20 @@ Extract only what is relevant to the current project:
 
 - Color tokens and semantic color roles.
 - Font family, font weights, type scale, and text density.
-- Border, radius, shadow, glow, and surface treatment.
-- Button, tag, card, input, table, navigation, and empty-state personality.
-- Hover, focus, selected, disabled, loading, and alert states.
-- Motion timing and texture rules.
-- Layout framework hierarchy, navigation model, density, responsive behavior, and required states.
+- Border, radius, shadow, glow, glass, metal, soft, or tactile surface treatment.
+- Button, tag, card, input, table, navigation, chart, modal, drawer, and empty-state personality.
+- Hover, focus, selected, disabled, loading, error, warning, and success states.
+- Image direction when the page benefits from photography or rich media. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
+- Motion timing, texture rules, and responsive density.
 
-Avoid treating sample layout details as requirements. If a style manual mentions a layout, read it as an example observation, not as an instruction to reproduce that structure.
+Avoid treating sample layout details as requirements. If a style manual mentions page structure, read it as an example observation, not as an instruction to reproduce that structure.
 
 ## Output Expectations
 
 When explaining a style choice to the user, keep it practical:
 
 - Name the selected style and why it fits.
-- Mention the main colors, typography, surfaces, and interaction tone.
-- State that layout will be adapted to the actual product need.
+- Mention the main colors, typography, surfaces, imagery, and interaction tone.
+- State that page structure will be adapted to the actual product need.
 
 When coding, translate the selected style into concrete CSS variables, component classes, or framework theme tokens.

@@ -1,21 +1,18 @@
 # Roadmap
 
-Awesome Page Design is starting as a visual style prompt library, but the long-term goal is broader: help agents make stronger UI decisions across visual language, page structure, and reusable interaction patterns.
-
-This roadmap is intentionally practical. It describes how the project should grow without becoming a loose pile of templates.
+Awesome Page Design is now a focused visual style prompt library. The project helps agents make stronger UI decisions across visual language, component tone, imagery, and interaction states without becoming a copy-paste template pack.
 
 ## Current Scope
 
 The current Skill includes:
 
-- 25 visual style directions.
-- 20 page layout frameworks.
-- HTML and PNG previews for every visual style and layout framework.
-- Design system notes under `references/styles/`.
-- Layout framework notes under `references/layouts/`.
-- Similarity guardrails in `SKILL.md`, `style-index.md`, and `layout-index.md` so related system styles and admin layouts remain distinguishable.
-- A required preview selection gate in `SKILL.md` so agents pause after the user's requirement, open or provide the gallery, and wait for style/layout selection unless explicitly delegated.
-- A bilingual preview gallery with copyable style and layout prompts.
+- 21 visual style directions, numbered continuously from Style 01 to Style 21.
+- HTML and PNG previews for every visual style.
+- Richer clickable sample pages with tabs, buttons, modal notes, media, metrics, and action surfaces.
+- Design notes under `references/styles/`.
+- Similarity guardrails in `SKILL.md` and `style-index.md` so related styles remain distinguishable.
+- A required preview selection gate in `SKILL.md` so agents pause after the user's requirement, open or provide the gallery, and wait for style selection unless explicitly delegated.
+- A bilingual preview gallery with copyable style prompts.
 - A local preview server for source checkouts and installed Skill directories.
 
 The current rule remains the foundation:
@@ -24,21 +21,20 @@ The current rule remains the foundation:
 
 ## Product Direction
 
-The project should evolve from a single visual-style library into a UI design decision library for coding agents.
+The project should stay prompt-oriented. The Skill should guide an agent to adapt style decisions to the user's product, not paste fixed layouts.
 
 Planned categories:
 
-- **Visual styles**: color, typography, radius, shadow, texture, motion, component tone.
-- **Page framework styles**: dashboard shell, SaaS landing page, editorial article, docs site, ecommerce admin, portfolio, data console.
+- **Visual styles**: color, typography, radius, shadow, texture, material, motion, component tone.
 - **Component patterns**: modal, drawer, command palette, toast, table, form, empty state, onboarding, pricing card, chart panel.
-- **Interaction patterns**: selection, filtering, drag and drop, batch actions, loading, error recovery, keyboard focus, responsive collapse.
-- **Domain packs**: finance, healthcare, education, developer tools, public service, commerce, creative tools.
+- **Interaction patterns**: selection, filtering, batch actions, loading, error recovery, keyboard focus, responsive collapse.
+- **Domain notes**: developer tools, creative tools, SaaS, education, commerce, portfolios, public service, AI products.
 
-Each category should stay prompt-oriented. The Skill should guide an agent to adapt patterns to the user's product, not paste fixed layouts.
+Future structural guidance should be clearly separated from visual style and have a strong quality bar.
 
 ## Proposed Future Structure
 
-The repository should eventually separate style assets, manuals, and catalogs more explicitly:
+The repository should eventually separate style metadata from rendering scripts:
 
 ```text
 skills/awesome-page-design/
@@ -46,88 +42,46 @@ skills/awesome-page-design/
 ├── agents/
 ├── assets/
 │   ├── previews/
-│   ├── styles/              # HTML + PNG visual previews
-│   ├── layouts/             # HTML + PNG layout previews
-│   └── components/          # HTML + PNG component previews
+│   └── styles/              # HTML + PNG visual previews
 ├── references/
 │   ├── usage-principles.md
 │   ├── style-index.md
-│   ├── layout-index.md
-│   ├── component-index.md
-│   ├── styles/
-│   ├── layouts/
-│   └── components/
+│   └── styles/
 └── scripts/
 ```
 
-Before adding new categories, introduce machine-readable catalog files so metadata is not duplicated across scripts:
+Before adding new categories, introduce a machine-readable style catalog so metadata is not duplicated across scripts:
 
 ```text
 catalog/
-├── styles.json
-├── layouts.json
-└── components.json
+└── styles.json
 ```
 
-These catalogs should drive preview generation, README tables, copy prompts, and index files.
+This catalog should drive preview generation, README tables, copy prompts, and index files.
 
-## Adding More Visual Styles
+## Adding Or Revising Visual Styles
 
-Near-term additions should focus on quality, not count.
+Near-term work should focus on quality, not count.
 
 Recommended process for each new style:
 
-1. Define the style name, best-use cases, personality, and anti-use cases.
+1. Define the style name, best-use cases, personality, anti-use cases, and visual language.
 2. Build one static HTML preview under `skills/awesome-page-design/assets/styles/<style-id>/`.
-3. Use the shared AI Daily Brief demo content unless the style needs a different neutral demo carrier.
+3. Include enough realistic content to judge the style: navigation, hero, cards, data, media, clickable controls, and states.
 4. Add or update the design manual in `skills/awesome-page-design/references/styles/`.
 5. Update the style catalog metadata.
 6. Run `npm run previews`.
-7. Check the preview gallery, mobile readability, and copy prompt.
+7. Check the preview gallery, mobile readability, image loading, and copy prompt.
 8. Confirm the style is visually distinct from existing options.
 
 Acceptance criteria:
 
 - The style has a clear reason to exist.
 - It is not just a palette swap.
-- It includes usable typography, surfaces, states, and component tone.
-- It has a clear distinction from nearby styles in the same family, especially mature product-system styles.
+- It includes usable typography, surfaces, states, imagery guidance, and component tone.
+- It has a clear distinction from nearby styles in the same family.
 - It works at desktop and mobile widths.
 - It does not depend on a fixed layout.
-
-## Page Framework Styles
-
-Page framework styles should describe structure and workflow, not color.
-
-Examples:
-
-- Dense admin dashboard.
-- SaaS product landing page.
-- Developer documentation site.
-- Editorial homepage and article page.
-- Ecommerce merchant console.
-- CRM workspace.
-- Analytics command center.
-- Portfolio case-study page.
-
-Each framework should include:
-
-- Information hierarchy.
-- Section order options.
-- Navigation model.
-- Responsive collapse rules.
-- Recommended component mix.
-- Failure modes to avoid.
-- Compatible visual style families.
-- Similarity guardrails that explain how it differs from nearby frameworks.
-
-Agents should be able to combine one visual style with one page framework:
-
-```text
-Use awesome-page-design visual style: Version R - Carbon Enterprise.
-Use page framework: Dense Admin Dashboard.
-Apply both, but design the layout around the actual product requirements.
-```
 
 ## Component And Popup Patterns
 
@@ -146,7 +100,7 @@ Priority components:
 - Multi-step form.
 - Pricing card.
 - Chart panel.
-- Settings page.
+- Settings panel.
 
 Each pattern should define:
 
@@ -162,88 +116,71 @@ Popup and overlay patterns need special care. They should specify focus manageme
 
 ## Preview Gallery Evolution
 
-The preview gallery should become the user's style selection surface.
+The preview gallery should remain the user's style selection surface.
 
 Planned improvements:
 
 - Search by style name and use case.
 - Filters for light/dark, density, mood, and product type.
-- Tabs for visual styles, page frameworks, and components.
 - Copy prompts that include category-specific instructions.
 - Side-by-side comparison mode.
 - Direct links to individual HTML previews.
 - Optional compressed preview images to reduce package size.
 
-The gallery should remain static and offline-friendly.
+The gallery should remain static and offline-friendly except for optional remote placeholder images inside individual examples.
 
 ## Skill Behavior Improvements
 
-`SKILL.md` should keep helping agents choose combinations reliably:
+`SKILL.md` should keep helping agents choose reliably:
 
 - If the user asks for general UI design, pick a visual style first.
-- If the user asks for page structure, pick a page framework first.
-- If the user asks for a specific UI element, pick a component pattern first.
-- If multiple categories apply, combine them explicitly and explain the mapping.
-- If the user has not chosen a style or layout, use the preview selection gate before final implementation.
-- When multiple candidates are similar, apply the guardrails from the style and layout indexes before recommending one.
+- If the user has not chosen a style, use the preview selection gate before final implementation.
+- If the user asks the agent to choose, recommend a small candidate set and explain why.
+- When multiple candidates are similar, apply the guardrails from the style index before recommending one.
 - Always avoid copying demo content or sample layout as production requirements.
 
 ## Quality Bar
 
 Every new asset should pass these checks:
 
-- No Chinese text in shipped English preview assets unless intentionally bilingual UI.
 - No broken local links in the preview gallery.
-- No duplicate manuals under `assets/` and `references/`.
+- No obsolete `version-*` or `layout-*` references.
 - No root-level duplicate style assets.
 - `npm pack --dry-run` includes only useful package files.
 - Preview server returns a URL under `/assets/previews/`.
 - Generated screenshots are nonblank and visually representative.
-- The style or pattern can be described in one clear sentence.
-- Adjacent styles or layouts can be differentiated by workflow, component mix, and information structure, not only by palette.
+- Screenshots wait 5 seconds so third-party images and fonts can load.
+- The style can be described in one clear sentence.
+- Adjacent styles can be differentiated by typography, material, component tone, and imagery, not only by palette.
 
 ## Suggested Milestones
 
-### v0.1: Stable Skill Package
+### v0.2: Focused 21-Style Library
 
-- Keep the current 25 visual styles.
+- Keep the current 21 visual styles.
 - Maintain one source of assets under `skills/awesome-page-design/`.
-- Keep README, Chinese README, preview server, and install docs stable.
+- Keep README, Chinese README, preview server, and install/update docs stable.
 - Keep the preview selection gate clear enough that installed agents know when to wait for user choice.
 
-### v0.2: Catalog And Contribution Workflow
+### v0.3: Catalog And Validation
 
-- Add machine-readable catalogs.
-- Generate preview metadata from catalogs.
-- Add a documented style contribution checklist.
+- Add machine-readable `catalog/styles.json`.
+- Generate preview metadata from the catalog.
 - Add basic link and count validation scripts.
-- Add automated similarity checks for preview screenshots and catalog metadata.
+- Add screenshot sanity checks.
 
-### v0.3: More Visual Styles
-
-- Add 10-15 high-quality visual styles.
-- Focus on styles that are genuinely distinct from the current set.
-- Add gallery filters for mood, density, product type, and light/dark mode.
-
-### v0.4: Page Framework Library
-
-- Expand beyond the initial 20 page framework patterns.
-- Keep layout preview assets visually and structurally distinct, not palette swaps.
-- Add stronger framework-specific required states and mobile collapse examples.
-- Teach the Skill to recommend style + layout combinations more explicitly by product type.
-
-### v0.5: Component Pattern Library
+### v0.4: Component Pattern Library
 
 - Add modal, drawer, command palette, toast, table, form, empty state, and chart panel patterns.
 - Add interaction and accessibility rules for each component.
-- Add category tabs to the preview gallery.
+- Add component previews only if they remain visually distinct and useful.
 
-### v1.0: Agent-Ready UI Design Library
+### v1.0: Agent-Ready Visual Design Library
 
 - Stabilize public structure.
 - Provide complete install and contribution docs.
 - Keep package size controlled.
-- Support style + layout + component selection in one coherent workflow.
+- Support style and component selection in one coherent workflow.
 
 ## Non-Goals
 
@@ -257,8 +194,7 @@ These should remain out of scope unless the project direction changes:
 
 ## Maintenance Principles
 
-- Prefer fewer, better patterns over a large weak catalog.
-- Keep the Skill body concise; put detailed manuals in `references/`.
-- Keep preview assets static and easy to inspect.
-- Keep generated files reproducible through scripts.
-- Treat every demo as a style carrier, not a production template.
+- Prefer fewer, better styles over a large weak catalog.
+- Keep examples rich enough to judge, but never imply they are production templates.
+- Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
+- Regenerate previews after any visual or documentation metadata change.

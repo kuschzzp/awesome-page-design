@@ -1,7 +1,7 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A Codex skill for distinctive web UI visual styles and layout frameworks.",
+  "description": "A Codex skill for choosing and applying distinctive web UI visual styles.",
   "license": "MIT",
   "type": "commonjs",
   "skills": "./skills/",
@@ -13,7 +13,6 @@
     "ROADMAP.md"
   ],
   "scripts": {
-    "styles:systems": "node scripts/generate-system-inspired-styles.js",
     "previews": "node scripts/generate-previews.js",
     "preview:serve": "node scripts/serve-preview.js"
   },
@@ -25,7 +24,7 @@
     "codex-skill",
     "web-design",
     "style-guide",
-    "layout-frameworks",
+    "visual-styles",
     "design-system",
     "ui"
   ],

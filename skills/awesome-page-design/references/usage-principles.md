@@ -14,8 +14,9 @@ The reusable parts are:
 - typography
 - radius
 - borders
-- shadows and glow
+- shadows, glow, and material treatment
 - surface texture
+- image direction
 - component tone
 - interaction states
 - animation timing
@@ -34,7 +35,7 @@ Those must be redesigned for the user's real product and workflow.
 
 ## Preview Selection Gate
 
-When the user describes a UI request without naming a visual style or layout framework, the agent should not jump straight into final implementation. First turn the request into a short selection brief, then open or provide the preview gallery so the user can choose.
+When the user describes a UI request without naming a visual style, the agent should not jump straight into final implementation. First turn the request into a short selection brief, then open or provide the preview gallery so the user can choose.
 
 The selection brief should cover:
 
@@ -42,26 +43,28 @@ The selection brief should cover:
 - page type or primary workflow
 - mood
 - information density
-- light or dark preference when known
+- light, dark, or mixed preference when known
+- whether images or illustration are useful
 
-For complete pages or app screens, confirm both:
+The user may also delegate the choice to the agent. In that case, recommend a small shortlist, explain why the options differ, apply the similarity guardrails from the style index, and ask for confirmation before final implementation unless the user explicitly says to proceed.
 
-- one visual style prompt
-- one layout framework prompt
-
-The user may also delegate the choice to the agent. In that case, recommend a small shortlist, explain why the options differ, apply the similarity guardrails from the style and layout indexes, and ask for confirmation before final implementation.
-
-If local previews cannot be opened, use `style-index.md` and `layout-index.md` as the text fallback for selection.
+If local previews cannot be opened, use `style-index.md` as the text fallback for selection.
 
 ## Selection Heuristics
 
-Use restrained system-like styles for enterprise tools, admin systems, data-heavy apps, and operational dashboards.
+Use Style 09 Tech Minimal, Style 11 Structured Lines, Style 12 Material Design, or Style 18 Linear Futurism for serious product work where clarity matters.
 
-Use editorial, Swiss, or classic styles for content-heavy websites where reading hierarchy matters.
+Use Style 10 Dark Theme, Style 15 Liquid Glass, Style 18 Linear Futurism, or Style 21 Acid Design for dark, immersive, technical, or experimental products, but keep their differences clear.
 
-Use expressive styles such as Brutalism, Y2K, Cute-alism, Aurora, Scribble, or Terminal only when the brand, audience, or product context can support a strong visual personality.
+Use Style 13 Bento Layout when the page benefits from modular card zones and widget-like chunks. It is a visual composition style, not a required page framework.
 
-Use public design-system-inspired styles when the user wants familiar, production-safe UI direction.
+Use Style 02 Block Brutalism, Style 04 Retro Y2K, Style 16 Retro Computing, Style 17 Neo-Brutalism, Style 19 Gradient Pop, Style 20 Soft Pop, or Style 21 Acid Design when the brand, audience, or campaign can carry a strong visual personality.
+
+Use Style 14 Neumorphism only when a soft tactile interface fits the product and accessibility remains strong.
+
+## Image Guidance
+
+When a website design needs images, prefer real product screenshots, customer images, brand photography, or carefully matched neutral media. When screenshotting generated previews, wait 5 seconds so remote images and fonts can load.
 
 ## Implementation Guidance
 
@@ -69,7 +72,7 @@ Start by creating tokens: background, surface, text, muted text, primary, accent
 
 Then map tokens onto real components. Adjust component layout to the product's needs instead of copying sample sections.
 
-Keep accessibility intact. If a style uses low contrast, glow, texture, or decorative motion, preserve readability and focus visibility first.
+Keep accessibility intact. If a style uses low contrast, glow, glass, chrome, texture, or decorative motion, preserve readability and focus visibility first.
 
 ## User-Facing Explanation
 

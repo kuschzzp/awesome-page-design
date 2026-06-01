@@ -9,8 +9,8 @@
 body {
   margin: 0;
   padding: 32px;
-  background: #f5f6fa;
-  color: #1f2937;
+  background: #f6f7fb;
+  color: #172033;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 .header {
@@ -23,8 +23,8 @@ body {
 }
 h1 {
   margin: 0;
-  font-size: 28px;
-  line-height: 1.2;
+  font-size: 30px;
+  line-height: 1.15;
   letter-spacing: 0;
 }
 .meta {
@@ -33,7 +33,7 @@ h1 {
   font-size: 14px;
 }
 .hint {
-  max-width: 720px;
+  max-width: 760px;
   margin: 10px 0 0;
   color: #475467;
   font-size: 14px;
@@ -63,43 +63,12 @@ h1 {
   cursor: pointer;
 }
 .lang-toggle button.active {
-  background: #4f46e5;
-  color: #ffffff;
-}
-.controls {
-  max-width: 1440px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-.tabs {
-  display: inline-flex;
-  gap: 4px;
-  padding: 4px;
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(15,23,42,0.06);
-}
-.tabs button {
-  min-height: 34px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: #667085;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.tabs button.active {
-  background: #1f2937;
+  background: #111827;
   color: #ffffff;
 }
 .count {
+  max-width: 1440px;
+  margin: 0 auto 20px;
   color: #667085;
   font-size: 13px;
 }
@@ -109,9 +78,6 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-}
-.grid[hidden] {
-  display: none;
 }
 .card {
   overflow: hidden;
@@ -141,7 +107,7 @@ h1 {
 .card-kicker {
   color: #4f46e5;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -152,7 +118,7 @@ h1 {
   letter-spacing: 0;
 }
 .card p {
-  min-height: 42px;
+  min-height: 84px;
   margin: 0;
   color: #667085;
   font-size: 14px;
@@ -196,8 +162,6 @@ h1 {
   body { padding: 16px; }
   .header { display: block; }
   .lang-toggle { margin-top: 14px; }
-  .controls { display: block; }
-  .count { margin-top: 10px; }
   .grid { grid-template-columns: 1fr; gap: 16px; }
 }
 </style>
@@ -205,697 +169,344 @@ h1 {
 <body>
   <header class="header">
     <div>
-      <h1>Web Style Templates Previews</h1>
-      <p class="meta">45 previews, viewport 1440x1200</p>
-      <p class="hint">Compare visual styles and layout frameworks. Copy a prompt, send it to your AI agent, and it can apply the chosen direction without copying the sample content.</p>
+      <h1>Awesome Page Design Previews</h1>
+      <p class="meta">21 visual style previews, viewport 1440x1200</p>
+      <p class="hint">Compare visual styles. Copy a style prompt, send it to your AI agent, and it can apply the chosen colors, typography, surfaces, layout mood, and component tone without copying the sample page.</p>
     </div>
     <div class="lang-toggle" aria-label="Language">
       <button type="button" class="active" data-lang="en">EN</button>
       <button type="button" data-lang="zh">中文</button>
     </div>
   </header>
-  <section class="controls" aria-label="Preview category">
-    <div class="tabs">
-      <button type="button" class="active" data-tab="styles" data-i18n="tabStyles">Visual Styles</button>
-      <button type="button" data-tab="layouts" data-i18n="tabLayouts">Layout Frameworks</button>
-    </div>
-    <div class="count" data-i18n="sectionCount">25 visual styles, 20 layout frameworks</div>
-  </section>
-  <main class="grid" data-panel="styles">
-      <article class="card">
-        <a class="preview" href="../styles/version-a-classic/version-a-classic.html" aria-label="Open Version A Classic News HTML preview">
-          <img src="../styles/version-a-classic/version-a-classic.png" alt="Version A - Classic News preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> A</div>
-          <h2><span data-en="Classic News" data-zh="经典新闻">Classic News</span></h2>
-          <p data-en="editorial sites, authority content, calm product pages" data-zh="新闻、内容站、权威信息页">editorial sites, authority content, calm product pages</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version A - Classic News. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version A - Classic News（经典新闻）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-a-classic/version-a-classic.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+  <p class="count" data-i18n="sectionCount">21 continuous visual styles, numbered Style 01 through Style 21.</p>
+  <main class="grid">
+    <article class="card">
+      <a class="preview" href="../styles/style-01-card-grid/style-01-card-grid.html" aria-label="Open Style 01 Card Grid HTML preview">
+        <img src="../styles/style-01-card-grid/style-01-card-grid.png" alt="Style 01 - Card Grid preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 01</div>
+        <h2><span data-en="Card Grid" data-zh="卡片网格">Card Grid</span></h2>
+        <p data-en="Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces." data-zh="浅色中性画布、紫色强调、卡片网格节奏、统计数据、搜索和易扫描的总览界面。">Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 01 - Card Grid. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 01 - Card Grid（卡片网格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-01-card-grid/style-01-card-grid.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-b-grid/version-b-grid.html" aria-label="Open Version B Card Grid HTML preview">
-          <img src="../styles/version-b-grid/version-b-grid.png" alt="Version B - Card Grid preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> B</div>
-          <h2><span data-en="Card Grid" data-zh="卡片网格">Card Grid</span></h2>
-          <p data-en="dashboards, catalogs, overview pages" data-zh="仪表盘、目录页、概览页">dashboards, catalogs, overview pages</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version B - Card Grid. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version B - Card Grid（卡片网格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-b-grid/version-b-grid.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-02-block-brutalism/style-02-block-brutalism.html" aria-label="Open Style 02 Block Brutalism HTML preview">
+        <img src="../styles/style-02-block-brutalism/style-02-block-brutalism.png" alt="Style 02 - Block Brutalism preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 02</div>
+        <h2><span data-en="Block Brutalism" data-zh="块状粗野主义">Block Brutalism</span></h2>
+        <p data-en="Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy." data-zh="暖黄画布、硬黑边框、块状控件、高饱和标签和强活动感。">Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 02 - Block Brutalism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 02 - Block Brutalism（块状粗野主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-02-block-brutalism/style-02-block-brutalism.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-c-feed/version-c-feed.html" aria-label="Open Version C Feed Layout HTML preview">
-          <img src="../styles/version-c-feed/version-c-feed.png" alt="Version C - Feed Layout preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> C</div>
-          <h2><span data-en="Feed Layout" data-zh="信息流布局">Feed Layout</span></h2>
-          <p data-en="feeds, communities, updates, article streams" data-zh="信息流、社区、动态、文章流">feeds, communities, updates, article streams</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version C - Feed Layout. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version C - Feed Layout（信息流布局）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-c-feed/version-c-feed.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-03-aurora-gradient/style-03-aurora-gradient.html" aria-label="Open Style 03 Aurora Gradient HTML preview">
+        <img src="../styles/style-03-aurora-gradient/style-03-aurora-gradient.png" alt="Style 03 - Aurora Gradient preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 03</div>
+        <h2><span data-en="Aurora Gradient" data-zh="极光渐变">Aurora Gradient</span></h2>
+        <p data-en="Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium AI atmosphere." data-zh="暗色画布、极光色场、柔光、漂移渐变能量和高级 AI 氛围。">Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium AI atmosphere.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 03 - Aurora Gradient. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 03 - Aurora Gradient（极光渐变）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-03-aurora-gradient/style-03-aurora-gradient.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-d-bento/version-d-bento.html" aria-label="Open Version D Bento Grid HTML preview">
-          <img src="../styles/version-d-bento/version-d-bento.png" alt="Version D - Bento Grid preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> D</div>
-          <h2><span data-en="Bento Grid" data-zh="Bento 网格">Bento Grid</span></h2>
-          <p data-en="product showcases, Apple-like overview pages" data-zh="产品展示、Apple 风概览页">product showcases, Apple-like overview pages</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version D - Bento Grid. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version D - Bento Grid（Bento 网格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-d-bento/version-d-bento.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-04-retro-y2k/style-04-retro-y2k.html" aria-label="Open Style 04 Retro Y2K HTML preview">
+        <img src="../styles/style-04-retro-y2k/style-04-retro-y2k.png" alt="Style 04 - Retro Y2K preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 04</div>
+        <h2><span data-en="Retro Y2K" data-zh="复古 Y2K">Retro Y2K</span></h2>
+        <p data-en="Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism." data-zh="糖果渐变、霓虹细节、复古标题字、星光能量和千禧年数字乐观感。">Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 04 - Retro Y2K. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 04 - Retro Y2K（复古 Y2K）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-04-retro-y2k/style-04-retro-y2k.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-e-glass/version-e-glass.html" aria-label="Open Version E Glassmorphism HTML preview">
-          <img src="../styles/version-e-glass/version-e-glass.png" alt="Version E - Glassmorphism preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> E</div>
-          <h2><span data-en="Glassmorphism" data-zh="毛玻璃">Glassmorphism</span></h2>
-          <p data-en="immersive dark landing pages, AI products" data-zh="沉浸式暗色落地页、AI 产品">immersive dark landing pages, AI products</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version E - Glassmorphism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version E - Glassmorphism（毛玻璃）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-e-glass/version-e-glass.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-05-swiss-editorial/style-05-swiss-editorial.html" aria-label="Open Style 05 Swiss Editorial HTML preview">
+        <img src="../styles/style-05-swiss-editorial/style-05-swiss-editorial.png" alt="Style 05 - Swiss Editorial preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 05</div>
+        <h2><span data-en="Swiss Editorial" data-zh="瑞士编辑风">Swiss Editorial</span></h2>
+        <p data-en="Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm." data-zh="紧凑编辑网格、红黑字体层级、细分割线、极小页边距和克制内容节奏。">Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 05 - Swiss Editorial. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 05 - Swiss Editorial（瑞士编辑风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-05-swiss-editorial/style-05-swiss-editorial.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-f-brutalism/version-f-brutalism.html" aria-label="Open Version F Neo-Brutalism HTML preview">
-          <img src="../styles/version-f-brutalism/version-f-brutalism.png" alt="Version F - Neo-Brutalism preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> F</div>
-          <h2><span data-en="Neo-Brutalism" data-zh="新粗野主义">Neo-Brutalism</span></h2>
-          <p data-en="bold campaigns, indie products, playful utilities" data-zh="强品牌活动、独立产品、趣味工具">bold campaigns, indie products, playful utilities</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version F - Neo-Brutalism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version F - Neo-Brutalism（新粗野主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-f-brutalism/version-f-brutalism.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-06-terminal-hacker/style-06-terminal-hacker.html" aria-label="Open Style 06 Terminal Hacker HTML preview">
+        <img src="../styles/style-06-terminal-hacker/style-06-terminal-hacker.png" alt="Style 06 - Terminal Hacker preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 06</div>
+        <h2><span data-en="Terminal Hacker" data-zh="黑客终端">Terminal Hacker</span></h2>
+        <p data-en="Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility." data-zh="黑色画布、终端绿、等宽字体、CRT 扫描线、命令行细节和开发者可信感。">Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 06 - Terminal Hacker. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 06 - Terminal Hacker（黑客终端）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-06-terminal-hacker/style-06-terminal-hacker.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-g-aurora/version-g-aurora.html" aria-label="Open Version G Aurora Gradient HTML preview">
-          <img src="../styles/version-g-aurora/version-g-aurora.png" alt="Version G - Aurora Gradient preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> G</div>
-          <h2><span data-en="Aurora Gradient" data-zh="极光渐变">Aurora Gradient</span></h2>
-          <p data-en="futuristic products, AI tools, premium dark experiences" data-zh="未来感产品、AI 工具、高级暗色体验">futuristic products, AI tools, premium dark experiences</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version G - Aurora Gradient. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version G - Aurora Gradient（极光渐变）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-g-aurora/version-g-aurora.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-07-cutealism/style-07-cutealism.html" aria-label="Open Style 07 Cute-alism HTML preview">
+        <img src="../styles/style-07-cutealism/style-07-cutealism.png" alt="Style 07 - Cute-alism preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 07</div>
+        <h2><span data-en="Cute-alism" data-zh="可爱主义">Cute-alism</span></h2>
+        <p data-en="Neon yellow, pink hard shadows, sticker-like objects, rounded bold shapes, and soft-hard contrast." data-zh="荧光黄、粉色硬阴影、贴纸感对象、圆润粗形和软硬碰撞。">Neon yellow, pink hard shadows, sticker-like objects, rounded bold shapes, and soft-hard contrast.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 07 - Cute-alism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 07 - Cute-alism（可爱主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-07-cutealism/style-07-cutealism.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-h-y2k/version-h-y2k.html" aria-label="Open Version H Retro Y2K HTML preview">
-          <img src="../styles/version-h-y2k/version-h-y2k.png" alt="Version H - Retro Y2K preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> H</div>
-          <h2><span data-en="Retro Y2K" data-zh="复古 Y2K">Retro Y2K</span></h2>
-          <p data-en="music, fashion, youth culture, playful campaigns" data-zh="音乐、潮流、青年文化、活动页">music, fashion, youth culture, playful campaigns</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version H - Retro Y2K. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version H - Retro Y2K（复古 Y2K）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-h-y2k/version-h-y2k.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-08-resonant-stark/style-08-resonant-stark.html" aria-label="Open Style 08 Resonant Stark HTML preview">
+        <img src="../styles/style-08-resonant-stark/style-08-resonant-stark.png" alt="Style 08 - Resonant Stark preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 08</div>
+        <h2><span data-en="Resonant Stark" data-zh="共鸣极简">Resonant Stark</span></h2>
+        <p data-en="Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint." data-zh="近黑画布、细字重、微光、大留白、精细线条和高级克制感。">Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 08 - Resonant Stark. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 08 - Resonant Stark（共鸣极简）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-08-resonant-stark/style-08-resonant-stark.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-i-swiss/version-i-swiss.html" aria-label="Open Version I Swiss Editorial HTML preview">
-          <img src="../styles/version-i-swiss/version-i-swiss.png" alt="Version I - Swiss Editorial preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> I</div>
-          <h2><span data-en="Swiss Editorial" data-zh="瑞士编辑风">Swiss Editorial</span></h2>
-          <p data-en="portfolios, cultural sites, design studios, serious content" data-zh="作品集、文化机构、严肃内容">portfolios, cultural sites, design studios, serious content</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version I - Swiss Editorial. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version I - Swiss Editorial（瑞士编辑风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-i-swiss/version-i-swiss.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-09-tech-minimal/style-09-tech-minimal.html" aria-label="Open Style 09 Tech Minimal HTML preview">
+        <img src="../styles/style-09-tech-minimal/style-09-tech-minimal.png" alt="Style 09 - Tech Minimal preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 09</div>
+        <h2><span data-en="Tech Minimal" data-zh="科技极简风">Tech Minimal</span></h2>
+        <p data-en="Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface." data-zh="大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。">Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 09 - Tech Minimal. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 09 - Tech Minimal（科技极简风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-09-tech-minimal/style-09-tech-minimal.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-j-terminal/version-j-terminal.html" aria-label="Open Version J Terminal Hacker HTML preview">
-          <img src="../styles/version-j-terminal/version-j-terminal.png" alt="Version J - Terminal Hacker preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> J</div>
-          <h2><span data-en="Terminal Hacker" data-zh="黑客终端">Terminal Hacker</span></h2>
-          <p data-en="developer tools, CLI products, security, open source" data-zh="开发者工具、CLI、安全、开源">developer tools, CLI products, security, open source</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version J - Terminal Hacker. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version J - Terminal Hacker（黑客终端）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-j-terminal/version-j-terminal.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-10-dark-theme/style-10-dark-theme.html" aria-label="Open Style 10 Dark Theme HTML preview">
+        <img src="../styles/style-10-dark-theme/style-10-dark-theme.png" alt="Style 10 - Dark Theme preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 10</div>
+        <h2><span data-en="Dark Theme" data-zh="深色主题">Dark Theme</span></h2>
+        <p data-en="Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual." data-zh="暗背景、高对比度，并用单色亮色强化主按钮和主视觉。">Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 10 - Dark Theme. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 10 - Dark Theme（深色主题）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-10-dark-theme/style-10-dark-theme.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-k-clay/version-k-clay.html" aria-label="Open Version K Claymorphism HTML preview">
-          <img src="../styles/version-k-clay/version-k-clay.png" alt="Version K - Claymorphism preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> K</div>
-          <h2><span data-en="Claymorphism" data-zh="软泥拟态">Claymorphism</span></h2>
-          <p data-en="friendly SaaS, education, wellness, approachable tools" data-zh="教育、健康、友好型 SaaS">friendly SaaS, education, wellness, approachable tools</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version K - Claymorphism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version K - Claymorphism（软泥拟态）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-k-clay/version-k-clay.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-11-structured-lines/style-11-structured-lines.html" aria-label="Open Style 11 Structured Lines HTML preview">
+        <img src="../styles/style-11-structured-lines/style-11-structured-lines.png" alt="Style 11 - Structured Lines preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 11</div>
+        <h2><span data-en="Structured Lines" data-zh="结构线">Structured Lines</span></h2>
+        <p data-en="Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy." data-zh="细线框、结构化、专业严肃、信息层级清晰。">Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 11 - Structured Lines. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 11 - Structured Lines（结构线）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-11-structured-lines/style-11-structured-lines.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-l-cutealism/version-l-cutealism.html" aria-label="Open Version L Cute-alism HTML preview">
-          <img src="../styles/version-l-cutealism/version-l-cutealism.png" alt="Version L - Cute-alism preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> L</div>
-          <h2><span data-en="Cute-alism" data-zh="可爱主义">Cute-alism</span></h2>
-          <p data-en="playful brands, creator tools, youth products" data-zh="玩法品牌、创作者工具、年轻产品">playful brands, creator tools, youth products</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version L - Cute-alism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version L - Cute-alism（可爱主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-l-cutealism/version-l-cutealism.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-12-material-design/style-12-material-design.html" aria-label="Open Style 12 Material Design HTML preview">
+        <img src="../styles/style-12-material-design/style-12-material-design.png" alt="Style 12 - Material Design preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 12</div>
+        <h2><span data-en="Material Design" data-zh="材料设计风格">Material Design</span></h2>
+        <p data-en="Clear elevation, large color cards, generous radius, and orderly arrangement inspired by Material 3." data-zh="层次分明、大色块卡片、大圆角、有秩序的排布，参考 Material 3 的设计语言。">Clear elevation, large color cards, generous radius, and orderly arrangement inspired by Material 3.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 12 - Material Design. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 12 - Material Design（材料设计风格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-12-material-design/style-12-material-design.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-m-stark/version-m-stark.html" aria-label="Open Version M Resonant Stark HTML preview">
-          <img src="../styles/version-m-stark/version-m-stark.png" alt="Version M - Resonant Stark preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> M</div>
-          <h2><span data-en="Resonant Stark" data-zh="共鸣极简">Resonant Stark</span></h2>
-          <p data-en="premium dark portfolios, art, high-end product teasers" data-zh="高级暗色作品集、艺术、精品预告页">premium dark portfolios, art, high-end product teasers</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version M - Resonant Stark. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version M - Resonant Stark（共鸣极简）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-m-stark/version-m-stark.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-13-bento-layout/style-13-bento-layout.html" aria-label="Open Style 13 Bento Layout HTML preview">
+        <img src="../styles/style-13-bento-layout/style-13-bento-layout.png" alt="Style 13 - Bento Layout preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 13</div>
+        <h2><span data-en="Bento Layout" data-zh="便当盒布局">Bento Layout</span></h2>
+        <p data-en="iOS-widget-like card zones, modular composition, and clearly chunked information." data-zh="类似 iOS 小组件卡片分区、模块化排布、信息清晰分块。">iOS-widget-like card zones, modular composition, and clearly chunked information.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 13 - Bento Layout. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 13 - Bento Layout（便当盒布局）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-13-bento-layout/style-13-bento-layout.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-n-skeuomorph/version-n-skeuomorph.html" aria-label="Open Version N Light Skeuomorphism HTML preview">
-          <img src="../styles/version-n-skeuomorph/version-n-skeuomorph.png" alt="Version N - Light Skeuomorphism preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> N</div>
-          <h2><span data-en="Light Skeuomorphism" data-zh="轻拟物">Light Skeuomorphism</span></h2>
-          <p data-en="Apple-like tools, device apps, tactile product UI" data-zh="Apple 风工具、设备应用、触感 UI">Apple-like tools, device apps, tactile product UI</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version N - Light Skeuomorphism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version N - Light Skeuomorphism（轻拟物）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-n-skeuomorph/version-n-skeuomorph.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-14-neumorphism/style-14-neumorphism.html" aria-label="Open Style 14 Neumorphism HTML preview">
+        <img src="../styles/style-14-neumorphism/style-14-neumorphism.png" alt="Style 14 - Neumorphism preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 14</div>
+        <h2><span data-en="Neumorphism" data-zh="新拟态">Neumorphism</span></h2>
+        <p data-en="Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces." data-zh="柔光、内凹层次感圆角、柔和阴影和触感表面。">Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 14 - Neumorphism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 14 - Neumorphism（新拟态）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-14-neumorphism/style-14-neumorphism.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-o-scribble/version-o-scribble.html" aria-label="Open Version O Human Scribble HTML preview">
-          <img src="../styles/version-o-scribble/version-o-scribble.png" alt="Version O - Human Scribble preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> O</div>
-          <h2><span data-en="Human Scribble" data-zh="手写涂鸦">Human Scribble</span></h2>
-          <p data-en="workshops, education, human-centered notes, maker pages" data-zh="工作坊、教育、Maker、手写笔记">workshops, education, human-centered notes, maker pages</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version O - Human Scribble. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version O - Human Scribble（手写涂鸦）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-o-scribble/version-o-scribble.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-15-liquid-glass/style-15-liquid-glass.html" aria-label="Open Style 15 Liquid Glass HTML preview">
+        <img src="../styles/style-15-liquid-glass/style-15-liquid-glass.png" alt="Style 15 - Liquid Glass preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 15</div>
+        <h2><span data-en="Liquid Glass" data-zh="液态玻璃">Liquid Glass</span></h2>
+        <p data-en="Frosted glass, transparent layering, blurred materials, and a futuristic technology mood." data-zh="毛玻璃、透明层次、磨砂质感、科技感和未来感。">Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 15 - Liquid Glass. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 15 - Liquid Glass（液态玻璃）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-15-liquid-glass/style-15-liquid-glass.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-p-material-you/version-p-material-you.html" aria-label="Open Version P Material You HTML preview">
-          <img src="../styles/version-p-material-you/version-p-material-you.png" alt="Version P - Material You preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> P</div>
-          <h2><span data-en="Material You" data-zh="Material You">Material You</span></h2>
-          <p data-en="Android-like apps, friendly product UI, general-purpose tools" data-zh="Android 风应用、通用工具、生活方式产品">Android-like apps, friendly product UI, general-purpose tools</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version P - Material You. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version P - Material You（Material You）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-p-material-you/version-p-material-you.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-16-retro-computing/style-16-retro-computing.html" aria-label="Open Style 16 Retro Computing HTML preview">
+        <img src="../styles/style-16-retro-computing/style-16-retro-computing.png" alt="Style 16 - Retro Computing preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 16</div>
+        <h2><span data-en="Retro Computing" data-zh="复古主义">Retro Computing</span></h2>
+        <p data-en="Pixel mood, old operating-system texture, 80s elements, early Windows/Mac cues, and bitmap type." data-zh="像素风、复古 UI、老式操作系统质感、80 年代元素、早期 Windows/Mac 界面和像素字体。">Pixel mood, old operating-system texture, 80s elements, early Windows/Mac cues, and bitmap type.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 16 - Retro Computing. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 16 - Retro Computing（复古主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-16-retro-computing/style-16-retro-computing.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-q-fluent-cloud/version-q-fluent-cloud.html" aria-label="Open Version Q Fluent Cloud HTML preview">
-          <img src="../styles/version-q-fluent-cloud/version-q-fluent-cloud.png" alt="Version Q - Fluent Cloud preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> Q</div>
-          <h2><span data-en="Fluent Cloud" data-zh="Fluent 云应用">Fluent Cloud</span></h2>
-          <p data-en="Microsoft-like productivity tools, cloud apps" data-zh="生产力工具、云控制台、桌面应用">Microsoft-like productivity tools, cloud apps</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version Q - Fluent Cloud. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version Q - Fluent Cloud（Fluent 云应用）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-q-fluent-cloud/version-q-fluent-cloud.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-17-neo-brutalism/style-17-neo-brutalism.html" aria-label="Open Style 17 Neo-Brutalism HTML preview">
+        <img src="../styles/style-17-neo-brutalism/style-17-neo-brutalism.png" alt="Style 17 - Neo-Brutalism preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 17</div>
+        <h2><span data-en="Neo-Brutalism" data-zh="新粗野主义">Neo-Brutalism</span></h2>
+        <p data-en="Thick lines, strong color clashes, unpolished giant type, and controlled chaos." data-zh="粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。">Thick lines, strong color clashes, unpolished giant type, and controlled chaos.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 17 - Neo-Brutalism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 17 - Neo-Brutalism（新粗野主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-17-neo-brutalism/style-17-neo-brutalism.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-r-carbon-enterprise/version-r-carbon-enterprise.html" aria-label="Open Version R Carbon Enterprise HTML preview">
-          <img src="../styles/version-r-carbon-enterprise/version-r-carbon-enterprise.png" alt="Version R - Carbon Enterprise preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> R</div>
-          <h2><span data-en="Carbon Enterprise" data-zh="Carbon 企业">Carbon Enterprise</span></h2>
-          <p data-en="serious enterprise software, analytics, dense operations UI" data-zh="企业软件、数据平台、工业系统">serious enterprise software, analytics, dense operations UI</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version R - Carbon Enterprise. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version R - Carbon Enterprise（Carbon 企业）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-r-carbon-enterprise/version-r-carbon-enterprise.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-18-linear-futurism/style-18-linear-futurism.html" aria-label="Open Style 18 Linear Futurism HTML preview">
+        <img src="../styles/style-18-linear-futurism/style-18-linear-futurism.png" alt="Style 18 - Linear Futurism preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 18</div>
+        <h2><span data-en="Linear Futurism" data-zh="Linear 风格">Linear Futurism</span></h2>
+        <p data-en="Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision." data-zh="深色背景、发光边框、未来科技感和科幻 UI 精度。">Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 18 - Linear Futurism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 18 - Linear Futurism（Linear 风格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-18-linear-futurism/style-18-linear-futurism.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-s-polaris-commerce/version-s-polaris-commerce.html" aria-label="Open Version S Polaris Commerce HTML preview">
-          <img src="../styles/version-s-polaris-commerce/version-s-polaris-commerce.png" alt="Version S - Polaris Commerce preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> S</div>
-          <h2><span data-en="Polaris Commerce" data-zh="Polaris 商务">Polaris Commerce</span></h2>
-          <p data-en="merchant tools, ecommerce admin, business workflows" data-zh="电商后台、商家工具、运营系统">merchant tools, ecommerce admin, business workflows</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version S - Polaris Commerce. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version S - Polaris Commerce（Polaris 商务）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-s-polaris-commerce/version-s-polaris-commerce.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-19-gradient-pop/style-19-gradient-pop.html" aria-label="Open Style 19 Gradient Pop HTML preview">
+        <img src="../styles/style-19-gradient-pop/style-19-gradient-pop.png" alt="Style 19 - Gradient Pop preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 19</div>
+        <h2><span data-en="Gradient Pop" data-zh="渐变风">Gradient Pop</span></h2>
+        <p data-en="Bright gradients, tech or trend energy, and an immediately eye-catching first viewport." data-zh="亮色渐变、科技或潮流气质，首屏视觉抓眼。">Bright gradients, tech or trend energy, and an immediately eye-catching first viewport.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 19 - Gradient Pop. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 19 - Gradient Pop（渐变风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-19-gradient-pop/style-19-gradient-pop.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-t-atlassian-workbench/version-t-atlassian-workbench.html" aria-label="Open Version T Atlassian Workbench HTML preview">
-          <img src="../styles/version-t-atlassian-workbench/version-t-atlassian-workbench.png" alt="Version T - Atlassian Workbench preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> T</div>
-          <h2><span data-en="Atlassian Workbench" data-zh="Atlassian 工作台">Atlassian Workbench</span></h2>
-          <p data-en="collaboration tools, planning apps, team dashboards" data-zh="协作工具、项目管理、团队看板">collaboration tools, planning apps, team dashboards</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version T - Atlassian Workbench. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version T - Atlassian Workbench（Atlassian 工作台）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-t-atlassian-workbench/version-t-atlassian-workbench.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-20-soft-pop/style-20-soft-pop.html" aria-label="Open Style 20 Soft Pop HTML preview">
+        <img src="../styles/style-20-soft-pop/style-20-soft-pop.png" alt="Style 20 - Soft Pop preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 20</div>
+        <h2><span data-en="Soft Pop" data-zh="柔和流行">Soft Pop</span></h2>
+        <p data-en="Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes." data-zh="亲和力和玩乐色彩、手绘涂鸦/卡通插画、圆润夸张字体和带弹性的造型。">Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 20 - Soft Pop. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 20 - Soft Pop（柔和流行）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-20-soft-pop/style-20-soft-pop.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-u-gov-service/version-u-gov-service.html" aria-label="Open Version U Gov Service HTML preview">
-          <img src="../styles/version-u-gov-service/version-u-gov-service.png" alt="Version U - Gov Service preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> U</div>
-          <h2><span data-en="Gov Service" data-zh="政府服务">Gov Service</span></h2>
-          <p data-en="public service, legal, forms, accessibility-first sites" data-zh="政务、公共服务、法律、表单">public service, legal, forms, accessibility-first sites</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version U - Gov Service. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version U - Gov Service（政府服务）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-u-gov-service/version-u-gov-service.html" data-i18n="openHtml">Open HTML</a>
-          </div>
+      </div>
+    </article>
+    <article class="card">
+      <a class="preview" href="../styles/style-21-acid-design/style-21-acid-design.html" aria-label="Open Style 21 Acid Design HTML preview">
+        <img src="../styles/style-21-acid-design/style-21-acid-design.png" alt="Style 21 - Acid Design preview" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="card-kicker">Style 21</div>
+        <h2><span data-en="Acid Design" data-zh="酸性设计">Acid Design</span></h2>
+        <p data-en="Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension." data-zh="金属光泽、液态金属字体、铬材质、扭曲排版、镭射光、暗黑科幻和致幻感。">Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension.</p>
+        <div class="actions">
+          <button type="button" data-copy-en="Use awesome-page-design style: Style 21 - Acid Design. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 21 - Acid Design（酸性设计）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <a href="../styles/style-21-acid-design/style-21-acid-design.html" data-i18n="openHtml">Open HTML</a>
         </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-v-spectrum-creative/version-v-spectrum-creative.html" aria-label="Open Version V Spectrum Creative HTML preview">
-          <img src="../styles/version-v-spectrum-creative/version-v-spectrum-creative.png" alt="Version V - Spectrum Creative preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> V</div>
-          <h2><span data-en="Spectrum Creative" data-zh="Spectrum 创意">Spectrum Creative</span></h2>
-          <p data-en="creative software, media tools, asset managers" data-zh="创作软件、素材管理、媒体工具">creative software, media tools, asset managers</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version V - Spectrum Creative. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version V - Spectrum Creative（Spectrum 创意）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-v-spectrum-creative/version-v-spectrum-creative.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-w-lightning-crm/version-w-lightning-crm.html" aria-label="Open Version W Lightning CRM HTML preview">
-          <img src="../styles/version-w-lightning-crm/version-w-lightning-crm.png" alt="Version W - Lightning CRM preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> W</div>
-          <h2><span data-en="Lightning CRM" data-zh="Lightning CRM">Lightning CRM</span></h2>
-          <p data-en="CRM, sales tools, customer operations" data-zh="CRM、销售、客服、客户运营">CRM, sales tools, customer operations</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version W - Lightning CRM. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version W - Lightning CRM（Lightning CRM）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-w-lightning-crm/version-w-lightning-crm.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-x-primer-dev/version-x-primer-dev.html" aria-label="Open Version X Primer Dev HTML preview">
-          <img src="../styles/version-x-primer-dev/version-x-primer-dev.png" alt="Version X - Primer Dev preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> X</div>
-          <h2><span data-en="Primer Dev" data-zh="Primer 开发者">Primer Dev</span></h2>
-          <p data-en="developer platforms, docs, repo browsers, issue trackers" data-zh="开发者平台、文档、仓库、Issue">developer platforms, docs, repo browsers, issue trackers</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version X - Primer Dev. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version X - Primer Dev（Primer 开发者）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-x-primer-dev/version-x-primer-dev.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../styles/version-y-ant-pro/version-y-ant-pro.html" aria-label="Open Version Y Ant Pro HTML preview">
-          <img src="../styles/version-y-ant-pro/version-y-ant-pro.png" alt="Version Y - Ant Pro preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="version">Version</span> Y</div>
-          <h2><span data-en="Ant Pro" data-zh="Ant Pro">Ant Pro</span></h2>
-          <p data-en="enterprise admin, data tables, management consoles" data-zh="企业中台、管理后台、数据表格">enterprise admin, data tables, management consoles</p>
-          <div class="actions">
-            <button type="button" data-copy-en="Use awesome-page-design style: Version Y - Ant Pro. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Version Y - Ant Pro（Ant Pro）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-            <a href="../styles/version-y-ant-pro/version-y-ant-pro.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-  </main>
-  <main class="grid" data-panel="layouts" hidden>
-      <article class="card">
-        <a class="preview" href="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.html" aria-label="Open L01 Dense Admin Dashboard HTML preview">
-          <img src="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.png" alt="L01 - Dense Admin Dashboard preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L01</div>
-          <h2><span data-en="Dense Admin Dashboard" data-zh="密集管理后台">Dense Admin Dashboard</span></h2>
-          <p data-en="operations dashboards, KPI monitoring, data-heavy internal tools" data-zh="运营仪表盘、KPI 监控、数据密集型后台">operations dashboards, KPI monitoring, data-heavy internal tools</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L01 - Dense Admin Dashboard. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L01 - Dense Admin Dashboard（密集管理后台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l01-dense-admin-dashboard/l01-dense-admin-dashboard.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l02-saas-landing-page/l02-saas-landing-page.html" aria-label="Open L02 SaaS Landing Page HTML preview">
-          <img src="../layouts/l02-saas-landing-page/l02-saas-landing-page.png" alt="L02 - SaaS Landing Page preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L02</div>
-          <h2><span data-en="SaaS Landing Page" data-zh="SaaS 落地页">SaaS Landing Page</span></h2>
-          <p data-en="product marketing, conversion pages, feature-led websites" data-zh="产品官网、转化落地页、功能导向网站">product marketing, conversion pages, feature-led websites</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L02 - SaaS Landing Page. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L02 - SaaS Landing Page（SaaS 落地页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l02-saas-landing-page/l02-saas-landing-page.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.html" aria-label="Open L03 AI Copilot Workspace HTML preview">
-          <img src="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.png" alt="L03 - AI Copilot Workspace preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L03</div>
-          <h2><span data-en="AI Copilot Workspace" data-zh="AI Copilot 工作台">AI Copilot Workspace</span></h2>
-          <p data-en="AI assistants, writing tools, review workflows, command centers" data-zh="AI 助手、写作工具、审核流程、任务工作台">AI assistants, writing tools, review workflows, command centers</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L03 - AI Copilot Workspace. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L03 - AI Copilot Workspace（AI Copilot 工作台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l03-ai-copilot-workspace/l03-ai-copilot-workspace.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.html" aria-label="Open L04 Developer Docs Portal HTML preview">
-          <img src="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.png" alt="L04 - Developer Docs Portal preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L04</div>
-          <h2><span data-en="Developer Docs Portal" data-zh="开发者文档门户">Developer Docs Portal</span></h2>
-          <p data-en="API docs, SDK guides, developer platforms, technical content" data-zh="API 文档、SDK 指南、开发者平台、技术内容">API docs, SDK guides, developer platforms, technical content</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L04 - Developer Docs Portal. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L04 - Developer Docs Portal（开发者文档门户）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l04-developer-docs-portal/l04-developer-docs-portal.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.html" aria-label="Open L05 Editorial News Homepage HTML preview">
-          <img src="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.png" alt="L05 - Editorial News Homepage preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L05</div>
-          <h2><span data-en="Editorial News Homepage" data-zh="编辑部新闻首页">Editorial News Homepage</span></h2>
-          <p data-en="newsrooms, magazines, research publishing, content hubs" data-zh="新闻站、杂志、研究发布、内容中心">newsrooms, magazines, research publishing, content hubs</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L05 - Editorial News Homepage. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L05 - Editorial News Homepage（编辑部新闻首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l05-editorial-news-homepage/l05-editorial-news-homepage.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.html" aria-label="Open L06 Ecommerce Admin Console HTML preview">
-          <img src="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.png" alt="L06 - Ecommerce Admin Console preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L06</div>
-          <h2><span data-en="Ecommerce Admin Console" data-zh="电商管理控制台">Ecommerce Admin Console</span></h2>
-          <p data-en="merchant tools, order management, inventory and fulfillment UI" data-zh="商家工具、订单管理、库存和履约界面">merchant tools, order management, inventory and fulfillment UI</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L06 - Ecommerce Admin Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L06 - Ecommerce Admin Console（电商管理控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l06-ecommerce-admin-console/l06-ecommerce-admin-console.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.html" aria-label="Open L07 CRM Sales Workspace HTML preview">
-          <img src="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.png" alt="L07 - CRM Sales Workspace preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L07</div>
-          <h2><span data-en="CRM Sales Workspace" data-zh="CRM 销售工作台">CRM Sales Workspace</span></h2>
-          <p data-en="sales pipelines, account views, task queues, customer timelines" data-zh="销售漏斗、客户详情、任务队列、客户时间线">sales pipelines, account views, task queues, customer timelines</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L07 - CRM Sales Workspace. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L07 - CRM Sales Workspace（CRM 销售工作台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l07-crm-sales-workspace/l07-crm-sales-workspace.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l08-analytics-command-center/l08-analytics-command-center.html" aria-label="Open L08 Analytics Command Center HTML preview">
-          <img src="../layouts/l08-analytics-command-center/l08-analytics-command-center.png" alt="L08 - Analytics Command Center preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L08</div>
-          <h2><span data-en="Analytics Command Center" data-zh="分析指挥中心">Analytics Command Center</span></h2>
-          <p data-en="metrics exploration, BI dashboards, anomaly and trend analysis" data-zh="指标探索、BI 仪表盘、异常和趋势分析">metrics exploration, BI dashboards, anomaly and trend analysis</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L08 - Analytics Command Center. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L08 - Analytics Command Center（分析指挥中心）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l08-analytics-command-center/l08-analytics-command-center.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.html" aria-label="Open L09 Portfolio Case Study HTML preview">
-          <img src="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.png" alt="L09 - Portfolio Case Study preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L09</div>
-          <h2><span data-en="Portfolio Case Study" data-zh="作品集案例页">Portfolio Case Study</span></h2>
-          <p data-en="designer portfolios, agency case studies, product storytelling" data-zh="设计师作品集、机构案例、产品叙事页">designer portfolios, agency case studies, product storytelling</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L09 - Portfolio Case Study. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L09 - Portfolio Case Study（作品集案例页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l09-portfolio-case-study/l09-portfolio-case-study.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l10-settings-console/l10-settings-console.html" aria-label="Open L10 Settings Console HTML preview">
-          <img src="../layouts/l10-settings-console/l10-settings-console.png" alt="L10 - Settings Console preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L10</div>
-          <h2><span data-en="Settings Console" data-zh="设置控制台">Settings Console</span></h2>
-          <p data-en="admin settings, team permissions, billing and security pages" data-zh="后台设置、团队权限、账单和安全页面">admin settings, team permissions, billing and security pages</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L10 - Settings Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L10 - Settings Console（设置控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l10-settings-console/l10-settings-console.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.html" aria-label="Open L11 Onboarding Wizard HTML preview">
-          <img src="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.png" alt="L11 - Onboarding Wizard preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L11</div>
-          <h2><span data-en="Onboarding Wizard" data-zh="引导流程">Onboarding Wizard</span></h2>
-          <p data-en="setup flows, product activation, guided data collection" data-zh="初始化设置、产品激活、分步信息收集">setup flows, product activation, guided data collection</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L11 - Onboarding Wizard. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L11 - Onboarding Wizard（引导流程）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l11-onboarding-wizard/l11-onboarding-wizard.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.html" aria-label="Open L12 Marketplace Catalog HTML preview">
-          <img src="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.png" alt="L12 - Marketplace Catalog preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L12</div>
-          <h2><span data-en="Marketplace Catalog" data-zh="市场目录">Marketplace Catalog</span></h2>
-          <p data-en="plugin stores, app catalogs, template libraries, resource discovery" data-zh="插件市场、应用目录、模板库、资源发现">plugin stores, app catalogs, template libraries, resource discovery</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L12 - Marketplace Catalog. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L12 - Marketplace Catalog（市场目录）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l12-marketplace-catalog/l12-marketplace-catalog.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.html" aria-label="Open L13 Admin Overview Command Center HTML preview">
-          <img src="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.png" alt="L13 - Admin Overview Command Center preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L13</div>
-          <h2><span data-en="Admin Overview Command Center" data-zh="后台总览指挥台">Admin Overview Command Center</span></h2>
-          <p data-en="executive admin homepages, SaaS consoles, cross-team status overview" data-zh="后台首页、SaaS 控制台、跨团队状态总览">executive admin homepages, SaaS consoles, cross-team status overview</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L13 - Admin Overview Command Center. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L13 - Admin Overview Command Center（后台总览指挥台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l13-admin-overview-command-center/l13-admin-overview-command-center.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.html" aria-label="Open L14 Master Detail Admin Table HTML preview">
-          <img src="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.png" alt="L14 - Master Detail Admin Table preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L14</div>
-          <h2><span data-en="Master Detail Admin Table" data-zh="主从详情管理表格">Master Detail Admin Table</span></h2>
-          <p data-en="resource management, user lists, approval queues, database-like admin UI" data-zh="资源管理、用户列表、审批队列、数据库式后台">resource management, user lists, approval queues, database-like admin UI</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L14 - Master Detail Admin Table. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L14 - Master Detail Admin Table（主从详情管理表格）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l14-master-detail-admin-table/l14-master-detail-admin-table.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.html" aria-label="Open L15 Operations Timeline Console HTML preview">
-          <img src="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.png" alt="L15 - Operations Timeline Console preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L15</div>
-          <h2><span data-en="Operations Timeline Console" data-zh="运营时间线控制台">Operations Timeline Console</span></h2>
-          <p data-en="incident operations, deployment tracking, fulfillment and support workflows" data-zh="事件运营、发布追踪、履约和客服流程">incident operations, deployment tracking, fulfillment and support workflows</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L15 - Operations Timeline Console. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L15 - Operations Timeline Console（运营时间线控制台）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l15-operations-timeline-console/l15-operations-timeline-console.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.html" aria-label="Open L16 Personal Portfolio Home HTML preview">
-          <img src="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.png" alt="L16 - Personal Portfolio Home preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L16</div>
-          <h2><span data-en="Personal Portfolio Home" data-zh="个人作品集首页">Personal Portfolio Home</span></h2>
-          <p data-en="designers, engineers, consultants, personal brand websites" data-zh="设计师、工程师、顾问、个人品牌网站">designers, engineers, consultants, personal brand websites</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L16 - Personal Portfolio Home. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L16 - Personal Portfolio Home（个人作品集首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l16-personal-portfolio-home/l16-personal-portfolio-home.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l17-personal-writing-home/l17-personal-writing-home.html" aria-label="Open L17 Personal Writing Home HTML preview">
-          <img src="../layouts/l17-personal-writing-home/l17-personal-writing-home.png" alt="L17 - Personal Writing Home preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L17</div>
-          <h2><span data-en="Personal Writing Home" data-zh="个人写作主页">Personal Writing Home</span></h2>
-          <p data-en="blogs, newsletters, independent researchers, creator homepages" data-zh="博客、Newsletter、独立研究者、创作者主页">blogs, newsletters, independent researchers, creator homepages</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L17 - Personal Writing Home. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L17 - Personal Writing Home（个人写作主页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l17-personal-writing-home/l17-personal-writing-home.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l18-corporate-homepage/l18-corporate-homepage.html" aria-label="Open L18 Corporate Homepage HTML preview">
-          <img src="../layouts/l18-corporate-homepage/l18-corporate-homepage.png" alt="L18 - Corporate Homepage preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L18</div>
-          <h2><span data-en="Corporate Homepage" data-zh="企业官网首页">Corporate Homepage</span></h2>
-          <p data-en="B2B companies, professional services, corporate presence sites" data-zh="B2B 企业、专业服务、企业形象官网">B2B companies, professional services, corporate presence sites</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L18 - Corporate Homepage. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L18 - Corporate Homepage（企业官网首页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l18-corporate-homepage/l18-corporate-homepage.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l19-corporate-services-site/l19-corporate-services-site.html" aria-label="Open L19 Corporate Services Site HTML preview">
-          <img src="../layouts/l19-corporate-services-site/l19-corporate-services-site.png" alt="L19 - Corporate Services Site preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L19</div>
-          <h2><span data-en="Corporate Services Site" data-zh="企业服务官网">Corporate Services Site</span></h2>
-          <p data-en="agencies, consultancies, solution providers, service-led companies" data-zh="机构、咨询公司、解决方案服务商、服务型企业">agencies, consultancies, solution providers, service-led companies</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L19 - Corporate Services Site. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L19 - Corporate Services Site（企业服务官网）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l19-corporate-services-site/l19-corporate-services-site.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="preview" href="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.html" aria-label="Open L20 Enterprise Product Overview HTML preview">
-          <img src="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.png" alt="L20 - Enterprise Product Overview preview" loading="lazy">
-        </a>
-        <div class="card-body">
-          <div class="card-kicker"><span data-i18n="layout">Layout</span> L20</div>
-          <h2><span data-en="Enterprise Product Overview" data-zh="企业产品介绍页">Enterprise Product Overview</span></h2>
-          <p data-en="platform websites, enterprise product suites, trust-heavy product pages" data-zh="平台官网、企业产品矩阵、高信任产品介绍页">platform websites, enterprise product suites, trust-heavy product pages</p>
-          <div class="actions">
-            <button type="button" data-copy-kind="layout" data-copy-en="Use awesome-page-design layout framework: L20 - Enterprise Product Overview. Apply its structure, navigation model, density, hierarchy, and required states, but adapt the content and visual style to the product requirements." data-copy-zh="使用 awesome-page-design 布局框架：L20 - Enterprise Product Overview（企业产品介绍页）。请应用它的结构、导航模型、信息密度、层级和必备状态，但根据真实产品需求调整内容和视觉风格。" data-i18n="copyLayout">Copy layout prompt</button>
-            <a href="../layouts/l20-enterprise-product-overview/l20-enterprise-product-overview.html" data-i18n="openHtml">Open HTML</a>
-          </div>
-        </div>
-      </article>
+      </div>
+    </article>
   </main>
   <script>
   const copy = {
     en: {
       title: 'Awesome Page Design Previews',
-      meta: '45 previews, viewport 1440x1200',
-      hint: 'Compare visual styles and layout frameworks. Copy a prompt, send it to your AI agent, and it can apply the chosen direction without copying the sample content.',
-      tabStyles: 'Visual Styles',
-      tabLayouts: 'Layout Frameworks',
-      sectionCount: '25 visual styles, 20 layout frameworks',
-      version: 'Version',
-      layout: 'Layout',
+      meta: '21 visual style previews, viewport 1440x1200',
+      hint: 'Compare visual styles. Copy a style prompt, send it to your AI agent, and it can apply the chosen colors, typography, surfaces, layout mood, and component tone without copying the sample page.',
+      sectionCount: '21 continuous visual styles, numbered Style 01 through Style 21.',
+      style: 'Style',
       copy: 'Copy style prompt',
-      copyLayout: 'Copy layout prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
       promptFallback: 'Copy this style prompt:'
     },
     zh: {
       title: 'Awesome Page Design 预览',
-      meta: '45 个预览，视口 1440x1200',
-      hint: '直观看图比较视觉风格和布局框架。点击复制提示词，发送给你的 AI，它会应用选定方向但不复制示例内容。',
-      tabStyles: '视觉风格',
-      tabLayouts: '布局框架',
-      sectionCount: '25 个视觉风格，20 个布局框架',
-      version: '版本',
-      layout: '布局',
+      meta: '21 个视觉风格预览，视口 1440x1200',
+      hint: '对比视觉风格。点击复制风格提示词，发送给你的 AI，它会应用选定的颜色、字体、表面、布局气质和组件风格，但不复制示例页面。',
+      sectionCount: '21 个连续编号的视觉风格，范围为 Style 01 到 Style 21。',
+      style: '风格',
       copy: '复制风格提示词',
-      copyLayout: '复制布局提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
       promptFallback: '复制这个提示词：'
     }
   };
   let activeLang = 'en';
-
   function applyLanguage(lang) {
     activeLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     document.querySelector('h1').textContent = copy[lang].title;
     document.querySelector('.meta').textContent = copy[lang].meta;
-    document.querySelector('.hint').innerHTML = copy[lang].hint;
+    document.querySelector('.hint').textContent = copy[lang].hint;
     document.querySelectorAll('[data-i18n]').forEach((node) => {
       node.textContent = copy[lang][node.dataset.i18n];
     });
@@ -906,34 +517,18 @@ h1 {
       button.classList.toggle('active', button.dataset.lang === lang);
     });
   }
-
-  function applyTab(tab) {
-    document.querySelectorAll('[data-panel]').forEach((panel) => {
-      panel.hidden = panel.dataset.panel !== tab;
-    });
-    document.querySelectorAll('[data-tab]').forEach((button) => {
-      button.classList.toggle('active', button.dataset.tab === tab);
-    });
-  }
-
   document.querySelectorAll('.lang-toggle button').forEach((button) => {
     button.addEventListener('click', () => applyLanguage(button.dataset.lang));
   });
-
-  document.querySelectorAll('[data-tab]').forEach((button) => {
-    button.addEventListener('click', () => applyTab(button.dataset.tab));
-  });
-
   document.querySelectorAll('[data-copy-en]').forEach((button) => {
     button.addEventListener('click', async () => {
       const value = button.getAttribute(activeLang === 'zh' ? 'data-copy-zh' : 'data-copy-en');
-      const copyKey = button.dataset.copyKind === 'layout' ? 'copyLayout' : 'copy';
       try {
         await navigator.clipboard.writeText(value);
         button.textContent = copy[activeLang].copied;
         button.classList.add('copied');
         setTimeout(() => {
-          button.textContent = copy[activeLang][copyKey];
+          button.textContent = copy[activeLang].copy;
           button.classList.remove('copied');
         }, 1600);
       } catch {
