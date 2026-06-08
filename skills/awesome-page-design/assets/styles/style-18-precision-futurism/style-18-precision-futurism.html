@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Style 04 - Retro Y2K</title>
+<title>Style 18 - Precision Futurism</title>
 <style>
 * { box-sizing: border-box; }
 :root {
-  --bg: #fff0fb;
-  --surface: #ffffff;
-  --text: #26113d;
-  --muted: #7c3aed;
-  --primary: #ff2db2;
-  --accent: #00d9ff;
-  --border: #ffb6ef;
-  --radius: 16px;
-  --panel-radius: 16px;
-  --control-radius: 10px;
-  --chip-radius: 8px;
-  --media-radius: 14px;
-  --shadow: 0 22px 70px rgba(255, 45, 178, .24);
+  --bg: #08090d;
+  --surface: #101117;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --primary: #f4f4f5;
+  --accent: #8b5cf6;
+  --border: #27272f;
+  --radius: 6px;
+  --panel-radius: 6px;
+  --control-radius: 4px;
+  --chip-radius: 2px;
+  --media-radius: 4px;
+  --shadow: 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18);
 }
 body {
   min-height: 100vh;
@@ -2425,40 +2425,34 @@ body.liquid-glass .metric-tile {
 }
 </style>
 </head>
-<body class="retro-y2k">
+<body class="precision-futurism">
   <main id="top" class="page">
     <nav class="top-nav" aria-label="Example navigation">
-      <a class="brand-lockup" href="#top"><span>04</span><b>PulseRoom</b></a>
-      <div class="nav-links"><a href="#details">Lineup</a><a href="#details">Drops</a><a href="#details">Gallery</a></div>
+      <a class="brand-lockup" href="#top"><span>18</span><b>VectorOps</b></a>
+      <div class="nav-links"><a href="#details">Runs</a><a href="#details">Incidents</a><a href="#details">Graph</a></div>
       <button type="button" class="ghost-action" data-open-modal>Style notes</button>
     </nav>
-    <section class="y2k-stage">
-        <div class="marquee"><span>Lineup</span><span>Drops</span><span>Gallery</span></div>
-        <div class="drop-console">
-          <article class="release-player">
-            <div class="disc">04</div>
-            <p class="kicker">Culture drop page</p>
-            <h1>Stage the drop, preview tracks, and collect reminders.</h1>
-            <p>A playable release deck for cover crops, countdowns, track snippets, reminder signups, and launch-day status.</p>
-            <button type="button" class="primary-action" data-copy>Join the list</button>
-          </article>
-          <aside class="drop-panel">
-            <h3>Drop control</h3>
-            <div class="countdown-grid"><div class="metric-tile"><strong>7PM</strong><span>release time</span></div><div class="metric-tile"><strong>24</strong><span>tracks queued</span></div><div class="metric-tile"><strong>5K</strong><span>early saves</span></div></div>
-            <div class="drop-list"><button type="button" data-open-modal><span>01</span><b>Cover crop</b><em>Ready</em></button><button type="button" data-open-modal><span>02</span><b>Countdown tile</b><em>Live</em></button><button type="button" data-open-modal><span>03</span><b>Track preview</b><em>Queued</em></button></div>
-            <button type="button" class="secondary-action" data-open-modal>See lineup</button>
-          </aside>
-          <div class="track-strip">
-            <article><b>Track 1</b><span>Cover crop</span><em>Ready</em></article><article><b>Track 2</b><span>Countdown tile</span><em>Live</em></article><article><b>Track 3</b><span>Track preview</span><em>Queued</em></article>
-          </div>
+    <section class="precision-graph">
+        <aside class="trace-panel">
+          <p class="kicker">Style 18 · Precision operations console</p>
+          <h1>Trace every run through a dark precision graph.</h1>
+          <p>A technical operations surface for agent runs, infrastructure events, incident review, and workflow monitoring.</p>
+          <div class="trace-metrics"><span><strong>312</strong>runs today</span><span><strong>7</strong>incidents</span><span><strong>99.2%</strong>pass rate</span></div>
+          <button type="button" class="primary-action" data-copy>Inspect graph</button>
+        </aside>
+        <div class="node-graph">
+          <span class="node n1">312</span><span class="node n2">7</span><span class="node n3">99.2%</span>
+          <i class="edge e1"></i><i class="edge e2"></i><i class="edge e3"></i>
+          <div class="span-table"><b>Active spans</b><span><em>01</em>Retry storm<strong>Watch</strong></span><span><em>02</em>Span 7B<strong>Fail</strong></span><span><em>03</em>Replay batch<strong>Ready</strong></span></div>
         </div>
+        <aside class="trace-list"><h3>Trace queue</h3><button type="button" class="queue-card" data-open-modal><b>Retry storm</b><span>Watch</span></button><button type="button" class="queue-card" data-open-modal><b>Span 7B</b><span>Fail</span></button><button type="button" class="queue-card" data-open-modal><b>Replay batch</b><span>Ready</span></button><div class="trace-command">replay --batch latest</div><div class="trace-watch"><b>Watch window</b><span><em>p95 latency</em><strong>184ms</strong></span><span><em>retry rate</em><strong>2.8%</strong></span><span><em>owner</em><strong>Infra</strong></span></div></aside>
       </section>
     <section id="details" class="style-lab">
       <div class="lab-summary">
-        <p class="kicker">Glossy Y2K Stage · 千禧亮面舞台</p>
-        <h2>Glossy Y2K Stage in practice.</h2>
-        <p>A glossy stage with marquee bars, circular media, sticker controls, and a playful release lineup.</p>
-        <div class="detail-pills"><span>Glossy Y2K Stage</span><span>Buttons are glossy, thick, and high-energy with clear hover and pressed states.</span><span>Show queued, live, saved, reminder-on, and preview-playing states.</span></div>
+        <p class="kicker">Precision Graph Console · 精密图谱控制台</p>
+        <h2>Precision Graph Console in practice.</h2>
+        <p>Technical console with a node graph, compact trace rows, command actions, and glowing state markers.</p>
+        <div class="detail-pills"><span>Precision Graph Console</span><span>Buttons are compact dark controls with glow reserved for active or critical actions.</span><span>Show active path, fail, retry, replay ready, incident open, and selected node states.</span></div>
       </div>
       <div class="lab-workspace">
         <div class="tabs" aria-label="Demo tabs">
@@ -2468,13 +2462,13 @@ body.liquid-glass .metric-tile {
         </div>
         <div class="workspace-grid">
           <article class="panel">
-            <h3 data-demo-title>Release staging</h3>
-            <p data-demo-copy>Pin the main drop, support it with track snippets, and keep signup controls easy to find.</p>
-            <div class="chart" aria-hidden="true"><i style="height:56%"></i><i style="height:92%"></i><i style="height:76%"></i><i style="height:68%"></i><i style="height:98%"></i><i style="height:62%"></i><i style="height:88%"></i></div>
+            <h3 data-demo-title>Run graph</h3>
+            <p data-demo-copy>Trace active paths, compare retries, and inspect failing spans without leaving the console.</p>
+            <div class="chart" aria-hidden="true"><i style="height:76%"></i><i style="height:58%"></i><i style="height:94%"></i><i style="height:66%"></i><i style="height:82%"></i><i style="height:48%"></i><i style="height:90%"></i></div>
           </article>
           <aside class="panel">
             <h3>Action queue</h3>
-            <div class="queue-list"><button type="button" class="queue-card" data-open-modal><b>Cover crop</b><span>Ready</span></button><button type="button" class="queue-card" data-open-modal><b>Countdown tile</b><span>Live</span></button><button type="button" class="queue-card" data-open-modal><b>Track preview</b><span>Queued</span></button></div>
+            <div class="queue-list"><button type="button" class="queue-card" data-open-modal><b>Retry storm</b><span>Watch</span></button><button type="button" class="queue-card" data-open-modal><b>Span 7B</b><span>Fail</span></button><button type="button" class="queue-card" data-open-modal><b>Replay batch</b><span>Ready</span></button></div>
           </aside>
         </div>
         <div class="related"><a href="../style-01-card-grid/style-01-card-grid.html">01. Card Grid</a><a href="../style-02-block-brutalism/style-02-block-brutalism.html">02. Block Brutalism</a><a href="../style-03-aurora-gradient/style-03-aurora-gradient.html">03. Aurora Gradient</a></div>
@@ -2483,15 +2477,15 @@ body.liquid-glass .metric-tile {
   </main>
 
   <aside class="modal" hidden data-modal>
-    <h3>Style 04: Retro Y2K</h3>
-    <ul><li>Use playful shine and neon in controlled zones.</li><li>Pair expressive display type with readable body copy.</li><li>Keep nostalgia bright, not cluttered.</li></ul>
+    <h3>Style 18: Precision Futurism</h3>
+    <ul><li>Keep the surface quiet and precise.</li><li>Use glow as a state signal, not decoration everywhere.</li><li>Favor clean lists, compact cards, and command-like actions.</li></ul>
     <button type="button" class="secondary-action" data-close-modal>Close</button>
   </aside>
 
   <script>
-  const prompt = "Use awesome-page-design Style 04 - Retro Y2K as the page design direction.\nBest fit: music, fashion, youth culture, playful campaigns.\nVisual mood: Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.\nLayout archetype: Glossy Y2K Stage.\nLayout structure: A glossy stage with marquee bars, circular media, sticker controls, and a playful release lineup.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #fff0fb; surface #ffffff; text #26113d; muted #7c3aed; primary #ff2db2; accent #00d9ff; border #ffb6ef; radius 16px; shadow/material 0 22px 70px rgba(255, 45, 178, .24).\nGeometry: panel radius 16px; control radius 10px; chip/state radius 8px; media radius 14px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Pair expressive display words with readable short captions and badge labels.\nComponents: Lineup cards, track pills, shiny badges, countdown chips, and signup controls should feel collectible.\nButtons: Buttons are glossy, thick, and high-energy with clear hover and pressed states.\nIcons and media: Use cover art crops, neon frames, sparkles, and real promo fragments.\nStates: Show queued, live, saved, reminder-on, and preview-playing states.\nExample content direction: you may use the specificity of \"PulseRoom / Culture drop page\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not let sparkle effects cover interface meaning. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states.";
+  const prompt = "Use awesome-page-design Style 18 - Precision Futurism as the page design direction.\nBest fit: issue trackers, AI operations tools, technical SaaS.\nVisual mood: Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.\nLayout archetype: Precision Graph Console.\nLayout structure: Technical console with a node graph, compact trace rows, command actions, and glowing state markers.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #08090d; surface #101117; text #f4f4f5; muted #a1a1aa; primary #f4f4f5; accent #8b5cf6; border #27272f; radius 6px; shadow/material 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18).\nGeometry: panel radius 6px; control radius 4px; chip/state radius 2px; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use compact technical UI type, precise labels, and aligned numeric values.\nComponents: Graph nodes, trace rows, run cards, incident chips, command buttons, and timeline fragments should feel engineered.\nButtons: Buttons are compact dark controls with glow reserved for active or critical actions.\nIcons and media: Use graphs, traces, logs, and span diagrams instead of generic sci-fi backgrounds.\nStates: Show active path, fail, retry, replay ready, incident open, and selected node states.\nExample content direction: you may use the specificity of \"VectorOps / Precision operations console\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not cover precise information with excessive glow. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states.";
   const modal = document.querySelector('[data-modal]');
-  const demo = {"launch":["Release staging","Pin the main drop, support it with track snippets, and keep signup controls easy to find."],"metrics":["Fan signal","Watch saves, shares, preview plays, and reminder signups as the launch approaches."],"assets":["Promo pieces","Use cover crops, stickers, badges, and snippets as content, not random decoration."]};
+  const demo = {"launch":["Run graph","Trace active paths, compare retries, and inspect failing spans without leaving the console."],"metrics":["Reliability pulse","Track pass rate, retry count, incident age, and mean recovery time."],"assets":["Trace evidence","Use graph nodes, span rows, logs, and timeline fragments as the visual system."]};
   document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => modal.hidden = false));
   document.querySelector('[data-close-modal]').addEventListener('click', () => modal.hidden = true);
   document.querySelectorAll('[data-copy]').forEach((button) => {

@@ -11,7 +11,7 @@ body {
   padding: 32px;
   background: #f6f7fb;
   color: #172033;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 .header {
   max-width: 1440px;
@@ -171,7 +171,7 @@ h1 {
     <div>
       <h1>Awesome Page Design Previews</h1>
       <p class="meta">21 visual style previews, viewport 1440x1200</p>
-      <p class="hint">Compare visual styles. Copy a style prompt, send it to your AI agent, and it can apply the chosen colors, typography, surfaces, layout mood, and component tone without copying the sample page.</p>
+      <p class="hint">Compare visual styles. Copy a detailed style prompt, send it to your AI agent, and it can apply the chosen layout archetype, layout structure, colors, typography, components, buttons, media direction, and states without copying the sample page.</p>
     </div>
     <div class="lang-toggle" aria-label="Language">
       <button type="button" class="active" data-lang="en">EN</button>
@@ -189,7 +189,39 @@ h1 {
         <h2><span data-en="Card Grid" data-zh="卡片网格">Card Grid</span></h2>
         <p data-en="Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces." data-zh="浅色中性画布、紫色强调、卡片网格节奏、统计数据、搜索和易扫描的总览界面。">Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 01 - Card Grid. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 01 - Card Grid（卡片网格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 01 - Card Grid as the page design direction.
+Best fit: dashboards, catalogs, overview pages.
+Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Layout archetype: Operational Card Board.
+Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
+Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
+Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
+Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
+States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Example content direction: you may use the specificity of &quot;OpsGrid / Inventory command center&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 01 - Card Grid（卡片网格）作为页面设计方向。
+适用页面：仪表盘、目录页、概览页。
+目标气质：浅色中性画布、紫色强调、卡片网格节奏、统计数据、搜索和易扫描的总览界面。
+布局原型：运营卡片看板。
+布局结构：运营型应用外壳，包含紧凑工具栏、筛选轨道、密集指标、不等权重异常看板和右侧操作检查面板。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f5f6fa；表面 #ffffff；正文 #1a1a2e；弱化文本 #64648a；主色 #7c3aed；强调色 #8b5cf6；边框 #e5e7ef；圆角 10px；阴影/材质 0 18px 48px rgba(26, 26, 46, .10)。
+几何规则：面板圆角 10px；控件圆角 6px；标签/状态圆角 4px；媒体容器圆角 8px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用紧凑非衬线界面字体、强数字层级、小号大写标签和短卡片标题。
+组件规则：搜索、工具栏控件、统计块、筛选标签、状态徽章、优先级卡片、检查队列和负责人行都应属于同一个仪表盘系统。
+按钮规则：主按钮是务实的实色控件，次级操作保持低调边框样式。
+图标与媒体：使用产品截图、地图、表格或流程证据，不使用抽象主视觉。
+状态规则：清楚呈现选中筛选、警告标签、过期项目、禁用操作和焦点环。
+示例内容方向：可参考“OpsGrid / Inventory command center”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把它做成通用营销首屏或三个等权功能卡。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-01-card-grid/style-01-card-grid.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -203,7 +235,39 @@ h1 {
         <h2><span data-en="Block Brutalism" data-zh="块状粗野主义">Block Brutalism</span></h2>
         <p data-en="Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy." data-zh="暖黄画布、硬黑边框、块状控件、高饱和标签和强活动感。">Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 02 - Block Brutalism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 02 - Block Brutalism（块状粗野主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 02 - Block Brutalism as the page design direction.
+Best fit: bold campaigns, indie products, playful utilities.
+Visual mood: Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy.
+Layout archetype: Street Poster Launch.
+Layout structure: Poster-first composition with slab headline blocks, ticket strips, hard stamps, and intentionally loud hierarchy.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fff04d; surface #fffbea; text #111111; muted #3f3f46; primary #111111; accent #ff3d00; border #111111; radius 0; shadow/material 10px 10px 0 #111111.
+Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use huge block type, compressed labels, blunt numbers, and minimal body copy.
+Components: Tickets, stamps, countdowns, rule panels, and claim modules should look physical and direct.
+Buttons: Buttons are black or saturated slabs with hard borders and offset shadows, never soft pills.
+Icons and media: Use poster blocks, product labels, stickers, or campaign artifacts as the main image language.
+States: Use stamped states such as live, locked, claimed, expired, and warning with strong contrast.
+Example content direction: you may use the specificity of &quot;BlockParty / Street launch builder&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not soften the style with generic rounded SaaS cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 02 - Block Brutalism（块状粗野主义）作为页面设计方向。
+适用页面：强品牌活动、独立产品、趣味工具。
+目标气质：暖黄画布、硬黑边框、块状控件、高饱和标签和强活动感。
+布局原型：街头海报发布。
+布局结构：海报优先的构图，包含块状标题、票券条、硬质印章和刻意强烈的层级。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fff04d；表面 #fffbea；正文 #111111；弱化文本 #3f3f46；主色 #111111；强调色 #ff3d00；边框 #111111；圆角 0；阴影/材质 10px 10px 0 #111111。
+几何规则：面板圆角 0；控件圆角 0；标签/状态圆角 0；媒体容器圆角 0。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用巨大块状标题、压缩标签、直接数字和很少的正文。
+组件规则：票券、印章、倒计时、规则面板和领取模块要有实体感和直接感。
+按钮规则：按钮使用黑色或高饱和块面、硬边框和错位阴影，绝不做柔软胶囊。
+图标与媒体：用海报块、产品标签、贴纸或活动物料作为主视觉语言。
+状态规则：用高对比印章状态表达 live、locked、claimed、expired 和 warning。
+示例内容方向：可参考“BlockParty / Street launch builder”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用通用圆角 SaaS 卡片软化这个风格。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-02-block-brutalism/style-02-block-brutalism.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -217,7 +281,39 @@ h1 {
         <h2><span data-en="Aurora Gradient" data-zh="极光渐变">Aurora Gradient</span></h2>
         <p data-en="Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium AI atmosphere." data-zh="暗色画布、极光色场、柔光、漂移渐变能量和高级 AI 氛围。">Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium AI atmosphere.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 03 - Aurora Gradient. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 03 - Aurora Gradient（极光渐变）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 03 - Aurora Gradient as the page design direction.
+Best fit: futuristic products, AI tools, premium dark experiences.
+Visual mood: Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium AI atmosphere.
+Layout archetype: Aurora Evaluation Lab.
+Layout structure: Dark research lab with side-by-side run comparisons, a glowing evidence canvas, and calm review notes.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #060a1f; surface rgba(255,255,255,.08); text #f8fbff; muted #b8c2d8; primary #f8fbff; accent #22d3ee; border rgba(255,255,255,.18); radius 14px; shadow/material 0 28px 90px rgba(34, 211, 238, .18).
+Geometry: panel radius 14px; control radius 8px; chip/state radius 6px; media radius 12px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use precise sans-serif headings, readable body copy, and small scientific metadata.
+Components: Comparison columns, score chips, reviewer notes, trace cards, and run deltas should be translucent but readable.
+Buttons: Primary actions glow subtly; secondary controls are glassy outlines.
+Icons and media: Use aurora fields behind product evidence, not as decoration over text.
+States: Show confidence, disagreement, regression, selected run, and review-needed states.
+Example content direction: you may use the specificity of &quot;AuroraLab / Research evaluation suite&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not make every panel a rainbow gradient. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 03 - Aurora Gradient（极光渐变）作为页面设计方向。
+适用页面：未来感产品、AI 工具、高级暗色体验。
+目标气质：暗色画布、极光色场、柔光、漂移渐变能量和高级 AI 氛围。
+布局原型：极光评估实验室。
+布局结构：暗色研究实验室，包含并排运行对比、发光证据画布和克制评审笔记。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #060a1f；表面 rgba(255,255,255,.08)；正文 #f8fbff；弱化文本 #b8c2d8；主色 #f8fbff；强调色 #22d3ee；边框 rgba(255,255,255,.18)；圆角 14px；阴影/材质 0 28px 90px rgba(34, 211, 238, .18)。
+几何规则：面板圆角 14px；控件圆角 8px；标签/状态圆角 6px；媒体容器圆角 12px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用精确非衬线标题、易读正文和小型科研元数据。
+组件规则：对比列、评分标签、评审笔记、追踪卡和运行差异要半透明但可读。
+按钮规则：主操作使用轻微发光，次级控件使用玻璃感描边。
+图标与媒体：极光色场应作为产品证据背后的氛围，而不是盖在文本上的装饰。
+状态规则：呈现置信度、分歧、回归、选中运行和待评审状态。
+示例内容方向：可参考“AuroraLab / Research evaluation suite”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把每个面板都做成彩虹渐变。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-03-aurora-gradient/style-03-aurora-gradient.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -231,7 +327,39 @@ h1 {
         <h2><span data-en="Retro Y2K" data-zh="复古 Y2K">Retro Y2K</span></h2>
         <p data-en="Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism." data-zh="糖果渐变、霓虹细节、复古标题字、星光能量和千禧年数字乐观感。">Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 04 - Retro Y2K. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 04 - Retro Y2K（复古 Y2K）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 04 - Retro Y2K as the page design direction.
+Best fit: music, fashion, youth culture, playful campaigns.
+Visual mood: Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.
+Layout archetype: Glossy Y2K Stage.
+Layout structure: A glossy stage with marquee bars, circular media, sticker controls, and a playful release lineup.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fff0fb; surface #ffffff; text #26113d; muted #7c3aed; primary #ff2db2; accent #00d9ff; border #ffb6ef; radius 16px; shadow/material 0 22px 70px rgba(255, 45, 178, .24).
+Geometry: panel radius 16px; control radius 10px; chip/state radius 8px; media radius 14px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Pair expressive display words with readable short captions and badge labels.
+Components: Lineup cards, track pills, shiny badges, countdown chips, and signup controls should feel collectible.
+Buttons: Buttons are glossy, thick, and high-energy with clear hover and pressed states.
+Icons and media: Use cover art crops, neon frames, sparkles, and real promo fragments.
+States: Show queued, live, saved, reminder-on, and preview-playing states.
+Example content direction: you may use the specificity of &quot;PulseRoom / Culture drop page&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not let sparkle effects cover interface meaning. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 04 - Retro Y2K（复古 Y2K）作为页面设计方向。
+适用页面：音乐、潮流、青年文化、活动页。
+目标气质：糖果渐变、霓虹细节、复古标题字、星光能量和千禧年数字乐观感。
+布局原型：千禧亮面舞台。
+布局结构：亮面舞台式布局，包含跑马灯条、圆形媒体、贴纸控件和玩乐发布阵容。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fff0fb；表面 #ffffff；正文 #26113d；弱化文本 #7c3aed；主色 #ff2db2；强调色 #00d9ff；边框 #ffb6ef；圆角 16px；阴影/材质 0 22px 70px rgba(255, 45, 178, .24)。
+几何规则：面板圆角 16px；控件圆角 10px；标签/状态圆角 8px；媒体容器圆角 14px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：把夸张展示字和可读短说明、徽章标签搭配使用。
+组件规则：阵容卡、曲目胶囊、亮面徽章、倒计时标签和注册控件要有收藏感。
+按钮规则：按钮要亮面、厚实、有能量，并有清晰 hover 与 pressed 状态。
+图标与媒体：使用封面裁切、霓虹框、星光和真实宣传碎片。
+状态规则：呈现 queued、live、saved、reminder-on 和 preview-playing 状态。
+示例内容方向：可参考“PulseRoom / Culture drop page”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要让星光效果盖过界面含义。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-04-retro-y2k/style-04-retro-y2k.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -245,7 +373,39 @@ h1 {
         <h2><span data-en="Swiss Editorial" data-zh="瑞士编辑风">Swiss Editorial</span></h2>
         <p data-en="Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm." data-zh="紧凑编辑网格、红黑字体层级、细分割线、极小页边距和克制内容节奏。">Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 05 - Swiss Editorial. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 05 - Swiss Editorial（瑞士编辑风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 05 - Swiss Editorial as the page design direction.
+Best fit: portfolios, cultural sites, design studios, serious content.
+Visual mood: Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm.
+Layout archetype: Editorial Index Grid.
+Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
+Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
+Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
+Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
+States: Show reading status, source-open, selected index row, and updated metadata states.
+Example content direction: you may use the specificity of &quot;Field Archive / Editorial archive&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 05 - Swiss Editorial（瑞士编辑风）作为页面设计方向。
+适用页面：作品集、文化机构、设计工作室、严肃内容。
+目标气质：紧凑编辑网格、红黑字体层级、细分割线、极小页边距和克制内容节奏。
+布局原型：编辑索引网格。
+布局结构：严格编辑网格，包含文章列、分割线、元数据边栏和索引式阅读路径。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f7f5ef；表面 #fffdf8；正文 #111111；弱化文本 #525252；主色 #e11d2e；强调色 #111111；边框 #111111；圆角 0；阴影/材质 none。
+几何规则：面板圆角 0；控件圆角 0；标签/状态圆角 0；媒体容器圆角 0。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：用字号、字重、对齐和线条形成设计，避免装饰性卡片语言。
+组件规则：文章导语、引文、来源注释、索引行和图注应有印刷纪律。
+按钮规则：操作使用文字链接、下划线标签或小型编辑标签，而不是亮面按钮。
+图标与媒体：使用对象裁切、档案碎片和带图注图片，并严格放置。
+状态规则：呈现阅读状态、来源打开、选中索引行和元数据更新状态。
+示例内容方向：可参考“Field Archive / Editorial archive”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要添加柔和阴影、圆角 SaaS 卡或模糊营销文案。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-05-swiss-editorial/style-05-swiss-editorial.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -259,7 +419,39 @@ h1 {
         <h2><span data-en="Terminal Hacker" data-zh="黑客终端">Terminal Hacker</span></h2>
         <p data-en="Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility." data-zh="黑色画布、终端绿、等宽字体、CRT 扫描线、命令行细节和开发者可信感。">Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 06 - Terminal Hacker. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 06 - Terminal Hacker（黑客终端）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 06 - Terminal Hacker as the page design direction.
+Best fit: developer tools, CLI products, security, open source.
+Visual mood: Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility.
+Layout archetype: Terminal Console.
+Layout structure: Command-line console with log panes, prompt rows, file paths, severity lanes, and a compact run summary.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #020403; surface #07130d; text #d1fae5; muted #7ddf9e; primary #00ff88; accent #33ffcc; border #14532d; radius 2px; shadow/material 0 0 36px rgba(0, 255, 136, .16).
+Geometry: panel radius 2px; control radius 0; chip/state radius 0; media radius 2px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use monospace for the main interface and keep long log rows aligned.
+Components: Prompt inputs, log rows, severity chips, file paths, command buttons, and inline remediation blocks are central.
+Buttons: Buttons should look like executable commands, with brackets, prompt marks, or terminal borders.
+Icons and media: Use logs, code snippets, repo paths, and scan traces instead of abstract graphics.
+States: Show pass, fail, warning, masked, ignored, running, and copied command states.
+Example content direction: you may use the specificity of &quot;NullTrace / Security command line&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not use green glow so heavily that logs become hard to read. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 06 - Terminal Hacker（黑客终端）作为页面设计方向。
+适用页面：开发者工具、CLI、安全、开源。
+目标气质：黑色画布、终端绿、等宽字体、CRT 扫描线、命令行细节和开发者可信感。
+布局原型：终端控制台。
+布局结构：命令行控制台，包含日志面板、提示符行、文件路径、严重级别轨道和紧凑运行摘要。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #020403；表面 #07130d；正文 #d1fae5；弱化文本 #7ddf9e；主色 #00ff88；强调色 #33ffcc；边框 #14532d；圆角 2px；阴影/材质 0 0 36px rgba(0, 255, 136, .16)。
+几何规则：面板圆角 2px；控件圆角 0；标签/状态圆角 0；媒体容器圆角 2px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：主界面使用等宽字体，并保持长日志行对齐。
+组件规则：提示符输入、日志行、严重级别标签、文件路径、命令按钮和内联修复块是核心。
+按钮规则：按钮应像可执行命令，可使用括号、提示符标记或终端边框。
+图标与媒体：使用日志、代码片段、仓库路径和扫描轨迹，不使用抽象图形。
+状态规则：呈现 pass、fail、warning、masked、ignored、running 和 copied command 状态。
+示例内容方向：可参考“NullTrace / Security command line”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把绿色发光用到影响日志阅读。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-06-terminal-hacker/style-06-terminal-hacker.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -273,7 +465,39 @@ h1 {
         <h2><span data-en="Cute-alism" data-zh="可爱主义">Cute-alism</span></h2>
         <p data-en="Neon yellow, pink hard shadows, sticker-like objects, rounded bold shapes, and soft-hard contrast." data-zh="荧光黄、粉色硬阴影、贴纸感对象、圆润粗形和软硬碰撞。">Neon yellow, pink hard shadows, sticker-like objects, rounded bold shapes, and soft-hard contrast.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 07 - Cute-alism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 07 - Cute-alism（可爱主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 07 - Cute-alism as the page design direction.
+Best fit: playful brands, creator tools, youth products.
+Visual mood: Neon yellow, pink hard shadows, sticker-like objects, rounded bold shapes, and soft-hard contrast.
+Layout archetype: Sticker Shop Board.
+Layout structure: Playful shop board with sticker cutouts, product tiles, price tags, and chunky commerce controls.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f7ff45; surface #fffef2; text #18181b; muted #5b21b6; primary #ff4db8; accent #6dff8f; border #18181b; radius 26px; shadow/material 8px 8px 0 #ff4db8.
+Geometry: panel radius 22px; control radius 12px; chip/state radius 10px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use friendly bold headings, short labels, and clear commerce microcopy.
+Components: Pack previews, variant chips, cart rows, proof badges, and reorder handles should feel tactile.
+Buttons: Buttons are chunky, outlined, playful, and clearly clickable.
+Icons and media: Use sticker silhouettes, product thumbnails, cutout shapes, and playful labels.
+States: Show draft, proof-ready, sold-out, selected variant, and fulfilled states.
+Example content direction: you may use the specificity of &quot;StickerForge / Creator sticker shop&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not let cuteness remove hierarchy or commerce clarity. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 07 - Cute-alism（可爱主义）作为页面设计方向。
+适用页面：玩法品牌、创作者工具、年轻产品。
+目标气质：荧光黄、粉色硬阴影、贴纸感对象、圆润粗形和软硬碰撞。
+布局原型：贴纸商店面板。
+布局结构：玩乐商店面板，包含贴纸切片、商品块、价格标签和厚实电商控件。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f7ff45；表面 #fffef2；正文 #18181b；弱化文本 #5b21b6；主色 #ff4db8；强调色 #6dff8f；边框 #18181b；圆角 26px；阴影/材质 8px 8px 0 #ff4db8。
+几何规则：面板圆角 22px；控件圆角 12px；标签/状态圆角 10px；媒体容器圆角 18px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用友好粗标题、短标签和清晰电商微文案。
+组件规则：包预览、变体标签、购物车行、证明徽章和排序手柄要有触感。
+按钮规则：按钮要厚实、描边、有玩乐感并且显然可点击。
+图标与媒体：使用贴纸轮廓、商品缩略图、切片形状和玩乐标签。
+状态规则：呈现 draft、proof-ready、sold-out、selected variant 和 fulfilled 状态。
+示例内容方向：可参考“StickerForge / Creator sticker shop”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要让可爱感削弱层级或交易清晰度。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-07-cutealism/style-07-cutealism.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -287,7 +511,39 @@ h1 {
         <h2><span data-en="Resonant Stark" data-zh="共鸣极简">Resonant Stark</span></h2>
         <p data-en="Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint." data-zh="近黑画布、细字重、微光、大留白、精细线条和高级克制感。">Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 08 - Resonant Stark. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 08 - Resonant Stark（共鸣极简）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 08 - Resonant Stark as the page design direction.
+Best fit: premium dark portfolios, art, high-end product teasers.
+Visual mood: Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint.
+Layout archetype: Stark Object Focus.
+Layout structure: Sparse portfolio composition with one dominant object, quiet metadata, and thin navigation.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #0a0a0b; surface #141416; text #fafafa; muted #8a8a8e; primary #c8b8ff; accent #ffb8c8; border rgba(255,255,255,.08); radius 6px; shadow/material 0 28px 100px rgba(200, 184, 255, .12).
+Geometry: panel radius 6px; control radius 2px; chip/state radius 0; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use thin, restrained type with generous line spacing and few words.
+Components: Object viewer, private notes, small index links, and contact actions should stay calm.
+Buttons: Actions are quiet text buttons or thin outlined controls, never loud filled blocks.
+Icons and media: Use one strong crop, material study, or object silhouette with enough empty space.
+States: Show selected work, private link ready, inquiry received, and caption draft states.
+Example content direction: you may use the specificity of &quot;Quiet Index / Private portfolio&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not fill the silence with equal cards or decorative noise. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 08 - Resonant Stark（共鸣极简）作为页面设计方向。
+适用页面：高级暗色作品集、艺术、精品预告页。
+目标气质：近黑画布、细字重、微光、大留白、精细线条和高级克制感。
+布局原型：克制对象聚焦。
+布局结构：稀疏作品集构图，包含一个主对象、安静元数据和细导航。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #0a0a0b；表面 #141416；正文 #fafafa；弱化文本 #8a8a8e；主色 #c8b8ff；强调色 #ffb8c8；边框 rgba(255,255,255,.08)；圆角 6px；阴影/材质 0 28px 100px rgba(200, 184, 255, .12)。
+几何规则：面板圆角 6px；控件圆角 2px；标签/状态圆角 0；媒体容器圆角 4px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用纤细克制字体、宽松行距和少量文字。
+组件规则：对象查看器、私密注释、小型索引链接和联系操作要保持安静。
+按钮规则：操作是安静文字按钮或细描边控件，绝不用强烈实心块。
+图标与媒体：使用一个强裁切、材质研究或对象轮廓，并保留足够空白。
+状态规则：呈现 selected work、private link ready、inquiry received 和 caption draft 状态。
+示例内容方向：可参考“Quiet Index / Private portfolio”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用等权卡片或装饰噪点填满安静感。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-08-resonant-stark/style-08-resonant-stark.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -301,7 +557,39 @@ h1 {
         <h2><span data-en="Tech Minimal" data-zh="科技极简风">Tech Minimal</span></h2>
         <p data-en="Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface." data-zh="大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。">Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 09 - Tech Minimal. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 09 - Tech Minimal（科技极简风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
+Best fit: AI tools, developer products, focused SaaS landing pages.
+Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
+Layout archetype: Focused Brief Editor.
+Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
+Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
+Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
+Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Icons and media: Use product screenshots or document excerpts only when they support the brief.
+States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Example content direction: you may use the specificity of &quot;NexaBrief / Focused product workspace&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 09 - Tech Minimal（科技极简风）作为页面设计方向。
+适用页面：AI 工具、开发者产品、聚焦型 SaaS 落地页。
+目标气质：大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。
+布局原型：聚焦简报编辑器。
+布局结构：安静文档工作区，包含写作面、侧边笔记、决策标签和克制任务上下文。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f8fafc；表面 #ffffff；正文 #0f172a；弱化文本 #64748b；主色 #111827；强调色 #2563eb；边框 #e2e8f0；圆角 8px；阴影/材质 0 20px 60px rgba(15, 23, 42, .08)。
+几何规则：面板圆角 8px；控件圆角 4px；标签/状态圆角 2px；媒体容器圆角 6px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用易读编辑文本、清晰界面标签和克制标题层级。
+组件规则：编辑面板、决策标签、审阅评论、任务和轻量进度对象应保持平静。
+按钮规则：按钮简洁利落；主操作实色，次级操作用文字或轻描边。
+图标与媒体：只在支持简报时使用产品截图或文档摘录。
+状态规则：呈现 draft、review-ready、blocked decision、synced 和 disabled submit 状态。
+示例内容方向：可参考“NexaBrief / Focused product workspace”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用装饰渐变弥补内容层级薄弱。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-09-tech-minimal/style-09-tech-minimal.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -315,7 +603,39 @@ h1 {
         <h2><span data-en="Dark Theme" data-zh="深色主题">Dark Theme</span></h2>
         <p data-en="Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual." data-zh="暗背景、高对比度，并用单色亮色强化主按钮和主视觉。">Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 10 - Dark Theme. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 10 - Dark Theme（深色主题）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 10 - Dark Theme as the page design direction.
+Best fit: AI media tools, creative generators, premium launch pages.
+Visual mood: Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual.
+Layout archetype: Dark Render Review.
+Layout structure: Cinematic production console with a large frame viewer, film strip, render queue, and cost alerts.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #050505; surface #111113; text #f8fafc; muted #a1a1aa; primary #ffffff; accent #7dd3fc; border #27272a; radius 8px; shadow/material 0 24px 90px rgba(125, 211, 252, .14).
+Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use high-contrast UI text with restrained labels and sharp numeric cost/status values.
+Components: Frame viewer, timeline strip, render queue, failure badges, and review controls should feel premium.
+Buttons: Primary action is bright and cinematic; destructive or failed states use clear contrast.
+Icons and media: Use frame crops, masks, thumbnails, and production notes as visual content.
+States: Show queued, rendering, failed, approved, budget warning, and retry states.
+Example content direction: you may use the specificity of &quot;FrameForge / Creative render studio&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not use generic dark cards without media review structure. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 10 - Dark Theme（深色主题）作为页面设计方向。
+适用页面：AI 媒体工具、生成式创作产品、高级发布页。
+目标气质：暗背景、高对比度，并用单色亮色强化主按钮和主视觉。
+布局原型：暗色渲染审阅。
+布局结构：电影感生产控制台，包含大画面查看器、胶片条、渲染队列和成本提醒。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #050505；表面 #111113；正文 #f8fafc；弱化文本 #a1a1aa；主色 #ffffff；强调色 #7dd3fc；边框 #27272a；圆角 8px；阴影/材质 0 24px 90px rgba(125, 211, 252, .14)。
+几何规则：面板圆角 8px；控件圆角 4px；标签/状态圆角 2px；媒体容器圆角 6px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用高对比界面文字、克制标签和清晰成本/状态数字。
+组件规则：画面查看器、时间线条、渲染队列、失败徽章和审阅控件要有高级感。
+按钮规则：主操作明亮且有电影感；危险或失败状态使用明确对比。
+图标与媒体：使用画面裁切、蒙版、缩略图和制作笔记作为视觉内容。
+状态规则：呈现 queued、rendering、failed、approved、budget warning 和 retry 状态。
+示例内容方向：可参考“FrameForge / Creative render studio”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要只用通用暗色卡片而没有媒体审阅结构。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-10-dark-theme/style-10-dark-theme.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -329,22 +649,86 @@ h1 {
         <h2><span data-en="Structured Lines" data-zh="结构线">Structured Lines</span></h2>
         <p data-en="Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy." data-zh="细线框、结构化、专业严肃、信息层级清晰。">Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 11 - Structured Lines. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 11 - Structured Lines（结构线）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 11 - Structured Lines as the page design direction.
+Best fit: AI platforms, workflow products, B2B product sites.
+Visual mood: Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy.
+Layout archetype: Linework Process Map.
+Layout structure: Process map with lanes, numbered steps, dependency lines, evidence cells, and a sober audit panel.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fbfcfe; surface #ffffff; text #111827; muted #6b7280; primary #1d4ed8; accent #22c55e; border #d7dde8; radius 4px; shadow/material 0 18px 45px rgba(15, 23, 42, .07).
+Geometry: panel radius 4px; control radius 2px; chip/state radius 0; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use factual labels, compact body copy, and precise step numbering.
+Components: Lanes, connectors, approval cells, evidence rows, audit stamps, and SLA chips should rely on lines before shadows.
+Buttons: Buttons are rectangular, disciplined, and aligned with the grid.
+Icons and media: Use diagrams, tables, forms, and evidence previews instead of atmospheric art.
+States: Show blocked, waiting, approved, overdue, selected step, and exported states.
+Example content direction: you may use the specificity of &quot;FlowLedger / Workflow control plane&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not replace information architecture with decorative cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 11 - Structured Lines（结构线）作为页面设计方向。
+适用页面：AI 平台、工作流产品、B2B 产品站。
+目标气质：细线框、结构化、专业严肃、信息层级清晰。
+布局原型：线框流程地图。
+布局结构：流程地图，包含泳道、编号步骤、依赖线、证据单元和严肃审计面板。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fbfcfe；表面 #ffffff；正文 #111827；弱化文本 #6b7280；主色 #1d4ed8；强调色 #22c55e；边框 #d7dde8；圆角 4px；阴影/材质 0 18px 45px rgba(15, 23, 42, .07)。
+几何规则：面板圆角 4px；控件圆角 2px；标签/状态圆角 0；媒体容器圆角 4px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用事实型标签、紧凑正文和精确步骤编号。
+组件规则：泳道、连接线、审批单元、证据行、审计章和 SLA 标签应优先依赖线条而非阴影。
+按钮规则：按钮为矩形、克制，并与网格对齐。
+图标与媒体：使用图表、表格、表单和证据预览，不使用氛围插图。
+状态规则：呈现 blocked、waiting、approved、overdue、selected step 和 exported 状态。
+示例内容方向：可参考“FlowLedger / Workflow control plane”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用装饰卡片替代信息架构。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-11-structured-lines/style-11-structured-lines.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
     </article>
     <article class="card">
-      <a class="preview" href="../styles/style-12-material-design/style-12-material-design.html" aria-label="Open Style 12 Material Design HTML preview">
-        <img src="../styles/style-12-material-design/style-12-material-design.png" alt="Style 12 - Material Design preview" loading="lazy">
+      <a class="preview" href="../styles/style-12-layered-material/style-12-layered-material.html" aria-label="Open Style 12 Layered Material HTML preview">
+        <img src="../styles/style-12-layered-material/style-12-layered-material.png" alt="Style 12 - Layered Material preview" loading="lazy">
       </a>
       <div class="card-body">
         <div class="card-kicker">Style 12</div>
-        <h2><span data-en="Material Design" data-zh="材料设计风格">Material Design</span></h2>
-        <p data-en="Clear elevation, large color cards, generous radius, and orderly arrangement inspired by Material 3." data-zh="层次分明、大色块卡片、大圆角、有秩序的排布，参考 Material 3 的设计语言。">Clear elevation, large color cards, generous radius, and orderly arrangement inspired by Material 3.</p>
+        <h2><span data-en="Layered Material" data-zh="层级材质">Layered Material</span></h2>
+        <p data-en="Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces." data-zh="层次分明、大色块卡片、大圆角、有秩序且适合触控的表面。">Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 12 - Material Design. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 12 - Material Design（材料设计风格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-          <a href="../styles/style-12-material-design/style-12-material-design.html" data-i18n="openHtml">Open HTML</a>
+          <button type="button" data-copy-en="Use awesome-page-design Style 12 - Layered Material as the page design direction.
+Best fit: consumer tools, utility apps, product dashboards.
+Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
+Layout archetype: Layered Daily Surface.
+Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
+Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
+Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
+Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
+States: Show done, skipped, next, disabled, overdue, and selected day states.
+Example content direction: you may use the specificity of &quot;LayerPad / Personal utility dashboard&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 12 - Layered Material（层级材质）作为页面设计方向。
+适用页面：消费者工具、实用型应用、产品仪表盘。
+目标气质：层次分明、大色块卡片、大圆角、有秩序且适合触控的表面。
+布局原型：层级日程表面。
+布局结构：触控优先的实用工具布局，包含大色调表面、类手机焦点面板和例行任务簇。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f7f2fa；表面 #ffffff；正文 #1d1b20；弱化文本 #625b71；主色 #6750a4；强调色 #eaddff；边框 #e7e0ec；圆角 22px；阴影/材质 0 18px 50px rgba(103, 80, 164, .16)。
+几何规则：面板圆角 22px；控件圆角 16px；标签/状态圆角 12px；媒体容器圆角 18px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用友好可读界面字体、清晰任务标签和充足触控间距。
+组件规则：例行卡、开关、进度环、标签、底部操作和空任务状态应共享材质层级。
+按钮规则：按钮使用色调或实色、大圆角和清楚触控状态。
+图标与媒体：只在加速识别时使用小功能图标或安静插画。
+状态规则：呈现 done、skipped、next、disabled、overdue 和 selected day 状态。
+示例内容方向：可参考“LayerPad / Personal utility dashboard”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把控件缩成密集桌面 SaaS 小组件。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
+          <a href="../styles/style-12-layered-material/style-12-layered-material.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
     </article>
@@ -355,9 +739,41 @@ h1 {
       <div class="card-body">
         <div class="card-kicker">Style 13</div>
         <h2><span data-en="Bento Layout" data-zh="便当盒布局">Bento Layout</span></h2>
-        <p data-en="iOS-widget-like card zones, modular composition, and clearly chunked information." data-zh="类似 iOS 小组件卡片分区、模块化排布、信息清晰分块。">iOS-widget-like card zones, modular composition, and clearly chunked information.</p>
+        <p data-en="Widget-like card zones, modular composition, and clearly chunked information." data-zh="小组件式卡片分区、模块化排布、信息清晰分块。">Widget-like card zones, modular composition, and clearly chunked information.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 13 - Bento Layout. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 13 - Bento Layout（便当盒布局）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 13 - Bento Layout as the page design direction.
+Best fit: creator profiles, product overviews, feature collections.
+Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
+Layout archetype: Uneven Bento Story.
+Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
+Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
+Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
+Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
+States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Example content direction: you may use the specificity of &quot;Patchwork / Modular profile hub&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 13 - Bento Layout（便当盒布局）作为页面设计方向。
+适用页面：创作者主页、产品总览、功能集合页。
+目标气质：小组件式卡片分区、模块化排布、信息清晰分块。
+布局原型：不等格便当叙事。
+布局结构：不对称便当网格，每个块有不同职责：证明、媒体、引用、统计、操作或时间线。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f4f4f5；表面 #ffffff；正文 #18181b；弱化文本 #71717a；主色 #18181b；强调色 #f97316；边框 #e4e4e7；圆角 18px；阴影/材质 0 18px 55px rgba(24, 24, 27, .10)。
+几何规则：面板圆角 18px；控件圆角 10px；标签/状态圆角 8px；媒体容器圆角 16px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用模块化标题、短块标签，并在每个块内建立局部层级。
+组件规则：大、宽、高、紧凑卡块按内容价值变化，同时共享圆角和间距。
+按钮规则：按钮可以是卡块内操作、紧凑胶囊或整块宽度控件。
+图标与媒体：使用小截图、引用、图表、资料详情和图表碎片作为卡块内容。
+状态规则：呈现 pinned、updated、saved、expanded、compact 和 reordered module 状态。
+示例内容方向：可参考“Patchwork / Modular profile hub”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把所有便当块做成等尺寸占位卡。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-13-bento-layout/style-13-bento-layout.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -371,7 +787,39 @@ h1 {
         <h2><span data-en="Neumorphism" data-zh="新拟态">Neumorphism</span></h2>
         <p data-en="Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces." data-zh="柔光、内凹层次感圆角、柔和阴影和触感表面。">Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 14 - Neumorphism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 14 - Neumorphism（新拟态）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 14 - Neumorphism as the page design direction.
+Best fit: audio tools, calm utilities, wellness and focus products.
+Visual mood: Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces.
+Layout archetype: Soft Tactile Control.
+Layout structure: Calm control surface with large knobs, inset sliders, preset pads, and a centered session state.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #e9eef5; surface #e9eef5; text #172033; muted #667085; primary #243b6b; accent #6aa6ff; border #f8fbff; radius 30px; shadow/material 14px 14px 34px rgba(148, 163, 184, .42), -14px -14px 34px rgba(255,255,255,.86).
+Geometry: panel radius 30px; control radius 22px; chip/state radius 18px; media radius 26px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use calm medium-weight labels, clear values, and limited headings.
+Components: Knobs, sliders, toggle wells, preset pads, and session chips should all feel tactile.
+Buttons: Buttons are raised or inset with clear pressed states and strong enough contrast.
+Icons and media: Use waveform, sound layers, and tactile control objects instead of photos.
+States: Show pressed, active layer, muted, disabled, timer-running, and saved preset states.
+Example content direction: you may use the specificity of &quot;TempoRoom / Calm audio control&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not let soft shadows reduce accessibility or hide active states. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 14 - Neumorphism（新拟态）作为页面设计方向。
+适用页面：音频工具、安静工具、健康与专注类产品。
+目标气质：柔光、内凹层次感圆角、柔和阴影和触感表面。
+布局原型：柔软触感控制台。
+布局结构：安静控制表面，包含大旋钮、内凹滑杆、预设垫和居中的会话状态。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #e9eef5；表面 #e9eef5；正文 #172033；弱化文本 #667085；主色 #243b6b；强调色 #6aa6ff；边框 #f8fbff；圆角 30px；阴影/材质 14px 14px 34px rgba(148, 163, 184, .42), -14px -14px 34px rgba(255,255,255,.86)。
+几何规则：面板圆角 30px；控件圆角 22px；标签/状态圆角 18px；媒体容器圆角 26px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用平静中等字重标签、清晰数值和有限标题。
+组件规则：旋钮、滑杆、开关槽、预设垫和会话标签都要有触感。
+按钮规则：按钮使用凸起或内凹状态，并有清晰 pressed 状态和足够对比度。
+图标与媒体：使用波形、声音层和触感控件对象，不使用照片。
+状态规则：呈现 pressed、active layer、muted、disabled、timer-running 和 saved preset 状态。
+示例内容方向：可参考“TempoRoom / Calm audio control”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要让柔和阴影降低可访问性或隐藏激活状态。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-14-neumorphism/style-14-neumorphism.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -385,7 +833,39 @@ h1 {
         <h2><span data-en="Liquid Glass" data-zh="液态玻璃">Liquid Glass</span></h2>
         <p data-en="Frosted glass, transparent layering, blurred materials, and a futuristic technology mood." data-zh="毛玻璃、透明层次、磨砂质感、科技感和未来感。">Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 15 - Liquid Glass. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 15 - Liquid Glass（液态玻璃）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
+Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
+Layout archetype: Glass Signal Map.
+Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
+Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
+Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
+Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
+States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Example content direction: you may use the specificity of &quot;GlassAtlas / Spatial intelligence board&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 15 - Liquid Glass（液态玻璃）作为页面设计方向。
+适用页面：沉浸式 AI、空间化仪表盘、高级未来感工具。
+目标气质：毛玻璃、透明层次、磨砂质感、科技感和未来感。
+布局原型：玻璃信号地图。
+布局结构：沉浸式地图，包含透明面板、固定信号、层叠控件和可读深度。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #07111f；表面 rgba(255,255,255,.13)；正文 #f8fbff；弱化文本 #b9c5d6；主色 #dff7ff；强调色 #8b5cf6；边框 rgba(255,255,255,.26)；圆角 24px；阴影/材质 0 28px 90px rgba(15, 23, 42, .45)。
+几何规则：面板圆角 24px；控件圆角 14px；标签/状态圆角 10px；媒体容器圆角 20px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用干净未来感界面字体、短标签和玻璃上高对比文字。
+组件规则：浮动面板、地图针、房间卡、透明筛选和信号列表应谨慎使用模糊。
+按钮规则：按钮使用磨砂玻璃或明亮信号控件，并有可见边框。
+图标与媒体：使用地图、空间图、针点和玻璃层作为真实产品内容。
+状态规则：呈现 stable、drift、alert、selected room、operator note 和 loading signal 状态。
+示例内容方向：可参考“GlassAtlas / Spatial intelligence board”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把低对比文字放在复杂透明背景上。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-15-liquid-glass/style-15-liquid-glass.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -397,9 +877,41 @@ h1 {
       <div class="card-body">
         <div class="card-kicker">Style 16</div>
         <h2><span data-en="Retro Computing" data-zh="复古主义">Retro Computing</span></h2>
-        <p data-en="Pixel mood, old operating-system texture, 80s elements, early Windows/Mac cues, and bitmap type." data-zh="像素风、复古 UI、老式操作系统质感、80 年代元素、早期 Windows/Mac 界面和像素字体。">Pixel mood, old operating-system texture, 80s elements, early Windows/Mac cues, and bitmap type.</p>
+        <p data-en="Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type." data-zh="像素风、复古 UI、老式操作系统质感、80 年代计算机线索、块状窗口和像素字体。">Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 16 - Retro Computing. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 16 - Retro Computing（复古主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 16 - Retro Computing as the page design direction.
+Best fit: music sites, game-adjacent products, cultural campaigns.
+Visual mood: Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type.
+Layout archetype: Retro Desktop Workspace.
+Layout structure: Old desktop environment with overlapping windows, title bars, pixel panels, and file-like action rows.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #f8df7a; surface #fff8c9; text #1f1300; muted #6f4b1d; primary #0057ff; accent #ff3bcb; border #1f1300; radius 2px; shadow/material 8px 8px 0 #1f1300.
+Geometry: panel radius 2px; control radius 0; chip/state radius 0; media radius 2px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use monospace or bitmap-like rhythm, crisp labels, and short window titles.
+Components: Windows, title bars, folder rows, mini players, file chips, and pixel dividers should feel functional.
+Buttons: Buttons are rectangular system controls with hard borders and pressed offsets.
+Icons and media: Use file windows, player bars, pixel diagrams, and desktop objects as the visual language.
+States: Show open, saved, playing, minimized, selected file, and modal states.
+Example content direction: you may use the specificity of &quot;PixelDesk / Retro media workstation&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not make the page look broken; nostalgia still needs clear UI. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 16 - Retro Computing（复古主义）作为页面设计方向。
+适用页面：音乐网站、游戏相关产品、文化活动页。
+目标气质：像素风、复古 UI、老式操作系统质感、80 年代计算机线索、块状窗口和像素字体。
+布局原型：复古桌面工作区。
+布局结构：老式桌面环境，包含重叠窗口、标题栏、像素面板和文件式操作行。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #f8df7a；表面 #fff8c9；正文 #1f1300；弱化文本 #6f4b1d；主色 #0057ff；强调色 #ff3bcb；边框 #1f1300；圆角 2px；阴影/材质 8px 8px 0 #1f1300。
+几何规则：面板圆角 2px；控件圆角 0；标签/状态圆角 0；媒体容器圆角 2px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用等宽或像素节奏、清晰标签和短窗口标题。
+组件规则：窗口、标题栏、文件夹行、迷你播放器、文件标签和像素分割线要有功能感。
+按钮规则：按钮是矩形系统控件，带硬边框和按下偏移。
+图标与媒体：使用文件窗口、播放器条、像素图和桌面对象作为视觉语言。
+状态规则：呈现 open、saved、playing、minimized、selected file 和 modal 状态。
+示例内容方向：可参考“PixelDesk / Retro media workstation”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要让页面看起来像坏掉；怀旧仍然需要清晰界面。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-16-retro-computing/style-16-retro-computing.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -413,22 +925,86 @@ h1 {
         <h2><span data-en="Neo-Brutalism" data-zh="新粗野主义">Neo-Brutalism</span></h2>
         <p data-en="Thick lines, strong color clashes, unpolished giant type, and controlled chaos." data-zh="粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。">Thick lines, strong color clashes, unpolished giant type, and controlled chaos.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 17 - Neo-Brutalism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 17 - Neo-Brutalism（新粗野主义）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 17 - Neo-Brutalism as the page design direction.
+Best fit: developer launches, bold campaigns, playful product sites.
+Visual mood: Thick lines, strong color clashes, unpolished giant type, and controlled chaos.
+Layout archetype: Brutal Proof Release.
+Layout structure: Release page built from giant type, proof slabs, install commands, issue strips, and collision blocks.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fff15c; surface #fffbea; text #111111; muted #3f3f46; primary #111111; accent #00e5a8; border #111111; radius 0; shadow/material 10px 10px 0 #111111.
+Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use oversized blunt headings, compact proof labels, and high-contrast code or numbers.
+Components: Install commands, benchmarks, issue cards, badges, changelog strips, and alerts carry the story.
+Buttons: Buttons are hard, loud, border-heavy, and visibly interactive.
+Icons and media: Use code blocks, stamps, benchmark charts, and launch proof instead of decorative art.
+States: Show copied, failing, benchmark live, issue closed, warning, and shipped states.
+Example content direction: you may use the specificity of &quot;RawLaunch / Developer release page&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not sand off the energy with soft shadows or polite muted cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 17 - Neo-Brutalism（新粗野主义）作为页面设计方向。
+适用页面：开发者发布页、强品牌活动、趣味产品站。
+目标气质：粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。
+布局原型：粗野证明发布。
+布局结构：由巨大字体、证明块、安装命令、issue 条和碰撞块构成的发布页。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fff15c；表面 #fffbea；正文 #111111；弱化文本 #3f3f46；主色 #111111；强调色 #00e5a8；边框 #111111；圆角 0；阴影/材质 10px 10px 0 #111111。
+几何规则：面板圆角 0；控件圆角 0；标签/状态圆角 0；媒体容器圆角 0。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用超大直接标题、紧凑证明标签和高对比代码/数字。
+组件规则：安装命令、基准、issue 卡、徽章、更新条和警告承载叙事。
+按钮规则：按钮硬朗、响亮、重边框，并且明显可交互。
+图标与媒体：使用代码块、印章、基准图和发布证明，不使用装饰图。
+状态规则：呈现 copied、failing、benchmark live、issue closed、warning 和 shipped 状态。
+示例内容方向：可参考“RawLaunch / Developer release page”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用柔和阴影或礼貌灰卡磨平这个风格。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-17-neo-brutalism/style-17-neo-brutalism.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
     </article>
     <article class="card">
-      <a class="preview" href="../styles/style-18-linear-futurism/style-18-linear-futurism.html" aria-label="Open Style 18 Linear Futurism HTML preview">
-        <img src="../styles/style-18-linear-futurism/style-18-linear-futurism.png" alt="Style 18 - Linear Futurism preview" loading="lazy">
+      <a class="preview" href="../styles/style-18-precision-futurism/style-18-precision-futurism.html" aria-label="Open Style 18 Precision Futurism HTML preview">
+        <img src="../styles/style-18-precision-futurism/style-18-precision-futurism.png" alt="Style 18 - Precision Futurism preview" loading="lazy">
       </a>
       <div class="card-body">
         <div class="card-kicker">Style 18</div>
-        <h2><span data-en="Linear Futurism" data-zh="Linear 风格">Linear Futurism</span></h2>
+        <h2><span data-en="Precision Futurism" data-zh="精密未来风">Precision Futurism</span></h2>
         <p data-en="Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision." data-zh="深色背景、发光边框、未来科技感和科幻 UI 精度。">Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 18 - Linear Futurism. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 18 - Linear Futurism（Linear 风格）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
-          <a href="../styles/style-18-linear-futurism/style-18-linear-futurism.html" data-i18n="openHtml">Open HTML</a>
+          <button type="button" data-copy-en="Use awesome-page-design Style 18 - Precision Futurism as the page design direction.
+Best fit: issue trackers, AI operations tools, technical SaaS.
+Visual mood: Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.
+Layout archetype: Precision Graph Console.
+Layout structure: Technical console with a node graph, compact trace rows, command actions, and glowing state markers.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #08090d; surface #101117; text #f4f4f5; muted #a1a1aa; primary #f4f4f5; accent #8b5cf6; border #27272f; radius 6px; shadow/material 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18).
+Geometry: panel radius 6px; control radius 4px; chip/state radius 2px; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact technical UI type, precise labels, and aligned numeric values.
+Components: Graph nodes, trace rows, run cards, incident chips, command buttons, and timeline fragments should feel engineered.
+Buttons: Buttons are compact dark controls with glow reserved for active or critical actions.
+Icons and media: Use graphs, traces, logs, and span diagrams instead of generic sci-fi backgrounds.
+States: Show active path, fail, retry, replay ready, incident open, and selected node states.
+Example content direction: you may use the specificity of &quot;VectorOps / Precision operations console&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not cover precise information with excessive glow. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 18 - Precision Futurism（精密未来风）作为页面设计方向。
+适用页面：Issue 工具、AI 运营工具、技术型 SaaS。
+目标气质：深色背景、发光边框、未来科技感和科幻 UI 精度。
+布局原型：精密图谱控制台。
+布局结构：技术控制台，包含节点图、紧凑追踪行、命令操作和发光状态标记。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #08090d；表面 #101117；正文 #f4f4f5；弱化文本 #a1a1aa；主色 #f4f4f5；强调色 #8b5cf6；边框 #27272f；圆角 6px；阴影/材质 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18)。
+几何规则：面板圆角 6px；控件圆角 4px；标签/状态圆角 2px；媒体容器圆角 4px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用紧凑技术界面字体、精确标签和对齐数值。
+组件规则：图节点、追踪行、运行卡、事件标签、命令按钮和时间线片段要有工程感。
+按钮规则：按钮是紧凑暗色控件，发光只用于激活或关键操作。
+图标与媒体：使用图谱、追踪、日志和 span 图，不用通用科幻背景。
+状态规则：呈现 active path、fail、retry、replay ready、incident open 和 selected node 状态。
+示例内容方向：可参考“VectorOps / Precision operations console”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要用过量发光遮住精确信息。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
+          <a href="../styles/style-18-precision-futurism/style-18-precision-futurism.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
     </article>
@@ -441,7 +1017,39 @@ h1 {
         <h2><span data-en="Gradient Pop" data-zh="渐变风">Gradient Pop</span></h2>
         <p data-en="Bright gradients, tech or trend energy, and an immediately eye-catching first viewport." data-zh="亮色渐变、科技或潮流气质，首屏视觉抓眼。">Bright gradients, tech or trend energy, and an immediately eye-catching first viewport.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 19 - Gradient Pop. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 19 - Gradient Pop（渐变风）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 19 - Gradient Pop as the page design direction.
+Best fit: AI builders, launch pages, creator tools.
+Visual mood: Bright gradients, tech or trend energy, and an immediately eye-catching first viewport.
+Layout archetype: Gradient Builder Flow.
+Layout structure: Bright creation flow with a colorful canvas, stepper rail, template cards, and conversion-focused action area.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fff7ed; surface #ffffff; text #24111f; muted #7c3aed; primary #db2777; accent #06b6d4; border #f3d4ff; radius 14px; shadow/material 0 24px 70px rgba(219, 39, 119, .20).
+Geometry: panel radius 14px; control radius 8px; chip/state radius 6px; media radius 12px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use friendly modern headings, clear product labels, and energetic but readable body copy.
+Components: Creation steps, template previews, color chips, progress markers, and signup modules should feel active.
+Buttons: Buttons are high-color and confident, with calmer secondary actions.
+Icons and media: Use product canvas previews, template thumbnails, flow arrows, and color chips.
+States: Show selected template, started, published, dropped-off, testing, and activation states.
+Example content direction: you may use the specificity of &quot;BloomBuilder / Builder launch page&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not let gradients overpower text or primary action clarity. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 19 - Gradient Pop（渐变风）作为页面设计方向。
+适用页面：AI 构建工具、发布页、创作者工具。
+目标气质：亮色渐变、科技或潮流气质，首屏视觉抓眼。
+布局原型：渐变构建流程。
+布局结构：明亮创建流程，包含彩色画布、步骤轨道、模板卡和转化导向操作区。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fff7ed；表面 #ffffff；正文 #24111f；弱化文本 #7c3aed；主色 #db2777；强调色 #06b6d4；边框 #f3d4ff；圆角 14px；阴影/材质 0 24px 70px rgba(219, 39, 119, .20)。
+几何规则：面板圆角 14px；控件圆角 8px；标签/状态圆角 6px；媒体容器圆角 12px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用友好现代标题、清晰产品标签和有能量但可读的正文。
+组件规则：创建步骤、模板预览、色片、进度标记和注册模块要有行动感。
+按钮规则：按钮高色彩且自信，次级操作保持安静。
+图标与媒体：使用产品画布预览、模板缩略图、流程箭头和色片。
+状态规则：呈现 selected template、started、published、dropped-off、testing 和 activation 状态。
+示例内容方向：可参考“BloomBuilder / Builder launch page”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要让渐变压过文本或主操作清晰度。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-19-gradient-pop/style-19-gradient-pop.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -455,7 +1063,39 @@ h1 {
         <h2><span data-en="Soft Pop" data-zh="柔和流行">Soft Pop</span></h2>
         <p data-en="Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes." data-zh="亲和力和玩乐色彩、手绘涂鸦/卡通插画、圆润夸张字体和带弹性的造型。">Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 20 - Soft Pop. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 20 - Soft Pop（柔和流行）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 20 - Soft Pop as the page design direction.
+Best fit: consumer apps, writing tools, education, creative productivity.
+Visual mood: Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes.
+Layout archetype: Soft Learning Board.
+Layout structure: Warm learning board with note cards, progress path, friendly empty states, and gentle practice controls.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #fff8f1; surface #ffffff; text #2b1d16; muted #8f5f4a; primary #ff6b6b; accent #ffd166; border #f5d7c6; radius 28px; shadow/material 0 18px 55px rgba(255, 107, 107, .18).
+Geometry: panel radius 28px; control radius 18px; chip/state radius 14px; media radius 24px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use rounded, readable type with encouraging labels and human microcopy.
+Components: Lesson cards, notes, retry prompts, progress tokens, doodle frames, and save states should feel kind.
+Buttons: Buttons are rounded and warm with obvious focus and disabled states.
+Icons and media: Use small doodles, note objects, progress paths, and friendly illustrations as cues.
+States: Show saved note, retry, kind error, empty lesson, streak, and completed states.
+Example content direction: you may use the specificity of &quot;MellowNotes / Friendly learning workspace&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not make friendly design childish or vague. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 20 - Soft Pop（柔和流行）作为页面设计方向。
+适用页面：消费者应用、写作工具、教育、创意生产力。
+目标气质：亲和力和玩乐色彩、手绘涂鸦/卡通插画、圆润夸张字体和带弹性的造型。
+布局原型：柔和学习面板。
+布局结构：温暖学习面板，包含笔记卡、进度路径、友好空状态和温和练习控件。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #fff8f1；表面 #ffffff；正文 #2b1d16；弱化文本 #8f5f4a；主色 #ff6b6b；强调色 #ffd166；边框 #f5d7c6；圆角 28px；阴影/材质 0 18px 55px rgba(255, 107, 107, .18)。
+几何规则：面板圆角 28px；控件圆角 18px；标签/状态圆角 14px；媒体容器圆角 24px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：使用圆润可读字体、鼓励性标签和有人味的微文案。
+组件规则：课程卡、笔记、重试提示、进度 token、涂鸦框和保存状态要友好。
+按钮规则：按钮圆润温暖，并有明显焦点和禁用状态。
+图标与媒体：使用小涂鸦、笔记对象、进度路径和友好插图作为线索。
+状态规则：呈现 saved note、retry、kind error、empty lesson、streak 和 completed 状态。
+示例内容方向：可参考“MellowNotes / Friendly learning workspace”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把友好设计做成幼稚或模糊。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-20-soft-pop/style-20-soft-pop.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -469,7 +1109,39 @@ h1 {
         <h2><span data-en="Acid Design" data-zh="酸性设计">Acid Design</span></h2>
         <p data-en="Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension." data-zh="金属光泽、液态金属字体、铬材质、扭曲排版、镭射光、暗黑科幻和致幻感。">Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension.</p>
         <div class="actions">
-          <button type="button" data-copy-en="Use awesome-page-design style: Style 21 - Acid Design. Apply its visual language, but do not copy the sample layout." data-copy-zh="使用 awesome-page-design 风格：Style 21 - Acid Design（酸性设计）。请应用它的视觉语言，但不要复制示例布局。" data-i18n="copy">Copy style prompt</button>
+          <button type="button" data-copy-en="Use awesome-page-design Style 21 - Acid Design as the page design direction.
+Best fit: experimental portfolios, music/fashion drops, immersive campaigns.
+Visual mood: Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension.
+Layout archetype: Acid Signal Poster.
+Layout structure: Asymmetric experimental poster with chrome slabs, laser cuts, warped title treatment, and stable navigation anchors.
+Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
+Color tokens: background #050108; surface #130818; text #f8f0ff; muted #c4b5fd; primary #e5e7eb; accent #d6ff00; border #7c3aed; radius 8px; shadow/material 0 24px 90px rgba(214, 255, 0, .16).
+Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use distorted display moments only for headlines; keep body copy and controls readable.
+Components: Signal shards, timer chips, archive cuts, chrome buttons, and high-contrast anchor controls define the UI.
+Buttons: Buttons can be metallic or laser-outlined but must remain obvious actions.
+Icons and media: Use chrome slabs, cut-up images, laser rules, and dark surreal fields as content anchors.
+States: Show live drop, hidden shard, tuned title, entered, archived, and expired states.
+Example content direction: you may use the specificity of &quot;ChromeRift / Experimental release page&quot; as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
+Do not: Do not apply distortion to small text, forms, or critical controls. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states." data-copy-zh="使用 awesome-page-design Style 21 - Acid Design（酸性设计）作为页面设计方向。
+适用页面：实验作品集、音乐/时尚发布、沉浸式活动页。
+目标气质：金属光泽、液态金属字体、铬材质、扭曲排版、镭射光、暗黑科幻和致幻感。
+布局原型：酸性信号海报。
+布局结构：不对称实验海报，包含铬面块、镭射切线、扭曲标题处理和稳定导航锚点。
+布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。
+颜色 token：背景 #050108；表面 #130818；正文 #f8f0ff；弱化文本 #c4b5fd；主色 #e5e7eb；强调色 #d6ff00；边框 #7c3aed；圆角 8px；阴影/材质 0 24px 90px rgba(214, 255, 0, .16)。
+几何规则：面板圆角 8px；控件圆角 4px；标签/状态圆角 2px；媒体容器圆角 6px。避免把所有按钮和卡片做成同一种大圆角或胶囊形。
+排版规则：扭曲展示字只用于标题瞬间；正文和控件保持可读。
+组件规则：信号碎片、计时标签、档案切片、铬面按钮和高对比锚点控件定义界面。
+按钮规则：按钮可以是金属或镭射描边，但必须显然是操作。
+图标与媒体：使用铬面块、切片图像、镭射线和暗黑超现实场作为内容锚点。
+状态规则：呈现 live drop、hidden shard、tuned title、entered、archived 和 expired 状态。
+示例内容方向：可参考“ChromeRift / Experimental release page”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。
+设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。
+禁止事项：不要把扭曲效果用于小字、表单或关键控件。 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。
+交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。" data-i18n="copy">Copy detailed prompt</button>
           <a href="../styles/style-21-acid-design/style-21-acid-design.html" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -480,24 +1152,24 @@ h1 {
     en: {
       title: 'Awesome Page Design Previews',
       meta: '21 visual style previews, viewport 1440x1200',
-      hint: 'Compare visual styles. Copy a style prompt, send it to your AI agent, and it can apply the chosen colors, typography, surfaces, layout mood, and component tone without copying the sample page.',
+      hint: 'Compare visual styles. Copy a detailed style prompt, send it to your AI agent, and it can apply the chosen layout archetype, layout structure, colors, typography, components, buttons, media direction, and states without copying the sample page.',
       sectionCount: '21 continuous visual styles, numbered Style 01 through Style 21.',
       style: 'Style',
-      copy: 'Copy style prompt',
+      copy: 'Copy detailed prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
-      promptFallback: 'Copy this style prompt:'
+      promptFallback: 'Copy this detailed style prompt:'
     },
     zh: {
       title: 'Awesome Page Design 预览',
       meta: '21 个视觉风格预览，视口 1440x1200',
-      hint: '对比视觉风格。点击复制风格提示词，发送给你的 AI，它会应用选定的颜色、字体、表面、布局气质和组件风格，但不复制示例页面。',
+      hint: '对比视觉风格。点击复制详细风格提示词，发送给你的 AI，它会应用选定的布局原型、布局结构、颜色、字体、组件、按钮、媒体方向和状态规则，但不复制示例页面。',
       sectionCount: '21 个连续编号的视觉风格，范围为 Style 01 到 Style 21。',
       style: '风格',
-      copy: '复制风格提示词',
+      copy: '复制详细提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
-      promptFallback: '复制这个提示词：'
+      promptFallback: '复制这个详细风格提示词：'
     }
   };
   let activeLang = 'en';

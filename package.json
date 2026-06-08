@@ -1,7 +1,7 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A Codex skill for choosing and applying distinctive web UI visual styles.",
+  "description": "A layout-aware UI design skill for choosing, auditing, and applying distinctive web visual styles.",
   "license": "MIT",
   "type": "commonjs",
   "skills": "./skills/",
@@ -25,6 +25,7 @@
     "web-design",
     "style-guide",
     "visual-styles",
+    "layout-guidance",
     "design-system",
     "ui"
   ],
