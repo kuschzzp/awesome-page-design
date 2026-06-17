@@ -68,14 +68,15 @@ If local previews cannot be opened, use `style-index.md` as the text fallback fo
 
 ## Work Modes
 
-Use the skill in four modes:
+Use the skill in five modes:
 
 - `Style selection`: choose a visual direction before building.
 - `Design audit`: inspect an existing page for weak hierarchy, generic layout, unclear states, inconsistent icons, low contrast, or poor responsive behavior.
 - `Implementation polish`: refine an existing implementation while preserving the chosen style.
+- `Implementation compliance`: review or fix real UI code for semantic controls, focus, forms, component states, responsive behavior, text handling, media stability, and motion.
 - `Design system output`: write reusable project rules so future pages stay consistent.
 
-For audit and polish work, use `quality-checklist.md` and `anti-generic-ui.md` before making visual changes.
+For audit and polish work, use `quality-checklist.md`, `anti-generic-ui.md`, and `interface-compliance.md` before making visual changes.
 
 ## Design Dials
 
@@ -116,6 +117,8 @@ Then map tokens onto real components. Adjust component layout to the product's n
 Always define top-level regions and responsive collapse behavior before final CSS polish.
 
 Keep accessibility intact. If a style uses low contrast, glow, glass, chrome, texture, or decorative motion, preserve readability and focus visibility first.
+
+When real UI code is changed, run the implementation compliance gate from `workflow.md`. Check semantic controls, accessible labels, focus-visible states, component state coverage, responsive text handling, stable media dimensions, reduced-motion behavior, and empty/error/loading recovery.
 
 Use the layout guidance and anti-generic UI rules before adding decoration. Improve layout archetype, product scenario, information architecture, type scale, density, component states, or media direction before adding extra effects.
 

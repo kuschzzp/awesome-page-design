@@ -7,6 +7,7 @@
   "skills": "./skills/",
   "files": [
     ".codex-plugin/",
+    "scripts/",
     "skills/",
     "README.md",
     "README.zh-CN.md",
@@ -14,7 +15,9 @@
   ],
   "scripts": {
     "previews": "node scripts/generate-previews.js",
-    "preview:serve": "node scripts/serve-preview.js"
+    "preview:serve": "node scripts/serve-preview.js",
+    "validate": "node scripts/validate-previews.js",
+    "check": "npm run validate"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-const { execFileSync } = require("node:child_process");
+const { spawn } = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
+const net = require("node:net");
+const os = require("node:os");
 const path = require("node:path");
+const { assertPngHasVisibleContent } = require("./png-quality");
 
 const rootDir = path.resolve(__dirname, "..");
 const skillDir = path.join(rootDir, "skills", "awesome-page-design");
@@ -15,6 +19,9 @@ const chromePath =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const viewportWidth = Number(process.env.PREVIEW_WIDTH || 1440);
 const viewportHeight = Number(process.env.PREVIEW_HEIGHT || 1200);
+const mobileViewportWidth = Number(process.env.PREVIEW_MOBILE_WIDTH || 390);
+const mobileViewportHeight = Number(process.env.PREVIEW_MOBILE_HEIGHT || 844);
+const generateMobileScreenshots = process.env.PREVIEW_MOBILE !== "0";
 const chromeWait = Number(process.env.PREVIEW_WAIT || 5000);
 
 const styles = [
@@ -203,16 +210,16 @@ const styles = [
     zhBrief: "粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。",
     bestFor: "developer launches, bold campaigns, playful product sites",
     zhBestFor: "开发者发布页、强品牌活动、趣味产品站",
-    bg: "#fff15c",
-    surface: "#fffbea",
+    bg: "#00e5ff",
+    surface: "#fff15c",
     text: "#111111",
-    muted: "#3f3f46",
+    muted: "#24111f",
     primary: "#111111",
-    accent: "#00e5a8",
+    accent: "#ff2bd6",
     border: "#111111",
     radius: "0",
-    shadow: "10px 10px 0 #111111",
-    className: "block-brutalism",
+    shadow: "10px 10px 0 #ff2bd6",
+    className: "neo-brutalism",
     image: "",
     notes: ["Make the hierarchy loud and unmistakable.", "Use strong geometry and intentionally hard shadows.", "Preserve usability under the visual tension."],
   },
@@ -347,7 +354,7 @@ const coreStyles = [
     border: "#111111",
     radius: "0",
     shadow: "10px 10px 0 #111111",
-    className: "neo-brutalism",
+    className: "block-brutalism",
     image: "",
     notes: ["Use loud hierarchy and hard geometry.", "Let tension come from shape and contrast, not randomness.", "Keep forms and actions obvious."],
   },
@@ -1609,17 +1616,490 @@ function getGeometryProfile(style) {
   return geometryProfiles[style.id] || geometryProfiles["09"];
 }
 
-function buildStylePrompt(style, lang = "en") {
+const implementationProfiles = {
+  "01": {
+    buttons: "Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.",
+    zhButtons: "使用紧凑实色主按钮、低调描边次按钮、偏方形筛选 chip，以及保持宽度稳定的加载按钮。",
+    feedback: "Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.",
+    zhFeedback: "在受影响行附近显示内联警告，保存操作使用小型状态 toast，并在看板内显示 stale/error chip。",
+    spacing: "Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.",
+    zhSpacing: "页面留白 24px，面板内边距 16-20px，行间距 10-12px，控件高度 42-48px，便于运营扫描。",
+    responsive: "Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.",
+    zhResponsive: "桌面保留筛选栏、看板和检查面板；平板把检查面板下移；手机把筛选栏变成顶部 chip，并让主操作紧跟标题。",
+  },
+  "02": {
+    buttons: "Use blunt rectangular buttons with thick borders, hard offset shadows, pressed translation, and no soft disabled treatment.",
+    zhButtons: "使用钝感矩形按钮、粗边框、硬偏移阴影、按下位移，并避免柔和的禁用态。",
+    feedback: "Use poster-like alert strips, stamped success labels, and obvious error blocks with hard borders.",
+    zhFeedback: "使用海报式提示条、印章式成功标签，以及粗边框错误块。",
+    spacing: "Use large 24-32px slabs, abrupt 12-16px gaps, and intentionally chunky control groups.",
+    zhSpacing: "使用 24-32px 大块内边距、12-16px 明确间距，以及厚重的控件组。",
+    responsive: "Desktop can be asymmetric; tablet collapses poster and proof wall; mobile becomes a single stack with full-width slab buttons and no horizontal overflow.",
+    zhResponsive: "桌面可以不对称；平板折叠海报和证明墙；手机变成单列，按钮全宽且不能横向溢出。",
+  },
+  "03": {
+    buttons: "Use luminous but restrained buttons, translucent secondary controls, and selected states that glow only at the edge.",
+    zhButtons: "使用克制发光按钮、半透明次级控件，以及只在边缘发光的选中态。",
+    feedback: "Use soft toast panels, score-change alerts, and low-noise validation hints over dark panels.",
+    zhFeedback: "使用柔和 toast、分数变化提示，以及暗色面板上的低噪声校验提示。",
+    spacing: "Use 22-28px glass panel padding, 14px component gaps, and generous breathing room around comparison cards.",
+    zhSpacing: "玻璃面板内边距 22-28px，组件间距 14px，对比卡周围保持足够呼吸感。",
+    responsive: "Desktop keeps evidence, comparison, and review notes side by side; mobile stacks them as review cards and keeps the score/primary action visible before media.",
+    zhResponsive: "桌面并列证据、对比和审阅备注；手机堆叠成审阅卡，并把分数和主操作放在媒体之前。",
+  },
+  "04": {
+    buttons: "Use glossy compact buttons, bright pill-like chips only for real states, and active feedback that feels like a music player control.",
+    zhButtons: "使用有光泽的紧凑按钮，只在真实状态上使用亮色 chip，按下反馈像音乐播放器控件。",
+    feedback: "Use energetic launch toasts, live/reminder badges, and inline signup confirmation.",
+    zhFeedback: "使用有活力的发布 toast、live/reminder 徽章，以及内联报名确认。",
+    spacing: "Use 18-24px stage padding, 8-12px pill gaps, and compact countdown blocks.",
+    zhSpacing: "舞台内边距 18-24px，胶囊间距 8-12px，倒计时块保持紧凑。",
+    responsive: "Desktop may use a stage and control panel; mobile moves lineup, countdown, and signup into a single sequenced flow.",
+    zhResponsive: "桌面可使用舞台和控制面板；手机把 lineup、倒计时和报名变成单列流程。",
+  },
+  "05": {
+    buttons: "Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.",
+    zhButtons: "使用文字链接按钮、下划线操作、规则线 tab，除非动作非常关键，否则少用填充按钮。",
+    feedback: "Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.",
+    zhFeedback: "使用编辑式 callout、边注和规则线分隔的校验消息，而不是彩色气泡。",
+    spacing: "Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.",
+    zhSpacing: "列间距 24-32px，严格基线、细分割线和宽阅读区域。",
+    responsive: "Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.",
+    zhResponsive: "桌面使用分栏；平板把元信息压成顶部条；手机保持阅读顺序，操作放在标题下。",
+  },
+  "06": {
+    buttons: "Use command-style buttons, terminal labels, sharp focus rings, and disabled states that look locked rather than faded away.",
+    zhButtons: "使用命令式按钮、终端标签、锐利焦点环，以及像 locked 而不是淡掉的禁用态。",
+    feedback: "Use log-line alerts, command output toasts, and inline error rows with exact recovery commands.",
+    zhFeedback: "使用日志行提示、命令输出 toast，以及带修复命令的内联错误行。",
+    spacing: "Use 12-18px monospace panels, 8-10px log rows, and compact control groups.",
+    zhSpacing: "终端面板内边距 12-18px，日志行间距 8-10px，控件组紧凑。",
+    responsive: "Desktop keeps console and severity board split; mobile stacks logs first, then metrics, then secondary evidence.",
+    zhResponsive: "桌面拆分控制台和严重度面板；手机先显示日志，再显示指标，再显示次级证据。",
+  },
+  "07": {
+    buttons: "Use sticker-like buttons with firm shadows, playful active motion, and high-contrast disabled labels.",
+    zhButtons: "使用贴纸感按钮、明确阴影、俏皮按下动效和高对比禁用标签。",
+    feedback: "Use friendly shop toasts, cart confirmations, and inline proof states that feel tactile.",
+    zhFeedback: "使用友好的商店 toast、购物车确认，以及有触感的内联 proof 状态。",
+    spacing: "Use 18-24px playful padding, 12-16px sticker gaps, and irregular but aligned product zones.",
+    zhSpacing: "使用 18-24px 俏皮内边距、12-16px 贴纸间距，以及不完全规整但对齐的商品区域。",
+    responsive: "Desktop can show builder plus catalog; mobile puts builder first, then product cards, then cart summary.",
+    zhResponsive: "桌面显示构建器加目录；手机先构建器，再商品卡，最后购物车摘要。",
+  },
+  "08": {
+    buttons: "Use restrained text buttons or hard-edged outline controls; keep hover/focus precise and quiet.",
+    zhButtons: "使用克制文字按钮或硬边描边控件；hover/focus 精确而安静。",
+    feedback: "Use sparse status notes, subtle border changes, and no decorative alert noise.",
+    zhFeedback: "使用稀疏状态说明、细微边框变化，避免装饰性提示噪声。",
+    spacing: "Use large negative space, 28-40px object gutters, and sparse metadata rows.",
+    zhSpacing: "使用大面积留白、28-40px 对象间距和稀疏元信息行。",
+    responsive: "Desktop may hold an object stage beside notes; mobile places the object first, then proof rows and one clear action.",
+    zhResponsive: "桌面可让对象舞台和说明并列；手机先对象，再证明行，最后一个明确操作。",
+  },
+  "09": {
+    buttons: "Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.",
+    zhButtons: "使用极简深色主按钮、安静次按钮、清晰焦点环，不使用装饰性按钮发光。",
+    feedback: "Use plain inline alerts, compact success toasts, and reserved empty states.",
+    zhFeedback: "使用朴素内联提示、紧凑成功 toast 和克制空状态。",
+    spacing: "Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.",
+    zhSpacing: "页面节奏 24-32px，组件间距 16px，产品证明周围文本宽度克制。",
+    responsive: "Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.",
+    zhResponsive: "桌面可稀疏；手机保留单一焦点对象，并把次级控件下移。",
+  },
+  "10": {
+    buttons: "Use high-contrast dark buttons, cinematic hover states, and loading states that feel like render progress.",
+    zhButtons: "使用高对比暗色按钮、电影感 hover，以及像渲染进度的加载态。",
+    feedback: "Use dark toasts, cost warnings, render-complete confirmations, and visible retry actions.",
+    zhFeedback: "使用暗色 toast、成本警告、渲染完成确认和可见重试操作。",
+    spacing: "Use 20-28px panels, 14px media gaps, and clear separation between viewer and queue.",
+    zhSpacing: "面板内边距 20-28px，媒体间距 14px，查看器和队列清楚分隔。",
+    responsive: "Desktop keeps viewer and queue split; mobile shows viewer, primary render action, then queue and budget details.",
+    zhResponsive: "桌面拆分查看器和队列；手机先查看器，再主渲染操作，之后队列和预算。",
+  },
+  "11": {
+    buttons: "Use line-based buttons, compact action labels, and focus states that strengthen the rule system.",
+    zhButtons: "使用线性按钮、紧凑动作标签，以及增强规则线系统的焦点态。",
+    feedback: "Use rule-separated banners, inline audit notes, and visible state chips without soft shadows.",
+    zhFeedback: "使用规则线分隔 banner、内联审计说明和可见状态 chip，不用柔阴影。",
+    spacing: "Use 20-24px grid gutters, 1px dividers, 12px evidence rows, and strict alignment.",
+    zhSpacing: "网格间距 20-24px，1px 分割线，证据行 12px，严格对齐。",
+    responsive: "Desktop uses process lanes; mobile turns lanes into ordered cards with the current step and action visible.",
+    zhResponsive: "桌面使用流程泳道；手机把泳道变成有序卡片，并显示当前步骤和操作。",
+  },
+  "12": {
+    buttons: "Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.",
+    zhButtons: "使用适合触控的实色和调性按钮、清楚选中态，以及保留材质深度的禁用态。",
+    feedback: "Use calm snackbars, inline helper text, and clear routine-complete confirmations.",
+    zhFeedback: "使用平静 snackbar、内联帮助文本和清晰日程完成确认。",
+    spacing: "Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.",
+    zhSpacing: "触控面板 24px，列表间距 12-16px，控件高度 44-52px。",
+    responsive: "Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.",
+    zhResponsive: "桌面可展示手机面板和信息云；手机先日程面板，侧内容变为堆叠卡片。",
+  },
+  "13": {
+    buttons: "Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.",
+    zhButtons: "只在有明确任务的模块内嵌紧凑按钮；选中模块要明显但不吵。",
+    feedback: "Use tile-local badges, progress chips, and empty tile states with next actions.",
+    zhFeedback: "使用模块内徽章、进度 chip，以及带下一步的空模块状态。",
+    spacing: "Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.",
+    zhSpacing: "网格间距 16px，模块内边距可变化，使用稳定宽高比形成节奏。",
+    responsive: "Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.",
+    zhResponsive: "桌面可使用不同跨度模块；手机变成单列，并按重要性保持模块顺序。",
+  },
+  "14": {
+    buttons: "Use raised and inset tactile buttons, pressed states that sink inward, and loading states that keep the soft surface stable.",
+    zhButtons: "使用凸起和内凹触感按钮，按下态向内沉，加载态保持柔和表面稳定。",
+    feedback: "Use gentle inset alerts, saved-preset confirmations, and calm validation messages.",
+    zhFeedback: "使用柔和内凹提示、预设保存确认和平静校验消息。",
+    spacing: "Use 22-30px soft panels, 14-18px mixer gaps, and large tap targets.",
+    zhSpacing: "柔和面板内边距 22-30px，混音器间距 14-18px，点击目标要大。",
+    responsive: "Desktop can use multiple tactile columns; mobile stacks controls and keeps the active preset near the primary action.",
+    zhResponsive: "桌面可使用多列触感控件；手机堆叠控件，并让当前预设靠近主操作。",
+  },
+  "15": {
+    buttons: "Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.",
+    zhButtons: "使用带可见边框的玻璃按钮、可读标签，以及基于色调而不是只靠模糊的 hover。",
+    feedback: "Use translucent toasts, map-layer alerts, and readable inline status cards over glass.",
+    zhFeedback: "使用半透明 toast、地图层提示，以及玻璃上可读的内联状态卡。",
+    spacing: "Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.",
+    zhSpacing: "玻璃面板 20-28px，透明层间距 14px，文本下方背景稳定。",
+    responsive: "Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.",
+    zhResponsive: "桌面可拆分地图和控件；手机在操作更重要时把控件放到地图前。",
+  },
+  "16": {
+    buttons: "Use OS-window buttons, sharp pixel borders, hard active states, and disabled controls that look unavailable in-system.",
+    zhButtons: "使用操作系统窗口按钮、锐利像素边框、硬按下态，以及系统内不可用的禁用控件。",
+    feedback: "Use window-style alerts, file-status rows, and modal dialogs that feel like old desktop chrome.",
+    zhFeedback: "使用窗口式提示、文件状态行，以及像旧桌面 chrome 的弹窗。",
+    spacing: "Use 8-14px window chrome spacing, dense file rows, and clear title bars.",
+    zhSpacing: "窗口 chrome 间距 8-14px，文件行紧凑，标题栏清楚。",
+    responsive: "Desktop can overlap windows; mobile disables overlap and turns windows into stacked panels.",
+    zhResponsive: "桌面可重叠窗口；手机取消重叠，窗口变成堆叠面板。",
+  },
+  "17": {
+    buttons: "Use square high-impact buttons, thick borders, blunt hover shifts, and unmistakable disabled/error blocks.",
+    zhButtons: "使用方形高冲击按钮、粗边框、直接的 hover 位移，以及非常明确的禁用/错误块。",
+    feedback: "Use loud but structured alert slabs, command confirmations, and status rows with strong contrast.",
+    zhFeedback: "使用响亮但有结构的提示块、命令确认，以及强对比状态行。",
+    spacing: "Use 18-30px collision gaps, oversized slabs, and intentionally uneven but readable groups.",
+    zhSpacing: "使用 18-30px 碰撞式间距、大块面板，以及不均衡但可读的分组。",
+    responsive: "Desktop can collide panels; mobile removes rotation and turns slabs into a single readable sequence.",
+    zhResponsive: "桌面可让面板碰撞；手机取消旋转，块面变成单一可读序列。",
+  },
+  "18": {
+    buttons: "Use precise command buttons, thin glow only on active/focus states, and compact disabled states for technical control.",
+    zhButtons: "使用精密命令按钮，只在 active/focus 使用细发光，并为技术控件提供紧凑禁用态。",
+    feedback: "Use trace toasts, incident chips, warning rows, and replay confirmations tied to real system state.",
+    zhFeedback: "使用 trace toast、incident chip、警告行，以及绑定真实系统状态的 replay 确认。",
+    spacing: "Use 16-20px console panels, 8-12px trace rows, and dense tabular metrics.",
+    zhSpacing: "控制台面板 16-20px，trace 行 8-12px，指标紧凑且表格数字对齐。",
+    responsive: "Desktop keeps graph, trace panel, and queue; mobile shows trace summary, then graph, then queue.",
+    zhResponsive: "桌面保留图、trace 面板和队列；手机先 trace 摘要，再图，再队列。",
+  },
+  "19": {
+    buttons: "Use confident gradient or solid buttons, restrained secondary buttons, and progress/loading states that feel like a builder flow.",
+    zhButtons: "使用自信的渐变或实色按钮、克制次按钮，以及像构建流程的进度/加载态。",
+    feedback: "Use bright publish toasts, checklist warnings, and inline success cards near the stepper.",
+    zhFeedback: "使用明亮发布 toast、清单警告，以及靠近 stepper 的内联成功卡。",
+    spacing: "Use 20-28px builder panels, 12-16px template gaps, and clear separation between canvas and checklist.",
+    zhSpacing: "构建器面板 20-28px，模板间距 12-16px，画布和清单分隔清楚。",
+    responsive: "Desktop can show copy, canvas, and checklist; mobile orders them as headline, primary action, canvas, checklist.",
+    zhResponsive: "桌面可显示文案、画布和清单；手机顺序为标题、主操作、画布、清单。",
+  },
+  "20": {
+    buttons: "Use warm rounded buttons, gentle hover, kind disabled language, and retry buttons that feel helpful rather than punitive.",
+    zhButtons: "使用温暖圆角按钮、温和 hover、有善意的禁用文案，以及不惩罚用户的重试按钮。",
+    feedback: "Use encouraging success notes, kind error messages, saved-note toasts, and empty lessons with clear next steps.",
+    zhFeedback: "使用鼓励型成功说明、友好错误文案、保存笔记 toast，以及带下一步的空课程状态。",
+    spacing: "Use 20-28px friendly panels, 12-16px lesson gaps, and comfortable reading line height.",
+    zhSpacing: "友好面板 20-28px，课程间距 12-16px，阅读行高舒适。",
+    responsive: "Desktop can show path, practice, and notes; mobile shows practice first, then path, then progress notes.",
+    zhResponsive: "桌面可显示路径、练习和笔记；手机先练习，再路径，再进度笔记。",
+  },
+  "21": {
+    buttons: "Use sharp chrome or laser-outline buttons, stable labels, and active states that stay readable under visual distortion.",
+    zhButtons: "使用锐利铬面或镭射描边按钮、稳定标签，以及在视觉扭曲下仍可读的 active 状态。",
+    feedback: "Use high-contrast signal alerts, archive confirmations, and expired-state warnings without distorting body text.",
+    zhFeedback: "使用高对比信号提示、归档确认和过期警告，但不要扭曲正文。",
+    spacing: "Use 18-26px experimental slabs, 10-14px shard gaps, and stable anchor zones for controls.",
+    zhSpacing: "实验块面 18-26px，碎片间距 10-14px，并为控件保留稳定锚点区域。",
+    responsive: "Desktop may be asymmetric and surreal; mobile removes distortion from controls and stacks title, action, media, and shards.",
+    zhResponsive: "桌面可不对称且超现实；手机移除控件扭曲，并堆叠标题、操作、媒体和碎片。",
+  },
+};
+
+function getImplementationProfile(style) {
+  return implementationProfiles[style.id] || implementationProfiles["09"];
+}
+
+const promptKinds = [
+  { key: "full", en: "Full Prompt", zh: "完整提示词" },
+  { key: "landing", en: "Landing Page", zh: "落地页" },
+  { key: "dashboard", en: "Dashboard", zh: "仪表盘" },
+  { key: "admin", en: "Admin Panel", zh: "管理后台" },
+  { key: "mobile", en: "Mobile", zh: "移动端" },
+];
+
+const adaptationProfiles = {
+  "01": {
+    landing: "Use a proof-led product overview with metrics, workflow screenshots, and one calm conversion action; avoid a decorative hero-only page.",
+    dashboard: "Use filter rail, metric row, exception cards, owner/status fields, and a right-side inspector for next actions.",
+    admin: "Use compact tables, bulk actions, saved views, row-level warnings, and audit-friendly detail drawers.",
+    forms: "Use visible labels, compact helper text, short grouped forms, and inline validation close to the affected row.",
+    mobile: "Place title, current status, primary action, filter chips, list, then inspector details; avoid squeezing a desktop board.",
+    unsuitable: "Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling.",
+  },
+  "02": {
+    landing: "Use a campaign poster, stamped proof, bold offer slab, and one loud call-to-action with hard-edged supporting tickets.",
+    dashboard: "Use chunky status slabs and urgent queues only for high-energy launch or moderation dashboards.",
+    admin: "Use blunt forms, strong section borders, and obvious destructive confirmation; keep density lower than a neutral admin shell.",
+    forms: "Use large labels, hard field borders, poster-like errors, and full-width confirmation blocks.",
+    mobile: "Stack slabs in a strong reading order; remove side collisions and keep buttons full-width with no horizontal overflow.",
+    unsuitable: "Weak for quiet finance, medical, legal, or long-form reading products.",
+  },
+  "03": {
+    landing: "Use a premium dark product narrative with comparison panels, evidence cards, soft media, and restrained glow.",
+    dashboard: "Use model runs, confidence scores, review notes, and selected-state panels rather than generic dark cards.",
+    admin: "Use review workflows, validation queues, and low-noise status panels; keep destructive states crisp.",
+    forms: "Use translucent field groups over stable dark surfaces with clear focus and validation edges.",
+    mobile: "Show score and primary action before media; stack comparison cards with readable text over every panel.",
+    unsuitable: "Weak for dense clerical tools or pages that must feel plain and official.",
+  },
+  "04": {
+    landing: "Use a glossy stage, lineup, countdown, signup module, and collectible media fragments.",
+    dashboard: "Use launch signals, reminder counts, live badges, and compact activity strips for campaign operations.",
+    admin: "Use bright but bounded controls for content scheduling, asset approval, and release checklists.",
+    forms: "Use compact glossy fields, visible signup confirmation, and playful but readable validation.",
+    mobile: "Sequence headline, media, countdown, signup, lineup, then proof; avoid tiny pills as primary controls.",
+    unsuitable: "Weak for serious enterprise workflows or high-trust official services.",
+  },
+  "05": {
+    landing: "Use editorial columns, rule lines, captions, proof excerpts, and understated text actions.",
+    dashboard: "Use index tables, metadata columns, and structured evidence rather than cards.",
+    admin: "Use form sections, audit rows, legal/procurement evidence blocks, and rule-line navigation.",
+    forms: "Use persistent labels, narrow measures, divider-separated validation, and underlined actions.",
+    mobile: "Preserve reading order: headline, metadata, action, article body, index; avoid hidden sidebars.",
+    unsuitable: "Weak for playful commerce, heavy animation, or highly visual immersive demos.",
+  },
+  "06": {
+    landing: "Use terminal output, command examples, severity proof, and a clear install or run action.",
+    dashboard: "Use log streams, severity filters, health metrics, command results, and incident queues.",
+    admin: "Use CLI-like settings, permission warnings, and exact recovery commands for technical operators.",
+    forms: "Use command labels, sharp focus rings, monospace helper text, and exact error recovery.",
+    mobile: "Show logs first, then metrics and recovery actions; keep command snippets wrap-safe.",
+    unsuitable: "Weak for consumer lifestyle, soft wellness, or image-led brand storytelling.",
+  },
+  "07": {
+    landing: "Use a playful product builder, sticker-like media, price/proof tags, and a friendly cart action.",
+    dashboard: "Use creator shop metrics, order states, fulfillment cards, and tactile product previews.",
+    admin: "Use readable commerce controls, variant forms, inventory warnings, and friendly confirmation states.",
+    forms: "Use chunky labels, tactile inputs, high-contrast validation, and clear cart/save feedback.",
+    mobile: "Put builder first, then product cards, cart summary, and proof; keep playful elements from crowding controls.",
+    unsuitable: "Weak for sober B2B, dense analytics, or official documentation portals.",
+  },
+  "08": {
+    landing: "Use one object, one message, sparse proof rows, and a restrained action with premium whitespace.",
+    dashboard: "Use only for high-end monitoring or portfolio dashboards where a single object/state matters most.",
+    admin: "Use sparse review panels, minimal metadata, and precise outline controls; avoid dense bulk workflows.",
+    forms: "Use few fields, large whitespace, clear labels, and quiet validation with strong contrast.",
+    mobile: "Place object first, then proof rows and one action; avoid long multi-column content.",
+    unsuitable: "Weak for operational tools that need many visible controls at once.",
+  },
+  "09": {
+    landing: "Use a focused product brief with one central proof object, concise copy, and quiet secondary links.",
+    dashboard: "Use clean metrics, simple lists, small charts, and generous whitespace around the main decision.",
+    admin: "Use orderly forms, tables, and settings pages with minimal decoration and strong alignment.",
+    forms: "Use simple labels, compact helper text, precise focus rings, and calm error states.",
+    mobile: "Keep one focus object, primary action, then details; move secondary controls below content.",
+    unsuitable: "Weak for brands that need strong personality or dramatic visual storytelling.",
+  },
+  "10": {
+    landing: "Use a cinematic viewer, render proof, budget/status warnings, and one bright primary action.",
+    dashboard: "Use render queues, review states, media thumbnails, failure badges, and retry actions.",
+    admin: "Use dark production controls, batch review tables, and visible cost/error states.",
+    forms: "Use dark fields, high-contrast labels, stable loading buttons, and retry-focused errors.",
+    mobile: "Show viewer, primary action, queue, then budget and errors; avoid hiding retry actions.",
+    unsuitable: "Weak for text-heavy documentation or low-contrast casual reading.",
+  },
+  "11": {
+    landing: "Use a structured process map, evidence panels, and precise conversion actions.",
+    dashboard: "Use workflow lanes, tables, audit evidence, status chips, and rule-based grouping.",
+    admin: "Use B2B forms, approval tables, permissions, and line-separated validation.",
+    forms: "Use strict alignment, visible labels, compact errors, and clear section dividers.",
+    mobile: "Turn lanes into ordered cards with current step and action visible before evidence.",
+    unsuitable: "Weak for playful campaigns or pages that need emotional softness.",
+  },
+  "12": {
+    landing: "Use layered product surfaces, touch-friendly proof cards, and calm utility storytelling.",
+    dashboard: "Use large touch panels, routine cards, tonal status surfaces, and comfortable controls.",
+    admin: "Use settings, forms, and utility dashboards where clarity and touch targets matter.",
+    forms: "Use filled and tonal inputs, clear helper text, calm snackbars, and large touch targets.",
+    mobile: "Put the daily or utility panel first; convert side content into stacked cards.",
+    unsuitable: "Weak for hard-edged technical consoles or editorial layouts that need strict rules.",
+  },
+  "13": {
+    landing: "Use uneven tiles where each block has a job: proof, media, quote, stat, timeline, and action.",
+    dashboard: "Use modular status tiles, varied spans, local actions, and progress badges.",
+    admin: "Use admin only when modules are independent; avoid forcing dense tables into bento tiles.",
+    forms: "Use forms inside purposeful tiles with local validation and stable tile dimensions.",
+    mobile: "Collapse to one column while preserving tile order by importance.",
+    unsuitable: "Weak for long tables, legal documents, or workflows needing strict linear review.",
+  },
+  "14": {
+    landing: "Use tactile controls, session state, presets, and soft proof for calm utility products.",
+    dashboard: "Use knobs, sliders, preset pads, active layers, and session meters rather than card grids.",
+    admin: "Use sparingly for small settings tools; keep contrast and state clarity higher than the soft surface.",
+    forms: "Use inset fields, raised buttons, calm validation, and large tap targets.",
+    mobile: "Stack controls, keep active preset near the primary action, and avoid dense tables.",
+    unsuitable: "Weak for dense admin systems, long documents, or high-alert operational products.",
+  },
+  "15": {
+    landing: "Use a glass map or spatial product story with readable translucent panels and stable media backdrops.",
+    dashboard: "Use signal layers, selected rooms, map pins, translucent controls, and readable alerts.",
+    admin: "Use for premium spatial tools, not conventional back-office CRUD unless the map/object is central.",
+    forms: "Use glass fields only over stable surfaces; focus and errors need visible borders and text.",
+    mobile: "Place controls above ambience when action matters; keep glass panels readable over every background.",
+    unsuitable: "Weak for low-power devices, accessibility-critical dense forms, or plain official portals.",
+  },
+  "16": {
+    landing: "Use retro windows, title bars, file lists, and a playful install/play action.",
+    dashboard: "Use overlapping desktop windows for music, files, queues, and system-style status.",
+    admin: "Use only for themed tools; make file states, dialogs, and buttons feel intentionally old-system.",
+    forms: "Use title-bar groups, pixel borders, system alerts, and sharp validation states.",
+    mobile: "Disable window overlap and turn windows into stacked panels with clear title bars.",
+    unsuitable: "Weak for serious finance, healthcare, or modern premium SaaS.",
+  },
+  "17": {
+    landing: "Use collision panels, giant type, command proof, and high-impact install or launch actions.",
+    dashboard: "Use brutal status walls, issue queues, benchmark slabs, and unmistakable warnings.",
+    admin: "Use for bold developer/internal tools; keep forms blocky, explicit, and lower density.",
+    forms: "Use square controls, thick borders, direct labels, and loud but structured errors.",
+    mobile: "Remove rotation/collision, stack slabs, and keep controls large and readable.",
+    unsuitable: "Weak for quiet trust, long reading, or restrained enterprise procurement.",
+  },
+  "18": {
+    landing: "Use a precise technical product story with graph, traces, incidents, and command action.",
+    dashboard: "Use graph console, trace list, compact metrics, incident chips, and replay controls.",
+    admin: "Use for technical SaaS operations, issue triage, observability, and workflow replay.",
+    forms: "Use compact dark inputs, command buttons, exact validation, and visible focused edges.",
+    mobile: "Show trace summary, graph, queue, and replay action in that order.",
+    unsuitable: "Weak for soft consumer brands or pages needing warmth over precision.",
+  },
+  "19": {
+    landing: "Use a bright builder narrative with live canvas, stepper, checklist, and publish action.",
+    dashboard: "Use activation metrics, template states, progress cards, and publish readiness checks.",
+    admin: "Use for creator/admin builders, content setup, template management, and launch checklists.",
+    forms: "Use colorful but restrained inputs, progress validation, checklist warnings, and success cards.",
+    mobile: "Order as headline, primary action, canvas, checklist, then supporting proof.",
+    unsuitable: "Weak for restrained legal, formal docs, or very dense reporting dashboards.",
+  },
+  "20": {
+    landing: "Use friendly learning story, progress path, saved notes, and encouraging primary action.",
+    dashboard: "Use practice cards, lesson paths, note stacks, streaks, and kind retry states.",
+    admin: "Use for education/community tools, not dense finance or strict enterprise approvals.",
+    forms: "Use readable labels, kind errors, saved-note toasts, and comfortable line height.",
+    mobile: "Show practice first, then path, then notes; keep touch targets generous.",
+    unsuitable: "Weak for severe incidents, high-density analytics, or luxury minimal portfolios.",
+  },
+  "21": {
+    landing: "Use experimental title, chrome media, laser cuts, stable nav anchors, and a readable entry action.",
+    dashboard: "Use only for expressive live signal or archive surfaces with strong stable control zones.",
+    admin: "Use sparingly; critical forms and tables must be distortion-free and high contrast.",
+    forms: "Use sharp fields, clear labels, no text distortion, and high-contrast expired/error states.",
+    mobile: "Remove distortion from controls and stack title, action, media, and shards.",
+    unsuitable: "Weak for accessibility-critical admin, long copy, or conservative institutional products.",
+  },
+};
+
+function getAdaptationProfile(style) {
+  return adaptationProfiles[style.id] || adaptationProfiles["09"];
+}
+
+function buildScenarioFocus(style, lang, kind) {
+  const adaptation = getAdaptationProfile(style);
+  const prefix = lang === "zh" ? "场景重点" : "Scenario focus";
+  const lines = {
+    full: lang === "zh"
+      ? [
+          `页面适配：落地页可用 ${adaptation.landing}`,
+          `仪表盘适配：${adaptation.dashboard}`,
+          `后台适配：${adaptation.admin}`,
+          `表单/数据适配：${adaptation.forms}`,
+          `移动端适配：${adaptation.mobile}`,
+          `不适合：${adaptation.unsuitable}`,
+        ]
+      : [
+          `Landing adaptation: ${adaptation.landing}`,
+          `Dashboard adaptation: ${adaptation.dashboard}`,
+          `Admin adaptation: ${adaptation.admin}`,
+          `Forms/data adaptation: ${adaptation.forms}`,
+          `Mobile adaptation: ${adaptation.mobile}`,
+          `Avoid for: ${adaptation.unsuitable}`,
+        ],
+    landing: lang === "zh"
+      ? [
+          `落地页重点：${adaptation.landing}`,
+          `首屏必须明确品牌/产品、核心承诺、主转化动作、证明内容和媒体方向。`,
+          `不要把完整页面做成通用 hero + 三张功能卡；根据产品叙事安排证据、流程、客户证明或产品视觉。`,
+        ]
+      : [
+          `Landing page focus: ${adaptation.landing}`,
+          `First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.`,
+          `Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.`,
+        ],
+    dashboard: lang === "zh"
+      ? [
+          `仪表盘重点：${adaptation.dashboard}`,
+          `优先呈现筛选、指标、列表/表格、详情面板、状态和下一步操作。`,
+          `不要把运营页面改成营销首屏；核心对象、当前状态和主操作必须在首屏可见。`,
+        ]
+      : [
+          `Dashboard focus: ${adaptation.dashboard}`,
+          `Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.`,
+          `Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.`,
+        ],
+    admin: lang === "zh"
+      ? [
+          `管理后台重点：${adaptation.admin}`,
+          `强调导航、表格/表单、批量操作、权限、错误、空状态、保存和撤销反馈。`,
+          `控制装饰强度，让重复操作、扫描、比较和修复路径更清楚。`,
+        ]
+      : [
+          `Admin panel focus: ${adaptation.admin}`,
+          `Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.`,
+          `Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.`,
+        ],
+    mobile: lang === "zh"
+      ? [
+          `移动端重点：${adaptation.mobile}`,
+          `先定义标题、当前状态、主操作、筛选、主体内容、辅助证据和二级操作的顺序。`,
+          `触控目标、底部操作、折叠面板、表格替代方案和安全区域必须明确；不要硬挤桌面网格。`,
+        ]
+      : [
+          `Mobile focus: ${adaptation.mobile}`,
+          `Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.`,
+          `Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.`,
+        ],
+  };
+  return [`${prefix}:`, ...lines[kind] || lines.full];
+}
+
+function buildStylePrompt(style, lang = "en", kind = "full") {
   const label = style.label || `Style ${style.id}`;
   const scenario = getScenario(style);
   const playbook = getStylePlaybook(style);
   const geometry = getGeometryProfile(style);
+  const implementation = getImplementationProfile(style);
+  const scenarioFocus = buildScenarioFocus(style, lang, kind);
 
   if (lang === "zh") {
     return [
       `使用 awesome-page-design ${label} - ${style.name}（${style.zhName}）作为页面设计方向。`,
+      `提示词类型：${promptKinds.find((item) => item.key === kind)?.zh || "完整提示词"}。`,
       `适用页面：${style.zhBestFor}。`,
       `目标气质：${style.zhBrief}`,
+      ...scenarioFocus,
       `布局原型：${playbook.zhName}。`,
       `布局结构：${playbook.zhStructure}`,
       `布局适配：先根据用户真实任务定义主要内容对象、顶层区域、主操作模型、信息密度和响应式折叠，再应用该风格；保留布局原型的结构身份，但不要复制示例页。`,
@@ -1628,19 +2108,28 @@ function buildStylePrompt(style, lang = "en") {
       `排版规则：${playbook.zhTypography}`,
       `组件规则：${playbook.zhComponents}`,
       `按钮规则：${playbook.zhButtons}`,
+      `按钮细节：${implementation.zhButtons}`,
+      `提示与反馈：${implementation.zhFeedback}`,
+      `间距系统：${implementation.zhSpacing}`,
+      `响应式策略：${implementation.zhResponsive}`,
       `图标与媒体：${playbook.zhMedia}`,
       `状态规则：${playbook.zhStates}`,
+      `组件状态矩阵：为出现的按钮、链接、输入、筛选、卡片、列表、表格、弹窗、抽屉、空状态、错误状态、加载状态、禁用状态、选中状态、警告状态和成功状态定义可见且风格一致的表现。`,
+      `动效规则：动效必须表达进入、离开、展开、加载、对象连续性、列表重排或进度变化；避免 transition: all，并提供 reduced-motion 降级。`,
+      `实现验收：使用语义控件；图标按钮要有可访问名称；所有可交互元素要有 focus-visible；媒体要有稳定尺寸或 aspect-ratio；长文本要有换行、截断或 clamp；空/错/加载状态要说明下一步。`,
       `示例内容方向：可参考“${scenario.brand} / ${scenario.eyebrow}”这类具体工作流，但必须替换成用户真实产品、真实信息架构和真实文案。`,
       `设计 dials：根据用户产品设置布局变化度、动效强度和信息密度；不要默认套用示例页结构。`,
       `禁止事项：${playbook.zhAvoid} 不要复制示例 HTML、示例品牌、示例文案或示例布局；不要只换颜色；不要生成通用 AI 味的 hero + 三卡片页面。`,
-      `交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/选中状态都符合该风格。`,
+      `交付前检查：桌面和移动端截图、文本不溢出、按钮/输入/卡片/表格/弹窗/空状态/错误/加载/禁用/焦点/选中/成功状态都符合该风格，并通过实现验收规则。`,
     ].join("\n");
   }
 
   return [
     `Use awesome-page-design ${label} - ${style.name} as the page design direction.`,
+    `Prompt type: ${promptKinds.find((item) => item.key === kind)?.en || "Full Prompt"}.`,
     `Best fit: ${style.bestFor}.`,
     `Visual mood: ${style.brief}`,
+    ...scenarioFocus,
     `Layout archetype: ${playbook.name}.`,
     `Layout structure: ${playbook.structure}`,
     `Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.`,
@@ -1649,12 +2138,19 @@ function buildStylePrompt(style, lang = "en") {
     `Typography: ${playbook.typography}`,
     `Components: ${playbook.components}`,
     `Buttons: ${playbook.buttons}`,
+    `Button details: ${implementation.buttons}`,
+    `Feedback and alerts: ${implementation.feedback}`,
+    `Spacing system: ${implementation.spacing}`,
+    `Responsive behavior: ${implementation.responsive}`,
     `Icons and media: ${playbook.media}`,
     `States: ${playbook.states}`,
+    `Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.`,
+    `Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.`,
+    `Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.`,
     `Example content direction: you may use the specificity of "${scenario.brand} / ${scenario.eyebrow}" as inspiration, but replace it with the user's real product, real information architecture, and real copy.`,
     `Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.`,
     `Do not: ${playbook.avoid} Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.`,
-    `Before finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states.`,
+    `Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.`,
   ].join("\n");
 }
 
@@ -1795,10 +2291,10 @@ function renderStyleLab(style, scenario, playbook, related) {
         <div class="detail-pills">${detailItems}</div>
       </div>
       <div class="lab-workspace">
-        <div class="tabs" aria-label="Demo tabs">
-          <button type="button" class="active" data-tab="launch">Launch</button>
-          <button type="button" data-tab="metrics">Metrics</button>
-          <button type="button" data-tab="assets">Assets</button>
+        <div class="tabs" role="tablist" aria-label="Demo tabs">
+          <button type="button" class="active" role="tab" aria-selected="true" data-tab="launch">Launch</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="metrics">Metrics</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="assets">Assets</button>
         </div>
         <div class="workspace-grid">
           <article class="panel">
@@ -1812,6 +2308,59 @@ function renderStyleLab(style, scenario, playbook, related) {
           </aside>
         </div>
         <div class="related">${related}</div>
+      </div>
+    </section>`;
+}
+
+function renderInteractionDemo(style, scenario, playbook) {
+  const implementation = getImplementationProfile(style);
+  const implementationItems = [
+    ["Buttons", implementation.buttons],
+    ["Feedback", implementation.feedback],
+    ["Spacing", implementation.spacing],
+    ["Responsive", implementation.responsive],
+  ]
+    .map(([title, body]) => `<li><b>${escapeHtml(title)}</b><span>${escapeHtml(body)}</span></li>`)
+    .join("");
+
+  return `<section class="interaction-demo" aria-labelledby="interaction-title-${style.id}">
+      <div class="interaction-copy">
+        <p class="kicker">Component behavior</p>
+        <h2 id="interaction-title-${style.id}">Buttons, feedback, spacing, and responsive rules.</h2>
+        <p>${escapeHtml(playbook.components)}</p>
+        <ul class="implementation-list">${implementationItems}</ul>
+      </div>
+      <div class="state-board">
+        <div class="state-board-head">
+          <span>${escapeHtml(scenario.brand)}</span>
+          <strong>${escapeHtml(scenario.metrics[0][0])}</strong>
+        </div>
+        <div class="button-row" aria-label="Button state examples">
+          <button type="button" class="primary-action" data-toast-trigger>${escapeHtml(scenario.primaryAction)}</button>
+          <button type="button" class="secondary-action loading-action" data-loading-demo>Save state</button>
+          <button type="button" class="secondary-action" disabled>Disabled</button>
+          <button type="button" class="toggle-chip" aria-pressed="false" data-toggle-demo>Filter off</button>
+        </div>
+        <div class="inline-alert warning" data-inline-alert role="status">
+          <b>State warning</b>
+          <span>${escapeHtml(scenario.queue[0][0])}: ${escapeHtml(scenario.queue[0][1])}. ${escapeHtml(implementation.feedback)}</span>
+        </div>
+        <label class="field-group" for="demo-input-${style.id}">
+          <span>Visible label</span>
+          <input id="demo-input-${style.id}" type="text" value="${escapeHtml(scenario.queue[1][0])}" aria-describedby="field-help-${style.id}" data-demo-input>
+          <small id="field-help-${style.id}" data-field-help>Helper text stays visible after the field is filled.</small>
+        </label>
+        <div class="state-stack" aria-label="Common product states">
+          <span class="state-pill success"><b>Success</b>Saved and ready for review.</span>
+          <span class="state-pill loading"><b>Loading</b>Preserve the layout while data refreshes.</span>
+          <span class="state-pill empty"><b>Empty</b>No matching results; clear filters or create one.</span>
+          <span class="state-pill error"><b>Error</b>Retry with a clear recovery action.</span>
+        </div>
+        <div class="responsive-steps" aria-label="Responsive behavior">
+          <span><b>Desktop</b>Show the full layout archetype with supporting panels.</span>
+          <span><b>Tablet</b>Collapse secondary panels without losing state.</span>
+          <span><b>Mobile</b>${escapeHtml(implementation.responsive)}</span>
+        </div>
       </div>
     </section>`;
 }
@@ -2159,7 +2708,17 @@ function renderDistinctStyleHtml(style) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${label} - ${style.name}</title>
 <style>
-* { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 :root {
   --bg: ${style.bg};
   --surface: ${style.surface};
@@ -2181,6 +2740,14 @@ body {
   color: var(--text);
   background: var(--bg);
   font-family: ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light;
+}
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+  height: auto;
 }
 body.terminal-hacker,
 body.retro-computing {
@@ -2191,6 +2758,7 @@ body.precision-futurism,
 body.liquid-glass,
 body.acid-design,
 body.aurora-gradient {
+  color-scheme: dark;
   background:
     radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--accent), transparent 68%), transparent 31%),
     radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--primary), transparent 78%), transparent 25%),
@@ -2209,16 +2777,48 @@ body.retro-computing {
   background-size: 18px 18px;
 }
 button,
-input {
+input,
+textarea,
+select {
   font: inherit;
+  max-width: 100%;
 }
 a {
   color: inherit;
+  overflow-wrap: anywhere;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent), white 18%);
+  outline-offset: 3px;
+}
+button:active,
+.primary-action:active,
+.secondary-action:active,
+.queue-card:active {
+  transform: translateY(0);
+}
+button:disabled,
+[aria-disabled="true"] {
+  opacity: .52;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.sr-status {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 .page {
-  width: min(1220px, calc(100% - 48px));
+  width: min(100%, 1268px);
   margin: 0 auto;
-  padding: 24px 0 64px;
+  padding: 24px calc(24px + env(safe-area-inset-right)) 64px calc(24px + env(safe-area-inset-left));
 }
 .top-nav {
   min-height: 60px;
@@ -2267,6 +2867,7 @@ a {
 .text-action,
 .queue-card,
 .tabs button {
+  max-width: 100%;
   min-height: 42px;
   display: inline-flex;
   align-items: center;
@@ -2278,6 +2879,10 @@ a {
   color: var(--text);
   background: var(--surface);
   font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   text-decoration: none;
   cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
@@ -2308,18 +2913,19 @@ a {
 h1,
 h2,
 h3,
-p {
-  overflow-wrap: break-word;
+p,
+code {
+  overflow-wrap: anywhere;
 }
 h1 {
   margin: 0;
-  font-size: 60px;
+  font-size: clamp(38px, 5vw, 60px);
   line-height: 1.02;
   letter-spacing: 0;
 }
 h2 {
   margin: 0;
-  font-size: 34px;
+  font-size: clamp(28px, 3vw, 34px);
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -2378,10 +2984,13 @@ p {
 }
 .queue-card span {
   flex-shrink: 0;
+  min-width: 0;
+  text-align: right;
   color: var(--muted);
   font-size: 13px;
 }
 .chart {
+  min-width: 0;
   height: 160px;
   display: flex;
   align-items: end;
@@ -2390,16 +2999,18 @@ p {
   border: 1px solid var(--border);
   border-radius: var(--panel-radius);
   background: color-mix(in srgb, var(--surface), var(--bg) 18%);
+  overflow: hidden;
 }
 .chart i {
   flex: 1;
-  min-width: 14px;
+  min-width: 6px;
   border-radius: 999px 999px 0 0;
   background: linear-gradient(180deg, var(--accent), var(--primary));
 }
 .media {
   position: relative;
   overflow: hidden;
+  min-width: 0;
   min-height: 320px;
   border: 1px solid var(--border);
   border-radius: var(--media-radius);
@@ -2445,6 +3056,7 @@ p {
 .line-b { left: 70px; right: 90px; top: 156px; }
 .scene-chip {
   z-index: 1;
+  max-width: calc(100% - 24px);
   min-width: 48px;
   padding: 8px 10px;
   color: var(--bg);
@@ -2469,7 +3081,7 @@ p {
 .card-c { left: 50%; bottom: 48px; transform: translateX(-50%); width: 150px; }
 .ops-board {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: minmax(160px, 180px) minmax(0, 1fr);
   gap: 18px;
 }
 .filter-rail,
@@ -2522,6 +3134,8 @@ p {
   color: var(--text);
 }
 .filter-rail span {
+  display: block;
+  min-width: 0;
   padding: 12px;
   border: 1px solid var(--border);
   border-radius: var(--control-radius);
@@ -2552,6 +3166,7 @@ p {
   font-size: 15px;
 }
 .toolbar-actions {
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -2559,13 +3174,13 @@ p {
 }
 .ticket-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(min(100%, 280px), .85fr);
   gap: 14px;
   margin-top: 16px;
 }
 .ticket-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 .ticket-card {
@@ -2604,7 +3219,7 @@ p {
 .acid-poster {
   min-height: 720px;
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: minmax(0, 1fr) minmax(min(100%, 320px), 420px);
   gap: 24px;
   align-items: stretch;
 }
@@ -3329,9 +3944,12 @@ p {
   border-radius: 999px;
   box-shadow: inset 6px 6px 14px rgba(148,163,184,.26), inset -6px -6px 14px rgba(255,255,255,.82);
   color: var(--muted);
+  white-space: nowrap;
+  overflow-wrap: normal;
 }
 .session-meta b {
   color: var(--text);
+  overflow-wrap: normal;
 }
 .session-timeline {
   display: grid;
@@ -3544,6 +4162,52 @@ p {
   padding: 18px;
   border-radius: 0;
   box-shadow: 12px 12px 0 var(--border);
+}
+body.neo-brutalism .brutal-release {
+  grid-template-columns: .72fr 1.28fr;
+  gap: 30px;
+  background:
+    linear-gradient(90deg, rgba(17,17,17,.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(17,17,17,.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+body.neo-brutalism .brutal-copy {
+  min-height: 720px;
+  background: var(--surface);
+  border: 4px solid var(--border);
+  box-shadow: 16px 16px 0 var(--accent);
+  transform: rotate(-1deg);
+}
+body.neo-brutalism .brutal-copy h1 {
+  font-size: 66px;
+  line-height: .92;
+}
+body.neo-brutalism .proof-wall {
+  display: grid;
+  align-content: stretch;
+  gap: 16px;
+  background: #ffffff;
+  border: 4px solid var(--border);
+  box-shadow: -14px 14px 0 var(--primary);
+  transform: rotate(1deg);
+}
+body.neo-brutalism .proof-wall .metric-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+body.neo-brutalism .proof-wall .metric-tile {
+  border: 3px solid var(--border);
+  background: var(--bg);
+}
+body.neo-brutalism .proof-wall .queue-card {
+  min-height: 58px;
+  border-width: 3px;
+  background: var(--surface);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+body.neo-brutalism .command-line {
+  color: #ffffff;
+  background: var(--primary);
+  border-width: 3px;
 }
 .command-line {
   margin: 18px 0;
@@ -4352,6 +5016,223 @@ body.liquid-glass .metric-tile {
   backdrop-filter: blur(18px) saturate(1.35);
   background: color-mix(in srgb, var(--surface), transparent 14%);
 }
+.interaction-demo {
+  display: grid;
+  grid-template-columns: .84fr 1.16fr;
+  gap: 18px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+.interaction-copy,
+.state-board {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--shadow);
+}
+.interaction-copy h2 {
+  font-size: 30px;
+  line-height: 1.12;
+}
+.implementation-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.implementation-list li {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.implementation-list b {
+  color: var(--text);
+}
+.state-board {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+.state-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.state-board-head span {
+  min-width: 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+.state-board-head strong {
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+}
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.toggle-chip {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+.toggle-chip:hover {
+  transform: translateY(-2px);
+}
+.toggle-chip[aria-pressed="true"] {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.loading-action[aria-busy="true"] {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+.loading-action[aria-busy="true"]::after {
+  content: "Saving";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+.inline-alert {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--accent) 10%);
+  border: 1px solid color-mix(in srgb, var(--border), var(--accent) 28%);
+  border-radius: var(--control-radius);
+}
+.inline-alert span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.48;
+}
+.field-group {
+  display: grid;
+  gap: 7px;
+}
+.field-group span {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 900;
+}
+.field-group input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--bg) 10%);
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+}
+.field-group input[aria-invalid="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 74%);
+}
+.field-group small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+.state-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.state-pill {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.42;
+}
+.state-pill b {
+  color: var(--text);
+}
+.state-pill.success {
+  border-color: color-mix(in srgb, #16a34a, var(--border) 52%);
+}
+.state-pill.loading {
+  border-color: color-mix(in srgb, var(--accent), var(--border) 48%);
+}
+.state-pill.empty {
+  opacity: .86;
+}
+.state-pill.error {
+  border-color: color-mix(in srgb, #dc2626, var(--border) 46%);
+}
+.responsive-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.responsive-steps span {
+  min-width: 0;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 14%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.responsive-steps b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 30;
+  width: min(360px, calc(100vw - 48px));
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  box-shadow: var(--shadow);
+  transform: translateX(-50%);
+}
+.toast[hidden] {
+  display: none;
+}
+.toast span {
+  color: var(--muted);
+  font-size: 14px;
+}
 .style-lab {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -4443,14 +5324,32 @@ body.liquid-glass .metric-tile {
   color: var(--muted);
   line-height: 1.5;
 }
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
 @media (max-width: 980px) {
-  .page { width: min(100% - 28px, 760px); }
+  .page {
+    width: 100%;
+    max-width: 760px;
+    padding: 16px calc(14px + env(safe-area-inset-right)) 48px calc(14px + env(safe-area-inset-left));
+  }
   .top-nav,
   .board-toolbar,
   .workflow-head {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
+    width: 100%;
+    gap: 14px;
   }
+  .brand-lockup,
   .nav-links {
     flex-wrap: wrap;
   }
@@ -4459,10 +5358,10 @@ body.liquid-glass .metric-tile {
   .brutal-release h1,
   .acid-poster h1,
   .editorial-lead h1 {
-    font-size: 42px;
-    line-height: 1.02;
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.06;
   }
-  h2 { font-size: 28px; }
+  h2 { font-size: clamp(24px, 6vw, 28px); }
   .ops-board,
   .board-toolbar,
   .ticket-grid,
@@ -4495,10 +5394,73 @@ body.liquid-glass .metric-tile {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
+  .interaction-demo,
   .style-lab,
-  .workspace-grid {
+  .workspace-grid,
+  .responsive-steps {
     display: grid;
     grid-template-columns: 1fr;
+  }
+  .ops-board,
+  .board-main,
+  .board-inspector,
+  .ticket-grid,
+  .ticket-list,
+  .drop-console,
+  .release-player,
+  .track-strip,
+  .street-poster,
+  .aurora-lab,
+  .stage-center,
+  .editorial-index,
+  .terminal-console,
+  .sticker-shop,
+  .shop-catalog,
+  .stark-portfolio,
+  .minimal-brief,
+  .dark-render,
+  .line-workflow,
+  .process-map,
+  .material-day,
+  .daily-cloud,
+  .bento-profile,
+  .neumo-console,
+  .glass-map,
+  .retro-desktop,
+  .brutal-release,
+  .precision-graph,
+  .gradient-builder,
+  .canvas-layers,
+  .soft-learning,
+  .acid-poster,
+  .interaction-demo,
+  .style-lab,
+  .workspace-grid,
+  .responsive-steps,
+  .metric-row,
+  .queue-list,
+  .state-stack {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .button-row,
+  .toolbar-actions,
+  .poster-actions,
+  .session-actions,
+  .related,
+  .detail-pills {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .button-row > *,
+  .toolbar-actions > *,
+  .poster-actions > *,
+  .session-actions > *,
+  .related a,
+  .tabs button {
+    flex: 1 1 min(100%, 160px);
   }
   .filter-rail,
   .brief-sidebar,
@@ -4518,12 +5480,63 @@ body.liquid-glass .metric-tile {
   .routine-cloud,
   .mixer-board,
   .countdown-grid,
-  .progress-path {
+  .progress-path,
+  .state-stack {
     grid-template-columns: 1fr;
   }
   .toolbar-actions {
     justify-content: flex-start;
   }
+  .filter-rail {
+    grid-template-columns: 1fr;
+  }
+  .filter-rail span,
+  .filter-rail .rail-active {
+    width: 100%;
+  }
+  .queue-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .queue-card b,
+  .queue-card span {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+  .score-row {
+    grid-template-columns: 1fr;
+  }
+  .score-row i {
+    width: 100%;
+  }
+  .review-note span,
+  .run-head,
+  .ticket-strip span {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .chart {
+    height: 140px;
+    gap: 6px;
+    padding: 10px;
+  }
+  .media {
+    min-height: 220px;
+  }
+  .media::before {
+    inset: 14px;
+  }
+  .media::after {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+  .chip-a { left: 16px; bottom: 22px; }
+  .chip-b { right: 16px; top: 22px; }
+  .card-a { left: 44px; top: 104px; }
+  .card-b { right: 34px; top: 108px; }
+  .card-c { width: min(150px, calc(100% - 48px)); }
   .ticket-card.priority {
     grid-row: auto;
     min-height: 150px;
@@ -4576,6 +5589,87 @@ body.liquid-glass .metric-tile {
   .files-window {
     width: auto;
   }
+  .modal {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    width: auto;
+  }
+}
+@media (max-width: 480px) {
+  .page {
+    padding: 14px calc(14px + env(safe-area-inset-right)) 44px calc(14px + env(safe-area-inset-left));
+  }
+  .top-nav {
+    margin-bottom: 16px;
+  }
+  .brand-lockup span {
+    width: 34px;
+    height: 34px;
+  }
+  h1,
+  .street-poster h1,
+  .brutal-release h1,
+  .acid-poster h1,
+  .editorial-lead h1 {
+    font-size: clamp(28px, 9vw, 36px);
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.52;
+  }
+  .primary-action,
+  .secondary-action,
+  .ghost-action,
+  .text-action,
+  .queue-card,
+  .tabs button {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+  .metric-row,
+  .signal-stats,
+  .glass-metrics,
+  .trace-metrics {
+    grid-template-columns: 1fr;
+  }
+  .session-dashboard {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+  .session-readout {
+    justify-self: center;
+  }
+  .session-meta span {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+  }
+  .session-meta b {
+    text-align: right;
+  }
+  .board-main,
+  .board-inspector,
+  .ticket-card,
+  .lab-copy,
+  .trace-panel,
+  .glass-panel,
+  .render-queue,
+  .lab-summary,
+  .lab-workspace,
+  .panel,
+  .feature-block,
+  .filter-rail {
+    padding: 14px;
+  }
+  .chart {
+    height: 128px;
+  }
+  .stamp.big {
+    min-height: 120px;
+    font-size: clamp(36px, 14vw, 52px);
+  }
 }
 </style>
 </head>
@@ -4583,20 +5677,43 @@ body.liquid-glass .metric-tile {
   <main id="top" class="page">
     ${renderMiniNav(style, scenario)}
     ${renderLayoutContent(style, scenario, playbook)}
+    ${renderInteractionDemo(style, scenario, playbook)}
     ${renderStyleLab(style, scenario, playbook, related)}
   </main>
 
-  <aside class="modal" hidden data-modal>
-    <h3>${escapeHtml(label)}: ${escapeHtml(style.name)}</h3>
+  <aside class="modal" hidden data-modal role="dialog" aria-modal="false" aria-labelledby="style-note-title">
+    <h3 id="style-note-title">${escapeHtml(label)}: ${escapeHtml(style.name)}</h3>
     <ul>${notes}</ul>
     <button type="button" class="secondary-action" data-close-modal>Close</button>
   </aside>
+  <div class="toast" hidden data-toast role="status" aria-live="polite">
+    <b>Saved</b>
+    <span data-toast-message>Action confirmed</span>
+  </div>
+  <div class="sr-status" aria-live="polite" data-status></div>
 
   <script>
   const prompt = ${JSON.stringify(prompt)};
   const modal = document.querySelector('[data-modal]');
+  const status = document.querySelector('[data-status]');
+  const toast = document.querySelector('[data-toast]');
   const demo = ${demo};
-  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => modal.hidden = false));
+  let toastTimer;
+  function showToast(message) {
+    if (!toast) return;
+    const messageNode = toast.querySelector('[data-toast-message]');
+    if (messageNode) messageNode.textContent = message;
+    toast.hidden = false;
+    status.textContent = message;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.hidden = true;
+    }, 2200);
+  }
+  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
+    modal.hidden = false;
+    document.querySelector('[data-close-modal]').focus();
+  }));
   document.querySelector('[data-close-modal]').addEventListener('click', () => modal.hidden = true);
   document.querySelectorAll('[data-copy]').forEach((button) => {
     const original = button.textContent;
@@ -4604,17 +5721,65 @@ body.liquid-glass .metric-tile {
       try {
         await navigator.clipboard.writeText(prompt);
         button.textContent = 'Copied detailed prompt';
+        status.textContent = 'Detailed style prompt copied';
+        showToast('Detailed style prompt copied');
         setTimeout(() => button.textContent = original, 1500);
       } catch {
         window.prompt('Copy this detailed style prompt:', prompt);
       }
     });
   });
+  document.querySelectorAll('[data-toast-trigger]').forEach((button) => {
+    button.addEventListener('click', () => showToast('Primary action confirmed'));
+  });
+  document.querySelectorAll('[data-loading-demo]').forEach((button) => {
+    const original = button.textContent;
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-busy') === 'true') return;
+      button.setAttribute('aria-busy', 'true');
+      button.disabled = true;
+      status.textContent = 'Saving state';
+      setTimeout(() => {
+        button.setAttribute('aria-busy', 'false');
+        button.disabled = false;
+        button.textContent = original;
+        showToast('State saved without layout shift');
+      }, 1200);
+    });
+  });
+  document.querySelectorAll('[data-toggle-demo]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const pressed = button.getAttribute('aria-pressed') === 'true';
+      button.setAttribute('aria-pressed', String(!pressed));
+      button.textContent = pressed ? 'Filter off' : 'Filter on';
+      showToast(pressed ? 'Filter removed' : 'Filter applied');
+    });
+  });
+  document.querySelectorAll('[data-demo-input]').forEach((input) => {
+    input.addEventListener('input', () => {
+      const helper = input.closest('.field-group')?.querySelector('[data-field-help]');
+      if (!helper) return;
+      if (input.value.trim().length < 3) {
+        input.setAttribute('aria-invalid', 'true');
+        helper.textContent = 'Add at least three characters so the field has a recoverable validation state.';
+        status.textContent = 'Field validation warning';
+      } else {
+        input.removeAttribute('aria-invalid');
+        helper.textContent = 'Filled state is valid and helper text remains visible.';
+        status.textContent = 'Field validation cleared';
+      }
+    });
+  });
   document.querySelectorAll('[data-tab]').forEach((button) => {
     button.addEventListener('click', () => {
-      document.querySelectorAll('[data-tab]').forEach((node) => node.classList.toggle('active', node === button));
+      document.querySelectorAll('[data-tab]').forEach((node) => {
+        const active = node === button;
+        node.classList.toggle('active', active);
+        node.setAttribute('aria-selected', String(active));
+      });
       document.querySelector('[data-demo-title]').textContent = demo[button.dataset.tab][0];
       document.querySelector('[data-demo-copy]').textContent = demo[button.dataset.tab][1];
+      status.textContent = demo[button.dataset.tab][0] + ' tab selected';
     });
   });
   </script>
@@ -4632,9 +5797,14 @@ function renderStyleDoc(style) {
   const scenario = getScenario(style);
   const playbook = getStylePlaybook(style);
   const geometry = getGeometryProfile(style);
+  const implementation = getImplementationProfile(style);
+  const adaptation = getAdaptationProfile(style);
   const notes = style.notes.map((note) => `- ${note}`).join("\n");
   const features = scenario.features.map(([title, body]) => `- ${title}: ${body}`).join("\n");
   const queue = scenario.queue.map(([title, state]) => `- ${title}: ${state}`).join("\n");
+  const promptSections = promptKinds
+    .map((item) => `### ${item.en}\n\n\`\`\`text\n${buildStylePrompt(style, "en", item.key)}\n\`\`\``)
+    .join("\n\n");
   return `# ${label} - ${style.name} (${style.zhName})
 
 ## Summary
@@ -4693,15 +5863,36 @@ ${queue}
 - Geometry rule: ${geometry.description}; avoid making every button and card the same large rounded rectangle.
 - Shadow: \`${style.shadow}\`
 
+## Component Detail System
+
+- Button system: ${implementation.buttons}
+- Feedback and alerts: ${implementation.feedback}
+- Spacing system: ${implementation.spacing}
+- Responsive behavior: ${implementation.responsive}
+
+Chinese implementation notes:
+
+- 按钮细节：${implementation.zhButtons}
+- 提示与反馈：${implementation.zhFeedback}
+- 间距系统：${implementation.zhSpacing}
+- 响应式策略：${implementation.zhResponsive}
+
+## Page Adaptation Guide
+
+- Landing page: ${adaptation.landing}
+- Dashboard: ${adaptation.dashboard}
+- Admin panel: ${adaptation.admin}
+- Forms, tables, and data: ${adaptation.forms}
+- Mobile: ${adaptation.mobile}
+- Not a good fit for: ${adaptation.unsuitable}
+
 ## Usage Notes
 
 ${notes}
 
-## Copy Style Prompt
+## Copy Style Prompts
 
-\`\`\`text
-${buildStylePrompt(style, "en")}
-\`\`\`
+${promptSections}
 
 ## Design Dials
 
@@ -4714,6 +5905,13 @@ ${buildStylePrompt(style, "en")}
 - Start from tokens for background, surface, text, muted text, primary, accent, border, radius, shadow, and focus.
 - Apply the style to the user's actual page structure. Do not copy the bundled sample HTML layout.
 - Keep hover, focus, selected, disabled, loading, empty, warning, and success states visually consistent.
+- Define primary, secondary, disabled, loading, pressed, selected, warning, success, and destructive button treatments when those actions appear.
+- Provide at least one visible feedback pattern for the page: toast, snackbar, banner, inline alert, validation message, or row-local status.
+- Define spacing tokens for page gutters, section gaps, panel padding, control height, row gaps, and dense/touch-friendly variants.
+- Document desktop, tablet, and mobile collapse behavior for the main content object, filters, sidebars, inspectors, tables, media, and primary action.
+- Use semantic controls, visible focus states, accessible labels, stable media dimensions, reduced-motion behavior, and intentional long-text handling.
+- Define a component state matrix for the components that appear on the page before final polish.
+- Make empty, error, loading, warning, success, disabled, and selected states explain what happened and what the user can do next.
 - When the page needs images, prefer real product imagery, brand photography, or carefully matched neutral media.
 - Keep icon family, stroke, size, and alignment consistent when icons are used.
 - Check desktop and mobile screenshots before finishing.
@@ -4748,49 +5946,384 @@ function writeStyleFiles() {
   });
 }
 
-function screenshot(htmlFile) {
-  const outputPath = htmlFile.replace(/\.html$/, ".png");
-  execFileSync(
-    chromePath,
-    [
-      "--headless",
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function waitForProcessExit(child, timeoutMs) {
+  if (!child || child.exitCode !== null || child.signalCode !== null) return Promise.resolve(true);
+
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => resolve(false), timeoutMs);
+    child.once("exit", () => {
+      clearTimeout(timer);
+      resolve(true);
+    });
+  });
+}
+
+async function removeDirectoryWithRetry(dir) {
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    try {
+      fs.rmSync(dir, { recursive: true, force: true });
+      return;
+    } catch (error) {
+      if (attempt === 5) throw error;
+      await sleep(120 * (attempt + 1));
+    }
+  }
+}
+
+async function waitForChromeJson(port, timeoutMs) {
+  const startedAt = Date.now();
+  let lastError;
+
+  while (Date.now() - startedAt < timeoutMs) {
+    try {
+      const response = await fetch(`http://127.0.0.1:${port}/json`);
+      if (response.ok) {
+        const tabs = await response.json();
+        if (Array.isArray(tabs) && tabs.length > 0) return tabs;
+      }
+    } catch (error) {
+      lastError = error;
+    }
+    await sleep(100);
+  }
+
+  throw new Error(`Chrome DevTools did not become ready on port ${port}: ${lastError?.message || "timeout"}`);
+}
+
+function encodeWebSocketFrame(text) {
+  const payload = Buffer.from(text);
+  const headerLength = payload.length < 126 ? 2 : payload.length < 65536 ? 4 : 10;
+  const frame = Buffer.alloc(headerLength + 4 + payload.length);
+  let offset = 2;
+
+  frame[0] = 0x81;
+  if (payload.length < 126) {
+    frame[1] = 0x80 | payload.length;
+  } else if (payload.length < 65536) {
+    frame[1] = 0x80 | 126;
+    frame.writeUInt16BE(payload.length, 2);
+    offset = 4;
+  } else {
+    frame[1] = 0x80 | 127;
+    frame.writeBigUInt64BE(BigInt(payload.length), 2);
+    offset = 10;
+  }
+
+  const mask = crypto.randomBytes(4);
+  mask.copy(frame, offset);
+  for (let index = 0; index < payload.length; index += 1) {
+    frame[offset + 4 + index] = payload[index] ^ mask[index % 4];
+  }
+  return frame;
+}
+
+function readWebSocketFrame(buffer) {
+  if (buffer.length < 2) return null;
+
+  const opcode = buffer[0] & 0x0f;
+  const masked = (buffer[1] & 0x80) !== 0;
+  let length = buffer[1] & 0x7f;
+  let offset = 2;
+
+  if (length === 126) {
+    if (buffer.length < 4) return null;
+    length = buffer.readUInt16BE(2);
+    offset = 4;
+  } else if (length === 127) {
+    if (buffer.length < 10) return null;
+    length = Number(buffer.readBigUInt64BE(2));
+    offset = 10;
+  }
+
+  const maskOffset = masked ? offset : -1;
+  if (masked) offset += 4;
+  if (buffer.length < offset + length) return null;
+
+  const payload = Buffer.from(buffer.subarray(offset, offset + length));
+  if (masked) {
+    const mask = buffer.subarray(maskOffset, maskOffset + 4);
+    for (let index = 0; index < payload.length; index += 1) {
+      payload[index] ^= mask[index % 4];
+    }
+  }
+
+  return { opcode, payload, consumed: offset + length };
+}
+
+function createNativeSocket(webSocketUrl, onMessage) {
+  const ws = new WebSocket(webSocketUrl);
+  const opened = new Promise((resolve, reject) => {
+    ws.addEventListener("open", resolve, { once: true });
+    ws.addEventListener("error", reject, { once: true });
+  });
+  ws.addEventListener("message", (event) => onMessage(event.data));
+
+  return {
+    opened,
+    sendText(text) {
+      ws.send(text);
+    },
+    close() {
+      if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) ws.close();
+    },
+  };
+}
+
+function createNodeSocket(webSocketUrl, onMessage) {
+  const url = new URL(webSocketUrl);
+  const key = crypto.randomBytes(16).toString("base64");
+  const socket = net.createConnection({
+    host: url.hostname,
+    port: Number(url.port || 80),
+  });
+
+  let buffer = Buffer.alloc(0);
+  let handshakeComplete = false;
+  let rejectOpen;
+  const opened = new Promise((resolve, reject) => {
+    rejectOpen = reject;
+    socket.once("connect", () => {
+      socket.write(
+        `GET ${url.pathname}${url.search} HTTP/1.1\r\n` +
+          `Host: ${url.host}\r\n` +
+          "Upgrade: websocket\r\n" +
+          "Connection: Upgrade\r\n" +
+          `Sec-WebSocket-Key: ${key}\r\n` +
+          "Sec-WebSocket-Version: 13\r\n\r\n"
+      );
+    });
+    socket.on("data", (chunk) => {
+      buffer = Buffer.concat([buffer, chunk]);
+      if (!handshakeComplete) {
+        const headerEnd = buffer.indexOf("\r\n\r\n");
+        if (headerEnd === -1) return;
+
+        const header = buffer.subarray(0, headerEnd).toString("utf8");
+        if (!header.startsWith("HTTP/1.1 101")) {
+          reject(new Error(`Chrome WebSocket handshake failed: ${header.split("\r\n")[0]}`));
+          socket.destroy();
+          return;
+        }
+
+        handshakeComplete = true;
+        buffer = buffer.subarray(headerEnd + 4);
+        resolve();
+      }
+
+      let frame = readWebSocketFrame(buffer);
+      while (frame) {
+        buffer = buffer.subarray(frame.consumed);
+        if (frame.opcode === 1) onMessage(frame.payload.toString("utf8"));
+        if (frame.opcode === 8) socket.end();
+        frame = readWebSocketFrame(buffer);
+      }
+    });
+    socket.once("error", reject);
+  });
+
+  socket.once("error", (error) => {
+    if (!handshakeComplete) rejectOpen?.(error);
+  });
+
+  return {
+    opened,
+    sendText(text) {
+      socket.write(encodeWebSocketFrame(text));
+    },
+    close() {
+      socket.end();
+      socket.destroy();
+    },
+  };
+}
+
+function createCdpClient(webSocketUrl) {
+  let nextId = 1;
+  const pending = new Map();
+
+  function handleMessage(raw) {
+    const data = JSON.parse(raw);
+    if (!data.id || !pending.has(data.id)) return;
+
+    const { method, resolve, reject } = pending.get(data.id);
+    pending.delete(data.id);
+    if (data.error) {
+      reject(new Error(`${method} failed: ${data.error.message || JSON.stringify(data.error)}`));
+    } else {
+      resolve(data.result || {});
+    }
+  }
+
+  const socket =
+    typeof WebSocket === "function"
+      ? createNativeSocket(webSocketUrl, handleMessage)
+      : createNodeSocket(webSocketUrl, handleMessage);
+
+  function send(method, params = {}) {
+    const id = nextId++;
+    return new Promise((resolve, reject) => {
+      pending.set(id, { method, resolve, reject });
+      socket.sendText(JSON.stringify({ id, method, params }));
+    });
+  }
+
+  return {
+    opened: socket.opened,
+    send,
+    close() {
+      socket.close();
+    },
+  };
+}
+
+async function waitForDocumentReady(send, timeoutMs) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    const result = await send("Runtime.evaluate", {
+      expression: "document.readyState",
+      returnByValue: true,
+    });
+    if (result.result?.value === "complete") return;
+    await sleep(100);
+  }
+}
+
+async function screenshot(htmlFile, options = {}) {
+  const outputPath = htmlFile.replace(/\.html$/, `${options.suffix || ""}.png`);
+  const width = options.width || viewportWidth;
+  const height = options.height || viewportHeight;
+  const targetUrl = toFileUrl(htmlFile);
+  const devtoolsPort = 9300 + Math.floor(Math.random() * 600);
+  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "awesome-page-design-chrome-"));
+  let chrome;
+  let client;
+
+  if (!fs.existsSync(chromePath)) {
+    throw new Error(`Chrome was not found: ${chromePath}`);
+  }
+
+  try {
+    chrome = spawn(
+      chromePath,
+      [
+      "--headless=new",
+      "--no-sandbox",
       "--disable-gpu",
       "--disable-extensions",
       "--disable-dev-shm-usage",
       "--hide-scrollbars",
       "--no-first-run",
       "--no-default-browser-check",
-      `--timeout=${chromeWait}`,
-      `--virtual-time-budget=${chromeWait}`,
-      `--window-size=${viewportWidth},${viewportHeight}`,
-      `--screenshot=${outputPath}`,
-      toFileUrl(htmlFile),
-    ],
-    {
-      stdio: ["ignore", "pipe", "pipe"],
-      timeout: Math.max(45000, chromeWait + 20000),
-      killSignal: "SIGKILL",
+      "--run-all-compositor-stages-before-draw",
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+        `--remote-debugging-port=${devtoolsPort}`,
+        `--user-data-dir=${userDataDir}`,
+        `--window-size=${Math.max(width, 800)},${Math.max(height, 600)}`,
+        "about:blank",
+      ],
+      { stdio: "ignore" }
+    );
+
+    const tabs = await waitForChromeJson(devtoolsPort, Math.max(15000, chromeWait + 5000));
+    const tab = tabs.find((item) => item.type === "page") || tabs[0];
+    client = createCdpClient(tab.webSocketDebuggerUrl);
+    await client.opened;
+    await client.send("Page.enable");
+    await client.send("Runtime.enable");
+    await client.send("Emulation.setDeviceMetricsOverride", {
+      width,
+      height,
+      deviceScaleFactor: 1,
+      mobile: width <= 600,
+      screenWidth: width,
+      screenHeight: height,
+    });
+    await client.send("Page.navigate", { url: targetUrl });
+    await waitForDocumentReady(client.send, Math.max(15000, chromeWait + 5000));
+    await sleep(chromeWait);
+
+    const image = await client.send("Page.captureScreenshot", {
+      format: "png",
+      fromSurface: true,
+      captureBeyondViewport: false,
+    });
+    fs.writeFileSync(outputPath, Buffer.from(image.data, "base64"));
+  } finally {
+    client?.close();
+    if (chrome && chrome.exitCode === null && chrome.signalCode === null) chrome.kill("SIGTERM");
+    const exited = await waitForProcessExit(chrome, 1500);
+    if (!exited && chrome && chrome.exitCode === null && chrome.signalCode === null) {
+      chrome.kill("SIGKILL");
+      await waitForProcessExit(chrome, 1500);
     }
-  );
+    await removeDirectoryWithRetry(userDataDir);
+  }
+
+  assertPngHasVisibleContent(outputPath, `Chrome screenshot for ${path.basename(htmlFile)}`);
   return outputPath;
 }
 
 function renderPreviewCard(style) {
   const label = style.label || `Style ${style.id}`;
-  const promptEn = buildStylePrompt(style, "en");
-  const promptZh = buildStylePrompt(style, "zh");
+  const promptPayload = {
+    en: Object.fromEntries(promptKinds.map((item) => [item.key, buildStylePrompt(style, "en", item.key)])),
+    zh: Object.fromEntries(promptKinds.map((item) => [item.key, buildStylePrompt(style, "zh", item.key)])),
+  };
+  const promptOptions = promptKinds
+    .map(
+      (item, index) =>
+        `<button type="button" role="option" class="prompt-option${index === 0 ? " active" : ""}" data-prompt-option="${item.key}" data-en="${escapeHtml(item.en)}" data-zh="${escapeHtml(item.zh)}" aria-selected="${index === 0 ? "true" : "false"}">${escapeHtml(item.en)}</button>`
+    )
+    .join("");
 
   return `    <article class="card">
       <a class="preview" href="../styles/${style.slug}/${style.slug}.html" aria-label="Open ${escapeHtml(label)} ${escapeHtml(style.name)} HTML preview">
-        <img src="../styles/${style.slug}/${style.slug}.png" alt="${escapeHtml(label)} - ${escapeHtml(style.name)} preview" loading="lazy">
+        <img
+          src="../styles/${style.slug}/${style.slug}.png"
+          data-preview-image
+          data-desktop-src="../styles/${style.slug}/${style.slug}.png"
+          data-mobile-src="../styles/${style.slug}/${style.slug}-mobile.png"
+          data-desktop-alt="${escapeHtml(label)} - ${escapeHtml(style.name)} desktop preview"
+          data-mobile-alt="${escapeHtml(label)} - ${escapeHtml(style.name)} mobile preview"
+          data-desktop-width="${viewportWidth}"
+          data-desktop-height="${viewportHeight}"
+          data-mobile-width="${mobileViewportWidth}"
+          data-mobile-height="${mobileViewportHeight}"
+          alt="${escapeHtml(label)} - ${escapeHtml(style.name)} desktop preview"
+          width="${viewportWidth}"
+          height="${viewportHeight}"
+          loading="lazy">
       </a>
       <div class="card-body">
-        <div class="card-kicker">${escapeHtml(label)}</div>
+        <div class="card-topline">
+          <div class="card-kicker">${escapeHtml(label)}</div>
+          <div class="swatches" aria-label="${escapeHtml(label)} color palette">
+            <span style="--swatch:${escapeHtml(style.bg)}" title="Background"></span>
+            <span style="--swatch:${escapeHtml(style.surface)}" title="Surface"></span>
+            <span style="--swatch:${escapeHtml(style.primary)}" title="Primary"></span>
+            <span style="--swatch:${escapeHtml(style.accent)}" title="Accent"></span>
+          </div>
+        </div>
         <h2><span data-en="${escapeHtml(style.name)}" data-zh="${escapeHtml(style.zhName)}">${escapeHtml(style.name)}</span></h2>
         <p data-en="${escapeHtml(style.brief)}" data-zh="${escapeHtml(style.zhBrief)}">${escapeHtml(style.brief)}</p>
+        <div class="card-fit"><span data-i18n="bestFor">Best for</span><b data-en="${escapeHtml(style.bestFor)}" data-zh="${escapeHtml(style.zhBestFor)}">${escapeHtml(style.bestFor)}</b></div>
         <div class="actions">
-          <button type="button" data-copy-en="${escapeHtml(promptEn)}" data-copy-zh="${escapeHtml(promptZh)}" data-i18n="copy">Copy detailed prompt</button>
-          <a href="../styles/${style.slug}/${style.slug}.html" data-i18n="openHtml">Open HTML</a>
+          <div class="prompt-picker" data-prompt-picker data-selected-kind="full">
+            <button type="button" class="prompt-trigger" data-prompt-trigger aria-haspopup="listbox" aria-expanded="false">
+              <span data-prompt-label>Full Prompt</span>
+              <span class="prompt-chev" aria-hidden="true"></span>
+            </button>
+            <div class="prompt-menu" data-prompt-menu role="listbox" aria-label="Prompt type" hidden>
+              ${promptOptions}
+            </div>
+          </div>
+          <button type="button" data-prompts="${escapeHtml(JSON.stringify(promptPayload))}" data-i18n="copyPrompt">Copy prompt</button>
+          <a href="../styles/${style.slug}/${style.slug}.html" target="_blank" rel="noopener noreferrer" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
     </article>`;
@@ -4806,41 +6339,87 @@ function writeIndex() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Awesome Page Design Previews</title>
 <style>
-* { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
-  padding: 32px;
-  background: #f6f7fb;
+  padding: 32px 32px 56px;
+  background:
+    linear-gradient(180deg, #f7f8fb 0%, #eef1f6 100%);
   color: #172033;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
-.header {
-  max-width: 1440px;
-  margin: 0 auto 24px;
+.hero,
+.catalog-bar,
+.grid {
+  width: 100%;
+  max-width: 1480px;
+  min-width: 0;
+}
+.hero {
+  margin: 0 auto 22px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 28px;
+  padding: 24px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(15,23,42,0.08);
+}
+.hero-copy {
+  max-width: 780px;
+  min-width: 0;
+}
+.eyebrow {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 h1 {
   margin: 0;
-  font-size: 30px;
-  line-height: 1.15;
+  font-size: 34px;
+  line-height: 1.1;
   letter-spacing: 0;
 }
 .meta {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: #667085;
-  font-size: 14px;
+  font-size: 15px;
 }
 .hint {
-  max-width: 760px;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   color: #475467;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
-.lang-toggle {
+.hero-panel {
+  width: 318px;
+  flex: 0 0 auto;
+  display: grid;
+  gap: 14px;
+}
+.control-stack {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+.lang-toggle,
+.viewport-toggle {
   display: inline-flex;
   align-items: center;
   gap: 2px;
@@ -4849,8 +6428,10 @@ h1 {
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+  justify-self: end;
 }
-.lang-toggle button {
+.lang-toggle button,
+.viewport-toggle button {
   min-width: 48px;
   height: 30px;
   padding: 0 10px;
@@ -4863,152 +6444,545 @@ h1 {
   font-weight: 700;
   cursor: pointer;
 }
-.lang-toggle button.active {
+.viewport-toggle button {
+  min-width: 82px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 3px;
+}
+.lang-toggle button.active,
+.viewport-toggle button.active {
   background: #111827;
   color: #ffffff;
 }
-.count {
-  max-width: 1440px;
-  margin: 0 auto 20px;
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.stat {
+  min-height: 72px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 8px;
+}
+.stat b {
+  display: block;
+  color: #111827;
+  font-size: 20px;
+  line-height: 1.1;
+}
+.stat span {
+  display: block;
+  margin-top: 6px;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.catalog-bar {
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.count,
+.toolbar-note {
+  margin: 0;
   color: #667085;
   font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.count {
+  color: #344054;
+  font-weight: 700;
 }
 .grid {
-  max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 24px;
+  align-items: start;
 }
 .card {
+  min-width: 0;
   overflow: hidden;
   color: inherit;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+  border: 1px solid rgba(17,24,39,0.10);
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(15,23,42,0.08);
 }
 .preview {
   display: block;
+  max-width: 100%;
+  padding: 10px;
   color: inherit;
   text-decoration: none;
+  background:
+    linear-gradient(180deg, #f8fafc, #edf1f7);
+  border-bottom: 1px solid rgba(17,24,39,0.08);
 }
 .preview img {
   display: block;
   width: 100%;
-  aspect-ratio: 1440 / 1200;
-  object-fit: cover;
-  object-position: top;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(17,24,39,0.12);
+  border-radius: 6px;
   background: #e5e7eb;
+  box-shadow: 0 10px 22px rgba(15,23,42,0.10);
 }
 .card-body {
-  padding: 14px;
-  border-top: 1px solid rgba(0,0,0,0.06);
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+}
+.card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 .card-kicker {
-  color: #4f46e5;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  color: #ffffff;
+  background: #111827;
+  border-radius: 5px;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.swatches {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.swatches span {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(17,24,39,0.16);
+  border-radius: 999px;
+  background: var(--swatch);
+}
 .card h2 {
-  margin: 4px 0 6px;
-  font-size: 16px;
-  line-height: 1.3;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.25;
   letter-spacing: 0;
 }
 .card p {
-  min-height: 84px;
+  min-height: 66px;
   margin: 0;
   color: #667085;
   font-size: 14px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.card-fit {
+  display: grid;
+  gap: 4px;
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(17,24,39,0.08);
+}
+.card-fit span {
+  color: #98a2b3;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.card-fit b {
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 .actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 4px;
 }
-.actions button,
+.prompt-picker {
+  position: relative;
+  flex: 1 1 166px;
+  max-width: 206px;
+  min-width: 158px;
+}
+.prompt-trigger {
+  width: 100%;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 12px;
+  color: #1d2939;
+  background: linear-gradient(180deg, #ffffff, #f7f9fc);
+  border: 1px solid rgba(17,24,39,0.14);
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 1px 2px rgba(15,23,42,0.05);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.prompt-trigger:hover {
+  border-color: rgba(37,99,235,0.38);
+  background: linear-gradient(180deg, #ffffff, #f3f7ff);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 8px 18px rgba(15,23,42,0.08);
+}
+.prompt-trigger:focus-visible {
+  outline: 0;
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px rgba(37,99,235,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+}
+.prompt-chev {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #667085;
+  border-bottom: 2px solid #667085;
+  transform: translateY(-2px) rotate(45deg);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.prompt-picker.open .prompt-chev {
+  border-color: #2563eb;
+  transform: translateY(2px) rotate(225deg);
+}
+.prompt-menu {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 60;
+  width: min(236px, calc(100vw - 48px));
+  padding: 6px;
+  display: grid;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid rgba(17,24,39,0.12);
+  border-radius: 10px;
+  box-shadow:
+    0 18px 44px rgba(15,23,42,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.prompt-menu[hidden] {
+  display: none;
+}
+.prompt-option {
+  min-height: 36px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #344054;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  text-align: left;
+  transition: background 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+.prompt-option:hover,
+.prompt-option:focus-visible {
+  color: #1d4ed8;
+  background: #f2f6ff;
+  outline: 0;
+}
+.prompt-option.active {
+  color: #111827;
+  background: #eef4ff;
+  box-shadow: inset 3px 0 0 #2563eb;
+}
+.card.picker-open {
+  position: relative;
+  z-index: 20;
+}
+.actions > button,
 .actions a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 34px;
-  padding: 0 10px;
+  padding: 0 12px;
   border-radius: 6px;
   font: inherit;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
 }
-.actions button {
+.actions > button {
+  flex: 1 1 126px;
   color: #ffffff;
-  background: #4f46e5;
-  border: 1px solid #4f46e5;
+  background: #1f2937;
+  border: 1px solid #1f2937;
   cursor: pointer;
 }
-.actions button.copied {
+.actions > button:hover {
+  background: #111827;
+  border-color: #111827;
+}
+.actions > button.copied {
   background: #059669;
   border-color: #059669;
 }
 .actions a {
+  flex: 0 0 auto;
   color: #344054;
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.12);
 }
+.actions a:hover {
+  border-color: rgba(17,24,39,0.28);
+}
+.sr-status {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+@media (max-width: 980px) {
+  body { padding: 20px; }
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .hero-panel {
+    width: 100%;
+  }
+  .control-stack,
+  .lang-toggle,
+  .viewport-toggle {
+    justify-self: start;
+  }
+  .catalog-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 20px;
+  }
+}
 @media (max-width: 640px) {
-  body { padding: 16px; }
-  .header { display: block; }
-  .lang-toggle { margin-top: 14px; }
-  .grid { grid-template-columns: 1fr; gap: 16px; }
+  body { padding: 14px; }
+  .hero { display: block; padding: 18px; }
+  h1 { font-size: 27px; }
+  .meta,
+  .hint { font-size: 14px; }
+  .hero-panel { width: auto; margin-top: 16px; }
+  .control-stack,
+  .lang-toggle,
+  .viewport-toggle { justify-self: start; }
+  .stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stat { min-height: 64px; padding: 10px; }
+  .stat b { font-size: 18px; }
+  .stat span { font-size: 11px; }
+  .catalog-bar { display: block; }
+  .toolbar-note { margin-top: 6px; }
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .preview { padding: 8px; }
+  .card-body { padding: 14px; }
+  .actions {
+    align-items: stretch;
+  }
+  .prompt-menu {
+    width: min(260px, calc(100vw - 36px));
+  }
+  .prompt-picker,
+  .actions > button,
+  .actions a {
+    flex: 1 1 100%;
+    max-width: none;
+  }
 }
 </style>
 </head>
 <body>
-  <header class="header">
-    <div>
-      <h1>Awesome Page Design Previews</h1>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="eyebrow">Style Library</p>
+      <h1>Design Preview Library</h1>
       <p class="meta">${allStyles.length} visual style previews, viewport ${viewportWidth}x${viewportHeight}</p>
-      <p class="hint">Compare visual styles. Copy a detailed style prompt, send it to your AI agent, and it can apply the chosen layout archetype, layout structure, colors, typography, components, buttons, media direction, and states without copying the sample page.</p>
+      <p class="hint">Browse full-page style samples, open any preview, or copy a detailed prompt that carries layout, color, typography, component, motion, and implementation rules.</p>
     </div>
-    <div class="lang-toggle" aria-label="Language">
-      <button type="button" class="active" data-lang="en">EN</button>
-      <button type="button" data-lang="zh">中文</button>
-    </div>
+    <aside class="hero-panel" aria-label="Preview controls">
+      <div class="control-stack">
+        <div class="lang-toggle" aria-label="Language">
+          <button type="button" class="active" data-lang="en">EN</button>
+          <button type="button" data-lang="zh">中文</button>
+        </div>
+        <div class="viewport-toggle" aria-label="Preview image viewport">
+          <button type="button" class="active" data-preview-view="desktop" data-i18n="viewDesktop" aria-pressed="true">Desktop</button>
+          <button type="button" data-preview-view="mobile" data-i18n="viewMobile" aria-pressed="false">Mobile</button>
+        </div>
+      </div>
+      <div class="stat-grid" aria-label="Preview summary">
+        <div class="stat"><b>${allStyles.length}</b><span data-i18n="statStyles">Styles</span></div>
+        <div class="stat"><b>${viewportWidth}</b><span data-i18n="statWidth">Preview width</span></div>
+        <div class="stat"><b>${viewportHeight}</b><span data-i18n="statHeight">Preview height</span></div>
+      </div>
+    </aside>
   </header>
-  <p class="count" data-i18n="sectionCount">${allStyles.length} continuous visual styles, numbered Style 01 through Style ${allStyles.length}.</p>
+  <section class="catalog-bar" aria-label="Catalog summary">
+    <p class="count" data-i18n="sectionCount">${allStyles.length} continuous visual styles, numbered Style 01 through Style ${allStyles.length}.</p>
+    <p class="toolbar-note" data-i18n="toolbarNote">Each card shows the complete screenshot, core mood, best-fit use case, palette, and actions.</p>
+  </section>
   <main class="grid">
 ${cards}
   </main>
+  <div class="sr-status" aria-live="polite" data-status></div>
   <script>
   const copy = {
     en: {
-      title: 'Awesome Page Design Previews',
-      meta: '${allStyles.length} visual style previews, viewport ${viewportWidth}x${viewportHeight}',
-      hint: 'Compare visual styles. Copy a detailed style prompt, send it to your AI agent, and it can apply the chosen layout archetype, layout structure, colors, typography, components, buttons, media direction, and states without copying the sample page.',
+      eyebrow: 'Style Library',
+      title: 'Design Preview Library',
+      meta: '${allStyles.length} visual style previews with desktop and mobile assets',
+      hint: 'Browse full-page style samples, open any preview, or copy a detailed prompt that carries layout, color, typography, component, motion, and implementation rules.',
       sectionCount: '${allStyles.length} continuous visual styles, numbered Style 01 through Style ${allStyles.length}.',
+      toolbarNote: 'Each card shows the complete screenshot, core mood, best-fit use case, palette, and actions.',
+      statStyles: 'Styles',
+      statWidth: 'Preview width',
+      statHeight: 'Preview height',
+      viewDesktop: 'Desktop',
+      viewMobile: 'Mobile',
+      bestFor: 'Best for',
       style: 'Style',
-      copy: 'Copy detailed prompt',
+      copyPrompt: 'Copy prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
-      promptFallback: 'Copy this detailed style prompt:'
+      promptFallback: 'Copy this style prompt:'
     },
     zh: {
-      title: 'Awesome Page Design 预览',
-      meta: '${allStyles.length} 个视觉风格预览，视口 ${viewportWidth}x${viewportHeight}',
-      hint: '对比视觉风格。点击复制详细风格提示词，发送给你的 AI，它会应用选定的布局原型、布局结构、颜色、字体、组件、按钮、媒体方向和状态规则，但不复制示例页面。',
+      eyebrow: '风格库',
+      title: '页面设计预览库',
+      meta: '${allStyles.length} 个视觉风格预览，包含桌面端和移动端资源',
+      hint: '浏览完整页面样张，打开任意预览，或复制包含布局、颜色、字体、组件、动效和实现规则的详细提示词。',
       sectionCount: '${allStyles.length} 个连续编号的视觉风格，范围为 Style 01 到 Style ${allStyles.length}。',
+      toolbarNote: '每张卡片展示完整截图、核心气质、适用场景、色彩和操作入口。',
+      statStyles: '风格',
+      statWidth: '预览宽度',
+      statHeight: '预览高度',
+      viewDesktop: '桌面端',
+      viewMobile: '移动端',
+      bestFor: '适合',
       style: '风格',
-      copy: '复制详细提示词',
+      copyPrompt: '复制提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
-      promptFallback: '复制这个详细风格提示词：'
+      promptFallback: '复制这个风格提示词：'
     }
   };
   let activeLang = 'en';
+  let activePreviewView = 'desktop';
+  const status = document.querySelector('[data-status]');
+  function applyPreviewView(view) {
+    activePreviewView = view;
+    const isMobile = view === 'mobile';
+    document.querySelectorAll('[data-preview-image]').forEach((image) => {
+      image.src = isMobile ? image.dataset.mobileSrc : image.dataset.desktopSrc;
+      image.alt = isMobile ? image.dataset.mobileAlt : image.dataset.desktopAlt;
+      image.width = Number(isMobile ? image.dataset.mobileWidth : image.dataset.desktopWidth);
+      image.height = Number(isMobile ? image.dataset.mobileHeight : image.dataset.desktopHeight);
+    });
+    document.querySelectorAll('[data-preview-view]').forEach((button) => {
+      const active = button.dataset.previewView === view;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    status.textContent = isMobile ? copy[activeLang].viewMobile : copy[activeLang].viewDesktop;
+  }
+  function closePromptPicker(picker, focusTrigger = false) {
+    const trigger = picker.querySelector('[data-prompt-trigger]');
+    const menu = picker.querySelector('[data-prompt-menu]');
+    picker.classList.remove('open');
+    picker.closest('.card')?.classList.remove('picker-open');
+    trigger?.setAttribute('aria-expanded', 'false');
+    if (menu) menu.hidden = true;
+    if (focusTrigger) trigger?.focus();
+  }
+  function closeAllPromptPickers(except = null) {
+    document.querySelectorAll('[data-prompt-picker]').forEach((picker) => {
+      if (picker !== except) closePromptPicker(picker);
+    });
+  }
+  function openPromptPicker(picker) {
+    const trigger = picker.querySelector('[data-prompt-trigger]');
+    const menu = picker.querySelector('[data-prompt-menu]');
+    if (!menu) return;
+    closeAllPromptPickers(picker);
+    picker.classList.add('open');
+    picker.closest('.card')?.classList.add('picker-open');
+    trigger?.setAttribute('aria-expanded', 'true');
+    menu.hidden = false;
+    const selected = picker.querySelector('.prompt-option.active') || picker.querySelector('[data-prompt-option]');
+    window.requestAnimationFrame(() => selected?.focus());
+  }
+  function movePromptFocus(option, direction) {
+    const options = Array.from(option.closest('[data-prompt-menu]').querySelectorAll('[data-prompt-option]'));
+    const index = options.indexOf(option);
+    const next = options[(index + direction + options.length) % options.length];
+    next?.focus();
+  }
+  function updatePromptPickerLabels() {
+    document.querySelectorAll('[data-prompt-picker]').forEach((picker) => {
+      const selectedKind = picker.dataset.selectedKind || 'full';
+      const selectedOption = picker.querySelector('[data-prompt-option="' + selectedKind + '"]') || picker.querySelector('[data-prompt-option]');
+      const label = picker.querySelector('[data-prompt-label]');
+      if (label && selectedOption) label.textContent = selectedOption.dataset[activeLang];
+      picker.querySelectorAll('[data-prompt-option]').forEach((option) => {
+        const active = option.dataset.promptOption === selectedKind;
+        option.textContent = option.dataset[activeLang];
+        option.classList.toggle('active', active);
+        option.setAttribute('aria-selected', String(active));
+      });
+    });
+  }
+  function selectPromptOption(option) {
+    const picker = option.closest('[data-prompt-picker]');
+    const copyButton = picker.closest('.actions').querySelector('[data-prompts]');
+    picker.dataset.selectedKind = option.dataset.promptOption;
+    updatePromptPickerLabels();
+    copyButton.textContent = copy[activeLang].copyPrompt;
+    copyButton.classList.remove('copied');
+    closePromptPicker(picker, true);
+  }
   function applyLanguage(lang) {
     activeLang = lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
@@ -5021,6 +6995,7 @@ ${cards}
     document.querySelectorAll('[data-en][data-zh]').forEach((node) => {
       node.textContent = node.dataset[lang];
     });
+    updatePromptPickerLabels();
     document.querySelectorAll('.lang-toggle button').forEach((button) => {
       button.classList.toggle('active', button.dataset.lang === lang);
     });
@@ -5028,15 +7003,74 @@ ${cards}
   document.querySelectorAll('.lang-toggle button').forEach((button) => {
     button.addEventListener('click', () => applyLanguage(button.dataset.lang));
   });
-  document.querySelectorAll('[data-copy-en]').forEach((button) => {
+  document.querySelectorAll('[data-preview-view]').forEach((button) => {
+    button.addEventListener('click', () => applyPreviewView(button.dataset.previewView));
+  });
+  document.querySelectorAll('[data-prompt-picker]').forEach((picker) => {
+    const trigger = picker.querySelector('[data-prompt-trigger]');
+    trigger.addEventListener('click', () => {
+      if (picker.classList.contains('open')) {
+        closePromptPicker(picker);
+      } else {
+        openPromptPicker(picker);
+      }
+    });
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openPromptPicker(picker);
+      }
+      if (event.key === 'Escape') {
+        closePromptPicker(picker, true);
+      }
+    });
+    picker.querySelectorAll('[data-prompt-option]').forEach((option) => {
+      option.addEventListener('click', () => selectPromptOption(option));
+      option.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          movePromptFocus(option, 1);
+        }
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          movePromptFocus(option, -1);
+        }
+        if (event.key === 'Home') {
+          event.preventDefault();
+          option.closest('[data-prompt-menu]').querySelector('[data-prompt-option]')?.focus();
+        }
+        if (event.key === 'End') {
+          event.preventDefault();
+          const options = option.closest('[data-prompt-menu]').querySelectorAll('[data-prompt-option]');
+          options[options.length - 1]?.focus();
+        }
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectPromptOption(option);
+        }
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closePromptPicker(picker, true);
+        }
+      });
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('[data-prompt-picker]')) closeAllPromptPickers();
+  });
+  document.querySelectorAll('[data-prompts]').forEach((button) => {
     button.addEventListener('click', async () => {
-      const value = button.getAttribute(activeLang === 'zh' ? 'data-copy-zh' : 'data-copy-en');
+      const prompts = JSON.parse(button.getAttribute('data-prompts'));
+      const picker = button.closest('.actions').querySelector('[data-prompt-picker]');
+      const kind = picker?.dataset.selectedKind || 'full';
+      const value = prompts[activeLang][kind] || prompts[activeLang].full;
       try {
         await navigator.clipboard.writeText(value);
         button.textContent = copy[activeLang].copied;
         button.classList.add('copied');
+        status.textContent = copy[activeLang].copied;
         setTimeout(() => {
-          button.textContent = copy[activeLang].copy;
+          button.textContent = copy[activeLang].copyPrompt;
           button.classList.remove('copied');
         }, 1600);
       } catch {
@@ -5096,25 +7130,33 @@ function findStyleHtmlFiles() {
   return allStyles.map((style) => path.join(stylesDir, style.slug, `${style.slug}.html`));
 }
 
-function main() {
-  if (!fs.existsSync(chromePath)) {
-    throw new Error(`Chrome was not found: ${chromePath}\nSet CHROME_PATH=/path/to/chrome to use another browser path.`);
-  }
-
+async function main() {
   writeStyleFiles();
   writeStyleIndex();
   fs.mkdirSync(outputDir, { recursive: true });
 
   const htmlFiles = findStyleHtmlFiles();
   console.log(`Generating ${htmlFiles.length} style previews with ${chromeWait}ms wait...`);
-  htmlFiles.forEach((htmlFile) => {
+  for (const htmlFile of htmlFiles) {
     process.stdout.write(`- ${path.relative(rootDir, htmlFile)} -> `);
-    const imageFile = screenshot(htmlFile);
+    const imageFile = await screenshot(htmlFile);
     process.stdout.write(`${path.relative(rootDir, imageFile)}\n`);
-  });
+    if (generateMobileScreenshots) {
+      process.stdout.write(`  mobile -> `);
+      const mobileImageFile = await screenshot(htmlFile, {
+        suffix: "-mobile",
+        width: mobileViewportWidth,
+        height: mobileViewportHeight,
+      });
+      process.stdout.write(`${path.relative(rootDir, mobileImageFile)}\n`);
+    }
+  }
 
   writeIndex();
   console.log(`Done. Open ${path.relative(rootDir, path.join(outputDir, "index.html"))}`);
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

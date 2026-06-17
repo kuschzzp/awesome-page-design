@@ -7,14 +7,15 @@ Awesome Page Design is now a focused layout-aware visual style prompt library. T
 The current Skill includes:
 
 - 21 visual style directions, numbered continuously from Style 01 to Style 21.
-- HTML and PNG previews for every visual style.
+- HTML previews plus desktop and mobile PNG screenshots for every visual style.
 - Richer clickable sample pages with style-specific layout structures, buttons, modal notes, local visual objects, metrics, and action surfaces.
 - Design notes under `references/styles/`.
 - Layout guidance, design dials, quality checklist, anti-generic UI rules, icon guidance, and design-system output guidance under `references/`.
 - Similarity guardrails in `SKILL.md` and `style-index.md` so related styles remain distinguishable.
 - A required preview selection gate in `SKILL.md` so agents pause after the user's requirement, open or provide the gallery, and wait for style selection unless explicitly delegated.
-- A bilingual preview gallery with copyable detailed style prompts.
+- A bilingual preview gallery with desktop/mobile screenshot switching and copyable detailed style prompts.
 - A local preview server for source checkouts and installed Skill directories.
+- Validation for preview links, prompt payloads, desktop/mobile screenshot dimensions, nonblank PNGs, documentation coverage, and banned stale wording.
 
 The current rule remains the foundation:
 
@@ -80,7 +81,7 @@ Recommended process for each new style:
 4. Add or update the design manual in `skills/awesome-page-design/references/styles/`.
 5. Update the style catalog metadata.
 6. Run `npm run previews`.
-7. Check the preview gallery, mobile readability, image loading, and detailed copy prompt.
+7. Check the preview gallery in both desktop and mobile modes, mobile readability, image loading, and detailed copy prompt.
 8. Confirm the style is visually distinct from existing options.
 
 Acceptance criteria:
@@ -128,18 +129,51 @@ Popup and overlay patterns need special care. They should specify focus manageme
 
 ## Preview Gallery Evolution
 
-The preview gallery should remain the user's style selection surface.
+The preview gallery should become the user's style selection and decision surface, not only a screenshot catalog. The near-term goal is to help a user move from "I need a page" to "this is the right style prompt for my page type" with less manual scanning.
 
-Planned improvements:
+### Selection Assistance
 
-- Search by style name and use case.
-- Filters for light/dark, density, mood, and product type.
-- Copy prompts that include layout archetype, responsive behavior, and category-specific instructions.
-- Side-by-side comparison mode.
-- Direct links to individual HTML previews.
-- Optional compressed preview images to reduce package size.
+- Add search by style name, Chinese name, use case, layout archetype, visual language, and product type.
+- Add filter chips for page type: full page, landing page, dashboard, admin panel, mobile, portfolio, docs, ecommerce, CRM, analytics, and onboarding.
+- Add filter chips for visual traits: light, dark, mixed, dense, sparse, editorial, operational, playful, premium, experimental, high personality, low decoration, image-led, and data-heavy.
+- Add visible card tags so users can scan why a style fits without reading a long prompt.
+- Add a candidate recommendation panel that can surface 2-3 likely styles based on selected page type, mood, density, and light/dark preference.
+- Make unsuitable contexts visible, such as "weak for long-form admin tables" or "best only when the brand can carry a strong personality."
 
-The gallery should remain static and offline-friendly.
+### Comparison And Review
+
+- Add a shortlist or compare action so users can select 2-4 styles and compare them side by side.
+- Compare desktop and mobile screenshots together for the shortlisted styles.
+- Compare layout archetype, button language, density, media direction, component treatment, strengths, and risks.
+- Make similar-style differences easier to see, especially among dark, glass, futuristic, minimal, and high-personality styles.
+- Add a compact "what to inspect" note for each HTML preview: layout, buttons, states, feedback, responsive behavior, or visual object treatment.
+
+### Prompt Preview And Export
+
+- Add a prompt preview modal before copying, so users can inspect the full prompt instead of copying blindly.
+- Let users switch prompt type inside the modal: full, landing page, dashboard, admin panel, or mobile.
+- Keep English and Chinese prompt export available.
+- Add "copy selection brief + prompt" so the selected style can be handed back to an agent with the product type, page type, style, prompt type, and selected design dials.
+- Keep copied prompts focused on actionable rules: layout archetype, responsive behavior, tokens, typography, components, buttons, feedback, states, accessibility, motion, and final checks.
+
+### Responsive Preview Experience
+
+- Keep the current global desktop/mobile screenshot switch.
+- Add an easier way to view one style's desktop and mobile screenshots together.
+- Consider a tablet preview only if it adds real decision value and does not bloat the package.
+- Make responsive risks visible for styles that rely on asymmetric, dense, highly decorative, or image-led layouts.
+
+### Validation And Documentation
+
+- Extend validation so the preview gallery cannot regress into a plain image list.
+- Check for search/filter controls, comparison controls, prompt preview, prompt kinds, desktop/mobile assets, and safe new-tab HTML links.
+- Update README usage docs when selection assistance, comparison, or prompt preview ships.
+- Keep the preview gallery static and offline-friendly.
+
+Optional later work:
+
+- Add compressed preview images to reduce package size.
+- Move preview metadata into a machine-readable catalog so the gallery, README tables, style index, and copied prompts are generated from one source.
 
 ## Skill Behavior Improvements
 
@@ -164,8 +198,10 @@ Every new asset should pass these checks:
 - No root-level duplicate style assets.
 - `npm pack --dry-run` includes only useful package files.
 - Preview server returns a URL under `/assets/previews/`.
+- Preview gallery can switch every card between desktop and mobile screenshots.
 - Generated screenshots are nonblank and visually representative.
-- Screenshots wait long enough for previews to render.
+- Generated desktop screenshots are `1440x1200`; generated mobile screenshots are `390x844`.
+- Screenshots use a real browser viewport and wait long enough for previews to render.
 - The style can be described in one clear sentence.
 - Adjacent styles can be differentiated by typography, material, component tone, product scenario, and visual object treatment, not only by palette.
 - Adjacent styles can be differentiated by layout archetype, information architecture, typography, material, component tone, product scenario, and visual object treatment, not only by palette.
@@ -176,6 +212,7 @@ Every new asset should pass these checks:
 
 - Keep the current 21 visual styles.
 - Maintain one source of assets under `skills/awesome-page-design/`.
+- Keep desktop and mobile screenshots available from the preview gallery.
 - Keep README, Chinese README, preview server, and install/update docs stable.
 - Keep the preview selection gate clear enough that installed agents know when to wait for user choice.
 
@@ -183,8 +220,8 @@ Every new asset should pass these checks:
 
 - Add machine-readable `catalog/styles.json`.
 - Generate preview metadata from the catalog.
-- Add basic link and count validation scripts.
-- Add screenshot sanity checks.
+- Continue hardening validation for links, prompt payloads, screenshots, generated docs, and stale wording.
+- Keep screenshot generation deterministic across desktop and mobile viewports.
 
 ### v0.4: Component Pattern Library
 

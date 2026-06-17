@@ -12,6 +12,7 @@ Before choosing a style, summarize the user's request as a short design brief:
 - Primary content object: table row, document, asset, lesson, incident, product, lead, report, file, message, or media frame.
 - Likely layout archetype: operational workbench, data console, creation studio, landing narrative, campaign poster, editorial/docs, commerce catalog, onboarding flow, portfolio/object focus, or touch utility.
 - Main action model: create, approve, filter, compare, review, publish, buy, configure, continue, or recover.
+- Required component behavior: buttons, forms, filters, tables, cards, alerts, loading states, empty states, or overlays that must be real, not decorative.
 - Target audience.
 - Desired mood: serious, premium, playful, official, technical, warm, experimental, futuristic, minimal, or another clear direction.
 - Expected information density: sparse, normal, dense, or operational.
@@ -27,11 +28,14 @@ Decide which mode best fits the user's request:
 - `Style selection`: the user needs a visual direction for a new page, screen, or component.
 - `Design audit`: the user wants an existing UI reviewed, made less generic, made more elegant, or made more professional.
 - `Implementation polish`: the user has a direction and wants refinement of visual quality, layout, states, responsive behavior, icons, or media.
+- `Implementation compliance`: the user wants real UI code reviewed or fixed for usability, accessibility, state handling, responsive behavior, forms, motion, images, or text overflow.
 - `Design system output`: the user wants reusable rules for future pages.
 
-For `Design audit`, read `quality-checklist.md` and `anti-generic-ui.md` before recommending changes.
+For `Design audit`, read `quality-checklist.md`, `anti-generic-ui.md`, and `interface-compliance.md` before recommending changes.
 
-For `Implementation polish`, keep the selected style visible while improving layout rhythm, typography, component states, and responsive behavior.
+For `Implementation polish`, keep the selected style visible while improving layout rhythm, typography, component states, responsive behavior, and implementation compliance.
+
+For `Implementation compliance`, lead with concrete findings. Use `file:line` output when files and line numbers are available. If source lines are not available, group findings by page region.
 
 For `Design system output`, follow `design-system-output.md` and avoid source labels or external reference wording.
 
@@ -60,8 +64,9 @@ Required preview flow:
 1. Present the short design brief.
 2. Include the likely layout archetype and why it fits the page job.
 3. Start or provide the preview gallery URL.
-4. Ask the user to copy the detailed style prompt they like.
-5. Wait for the user selection before final implementation.
+4. Ask the user to choose the prompt type that matches the task: full, landing page, dashboard, admin panel, or mobile.
+5. Ask the user to copy the detailed style prompt they like.
+6. Wait for the user selection before final implementation.
 
 Use the local static server whenever possible:
 
@@ -117,6 +122,14 @@ After a style is selected or delegated, set these dials from `design-dials.md`:
 
 Infer the values when the user does not specify them. Mention the chosen dials briefly when explaining the design direction.
 
+Also name the prompt type being applied:
+
+- `Full Prompt`: broad design direction for an unknown or mixed page.
+- `Landing Page`: public page, product page, campaign, portfolio, or conversion flow.
+- `Dashboard`: metrics, analytics, operations, review queues, or state monitoring.
+- `Admin Panel`: tables, forms, bulk actions, permissions, settings, and recovery flows.
+- `Mobile`: mobile-first screen, responsive redesign, or small-screen compliance work.
+
 ## 7. Read The Right References
 
 After selection:
@@ -125,8 +138,12 @@ After selection:
 - Read `layout-guidance.md`.
 - Read `design-dials.md`.
 - Read `anti-generic-ui.md`.
+- Read `interface-compliance.md` when reviewing or editing real UI code.
+- Read `component-implementation.md` when buttons, forms, tables, overlays, or stateful components are involved.
+- Read `motion-guidance.md` when adding, reviewing, or preserving animation.
 - Read `style-index.md` when choosing or comparing visual styles.
 - Read the chosen style manual in `references/styles/`.
+- Read the chosen style manual's `Page Adaptation Guide` before applying the visual treatment.
 - Read `icon-guidance.md` when the page uses icons, toolbars, navigation, empty states, or compact actions.
 - Read `design-system-output.md` when writing or updating a reusable design guide.
 - Use the matching PNG/HTML preview only as a visual reference, not as a page template.
@@ -140,7 +157,8 @@ Translate the selected style into concrete implementation primitives:
 - Theme tokens for background, surface, text, muted text, primary, accent, border, focus, radius, and shadow.
 - Typography rules for heading scale, body density, labels, metadata, and numeric values.
 - Spacing rules for page gutters, sections, controls, cards, and dense data areas.
-- Component classes or framework tokens for buttons, inputs, tabs, menus, cards, tables, charts, alerts, drawers, modals, empty states, loading states, and disabled states.
+- Component classes or framework tokens for buttons, inputs, tabs, menus, cards, tables, charts, alerts, drawers, modals, empty states, loading states, selected states, disabled states, and destructive states.
+- Component detail rules for button anatomy, feedback level, spacing rhythm, and desktop/tablet/mobile behavior.
 - Interaction states for hover, focus, selected, active, loading, error, warning, success, and permission-denied states.
 - Icon rules for source family, stroke/fill logic, size, alignment, labels, and action semantics.
 - Image treatment when the page benefits from media. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
@@ -155,7 +173,35 @@ When the chosen style has a strong structural identity, preserve that identity i
 - Tool and dashboard styles should expose filters, states, owner/action rows, dense data, and controls before marketing copy.
 - Experimental styles should keep stable anchors for navigation, actions, and body text even when the visual field is expressive.
 
-## 9. Verify Before Finishing
+## 9. Run The Implementation Compliance Gate
+
+When the task touches real UI code, generated HTML, or a page implementation, check the result against `interface-compliance.md`, `component-implementation.md`, and `motion-guidance.md` before final visual approval.
+
+Required checks:
+
+- Semantic controls: actions use buttons, navigation uses links, form controls have labels, and icon-only controls have accessible names.
+- Focus and keyboard: every interactive element has a visible focus-visible state and remains reachable.
+- Component state matrix: relevant buttons, links, inputs, tabs, filters, cards, lists, tables, modals, drawers, empty states, loading states, error states, disabled states, selected states, warning states, and success states are styled.
+- Button detail: primary, secondary, disabled, loading, selected/toggled, destructive, and success/error treatments are visually distinct and style-consistent when present.
+- Feedback detail: toast, snackbar, banner, inline alert, validation message, row-local status, modal confirmation, or undo is chosen according to severity and context.
+- Spacing detail: page gutters, section gaps, panel padding, row gaps, control height, and dense/touch-friendly variants are explicit.
+- Responsive behavior: desktop, tablet, and mobile preserve hierarchy, readable text, reachable actions, and the primary content object.
+- Content handling: long labels, user-generated content, metrics, table cells, and button text wrap, truncate, or clamp intentionally.
+- Media stability: images, screenshots, charts, and visual containers have stable dimensions or aspect-ratio rules.
+- Motion: transitions have semantic purpose, list exact properties, avoid `transition: all`, and respect reduced-motion preferences.
+- Product state: filters, tabs, pagination, expanded panels, and selected objects show state visibly; use URL state when the product expects refresh, sharing, or back navigation.
+- Feedback quality: error, warning, success, loading, and empty states explain what happened and what the user can do next.
+
+Audit output:
+
+- When reporting issues, group by file and line when available.
+- When reviewing screenshots, group by page region.
+- Lead with P0 and P1 issues before polish.
+- If implementing fixes, re-check the changed regions before final response.
+
+Only skip this gate for pure style selection, text-only analysis, or tiny static mockups where no implementation details exist yet.
+
+## 10. Verify Before Finishing
 
 Before final response after implementation, check:
 
@@ -172,10 +218,14 @@ Before final response after implementation, check:
 - Desktop and mobile layouts preserve hierarchy and usable controls.
 - Preview assets, screenshots, and docs are regenerated or updated when changing this skill's own library.
 - Copied style prompts include layout archetype, layout structure, tokens, typography, components, buttons, icons/media, states, constraints, and verification checks.
+- Copied style prompts include the appropriate task type: full, landing page, dashboard, admin panel, or mobile.
+- Copied style prompts include implementation compliance: semantic controls, accessible labels, focus-visible states, component state matrix, responsive text handling, stable media, and reduced-motion requirements.
+- For this skill's own previews, desktop and mobile PNG assets exist for every style.
+- For this skill's own previews, run `npm run validate` after `npm run previews`.
 - When generating screenshots for this skill, allow enough time for page rendering before capturing.
 - Relevant checks have run, such as syntax checks, preview generation, package dry-run, or project tests.
 
-## 10. Explain The Result
+## 11. Explain The Result
 
 When reporting back, include:
 
@@ -185,4 +235,5 @@ When reporting back, include:
 - Why it fits the user's page.
 - Which visual rules were reused.
 - Which structure was adapted to the actual product.
+- Which implementation compliance checks were applied when code was changed.
 - Any verification that was run.

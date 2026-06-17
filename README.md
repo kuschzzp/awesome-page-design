@@ -20,11 +20,11 @@ Give coding agents stronger visual direction before they start building UI.
 
 Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers.
 
-It gives an agent a reusable library of 21 web layout-aware visual directions, all presented as a continuous Style 01-21 catalog. The styles cover layout archetypes, information architecture, composition strategy, grid behavior, responsive structure, color systems, typography, spacing, borders, radius, shadows, material effects, imagery, component tone, button systems, interaction states, and visual density. The goal is simple: help new websites and web apps avoid the same generic default UI.
+It gives an agent a reusable library of 21 web layout-aware visual directions, all presented as a continuous Style 01-21 catalog. The styles cover layout archetypes, information architecture, composition strategy, grid behavior, responsive structure, color systems, typography, spacing, borders, radius, shadows, material effects, imagery, component tone, button systems, feedback patterns, interaction states, and visual density. The goal is simple: help new websites and web apps avoid the same generic default UI.
 
-This is **not** a fixed page-template library. The bundled HTML files are richer clickable previews so users can compare visual directions, copy a detailed prompt, and ask an agent to apply the chosen style to their real product. Agents should reuse the visual language and redesign the actual page structure around the user's content and workflow.
+This is **not** a fixed page-template library. The bundled HTML files are richer clickable previews so users can compare visual directions, copy a task-specific prompt, and ask an agent to apply the chosen style to their real product. Agents should reuse the visual language and redesign the actual page structure around the user's content and workflow.
 
-The Skill focuses on layout planning, visual style selection, UI quality review, implementation polish, and reusable design guidance.
+The Skill focuses on layout planning, visual style selection, UI quality review, implementation compliance, implementation polish, and reusable design guidance.
 
 ## Install
 
@@ -114,13 +114,14 @@ The skill will guide the agent to:
 2. Summarize your request as a short selection brief.
 3. Identify the page job, primary content object, action model, layout archetype, and responsive collapse behavior.
 4. Open or provide the preview gallery when no style has been chosen yet.
-5. Ask you to copy one detailed style prompt from the gallery.
+5. Ask you to copy one task-specific style prompt from the gallery: full, landing page, dashboard, admin panel, or mobile.
 6. Recommend a small candidate shortlist only when you explicitly ask the agent to choose.
 7. Read the matching style notes.
 8. Set design dials for layout variance, motion intensity, and visual density.
-9. Apply the chosen style through concrete layout structure, CSS variables, theme tokens, button rules, state rules, or component classes.
+9. Apply the chosen style through concrete layout structure, CSS variables, theme tokens, component detail rules, button rules, feedback rules, spacing rules, responsive rules, state rules, or component classes.
 10. Apply anti-generic UI checks and similarity guardrails when candidate styles are visually close.
-11. Redesign the real product layout instead of copying the sample HTML.
+11. Run implementation compliance checks for semantic controls, accessible labels, focus states, responsive text handling, stable media, reduced motion, and useful empty/error/loading states when real UI code is involved.
+12. Redesign the real product layout instead of copying the sample HTML.
 
 ### Required Selection Gate
 
@@ -142,7 +143,7 @@ Then open the URL printed by the command:
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-The gallery includes all 21 visual styles, English and Chinese UI switching, copyable detailed style prompts, and direct links to every HTML example.
+The gallery includes all 21 visual styles, desktop/mobile screenshot switching, English and Chinese UI switching, copyable full/landing/dashboard/admin/mobile prompts, component behavior examples, and direct links to every HTML example.
 
 When the skill is installed into a client, package scripts may not be available. From the installed `awesome-page-design` skill directory, start the bundled static server:
 
@@ -175,6 +176,9 @@ open assets/styles/style-09-tech-minimal/style-09-tech-minimal.html
 
 The examples are static single-file HTML pages. Wait a few seconds before taking screenshots so rendering can settle.
 
+Every style includes a desktop screenshot and a mobile screenshot after running the preview generator. The gallery can switch all cards between the two screenshot modes.
+The generator uses Chrome headless with explicit desktop and mobile viewport metrics so screenshots match the intended responsive layouts.
+
 ## What Is Included?
 
 ```text
@@ -189,6 +193,9 @@ skills/awesome-page-design/
 │   ├── design-dials.md              # Layout variance, motion intensity, and visual density controls
 │   ├── quality-checklist.md         # UI quality review checklist
 │   ├── anti-generic-ui.md           # Rules for avoiding default-looking generated pages
+│   ├── interface-compliance.md      # Implementation-level UI compliance checks
+│   ├── component-implementation.md  # Component state matrix and implementation rules
+│   ├── motion-guidance.md           # Semantic motion and reduced-motion rules
 │   ├── icon-guidance.md             # Icon system and usage rules
 │   ├── design-system-output.md      # Reusable project design guide format
 │   ├── style-index.md               # Short catalog of all styles
@@ -233,7 +240,23 @@ Regenerate HTML previews, screenshots, the preview index, and style reference fi
 npm run previews
 ```
 
-The screenshot generator waits 5 seconds per page so each preview has time to render.
+The screenshot generator waits 5 seconds per page so each preview has time to render. It generates both desktop and mobile screenshots by default. To skip mobile screenshots during a quick local iteration, run:
+
+```bash
+PREVIEW_MOBILE=0 npm run previews
+```
+
+Validate generated assets, prompt payloads, docs, mobile screenshots, and common implementation anti-patterns:
+
+```bash
+npm run validate
+```
+
+Run the same validation through the shorter alias:
+
+```bash
+npm run check
+```
 
 Start the preview server:
 

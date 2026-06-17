@@ -1,6 +1,6 @@
 ---
 name: awesome-page-design
-description: Use this skill as a page design assistant whenever the user is designing, building, reviewing, or improving a website, web app, dashboard, landing page, admin panel, product page, docs portal, ecommerce console, CRM workspace, analytics screen, portfolio, onboarding flow, or UI component that needs layout or visual direction. It helps choose and apply layout archetypes, information architecture, responsive structure, color systems, typography, spacing, surfaces, borders, radius, shadows, material effects, component tone, buttons, states, icons/media, density, mood, quality checks, and anti-generic UI rules. Trigger it when the user asks for better page design, colors, layout, visual style, elegance, professional polish, less AI-looking UI, or closer alignment to a reference. Before final implementation, guide the user to preview the included style gallery and choose one style unless they explicitly delegate the choice.
+description: Use this skill as a page design assistant for designing, reviewing, or improving websites, web apps, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce/CRM/analytics screens, portfolios, onboarding flows, and UI components that need layout or visual direction. It helps choose and apply layout archetypes, information architecture, responsive structure, color, typography, spacing, surfaces, borders, radius, shadows/material effects, component tone, buttons, states, icons/media, density, mood, and anti-generic UI checks. Trigger it for better page design, colors, layout, visual style, elegance, polish, less AI-looking UI, or reference alignment. Before final implementation, guide the user to preview and choose a style unless they delegate the choice.
 ---
 
 # Awesome Page Design
@@ -19,17 +19,14 @@ Do not treat the styles as palette swaps. Adjacent styles must differ by layout 
 
 Follow `references/workflow.md` for the full workflow. The short version is:
 
-1. Understand the page design task: product type, page/screen type, primary workflow, primary content object, audience, density, mood, light/dark preference, and image needs.
-2. Route the request as one of four modes: choose a style, audit an existing UI, polish an implementation, or produce a reusable design system guide.
-3. Choose a layout archetype from `references/layout-guidance.md` before treating the request as a visual styling task.
-4. If the user has not already chosen a visual style, run the preview selection gate before final implementation.
-5. Set design dials from `references/design-dials.md`: layout variance, motion intensity, and visual density.
-6. Read `references/usage-principles.md`, `references/layout-guidance.md`, and `references/anti-generic-ui.md`.
-7. Read `references/style-index.md` to select or validate candidates.
-8. After a style is chosen, read the matching file in `references/styles/`.
-9. Apply the chosen layout archetype, information architecture, color, typography, spacing, surface, border, radius, shadow/glow/material, component, button, icon/media, and state guidance to the user's real product.
-10. Redesign page structure around the actual content and workflow; do not copy preview HTML, sample content, sample section order, or sample button system.
-11. Before finishing implementation, check `references/quality-checklist.md` and the verification checklist in `references/workflow.md`.
+1. Understand the product, screen type, primary workflow, content object, audience, density, mood, device needs, and image needs.
+2. Route the request as style selection, design audit, implementation polish, implementation compliance, or design-system output.
+3. Choose a layout archetype from `references/layout-guidance.md` before treating the task as visual styling.
+4. If visual direction is undecided, run the preview selection gate before final implementation.
+5. Set the prompt type and design dials: full, landing, dashboard, admin, or mobile; layout variance, motion intensity, and visual density.
+6. Read the minimum relevant references listed below, then read the selected style manual in `references/styles/`.
+7. Apply the chosen language to the user's real product structure; redesign layout around actual content and workflow.
+8. Before final approval, run the implementation compliance gate from `references/workflow.md`.
 
 ## Work Modes
 
@@ -38,6 +35,7 @@ Use the user's wording to select the right mode:
 - `Style selection`: the user is starting a new page or wants a different visual direction. Run the preview selection gate.
 - `Design audit`: the user says the current page is ugly, generic, messy, similar, too plain, too AI-looking, or not elegant. Inspect the existing UI before choosing fixes.
 - `Implementation polish`: the user already has a design direction and wants the page refined. Focus on layout rhythm, typography, component states, responsive behavior, icon/media consistency, and final screenshots.
+- `Implementation compliance`: the user asks to review or fix real UI code. Check usability, accessibility, focus, forms, responsive behavior, state handling, motion, images, and content overflow before judging the style complete.
 - `Design system output`: the user wants future pages to stay consistent. Produce or update a project-level `DESIGN.md` using `references/design-system-output.md`.
 
 For audit and polish work, still use the preview gallery when visual direction is undecided. If the user only wants analysis, report findings without implementing.
@@ -69,104 +67,30 @@ Only skip this gate when the user has already named a specific style, asks only 
 
 ## Reference Navigation
 
-- `references/workflow.md`: required design, preview selection, implementation, and verification workflow.
+- `references/workflow.md`: required design, preview selection, implementation, previewing, and verification workflow.
 - `references/style-index.md`: concise index of the 21 visual styles, numbered continuously from Style 01 to Style 21.
 - `references/usage-principles.md`: rules for using the library correctly.
 - `references/layout-guidance.md`: layout archetypes, information architecture rules, responsive structure, and anti-template layout checks.
 - `references/design-dials.md`: layout variance, motion intensity, and visual density controls.
 - `references/quality-checklist.md`: review checklist for previews and real UI implementation.
 - `references/anti-generic-ui.md`: rules for avoiding default-looking generated pages.
+- `references/interface-compliance.md`: implementation-level review rules and `file:line` audit output format.
+- `references/component-implementation.md`: component state matrix and implementation rules for buttons, feedback, alerts, spacing, responsive behavior, forms, tables, overlays, and states.
+- `references/motion-guidance.md`: semantic motion, reduced-motion, and transition rules.
 - `references/icon-guidance.md`: icon system and icon usage rules.
 - `references/design-system-output.md`: project-level `DESIGN.md` output format.
 - `references/styles/*.md`: full style manuals with tokens and application guidance.
 - `assets/styles/`: visual style HTML and PNG preview assets.
-- `assets/previews/index.html`: preview gallery for the 21 visual styles, with detailed copy prompts that include layout archetype, layout structure, tokens, components, buttons, media, states, constraints, and verification checks.
+- `assets/previews/index.html`: preview gallery for the 21 visual styles, with desktop/mobile screenshot switching and selectable full, landing page, dashboard, admin panel, and mobile prompts.
+- `scripts/validate-previews.js`: deterministic checks for preview assets, prompt payloads, mobile screenshots, documentation coverage, and common implementation anti-patterns.
 
-## Current Style Set
+## Style Set And Guardrails
 
-- Style 01 - Card Grid: light neutral card grid rhythm for dashboards, catalogs, and overview pages.
-- Style 02 - Block Brutalism: warm yellow, hard black borders, blocky controls, and campaign energy.
-- Style 03 - Aurora Gradient: dark canvas, aurora color fields, soft glow, and premium AI atmosphere.
-- Style 04 - Retro Y2K: candy gradients, neon details, retro display type, and sparkle energy.
-- Style 05 - Swiss Editorial: tight editorial grid, red-black hierarchy, rule lines, and disciplined content rhythm.
-- Style 06 - Terminal Hacker: black canvas, terminal green, monospace, scanlines, and developer credibility.
-- Style 07 - Cute-alism: neon yellow, pink hard shadows, sticker-like objects, and soft-hard contrast.
-- Style 08 - Resonant Stark: near-black canvas, thin type, subtle glow, extreme whitespace, and premium restraint.
-- Style 09 - Tech Minimal: large whitespace, few colors, single visual focus, modern sans-serif UI.
-- Style 10 - Dark Theme: dark background, high contrast, one bright accent.
-- Style 11 - Structured Lines: fine line frames, professional structure, clear hierarchy.
-- Style 12 - Layered Material: layered tonal cards, large radius, orderly surfaces.
-- Style 13 - Bento Layout: modular card zones inspired by widget-like composition.
-- Style 14 - Neumorphism: soft light, inset depth, rounded tactile controls.
-- Style 15 - Liquid Glass: frosted transparency, blur, layered futuristic surfaces.
-- Style 16 - Retro Computing: pixel mood, old OS chrome, 80s/early desktop cues.
-- Style 17 - Neo-Brutalism: thick lines, strong clashes, giant type, controlled tension.
-- Style 18 - Precision Futurism: dark precision, glowing borders, sci-fi product polish.
-- Style 19 - Gradient Pop: bright gradients, tech/trend energy, eye-catching hero.
-- Style 20 - Soft Pop: friendly playful color, doodle/cartoon mood, elastic rounded forms.
-- Style 21 - Acid Design: chrome/metal sheen, laser light, distorted dark sci-fi energy.
-
-## Similarity Guardrails
-
-Do not let nearby styles collapse into the same generic page:
-
-- Style 03, Style 08, Style 10, Style 15, Style 18, and Style 21 can all be dark or atmospheric. Keep them distinct by deciding whether the page needs aurora mood, stark restraint, high-contrast darkness, glass material, product precision, or acid experimentation.
-- Style 09, Style 11, and Style 12 can all be professional, but they differ by whitespace, structural linework, and elevation/tonal surface logic.
-- Style 02 and Style 17 are both brutalist. Use Style 02 for the original warm block campaign style, and Style 17 for stronger collision, giant type, and controlled chaos.
-- Style 04 and Style 16 both reference retro culture. Use Style 04 for Y2K neon/candy energy, and Style 16 for pixel/old-operating-system texture.
-- Style 07 and Style 20 are both playful. Use Style 07 for neon sticker contrast, and Style 20 for softer friendly pop and doodle/cartoon tone.
-- Style 13 is a modular visual composition language. Use its bento card logic without forcing every product into the sample grid.
-- Style 02, Style 04, Style 07, Style 16, Style 17, Style 19, Style 20, and Style 21 carry strong personality. Use them only when the product, audience, or campaign can support expressive design.
+Use `references/style-index.md` for the full Style 01-21 list, quick matching, and similarity guardrails. Do not let related styles collapse into the same generic page. Distinguish styles by layout archetype, information architecture, typography, material, component tone, button language, density, media direction, and state treatment.
 
 ## Previewing The Included HTML
 
-When the user wants to preview the integrated examples, provide a browser URL rather than only a filesystem path whenever possible.
-
-If running from the source repository, start the local static preview server and give the user the URL:
-
-```bash
-npm run preview:serve
-```
-
-Then provide:
-
-```text
-http://127.0.0.1:<port>/assets/previews/
-```
-
-If the skill is installed inside a client, package scripts may not be available. In that case, run the bundled skill-local preview server from the installed `awesome-page-design` skill directory:
-
-```bash
-node scripts/serve-preview.js
-```
-
-Then provide:
-
-```text
-http://127.0.0.1:<port>/assets/previews/
-```
-
-Primary preview entry:
-
-- `assets/previews/index.html`: gallery of all visual style previews.
-
-Individual style examples:
-
-- `assets/styles/style-01-card-grid/style-01-card-grid.html`
-- `assets/styles/style-18-precision-futurism/style-18-precision-futurism.html`
-- Use the same `assets/styles/style-XX-name/style-XX-name.html` pattern for other styles.
-
-Fallback local commands when the client has shell access but cannot start a URL server:
-
-```bash
-# From inside the installed awesome-page-design skill directory
-open assets/previews/index.html
-
-# Or open a single style example
-open assets/styles/style-01-card-grid/style-01-card-grid.html
-```
-
-If the client cannot open local files directly, tell the user the exact installed file path and ask them to open it in their browser. These HTML files are static single-file previews; allow a few seconds before screenshotting so rendering can settle.
+Use the preview instructions in `references/workflow.md`. Prefer a browser URL from the local static server; use `assets/previews/index.html` only when serving is unavailable. The preview gallery supports desktop/mobile screenshot switching and prompt copying.
 
 ## When Applying A Style
 
@@ -177,7 +101,9 @@ Extract only what is relevant to the current project:
 - Font family, font weights, type scale, and text density.
 - Border, radius, shadow, glow, glass, metal, soft, or tactile surface treatment.
 - Button, tag, card, input, table, navigation, chart, modal, drawer, and empty-state personality.
+- Button anatomy, feedback level, spacing tokens, and desktop/tablet/mobile component behavior.
 - Hover, focus, selected, disabled, loading, error, warning, and success states.
+- Implementation compliance: accessible labels, visible focus, semantic controls, form labels, stable media dimensions, responsive text handling, reduced motion, and useful empty/error/loading states.
 - Icon and media direction when the page benefits from symbols, screenshots, photography, or rich visual assets. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
 - Motion timing, texture rules, and responsive density.
 
@@ -194,3 +120,5 @@ When explaining a style choice to the user, keep it practical:
 - State that page structure will be adapted to the actual product need.
 
 When coding, translate the selected style into concrete CSS variables, component classes, or framework theme tokens.
+
+When editing this skill's own preview library, regenerate assets with `npm run previews`, then run `npm run validate` before final review.

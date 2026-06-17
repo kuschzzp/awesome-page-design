@@ -5,7 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Style 18 - Precision Futurism</title>
 <style>
-* { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 :root {
   --bg: #08090d;
   --surface: #101117;
@@ -27,6 +37,14 @@ body {
   color: var(--text);
   background: var(--bg);
   font-family: ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light;
+}
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+  height: auto;
 }
 body.terminal-hacker,
 body.retro-computing {
@@ -37,6 +55,7 @@ body.precision-futurism,
 body.liquid-glass,
 body.acid-design,
 body.aurora-gradient {
+  color-scheme: dark;
   background:
     radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--accent), transparent 68%), transparent 31%),
     radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--primary), transparent 78%), transparent 25%),
@@ -55,16 +74,48 @@ body.retro-computing {
   background-size: 18px 18px;
 }
 button,
-input {
+input,
+textarea,
+select {
   font: inherit;
+  max-width: 100%;
 }
 a {
   color: inherit;
+  overflow-wrap: anywhere;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent), white 18%);
+  outline-offset: 3px;
+}
+button:active,
+.primary-action:active,
+.secondary-action:active,
+.queue-card:active {
+  transform: translateY(0);
+}
+button:disabled,
+[aria-disabled="true"] {
+  opacity: .52;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.sr-status {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 .page {
-  width: min(1220px, calc(100% - 48px));
+  width: min(100%, 1268px);
   margin: 0 auto;
-  padding: 24px 0 64px;
+  padding: 24px calc(24px + env(safe-area-inset-right)) 64px calc(24px + env(safe-area-inset-left));
 }
 .top-nav {
   min-height: 60px;
@@ -113,6 +164,7 @@ a {
 .text-action,
 .queue-card,
 .tabs button {
+  max-width: 100%;
   min-height: 42px;
   display: inline-flex;
   align-items: center;
@@ -124,6 +176,10 @@ a {
   color: var(--text);
   background: var(--surface);
   font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   text-decoration: none;
   cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
@@ -154,18 +210,19 @@ a {
 h1,
 h2,
 h3,
-p {
-  overflow-wrap: break-word;
+p,
+code {
+  overflow-wrap: anywhere;
 }
 h1 {
   margin: 0;
-  font-size: 60px;
+  font-size: clamp(38px, 5vw, 60px);
   line-height: 1.02;
   letter-spacing: 0;
 }
 h2 {
   margin: 0;
-  font-size: 34px;
+  font-size: clamp(28px, 3vw, 34px);
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -224,10 +281,13 @@ p {
 }
 .queue-card span {
   flex-shrink: 0;
+  min-width: 0;
+  text-align: right;
   color: var(--muted);
   font-size: 13px;
 }
 .chart {
+  min-width: 0;
   height: 160px;
   display: flex;
   align-items: end;
@@ -236,16 +296,18 @@ p {
   border: 1px solid var(--border);
   border-radius: var(--panel-radius);
   background: color-mix(in srgb, var(--surface), var(--bg) 18%);
+  overflow: hidden;
 }
 .chart i {
   flex: 1;
-  min-width: 14px;
+  min-width: 6px;
   border-radius: 999px 999px 0 0;
   background: linear-gradient(180deg, var(--accent), var(--primary));
 }
 .media {
   position: relative;
   overflow: hidden;
+  min-width: 0;
   min-height: 320px;
   border: 1px solid var(--border);
   border-radius: var(--media-radius);
@@ -291,6 +353,7 @@ p {
 .line-b { left: 70px; right: 90px; top: 156px; }
 .scene-chip {
   z-index: 1;
+  max-width: calc(100% - 24px);
   min-width: 48px;
   padding: 8px 10px;
   color: var(--bg);
@@ -315,7 +378,7 @@ p {
 .card-c { left: 50%; bottom: 48px; transform: translateX(-50%); width: 150px; }
 .ops-board {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: minmax(160px, 180px) minmax(0, 1fr);
   gap: 18px;
 }
 .filter-rail,
@@ -368,6 +431,8 @@ p {
   color: var(--text);
 }
 .filter-rail span {
+  display: block;
+  min-width: 0;
   padding: 12px;
   border: 1px solid var(--border);
   border-radius: var(--control-radius);
@@ -398,6 +463,7 @@ p {
   font-size: 15px;
 }
 .toolbar-actions {
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -405,13 +471,13 @@ p {
 }
 .ticket-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(min(100%, 280px), .85fr);
   gap: 14px;
   margin-top: 16px;
 }
 .ticket-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 .ticket-card {
@@ -450,7 +516,7 @@ p {
 .acid-poster {
   min-height: 720px;
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: minmax(0, 1fr) minmax(min(100%, 320px), 420px);
   gap: 24px;
   align-items: stretch;
 }
@@ -1175,9 +1241,12 @@ p {
   border-radius: 999px;
   box-shadow: inset 6px 6px 14px rgba(148,163,184,.26), inset -6px -6px 14px rgba(255,255,255,.82);
   color: var(--muted);
+  white-space: nowrap;
+  overflow-wrap: normal;
 }
 .session-meta b {
   color: var(--text);
+  overflow-wrap: normal;
 }
 .session-timeline {
   display: grid;
@@ -1390,6 +1459,52 @@ p {
   padding: 18px;
   border-radius: 0;
   box-shadow: 12px 12px 0 var(--border);
+}
+body.neo-brutalism .brutal-release {
+  grid-template-columns: .72fr 1.28fr;
+  gap: 30px;
+  background:
+    linear-gradient(90deg, rgba(17,17,17,.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(17,17,17,.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+body.neo-brutalism .brutal-copy {
+  min-height: 720px;
+  background: var(--surface);
+  border: 4px solid var(--border);
+  box-shadow: 16px 16px 0 var(--accent);
+  transform: rotate(-1deg);
+}
+body.neo-brutalism .brutal-copy h1 {
+  font-size: 66px;
+  line-height: .92;
+}
+body.neo-brutalism .proof-wall {
+  display: grid;
+  align-content: stretch;
+  gap: 16px;
+  background: #ffffff;
+  border: 4px solid var(--border);
+  box-shadow: -14px 14px 0 var(--primary);
+  transform: rotate(1deg);
+}
+body.neo-brutalism .proof-wall .metric-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+body.neo-brutalism .proof-wall .metric-tile {
+  border: 3px solid var(--border);
+  background: var(--bg);
+}
+body.neo-brutalism .proof-wall .queue-card {
+  min-height: 58px;
+  border-width: 3px;
+  background: var(--surface);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+body.neo-brutalism .command-line {
+  color: #ffffff;
+  background: var(--primary);
+  border-width: 3px;
 }
 .command-line {
   margin: 18px 0;
@@ -2198,6 +2313,223 @@ body.liquid-glass .metric-tile {
   backdrop-filter: blur(18px) saturate(1.35);
   background: color-mix(in srgb, var(--surface), transparent 14%);
 }
+.interaction-demo {
+  display: grid;
+  grid-template-columns: .84fr 1.16fr;
+  gap: 18px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+.interaction-copy,
+.state-board {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--shadow);
+}
+.interaction-copy h2 {
+  font-size: 30px;
+  line-height: 1.12;
+}
+.implementation-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.implementation-list li {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.implementation-list b {
+  color: var(--text);
+}
+.state-board {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+.state-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.state-board-head span {
+  min-width: 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+.state-board-head strong {
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+}
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.toggle-chip {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+.toggle-chip:hover {
+  transform: translateY(-2px);
+}
+.toggle-chip[aria-pressed="true"] {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.loading-action[aria-busy="true"] {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+.loading-action[aria-busy="true"]::after {
+  content: "Saving";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+.inline-alert {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--accent) 10%);
+  border: 1px solid color-mix(in srgb, var(--border), var(--accent) 28%);
+  border-radius: var(--control-radius);
+}
+.inline-alert span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.48;
+}
+.field-group {
+  display: grid;
+  gap: 7px;
+}
+.field-group span {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 900;
+}
+.field-group input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface), var(--bg) 10%);
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+}
+.field-group input[aria-invalid="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 74%);
+}
+.field-group small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+.state-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.state-pill {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.42;
+}
+.state-pill b {
+  color: var(--text);
+}
+.state-pill.success {
+  border-color: color-mix(in srgb, #16a34a, var(--border) 52%);
+}
+.state-pill.loading {
+  border-color: color-mix(in srgb, var(--accent), var(--border) 48%);
+}
+.state-pill.empty {
+  opacity: .86;
+}
+.state-pill.error {
+  border-color: color-mix(in srgb, #dc2626, var(--border) 46%);
+}
+.responsive-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.responsive-steps span {
+  min-width: 0;
+  padding: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface), var(--bg) 14%);
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.responsive-steps b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 30;
+  width: min(360px, calc(100vw - 48px));
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  box-shadow: var(--shadow);
+  transform: translateX(-50%);
+}
+.toast[hidden] {
+  display: none;
+}
+.toast span {
+  color: var(--muted);
+  font-size: 14px;
+}
 .style-lab {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -2289,14 +2621,32 @@ body.liquid-glass .metric-tile {
   color: var(--muted);
   line-height: 1.5;
 }
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
 @media (max-width: 980px) {
-  .page { width: min(100% - 28px, 760px); }
+  .page {
+    width: 100%;
+    max-width: 760px;
+    padding: 16px calc(14px + env(safe-area-inset-right)) 48px calc(14px + env(safe-area-inset-left));
+  }
   .top-nav,
   .board-toolbar,
   .workflow-head {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
+    width: 100%;
+    gap: 14px;
   }
+  .brand-lockup,
   .nav-links {
     flex-wrap: wrap;
   }
@@ -2305,10 +2655,10 @@ body.liquid-glass .metric-tile {
   .brutal-release h1,
   .acid-poster h1,
   .editorial-lead h1 {
-    font-size: 42px;
-    line-height: 1.02;
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.06;
   }
-  h2 { font-size: 28px; }
+  h2 { font-size: clamp(24px, 6vw, 28px); }
   .ops-board,
   .board-toolbar,
   .ticket-grid,
@@ -2341,10 +2691,73 @@ body.liquid-glass .metric-tile {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
+  .interaction-demo,
   .style-lab,
-  .workspace-grid {
+  .workspace-grid,
+  .responsive-steps {
     display: grid;
     grid-template-columns: 1fr;
+  }
+  .ops-board,
+  .board-main,
+  .board-inspector,
+  .ticket-grid,
+  .ticket-list,
+  .drop-console,
+  .release-player,
+  .track-strip,
+  .street-poster,
+  .aurora-lab,
+  .stage-center,
+  .editorial-index,
+  .terminal-console,
+  .sticker-shop,
+  .shop-catalog,
+  .stark-portfolio,
+  .minimal-brief,
+  .dark-render,
+  .line-workflow,
+  .process-map,
+  .material-day,
+  .daily-cloud,
+  .bento-profile,
+  .neumo-console,
+  .glass-map,
+  .retro-desktop,
+  .brutal-release,
+  .precision-graph,
+  .gradient-builder,
+  .canvas-layers,
+  .soft-learning,
+  .acid-poster,
+  .interaction-demo,
+  .style-lab,
+  .workspace-grid,
+  .responsive-steps,
+  .metric-row,
+  .queue-list,
+  .state-stack {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .button-row,
+  .toolbar-actions,
+  .poster-actions,
+  .session-actions,
+  .related,
+  .detail-pills {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .button-row > *,
+  .toolbar-actions > *,
+  .poster-actions > *,
+  .session-actions > *,
+  .related a,
+  .tabs button {
+    flex: 1 1 min(100%, 160px);
   }
   .filter-rail,
   .brief-sidebar,
@@ -2364,12 +2777,63 @@ body.liquid-glass .metric-tile {
   .routine-cloud,
   .mixer-board,
   .countdown-grid,
-  .progress-path {
+  .progress-path,
+  .state-stack {
     grid-template-columns: 1fr;
   }
   .toolbar-actions {
     justify-content: flex-start;
   }
+  .filter-rail {
+    grid-template-columns: 1fr;
+  }
+  .filter-rail span,
+  .filter-rail .rail-active {
+    width: 100%;
+  }
+  .queue-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .queue-card b,
+  .queue-card span {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+  .score-row {
+    grid-template-columns: 1fr;
+  }
+  .score-row i {
+    width: 100%;
+  }
+  .review-note span,
+  .run-head,
+  .ticket-strip span {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .chart {
+    height: 140px;
+    gap: 6px;
+    padding: 10px;
+  }
+  .media {
+    min-height: 220px;
+  }
+  .media::before {
+    inset: 14px;
+  }
+  .media::after {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+  .chip-a { left: 16px; bottom: 22px; }
+  .chip-b { right: 16px; top: 22px; }
+  .card-a { left: 44px; top: 104px; }
+  .card-b { right: 34px; top: 108px; }
+  .card-c { width: min(150px, calc(100% - 48px)); }
   .ticket-card.priority {
     grid-row: auto;
     min-height: 150px;
@@ -2422,6 +2886,87 @@ body.liquid-glass .metric-tile {
   .files-window {
     width: auto;
   }
+  .modal {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    width: auto;
+  }
+}
+@media (max-width: 480px) {
+  .page {
+    padding: 14px calc(14px + env(safe-area-inset-right)) 44px calc(14px + env(safe-area-inset-left));
+  }
+  .top-nav {
+    margin-bottom: 16px;
+  }
+  .brand-lockup span {
+    width: 34px;
+    height: 34px;
+  }
+  h1,
+  .street-poster h1,
+  .brutal-release h1,
+  .acid-poster h1,
+  .editorial-lead h1 {
+    font-size: clamp(28px, 9vw, 36px);
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.52;
+  }
+  .primary-action,
+  .secondary-action,
+  .ghost-action,
+  .text-action,
+  .queue-card,
+  .tabs button {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+  .metric-row,
+  .signal-stats,
+  .glass-metrics,
+  .trace-metrics {
+    grid-template-columns: 1fr;
+  }
+  .session-dashboard {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+  .session-readout {
+    justify-self: center;
+  }
+  .session-meta span {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+  }
+  .session-meta b {
+    text-align: right;
+  }
+  .board-main,
+  .board-inspector,
+  .ticket-card,
+  .lab-copy,
+  .trace-panel,
+  .glass-panel,
+  .render-queue,
+  .lab-summary,
+  .lab-workspace,
+  .panel,
+  .feature-block,
+  .filter-rail {
+    padding: 14px;
+  }
+  .chart {
+    height: 128px;
+  }
+  .stamp.big {
+    min-height: 120px;
+    font-size: clamp(36px, 14vw, 52px);
+  }
 }
 </style>
 </head>
@@ -2447,6 +2992,46 @@ body.liquid-glass .metric-tile {
         </div>
         <aside class="trace-list"><h3>Trace queue</h3><button type="button" class="queue-card" data-open-modal><b>Retry storm</b><span>Watch</span></button><button type="button" class="queue-card" data-open-modal><b>Span 7B</b><span>Fail</span></button><button type="button" class="queue-card" data-open-modal><b>Replay batch</b><span>Ready</span></button><div class="trace-command">replay --batch latest</div><div class="trace-watch"><b>Watch window</b><span><em>p95 latency</em><strong>184ms</strong></span><span><em>retry rate</em><strong>2.8%</strong></span><span><em>owner</em><strong>Infra</strong></span></div></aside>
       </section>
+    <section class="interaction-demo" aria-labelledby="interaction-title-18">
+      <div class="interaction-copy">
+        <p class="kicker">Component behavior</p>
+        <h2 id="interaction-title-18">Buttons, feedback, spacing, and responsive rules.</h2>
+        <p>Graph nodes, trace rows, run cards, incident chips, command buttons, and timeline fragments should feel engineered.</p>
+        <ul class="implementation-list"><li><b>Buttons</b><span>Use precise command buttons, thin glow only on active/focus states, and compact disabled states for technical control.</span></li><li><b>Feedback</b><span>Use trace toasts, incident chips, warning rows, and replay confirmations tied to real system state.</span></li><li><b>Spacing</b><span>Use 16-20px console panels, 8-12px trace rows, and dense tabular metrics.</span></li><li><b>Responsive</b><span>Desktop keeps graph, trace panel, and queue; mobile shows trace summary, then graph, then queue.</span></li></ul>
+      </div>
+      <div class="state-board">
+        <div class="state-board-head">
+          <span>VectorOps</span>
+          <strong>312</strong>
+        </div>
+        <div class="button-row" aria-label="Button state examples">
+          <button type="button" class="primary-action" data-toast-trigger>Inspect graph</button>
+          <button type="button" class="secondary-action loading-action" data-loading-demo>Save state</button>
+          <button type="button" class="secondary-action" disabled>Disabled</button>
+          <button type="button" class="toggle-chip" aria-pressed="false" data-toggle-demo>Filter off</button>
+        </div>
+        <div class="inline-alert warning" data-inline-alert role="status">
+          <b>State warning</b>
+          <span>Retry storm: Watch. Use trace toasts, incident chips, warning rows, and replay confirmations tied to real system state.</span>
+        </div>
+        <label class="field-group" for="demo-input-18">
+          <span>Visible label</span>
+          <input id="demo-input-18" type="text" value="Span 7B" aria-describedby="field-help-18" data-demo-input>
+          <small id="field-help-18" data-field-help>Helper text stays visible after the field is filled.</small>
+        </label>
+        <div class="state-stack" aria-label="Common product states">
+          <span class="state-pill success"><b>Success</b>Saved and ready for review.</span>
+          <span class="state-pill loading"><b>Loading</b>Preserve the layout while data refreshes.</span>
+          <span class="state-pill empty"><b>Empty</b>No matching results; clear filters or create one.</span>
+          <span class="state-pill error"><b>Error</b>Retry with a clear recovery action.</span>
+        </div>
+        <div class="responsive-steps" aria-label="Responsive behavior">
+          <span><b>Desktop</b>Show the full layout archetype with supporting panels.</span>
+          <span><b>Tablet</b>Collapse secondary panels without losing state.</span>
+          <span><b>Mobile</b>Desktop keeps graph, trace panel, and queue; mobile shows trace summary, then graph, then queue.</span>
+        </div>
+      </div>
+    </section>
     <section id="details" class="style-lab">
       <div class="lab-summary">
         <p class="kicker">Precision Graph Console · 精密图谱控制台</p>
@@ -2455,10 +3040,10 @@ body.liquid-glass .metric-tile {
         <div class="detail-pills"><span>Precision Graph Console</span><span>Buttons are compact dark controls with glow reserved for active or critical actions.</span><span>Show active path, fail, retry, replay ready, incident open, and selected node states.</span></div>
       </div>
       <div class="lab-workspace">
-        <div class="tabs" aria-label="Demo tabs">
-          <button type="button" class="active" data-tab="launch">Launch</button>
-          <button type="button" data-tab="metrics">Metrics</button>
-          <button type="button" data-tab="assets">Assets</button>
+        <div class="tabs" role="tablist" aria-label="Demo tabs">
+          <button type="button" class="active" role="tab" aria-selected="true" data-tab="launch">Launch</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="metrics">Metrics</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="assets">Assets</button>
         </div>
         <div class="workspace-grid">
           <article class="panel">
@@ -2476,17 +3061,39 @@ body.liquid-glass .metric-tile {
     </section>
   </main>
 
-  <aside class="modal" hidden data-modal>
-    <h3>Style 18: Precision Futurism</h3>
+  <aside class="modal" hidden data-modal role="dialog" aria-modal="false" aria-labelledby="style-note-title">
+    <h3 id="style-note-title">Style 18: Precision Futurism</h3>
     <ul><li>Keep the surface quiet and precise.</li><li>Use glow as a state signal, not decoration everywhere.</li><li>Favor clean lists, compact cards, and command-like actions.</li></ul>
     <button type="button" class="secondary-action" data-close-modal>Close</button>
   </aside>
+  <div class="toast" hidden data-toast role="status" aria-live="polite">
+    <b>Saved</b>
+    <span data-toast-message>Action confirmed</span>
+  </div>
+  <div class="sr-status" aria-live="polite" data-status></div>
 
   <script>
-  const prompt = "Use awesome-page-design Style 18 - Precision Futurism as the page design direction.\nBest fit: issue trackers, AI operations tools, technical SaaS.\nVisual mood: Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.\nLayout archetype: Precision Graph Console.\nLayout structure: Technical console with a node graph, compact trace rows, command actions, and glowing state markers.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #08090d; surface #101117; text #f4f4f5; muted #a1a1aa; primary #f4f4f5; accent #8b5cf6; border #27272f; radius 6px; shadow/material 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18).\nGeometry: panel radius 6px; control radius 4px; chip/state radius 2px; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use compact technical UI type, precise labels, and aligned numeric values.\nComponents: Graph nodes, trace rows, run cards, incident chips, command buttons, and timeline fragments should feel engineered.\nButtons: Buttons are compact dark controls with glow reserved for active or critical actions.\nIcons and media: Use graphs, traces, logs, and span diagrams instead of generic sci-fi backgrounds.\nStates: Show active path, fail, retry, replay ready, incident open, and selected node states.\nExample content direction: you may use the specificity of \"VectorOps / Precision operations console\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not cover precise information with excessive glow. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, focus, hover, selected, and success states.";
+  const prompt = "Use awesome-page-design Style 18 - Precision Futurism as the page design direction.\nPrompt type: Full Prompt.\nBest fit: issue trackers, AI operations tools, technical SaaS.\nVisual mood: Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.\nScenario focus:\nLanding adaptation: Use a precise technical product story with graph, traces, incidents, and command action.\nDashboard adaptation: Use graph console, trace list, compact metrics, incident chips, and replay controls.\nAdmin adaptation: Use for technical SaaS operations, issue triage, observability, and workflow replay.\nForms/data adaptation: Use compact dark inputs, command buttons, exact validation, and visible focused edges.\nMobile adaptation: Show trace summary, graph, queue, and replay action in that order.\nAvoid for: Weak for soft consumer brands or pages needing warmth over precision.\nLayout archetype: Precision Graph Console.\nLayout structure: Technical console with a node graph, compact trace rows, command actions, and glowing state markers.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #08090d; surface #101117; text #f4f4f5; muted #a1a1aa; primary #f4f4f5; accent #8b5cf6; border #27272f; radius 6px; shadow/material 0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18).\nGeometry: panel radius 6px; control radius 4px; chip/state radius 2px; media radius 4px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use compact technical UI type, precise labels, and aligned numeric values.\nComponents: Graph nodes, trace rows, run cards, incident chips, command buttons, and timeline fragments should feel engineered.\nButtons: Buttons are compact dark controls with glow reserved for active or critical actions.\nButton details: Use precise command buttons, thin glow only on active/focus states, and compact disabled states for technical control.\nFeedback and alerts: Use trace toasts, incident chips, warning rows, and replay confirmations tied to real system state.\nSpacing system: Use 16-20px console panels, 8-12px trace rows, and dense tabular metrics.\nResponsive behavior: Desktop keeps graph, trace panel, and queue; mobile shows trace summary, then graph, then queue.\nIcons and media: Use graphs, traces, logs, and span diagrams instead of generic sci-fi backgrounds.\nStates: Show active path, fail, retry, replay ready, incident open, and selected node states.\nComponent state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.\nMotion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.\nImplementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.\nExample content direction: you may use the specificity of \"VectorOps / Precision operations console\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not cover precise information with excessive glow. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.";
   const modal = document.querySelector('[data-modal]');
+  const status = document.querySelector('[data-status]');
+  const toast = document.querySelector('[data-toast]');
   const demo = {"launch":["Run graph","Trace active paths, compare retries, and inspect failing spans without leaving the console."],"metrics":["Reliability pulse","Track pass rate, retry count, incident age, and mean recovery time."],"assets":["Trace evidence","Use graph nodes, span rows, logs, and timeline fragments as the visual system."]};
-  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => modal.hidden = false));
+  let toastTimer;
+  function showToast(message) {
+    if (!toast) return;
+    const messageNode = toast.querySelector('[data-toast-message]');
+    if (messageNode) messageNode.textContent = message;
+    toast.hidden = false;
+    status.textContent = message;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.hidden = true;
+    }, 2200);
+  }
+  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
+    modal.hidden = false;
+    document.querySelector('[data-close-modal]').focus();
+  }));
   document.querySelector('[data-close-modal]').addEventListener('click', () => modal.hidden = true);
   document.querySelectorAll('[data-copy]').forEach((button) => {
     const original = button.textContent;
@@ -2494,17 +3101,65 @@ body.liquid-glass .metric-tile {
       try {
         await navigator.clipboard.writeText(prompt);
         button.textContent = 'Copied detailed prompt';
+        status.textContent = 'Detailed style prompt copied';
+        showToast('Detailed style prompt copied');
         setTimeout(() => button.textContent = original, 1500);
       } catch {
         window.prompt('Copy this detailed style prompt:', prompt);
       }
     });
   });
+  document.querySelectorAll('[data-toast-trigger]').forEach((button) => {
+    button.addEventListener('click', () => showToast('Primary action confirmed'));
+  });
+  document.querySelectorAll('[data-loading-demo]').forEach((button) => {
+    const original = button.textContent;
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-busy') === 'true') return;
+      button.setAttribute('aria-busy', 'true');
+      button.disabled = true;
+      status.textContent = 'Saving state';
+      setTimeout(() => {
+        button.setAttribute('aria-busy', 'false');
+        button.disabled = false;
+        button.textContent = original;
+        showToast('State saved without layout shift');
+      }, 1200);
+    });
+  });
+  document.querySelectorAll('[data-toggle-demo]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const pressed = button.getAttribute('aria-pressed') === 'true';
+      button.setAttribute('aria-pressed', String(!pressed));
+      button.textContent = pressed ? 'Filter off' : 'Filter on';
+      showToast(pressed ? 'Filter removed' : 'Filter applied');
+    });
+  });
+  document.querySelectorAll('[data-demo-input]').forEach((input) => {
+    input.addEventListener('input', () => {
+      const helper = input.closest('.field-group')?.querySelector('[data-field-help]');
+      if (!helper) return;
+      if (input.value.trim().length < 3) {
+        input.setAttribute('aria-invalid', 'true');
+        helper.textContent = 'Add at least three characters so the field has a recoverable validation state.';
+        status.textContent = 'Field validation warning';
+      } else {
+        input.removeAttribute('aria-invalid');
+        helper.textContent = 'Filled state is valid and helper text remains visible.';
+        status.textContent = 'Field validation cleared';
+      }
+    });
+  });
   document.querySelectorAll('[data-tab]').forEach((button) => {
     button.addEventListener('click', () => {
-      document.querySelectorAll('[data-tab]').forEach((node) => node.classList.toggle('active', node === button));
+      document.querySelectorAll('[data-tab]').forEach((node) => {
+        const active = node === button;
+        node.classList.toggle('active', active);
+        node.setAttribute('aria-selected', String(active));
+      });
       document.querySelector('[data-demo-title]').textContent = demo[button.dataset.tab][0];
       document.querySelector('[data-demo-copy]').textContent = demo[button.dataset.tab][1];
+      status.textContent = demo[button.dataset.tab][0] + ' tab selected';
     });
   });
   </script>
