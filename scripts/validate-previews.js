@@ -121,6 +121,9 @@ function checkPreviewIndex() {
   const openLinks = [...html.matchAll(/<a href="\.\.\/styles\/[^"]+"[^>]*data-i18n="openHtml"/g)].map((match) => match[0]);
   const promptButtons = [...html.matchAll(/<button type="button" data-prompts="([^"]+)"[^>]*data-i18n="copyPrompt"/g)].map((match) => match[1]);
   const promptPickers = [...html.matchAll(/data-prompt-picker data-selected-kind="full"/g)];
+  const promptChooserLabels = [...html.matchAll(/data-i18n="promptChooser"/g)];
+  const promptOptionTitles = [...html.matchAll(/<span data-prompt-option-title>/g)];
+  const promptOptionDescriptions = [...html.matchAll(/<span data-prompt-option-description>/g)];
   const nativePromptSelects = [...html.matchAll(/<select data-prompt-kind/g)];
   const previewImages = [...html.matchAll(/<img\b[\s\S]*?data-preview-image[\s\S]*?>/g)];
   const desktopSources = [...html.matchAll(/data-desktop-src="([^"]+\.png)"/g)].map((match) => match[1]);
@@ -139,6 +142,11 @@ function checkPreviewIndex() {
   assert(mobileDimensions.length === expectedStyleCount, `preview index stores ${expectedStyleCount} mobile screenshot dimensions`);
   assert(viewportButtons.includes("desktop") && viewportButtons.includes("mobile"), "preview index has desktop and mobile viewport toggles");
   assert(promptPickers.length === expectedStyleCount, `preview index has ${expectedStyleCount} custom prompt pickers`);
+  assert(promptChooserLabels.length === expectedStyleCount, `preview index labels ${expectedStyleCount} prompt pickers with a user-facing question`);
+  assert(promptOptionTitles.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible titles");
+  assert(promptOptionDescriptions.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible descriptions");
+  assert(html.includes("General") && html.includes("移动端"), "preview index uses user-facing prompt type labels");
+  assert(html.includes("Copy Dashboard") && html.includes("复制看板"), "preview index uses task-specific copy button labels");
   assert(nativePromptSelects.length === 0, "preview index does not use native prompt select controls");
   assert(html.includes('role="listbox"'), "preview index custom prompt menu uses listbox role");
   assert(html.includes('aria-expanded="false"'), "preview index custom prompt trigger exposes expanded state");

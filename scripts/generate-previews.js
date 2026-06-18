@@ -1834,11 +1834,61 @@ function getImplementationProfile(style) {
 }
 
 const promptKinds = [
-  { key: "full", en: "Full Prompt", zh: "完整提示词" },
-  { key: "landing", en: "Landing Page", zh: "落地页" },
-  { key: "dashboard", en: "Dashboard", zh: "仪表盘" },
-  { key: "admin", en: "Admin Panel", zh: "管理后台" },
-  { key: "mobile", en: "Mobile", zh: "移动端" },
+  {
+    key: "full",
+    promptEn: "Full Prompt",
+    promptZh: "完整提示词",
+    labelEn: "General",
+    labelZh: "通用页面",
+    descriptionEn: "Use when the page type is unclear or you want the complete style rule set.",
+    descriptionZh: "页面类型还不确定，或需要完整风格规则。",
+    copyEn: "Copy General",
+    copyZh: "复制通用",
+  },
+  {
+    key: "landing",
+    promptEn: "Landing Page",
+    promptZh: "落地页",
+    labelEn: "Landing",
+    labelZh: "落地页",
+    descriptionEn: "For public pages, product stories, conversion, proof, and media direction.",
+    descriptionZh: "适合官网、产品页、活动页，强调首屏、转化、证明内容和媒体。",
+    copyEn: "Copy Landing",
+    copyZh: "复制落地页",
+  },
+  {
+    key: "dashboard",
+    promptEn: "Dashboard",
+    promptZh: "仪表盘",
+    labelEn: "Dashboard",
+    labelZh: "数据看板",
+    descriptionEn: "For metrics, charts, filters, lists, monitoring, and detail panels.",
+    descriptionZh: "适合指标、图表、筛选、列表、状态监控和详情面板。",
+    copyEn: "Copy Dashboard",
+    copyZh: "复制看板",
+  },
+  {
+    key: "admin",
+    promptEn: "Admin Panel",
+    promptZh: "管理后台",
+    labelEn: "Admin",
+    labelZh: "管理后台",
+    descriptionEn: "For tables, forms, bulk actions, permissions, settings, and recovery flows.",
+    descriptionZh: "适合表格、表单、批量操作、权限、设置和异常恢复。",
+    copyEn: "Copy Admin",
+    copyZh: "复制后台",
+  },
+  {
+    key: "mobile",
+    promptEn: "Mobile",
+    promptZh: "移动端",
+    labelEn: "Mobile",
+    labelZh: "移动端",
+    descriptionEn: "For mobile-first screens, touch targets, small-screen order, and responsive checks.",
+    descriptionZh: "适合移动端优先、触控目标、小屏内容顺序和响应式检查。",
+    copyEn: "Copy Mobile",
+    copyZh: "复制移动端",
+  },
 ];
 
 const adaptationProfiles = {
@@ -2096,7 +2146,7 @@ function buildStylePrompt(style, lang = "en", kind = "full") {
   if (lang === "zh") {
     return [
       `使用 awesome-page-design ${label} - ${style.name}（${style.zhName}）作为页面设计方向。`,
-      `提示词类型：${promptKinds.find((item) => item.key === kind)?.zh || "完整提示词"}。`,
+      `提示词类型：${promptKinds.find((item) => item.key === kind)?.promptZh || "完整提示词"}。`,
       `适用页面：${style.zhBestFor}。`,
       `目标气质：${style.zhBrief}`,
       ...scenarioFocus,
@@ -2126,7 +2176,7 @@ function buildStylePrompt(style, lang = "en", kind = "full") {
 
   return [
     `Use awesome-page-design ${label} - ${style.name} as the page design direction.`,
-    `Prompt type: ${promptKinds.find((item) => item.key === kind)?.en || "Full Prompt"}.`,
+    `Prompt type: ${promptKinds.find((item) => item.key === kind)?.promptEn || "Full Prompt"}.`,
     `Best fit: ${style.bestFor}.`,
     `Visual mood: ${style.brief}`,
     ...scenarioFocus,
@@ -5803,7 +5853,7 @@ function renderStyleDoc(style) {
   const features = scenario.features.map(([title, body]) => `- ${title}: ${body}`).join("\n");
   const queue = scenario.queue.map(([title, state]) => `- ${title}: ${state}`).join("\n");
   const promptSections = promptKinds
-    .map((item) => `### ${item.en}\n\n\`\`\`text\n${buildStylePrompt(style, "en", item.key)}\n\`\`\``)
+    .map((item) => `### ${item.promptEn}\n\n\`\`\`text\n${buildStylePrompt(style, "en", item.key)}\n\`\`\``)
     .join("\n\n");
   return `# ${label} - ${style.name} (${style.zhName})
 
@@ -6277,9 +6327,10 @@ function renderPreviewCard(style) {
   const promptOptions = promptKinds
     .map(
       (item, index) =>
-        `<button type="button" role="option" class="prompt-option${index === 0 ? " active" : ""}" data-prompt-option="${item.key}" data-en="${escapeHtml(item.en)}" data-zh="${escapeHtml(item.zh)}" aria-selected="${index === 0 ? "true" : "false"}">${escapeHtml(item.en)}</button>`
+        `<button type="button" role="option" class="prompt-option${index === 0 ? " active" : ""}" data-prompt-option="${item.key}" data-en="${escapeHtml(item.labelEn)}" data-zh="${escapeHtml(item.labelZh)}" data-en-description="${escapeHtml(item.descriptionEn)}" data-zh-description="${escapeHtml(item.descriptionZh)}" data-en-copy="${escapeHtml(item.copyEn)}" data-zh-copy="${escapeHtml(item.copyZh)}" aria-selected="${index === 0 ? "true" : "false"}"><span data-prompt-option-title>${escapeHtml(item.labelEn)}</span><span data-prompt-option-description>${escapeHtml(item.descriptionEn)}</span></button>`
     )
     .join("");
+  const defaultPromptKind = promptKinds[0];
 
   return `    <article class="card">
       <a class="preview" href="../styles/${style.slug}/${style.slug}.html" aria-label="Open ${escapeHtml(label)} ${escapeHtml(style.name)} HTML preview">
@@ -6314,15 +6365,16 @@ function renderPreviewCard(style) {
         <div class="card-fit"><span data-i18n="bestFor">Best for</span><b data-en="${escapeHtml(style.bestFor)}" data-zh="${escapeHtml(style.zhBestFor)}">${escapeHtml(style.bestFor)}</b></div>
         <div class="actions">
           <div class="prompt-picker" data-prompt-picker data-selected-kind="full">
+            <div class="prompt-caption" data-i18n="promptChooser">Page type</div>
             <button type="button" class="prompt-trigger" data-prompt-trigger aria-haspopup="listbox" aria-expanded="false">
-              <span data-prompt-label>Full Prompt</span>
+              <span data-prompt-label>${escapeHtml(defaultPromptKind.labelEn)}</span>
               <span class="prompt-chev" aria-hidden="true"></span>
             </button>
-            <div class="prompt-menu" data-prompt-menu role="listbox" aria-label="Prompt type" hidden>
+            <div class="prompt-menu" data-prompt-menu role="listbox" aria-label="Page type" hidden>
               ${promptOptions}
             </div>
           </div>
-          <button type="button" data-prompts="${escapeHtml(JSON.stringify(promptPayload))}" data-i18n="copyPrompt">Copy prompt</button>
+          <button type="button" data-prompts="${escapeHtml(JSON.stringify(promptPayload))}" data-i18n="copyPrompt">${escapeHtml(defaultPromptKind.copyEn)}</button>
           <a href="../styles/${style.slug}/${style.slug}.html" target="_blank" rel="noopener noreferrer" data-i18n="openHtml">Open HTML</a>
         </div>
       </div>
@@ -6352,9 +6404,8 @@ body {
 }
 body {
   margin: 0;
-  padding: 32px 32px 56px;
-  background:
-    linear-gradient(180deg, #f7f8fb 0%, #eef1f6 100%);
+  padding: 38px 32px 64px;
+  background: #f6f7fb;
   color: #172033;
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
@@ -6362,23 +6413,25 @@ body {
 .catalog-bar,
 .grid {
   width: 100%;
-  max-width: 1480px;
+  max-width: 1600px;
   min-width: 0;
 }
 .hero {
-  margin: 0 auto 22px;
-  display: flex;
-  align-items: flex-start;
+  margin: 0 auto 26px;
+  display: grid;
+  gap: 20px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid rgba(17,24,39,0.10);
+}
+.hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 820px) minmax(260px, auto);
+  align-items: start;
   justify-content: space-between;
-  gap: 28px;
-  padding: 24px;
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(17,24,39,0.08);
-  border-radius: 14px;
-  box-shadow: 0 18px 50px rgba(15,23,42,0.08);
+  gap: 44px;
 }
 .hero-copy {
-  max-width: 780px;
+  max-width: 820px;
   min-width: 0;
 }
 .eyebrow {
@@ -6391,7 +6444,7 @@ body {
 }
 h1 {
   margin: 0;
-  font-size: 34px;
+  font-size: 40px;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -6407,28 +6460,40 @@ h1 {
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
-.hero-panel {
-  width: 318px;
+.hero-meta {
+  margin: 16px 0 0;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.hero-actions {
   flex: 0 0 auto;
-  display: grid;
-  gap: 14px;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2px;
 }
 .control-stack {
-  display: grid;
-  gap: 10px;
-  justify-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 5px;
+  background: #ffffff;
+  border: 1px solid rgba(17,24,39,0.10);
+  border-radius: 11px;
+  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
 }
 .lang-toggle,
 .viewport-toggle {
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  padding: 3px;
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(15,23,42,0.06);
-  justify-self: end;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  box-shadow: none;
 }
 .lang-toggle button,
 .viewport-toggle button {
@@ -6457,33 +6522,8 @@ a:focus-visible {
   background: #111827;
   color: #ffffff;
 }
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-.stat {
-  min-height: 72px;
-  padding: 12px;
-  background: #f8fafc;
-  border: 1px solid rgba(17,24,39,0.08);
-  border-radius: 8px;
-}
-.stat b {
-  display: block;
-  color: #111827;
-  font-size: 20px;
-  line-height: 1.1;
-}
-.stat span {
-  display: block;
-  margin-top: 6px;
-  color: #667085;
-  font-size: 12px;
-  line-height: 1.25;
-}
 .catalog-bar {
-  margin: 0 auto 18px;
+  margin: 0 auto 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6503,7 +6543,7 @@ a:focus-visible {
 .grid {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
   gap: 24px;
   align-items: start;
 }
@@ -6512,14 +6552,14 @@ a:focus-visible {
   overflow: hidden;
   color: inherit;
   background: #ffffff;
-  border: 1px solid rgba(17,24,39,0.10);
-  border-radius: 10px;
-  box-shadow: 0 14px 36px rgba(15,23,42,0.08);
+  border: 1px solid rgba(17,24,39,0.11);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(15,23,42,0.06);
 }
 .preview {
   display: block;
   max-width: 100%;
-  padding: 10px;
+  padding: 8px;
   color: inherit;
   text-decoration: none;
   background:
@@ -6532,14 +6572,14 @@ a:focus-visible {
   max-width: 100%;
   height: auto;
   border: 1px solid rgba(17,24,39,0.12);
-  border-radius: 6px;
+  border-radius: 5px;
   background: #e5e7eb;
   box-shadow: 0 10px 22px rgba(15,23,42,0.10);
 }
 .card-body {
   min-width: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   padding: 16px;
 }
 .card-topline {
@@ -6581,7 +6621,7 @@ a:focus-visible {
   letter-spacing: 0;
 }
 .card p {
-  min-height: 66px;
+  min-height: 58px;
   margin: 0;
   color: #667085;
   font-size: 14px;
@@ -6608,17 +6648,28 @@ a:focus-visible {
   overflow-wrap: anywhere;
 }
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 170px) minmax(142px, 1fr) auto;
+  align-items: end;
   gap: 8px;
-  margin-top: 4px;
+  margin-top: 2px;
+  padding: 10px;
+  background: #f8fafc;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 7px;
 }
 .prompt-picker {
   position: relative;
-  flex: 1 1 166px;
-  max-width: 206px;
-  min-width: 158px;
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+.prompt-caption {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.2;
 }
 .prompt-trigger {
   width: 100%;
@@ -6629,25 +6680,21 @@ a:focus-visible {
   gap: 10px;
   padding: 0 12px;
   color: #1d2939;
-  background: linear-gradient(180deg, #ffffff, #f7f9fc);
+  background: #ffffff;
   border: 1px solid rgba(17,24,39,0.14);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font: inherit;
   font-size: 13px;
   font-weight: 700;
   text-align: left;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    0 1px 2px rgba(15,23,42,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 .prompt-trigger:hover {
   border-color: rgba(37,99,235,0.38);
-  background: linear-gradient(180deg, #ffffff, #f3f7ff);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    0 8px 18px rgba(15,23,42,0.08);
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.08);
 }
 .prompt-trigger:focus-visible {
   outline: 0;
@@ -6674,13 +6721,13 @@ a:focus-visible {
   left: 0;
   bottom: calc(100% + 8px);
   z-index: 60;
-  width: min(236px, calc(100vw - 48px));
+  width: min(340px, calc(100vw - 48px));
   padding: 6px;
   display: grid;
   gap: 4px;
   background: #ffffff;
   border: 1px solid rgba(17,24,39,0.12);
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow:
     0 18px 44px rgba(15,23,42,0.18),
     inset 0 1px 0 rgba(255,255,255,0.9);
@@ -6689,21 +6736,32 @@ a:focus-visible {
   display: none;
 }
 .prompt-option {
-  min-height: 36px;
+  min-height: 54px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  padding: 9px 10px;
   color: #344054;
   background: transparent;
   border: 0;
-  border-radius: 7px;
+  border-radius: 6px;
   cursor: pointer;
   font: inherit;
-  font-size: 13px;
-  font-weight: 650;
   text-align: left;
   transition: background 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+.prompt-option [data-prompt-option-title] {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+.prompt-option [data-prompt-option-description] {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
 }
 .prompt-option:hover,
 .prompt-option:focus-visible {
@@ -6711,10 +6769,17 @@ a:focus-visible {
   background: #f2f6ff;
   outline: 0;
 }
+.prompt-option:hover [data-prompt-option-description],
+.prompt-option:focus-visible [data-prompt-option-description] {
+  color: #475467;
+}
 .prompt-option.active {
   color: #111827;
   background: #eef4ff;
   box-shadow: inset 3px 0 0 #2563eb;
+}
+.prompt-option.active [data-prompt-option-description] {
+  color: #475467;
 }
 .card.picker-open {
   position: relative;
@@ -6725,7 +6790,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
+  min-height: 38px;
   padding: 0 12px;
   border-radius: 6px;
   font: inherit;
@@ -6734,7 +6799,6 @@ a:focus-visible {
   text-decoration: none;
 }
 .actions > button {
-  flex: 1 1 126px;
   color: #ffffff;
   background: #1f2937;
   border: 1px solid #1f2937;
@@ -6749,7 +6813,6 @@ a:focus-visible {
   border-color: #059669;
 }
 .actions a {
-  flex: 0 0 auto;
   color: #344054;
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.12);
@@ -6777,18 +6840,13 @@ a:focus-visible {
 }
 @media (max-width: 980px) {
   body { padding: 20px; }
-  .hero {
+  .hero-main {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 20px;
+    gap: 18px;
   }
-  .hero-panel {
-    width: 100%;
-  }
-  .control-stack,
-  .lang-toggle,
-  .viewport-toggle {
-    justify-self: start;
+  .control-stack {
+    justify-content: flex-start;
   }
   .catalog-bar {
     display: grid;
@@ -6802,18 +6860,24 @@ a:focus-visible {
 }
 @media (max-width: 640px) {
   body { padding: 14px; }
-  .hero { display: block; padding: 18px; }
+  .hero { padding-bottom: 18px; }
   h1 { font-size: 27px; }
   .meta,
   .hint { font-size: 14px; }
-  .hero-panel { width: auto; margin-top: 16px; }
-  .control-stack,
+  .hero-meta { font-size: 12px; }
+  .control-stack {
+    width: 100%;
+    justify-content: stretch;
+  }
   .lang-toggle,
-  .viewport-toggle { justify-self: start; }
-  .stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .stat { min-height: 64px; padding: 10px; }
-  .stat b { font-size: 18px; }
-  .stat span { font-size: 11px; }
+  .viewport-toggle {
+    flex: 1 1 auto;
+  }
+  .lang-toggle button,
+  .viewport-toggle button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
   .catalog-bar { display: block; }
   .toolbar-note { margin-top: 6px; }
   .grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
@@ -6823,42 +6887,41 @@ a:focus-visible {
     align-items: stretch;
   }
   .prompt-menu {
-    width: min(260px, calc(100vw - 36px));
+    width: min(340px, calc(100vw - 36px));
   }
-  .prompt-picker,
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .actions > button,
   .actions a {
-    flex: 1 1 100%;
-    max-width: none;
+    justify-self: stretch;
   }
 }
 </style>
 </head>
 <body>
   <header class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow" data-i18n="eyebrow">Style Library</p>
-      <h1>Design Preview Library</h1>
-      <p class="meta">${allStyles.length} visual style previews, viewport ${viewportWidth}x${viewportHeight}</p>
-      <p class="hint">Browse full-page style samples, open any preview, or copy a detailed prompt that carries layout, color, typography, component, motion, and implementation rules.</p>
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">Style Library</p>
+        <h1>Design Preview Library</h1>
+        <p class="meta">${allStyles.length} visual style previews, desktop and mobile ready</p>
+        <p class="hint">Browse full-page style samples, open any preview, or copy a detailed prompt that carries layout, color, typography, component, motion, and implementation rules.</p>
+        <p class="hero-meta" data-i18n="heroMeta">${allStyles.length} styles · Desktop ${viewportWidth}x${viewportHeight} · Mobile ${mobileViewportWidth}x${mobileViewportHeight} · EN/ZH prompts</p>
+      </div>
+      <div class="hero-actions" aria-label="Preview controls">
+        <div class="control-stack">
+          <div class="lang-toggle" aria-label="Language">
+            <button type="button" class="active" data-lang="en">EN</button>
+            <button type="button" data-lang="zh">中文</button>
+          </div>
+          <div class="viewport-toggle" aria-label="Preview image viewport">
+            <button type="button" class="active" data-preview-view="desktop" data-i18n="viewDesktop" aria-pressed="true">Desktop</button>
+            <button type="button" data-preview-view="mobile" data-i18n="viewMobile" aria-pressed="false">Mobile</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <aside class="hero-panel" aria-label="Preview controls">
-      <div class="control-stack">
-        <div class="lang-toggle" aria-label="Language">
-          <button type="button" class="active" data-lang="en">EN</button>
-          <button type="button" data-lang="zh">中文</button>
-        </div>
-        <div class="viewport-toggle" aria-label="Preview image viewport">
-          <button type="button" class="active" data-preview-view="desktop" data-i18n="viewDesktop" aria-pressed="true">Desktop</button>
-          <button type="button" data-preview-view="mobile" data-i18n="viewMobile" aria-pressed="false">Mobile</button>
-        </div>
-      </div>
-      <div class="stat-grid" aria-label="Preview summary">
-        <div class="stat"><b>${allStyles.length}</b><span data-i18n="statStyles">Styles</span></div>
-        <div class="stat"><b>${viewportWidth}</b><span data-i18n="statWidth">Preview width</span></div>
-        <div class="stat"><b>${viewportHeight}</b><span data-i18n="statHeight">Preview height</span></div>
-      </div>
-    </aside>
   </header>
   <section class="catalog-bar" aria-label="Catalog summary">
     <p class="count" data-i18n="sectionCount">${allStyles.length} continuous visual styles, numbered Style 01 through Style ${allStyles.length}.</p>
@@ -6873,18 +6936,22 @@ ${cards}
     en: {
       eyebrow: 'Style Library',
       title: 'Design Preview Library',
-      meta: '${allStyles.length} visual style previews with desktop and mobile assets',
+      meta: '${allStyles.length} visual style previews, desktop and mobile ready',
       hint: 'Browse full-page style samples, open any preview, or copy a detailed prompt that carries layout, color, typography, component, motion, and implementation rules.',
+      heroMeta: '${allStyles.length} styles · Desktop ${viewportWidth}x${viewportHeight} · Mobile ${mobileViewportWidth}x${mobileViewportHeight} · EN/ZH prompts',
       sectionCount: '${allStyles.length} continuous visual styles, numbered Style 01 through Style ${allStyles.length}.',
       toolbarNote: 'Each card shows the complete screenshot, core mood, best-fit use case, palette, and actions.',
       statStyles: 'Styles',
       statWidth: 'Preview width',
       statHeight: 'Preview height',
+      statDesktop: 'Desktop',
+      statMobile: 'Mobile',
       viewDesktop: 'Desktop',
       viewMobile: 'Mobile',
       bestFor: 'Best for',
       style: 'Style',
-      copyPrompt: 'Copy prompt',
+      promptChooser: 'Page type',
+      copyPrompt: 'Copy selected prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
       promptFallback: 'Copy this style prompt:'
@@ -6892,18 +6959,22 @@ ${cards}
     zh: {
       eyebrow: '风格库',
       title: '页面设计预览库',
-      meta: '${allStyles.length} 个视觉风格预览，包含桌面端和移动端资源',
+      meta: '${allStyles.length} 个视觉风格预览，已包含桌面端和移动端资源',
       hint: '浏览完整页面样张，打开任意预览，或复制包含布局、颜色、字体、组件、动效和实现规则的详细提示词。',
+      heroMeta: '${allStyles.length} 个风格 · 桌面端 ${viewportWidth}x${viewportHeight} · 移动端 ${mobileViewportWidth}x${mobileViewportHeight} · 中英文提示词',
       sectionCount: '${allStyles.length} 个连续编号的视觉风格，范围为 Style 01 到 Style ${allStyles.length}。',
       toolbarNote: '每张卡片展示完整截图、核心气质、适用场景、色彩和操作入口。',
       statStyles: '风格',
       statWidth: '预览宽度',
       statHeight: '预览高度',
+      statDesktop: '桌面端',
+      statMobile: '移动端',
       viewDesktop: '桌面端',
       viewMobile: '移动端',
       bestFor: '适合',
       style: '风格',
-      copyPrompt: '复制提示词',
+      promptChooser: '页面类型',
+      copyPrompt: '复制所选提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
       promptFallback: '复制这个风格提示词：'
@@ -6960,6 +7031,20 @@ ${cards}
     const next = options[(index + direction + options.length) % options.length];
     next?.focus();
   }
+  function getPromptCopyText(picker) {
+    const selectedKind = picker?.dataset.selectedKind || 'full';
+    const selectedOption = picker?.querySelector('[data-prompt-option="' + selectedKind + '"]') || picker?.querySelector('[data-prompt-option]');
+    return selectedOption?.dataset[activeLang + 'Copy'] || copy[activeLang].copyPrompt;
+  }
+  function updatePromptCopyButton(button) {
+    const picker = button.closest('.actions')?.querySelector('[data-prompt-picker]');
+    button.textContent = getPromptCopyText(picker);
+  }
+  function updatePromptCopyButtons() {
+    document.querySelectorAll('[data-prompts]').forEach((button) => {
+      if (!button.classList.contains('copied')) updatePromptCopyButton(button);
+    });
+  }
   function updatePromptPickerLabels() {
     document.querySelectorAll('[data-prompt-picker]').forEach((picker) => {
       const selectedKind = picker.dataset.selectedKind || 'full';
@@ -6968,7 +7053,10 @@ ${cards}
       if (label && selectedOption) label.textContent = selectedOption.dataset[activeLang];
       picker.querySelectorAll('[data-prompt-option]').forEach((option) => {
         const active = option.dataset.promptOption === selectedKind;
-        option.textContent = option.dataset[activeLang];
+        const title = option.querySelector('[data-prompt-option-title]');
+        const description = option.querySelector('[data-prompt-option-description]');
+        if (title) title.textContent = option.dataset[activeLang];
+        if (description) description.textContent = option.dataset[activeLang + 'Description'];
         option.classList.toggle('active', active);
         option.setAttribute('aria-selected', String(active));
       });
@@ -6979,7 +7067,7 @@ ${cards}
     const copyButton = picker.closest('.actions').querySelector('[data-prompts]');
     picker.dataset.selectedKind = option.dataset.promptOption;
     updatePromptPickerLabels();
-    copyButton.textContent = copy[activeLang].copyPrompt;
+    updatePromptCopyButton(copyButton);
     copyButton.classList.remove('copied');
     closePromptPicker(picker, true);
   }
@@ -6996,6 +7084,7 @@ ${cards}
       node.textContent = node.dataset[lang];
     });
     updatePromptPickerLabels();
+    updatePromptCopyButtons();
     document.querySelectorAll('.lang-toggle button').forEach((button) => {
       button.classList.toggle('active', button.dataset.lang === lang);
     });
@@ -7070,8 +7159,8 @@ ${cards}
         button.classList.add('copied');
         status.textContent = copy[activeLang].copied;
         setTimeout(() => {
-          button.textContent = copy[activeLang].copyPrompt;
           button.classList.remove('copied');
+          updatePromptCopyButton(button);
         }, 1600);
       } catch {
         window.prompt(copy[activeLang].promptFallback, value);
@@ -7134,6 +7223,12 @@ async function main() {
   writeStyleFiles();
   writeStyleIndex();
   fs.mkdirSync(outputDir, { recursive: true });
+
+  if (process.env.PREVIEW_INDEX_ONLY === "1") {
+    writeIndex();
+    console.log(`Done. Open ${path.relative(rootDir, path.join(outputDir, "index.html"))}`);
+    return;
+  }
 
   const htmlFiles = findStyleHtmlFiles();
   console.log(`Generating ${htmlFiles.length} style previews with ${chromeWait}ms wait...`);
