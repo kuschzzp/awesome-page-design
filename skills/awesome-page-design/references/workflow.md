@@ -1,13 +1,17 @@
 # Awesome Page Design Workflow
 
-Use this workflow whenever the skill is helping with page design, visual direction, UI review, UI polish, or implementation.
+Use this workflow whenever the skill is helping with page design, visual direction, local UI patching, UI review, UI polish, or implementation.
 
 ## 1. Understand The Design Task
 
-Before choosing a style, summarize the user's request as a short design brief:
+Before choosing a style or patching an existing page, summarize the user's request as a short design brief:
 
 - Product or site type.
 - Page, screen, or component type.
+- Task scale: new page, page redesign, local UI patch, component polish, implementation compliance, or design-system output.
+- Target region when editing an existing page.
+- Neighbor regions that may be affected by the patch.
+- Existing visual system when available: tokens, typography, density, components, icons, and state treatments.
 - Primary workflow or conversion goal.
 - Primary content object: table row, document, asset, lesson, incident, product, lead, report, file, message, or media frame.
 - Likely layout archetype: operational workbench, data console, creation studio, landing narrative, campaign poster, editorial/docs, commerce catalog, onboarding flow, portfolio/object focus, or touch utility.
@@ -19,19 +23,31 @@ Before choosing a style, summarize the user's request as a short design brief:
 - Light, dark, or mixed preference when known.
 - Whether the page needs photography, product images, illustration, or no imagery.
 
-If important context is missing, ask only what is needed to choose responsibly. If the user explicitly delegates the choice, choose from the library and explain why.
+If important context is missing, ask only what is needed to choose or patch responsibly. If the user explicitly delegates the choice, choose from the library and explain why.
 
-## 2. Route The Work Mode
+## 2. Route The Task Scale And Work Mode
 
-Decide which mode best fits the user's request:
+Decide task scale before selecting visual style:
 
-- `Style selection`: the user needs a visual direction for a new page, screen, or component.
+- `New page`: the user wants a new site, page, dashboard, admin panel, landing page, app screen, or full experience. Use page-level style selection when visual direction is undecided.
+- `Page redesign`: the user wants the whole page rethought, less generic, less AI-looking, or visually redirected. Audit the current page first, then decide whether to preserve and repair or choose a new direction.
+- `Local UI patch`: the user wants one existing region improved, such as a toolbar, table, modal, form block, card group, sidebar, filter bar, empty state, toast, drawer, tabs, or action row. Preserve the current page system and read `local-ui-patch.md`.
+- `Component polish`: the user wants a component or component family refined. Preserve existing tokens and variants, then use `component-implementation.md`.
+- `Implementation compliance`: the user wants real UI code reviewed or fixed for usability, accessibility, state handling, responsive behavior, forms, motion, images, or text overflow. Use `interface-compliance.md`.
+- `Design system output`: the user wants reusable rules for future pages. Follow `design-system-output.md`.
+
+Then decide which mode best fits the user's request:
+
+- `Style selection`: the user needs a page-level visual direction for a new page, full screen, or explicit redesign.
 - `Design audit`: the user wants an existing UI reviewed, made less generic, made more elegant, or made more professional.
+- `Local UI patch`: the user wants a targeted improvement while keeping the surrounding page and product language intact.
 - `Implementation polish`: the user has a direction and wants refinement of visual quality, layout, states, responsive behavior, icons, or media.
 - `Implementation compliance`: the user wants real UI code reviewed or fixed for usability, accessibility, state handling, responsive behavior, forms, motion, images, or text overflow.
 - `Design system output`: the user wants reusable rules for future pages.
 
 For `Design audit`, read `quality-checklist.md`, `anti-generic-ui.md`, and `interface-compliance.md` before recommending changes.
+
+For `Local UI patch`, read `local-ui-patch.md`, inspect the target region and neighbor regions, preserve the existing system, and escalate to page redesign only when a local patch cannot solve the problem.
 
 For `Implementation polish`, keep the selected style visible while improving layout rhythm, typography, component states, responsive behavior, and implementation compliance.
 
@@ -41,7 +57,7 @@ For `Design system output`, follow `design-system-output.md` and avoid source la
 
 ## 3. Choose The Layout Archetype
 
-Before selecting a visual style, read `layout-guidance.md` and choose the structure that fits the user's real page job.
+Before selecting a page-level visual style, read `layout-guidance.md` and choose the structure that fits the user's real page job.
 
 Name these decisions before implementation:
 
@@ -55,9 +71,15 @@ Name these decisions before implementation:
 
 Do not use a marketing hero layout for dashboards, admin panels, CRM workspaces, analytics screens, consoles, editors, tables, or forms unless the user explicitly asks for a public marketing page.
 
+For local UI patches, do not re-choose the whole layout archetype unless the target issue comes from page-level structure. Instead, name the current local structure, target region, neighbor regions, and responsive behavior that must be preserved.
+
 ## 4. Run The Preview Selection Gate
 
-When the user has not already chosen a visual style, do not implement the final UI yet. First guide the user to preview and choose.
+When the user has not already chosen a page-level visual style, do not implement the final page-level UI yet. First guide the user to preview and choose.
+
+Use this gate for new pages, full app screens, page redesigns, and page-level visual direction decisions.
+
+Do not run this gate for a local UI patch, component polish, or pure implementation compliance task unless the user asks for a new direction or the current visual system is the blocker.
 
 Required preview flow:
 
@@ -114,7 +136,7 @@ Good starting points if you want me to choose:
 
 ## 6. Set The Design Dials
 
-After a style is selected or delegated, set these dials from `design-dials.md`:
+After a page-level style is selected or delegated, set these dials from `design-dials.md`:
 
 - Layout variance: low, medium, or high.
 - Motion intensity: none, subtle, or expressive.
@@ -132,25 +154,17 @@ Also name the prompt type being applied:
 
 ## 7. Read The Right References
 
-After selection:
+After task scale and selection, load only the references needed for the current mode so the skill stays focused. Always read `usage-principles.md` for library rules and sample-layout constraints.
 
-- Read `usage-principles.md`.
-- Read `layout-guidance.md`.
-- Read `design-dials.md`.
-- Read `anti-generic-ui.md`.
-- Read `interface-compliance.md` when reviewing or editing real UI code.
-- Read `component-implementation.md` when buttons, forms, tables, overlays, or stateful components are involved.
-- Read `motion-guidance.md` when adding, reviewing, or preserving animation.
-- Read `style-index.md` when choosing or comparing visual styles.
-- Read the chosen style manual in `references/styles/`.
-- Read the chosen style manual's `Page Adaptation Guide` before applying the visual treatment.
-- Read `icon-guidance.md` when the page uses icons, toolbars, navigation, empty states, or compact actions.
-- Read `design-system-output.md` when writing or updating a reusable design guide.
-- Use the matching PNG/HTML preview only as a visual reference, not as a page template.
+- Page-level work (`New page`, `Page redesign`, `Style selection`): read `layout-guidance.md`, `style-index.md`, `design-dials.md` after selection, the chosen style manual and its `Page Adaptation Guide`, and `anti-generic-ui.md`. Use matching PNG/HTML previews only as visual references, not templates.
+- `Local UI patch`: read `local-ui-patch.md`; add `component-implementation.md` for stateful targets and `interface-compliance.md` for real code changes. Read `motion-guidance.md` or `icon-guidance.md` only when the target uses motion or icons. Do not read `design-dials.md`, `style-index.md`, or a style manual unless the user asks for a new page-level direction or the existing system is the blocker.
+- `Component polish`: read `component-implementation.md`; add `interface-compliance.md` for real code, `local-ui-patch.md` when the component lives inside a page region, and motion or icon guidance only when used.
+- `Implementation compliance`: read `interface-compliance.md`; add `component-implementation.md` for component states, forms, tables, overlays, or feedback patterns; add motion, icon, or local patch guidance only when the fix touches those areas.
+- `Design system output`: read `design-system-output.md` plus usage, layout, component, and interface rules as inputs. Read a selected style manual only if the design system is explicitly based on a chosen style.
 
 ## 8. Implement The Design
 
-Translate the selected style into concrete implementation primitives:
+Translate the selected style or existing local system into concrete implementation primitives:
 
 - Page structure, layout archetype, top-level regions, action placement, and information architecture that fit the real product.
 - Responsive collapse behavior for navigation, filters, dense tables, media, toolbars, and primary actions.
@@ -163,7 +177,16 @@ Translate the selected style into concrete implementation primitives:
 - Icon rules for source family, stroke/fill logic, size, alignment, labels, and action semantics.
 - Image treatment when the page benefits from media. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
 
-Redesign page structure around the user's actual content and workflow. Do not copy sample content, sample section order, sample button shapes, or sample grid structure unless the user explicitly asks for a demo page using the bundled example.
+For page-level work, redesign page structure around the user's actual content and workflow. Do not copy sample content, sample section order, sample button shapes, or sample grid structure unless the user explicitly asks for a demo page using the bundled example.
+
+For local UI patches, define the patch boundary before editing:
+
+- Target region to change.
+- Neighbor regions to protect or lightly adjust.
+- Existing tokens, components, icon rules, density, and state treatment to preserve.
+- Minimum shared component or token change, if any.
+
+Do not rewrite the whole page layout, introduce a new visual language, or change unrelated copy/data/behavior for a local patch. If the local issue is caused by page-level structure, explain the escalation and move to page redesign.
 
 When the chosen style has a strong structural identity, preserve that identity in a context-aware way:
 
@@ -175,7 +198,7 @@ When the chosen style has a strong structural identity, preserve that identity i
 
 ## 9. Run The Implementation Compliance Gate
 
-When the task touches real UI code, generated HTML, or a page implementation, check the result against `interface-compliance.md`, `component-implementation.md`, and `motion-guidance.md` before final visual approval.
+When the task touches real UI code, generated HTML, or a page implementation, check the result against `interface-compliance.md` and `component-implementation.md` before final visual approval. Add `motion-guidance.md` when motion exists or is changed. For local patches, also check `local-ui-patch.md`.
 
 Required checks:
 
@@ -191,6 +214,7 @@ Required checks:
 - Motion: transitions have semantic purpose, list exact properties, avoid `transition: all`, and respect reduced-motion preferences.
 - Product state: filters, tabs, pagination, expanded panels, and selected objects show state visibly; use URL state when the product expects refresh, sharing, or back navigation.
 - Feedback quality: error, warning, success, loading, and empty states explain what happened and what the user can do next.
+- Local patch boundary: the changed region still belongs to the existing page system and does not break adjacent regions.
 
 Audit output:
 
@@ -205,21 +229,23 @@ Only skip this gate for pure style selection, text-only analysis, or tiny static
 
 Before final response after implementation, check:
 
-- The layout archetype matches the user's page job and primary content object.
-- The top-level regions, action model, and responsive collapse are explicit enough to implement.
-- The selected visual style is named and visibly reflected in color, typography, surfaces, imagery, components, and states.
+- For page-level work, the layout archetype matches the user's page job and primary content object.
+- For page-level work, the top-level regions, action model, and responsive collapse are explicit enough to implement.
+- For page-level work, the selected visual style is named and visibly reflected in color, typography, surfaces, imagery, components, and states.
 - The final UI is adapted to the user's real product and does not copy the sample HTML layout.
-- Similar styles have not collapsed into the same generic SaaS/admin shell.
-- The page does not reuse the same layout skeleton, button system, or card rhythm across unrelated styles.
+- Local patches preserve the existing page system, stay within the target and necessary neighbor regions, and do not introduce a conflicting visual language.
+- For style selection or preview-library work, similar styles have not collapsed into the same generic SaaS/admin shell.
+- For style selection or preview-library work, the page does not reuse the same layout skeleton, button system, or card rhythm across unrelated styles.
 - The anti-generic UI rules have been applied: no filler hero, no default three-card rhythm, no vague copy, and no decorative effect substituting for hierarchy.
 - Text does not overflow, overlap, or become unreadable.
 - Buttons, inputs, cards, tables, drawers, alerts, loading states, empty states, and disabled states are styled consistently when relevant.
 - Icons use one coherent visual system when relevant.
 - Desktop and mobile layouts preserve hierarchy and usable controls.
+- Target and neighbor regions have been re-checked after local patches.
 - Preview assets, screenshots, and docs are regenerated or updated when changing this skill's own library.
-- Copied style prompts include layout archetype, layout structure, tokens, typography, components, buttons, icons/media, states, constraints, and verification checks.
-- Copied style prompts include the appropriate task type: full, landing page, dashboard, admin panel, or mobile.
-- Copied style prompts include implementation compliance: semantic controls, accessible labels, focus-visible states, component state matrix, responsive text handling, stable media, and reduced-motion requirements.
+- When updating copied style prompts, include layout archetype, layout structure, tokens, typography, components, buttons, icons/media, states, constraints, and verification checks.
+- When updating copied style prompts, include the appropriate task type: full, landing page, dashboard, admin panel, or mobile.
+- When updating copied style prompts, include implementation compliance: semantic controls, accessible labels, focus-visible states, component state matrix, responsive text handling, stable media, and reduced-motion requirements.
 - For this skill's own previews, desktop and mobile PNG assets exist for every style.
 - For this skill's own previews, run `npm run validate` after `npm run previews`.
 - When generating screenshots for this skill, allow enough time for page rendering before capturing.
@@ -227,13 +253,9 @@ Before final response after implementation, check:
 
 ## 11. Explain The Result
 
-When reporting back, include:
+Match the final explanation to the work mode so the report does not force page-level language onto local work.
 
-- The chosen style.
-- The chosen layout archetype.
-- The selected design dials when relevant.
-- Why it fits the user's page.
-- Which visual rules were reused.
-- Which structure was adapted to the actual product.
-- Which implementation compliance checks were applied when code was changed.
-- Any verification that was run.
+- Page-level style selection, new pages, or redesigns: include the chosen style, layout archetype, design dials when relevant, why it fits, what structure was adapted to the real product, which visual rules were reused, compliance checks, and verification.
+- Local UI patches: include the target region changed, existing system preserved, neighbor regions checked or adjusted, states/responsive/accessibility details improved, page-level redesign risk if any, and verification including screenshots when UI changed.
+- Implementation compliance or design audit: include highest-priority findings first, file and line or page region, concrete fix or recommendation, remaining risks or test gaps, and verification.
+- Design system output: include reusable rules created or updated, covered page types/components/tokens/states/responsive behaviors, how future pages should apply the rules, and verification.

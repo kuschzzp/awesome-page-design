@@ -24,7 +24,7 @@ It gives an agent a reusable library of 21 web layout-aware visual directions, a
 
 This is **not** a fixed page-template library. The bundled HTML files are richer clickable previews so users can compare visual directions, copy a task-specific prompt, and ask an agent to apply the chosen style to their real product. Agents should reuse the visual language and redesign the actual page structure around the user's content and workflow.
 
-The Skill focuses on layout planning, visual style selection, UI quality review, implementation compliance, implementation polish, and reusable design guidance.
+The Skill focuses on layout planning, visual style selection, local UI patching for existing pages, UI quality review, implementation compliance, implementation polish, and reusable design guidance.
 
 ## Install
 
@@ -106,28 +106,34 @@ After installation, ask your agent to use the skill:
 Use $awesome-page-design to choose a distinctive visual style for this dashboard.
 Apply one of the awesome-page-design styles to this landing page without copying the sample layout.
 Use awesome-page-design to make this admin panel feel professional but less generic.
+Use awesome-page-design to polish this table toolbar while preserving the existing page style.
+Use awesome-page-design to improve this modal without redesigning the whole page.
 ```
 
 The skill will guide the agent to:
 
 1. Read the usage principles.
-2. Summarize your request as a short selection brief.
-3. Identify the page job, primary content object, action model, layout archetype, and responsive collapse behavior.
-4. Open or provide the preview gallery when no style has been chosen yet.
-5. Ask you to copy one task-specific style prompt from the gallery: full, landing page, dashboard, admin panel, or mobile.
-6. Recommend a small candidate shortlist only when you explicitly ask the agent to choose.
-7. Read the matching style notes.
-8. Set design dials for layout variance, motion intensity, and visual density.
-9. Apply the chosen style through concrete layout structure, CSS variables, theme tokens, component detail rules, button rules, feedback rules, spacing rules, responsive rules, state rules, or component classes.
-10. Apply anti-generic UI checks and similarity guardrails when candidate styles are visually close.
-11. Run implementation compliance checks for semantic controls, accessible labels, focus states, responsive text handling, stable media, reduced motion, and useful empty/error/loading states when real UI code is involved.
-12. Redesign the real product layout instead of copying the sample HTML.
+2. Route your request by task scale: new page, page redesign, local UI patch, component polish, implementation compliance, or design-system output.
+3. Summarize your request as a short selection or patch brief.
+4. Identify the page job, primary content object, action model, layout archetype, responsive collapse behavior, and target region when editing an existing page.
+5. Open or provide the preview gallery for page-level visual direction when no style has been chosen yet.
+6. For existing local patches, preserve the current page style and inspect the target region plus nearby regions before editing.
+7. Ask you to copy one task-specific style prompt from the gallery for page-level work: full, landing page, dashboard, admin panel, or mobile.
+8. Recommend a small candidate shortlist only when you explicitly ask the agent to choose.
+9. Read the matching style notes or the local patch workflow.
+10. Set design dials for layout variance, motion intensity, and visual density when a page-level style is selected.
+11. Apply the chosen or existing style through concrete layout structure, CSS variables, theme tokens, component detail rules, button rules, feedback rules, spacing rules, responsive rules, state rules, or component classes.
+12. Apply anti-generic UI checks and similarity guardrails when candidate styles are visually close.
+13. Run implementation compliance checks for semantic controls, accessible labels, focus states, responsive text handling, stable media, reduced motion, and useful empty/error/loading states when real UI code is involved.
+14. Redesign the real product layout only when the task calls for page-level work instead of copying the sample HTML.
 
 ### Required Selection Gate
 
 For full pages and app screens, the Skill should not silently pick a final look after you describe the requirement. It should first send you to the preview gallery so you can compare the 21 visual styles, then continue after you select the prompt you want.
 
 If you prefer the agent to choose, say so explicitly. The agent should then propose 2-3 style candidates, explain the layout and visual trade-offs briefly, and ask for confirmation before final implementation unless you explicitly tell it to proceed.
+
+For local changes to an existing page, the Skill should not force a new style selection. It should inspect the current page system, preserve nearby tokens and components, patch the target region, and only escalate to page redesign when the local issue comes from the full page structure.
 
 ## Preview Styles
 
@@ -190,6 +196,7 @@ skills/awesome-page-design/
 │   ├── workflow.md                  # Required preview selection and implementation workflow
 │   ├── usage-principles.md          # How to use the library correctly
 │   ├── layout-guidance.md           # Layout archetypes and responsive structure rules
+│   ├── local-ui-patch.md            # Existing-page local patch workflow
 │   ├── design-dials.md              # Layout variance, motion intensity, and visual density controls
 │   ├── quality-checklist.md         # UI quality review checklist
 │   ├── anti-generic-ui.md           # Rules for avoiding default-looking generated pages

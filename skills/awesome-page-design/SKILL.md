@@ -1,6 +1,6 @@
 ---
 name: awesome-page-design
-description: Use this skill as a page design assistant for designing, reviewing, or improving websites, web apps, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce/CRM/analytics screens, portfolios, onboarding flows, and UI components that need layout or visual direction. It helps choose and apply layout archetypes, information architecture, responsive structure, color, typography, spacing, surfaces, borders, radius, shadows/material effects, component tone, buttons, states, icons/media, density, mood, and anti-generic UI checks. Trigger it for better page design, colors, layout, visual style, elegance, polish, less AI-looking UI, or reference alignment. Before final implementation, guide the user to preview and choose a style unless they delegate the choice.
+description: Use this skill as a page design assistant for designing, reviewing, or improving websites, web apps, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce/CRM/analytics screens, portfolios, onboarding flows, and UI components. It helps choose page-level visual direction and also patch existing UI locally while preserving the current design system. Trigger it for better page design, colors, layout, visual style, elegance, polish, less AI-looking UI, component refinement, local UI fixes, or implementation compliance. For new pages, guide the user to preview and choose a style unless they delegate the choice. For existing local patches, inspect and preserve the surrounding UI before changing it.
 ---
 
 # Awesome Page Design
@@ -14,27 +14,39 @@ This is a layout-aware visual direction library, not a copy-paste template libra
 The bundled HTML previews are richer clickable examples so the user can judge the style. They are not production layouts to clone.
 
 Do not treat the styles as palette swaps. Adjacent styles must differ by layout archetype, information architecture, component shape, button language, typography rhythm, density, media direction, and state treatment when the product context supports it.
-
 ## Required Workflow
 
 Follow `references/workflow.md` for the full workflow. The short version is:
 
 1. Understand the product, screen type, primary workflow, content object, audience, density, mood, device needs, and image needs.
-2. Route the request as style selection, design audit, implementation polish, implementation compliance, or design-system output.
-3. Choose a layout archetype from `references/layout-guidance.md` before treating the task as visual styling.
-4. If visual direction is undecided, run the preview selection gate before final implementation.
-5. Set the prompt type and design dials: full, landing, dashboard, admin, or mobile; layout variance, motion intensity, and visual density.
-6. Read the minimum relevant references listed below, then read the selected style manual in `references/styles/`.
-7. Apply the chosen language to the user's real product structure; redesign layout around actual content and workflow.
-8. Before final approval, run the implementation compliance gate from `references/workflow.md`.
+2. Route the request by task scale: new page, page redesign, local UI patch, component polish, implementation compliance, or design-system output.
+3. For new pages or explicit redesigns, choose a layout archetype from `references/layout-guidance.md` before treating the task as visual styling.
+4. For local UI patches, read `references/local-ui-patch.md`, preserve the existing page system, and avoid forcing a new visual direction.
+5. If page-level visual direction is undecided, run the preview selection gate before final implementation.
+6. Set the prompt type and design dials when a page-level style is selected: full, landing, dashboard, admin, or mobile; layout variance, motion intensity, and visual density.
+7. Read the minimum relevant references listed below, then read the selected style manual in `references/styles/` when a style is being applied.
+8. Apply the chosen or existing language to the user's real product structure; redesign layout around actual content and workflow only when the task calls for page-level work.
+9. Before final approval, run the implementation compliance gate from `references/workflow.md`.
+
+## Task Scale Router
+
+Route by scope before selecting visual style:
+
+- `New page`: the user asks to create a new site, page, dashboard, admin panel, landing page, app screen, or full experience. Use the preview selection gate when no style is chosen.
+- `Page redesign`: the user asks to rethink the whole page, remove AI-looking structure, change the visual direction, or make the full page more professional. Audit first, then use the preview selection gate if a new direction is needed.
+- `Local UI patch`: the user asks to improve one region of an existing page such as a table toolbar, modal, section, card area, sidebar, filter bar, form block, empty state, toast, drawer, tabs, or action row. Preserve the current design system and read `references/local-ui-patch.md`.
+- `Component polish`: the user asks to refine a component or component family such as buttons, inputs, menus, cards, tables, overlays, navigation, or feedback. Use `references/component-implementation.md` and preserve existing tokens and variants.
+- `Implementation compliance`: the user asks to review or fix usability, accessibility, responsive behavior, state handling, motion, images, or text overflow. Use `references/interface-compliance.md` and do not require style selection unless visual direction is the blocker.
+- `Design system output`: the user wants future pages to stay consistent. Produce or update a project-level `DESIGN.md` using `references/design-system-output.md`.
 
 ## Work Modes
 
-Use the user's wording to select the right mode:
+Use the user's wording to select the right mode after task scale is known:
 
-- `Style selection`: the user is starting a new page or wants a different visual direction. Run the preview selection gate.
-- `Design audit`: the user says the current page is ugly, generic, messy, similar, too plain, too AI-looking, or not elegant. Inspect the existing UI before choosing fixes.
-- `Implementation polish`: the user already has a design direction and wants the page refined. Focus on layout rhythm, typography, component states, responsive behavior, icon/media consistency, and final screenshots.
+- `Style selection`: the user is starting a new page, wants a different page-level visual direction, or explicitly asks to choose from the style library. Run the preview selection gate.
+- `Design audit`: the user says the current page is ugly, generic, messy, similar, too plain, too AI-looking, or not elegant. Inspect the existing UI before choosing local fixes or page redesign.
+- `Local UI patch`: the user wants a specific existing region improved without changing the whole page. Preserve the current visual system, patch only the necessary boundary, and verify neighbor regions.
+- `Implementation polish`: the user already has a design direction and wants the page or component refined. Focus on layout rhythm, typography, component states, responsive behavior, icon/media consistency, and final screenshots.
 - `Implementation compliance`: the user asks to review or fix real UI code. Check usability, accessibility, focus, forms, responsive behavior, state handling, motion, images, and content overflow before judging the style complete.
 - `Design system output`: the user wants future pages to stay consistent. Produce or update a project-level `DESIGN.md` using `references/design-system-output.md`.
 
@@ -42,9 +54,11 @@ For audit and polish work, still use the preview gallery when visual direction i
 
 ## Preview Selection Gate
 
-When the user describes a UI request but has not already chosen a visual style, pause before implementing the final UI. First help the user select from the preview gallery.
+When the user describes a page-level UI request but has not already chosen a visual style, pause before implementing the final UI. First help the user select from the preview gallery.
 
-Use this gate for complete pages, app screens, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce consoles, CRM workspaces, analytics pages, portfolios, onboarding flows, and any task where visual direction is still undecided.
+Use this gate for complete pages, app screens, dashboards, landing pages, admin panels, product pages, docs portals, ecommerce consoles, CRM workspaces, analytics pages, portfolios, onboarding flows, page redesigns, and any page-level task where visual direction is still undecided.
+
+Do not force this gate for local UI patches, component polish, or implementation compliance work on an existing page. In those cases, preserve the current page language unless the user asks for a new direction or the existing system is the blocker.
 
 Required flow:
 
@@ -63,7 +77,7 @@ Required flow:
 5. If the user says the agent should choose, recommend 2-3 style candidates, explain the differences briefly, apply the similarity guardrails, and ask for confirmation before final implementation unless the user explicitly says to proceed.
 6. If the client cannot open local previews, provide text candidates from `references/style-index.md` as the fallback selection surface.
 
-Only skip this gate when the user has already named a specific style, asks only for analysis/review, asks for a tiny component that does not need page-level direction, or explicitly says to choose and proceed without confirmation.
+Only skip this gate when the user has already named a specific style, asks only for analysis/review, asks for a local patch or component polish that does not need page-level direction, or explicitly says to choose and proceed without confirmation.
 
 ## Reference Navigation
 
@@ -71,6 +85,7 @@ Only skip this gate when the user has already named a specific style, asks only 
 - `references/style-index.md`: concise index of the 21 visual styles, numbered continuously from Style 01 to Style 21.
 - `references/usage-principles.md`: rules for using the library correctly.
 - `references/layout-guidance.md`: layout archetypes, information architecture rules, responsive structure, and anti-template layout checks.
+- `references/local-ui-patch.md`: local patch workflow for existing pages, including context scan, patch boundaries, preserving the current system, neighbor checks, and escalation to page redesign.
 - `references/design-dials.md`: layout variance, motion intensity, and visual density controls.
 - `references/quality-checklist.md`: review checklist for previews and real UI implementation.
 - `references/anti-generic-ui.md`: rules for avoiding default-looking generated pages.
@@ -120,5 +135,7 @@ When explaining a style choice to the user, keep it practical:
 - State that page structure will be adapted to the actual product need.
 
 When coding, translate the selected style into concrete CSS variables, component classes, or framework theme tokens.
+
+When patching existing UI locally, preserve the current system first: reuse nearby tokens, components, density, icon rules, and state treatments; only escalate to page-level redesign when the local problem comes from the full page structure.
 
 When editing this skill's own preview library, regenerate assets with `npm run previews`, then run `npm run validate` before final review.

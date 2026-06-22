@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Awesome Page Design is a layout-aware visual style prompt library for website and web app design. It helps agents and developers avoid generic-looking pages by selecting the right page structure and a strong visual language before implementation.
+Awesome Page Design is a layout-aware visual style prompt library and UI quality workflow for website and web app design. It helps agents and developers avoid generic-looking pages by selecting the right page structure and a strong visual language for new pages, and by preserving the current design system when patching existing UI locally.
 
 ## Non-Negotiable Rule
 
@@ -36,9 +36,11 @@ Those must be redesigned for the user's real product and workflow.
 
 ## Layout Comes First
 
-Before choosing a style, identify the page job, primary content object, main action model, and likely layout archetype from `layout-guidance.md`.
+Before choosing a page-level style, identify the page job, primary content object, main action model, and likely layout archetype from `layout-guidance.md`.
 
 Use the visual style to shape how the layout feels. Do not let the sample preview decide the final structure.
+
+For an existing-page local patch, identify the target region, neighbor regions, existing tokens, component variants, density, icons, state treatment, and responsive behavior before changing CSS or components. Use `local-ui-patch.md` and preserve the current system unless the user asks for a new direction.
 
 Examples:
 
@@ -49,7 +51,9 @@ Examples:
 
 ## Preview Selection Gate
 
-When the user describes a UI request without naming a visual style, the agent should not jump straight into final implementation. First turn the request into a short selection brief, then open or provide the preview gallery so the user can choose.
+When the user describes a page-level UI request without naming a visual style, the agent should not jump straight into final implementation. First turn the request into a short selection brief, then open or provide the preview gallery so the user can choose.
+
+Do not force this gate for a local UI patch, component polish, or pure implementation compliance task on an existing page. In those cases, inspect the existing page system and patch the requested region first.
 
 The selection brief should cover:
 
@@ -68,19 +72,22 @@ If local previews cannot be opened, use `style-index.md` as the text fallback fo
 
 ## Work Modes
 
-Use the skill in five modes:
+Use the skill in these modes:
 
 - `Style selection`: choose a visual direction before building.
 - `Design audit`: inspect an existing page for weak hierarchy, generic layout, unclear states, inconsistent icons, low contrast, or poor responsive behavior.
+- `Local UI patch`: improve a target region of an existing page while preserving nearby tokens, components, density, icons, and state treatment.
 - `Implementation polish`: refine an existing implementation while preserving the chosen style.
 - `Implementation compliance`: review or fix real UI code for semantic controls, focus, forms, component states, responsive behavior, text handling, media stability, and motion.
 - `Design system output`: write reusable project rules so future pages stay consistent.
 
 For audit and polish work, use `quality-checklist.md`, `anti-generic-ui.md`, and `interface-compliance.md` before making visual changes.
 
+For local UI patch work, use `local-ui-patch.md` and only escalate to page redesign when the target issue comes from page-level information architecture, layout hierarchy, or conflicting systems.
+
 ## Design Dials
 
-After choosing a style, set:
+After choosing a page-level style, set:
 
 - Layout variance: low, medium, or high.
 - Motion intensity: none, subtle, or expressive.
@@ -116,6 +123,8 @@ Then map tokens onto real components. Adjust component layout to the product's n
 
 Always define top-level regions and responsive collapse behavior before final CSS polish.
 
+For local UI patches, start from existing tokens and component rules instead of creating a new system. Define the target boundary, neighbor boundary, and any shared component boundary before editing.
+
 Keep accessibility intact. If a style uses low contrast, glow, glass, chrome, texture, or decorative motion, preserve readability and focus visibility first.
 
 When real UI code is changed, run the implementation compliance gate from `workflow.md`. Check semantic controls, accessible labels, focus-visible states, component state coverage, responsive text handling, stable media dimensions, reduced-motion behavior, and empty/error/loading recovery.
@@ -125,3 +134,5 @@ Use the layout guidance and anti-generic UI rules before adding decoration. Impr
 ## User-Facing Explanation
 
 When presenting a style decision, say which layout archetype is being used, which visual rules are being reused, and which layout decisions are being newly designed for the actual product.
+
+When presenting a local patch, say which target region changed, which existing system rules were preserved, which nearby regions were checked, and whether any broader page redesign risk remains.

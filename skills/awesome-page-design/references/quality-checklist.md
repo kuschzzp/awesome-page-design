@@ -54,6 +54,18 @@ Use this checklist when reviewing an existing UI, polishing an implementation, o
 - Icons share one visual system: same source family, stroke, fill logic, size, and alignment.
 - Overlays have clear stacking, backdrop, close affordance, and keyboard/focus behavior when implemented.
 
+## Local UI Patch
+
+- The requested target region is named before changes are made.
+- Adjacent regions above, below, beside, or inside the target are inspected for spacing, alignment, and responsive impact.
+- Existing tokens, typography, component variants, icon system, density, radius, shadows, and interaction states are preserved unless they are the problem.
+- The patch stays within the target boundary and necessary neighbor adjustments instead of rewriting the whole page.
+- New local classes or variants extend the current system and do not introduce a competing visual language.
+- Shared component changes are justified by repeated use or scoped so they do not break other contexts.
+- The patch improves the actual states that matter: hover, focus-visible, selected, disabled, loading, empty, error, warning, or success.
+- The target region still belongs visually to the existing page after the polish.
+- If the issue cannot be fixed locally because of page-level structure, the work escalates to page redesign instead of applying decorative cover-ups.
+
 ## Implementation Compliance
 
 - Semantic controls are used: buttons for actions, links for navigation, labels for form controls, and meaningful names for inputs.
@@ -88,6 +100,7 @@ Use this checklist when reviewing an existing UI, polishing an implementation, o
 ## Final Verification
 
 - Check desktop and mobile screenshots.
+- For local UI patches, check the target region and adjacent regions together on desktop and mobile.
 - Check that every built-in style has both desktop and mobile PNG previews after regeneration.
 - Check implementation compliance before final visual approval when real UI code or generated HTML is involved.
 - Check that copied style prompts do not instruct the agent to copy the sample layout.
