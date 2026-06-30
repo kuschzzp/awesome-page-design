@@ -6,11 +6,12 @@ Awesome Page Design is now a focused layout-aware visual style prompt library. T
 
 The current Skill includes:
 
-- 21 visual style directions, numbered continuously from Style 01 to Style 21.
+- 26 visual style directions, numbered continuously from Style 01 to Style 26.
 - HTML previews plus desktop and mobile PNG screenshots for every visual style.
 - Richer clickable sample pages with style-specific layout structures, buttons, modal notes, local visual objects, metrics, and action surfaces.
 - Design notes under `references/styles/`.
 - Layout guidance, design dials, quality checklist, anti-generic UI rules, icon guidance, and design-system output guidance under `references/`.
+- Variant guidance for adjacent moods such as biophilic, solarpunk, film noir, dark academia, paper cutout, hand-drawn sketch, Bauhaus, and mid-century modern.
 - Similarity guardrails in `SKILL.md` and `style-index.md` so related styles remain distinguishable.
 - A required preview selection gate in `SKILL.md` so agents pause after the user's requirement, open or provide the gallery, and wait for style selection unless explicitly delegated.
 - A bilingual preview gallery with desktop/mobile screenshot switching and copyable detailed style prompts.
@@ -208,13 +209,14 @@ Every new asset should pass these checks:
 
 ## Suggested Milestones
 
-### v0.2: Focused 21-Style Library
+### v0.2: Focused 26-Style Library
 
-- Keep the current 21 visual styles.
+- Keep the current 26 visual styles.
 - Maintain one source of assets under `skills/awesome-page-design/`.
 - Keep desktop and mobile screenshots available from the preview gallery.
 - Keep README, Chinese README, preview server, and install/update docs stable.
 - Keep the preview selection gate clear enough that installed agents know when to wait for user choice.
+- Keep adjacent mood variants as controlled guidance layered onto numbered styles, not as copied page templates.
 
 ### v0.3: Catalog And Validation
 

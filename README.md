@@ -2,14 +2,14 @@
 
 # Awesome Page Design
 
-**21 distinctive visual style prompts for agent-built websites and web apps.**
+**26 distinctive visual style prompts for agent-built websites and web apps.**
 
 Give coding agents stronger visual direction before they start building UI.
 
 [Chinese](./README.zh-CN.md) · [Roadmap](./ROADMAP.md) · [Skill Entry](./skills/awesome-page-design/SKILL.md) · [Preview Gallery](./skills/awesome-page-design/assets/previews/index.html) · [Style Index](./skills/awesome-page-design/references/style-index.md)
 
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-awesome--page--design-4F46E5)](./skills/awesome-page-design/SKILL.md)
-[![Styles](https://img.shields.io/badge/styles-21-111827)](./skills/awesome-page-design/assets/styles)
+[![Styles](https://img.shields.io/badge/styles-26-111827)](./skills/awesome-page-design/assets/styles)
 [![License: MIT](https://img.shields.io/badge/license-MIT-10B981)](./LICENSE)
 
 </div>
@@ -20,7 +20,7 @@ Give coding agents stronger visual direction before they start building UI.
 
 Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers.
 
-It gives an agent a reusable library of 21 web layout-aware visual directions, all presented as a continuous Style 01-21 catalog. The styles cover layout archetypes, information architecture, composition strategy, grid behavior, responsive structure, color systems, typography, spacing, borders, radius, shadows, material effects, imagery, component tone, button systems, feedback patterns, interaction states, and visual density. The goal is simple: help new websites and web apps avoid the same generic default UI.
+It gives an agent a reusable library of 26 web layout-aware visual directions, all presented as a continuous Style 01-26 catalog. The styles cover layout archetypes, information architecture, composition strategy, grid behavior, responsive structure, color systems, typography, spacing, borders, radius, shadows, material effects, imagery, component tone, button systems, feedback patterns, interaction states, and visual density. The goal is simple: help new websites and web apps avoid the same generic default UI.
 
 This is **not** a fixed page-template library. The bundled HTML files are richer clickable previews so users can compare visual directions, copy a task-specific prompt, and ask an agent to apply the chosen style to their real product. Agents should reuse the visual language and redesign the actual page structure around the user's content and workflow.
 
@@ -129,7 +129,7 @@ The skill will guide the agent to:
 
 ### Required Selection Gate
 
-For full pages and app screens, the Skill should not silently pick a final look after you describe the requirement. It should first send you to the preview gallery so you can compare the 21 visual styles, then continue after you select the prompt you want.
+For full pages and app screens, the Skill should not silently pick a final look after you describe the requirement. It should first send you to the preview gallery so you can compare the 26 visual styles, then continue after you select the prompt you want.
 
 If you prefer the agent to choose, say so explicitly. The agent should then propose 2-3 style candidates, explain the layout and visual trade-offs briefly, and ask for confirmation before final implementation unless you explicitly tell it to proceed.
 
@@ -149,7 +149,7 @@ Then open the URL printed by the command:
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-The gallery includes all 21 visual styles, desktop/mobile screenshot switching, English and Chinese UI switching, copyable full/landing/dashboard/admin/mobile prompts, component behavior examples, and direct links to every HTML example.
+The gallery includes all 26 visual styles, desktop/mobile screenshot switching, English and Chinese UI switching, copyable full/landing/dashboard/admin/mobile prompts, component behavior examples, and direct links to every HTML example.
 
 When the skill is installed into a client, package scripts may not be available. From the installed `awesome-page-design` skill directory, start the bundled static server:
 
@@ -205,6 +205,7 @@ skills/awesome-page-design/
 │   ├── motion-guidance.md           # Semantic motion and reduced-motion rules
 │   ├── icon-guidance.md             # Icon system and usage rules
 │   ├── design-system-output.md      # Reusable project design guide format
+│   ├── variant-guidance.md          # Adjacent mood and sub-style variants
 │   ├── style-index.md               # Short catalog of all styles
 │   └── styles/                      # Full style notes
 └── assets/
@@ -217,7 +218,7 @@ skills/awesome-page-design/
 
 | Style | Name | Layout Pattern | Best For | Visual Language |
 |:---:|---|---|---|---|
-| 01 | Card Grid | Operational Card Board | Dashboards, catalogs, overview pages | Light neutral canvas, violet accent, card grid rhythm, stats and search |
+| 01 | Card Grid | Blue Admin Console | Admin panels, CRM/ERP consoles, permission systems | Real admin shell with white sidebar, top bar, KPI cards, filters, dense tables, and widgets |
 | 02 | Block Brutalism | Street Poster Launch | Bold campaigns, indie products, playful utilities | Warm yellow, hard black borders, blocky controls, saturated labels |
 | 03 | Aurora Gradient | Aurora Evaluation Lab | Futuristic products, AI tools, premium dark experiences | Dark canvas, aurora color fields, soft glow, drifting gradient energy |
 | 04 | Retro Y2K | Glossy Y2K Stage | Music, fashion, youth culture, campaigns | Candy gradients, neon details, retro display type, sparkle energy |
@@ -238,6 +239,11 @@ skills/awesome-page-design/
 | 19 | Gradient Pop | Gradient Builder Flow | AI builders, launch pages, creator tools | Bright gradients, tech/trend energy, eye-catching hero |
 | 20 | Soft Pop | Soft Learning Board | Consumer apps, writing tools, education, creative productivity | Friendly playful color, doodle/cartoon mood, elastic rounded forms |
 | 21 | Acid Design | Acid Signal Poster | Experimental portfolios, music/fashion drops, immersive campaigns | Chrome/metal sheen, laser light, distorted dark sci-fi energy |
+| 22 | Art Deco | Gilded Poster Foyer | Luxury hospitality, cultural venues, premium events | Symmetric poster composition, jewel tones, gilded rules, stepped geometry |
+| 23 | Wabi-Sabi | Quiet Material Gallery | Ceramics, wellness, slow commerce, craft portfolios | Earthy restraint, natural texture, handmade imperfection, quiet whitespace |
+| 24 | Ink Wash | Ink Scroll Editorial | Tea culture, museums, literature, cultural ecommerce | Paper-white canvas, black ink hierarchy, red seal accents, scroll rhythm |
+| 25 | Blueprint | Technical Blueprint Sheet | Infrastructure SaaS, architecture tools, planning systems, APIs | Deep blue grid, cyan linework, annotations, plan-sheet precision |
+| 26 | Industrial Control | Industrial Status Deck | Factory monitoring, logistics control, energy operations, hardware fleets | Rugged dark panels, safety accents, dense status rows, machine labels |
 
 ## Development
 
@@ -251,6 +257,20 @@ The screenshot generator waits 5 seconds per page so each preview has time to re
 
 ```bash
 PREVIEW_MOBILE=0 npm run previews
+```
+
+When only one style changed, regenerate just that style and reuse existing screenshots for the rest of the gallery:
+
+```bash
+PREVIEW_STYLE=01 npm run previews
+npm run previews -- --style 01
+```
+
+Multiple styles can be selected with commas:
+
+```bash
+PREVIEW_STYLES=01,18 npm run previews
+npm run previews -- --styles 01,18
 ```
 
 Validate generated assets, prompt payloads, docs, mobile screenshots, and common implementation anti-patterns:

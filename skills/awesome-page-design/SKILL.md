@@ -82,7 +82,8 @@ Only skip this gate when the user has already named a specific style, asks only 
 ## Reference Navigation
 
 - `references/workflow.md`: required design, preview selection, implementation, previewing, and verification workflow.
-- `references/style-index.md`: concise index of the 21 visual styles, numbered continuously from Style 01 to Style 21.
+- `references/style-index.md`: concise index of the 26 visual styles, numbered continuously from Style 01 to Style 26.
+- `references/variant-guidance.md`: controlled variant guidance for adjacent moods such as biophilic, solarpunk, film noir, dark academia, paper cutout, hand-drawn sketch, Bauhaus, and mid-century modern.
 - `references/usage-principles.md`: rules for using the library correctly.
 - `references/layout-guidance.md`: layout archetypes, information architecture rules, responsive structure, and anti-template layout checks.
 - `references/local-ui-patch.md`: local patch workflow for existing pages, including context scan, patch boundaries, preserving the current system, neighbor checks, and escalation to page redesign.
@@ -96,12 +97,12 @@ Only skip this gate when the user has already named a specific style, asks only 
 - `references/design-system-output.md`: project-level `DESIGN.md` output format.
 - `references/styles/*.md`: full style manuals with tokens and application guidance.
 - `assets/styles/`: visual style HTML and PNG preview assets.
-- `assets/previews/index.html`: preview gallery for the 21 visual styles, with desktop/mobile screenshot switching and selectable full, landing page, dashboard, admin panel, and mobile prompts.
+- `assets/previews/index.html`: preview gallery for the 26 visual styles, with desktop/mobile screenshot switching and selectable full, landing page, dashboard, admin panel, and mobile prompts.
 - `scripts/validate-previews.js`: deterministic checks for preview assets, prompt payloads, mobile screenshots, documentation coverage, and common implementation anti-patterns.
 
 ## Style Set And Guardrails
 
-Use `references/style-index.md` for the full Style 01-21 list, quick matching, and similarity guardrails. Do not let related styles collapse into the same generic page. Distinguish styles by layout archetype, information architecture, typography, material, component tone, button language, density, media direction, and state treatment.
+Use `references/style-index.md` for the full Style 01-26 list, quick matching, and similarity guardrails. Use `references/variant-guidance.md` when the user asks for an adjacent mood or sub-style that should modify a numbered base style without becoming a copied template. Do not let related styles collapse into the same generic page. Distinguish styles by layout archetype, information architecture, typography, material, component tone, button language, density, media direction, and state treatment.
 
 ## Previewing The Included HTML
 
@@ -121,6 +122,7 @@ Extract only what is relevant to the current project:
 - Implementation compliance: accessible labels, visible focus, semantic controls, form labels, stable media dimensions, responsive text handling, reduced motion, and useful empty/error/loading states.
 - Icon and media direction when the page benefits from symbols, screenshots, photography, or rich visual assets. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
 - Motion timing, texture rules, and responsive density.
+- Optional variant rules from `references/variant-guidance.md` when the user asks for a specific adjacent mood; keep the selected numbered style as the structural base.
 
 Always apply the layout guidance and anti-generic UI rules before adding decorative effects. If the result still feels plain, change layout archetype, product scenario, information architecture, type scale, density, component states, or media direction before adding more glow, blur, gradients, or cards.
 

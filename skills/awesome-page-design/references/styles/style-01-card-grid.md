@@ -2,92 +2,92 @@
 
 ## Summary
 
-Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 
-Chinese summary: 浅色中性画布、紫色强调、卡片网格节奏、统计数据、搜索和易扫描的总览界面。
+Chinese summary: 真实后台外壳、白色侧栏、白色顶栏、灰蓝工作区、指标卡、快捷入口、筛选栏、密集表格和工具面板。
 
 ## Best For
 
-dashboards, catalogs, overview pages
+admin panels, CRM/ERP consoles, permission systems, operations dashboards
 
 ## Example Scenario
 
-- Product sample: OpsGrid
-- Page job: Inventory command center
-- Headline: Spot late handoffs before the morning standup.
-- Primary action: Review exceptions
-- Secondary action: Open route map
+- Product sample: AdminFlow
+- Page job: CRM management dashboard
+- Headline: Run the daily admin workspace from one dense console.
+- Primary action: New customer
+- Secondary action: More actions
 
 ## Scenario Components
 
-- Exception lanes: Separate inventory, delivery, and approval issues so operators know where to act first.
-- Owner clarity: Every card carries owner, priority, due window, and the next required action.
-- Dense scanning: Stats, search, filters, and compact cards work together without becoming a flat grid.
+- Application shell first: Sidebar modules, top search, page tabs, and workspace panels establish a real system before any decorative styling.
+- Operational density: KPI cards, quick actions, filters, tables, charts, rankings, approvals, and schedules share one scan-friendly grid.
+- Admin-specific states: Selected menu items, disabled tools, empty states, warning rows, approval tabs, and row actions stay visible.
 
 ## Example States
 
-- Backroom count drift: High
-- West route delayed: 2 stops
-- Cold storage check: Ready
+- Sales contract approval: Pending
+- Inactive customer follow-up: Warning
+- Monthly audit export: Ready
 
 ## Layout Pattern
 
-- Pattern: Operational Card Board (运营卡片看板)
-- Archetype: Operational Card Board
-- Structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+- Pattern: Blue Admin Console (浅蓝后台控制台)
+- Archetype: Blue Admin Console
+- Structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-- Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+- Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+- Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 - Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-- Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-- States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
-- Avoid: Do not turn it into a generic marketing hero or three equal feature cards.
+- Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+- States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
+- Avoid: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context.
 
 ## Visual Language
 
-- Background: `#f5f6fa`
+- Background: `#eef6ff`
 - Surface: `#ffffff`
-- Text: `#1a1a2e`
-- Muted text: `#64648a`
-- Primary: `#7c3aed`
-- Accent: `#8b5cf6`
-- Border: `#e5e7ef`
-- Radius: `10px`
-- Panel radius: `10px`
+- Text: `#0f172a`
+- Muted text: `#64748b`
+- Primary: `#1677ff`
+- Accent: `#0ea5e9`
+- Border: `#d7e7fb`
+- Radius: `8px`
+- Panel radius: `8px`
 - Control radius: `6px`
 - Chip radius: `4px`
 - Media radius: `8px`
-- Geometry rule: structured small-radius cards with sharper controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 48px rgba(26, 26, 46, .10)`
+- Geometry rule: real admin shell geometry with compact panels, dense rows, and precise controls; avoid making every button and card the same large rounded rectangle.
+- Shadow: `0 18px 46px rgba(22, 119, 255, .10)`
 
 ## Component Detail System
 
-- Button system: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-- Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-- Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-- Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
+- Button system: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+- Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+- Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+- Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
 
 Chinese implementation notes:
 
-- 按钮细节：使用紧凑实色主按钮、低调描边次按钮、偏方形筛选 chip，以及保持宽度稳定的加载按钮。
-- 提示与反馈：在受影响行附近显示内联警告，保存操作使用小型状态 toast，并在看板内显示 stale/error chip。
-- 间距系统：页面留白 24px，面板内边距 16-20px，行间距 10-12px，控件高度 42-48px，便于运营扫描。
-- 响应式策略：桌面保留筛选栏、看板和检查面板；平板把检查面板下移；手机把筛选栏变成顶部 chip，并让主操作紧跟标题。
+- 按钮细节：使用紧凑蓝色主按钮、低调描边次按钮、方形图标工具、标签按钮，以及在顶栏或表格工具条内保持宽度稳定的加载按钮。
+- 提示与反馈：用同一套后台语言呈现侧栏选中、激活标签、行内警告、小型状态 toast、空表格、待处理标签和禁用工具。
+- 间距系统：侧栏 220-260px，顶栏 56-72px，工作区留白 16-20px，面板内边距 14-18px，行间距 8-12px，控件 40-44px，适合反复扫描。
+- 响应式策略：桌面保留侧栏、顶栏、指标行、图表/排行面板和表格；平板把右侧面板下移；手机把侧栏变成横向模块条，并让表格可横向滚动。
 
 ## Page Adaptation Guide
 
-- Landing page: Use a proof-led product overview with metrics, workflow screenshots, and one calm conversion action; avoid a decorative hero-only page.
-- Dashboard: Use filter rail, metric row, exception cards, owner/status fields, and a right-side inspector for next actions.
-- Admin panel: Use compact tables, bulk actions, saved views, row-level warnings, and audit-friendly detail drawers.
-- Forms, tables, and data: Use visible labels, compact helper text, short grouped forms, and inline validation close to the affected row.
-- Mobile: Place title, current status, primary action, filter chips, list, then inspector details; avoid squeezing a desktop board.
-- Not a good fit for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling.
+- Landing page: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
+- Dashboard: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.
+- Admin panel: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.
+- Forms, tables, and data: Use visible labels, compact helper text, grouped sections, inline validation, table-adjacent editing, permission warnings, and save/cancel toolbars.
+- Mobile: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.
+- Not a good fit for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling instead of management clarity.
 
 ## Usage Notes
 
-- Keep cards scannable and varied by job.
-- Use search and stats as first-class visual anchors.
-- Avoid collapsing the style into a generic admin shell.
+- Start with the admin application frame: sidebar, top bar, breadcrumb or tabs, workspace, and table-first modules.
+- Use search, filters, KPI cards, quick entries, ranking lists, calendars, approvals, and dense tables as real management anchors.
+- Avoid hero sections, decorative card walls, oversized marketing typography, and abstract product art.
 
 ## Copy Style Prompts
 
@@ -96,35 +96,35 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Full Prompt.
-Best fit: dashboards, catalogs, overview pages.
-Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
-Landing adaptation: Use a proof-led product overview with metrics, workflow screenshots, and one calm conversion action; avoid a decorative hero-only page.
-Dashboard adaptation: Use filter rail, metric row, exception cards, owner/status fields, and a right-side inspector for next actions.
-Admin adaptation: Use compact tables, bulk actions, saved views, row-level warnings, and audit-friendly detail drawers.
-Forms/data adaptation: Use visible labels, compact helper text, short grouped forms, and inline validation close to the affected row.
-Mobile adaptation: Place title, current status, primary action, filter chips, list, then inspector details; avoid squeezing a desktop board.
-Avoid for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling.
-Layout archetype: Operational Card Board.
-Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Landing adaptation: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
+Dashboard adaptation: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.
+Admin adaptation: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.
+Forms/data adaptation: Use visible labels, compact helper text, grouped sections, inline validation, table-adjacent editing, permission warnings, and save/cancel toolbars.
+Mobile adaptation: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.
+Avoid for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling instead of management clarity.
+Layout archetype: Blue Admin Console.
+Layout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
-Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
-Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Color tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).
+Geometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-Button details: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
-Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Button details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "OpsGrid / Inventory command center" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -133,32 +133,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Landing Page.
-Best fit: dashboards, catalogs, overview pages.
-Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
-Landing page focus: Use a proof-led product overview with metrics, workflow screenshots, and one calm conversion action; avoid a decorative hero-only page.
+Landing page focus: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Operational Card Board.
-Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Layout archetype: Blue Admin Console.
+Layout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
-Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
-Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Color tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).
+Geometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-Button details: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
-Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Button details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "OpsGrid / Inventory command center" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -167,32 +167,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Dashboard.
-Best fit: dashboards, catalogs, overview pages.
-Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
-Dashboard focus: Use filter rail, metric row, exception cards, owner/status fields, and a right-side inspector for next actions.
+Dashboard focus: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Operational Card Board.
-Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Layout archetype: Blue Admin Console.
+Layout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
-Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
-Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Color tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).
+Geometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-Button details: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
-Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Button details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "OpsGrid / Inventory command center" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -201,32 +201,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Admin Panel.
-Best fit: dashboards, catalogs, overview pages.
-Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
-Admin panel focus: Use compact tables, bulk actions, saved views, row-level warnings, and audit-friendly detail drawers.
+Admin panel focus: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Operational Card Board.
-Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Layout archetype: Blue Admin Console.
+Layout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
-Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
-Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Color tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).
+Geometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-Button details: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
-Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Button details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "OpsGrid / Inventory command center" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -235,32 +235,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Mobile.
-Best fit: dashboards, catalogs, overview pages.
-Visual mood: Light neutral canvas, violet accent, card grid rhythm, statistics, search, and scannable overview surfaces.
+Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
-Mobile focus: Place title, current status, primary action, filter chips, list, then inspector details; avoid squeezing a desktop board.
+Mobile focus: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Operational Card Board.
-Layout structure: Operational app shell with a compact toolbar, filter rail, dense metrics, uneven exception board, and right-side action inspector.
+Layout archetype: Blue Admin Console.
+Layout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
-Color tokens: background #f5f6fa; surface #ffffff; text #1a1a2e; muted #64648a; primary #7c3aed; accent #8b5cf6; border #e5e7ef; radius 10px; shadow/material 0 18px 48px rgba(26, 26, 46, .10).
-Geometry: panel radius 10px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use compact sans-serif UI text, strong numerals, small uppercase labels, and short card titles.
-Components: Search, toolbar controls, stat tiles, filter chips, status badges, priority cards, inspector queues, and owner rows should feel like one dashboard system.
+Color tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).
+Geometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.
+Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
+Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
 Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-Button details: Use compact solid primary buttons, quiet bordered secondary buttons, square-ish filter chips, and loading buttons that keep the same width.
-Feedback and alerts: Use inline warnings near the affected row, small status toasts for saved actions, and visible stale/error chips inside the board.
-Spacing system: Use 24px page gutters, 16-20px panel padding, 10-12px row gaps, and dense 42-48px controls for operational scanning.
-Responsive behavior: Desktop keeps filter rail, board, and inspector visible; tablet stacks inspector below the board; mobile turns filters into chips above the list and keeps the primary action after the page title.
-Icons and media: Use product screenshots, maps, tables, or workflow evidence instead of abstract hero art.
-States: Show selected filters, warning chips, stale items, disabled actions, and focus rings clearly.
+Button details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
+Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
+Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
+Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
+States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "OpsGrid / Inventory command center" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not turn it into a generic marketing hero or three equal feature cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 

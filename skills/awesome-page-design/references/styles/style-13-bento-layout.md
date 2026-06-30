@@ -8,40 +8,40 @@ Chinese summary: 小组件式卡片分区、模块化排布、信息清晰分块
 
 ## Best For
 
-creator profiles, product overviews, feature collections
+restaurant menus, creator profiles, modular product overviews
 
 ## Example Scenario
 
-- Product sample: Patchwork
-- Page job: Modular profile hub
-- Headline: Compose the profile from proof, media, timeline, and quote.
-- Primary action: Arrange blocks
-- Secondary action: Open profile
+- Product sample: Supper Blocks
+- Page job: Seasonal tasting menu
+- Headline: Build a dinner story from market crates, chef notes, and table timing.
+- Primary action: Book table
+- Secondary action: See market list
 
 ## Scenario Components
 
-- Uneven modules: Cards vary by purpose and size instead of forming a dull equal grid.
-- Chunked meaning: Each block does one job: proof, media, stat, quote, action, or timeline.
-- Composed rhythm: The layout feels assembled, but gutters and radius keep it coherent.
+- Food blocks: Large and small tiles follow actual service meaning: hero course, producer note, quote, timing, and booking.
+- Market texture: Ingredient blocks carry the visual energy instead of decorative shapes.
+- Uneven but useful: The grid changes size by content value, not randomly.
 
 ## Example States
 
-- Hero module: Large
-- Quote card: Small
-- Timeline: Wide
+- Tomato course: Lead
+- Bread pickup: 11AM
+- Window table: Open
 
 ## Layout Pattern
 
-- Pattern: Uneven Bento Story (不等格便当叙事)
-- Archetype: Uneven Bento Story
-- Structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+- Pattern: Bento Market Table (便当市集餐桌)
+- Archetype: Bento Market Table
+- Structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-- Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-- Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
-- Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-- States: Show pinned, updated, saved, expanded, compact, and reordered module states.
-- Avoid: Do not make all bento cards equal-sized placeholders.
+- Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+- Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+- Buttons: Use embedded tile actions and one confident reservation control.
+- Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+- States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
+- Avoid: Do not make every bento tile the same size.
 
 ## Visual Language
 
@@ -96,7 +96,7 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 13 - Bento Layout as the page design direction.
 Prompt type: Full Prompt.
-Best fit: creator profiles, product overviews, feature collections.
+Best fit: restaurant menus, creator profiles, modular product overviews.
 Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
 Scenario focus:
 Landing adaptation: Use uneven tiles where each block has a job: proof, media, quote, stat, timeline, and action.
@@ -105,26 +105,26 @@ Admin adaptation: Use admin only when modules are independent; avoid forcing den
 Forms/data adaptation: Use forms inside purposeful tiles with local validation and stable tile dimensions.
 Mobile adaptation: Collapse to one column while preserving tile order by importance.
 Avoid for: Weak for long tables, legal documents, or workflows needing strict linear review.
-Layout archetype: Uneven Bento Story.
-Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout archetype: Bento Market Table.
+Layout structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
 Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+Buttons: Use embedded tile actions and one confident reservation control.
 Button details: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
 Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
 Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
 Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
-Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Patchwork / Modular profile hub" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Supper Blocks / Seasonal tasting menu" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make every bento tile the same size. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -133,32 +133,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 13 - Bento Layout as the page design direction.
 Prompt type: Landing Page.
-Best fit: creator profiles, product overviews, feature collections.
+Best fit: restaurant menus, creator profiles, modular product overviews.
 Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
 Scenario focus:
 Landing page focus: Use uneven tiles where each block has a job: proof, media, quote, stat, timeline, and action.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Uneven Bento Story.
-Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout archetype: Bento Market Table.
+Layout structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
 Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+Buttons: Use embedded tile actions and one confident reservation control.
 Button details: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
 Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
 Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
 Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
-Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Patchwork / Modular profile hub" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Supper Blocks / Seasonal tasting menu" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make every bento tile the same size. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -167,32 +167,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 13 - Bento Layout as the page design direction.
 Prompt type: Dashboard.
-Best fit: creator profiles, product overviews, feature collections.
+Best fit: restaurant menus, creator profiles, modular product overviews.
 Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
 Scenario focus:
 Dashboard focus: Use modular status tiles, varied spans, local actions, and progress badges.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Uneven Bento Story.
-Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout archetype: Bento Market Table.
+Layout structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
 Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+Buttons: Use embedded tile actions and one confident reservation control.
 Button details: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
 Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
 Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
 Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
-Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Patchwork / Modular profile hub" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Supper Blocks / Seasonal tasting menu" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make every bento tile the same size. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -201,32 +201,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 13 - Bento Layout as the page design direction.
 Prompt type: Admin Panel.
-Best fit: creator profiles, product overviews, feature collections.
+Best fit: restaurant menus, creator profiles, modular product overviews.
 Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
 Scenario focus:
 Admin panel focus: Use admin only when modules are independent; avoid forcing dense tables into bento tiles.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Uneven Bento Story.
-Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout archetype: Bento Market Table.
+Layout structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
 Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+Buttons: Use embedded tile actions and one confident reservation control.
 Button details: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
 Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
 Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
 Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
-Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Patchwork / Modular profile hub" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Supper Blocks / Seasonal tasting menu" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make every bento tile the same size. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -235,32 +235,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 13 - Bento Layout as the page design direction.
 Prompt type: Mobile.
-Best fit: creator profiles, product overviews, feature collections.
+Best fit: restaurant menus, creator profiles, modular product overviews.
 Visual mood: Widget-like card zones, modular composition, and clearly chunked information.
 Scenario focus:
 Mobile focus: Collapse to one column while preserving tile order by importance.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Uneven Bento Story.
-Layout structure: Asymmetric bento grid where each tile has a different job: proof, media, quote, stat, action, or timeline.
+Layout archetype: Bento Market Table.
+Layout structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f4f4f5; surface #ffffff; text #18181b; muted #71717a; primary #18181b; accent #f97316; border #e4e4e7; radius 18px; shadow/material 0 18px 55px rgba(24, 24, 27, .10).
 Geometry: panel radius 18px; control radius 10px; chip/state radius 8px; media radius 16px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use modular headings, short tile labels, and strong local hierarchy inside each block.
-Components: Large, wide, tall, and compact tiles should vary by content value while sharing radius and gutters.
-Buttons: Buttons can be embedded tile actions, compact pills, or full-width module controls.
+Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
+Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
+Buttons: Use embedded tile actions and one confident reservation control.
 Button details: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
 Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
 Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
 Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
-Icons and media: Use mini screenshots, quotes, diagrams, profile details, and chart fragments as tile content.
-States: Show pinned, updated, saved, expanded, compact, and reordered module states.
+Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
+States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Patchwork / Modular profile hub" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Supper Blocks / Seasonal tasting menu" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not make all bento cards equal-sized placeholders. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make every bento tile the same size. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 

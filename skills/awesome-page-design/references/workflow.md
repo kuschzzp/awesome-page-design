@@ -19,6 +19,7 @@ Before choosing a style or patching an existing page, summarize the user's reque
 - Required component behavior: buttons, forms, filters, tables, cards, alerts, loading states, empty states, or overlays that must be real, not decorative.
 - Target audience.
 - Desired mood: serious, premium, playful, official, technical, warm, experimental, futuristic, minimal, or another clear direction.
+- Adjacent mood or variant when named, such as biophilic, solarpunk, film noir, dark academia, paper cutout, hand-drawn sketch, Bauhaus, or mid-century modern.
 - Expected information density: sparse, normal, dense, or operational.
 - Light, dark, or mixed preference when known.
 - Whether the page needs photography, product images, illustration, or no imagery.
@@ -152,11 +153,13 @@ Also name the prompt type being applied:
 - `Admin Panel`: tables, forms, bulk actions, permissions, settings, and recovery flows.
 - `Mobile`: mobile-first screen, responsive redesign, or small-screen compliance work.
 
+If the user names a sub-style or adjacent mood after a numbered style is selected, read `variant-guidance.md` and state the base style plus the variant. Keep the numbered style's layout archetype and component behavior as the structural base unless the user's product workflow requires a different layout.
+
 ## 7. Read The Right References
 
 After task scale and selection, load only the references needed for the current mode so the skill stays focused. Always read `usage-principles.md` for library rules and sample-layout constraints.
 
-- Page-level work (`New page`, `Page redesign`, `Style selection`): read `layout-guidance.md`, `style-index.md`, `design-dials.md` after selection, the chosen style manual and its `Page Adaptation Guide`, and `anti-generic-ui.md`. Use matching PNG/HTML previews only as visual references, not templates.
+- Page-level work (`New page`, `Page redesign`, `Style selection`): read `layout-guidance.md`, `style-index.md`, `design-dials.md` after selection, the chosen style manual and its `Page Adaptation Guide`, and `anti-generic-ui.md`. Add `variant-guidance.md` only when the user asks for an adjacent mood or named sub-style. Use matching PNG/HTML previews only as visual references, not templates.
 - `Local UI patch`: read `local-ui-patch.md`; add `component-implementation.md` for stateful targets and `interface-compliance.md` for real code changes. Read `motion-guidance.md` or `icon-guidance.md` only when the target uses motion or icons. Do not read `design-dials.md`, `style-index.md`, or a style manual unless the user asks for a new page-level direction or the existing system is the blocker.
 - `Component polish`: read `component-implementation.md`; add `interface-compliance.md` for real code, `local-ui-patch.md` when the component lives inside a page region, and motion or icon guidance only when used.
 - `Implementation compliance`: read `interface-compliance.md`; add `component-implementation.md` for component states, forms, tables, overlays, or feedback patterns; add motion, icon, or local patch guidance only when the fix touches those areas.

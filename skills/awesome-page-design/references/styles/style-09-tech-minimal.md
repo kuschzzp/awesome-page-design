@@ -8,40 +8,40 @@ Chinese summary: 大面积空白、少色、单一视觉焦点、现代非衬线
 
 ## Best For
 
-AI tools, developer products, focused SaaS landing pages
+print studios, editorial tools, focused utility pages
 
 ## Example Scenario
 
-- Product sample: NexaBrief
-- Page job: Focused product workspace
-- Headline: Draft one brief from decisions, risks, and launch notes.
-- Primary action: Draft brief
-- Secondary action: Review tasks
+- Product sample: Riso Ledger
+- Page job: Print studio job sheet
+- Headline: Track a small edition from paper stock to pickup shelf.
+- Primary action: Approve proof
+- Secondary action: Print docket
 
 ## Scenario Components
 
-- Single focus: One core object anchors the page so secondary panels stay quiet.
-- Measured color: A restrained accent marks important actions without turning the UI into a gradient page.
-- Calm density: Whitespace improves decision speed while keeping useful details within reach.
+- Ledger focus: A single production sheet anchors the page instead of a generic SaaS hero.
+- Studio precision: Paper, ink, drying time, and pickup status read like a real workshop record.
+- Quiet hierarchy: Whitespace is used to separate job stages, not to make the page feel empty.
 
 ## Example States
 
-- Launch note: Due
-- Risk summary: Draft
-- Owner review: Ready
+- Blue pass: Drying
+- Proof crop: Approved
+- Pickup shelf: 4PM
 
 ## Layout Pattern
 
-- Pattern: Focused Brief Editor (聚焦简报编辑器)
-- Archetype: Focused Brief Editor
-- Structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+- Pattern: Minimal Print Ledger (极简印刷账页)
+- Archetype: Minimal Print Ledger
+- Structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-- Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-- Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
-- Icons and media: Use product screenshots or document excerpts only when they support the brief.
-- States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
-- Avoid: Do not add decorative gradients to compensate for weak content hierarchy.
+- Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+- Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+- Buttons: Buttons are minimal rectangles or text actions with high alignment.
+- Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+- States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
+- Avoid: Do not turn minimalism into a blank page with no production evidence.
 
 ## Visual Language
 
@@ -96,7 +96,7 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
 Prompt type: Full Prompt.
-Best fit: AI tools, developer products, focused SaaS landing pages.
+Best fit: print studios, editorial tools, focused utility pages.
 Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
 Scenario focus:
 Landing adaptation: Use a focused product brief with one central proof object, concise copy, and quiet secondary links.
@@ -105,26 +105,26 @@ Admin adaptation: Use orderly forms, tables, and settings pages with minimal dec
 Forms/data adaptation: Use simple labels, compact helper text, precise focus rings, and calm error states.
 Mobile adaptation: Keep one focus object, primary action, then details; move secondary controls below content.
 Avoid for: Weak for brands that need strong personality or dramatic visual storytelling.
-Layout archetype: Focused Brief Editor.
-Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout archetype: Minimal Print Ledger.
+Layout structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
 Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+Buttons: Buttons are minimal rectangles or text actions with high alignment.
 Button details: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
 Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
 Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
 Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
-Icons and media: Use product screenshots or document excerpts only when they support the brief.
-States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "NexaBrief / Focused product workspace" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Riso Ledger / Print studio job sheet" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not turn minimalism into a blank page with no production evidence. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -133,32 +133,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
 Prompt type: Landing Page.
-Best fit: AI tools, developer products, focused SaaS landing pages.
+Best fit: print studios, editorial tools, focused utility pages.
 Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
 Scenario focus:
 Landing page focus: Use a focused product brief with one central proof object, concise copy, and quiet secondary links.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Focused Brief Editor.
-Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout archetype: Minimal Print Ledger.
+Layout structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
 Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+Buttons: Buttons are minimal rectangles or text actions with high alignment.
 Button details: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
 Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
 Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
 Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
-Icons and media: Use product screenshots or document excerpts only when they support the brief.
-States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "NexaBrief / Focused product workspace" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Riso Ledger / Print studio job sheet" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not turn minimalism into a blank page with no production evidence. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -167,32 +167,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
 Prompt type: Dashboard.
-Best fit: AI tools, developer products, focused SaaS landing pages.
+Best fit: print studios, editorial tools, focused utility pages.
 Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
 Scenario focus:
 Dashboard focus: Use clean metrics, simple lists, small charts, and generous whitespace around the main decision.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Focused Brief Editor.
-Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout archetype: Minimal Print Ledger.
+Layout structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
 Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+Buttons: Buttons are minimal rectangles or text actions with high alignment.
 Button details: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
 Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
 Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
 Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
-Icons and media: Use product screenshots or document excerpts only when they support the brief.
-States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "NexaBrief / Focused product workspace" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Riso Ledger / Print studio job sheet" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not turn minimalism into a blank page with no production evidence. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -201,32 +201,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
 Prompt type: Admin Panel.
-Best fit: AI tools, developer products, focused SaaS landing pages.
+Best fit: print studios, editorial tools, focused utility pages.
 Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
 Scenario focus:
 Admin panel focus: Use orderly forms, tables, and settings pages with minimal decoration and strong alignment.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Focused Brief Editor.
-Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout archetype: Minimal Print Ledger.
+Layout structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
 Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+Buttons: Buttons are minimal rectangles or text actions with high alignment.
 Button details: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
 Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
 Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
 Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
-Icons and media: Use product screenshots or document excerpts only when they support the brief.
-States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "NexaBrief / Focused product workspace" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Riso Ledger / Print studio job sheet" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not turn minimalism into a blank page with no production evidence. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -235,32 +235,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 09 - Tech Minimal as the page design direction.
 Prompt type: Mobile.
-Best fit: AI tools, developer products, focused SaaS landing pages.
+Best fit: print studios, editorial tools, focused utility pages.
 Visual mood: Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
 Scenario focus:
 Mobile focus: Keep one focus object, primary action, then details; move secondary controls below content.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Focused Brief Editor.
-Layout structure: Quiet document workspace with a writing surface, side notes, decision chips, and subdued task context.
+Layout archetype: Minimal Print Ledger.
+Layout structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f8fafc; surface #ffffff; text #0f172a; muted #64748b; primary #111827; accent #2563eb; border #e2e8f0; radius 8px; shadow/material 0 20px 60px rgba(15, 23, 42, .08).
 Geometry: panel radius 8px; control radius 4px; chip/state radius 2px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use readable editor text, crisp UI labels, and restrained heading scale.
-Components: Editor panels, decision chips, review comments, tasks, and lightweight progress objects should be calm.
-Buttons: Buttons are simple and sharp; primary action is solid, secondary actions are text or light outlines.
+Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
+Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
+Buttons: Buttons are minimal rectangles or text actions with high alignment.
 Button details: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
 Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
 Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
 Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
-Icons and media: Use product screenshots or document excerpts only when they support the brief.
-States: Show draft, review-ready, blocked decision, synced, and disabled submit states.
+Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
+States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "NexaBrief / Focused product workspace" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Riso Ledger / Print studio job sheet" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add decorative gradients to compensate for weak content hierarchy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not turn minimalism into a blank page with no production evidence. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 

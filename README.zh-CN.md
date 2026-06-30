@@ -2,14 +2,14 @@
 
 # Awesome Page Design
 
-**为 Agent 构建的网站与 Web App 准备的 21 种视觉风格提示库。**
+**为 Agent 构建的网站与 Web App 准备的 26 种视觉风格提示库。**
 
 让编码 Agent 在开始写 UI 前，先拥有更明确、更有辨识度的视觉方向。
 
 [English](./README.md) · [Roadmap](./ROADMAP.md) · [Skill 入口](./skills/awesome-page-design/SKILL.md) · [预览页](./skills/awesome-page-design/assets/previews/index.html) · [风格索引](./skills/awesome-page-design/references/style-index.md)
 
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-awesome--page--design-4F46E5)](./skills/awesome-page-design/SKILL.md)
-[![Styles](https://img.shields.io/badge/styles-21-111827)](./skills/awesome-page-design/assets/styles)
+[![Styles](https://img.shields.io/badge/styles-26-111827)](./skills/awesome-page-design/assets/styles)
 [![License: MIT](https://img.shields.io/badge/license-MIT-10B981)](./LICENSE)
 
 </div>
@@ -20,7 +20,7 @@
 
 Awesome Page Design 是一个面向 Agent 编码工具和前端开发者的 UI 设计 Skill。
 
-它为 Agent 提供 21 套可复用、带布局意识的网站视觉方向，并统一整理成连续的 Style 01-21 目录。视觉风格包含布局原型、信息架构、构图策略、网格行为、响应式结构、颜色、字体、间距、边框、圆角、阴影、材质效果、图片方向、组件气质、按钮系统、反馈模式、交互状态和视觉密度。目标很简单：让新网站和 Web App 不再长得像同一套默认 UI。
+它为 Agent 提供 26 套可复用、带布局意识的网站视觉方向，并统一整理成连续的 Style 01-26 目录。视觉风格包含布局原型、信息架构、构图策略、网格行为、响应式结构、颜色、字体、间距、边框、圆角、阴影、材质效果、图片方向、组件气质、按钮系统、反馈模式、交互状态和视觉密度。目标很简单：让新网站和 Web App 不再长得像同一套默认 UI。
 
 这不是固定页面模板库。仓库里的 HTML 是更丰富、可点击的预览示例，用来帮助用户比较视觉方向、复制按任务类型区分的提示词，并让 Agent 把选定风格应用到真实产品里。Agent 应该复用视觉语言，并根据产品内容和工作流重新设计页面结构。
 
@@ -130,7 +130,7 @@ Skill 会引导 Agent：
 
 ### 必选预览确认门槛
 
-对于完整页面和 App 屏幕，这个 Skill 不应该在你描述完需求后直接暗自决定最终风格。它应该先引导你打开预览页，对比 21 种视觉风格；等你选好并复制对应提示词后，再继续实现。
+对于完整页面和 App 屏幕，这个 Skill 不应该在你描述完需求后直接暗自决定最终风格。它应该先引导你打开预览页，对比 26 种视觉风格；等你选好并复制对应提示词后，再继续实现。
 
 如果你希望 Agent 代选，需要明确说出来。此时 Agent 应该提出 2-3 个风格候选，简单说明布局和视觉差异，并在最终实现前等待确认，除非你明确说可以直接继续。
 
@@ -150,7 +150,7 @@ npm run preview:serve
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-预览页包含 21 个视觉风格，支持桌面/移动端截图切换、中英文切换、可复制的完整/落地页/仪表盘/管理后台/移动端提示词、组件行为示例，以及每个 HTML 示例的直接入口。
+预览页包含 26 个视觉风格，支持桌面/移动端截图切换、中英文切换、可复制的完整/落地页/仪表盘/管理后台/移动端提示词、组件行为示例，以及每个 HTML 示例的直接入口。
 
 安装到客户端后，可能没有 package scripts。进入已安装的 `awesome-page-design` Skill 目录，启动 Skill 自带的静态服务：
 
@@ -206,6 +206,7 @@ skills/awesome-page-design/
 │   ├── motion-guidance.md           # 语义动效与动效降级规则
 │   ├── icon-guidance.md             # 图标系统与使用规则
 │   ├── design-system-output.md      # 可复用项目设计规范格式
+│   ├── variant-guidance.md          # 相邻气质与子风格变体指南
 │   ├── style-index.md               # 所有风格的短索引
 │   └── styles/                      # 完整风格说明
 └── assets/
@@ -218,7 +219,7 @@ skills/awesome-page-design/
 
 | 风格 | 名称 | 布局模式 | 适合场景 | 视觉语言 |
 |:---:|---|---|---|---|
-| 01 | 卡片网格 | 运营卡片看板 | 仪表盘、目录页、概览页 | 浅色中性画布、紫色强调、卡片网格节奏、统计和搜索 |
+| 01 | 卡片网格 | 浅蓝后台控制台 | 后台管理、CRM/ERP 控制台、权限系统 | 真实后台外壳、白色侧栏、顶栏、指标卡、筛选、密集表格和组件 |
 | 02 | 块状粗野主义 | 街头海报发布 | 强品牌活动、独立产品、趣味工具 | 暖黄、硬黑边框、块状控件、高饱和标签 |
 | 03 | 极光渐变 | 极光评估实验室 | 未来感产品、AI 工具、高级暗色体验 | 暗色画布、极光色场、柔光、漂移渐变能量 |
 | 04 | 复古 Y2K | 千禧亮面舞台 | 音乐、潮流、青年文化、活动页 | 糖果渐变、霓虹细节、复古标题字、星光能量 |
@@ -239,6 +240,11 @@ skills/awesome-page-design/
 | 19 | 渐变风 | 渐变构建流程 | AI 构建工具、发布页、创作者工具 | 亮色渐变、科技潮流感、强首屏视觉 |
 | 20 | 柔和流行 | 柔和学习面板 | 消费者应用、写作工具、教育、创意生产力 | 亲和玩乐色彩、涂鸦/卡通感、弹性圆润造型 |
 | 21 | 酸性设计 | 酸性信号海报 | 实验作品集、音乐/时尚发布、沉浸式活动页 | 铬/金属光泽、镭射光、扭曲暗黑科幻感 |
+| 22 | 装饰艺术 | 鎏金海报门厅 | 高级酒店、文化场馆、精品活动 | 对称海报构图、宝石暗色、金色框线、阶梯几何 |
+| 23 | 侘寂 | 安静材质画廊 | 陶艺、健康生活、慢电商、手作作品集 | 大地色克制、自然纹理、手作不完美、安静留白 |
+| 24 | 水墨 | 水墨卷轴编辑 | 茶文化、博物馆、文学、文化电商 | 宣纸白底、墨色层级、朱红印章、卷轴节奏 |
+| 25 | 蓝图 | 技术蓝图图纸 | 基础设施 SaaS、建筑工具、规划系统、API | 深蓝网格、青色线稿、工程标注、图纸精度 |
+| 26 | 工业控制 | 工业状态控制台 | 工厂监控、物流控制、能源运营、硬件设备队列 | 耐用暗色面板、安全色、密集状态行、机器标签 |
 
 ## 开发
 
@@ -252,6 +258,20 @@ npm run previews
 
 ```bash
 PREVIEW_MOBILE=0 npm run previews
+```
+
+如果只改了一个风格，可以只重新生成这个风格，并复用其它风格已有截图：
+
+```bash
+PREVIEW_STYLE=01 npm run previews
+npm run previews -- --style 01
+```
+
+也可以一次选择多个风格：
+
+```bash
+PREVIEW_STYLES=01,18 npm run previews
+npm run previews -- --styles 01,18
 ```
 
 验证生成资源、提示词 payload、文档、移动端截图和常见实现反模式：

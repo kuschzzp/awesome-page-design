@@ -8,40 +8,40 @@ Chinese summary: 层次分明、大色块卡片、大圆角、有秩序且适合
 
 ## Best For
 
-consumer tools, utility apps, product dashboards
+interior sample boards, consumer tools, product dashboards
 
 ## Example Scenario
 
-- Product sample: LayerPad
-- Page job: Personal utility dashboard
-- Headline: Plan today from routines, focus blocks, and errands.
-- Primary action: Plan today
-- Secondary action: View routine
+- Product sample: Room & Grain
+- Page job: Interior material board
+- Headline: Compare wood, textile, stone, and paint before the room is built.
+- Primary action: Approve board
+- Secondary action: Compare samples
 
 ## Scenario Components
 
-- Tonal hierarchy: Large surfaces, soft elevation, and clear color roles separate tasks without clutter.
-- Touch comfort: Controls and cards feel generous enough for quick daily interaction.
-- Orderly states: Done, pending, warning, and disabled items share one consistent material language.
+- Sample stack: Physical layers, swatches, and supplier labels replace abstract product cards.
+- Room logic: Each material is tied to a real placement such as wall, floor, counter, or textile.
+- Approval trail: Availability, finish note, and owner decision remain visible together.
 
 ## Example States
 
-- Morning reset: Done
-- Focus timer: Next
-- Grocery note: Later
+- Oak veneer: Chosen
+- Linen weave: Hold
+- Warm limewash: Sample due
 
 ## Layout Pattern
 
-- Pattern: Layered Daily Surface (层级日程表面)
-- Archetype: Layered Daily Surface
-- Structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+- Pattern: Layered Interior Samples (层叠室内样板)
+- Archetype: Layered Interior Samples
+- Structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-- Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-- Buttons: Buttons are tonal or filled with large radius and obvious touch states.
-- Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-- States: Show done, skipped, next, disabled, overdue, and selected day states.
-- Avoid: Do not shrink controls into dense desktop SaaS widgets.
+- Typography: Use friendly material labels, room placement captions, and clear stock values.
+- Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+- Buttons: Use touch-friendly tonal buttons with visible selected states.
+- Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+- States: Show chosen, hold, sample due, low stock, approved, and compare states.
+- Avoid: Do not make layered material look like a generic task dashboard.
 
 ## Visual Language
 
@@ -96,7 +96,7 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 12 - Layered Material as the page design direction.
 Prompt type: Full Prompt.
-Best fit: consumer tools, utility apps, product dashboards.
+Best fit: interior sample boards, consumer tools, product dashboards.
 Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
 Scenario focus:
 Landing adaptation: Use layered product surfaces, touch-friendly proof cards, and calm utility storytelling.
@@ -105,26 +105,26 @@ Admin adaptation: Use settings, forms, and utility dashboards where clarity and 
 Forms/data adaptation: Use filled and tonal inputs, clear helper text, calm snackbars, and large touch targets.
 Mobile adaptation: Put the daily or utility panel first; convert side content into stacked cards.
 Avoid for: Weak for hard-edged technical consoles or editorial layouts that need strict rules.
-Layout archetype: Layered Daily Surface.
-Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout archetype: Layered Interior Samples.
+Layout structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
 Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Typography: Use friendly material labels, room placement captions, and clear stock values.
+Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+Buttons: Use touch-friendly tonal buttons with visible selected states.
 Button details: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
 Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
 Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
 Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
-Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-States: Show done, skipped, next, disabled, overdue, and selected day states.
+Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+States: Show chosen, hold, sample due, low stock, approved, and compare states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "LayerPad / Personal utility dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Room & Grain / Interior material board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make layered material look like a generic task dashboard. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -133,32 +133,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 12 - Layered Material as the page design direction.
 Prompt type: Landing Page.
-Best fit: consumer tools, utility apps, product dashboards.
+Best fit: interior sample boards, consumer tools, product dashboards.
 Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
 Scenario focus:
 Landing page focus: Use layered product surfaces, touch-friendly proof cards, and calm utility storytelling.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Layered Daily Surface.
-Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout archetype: Layered Interior Samples.
+Layout structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
 Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Typography: Use friendly material labels, room placement captions, and clear stock values.
+Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+Buttons: Use touch-friendly tonal buttons with visible selected states.
 Button details: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
 Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
 Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
 Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
-Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-States: Show done, skipped, next, disabled, overdue, and selected day states.
+Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+States: Show chosen, hold, sample due, low stock, approved, and compare states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "LayerPad / Personal utility dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Room & Grain / Interior material board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make layered material look like a generic task dashboard. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -167,32 +167,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 12 - Layered Material as the page design direction.
 Prompt type: Dashboard.
-Best fit: consumer tools, utility apps, product dashboards.
+Best fit: interior sample boards, consumer tools, product dashboards.
 Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
 Scenario focus:
 Dashboard focus: Use large touch panels, routine cards, tonal status surfaces, and comfortable controls.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Layered Daily Surface.
-Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout archetype: Layered Interior Samples.
+Layout structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
 Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Typography: Use friendly material labels, room placement captions, and clear stock values.
+Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+Buttons: Use touch-friendly tonal buttons with visible selected states.
 Button details: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
 Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
 Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
 Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
-Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-States: Show done, skipped, next, disabled, overdue, and selected day states.
+Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+States: Show chosen, hold, sample due, low stock, approved, and compare states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "LayerPad / Personal utility dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Room & Grain / Interior material board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make layered material look like a generic task dashboard. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -201,32 +201,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 12 - Layered Material as the page design direction.
 Prompt type: Admin Panel.
-Best fit: consumer tools, utility apps, product dashboards.
+Best fit: interior sample boards, consumer tools, product dashboards.
 Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
 Scenario focus:
 Admin panel focus: Use settings, forms, and utility dashboards where clarity and touch targets matter.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Layered Daily Surface.
-Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout archetype: Layered Interior Samples.
+Layout structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
 Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Typography: Use friendly material labels, room placement captions, and clear stock values.
+Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+Buttons: Use touch-friendly tonal buttons with visible selected states.
 Button details: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
 Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
 Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
 Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
-Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-States: Show done, skipped, next, disabled, overdue, and selected day states.
+Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+States: Show chosen, hold, sample due, low stock, approved, and compare states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "LayerPad / Personal utility dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Room & Grain / Interior material board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make layered material look like a generic task dashboard. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -235,32 +235,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 12 - Layered Material as the page design direction.
 Prompt type: Mobile.
-Best fit: consumer tools, utility apps, product dashboards.
+Best fit: interior sample boards, consumer tools, product dashboards.
 Visual mood: Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
 Scenario focus:
 Mobile focus: Put the daily or utility panel first; convert side content into stacked cards.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Layered Daily Surface.
-Layout structure: Touch-first utility layout with large tonal surfaces, a phone-like focus panel, and routine clusters.
+Layout archetype: Layered Interior Samples.
+Layout structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f2fa; surface #ffffff; text #1d1b20; muted #625b71; primary #6750a4; accent #eaddff; border #e7e0ec; radius 22px; shadow/material 0 18px 50px rgba(103, 80, 164, .16).
 Geometry: panel radius 22px; control radius 16px; chip/state radius 12px; media radius 18px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use friendly readable UI type, clear task labels, and generous tap-target spacing.
-Components: Routine cards, toggles, progress rings, chips, bottom actions, and empty task states should share material depth.
-Buttons: Buttons are tonal or filled with large radius and obvious touch states.
+Typography: Use friendly material labels, room placement captions, and clear stock values.
+Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
+Buttons: Use touch-friendly tonal buttons with visible selected states.
 Button details: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
 Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
 Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
 Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
-Icons and media: Use small functional icons or calm illustrations only where they speed recognition.
-States: Show done, skipped, next, disabled, overdue, and selected day states.
+Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
+States: Show chosen, hold, sample due, low stock, approved, and compare states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "LayerPad / Personal utility dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Room & Grain / Interior material board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not shrink controls into dense desktop SaaS widgets. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not make layered material look like a generic task dashboard. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 

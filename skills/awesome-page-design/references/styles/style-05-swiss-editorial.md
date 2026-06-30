@@ -12,36 +12,36 @@ portfolios, cultural sites, design studios, serious content
 
 ## Example Scenario
 
-- Product sample: Field Archive
-- Page job: Editorial archive
-- Headline: A strict grid for serious cultural material.
-- Primary action: Read feature
-- Secondary action: Browse index
+- Product sample: Neue Archive
+- Page job: Swiss issue system
+- Headline: Index the issue with type, rules, and evidence.
+- Primary action: Open issue
+- Secondary action: View sources
 
 ## Scenario Components
 
-- Typographic control: Rules, scale, and alignment create drama without shadows or soft cards.
-- Content hierarchy: Titles, captions, metadata, and references each have a crisp place.
-- Editorial pacing: Whitespace and columns carry the rhythm instead of decorative panels.
+- Baseline grid: Every headline, caption, and data row locks to a visible publishing rhythm.
+- Object proof: Image crops, labels, and accession marks sit in the same rule system as the copy.
+- Index table: Readers can scan issue entries without losing the editorial hierarchy.
 
 ## Example States
 
 - Caption audit: 8 notes
 - Index order: Locked
-- Lead essay: Final
+- Object board: Ready
 
 ## Layout Pattern
 
-- Pattern: Editorial Index Grid (编辑索引网格)
-- Archetype: Editorial Index Grid
-- Structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+- Pattern: Swiss Archive Board (瑞士档案索引板)
+- Archetype: Swiss Archive Board
+- Structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-- Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-- Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
-- Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-- States: Show reading status, source-open, selected index row, and updated metadata states.
-- Avoid: Do not add soft shadows, rounded SaaS cards, or vague marketing copy.
+- Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+- Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+- Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
+- Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+- States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
+- Avoid: Do not let the page collapse into a generic editorial article with sidebars.
 
 ## Visual Language
 
@@ -105,26 +105,26 @@ Admin adaptation: Use form sections, audit rows, legal/procurement evidence bloc
 Forms/data adaptation: Use persistent labels, narrow measures, divider-separated validation, and underlined actions.
 Mobile adaptation: Preserve reading order: headline, metadata, action, article body, index; avoid hidden sidebars.
 Avoid for: Weak for playful commerce, heavy animation, or highly visual immersive demos.
-Layout archetype: Editorial Index Grid.
-Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout archetype: Swiss Archive Board.
+Layout structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
 Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
 Button details: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
 Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
 Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
 Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
-Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-States: Show reading status, source-open, selected index row, and updated metadata states.
+Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Field Archive / Editorial archive" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Neue Archive / Swiss issue system" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not let the page collapse into a generic editorial article with sidebars. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -139,26 +139,26 @@ Scenario focus:
 Landing page focus: Use editorial columns, rule lines, captions, proof excerpts, and understated text actions.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Editorial Index Grid.
-Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout archetype: Swiss Archive Board.
+Layout structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
 Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
 Button details: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
 Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
 Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
 Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
-Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-States: Show reading status, source-open, selected index row, and updated metadata states.
+Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Field Archive / Editorial archive" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Neue Archive / Swiss issue system" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not let the page collapse into a generic editorial article with sidebars. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -173,26 +173,26 @@ Scenario focus:
 Dashboard focus: Use index tables, metadata columns, and structured evidence rather than cards.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Editorial Index Grid.
-Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout archetype: Swiss Archive Board.
+Layout structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
 Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
 Button details: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
 Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
 Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
 Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
-Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-States: Show reading status, source-open, selected index row, and updated metadata states.
+Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Field Archive / Editorial archive" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Neue Archive / Swiss issue system" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not let the page collapse into a generic editorial article with sidebars. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -207,26 +207,26 @@ Scenario focus:
 Admin panel focus: Use form sections, audit rows, legal/procurement evidence blocks, and rule-line navigation.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Editorial Index Grid.
-Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout archetype: Swiss Archive Board.
+Layout structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
 Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
 Button details: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
 Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
 Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
 Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
-Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-States: Show reading status, source-open, selected index row, and updated metadata states.
+Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Field Archive / Editorial archive" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Neue Archive / Swiss issue system" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not let the page collapse into a generic editorial article with sidebars. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -241,26 +241,26 @@ Scenario focus:
 Mobile focus: Preserve reading order: headline, metadata, action, article body, index; avoid hidden sidebars.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Editorial Index Grid.
-Layout structure: Strict editorial grid with article columns, rule lines, metadata gutters, and an index-led reading path.
+Layout archetype: Swiss Archive Board.
+Layout structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #f7f5ef; surface #fffdf8; text #111111; muted #525252; primary #e11d2e; accent #111111; border #111111; radius 0; shadow/material none.
 Geometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use scale, weight, alignment, and rules as the design; avoid decorative card language.
-Components: Article teasers, pull quotes, source notes, index rows, and captions should feel print-disciplined.
-Buttons: Actions are text links, underlined labels, or small editorial tags rather than glossy buttons.
+Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
+Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
+Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
 Button details: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
 Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
 Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
 Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
-Icons and media: Use object crops, archival fragments, and captioned images with strict placement.
-States: Show reading status, source-open, selected index row, and updated metadata states.
+Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
+States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "Field Archive / Editorial archive" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Neue Archive / Swiss issue system" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not add soft shadows, rounded SaaS cards, or vague marketing copy. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not let the page collapse into a generic editorial article with sidebars. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 

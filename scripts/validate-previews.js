@@ -14,7 +14,7 @@ const skillFile = path.join(skillDir, "SKILL.md");
 const readmeFile = path.join(rootDir, "README.md");
 const readmeZhFile = path.join(rootDir, "README.zh-CN.md");
 
-const expectedStyleCount = 21;
+const expectedStyleCount = 26;
 const expectedDesktopWidth = 1440;
 const expectedDesktopHeight = 1200;
 const expectedMobileWidth = 390;

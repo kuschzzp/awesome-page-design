@@ -8,40 +8,40 @@ Chinese summary: 毛玻璃、透明层次、磨砂质感、科技感和未来感
 
 ## Best For
 
-immersive AI, spatial dashboards, premium futuristic tools
+botanical maps, spatial dashboards, premium futuristic tools
 
 ## Example Scenario
 
-- Product sample: GlassAtlas
-- Page job: Spatial intelligence board
-- Headline: Float complex signals in a readable glass layer.
-- Primary action: Open signal map
-- Secondary action: View rooms
+- Product sample: Glasshouse Nine
+- Page job: Botanical glasshouse map
+- Headline: Float humidity, watering, and visitor paths over a living conservatory.
+- Primary action: Open canopy map
+- Secondary action: Schedule watering
 
 ## Scenario Components
 
-- Readable glass: Blur, tint, and borders support text instead of turning it into fog.
-- Layered context: Panels stack around a central signal map while preserving orientation.
-- Premium depth: Material effects feel expensive because they are controlled and purposeful.
+- Living map: Glass layers sit over beds, paths, and climate zones instead of a generic sci-fi background.
+- Readable translucency: Tint and borders protect text while still feeling like glass.
+- Garden operations: Visitor route, water schedule, and climate status are visible at once.
 
 ## Example States
 
-- North room: Stable
-- Signal 08: Drift
-- Operator note: New
+- Fern room: Stable
+- Orchid mist: Due
+- West path: Open
 
 ## Layout Pattern
 
-- Pattern: Glass Signal Map (玻璃信号地图)
-- Archetype: Glass Signal Map
-- Structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+- Pattern: Glasshouse Climate Map (玻璃温室气候图)
+- Archetype: Glasshouse Climate Map
+- Structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 - Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-- Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-- Buttons: Buttons are frosted glass or bright signal controls with visible borders.
-- Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-- States: Show stable, drift, alert, selected room, operator note, and loading signal states.
-- Avoid: Do not put low-contrast text over busy translucent backgrounds.
+- Typography: Use clean futuristic labels with high contrast over every glass layer.
+- Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+- Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
+- Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+- States: Show stable, due, open path, climate drift, selected zone, and mist running states.
+- Avoid: Do not put low-contrast text over busy translucent scenery.
 
 ## Visual Language
 
@@ -96,7 +96,7 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
 Prompt type: Full Prompt.
-Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Best fit: botanical maps, spatial dashboards, premium futuristic tools.
 Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
 Scenario focus:
 Landing adaptation: Use a glass map or spatial product story with readable translucent panels and stable media backdrops.
@@ -105,26 +105,26 @@ Admin adaptation: Use for premium spatial tools, not conventional back-office CR
 Forms/data adaptation: Use glass fields only over stable surfaces; focus and errors need visible borders and text.
 Mobile adaptation: Place controls above ambience when action matters; keep glass panels readable over every background.
 Avoid for: Weak for low-power devices, accessibility-critical dense forms, or plain official portals.
-Layout archetype: Glass Signal Map.
-Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout archetype: Glasshouse Climate Map.
+Layout structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
 Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Typography: Use clean futuristic labels with high contrast over every glass layer.
+Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
 Button details: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
 Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
 Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
 Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+States: Show stable, due, open path, climate drift, selected zone, and mist running states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "GlassAtlas / Spatial intelligence board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Glasshouse Nine / Botanical glasshouse map" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not put low-contrast text over busy translucent scenery. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -133,32 +133,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
 Prompt type: Landing Page.
-Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Best fit: botanical maps, spatial dashboards, premium futuristic tools.
 Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
 Scenario focus:
 Landing page focus: Use a glass map or spatial product story with readable translucent panels and stable media backdrops.
 First viewport must establish the product, literal offer, primary conversion action, proof, and media direction.
 Avoid the generic hero plus three feature cards; arrange proof, workflow, testimonials, or product visuals around the real offer.
-Layout archetype: Glass Signal Map.
-Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout archetype: Glasshouse Climate Map.
+Layout structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
 Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Typography: Use clean futuristic labels with high contrast over every glass layer.
+Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
 Button details: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
 Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
 Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
 Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+States: Show stable, due, open path, climate drift, selected zone, and mist running states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "GlassAtlas / Spatial intelligence board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Glasshouse Nine / Botanical glasshouse map" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not put low-contrast text over busy translucent scenery. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -167,32 +167,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
 Prompt type: Dashboard.
-Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Best fit: botanical maps, spatial dashboards, premium futuristic tools.
 Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
 Scenario focus:
 Dashboard focus: Use signal layers, selected rooms, map pins, translucent controls, and readable alerts.
 Prioritize filters, metrics, lists/tables, detail panels, state, and next actions.
 Do not turn an operational screen into a marketing hero; keep the primary object, current state, and main action visible.
-Layout archetype: Glass Signal Map.
-Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout archetype: Glasshouse Climate Map.
+Layout structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
 Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Typography: Use clean futuristic labels with high contrast over every glass layer.
+Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
 Button details: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
 Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
 Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
 Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+States: Show stable, due, open path, climate drift, selected zone, and mist running states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "GlassAtlas / Spatial intelligence board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Glasshouse Nine / Botanical glasshouse map" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not put low-contrast text over busy translucent scenery. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -201,32 +201,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
 Prompt type: Admin Panel.
-Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Best fit: botanical maps, spatial dashboards, premium futuristic tools.
 Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
 Scenario focus:
 Admin panel focus: Use for premium spatial tools, not conventional back-office CRUD unless the map/object is central.
 Emphasize navigation, tables/forms, bulk actions, permissions, errors, empty states, save feedback, and undo paths.
 Restrain decoration so repeated action, scanning, comparison, and recovery paths stay clear.
-Layout archetype: Glass Signal Map.
-Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout archetype: Glasshouse Climate Map.
+Layout structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
 Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Typography: Use clean futuristic labels with high contrast over every glass layer.
+Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
 Button details: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
 Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
 Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
 Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+States: Show stable, due, open path, climate drift, selected zone, and mist running states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "GlassAtlas / Spatial intelligence board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Glasshouse Nine / Botanical glasshouse map" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not put low-contrast text over busy translucent scenery. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
@@ -235,32 +235,32 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 15 - Liquid Glass as the page design direction.
 Prompt type: Mobile.
-Best fit: immersive AI, spatial dashboards, premium futuristic tools.
+Best fit: botanical maps, spatial dashboards, premium futuristic tools.
 Visual mood: Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
 Scenario focus:
 Mobile focus: Place controls above ambience when action matters; keep glass panels readable over every background.
 Define the order for title, current status, primary action, filters, main content, supporting proof, and secondary actions.
 Specify touch targets, bottom actions, collapsible panels, table fallbacks, and safe areas; do not squeeze desktop grids.
-Layout archetype: Glass Signal Map.
-Layout structure: Immersive map with translucent panes, pinned signals, layered controls, and readable depth.
+Layout archetype: Glasshouse Climate Map.
+Layout structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
 Layout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.
 Color tokens: background #07111f; surface rgba(255,255,255,.13); text #f8fbff; muted #b9c5d6; primary #dff7ff; accent #8b5cf6; border rgba(255,255,255,.26); radius 24px; shadow/material 0 28px 90px rgba(15, 23, 42, .45).
 Geometry: panel radius 24px; control radius 14px; chip/state radius 10px; media radius 20px. Avoid making every button and card the same large rounded rectangle or pill.
-Typography: Use clean futuristic UI type, short labels, and high-contrast text over glass.
-Components: Floating panes, map pins, room cards, translucent filters, and signal lists should use blur carefully.
-Buttons: Buttons are frosted glass or bright signal controls with visible borders.
+Typography: Use clean futuristic labels with high contrast over every glass layer.
+Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
+Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
 Button details: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
 Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
 Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
 Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-Icons and media: Use maps, spatial diagrams, pins, and glass layers as actual product content.
-States: Show stable, drift, alert, selected room, operator note, and loading signal states.
+Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
+States: Show stable, due, open path, climate drift, selected zone, and mist running states.
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "GlassAtlas / Spatial intelligence board" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "Glasshouse Nine / Botanical glasshouse map" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
-Do not: Do not put low-contrast text over busy translucent backgrounds. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
+Do not: Do not put low-contrast text over busy translucent scenery. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
 ```
 
