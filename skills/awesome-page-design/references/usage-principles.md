@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Awesome Page Design is a layout-aware visual style prompt library and UI quality workflow for website and web app design. It helps agents and developers avoid generic-looking pages by selecting the right page structure and a strong visual language for new pages, and by preserving the current design system when patching existing UI locally.
+Awesome Page Design is a layout-aware visual style prompt library and UI quality workflow for website and web app design. It helps agents and developers avoid generic-looking pages by selecting the right page structure and a strong visual language for new pages, by integrating new UI into existing or legacy projects, and by preserving the current design system when patching existing UI locally.
+
+It also treats browser-default UI primitives as a quality boundary. Finished product UI should not rely on browser alert dialogs, confirmation prompts, prompt dialogs, or unstyled native selects when a project or framework primitive can provide a designed, accessible pattern.
 
 ## Non-Negotiable Rule
 
@@ -42,6 +44,12 @@ Use the visual style to shape how the layout feels. Do not let the sample previe
 
 For an existing-page local patch, identify the target region, neighbor regions, existing tokens, component variants, density, icons, state treatment, and responsive behavior before changing CSS or components. Use `local-ui-patch.md` and preserve the current system unless the user asks for a new direction.
 
+For an existing or legacy frontend project, inspect the current codebase before designing or coding. Find nearby pages, shared components, framework wrappers, tokens, and common select/dropdown, button, paginated table, statistics, modal, drawer, form, filter, pagination, icon, and feedback patterns. Use `existing-project-integration.md` and make the new work feel native to the product unless the user asks for a redesign.
+
+For any real UI implementation that touches controls, forms, feedback, overlays, generated HTML, or copy/export behavior, read `ui-primitive-contract.md` and replace browser-default primitives with the project's styled components or a scoped designed fallback.
+
+For a new site or app, include product shell polish as part of the UI, not as an afterthought. Add a product-specific title and description, generate or place `favicon.ico` in the framework's expected location, wire it through HTML/head metadata, and remove default framework icons or starter-template metadata.
+
 Examples:
 
 - A dashboard needs filters, state, dense scanning, and real actions before it needs a hero.
@@ -76,14 +84,16 @@ Use the skill in these modes:
 
 - `Style selection`: choose a visual direction before building.
 - `Design audit`: inspect an existing page for weak hierarchy, generic layout, unclear states, inconsistent icons, low contrast, or poor responsive behavior.
+- `Existing project integration`: add or modify UI inside a current or legacy codebase while matching established frontend patterns.
 - `Local UI patch`: improve a target region of an existing page while preserving nearby tokens, components, density, icons, and state treatment.
 - `Implementation polish`: refine an existing implementation while preserving the chosen style.
 - `Implementation compliance`: review or fix real UI code for semantic controls, focus, forms, component states, responsive behavior, text handling, media stability, and motion.
+- `UI primitive enforcement`: replace browser dialogs, unstyled native selects, and default-looking controls with project primitives or styled accessible fallbacks.
 - `Design system output`: write reusable project rules so future pages stay consistent.
 
-For audit and polish work, use `quality-checklist.md`, `anti-generic-ui.md`, and `interface-compliance.md` before making visual changes.
+For audit and polish work, use `quality-checklist.md`, `anti-generic-ui.md`, `ui-primitive-contract.md`, and `interface-compliance.md` before making visual changes.
 
-For local UI patch work, use `local-ui-patch.md` and only escalate to page redesign when the target issue comes from page-level information architecture, layout hierarchy, or conflicting systems.
+For existing project work, use `existing-project-integration.md` first. For local UI patch work, use `local-ui-patch.md` and only escalate to page redesign when the target issue comes from page-level information architecture, layout hierarchy, or conflicting systems.
 
 ## Design Dials
 
@@ -123,7 +133,13 @@ Then map tokens onto real components. Adjust component layout to the product's n
 
 Always define top-level regions and responsive collapse behavior before final CSS polish.
 
+For new projects, finish the browser shell too: set the page title and description, add `favicon.ico` or the framework's favicon route, add app/touch icons when the product needs them, and remove default Vite, React, Next.js, or starter-template branding.
+
 For local UI patches, start from existing tokens and component rules instead of creating a new system. Define the target boundary, neighbor boundary, and any shared component boundary before editing.
+
+For existing-project features, start from the nearest production examples. Reuse existing selects/dropdowns, buttons, paginated tables, statistics blocks, modals, drawers, forms, filters, pagination, icons, and feedback states before adding a new visual treatment.
+
+Do not use `alert(...)`, `confirm(...)`, `prompt(...)`, or an unstyled native `<select>` as finished product UI. Use the project's toast, inline alert, banner, modal, drawer, undo, select, dropdown, combobox, menu, or pagination primitive instead.
 
 Keep accessibility intact. If a style uses low contrast, glow, glass, chrome, texture, or decorative motion, preserve readability and focus visibility first.
 

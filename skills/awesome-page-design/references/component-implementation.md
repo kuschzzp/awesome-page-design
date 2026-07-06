@@ -2,6 +2,8 @@
 
 Use this reference when translating a selected style into real components. A page should not only style the default state. Every component that can change state needs a visible, style-consistent state model.
 
+Read `ui-primitive-contract.md` before implementing selects/dropdowns, browser feedback replacement, copy/export feedback, destructive confirmation, modal/drawer behavior, or native form controls in finished product UI.
+
 ## Component State Matrix
 
 Define the relevant states before final polish:
@@ -11,7 +13,7 @@ Define the relevant states before final polish:
 | Buttons | default, hover, focus-visible, pressed, loading, disabled, destructive when relevant |
 | Links | default, hover, focus-visible, visited only when useful, active/current |
 | Inputs | empty, focused, filled, invalid, disabled, read-only, helper text, error text |
-| Selects and menus | closed, open, focused option, selected option, disabled option |
+| Selects and menus | closed, open, hover, focus-visible, focused option, selected option, disabled option, empty, loading, validation |
 | Tabs and segmented controls | default, hover, focus-visible, selected, disabled |
 | Filters | inactive, active, removable, empty result, saved view when relevant |
 | Cards | static, clickable, selected, disabled, warning, expanded when relevant |
@@ -27,12 +29,15 @@ For each selected style, define these details before writing final UI code:
 
 - Button anatomy: height, padding, radius, border width, fill logic, icon placement, label length, and primary/secondary/destructive hierarchy.
 - Button states: hover, focus-visible, pressed, loading, disabled, selected/toggled, success, warning, error, and destructive confirmation when relevant.
-- Feedback model: which situations use toast, snackbar, banner, inline alert, row-local status, field validation, modal confirmation, or undo.
+- Feedback model: which situations use toast, snackbar, banner, inline alert, row-local status, field validation, modal confirmation, or undo instead of browser dialogs.
 - Spacing model: page gutter, section gap, panel padding, card/list gap, row height, control height, and compact versus touch-first variants.
 - Responsive model: desktop layout, tablet collapse, mobile order, toolbar behavior, filter/sidebar handling, table/list fallback, and primary action placement.
 - Content model: how long labels, user-generated text, numbers, statuses, and helper text wrap, truncate, clamp, or expand.
+- Primitive model: which project wrapper or styled component replaces raw browser dialogs, unstyled native selects, and default-looking native controls.
 
 Do not stop at naming a color palette. A style is considered implemented only when the components have visible state behavior and responsive structure.
+
+For existing projects, start with the current component baselines before inventing new treatments. Inspect sibling pages and shared components for selects/dropdowns, buttons, paginated tables, statistics tables/cards, modals, drawers, filters, forms, pagination, action menus, icons, and feedback states. Reuse those baselines unless the user asks for a redesign or the current pattern blocks usability.
 
 ## Page-Type Component Expectations
 
@@ -51,6 +56,18 @@ Do not stop at naming a color palette. A style is considered implemented only wh
 - Loading buttons should preserve width or use a stable layout so surrounding content does not jump.
 - Toggle buttons and selected chips must expose state with `aria-pressed`, `aria-selected`, visible text, or an adjacent selected marker.
 - Destructive buttons should not share the exact same visual treatment as the primary happy-path action.
+- Existing-project buttons should match nearby action hierarchy, height, icon placement, loading width, disabled contrast, toolbar spacing, and permission-disabled treatment before introducing new variants.
+
+## Selects, Dropdowns, And Menus
+
+- Do not use an unstyled native `<select>` for designed product UI unless it is already the project's intentional, styled convention.
+- Prefer the project's Select, Dropdown, Combobox, Cascader, Autocomplete, Menu, or pagination size component before building a new primitive.
+- Match existing trigger height, border, radius, placeholder, selected value, clear action, arrow icon, disabled state, and validation treatment.
+- Menus need predictable width, option height, focused option, selected option, empty state, and overlay layering.
+- Searchable selects should follow the existing project's search, debounce, loading, no-result, and clear behavior.
+- Cascaders, multi-selects, and tag selects should preserve chip shape, remove affordance, overflow behavior, and keyboard expectations.
+- Existing-project dropdowns should use the project's wrapper component or UI framework abstraction before raw menu markup.
+- Custom dropdowns need semantic roles or accessible names, keyboard behavior, click-outside/escape behavior, mobile fallback, and visual states for disabled, loading, selected, focused, empty, and invalid options.
 
 ## Forms
 
@@ -63,9 +80,12 @@ Do not stop at naming a color palette. A style is considered implemented only wh
 
 ## Feedback And Alerts
 
+- Do not use `alert(...)`, `confirm(...)`, `prompt(...)`, or their `window.*` forms for product UI.
 - Toasts confirm lightweight outcomes such as save, copy, publish, or queue changes.
 - Inline alerts belong next to the field, row, card, or panel they affect.
 - Banners are for page-level warnings, permission states, environment changes, or outages.
+- Destructive decisions should use the project's modal, drawer, inline confirmation, or undo pattern instead of a browser confirmation dialog.
+- Copy/export/save failures should use page-level status, toast, inline alert, or retry affordance instead of a prompt.
 - Success states should say what changed. Error states should say what failed and what to try next.
 - Loading states should preserve the layout footprint and avoid replacing the whole page with a spinner.
 - Warning, error, success, and info colors must be readable in the selected light or dark mode and must not rely on color alone.
@@ -92,12 +112,16 @@ Do not stop at naming a color palette. A style is considered implemented only wh
 - Numeric values should align visually and use tabular numerals when possible.
 - Filter bars should expose active filters as visible chips or controls.
 - Avoid turning dense operational work into a decorative card wall.
+- Paginated tables should match existing filter bar, toolbar, row density, column alignment, selection, batch action, row action, sorter/filter, pagination, page-size, loading, empty, and error patterns.
+- Statistics tables and metric panels should match existing number formatting, unit labels, comparison deltas, stale/no-data/loading states, trend markers, and chart/table spacing.
 
 ## Overlays
 
 - Modals, drawers, popovers, and menus need visible close affordance, clear layering, and predictable escape behavior.
 - Backdrops should support focus and hierarchy without hiding text contrast.
-- Destructive flows need confirmation or undo.
+- Destructive flows need project-styled confirmation or undo, not browser confirm dialogs.
+- Existing-project modals and drawers should match title bar, body padding, footer button order, close affordance, scroll container, overlay layer, width, mobile fallback, and confirmation language.
+- Native `<dialog>` can be used only when styled to the project system and paired with focus handling, backdrop, escape behavior, scroll handling, and mobile behavior.
 
 ## Empty, Error, And Loading States
 
@@ -117,3 +141,5 @@ For every selected visual style, translate these component details into the styl
 - icon logic: stroke, fill, alignment, and accessible labels
 
 If the component system still looks generic after color tokens are applied, change component geometry, state treatment, density, icon rules, or layout placement before adding decorative effects.
+
+Before final approval, run the anti-pattern scan from `ui-primitive-contract.md` on changed UI files when the task touched controls, overlays, forms, or generated HTML.

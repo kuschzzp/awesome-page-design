@@ -26,7 +26,7 @@ Choose how much information appears in the first usable viewport.
 
 - `Sparse`: Strong hero, few objects, generous breathing room. Use for premium pages, portfolios, and focused launches.
 - `Normal`: Balanced content, proof, actions, and a supporting visual. This is the default.
-- `Dense`: Tables, filters, status chips, charts, split panes, or operational queues visible early. Use for dashboards, admin panels, CRM workspaces, and analytics tools.
+- `Dense`: Tables, filters, status chips, charts, split panes, or operational queues visible early. Use for dashboards, admin panels, internal workspaces, and analytics tools.
 
 ## How To Apply
 

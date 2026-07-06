@@ -441,8 +441,8 @@ const coreStyles = [
     zhName: "卡片网格",
     brief: "Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.",
     zhBrief: "真实后台外壳、白色侧栏、白色顶栏、灰蓝工作区、指标卡、快捷入口、筛选栏、密集表格和工具面板。",
-    bestFor: "admin panels, CRM/ERP consoles, permission systems, operations dashboards",
-    zhBestFor: "后台管理、CRM/ERP 控制台、权限系统、运营仪表盘",
+    bestFor: "admin panels, enterprise consoles, permission systems, operations dashboards",
+    zhBestFor: "后台管理、企业控制台、权限系统、运营仪表盘",
     bg: "#eef6ff",
     surface: "#ffffff",
     text: "#0f172a",
@@ -682,18 +682,18 @@ function resolvePreviewStyles() {
 
 const scenarios = {
   "01": {
-    brand: "AdminFlow",
-    nav: ["Home", "Customers", "Reports"],
-    eyebrow: "CRM management dashboard",
+    brand: "OpsFlow",
+    nav: ["Home", "Records", "Reports"],
+    eyebrow: "Operations management dashboard",
     headline: "Run the daily admin workspace from one dense console.",
     lede: "A practical enterprise admin page with persistent navigation, searchable records, KPI cards, quick entries, tables, rankings, approvals, and calendar widgets.",
-    primaryAction: "New customer",
+    primaryAction: "New record",
     secondaryAction: "More actions",
     mediaLabel: "Enterprise admin console mockup",
     scene: "dashboard",
     metrics: [
-      ["$482K", "pipeline value"],
-      ["1,284", "customer records"],
+      ["$482K", "active value"],
+      ["1,284", "business records"],
       ["312", "open tasks"],
     ],
     features: [
@@ -703,12 +703,12 @@ const scenarios = {
     ],
     tabs: {
       launch: ["Task review", "Filter task records, inspect owner/status columns, and keep empty or warning states inside the table frame."],
-      metrics: ["Data center", "Compare annual sales, customer count, opportunities, signed orders, ranking lists, and approval tabs."],
-      assets: ["System modules", "Use customer, purchase, product, workflow, reports, monitoring, permissions, and settings sections as real navigation."],
+      metrics: ["Data center", "Compare annual value, record count, opportunities, signed orders, ranking lists, and approval tabs."],
+      assets: ["System modules", "Use records, purchasing, products, workflow, reports, monitoring, permissions, and settings sections as real navigation."],
     },
     queue: [
       ["Sales contract approval", "Pending"],
-      ["Inactive customer follow-up", "Warning"],
+      ["Inactive account follow-up", "Warning"],
       ["Monthly audit export", "Ready"],
     ],
   },
@@ -12951,6 +12951,31 @@ body.industrial-control .feature-block {
       toast.hidden = true;
     }, 2200);
   }
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {}
+    }
+    const helper = document.createElement('textarea');
+    helper.value = value;
+    helper.setAttribute('readonly', '');
+    helper.style.position = 'fixed';
+    helper.style.inset = '0 auto auto 0';
+    helper.style.width = '1px';
+    helper.style.height = '1px';
+    helper.style.opacity = '0';
+    document.body.appendChild(helper);
+    helper.focus();
+    helper.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch {}
+    helper.remove();
+    return copied;
+  }
   document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
     modal.hidden = false;
     document.querySelector('[data-close-modal]').focus();
@@ -12959,14 +12984,16 @@ body.industrial-control .feature-block {
   document.querySelectorAll('[data-copy]').forEach((button) => {
     const original = button.textContent;
     button.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(prompt);
+      if (await copyText(prompt)) {
         button.textContent = 'Copied detailed prompt';
         status.textContent = 'Detailed style prompt copied';
         showToast('Detailed style prompt copied');
         setTimeout(() => button.textContent = original, 1500);
-      } catch {
-        window.prompt('Copy this detailed style prompt:', prompt);
+      } else {
+        button.textContent = 'Copy unavailable';
+        status.textContent = 'Copy unavailable in this browser context';
+        showToast('Copy unavailable in this browser context');
+        setTimeout(() => button.textContent = original, 1800);
       }
     });
   });
@@ -14406,7 +14433,7 @@ ${cards}
       copyPrompt: 'Copy selected prompt',
       copied: 'Copied',
       openHtml: 'Open HTML',
-      promptFallback: 'Copy this style prompt:'
+      copyFailed: 'Copy unavailable'
     },
     zh: {
       eyebrow: '风格库',
@@ -14429,7 +14456,7 @@ ${cards}
       copyPrompt: '复制所选提示词',
       copied: '已复制',
       openHtml: '打开 HTML',
-      promptFallback: '复制这个风格提示词：'
+      copyFailed: '无法复制'
     }
   };
   let activeLang = 'en';
@@ -14599,14 +14626,38 @@ ${cards}
   document.addEventListener('click', (event) => {
     if (!event.target.closest('[data-prompt-picker]')) closeAllPromptPickers();
   });
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {}
+    }
+    const helper = document.createElement('textarea');
+    helper.value = value;
+    helper.setAttribute('readonly', '');
+    helper.style.position = 'fixed';
+    helper.style.inset = '0 auto auto 0';
+    helper.style.width = '1px';
+    helper.style.height = '1px';
+    helper.style.opacity = '0';
+    document.body.appendChild(helper);
+    helper.focus();
+    helper.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch {}
+    helper.remove();
+    return copied;
+  }
   document.querySelectorAll('[data-prompts]').forEach((button) => {
     button.addEventListener('click', async () => {
       const prompts = JSON.parse(button.getAttribute('data-prompts'));
       const picker = button.closest('.actions').querySelector('[data-prompt-picker]');
       const kind = picker?.dataset.selectedKind || 'full';
       const value = prompts[activeLang][kind] || prompts[activeLang].full;
-      try {
-        await navigator.clipboard.writeText(value);
+      if (await copyText(value)) {
         button.textContent = copy[activeLang].copied;
         button.classList.add('copied');
         status.textContent = copy[activeLang].copied;
@@ -14614,8 +14665,10 @@ ${cards}
           button.classList.remove('copied');
           updatePromptCopyButton(button);
         }, 1600);
-      } catch {
-        window.prompt(copy[activeLang].promptFallback, value);
+      } else {
+        button.textContent = copy[activeLang].copyFailed;
+        status.textContent = copy[activeLang].copyFailed;
+        setTimeout(() => updatePromptCopyButton(button), 1800);
       }
     });
   });

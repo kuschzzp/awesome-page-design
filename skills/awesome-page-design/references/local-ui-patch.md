@@ -14,8 +14,11 @@ Use this mode for requests such as:
 - Fix the mobile layout in this section.
 - Make this card area less generic.
 - Improve a sidebar, filter bar, form block, empty state, toast, drawer, tabs, or action row.
+- Add or adjust a select, dropdown, button group, paginated table, statistics table/card, modal, drawer, filter form, or pagination block inside an existing project.
 
 Do not force the preview selection gate for a local patch unless the user explicitly asks for a new visual style or the existing page has no usable visual direction.
+
+Read `ui-primitive-contract.md` before changing local controls, selects/dropdowns, overlays, confirmation flows, feedback, copy/export behavior, or generated HTML.
 
 ## Required Context Scan
 
@@ -25,6 +28,8 @@ Before editing, inspect the current implementation and answer these questions:
 - Neighbor regions: what sits directly above, below, beside, or inside the target region?
 - Current visual system: what colors, typography, spacing, radius, borders, shadows, icons, density, and interaction states already exist?
 - Current component system: are there reusable components, tokens, utilities, variants, or framework patterns that should be reused?
+- Current component baselines: how do existing selects/dropdowns, buttons, paginated tables, statistics blocks, modals, drawers, forms, filters, pagination controls, and action menus look and behave?
+- Current UI primitive rules: which project wrappers replace browser dialogs, native selects, default form controls, confirmation prompts, and copy/export feedback?
 - Current state model: which hover, focus, selected, disabled, loading, empty, error, warning, and success states already exist?
 - Current responsive behavior: how does the target region behave on desktop, tablet, and mobile?
 - Patch scope: what is the smallest change that solves the user's stated problem without weakening nearby UI?
@@ -40,9 +45,10 @@ Local patches should extend the existing page language before introducing a new 
 - Match existing density unless the user explicitly asks for a denser or more spacious target region.
 - Keep action hierarchy consistent with nearby primary, secondary, destructive, and quiet actions.
 - Keep focus, hover, selected, disabled, loading, validation, and toast treatments related to the existing product states.
+- Use the project's styled primitives for selects/dropdowns, modals, drawers, toasts, banners, inline alerts, pagination, and confirmation flows.
 - Prefer local class extensions or component variants over broad global CSS changes.
 
-Do not add a new button style, card language, shadow system, radius scale, icon style, or color personality that makes the target region look imported from another product.
+Do not add a new button style, card language, shadow system, radius scale, icon style, color personality, browser dialog, or unstyled native select that makes the target region look imported from another product.
 
 ## Patch Boundary Rules
 
@@ -61,6 +67,8 @@ For local patches:
 - Do not turn an operational page into a marketing layout.
 - Do not change unrelated copy, data labels, or feature behavior.
 - Do not mask weak hierarchy with extra glow, blur, gradients, or decoration.
+- Do not use browser `alert`, `confirm`, or `prompt` dialogs for local product feedback or destructive decisions.
+- Do not use an unstyled native `<select>` when the project has a select, dropdown, combobox, menu, or pagination-size primitive.
 
 If a shared component must change, confirm that the new variant still works for existing uses or scope the new treatment to the current context.
 
@@ -71,9 +79,12 @@ Every local patch should improve the actual component behavior, not only the def
 - Buttons: preserve width during loading, expose disabled and focus-visible states, and keep primary/secondary/destructive hierarchy clear.
 - Forms: keep labels visible, place validation near the field, and avoid using placeholder text as the only label.
 - Tables and lists: preserve scanning, row alignment, selected state, empty state, loading row, and truncated content strategy.
+- Paginated tables: preserve filter/toolbar layout, row density, column alignment, sorter/filter affordances, selected rows, batch actions, row actions, pagination position, page-size control, loading rows, empty state, and error state.
+- Statistics tables and cards: preserve number formatting, unit labels, comparison deltas, tabular numerals, trend markers, loading/no-data/stale states, and grid rhythm.
 - Filters and tabs: expose active state visibly and keep removable filters or saved views understandable.
-- Modals and drawers: preserve close affordance, layering, scroll behavior, and expected focus handling.
-- Toasts and alerts: choose the right level for the issue and include what changed plus the next useful action.
+- Modals and drawers: preserve close affordance, layering, scroll behavior, expected focus handling, destructive confirmation language, and mobile fallback.
+- Selects and dropdowns: preserve trigger height, border/radius, menu width, option height, selected/disabled states, clear action, placeholder style, validation style, overlay placement, keyboard behavior, empty/loading state, and mobile fallback.
+- Toasts and alerts: choose the right level for the issue and include what changed plus the next useful action; never use browser alerts as finished feedback.
 - Cards and panels: make each local object purposeful; avoid adding nested cards unless the nested object is real content.
 - Icon-only controls: provide accessible names or visible adjacent labels.
 
@@ -119,8 +130,10 @@ When escalating, explain the reason briefly and move to the normal page-level wo
 Before final approval for a local patch:
 
 - Re-open the changed file regions and confirm the patch stayed within scope.
+- Compare the changed controls with existing project examples for selects/dropdowns, buttons, tables, statistics blocks, modals/drawers, filters/forms, and pagination.
 - Check target and neighbor regions on desktop and mobile.
 - Check semantic controls, accessible labels, focus-visible, reduced motion, stable dimensions, and content overflow.
+- Run or apply the anti-pattern scan from `ui-primitive-contract.md` when controls, overlays, forms, feedback, or generated HTML changed.
 - Check relevant default, hover, focus, selected, disabled, loading, error, warning, success, and empty states.
 - Confirm the target region still belongs to the existing page visually.
 - Mention if no screenshot could be taken, and state the remaining risk.

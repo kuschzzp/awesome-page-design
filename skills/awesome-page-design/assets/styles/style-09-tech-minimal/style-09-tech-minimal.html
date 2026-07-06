@@ -1185,8 +1185,35 @@ body.card-grid .state-pill {
 }
 .timer-well b,
 .timer-well span,
+.wave-well b,
+.wave-well span,
 .pad-count strong {
   display: block;
+}
+.wave-well {
+  display: grid;
+  align-content: space-between;
+  gap: 10px;
+}
+.wave-well b {
+  color: #172033;
+}
+.wave-well span {
+  color: #64748b;
+  font-size: 13px;
+}
+.mini-wave {
+  height: 42px;
+  display: flex;
+  align-items: end;
+  gap: 6px;
+}
+.mini-wave i {
+  flex: 1;
+  min-width: 5px;
+  border-radius: 999px 999px 6px 6px;
+  background: linear-gradient(180deg, #31487d, #8ee6c8);
+  box-shadow: 0 0 18px rgba(142,230,200,.26);
 }
 .routine-strip {
   display: grid;
@@ -1824,15 +1851,71 @@ body.card-grid .state-pill {
   gap: 12px;
 }
 .press-matrix button {
-  min-height: 170px;
+  min-height: 210px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 16px;
   border-color: #3d4438;
   background: #1d211c;
+  text-align: left;
 }
 .press-matrix .press-2 {
   border-color: #ffb000;
 }
 .press-matrix .press-2 em {
   color: #ffb000;
+}
+.press-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #f2f2ea;
+}
+.press-card-top em {
+  font-style: italic;
+}
+.press-gauge {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+.press-gauge i {
+  height: 10px;
+  width: var(--load);
+  min-width: 24px;
+  max-width: 100%;
+  display: block;
+  border-radius: 999px;
+  background: #d6ff3f;
+  box-shadow: 0 0 18px rgba(214,255,63,.26);
+}
+.press-gauge strong {
+  font-size: 13px;
+}
+.press-tasks {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(242,242,234,.72);
+  font-size: 13px;
+}
+.press-tasks li {
+  padding-left: 14px;
+  position: relative;
+}
+.press-tasks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #ffb000;
 }
 .dry-rack-meter {
   display: grid;
@@ -8179,6 +8262,31 @@ body.industrial-control .feature-block {
       toast.hidden = true;
     }, 2200);
   }
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {}
+    }
+    const helper = document.createElement('textarea');
+    helper.value = value;
+    helper.setAttribute('readonly', '');
+    helper.style.position = 'fixed';
+    helper.style.inset = '0 auto auto 0';
+    helper.style.width = '1px';
+    helper.style.height = '1px';
+    helper.style.opacity = '0';
+    document.body.appendChild(helper);
+    helper.focus();
+    helper.select();
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch {}
+    helper.remove();
+    return copied;
+  }
   document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
     modal.hidden = false;
     document.querySelector('[data-close-modal]').focus();
@@ -8187,14 +8295,16 @@ body.industrial-control .feature-block {
   document.querySelectorAll('[data-copy]').forEach((button) => {
     const original = button.textContent;
     button.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(prompt);
+      if (await copyText(prompt)) {
         button.textContent = 'Copied detailed prompt';
         status.textContent = 'Detailed style prompt copied';
         showToast('Detailed style prompt copied');
         setTimeout(() => button.textContent = original, 1500);
-      } catch {
-        window.prompt('Copy this detailed style prompt:', prompt);
+      } else {
+        button.textContent = 'Copy unavailable';
+        status.textContent = 'Copy unavailable in this browser context';
+        showToast('Copy unavailable in this browser context');
+        setTimeout(() => button.textContent = original, 1800);
       }
     });
   });

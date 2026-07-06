@@ -1,7 +1,7 @@
 interface:
   display_name: "Awesome Page Design"
-  short_description: "Distinct web visual styles"
+  short_description: "UI design, local polish, and compliance"
   brand_color: "#4F46E5"
-  default_prompt: "Use $awesome-page-design to choose a distinctive visual style for this website, then apply it without copying sample layouts."
+  default_prompt: "Use $awesome-page-design to design or polish this UI, preserving existing project components and checking favicon, metadata, and UI primitives."
 policy:
   allow_implicit_invocation: true

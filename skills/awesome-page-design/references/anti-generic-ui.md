@@ -11,7 +11,7 @@ Use these rules to keep generated pages from looking like default agent output.
 - Do not put cards inside cards unless the nested object is a real contained item such as a row, comment, or product.
 - Do not use a decorative split hero when the actual workflow needs a dashboard, table, form, editor, or console.
 - Do not reuse the same navigation, hero split, metric strip, card grid, and bottom tab panel across multiple visual styles.
-- Do not let dashboards, admin panels, CRM workspaces, analytics screens, or operational tools start with oversized marketing copy.
+- Do not let dashboards, admin panels, internal workspaces, analytics screens, or operational tools start with oversized marketing copy.
 - Do not hide filters, search, status, owner, priority, and next actions when the workflow depends on them.
 - Do not use equal card grids for content with different urgency, ownership, or action types.
 

@@ -4,7 +4,7 @@ This index summarizes all 26 available visual styles, numbered continuously from
 
 | Style | Name | 中文名 | Best For | Layout Pattern | Visual Language |
 |---|---|---|---|---|---|
-| Style 01 | Card Grid | 卡片网格 | admin panels, CRM/ERP consoles, permission systems, operations dashboards | Blue Admin Console | Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels. |
+| Style 01 | Card Grid | 卡片网格 | admin panels, enterprise consoles, permission systems, operations dashboards | Blue Admin Console | Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels. |
 | Style 02 | Block Brutalism | 块状粗野主义 | bold campaigns, indie products, playful utilities | Street Poster Launch | Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy. |
 | Style 03 | Aurora Gradient | 极光渐变 | immersive art venues, futuristic products, premium dark experiences | Aurora Listening Room | Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium immersive atmosphere. |
 | Style 04 | Retro Y2K | 复古 Y2K | music, fashion, youth culture, playful campaigns | Glossy Y2K Stage | Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism. |

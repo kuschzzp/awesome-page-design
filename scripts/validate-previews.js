@@ -11,8 +11,10 @@ const previewIndex = path.join(skillDir, "assets", "previews", "index.html");
 const referencesDir = path.join(skillDir, "references");
 const styleRefsDir = path.join(referencesDir, "styles");
 const skillFile = path.join(skillDir, "SKILL.md");
+const uiPrimitiveContractFile = path.join(referencesDir, "ui-primitive-contract.md");
 const readmeFile = path.join(rootDir, "README.md");
 const readmeZhFile = path.join(rootDir, "README.zh-CN.md");
+const agentsOpenaiFile = path.join(skillDir, "agents", "openai.yaml");
 
 const expectedStyleCount = 26;
 const expectedDesktopWidth = 1440;
@@ -20,6 +22,11 @@ const expectedDesktopHeight = 1200;
 const expectedMobileWidth = 390;
 const expectedMobileHeight = 844;
 const promptKinds = ["full", "landing", "dashboard", "admin", "mobile"];
+const narrowDomainAnchors = [
+  ["C", "R", "M"].join(""),
+  ["E", "R", "P"].join(""),
+];
+const narrowDomainAnchorPattern = new RegExp(`\\b(?:${narrowDomainAnchors.join("|")})\\b`, "i");
 const bannedPatterns = [
   /Reference:/i,
   /Unsplash/i,
@@ -36,8 +43,16 @@ const bannedPatterns = [
   /旧风格/,
   /新增风格/,
 ];
+const uiPrimitiveBannedPatterns = [
+  { label: "browser alert()", pattern: /\b(?:window\.)?alert\s*\(/ },
+  { label: "browser confirm()", pattern: /\b(?:window\.)?confirm\s*\(/ },
+  { label: "browser prompt()", pattern: /\b(?:window\.)?prompt\s*\(/ },
+  { label: "native select", pattern: /<select\b/i },
+];
 
 let failures = 0;
+let passes = 0;
+const verbose = process.env.VALIDATE_VERBOSE === "1" || process.argv.includes("--verbose");
 
 function fail(message) {
   failures += 1;
@@ -45,7 +60,8 @@ function fail(message) {
 }
 
 function pass(message) {
-  console.log(`PASS ${message}`);
+  passes += 1;
+  if (verbose) console.log(`PASS ${message}`);
 }
 
 function assert(condition, message) {
@@ -97,6 +113,37 @@ function checkSkillDescription() {
   assert(description.length <= 1024, `SKILL.md description length is ${description.length}/1024`);
 }
 
+function checkAgentsMetadata() {
+  const yaml = read(agentsOpenaiFile);
+  assert(yaml.includes('display_name: "Awesome Page Design"'), "agents/openai.yaml has display name");
+  assert(yaml.includes("$awesome-page-design"), "agents/openai.yaml default prompt invokes the skill");
+  assert(/short_description: "([^"]*UI[^"]*|[^"]*design[^"]*)"/i.test(yaml), "agents/openai.yaml short description mentions UI/design");
+  assert(
+    /default_prompt: ".*(existing|local|new|favicon|metadata|component|interface|UI)/i.test(yaml),
+    "agents/openai.yaml default prompt reflects current UI workflow scope"
+  );
+}
+
+function checkCoreDomainNeutrality() {
+  const filesToCheck = [
+    skillFile,
+    path.join(referencesDir, "workflow.md"),
+    path.join(referencesDir, "existing-project-integration.md"),
+    path.join(referencesDir, "layout-guidance.md"),
+    path.join(referencesDir, "design-dials.md"),
+    path.join(referencesDir, "anti-generic-ui.md"),
+    path.join(referencesDir, "style-index.md"),
+    path.join(rootDir, "scripts", "generate-previews.js"),
+    readmeFile,
+    readmeZhFile,
+  ];
+
+  filesToCheck.filter(fs.existsSync).forEach((file) => {
+    const content = read(file);
+    assert(!narrowDomainAnchorPattern.test(content), `${path.relative(rootDir, file)} avoids narrow domain anchors`);
+  });
+}
+
 function checkReadmes() {
   const readme = read(readmeFile);
   const readmeZh = read(readmeZhFile);
@@ -116,8 +163,62 @@ function checkReadmes() {
   ].forEach((needle) => assert(readmeZh.includes(needle), `README.zh-CN.md includes ${needle}`));
 }
 
+function checkUiPrimitiveContract() {
+  assert(fs.existsSync(uiPrimitiveContractFile), "ui primitive contract reference exists");
+  const contract = read(uiPrimitiveContractFile);
+  [
+    "## Hard Bans For Product UI",
+    "## Replacement Matrix",
+    "## Anti-Pattern Scan",
+    "alert",
+    "confirm",
+    "prompt",
+    "<select>",
+    "outline",
+    "transition",
+  ].forEach((needle) => assert(contract.includes(needle), `ui primitive contract includes ${needle}`));
+
+  [
+    skillFile,
+    path.join(referencesDir, "workflow.md"),
+    path.join(referencesDir, "usage-principles.md"),
+    path.join(referencesDir, "existing-project-integration.md"),
+    path.join(referencesDir, "local-ui-patch.md"),
+    path.join(referencesDir, "component-implementation.md"),
+    path.join(referencesDir, "interface-compliance.md"),
+    readmeFile,
+    readmeZhFile,
+  ].forEach((file) => {
+    assert(read(file).includes("ui-primitive-contract.md"), `${path.relative(rootDir, file)} references ui-primitive-contract.md`);
+  });
+}
+
+function checkNewProjectReadinessGuidance() {
+  [
+    skillFile,
+    path.join(referencesDir, "workflow.md"),
+    path.join(referencesDir, "usage-principles.md"),
+    path.join(referencesDir, "interface-compliance.md"),
+    readmeFile,
+    readmeZhFile,
+  ].forEach((file) => {
+    const content = read(file);
+    assert(content.includes("favicon.ico"), `${path.relative(rootDir, file)} includes favicon.ico guidance`);
+  });
+
+  [
+    skillFile,
+    path.join(referencesDir, "workflow.md"),
+    path.join(referencesDir, "interface-compliance.md"),
+  ].forEach((file) => {
+    const content = read(file);
+    assert(/favicon\.svg[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content) || /SVG[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content), `${path.relative(rootDir, file)} says SVG favicon does not replace favicon.ico`);
+  });
+}
+
 function checkPreviewIndex() {
   const html = read(previewIndex);
+  const css = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map((match) => match[1]).join("\n");
   const openLinks = [...html.matchAll(/<a href="\.\.\/styles\/[^"]+"[^>]*data-i18n="openHtml"/g)].map((match) => match[0]);
   const promptButtons = [...html.matchAll(/<button type="button" data-prompts="([^"]+)"[^>]*data-i18n="copyPrompt"/g)].map((match) => match[1]);
   const promptPickers = [...html.matchAll(/data-prompt-picker data-selected-kind="full"/g)];
@@ -145,6 +246,8 @@ function checkPreviewIndex() {
   assert(promptChooserLabels.length === expectedStyleCount, `preview index labels ${expectedStyleCount} prompt pickers with a user-facing question`);
   assert(promptOptionTitles.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible titles");
   assert(promptOptionDescriptions.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible descriptions");
+  assert(!/transition\s*:\s*all\b/.test(css), "preview index CSS avoids transition: all");
+  assert(!/outline\s*:\s*none\b/.test(css), "preview index CSS avoids bare outline: none");
   assert(html.includes("General") && html.includes("移动端"), "preview index uses user-facing prompt type labels");
   assert(html.includes("Copy Dashboard") && html.includes("复制看板"), "preview index uses task-specific copy button labels");
   assert(nativePromptSelects.length === 0, "preview index does not use native prompt select controls");
@@ -233,8 +336,11 @@ function checkBannedText() {
     readmeZhFile,
     skillFile,
     path.join(referencesDir, "workflow.md"),
+    path.join(referencesDir, "existing-project-integration.md"),
+    path.join(referencesDir, "local-ui-patch.md"),
     path.join(referencesDir, "quality-checklist.md"),
     path.join(referencesDir, "component-implementation.md"),
+    path.join(referencesDir, "usage-principles.md"),
     path.join(referencesDir, "style-index.md"),
     previewIndex,
   ];
@@ -252,18 +358,55 @@ function checkBannedText() {
   });
 }
 
+function lineMatches(content, pattern) {
+  return content
+    .split(/\r?\n/)
+    .map((line, index) => ({ line, lineNumber: index + 1 }))
+    .filter(({ line }) => pattern.test(line));
+}
+
+function checkUiPrimitiveImplementationPatterns() {
+  const filesToCheck = [previewIndex, path.join(rootDir, "scripts", "generate-previews.js")];
+
+  getStyleDirs().forEach((dir) => {
+    filesToCheck.push(path.join(stylesDir, dir, `${dir}.html`));
+  });
+
+  filesToCheck.filter(fs.existsSync).forEach((file) => {
+    const content = read(file);
+    uiPrimitiveBannedPatterns.forEach(({ label, pattern }) => {
+      const matches = lineMatches(content, pattern);
+      if (matches.length > 0) {
+        const locations = matches
+          .slice(0, 5)
+          .map(({ lineNumber }) => `${path.relative(rootDir, file)}:${lineNumber}`)
+          .join(", ");
+        fail(`${path.relative(rootDir, file)} avoids ${label} in generated UI (${locations})`);
+      } else {
+        pass(`${path.relative(rootDir, file)} avoids ${label} in generated UI`);
+      }
+    });
+  });
+}
+
 function main() {
   checkSkillDescription();
+  checkAgentsMetadata();
+  checkCoreDomainNeutrality();
   checkReadmes();
+  checkUiPrimitiveContract();
+  checkNewProjectReadinessGuidance();
   checkPreviewIndex();
   checkStyleAssets();
   checkBannedText();
+  checkUiPrimitiveImplementationPatterns();
 
   if (failures > 0) {
     console.error(`\n${failures} validation check(s) failed.`);
     process.exit(1);
   }
-  console.log("\nAll preview validation checks passed.");
+  console.log(`\nAll preview validation checks passed (${passes} checks).`);
+  if (!verbose) console.log("Set VALIDATE_VERBOSE=1 or pass --verbose to print every PASS line.");
 }
 
 main();

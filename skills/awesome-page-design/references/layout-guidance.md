@@ -30,7 +30,7 @@ Do not start from a generic hero, three feature cards, and a final call to actio
 
 | Archetype | Use For | Structural Pattern | Avoid |
 |---|---|---|---|
-| Operational Workbench | dashboards, admin panels, CRM, analytics, logistics, finance, support queues | App shell, filter rail, dense metrics, table/list, detail or action queue, visible state chips | Giant marketing hero, equal feature cards, decorative media |
+| Operational Workbench | dashboards, admin panels, internal tools, analytics, logistics, finance, support queues | App shell, filter rail, dense metrics, table/list, detail or action queue, visible state chips | Giant marketing hero, equal feature cards, decorative media |
 | Data Review Console | AI ops, incident review, issue tracking, QA, security, observability | Split panes, traces/logs, evidence surface, status lanes, compact command actions | Atmospheric dark cards without data structure |
 | Creation Studio | editors, AI builders, media tools, design tools, content creation | Canvas or editor center, tool rail, asset strip, inspector, preview, publish/export actions | Landing-page sections that hide the creation surface |
 | Product Landing Narrative | SaaS, product launch, conversion pages | Offer, proof, demo/media, use cases, pricing or action module, supporting trust | Vague slogans, repeated cards, action hidden below decoration |

@@ -8,14 +8,14 @@ Chinese summary: 真实后台外壳、白色侧栏、白色顶栏、灰蓝工作
 
 ## Best For
 
-admin panels, CRM/ERP consoles, permission systems, operations dashboards
+admin panels, enterprise consoles, permission systems, operations dashboards
 
 ## Example Scenario
 
-- Product sample: AdminFlow
-- Page job: CRM management dashboard
+- Product sample: OpsFlow
+- Page job: Operations management dashboard
 - Headline: Run the daily admin workspace from one dense console.
-- Primary action: New customer
+- Primary action: New record
 - Secondary action: More actions
 
 ## Scenario Components
@@ -27,7 +27,7 @@ admin panels, CRM/ERP consoles, permission systems, operations dashboards
 ## Example States
 
 - Sales contract approval: Pending
-- Inactive customer follow-up: Warning
+- Inactive account follow-up: Warning
 - Monthly audit export: Ready
 
 ## Layout Pattern
@@ -96,7 +96,7 @@ Chinese implementation notes:
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Full Prompt.
-Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Best fit: admin panels, enterprise consoles, permission systems, operations dashboards.
 Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
 Landing adaptation: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
@@ -122,7 +122,7 @@ States: Show selected sidebar item, active tab, search/filter state, pending app
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "OpsFlow / Operations management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
 Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
@@ -133,7 +133,7 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Landing Page.
-Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Best fit: admin panels, enterprise consoles, permission systems, operations dashboards.
 Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
 Landing page focus: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
@@ -156,7 +156,7 @@ States: Show selected sidebar item, active tab, search/filter state, pending app
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "OpsFlow / Operations management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
 Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
@@ -167,7 +167,7 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Dashboard.
-Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Best fit: admin panels, enterprise consoles, permission systems, operations dashboards.
 Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
 Dashboard focus: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.
@@ -190,7 +190,7 @@ States: Show selected sidebar item, active tab, search/filter state, pending app
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "OpsFlow / Operations management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
 Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
@@ -201,7 +201,7 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Admin Panel.
-Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Best fit: admin panels, enterprise consoles, permission systems, operations dashboards.
 Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
 Admin panel focus: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.
@@ -224,7 +224,7 @@ States: Show selected sidebar item, active tab, search/filter state, pending app
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "OpsFlow / Operations management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
 Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
@@ -235,7 +235,7 @@ Before finishing: check desktop and mobile screenshots, text fit, semantic contr
 ```text
 Use awesome-page-design Style 01 - Card Grid as the page design direction.
 Prompt type: Mobile.
-Best fit: admin panels, CRM/ERP consoles, permission systems, operations dashboards.
+Best fit: admin panels, enterprise consoles, permission systems, operations dashboards.
 Visual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
 Scenario focus:
 Mobile focus: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.
@@ -258,7 +258,7 @@ States: Show selected sidebar item, active tab, search/filter state, pending app
 Component state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.
 Motion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.
 Implementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.
-Example content direction: you may use the specificity of "AdminFlow / CRM management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
+Example content direction: you may use the specificity of "OpsFlow / Operations management dashboard" as inspiration, but replace it with the user's real product, real information architecture, and real copy.
 Design dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.
 Do not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.
 Before finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.
