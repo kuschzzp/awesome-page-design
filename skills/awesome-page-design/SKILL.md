@@ -19,9 +19,22 @@ Always start from `references/workflow.md` and `references/usage-principles.md`.
 
 Before touching real UI code, generated HTML, forms, overlays, feedback, or interactive controls, also read `references/ui-primitive-contract.md`. This contract blocks browser-default product UI such as alert dialogs, confirmation prompts, and unstyled native selects unless a narrow exception is documented.
 
+## Decision Precedence
+
+When guidance conflicts, resolve it in this order:
+
+1. User scope and product requirements.
+2. Usability, accessibility, semantics, and `references/ui-primitive-contract.md`.
+3. Project shared components, wrappers, and tokens.
+4. The nearest compatible production page pattern.
+5. Awesome Page Design visual guidance.
+6. Bundled examples and previews.
+
+Never preserve an inaccessible pattern or browser-default product primitive merely because an older page uses it. Repair it in the smallest project-compatible way and explain the exception or variant.
+
 ## Task Scale Router
 
-- `New page`: create a new site, page, dashboard, admin panel, landing page, app screen, or full experience. Use the preview selection gate when no style is chosen, and include product shell metadata such as page title, `favicon.ico`, and app icons when the project type supports them.
+- `New page`: create a new site, page, dashboard, admin panel, landing page, app screen, or full experience. Use the preview selection gate when no style is chosen, and read `references/new-project-shell.md` for metadata, favicon, starter-brand cleanup, and shell verification.
 - `Page redesign`: rethink a whole page, remove generic AI-looking structure, change visual direction, or improve page-level hierarchy.
 - `Existing-project feature`: add or modify UI inside an existing frontend project, legacy business system, enterprise console, dashboard, internal tool, or app module. Inspect nearby routes, views, shared components, wrappers, tokens, and established component patterns before writing UI.
 - `Local UI patch`: improve one existing region such as a toolbar, modal, table area, sidebar, filter bar, form block, empty state, toast, drawer, tabs, or action row. Preserve the surrounding product system.
@@ -32,11 +45,19 @@ Before touching real UI code, generated HTML, forms, overlays, feedback, or inte
 ## Mode Reference Map
 
 - Page-level style selection or redesign: read `layout-guidance.md`, `style-index.md`, `design-dials.md`, the selected style manual in `references/styles/`, and `anti-generic-ui.md`.
+- New site/app or shell-completeness audit: read `references/new-project-shell.md`.
 - Existing-project feature: read `existing-project-integration.md`, `ui-primitive-contract.md`, `component-implementation.md`, and `interface-compliance.md`.
 - Local UI patch: read `local-ui-patch.md`, `ui-primitive-contract.md`, and add component/compliance references when controls or code change.
 - Component polish: read `component-implementation.md`, `ui-primitive-contract.md`, and `interface-compliance.md` for real code.
 - Implementation compliance or audit: read `interface-compliance.md`, `ui-primitive-contract.md`, and add focused references for motion, icons, local patching, or existing-project integration when relevant.
 - Design system output: read `design-system-output.md` plus the usage, layout, component, primitive, and interface rules that match the target project.
+
+Load focused component contracts only when the task touches that family:
+
+- Select, dropdown, autocomplete, or combobox: `references/patterns/select-and-combobox.md`.
+- Modal, drawer, destructive confirmation, or overlay: `references/patterns/modal-drawer-and-confirmation.md`.
+- Toast, inline alert, banner, outcome, or recovery feedback: `references/patterns/toast-alert-and-feedback.md`.
+- Data table, sorting, row selection, batch actions, or pagination: `references/patterns/data-table-and-pagination.md`.
 
 ## Existing Project Rule
 
@@ -53,7 +74,11 @@ Reuse the nearest, most reused, or newest production pattern by default. Treat t
 
 For complete pages, app screens, dashboards, admin panels, product pages, docs portals, ecommerce consoles, internal workspaces, analytics pages, portfolios, onboarding flows, and page-level redesigns, pause before final implementation when visual direction is undecided.
 
-Summarize the brief, provide the preview gallery URL, and ask the user to choose a task-specific prompt: full, landing, dashboard, admin, or mobile. If the user delegates the choice, recommend 2-3 candidates and explain differences in layout archetype, density, media direction, button language, and component treatment before proceeding.
+Use this three-way decision:
+
+- Style selected: apply it and proceed.
+- User delegates the style and explicitly requests direct implementation: choose the best fit, state the choice and reasoning, then proceed without another approval stop.
+- Direction undecided: summarize the brief, provide the preview gallery or a 2-3 style shortlist, and wait for the user to choose a task-specific prompt: full, landing, dashboard, admin, or mobile.
 
 Do not force this gate for local UI patches, component polish, or pure compliance work inside an existing page unless visual direction is the blocker.
 
@@ -62,7 +87,7 @@ Do not force this gate for local UI patches, component polish, or pure complianc
 Translate the chosen or existing system into concrete implementation primitives:
 
 - layout archetype, top-level regions, action placement, responsive collapse, and primary content object
-- product shell assets for new projects: document title, description metadata, `favicon.ico` or framework favicon route, and app icons when useful
+- product shell assets from `references/new-project-shell.md` for new projects
 - semantic tokens for background, surface, text, muted text, primary, accent, border, focus, radius, and shadow
 - typography, spacing, density, icon rules, image treatment, and motion timing
 - component classes or framework tokens for buttons, inputs, selects, menus, tabs, tables, cards, charts, modals, drawers, toasts, banners, empty states, loading states, validation, and destructive states
@@ -78,7 +103,7 @@ Before final approval for real UI code or generated HTML:
 - Check the UI primitive contract: no product-facing browser dialog primitives, no unstyled native select used as a designed dropdown, no `outline: none`, no `transition: all`, and no default-looking browser controls where the project has a styled component pattern.
 - Report the UI primitive anti-pattern scan scope and result when real UI files changed.
 - Verify desktop and mobile hierarchy, text fit, focus-visible, semantic controls, accessible labels, stable dimensions, reduced motion, and useful empty/error/loading recovery.
-- For new static sites or apps, confirm a real `favicon.ico` exists and is wired into HTML/head metadata. A favicon SVG may be added as a supplement, but it is not a replacement unless the framework has a favicon route that produces the browser-tab icon.
+- For new static sites or apps, run the shell verification in `references/new-project-shell.md`; a favicon SVG may supplement but does not replace `favicon.ico` unless the framework route produces the browser-tab icon.
 - For existing projects, confirm selects/dropdowns, buttons, paginated tables, statistics blocks, modals/drawers, filters/forms, pagination, icons, feedback states, and responsive behavior match nearby production patterns.
 
 When editing this skill's own preview library, refresh generated assets with `PREVIEW_SCREENSHOTS=0 npm run previews` for HTML-only changes or `npm run previews` for screenshot changes, then run `npm run validate`.

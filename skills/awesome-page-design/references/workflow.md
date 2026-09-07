@@ -2,6 +2,19 @@
 
 Use this workflow whenever the skill is helping with page design, visual direction, existing-project integration, local UI patching, UI review, UI polish, or implementation.
 
+## Decision Precedence
+
+Resolve conflicts in this order:
+
+1. User scope and product requirements.
+2. Usability, accessibility, semantics, and `ui-primitive-contract.md`.
+3. Project shared components, wrappers, and tokens.
+4. The nearest compatible production page pattern.
+5. Awesome Page Design visual guidance.
+6. Bundled examples and previews.
+
+An older production pattern is evidence, not permission to keep inaccessible behavior or browser-default product UI. Make the smallest compatible repair when a higher-priority rule requires it.
+
 ## 1. Understand The Design Task
 
 Before choosing a style or patching an existing page, summarize the user's request as a short design brief:
@@ -106,25 +119,21 @@ If any apply, read `ui-primitive-contract.md` before coding. Replace browser-def
 
 ## 3C. Plan New Project Shell Assets
 
-When building a new site, app, landing page, dashboard, or admin panel from scratch, include the project shell polish that makes the work feel complete:
-
-- Generate or add a real `favicon.ico` unless the framework has a specific favicon route that produces the same browser-tab result. For plain HTML/static sites, SVG can supplement the icon set but does not replace `favicon.ico`.
-- Wire the favicon into the app shell: HTML `<head>`, framework metadata API, `public/favicon.ico`, `app/favicon.ico`, or the project's established asset location.
-- Remove default framework icons, sample logos, default titles, starter metadata, and placeholder app names.
-- Set a product-specific document title and description metadata.
-- Add app/touch icons or manifest metadata when the page is intended to behave like an installable app or mobile-first product.
-
-The favicon can be simple, but it should use the selected visual language or product mark. Do not leave the browser tab with the Vite, React, Next.js, framework, or generic blank icon.
+For a new site/app or shell-completeness audit, read `new-project-shell.md`, choose the row matching the framework, and include its required metadata and favicon output in the implementation plan. An SVG favicon may supplement but does not replace `favicon.ico` unless a framework route produces the browser-tab icon. Do not consider the page complete until the shell checklist passes.
 
 ## 4. Run The Preview Selection Gate
 
-When the user has not already chosen a page-level visual style, do not implement the final page-level UI yet. First guide the user to preview and choose.
+Resolve the page-level visual direction before final implementation:
+
+- Style selected: proceed with that direction.
+- User delegates and explicitly requests direct implementation: choose the best fit, state the choice and reasoning, and proceed.
+- Direction undecided: guide the user to preview or shortlist options, then wait for a selection.
 
 Use this gate for new pages, full app screens, page redesigns, and page-level visual direction decisions.
 
 Do not run this gate for a local UI patch, component polish, or pure implementation compliance task unless the user asks for a new direction or the current visual system is the blocker.
 
-Required preview flow:
+Required flow when direction is undecided:
 
 1. Present the short design brief.
 2. Include the likely layout archetype and why it fits the page job.
@@ -155,13 +164,13 @@ If serving a URL is not available, point to `assets/previews/index.html`. If the
 
 ## 5. If The User Asks The Agent To Choose
 
-Do not make a hidden single choice. Offer a small shortlist:
+When the user delegates without asking to proceed immediately, do not make a hidden single choice. Offer a small shortlist:
 
   - 2-3 visual style candidates.
   - A one-sentence reason for each candidate.
   - A note about how the candidates differ in layout archetype, button language, density, media direction, and component treatment.
 
-Apply the similarity guardrails from `style-index.md` before recommending. Ask for confirmation before final implementation unless the user explicitly says to choose and proceed.
+Apply the similarity guardrails from `style-index.md` before recommending. Ask for confirmation unless the user explicitly says to choose and proceed; in that direct-delegation case, name the selected style and continue.
 
 Example response shape:
 
@@ -201,27 +210,27 @@ If the user names a sub-style or adjacent mood after a numbered style is selecte
 
 After task scale and selection, load only the references needed for the current mode so the skill stays focused. Always read `usage-principles.md` for library rules and sample-layout constraints.
 
-- Page-level work (`New page`, `Page redesign`, `Style selection`): read `layout-guidance.md`, `style-index.md`, `design-dials.md` after selection, the chosen style manual and its `Page Adaptation Guide`, and `anti-generic-ui.md`. Add `variant-guidance.md` only when the user asks for an adjacent mood or named sub-style. Use matching PNG/HTML previews only as visual references, not templates.
+- Page-level work (`New page`, `Page redesign`, `Style selection`): read `layout-guidance.md`, `style-index.md`, `design-dials.md` after selection, the chosen style manual and its `Page Adaptation Guide`, and `anti-generic-ui.md`. For a new site/app, also read `new-project-shell.md`. Add `variant-guidance.md` only when the user asks for an adjacent mood or named sub-style. Use matching PNG/HTML previews only as visual references, not templates.
 - Existing-project feature or existing-codebase UI work: read `existing-project-integration.md` and `ui-primitive-contract.md`; add `local-ui-patch.md` for targeted regions, `component-implementation.md` for controls and states, and `interface-compliance.md` for real code changes. Do not read `design-dials.md`, `style-index.md`, or a style manual unless the user asks for a new page-level direction or the existing system is the blocker.
 - `Local UI patch`: read `local-ui-patch.md` and `ui-primitive-contract.md`; add `existing-project-integration.md` when the target lives in a broader legacy/current project, `component-implementation.md` for stateful targets, and `interface-compliance.md` for real code changes. Read `motion-guidance.md` or `icon-guidance.md` only when the target uses motion or icons. Do not read `design-dials.md`, `style-index.md`, or a style manual unless the user asks for a new page-level direction or the existing system is the blocker.
 - `Component polish`: read `component-implementation.md` and `ui-primitive-contract.md`; add `interface-compliance.md` for real code, `local-ui-patch.md` when the component lives inside a page region, and motion or icon guidance only when used.
 - `Implementation compliance`: read `interface-compliance.md` and `ui-primitive-contract.md`; add `component-implementation.md` for component states, forms, tables, overlays, or feedback patterns; add motion, icon, or local patch guidance only when the fix touches those areas.
 - `Design system output`: read `design-system-output.md` plus usage, layout, primitive, component, and interface rules as inputs. Read a selected style manual only if the design system is explicitly based on a chosen style.
 
+Add only the component contract needed by the task: `patterns/select-and-combobox.md`, `patterns/modal-drawer-and-confirmation.md`, `patterns/toast-alert-and-feedback.md`, or `patterns/data-table-and-pagination.md`.
+
 ## 8. Implement The Design
 
 Translate the selected style or existing local system into concrete implementation primitives:
 
 - Page structure, layout archetype, top-level regions, action placement, and information architecture that fit the real product.
-- New project shell assets: product-specific title, description metadata, `favicon.ico` or framework favicon route, optional app/touch icons, and removal of default framework branding.
+- New project shell assets and verification from `new-project-shell.md`.
 - Responsive collapse behavior for navigation, filters, dense tables, media, toolbars, and primary actions.
 - Theme tokens for background, surface, text, muted text, primary, accent, border, focus, radius, and shadow.
 - Typography rules for heading scale, body density, labels, metadata, and numeric values.
 - Spacing rules for page gutters, sections, controls, cards, and dense data areas.
-- Component classes or framework tokens for buttons, inputs, tabs, menus, cards, tables, charts, alerts, drawers, modals, empty states, loading states, selected states, disabled states, and destructive states.
-- Component detail rules for button anatomy, feedback level, spacing rhythm, and desktop/tablet/mobile behavior.
-- UI primitive replacements for browser dialogs, unstyled native selects, copy/export feedback fallbacks, confirmation flows, and overlay behavior.
-- Interaction states for hover, focus, selected, active, loading, error, warning, success, and permission-denied states.
+- Component classes or framework tokens, required states, and responsive behavior from the relevant component contract.
+- UI primitive replacements for browser dialogs and default-looking controls, using `ui-primitive-contract.md` plus the relevant component contract.
 - Icon rules for source family, stroke/fill logic, size, alignment, labels, and action semantics.
 - Image treatment when the page benefits from media. Prefer real product imagery, brand photography, product screenshots, or carefully matched neutral media.
 
@@ -260,9 +269,10 @@ Run these focused gates and use the referenced files for detail:
 - `interface-compliance.md`: semantic controls, focus-visible, accessible names, responsive order, text fit, stable media, motion, product state, and empty/error/loading recovery.
 - `component-implementation.md`: button hierarchy, form/select/menu states, table states, overlay states, density, destructive variants, and style-consistent component anatomy.
 - `ui-primitive-contract.md`: no product-facing browser dialogs, no unstyled native selects for designed controls, no hidden focus rings, no `transition: all`, and a targeted anti-pattern scan for changed UI files.
+- Focused pattern contract: required states, keyboard/focus behavior, mobile fallback, and verification for any select, overlay, feedback, or data-table work.
 - `existing-project-integration.md`: project wrappers, tables, statistics blocks, modals/drawers, filters/forms, pagination, icons, feedback, and responsive patterns match nearby production examples.
 - `local-ui-patch.md`: target and neighbor regions still belong to the existing page system.
-- New project metadata: title, description, real `favicon.ico` for static/plain apps or a framework favicon route, app/touch icons when useful, and no default framework branding.
+- `new-project-shell.md`: title, description, real `favicon.ico` for static/plain apps or a framework favicon route, app/touch icons when useful, and no default framework branding.
 
 Audit output:
 
@@ -282,7 +292,7 @@ Before final response after implementation, check:
 - Local patches preserve the target and neighbor regions without introducing a conflicting visual language.
 - Existing-project work names the project patterns reused for selects/dropdowns, buttons, paginated tables, statistics blocks, modals/drawers, filters/forms, pagination, icons, feedback, and responsive behavior.
 - Changed UI avoids browser dialog primitives and unstyled native select/dropdown controls, or documents a real project exception.
-- New sites and apps include wired title, description metadata, real `favicon.ico` or a framework favicon route, and no default framework branding.
+- New sites and apps pass `new-project-shell.md`, including wired title, description metadata, real `favicon.ico` or a framework favicon route, and no default framework branding.
 - Anti-generic rules, text fit, desktop/mobile hierarchy, focus-visible, icon consistency, and component states are re-checked.
 - Preview assets, screenshots, docs, or style prompts are regenerated when changing this skill's own library.
 - Relevant checks have run, such as anti-pattern scan, syntax checks, preview generation, package dry-run, or project tests.

@@ -3,18 +3,27 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { describePngQuality, hasVisibleContent, readPngQuality } = require("./png-quality");
+const { validateManifest } = require("./preview-manifest");
+const { validateBehaviorEvals, validateTriggerEvals } = require("./skill-quality");
 
 const rootDir = path.resolve(__dirname, "..");
 const skillDir = path.join(rootDir, "skills", "awesome-page-design");
 const stylesDir = path.join(skillDir, "assets", "styles");
 const previewIndex = path.join(skillDir, "assets", "previews", "index.html");
+const previewManifestFile = path.join(skillDir, "assets", "previews", "asset-manifest.json");
 const referencesDir = path.join(skillDir, "references");
 const styleRefsDir = path.join(referencesDir, "styles");
 const skillFile = path.join(skillDir, "SKILL.md");
 const uiPrimitiveContractFile = path.join(referencesDir, "ui-primitive-contract.md");
 const readmeFile = path.join(rootDir, "README.md");
 const readmeZhFile = path.join(rootDir, "README.zh-CN.md");
+const pluginFile = path.join(rootDir, ".codex-plugin", "plugin.json");
+const packageFile = path.join(rootDir, "package.json");
+const roadmapFile = path.join(rootDir, "ROADMAP.md");
+const validationWorkflowFile = path.join(rootDir, ".github", "workflows", "validate.yml");
 const agentsOpenaiFile = path.join(skillDir, "agents", "openai.yaml");
+const behaviorEvalsFile = path.join(rootDir, "evals", "evals.json");
+const triggerEvalsFile = path.join(rootDir, "evals", "trigger-evals.json");
 
 const expectedStyleCount = 26;
 const expectedDesktopWidth = 1440;
@@ -134,6 +143,9 @@ function checkCoreDomainNeutrality() {
     path.join(referencesDir, "anti-generic-ui.md"),
     path.join(referencesDir, "style-index.md"),
     path.join(rootDir, "scripts", "generate-previews.js"),
+    pluginFile,
+    packageFile,
+    roadmapFile,
     readmeFile,
     readmeZhFile,
   ];
@@ -161,6 +173,52 @@ function checkReadmes() {
     "npm run previews",
     "npm run validate",
   ].forEach((needle) => assert(readmeZh.includes(needle), `README.zh-CN.md includes ${needle}`));
+}
+
+function checkMetadataAlignment() {
+  let plugin;
+  let packageJson;
+  try {
+    plugin = JSON.parse(read(pluginFile));
+    pass(".codex-plugin/plugin.json contains valid JSON");
+  } catch (error) {
+    fail(`.codex-plugin/plugin.json contains valid JSON: ${error.message}`);
+    return;
+  }
+  try {
+    packageJson = JSON.parse(read(packageFile));
+    pass("package.json contains valid JSON");
+  } catch (error) {
+    fail(`package.json contains valid JSON: ${error.message}`);
+    return;
+  }
+
+  const pluginDescription = [
+    plugin.description,
+    plugin.interface?.shortDescription,
+    plugin.interface?.longDescription,
+    ...(plugin.interface?.defaultPrompt || []),
+  ].join(" ");
+  assert(/existing[- ]project|existing frontend/i.test(pluginDescription), "plugin metadata mentions existing-project compatibility");
+  assert(/component|primitive/i.test(pluginDescription), "plugin metadata mentions component or primitive quality");
+  assert(/quality|polish|accessib|responsive/i.test(pluginDescription), "plugin metadata mentions UI quality verification");
+
+  assert(/existing[- ]project|existing frontend/i.test(packageJson.description || ""), "package description mentions existing-project work");
+  assert(Array.isArray(packageJson.files) && packageJson.files.includes("evals/"), "package files include evals/");
+
+  const agentMetadata = read(agentsOpenaiFile);
+  assert(/responsive|accessib/i.test(agentMetadata), "agents/openai.yaml mentions responsive or accessibility checks");
+
+  [
+    ["README.md", read(readmeFile)],
+    ["README.zh-CN.md", read(readmeZhFile)],
+  ].forEach(([label, content]) => {
+    ["evals/", "asset-manifest.json", "npm test", "npm run check", "PREVIEW_AUDIT_WIDTHS"].forEach((needle) => {
+      assert(content.includes(needle), `${label} includes ${needle}`);
+    });
+  });
+
+  assert(fs.existsSync(validationWorkflowFile), ".github/workflows/validate.yml exists");
 }
 
 function checkUiPrimitiveContract() {
@@ -213,6 +271,50 @@ function checkNewProjectReadinessGuidance() {
   ].forEach((file) => {
     const content = read(file);
     assert(/favicon\.svg[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content) || /SVG[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content), `${path.relative(rootDir, file)} says SVG favicon does not replace favicon.ico`);
+  });
+}
+
+function checkWorkflowHardening() {
+  const skill = read(skillFile);
+  const requiredPatternFiles = [
+    "select-and-combobox.md",
+    "modal-drawer-and-confirmation.md",
+    "toast-alert-and-feedback.md",
+    "data-table-and-pagination.md",
+  ];
+
+  assert(skill.includes("## Decision Precedence"), "SKILL.md defines decision precedence");
+  assert(skill.includes("references/new-project-shell.md"), "SKILL.md routes new project shell work");
+
+  requiredPatternFiles.forEach((name) => {
+    const file = path.join(referencesDir, "patterns", name);
+    assert(fs.existsSync(file), `pattern reference exists: ${name}`);
+    assert(skill.includes(`references/patterns/${name}`), `SKILL.md routes ${name}`);
+  });
+}
+
+function checkEvaluationDefinitions() {
+  const definitions = [
+    ["behavior evals", behaviorEvalsFile, validateBehaviorEvals],
+    ["trigger evals", triggerEvalsFile, validateTriggerEvals],
+  ];
+
+  definitions.forEach(([label, file, validator]) => {
+    if (!fs.existsSync(file)) {
+      fail(`${label} file exists`);
+      return;
+    }
+
+    try {
+      const errors = validator(JSON.parse(read(file)));
+      if (errors.length === 0) {
+        pass(`${label} definition is valid`);
+      } else {
+        errors.forEach((error) => fail(`${label}: ${error}`));
+      }
+    } catch (error) {
+      fail(`${label} contains valid JSON: ${error.message}`);
+    }
   });
 }
 
@@ -330,6 +432,22 @@ function checkStyleAssets() {
   });
 }
 
+function checkPreviewManifest() {
+  const errors = validateManifest({
+    manifestFile: previewManifestFile,
+    manifestRoot: path.dirname(previewManifestFile),
+    expectedStyles: getStyleDirs(),
+    desktopSize: { width: expectedDesktopWidth, height: expectedDesktopHeight },
+    mobileSize: { width: expectedMobileWidth, height: expectedMobileHeight },
+  });
+
+  if (errors.length === 0) {
+    pass("preview asset manifest matches all HTML and screenshot artifacts");
+  } else {
+    errors.forEach((error) => fail(error));
+  }
+}
+
 function checkBannedText() {
   const filesToCheck = [
     readmeFile,
@@ -394,10 +512,14 @@ function main() {
   checkAgentsMetadata();
   checkCoreDomainNeutrality();
   checkReadmes();
+  checkMetadataAlignment();
   checkUiPrimitiveContract();
   checkNewProjectReadinessGuidance();
+  checkWorkflowHardening();
+  checkEvaluationDefinitions();
   checkPreviewIndex();
   checkStyleAssets();
+  checkPreviewManifest();
   checkBannedText();
   checkUiPrimitiveImplementationPatterns();
 

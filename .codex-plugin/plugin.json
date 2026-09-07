@@ -1,7 +1,7 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A visual style and layout framework library for distinctive website and web app design.",
+  "description": "A web UI design workflow for visual direction, existing-project integration, polished primitives, and responsive quality checks.",
   "author": {
     "name": "kuschzzp",
     "url": "https://github.com/kuschzzp"
@@ -20,8 +20,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Awesome Page Design",
-    "shortDescription": "Distinct visual styles and layouts for web UI work",
-    "longDescription": "Use Awesome Page Design to choose and apply reusable visual style directions and page layout frameworks for websites, web apps, dashboards, landing pages, admin panels, docs, commerce consoles, and components without copying fixed sample layouts.",
+    "shortDescription": "Visual direction, compatible UI integration, and quality checks",
+    "longDescription": "Use Awesome Page Design to design, review, or improve web UI; preserve existing-project component systems, replace browser-default primitives, verify responsive and accessible behavior, and complete new-project shell metadata without copying fixed preview layouts.",
     "developerName": "kuschzzp",
     "category": "Design",
     "capabilities": [
@@ -29,8 +29,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use awesome-page-design to choose a distinctive visual style and layout framework for this website.",
-      "Apply one of the awesome-page-design styles and a suitable layout framework without copying sample layouts."
+      "Use awesome-page-design to choose a distinctive, usable visual direction and complete the responsive new-project shell.",
+      "Use awesome-page-design to improve this existing frontend while preserving shared components and enforcing polished UI primitives."
     ],
     "websiteURL": "https://github.com/kuschzzp/awesome-page-design",
     "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",

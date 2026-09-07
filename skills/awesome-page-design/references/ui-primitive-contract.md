@@ -40,23 +40,14 @@ When working inside an existing codebase, choose primitives in this order:
 
 Do not introduce a new UI library, icon family, modal manager, dropdown engine, or table component for a local feature unless the user approves or the project already uses it.
 
-## Select And Dropdown Requirements
+## Component Pattern Routing
 
-A select/dropdown is complete only when these states are covered:
+This contract decides whether a primitive is acceptable. Load the focused reference for complete behavior and verification:
 
-- closed, open, hover, focus-visible, selected option, focused option, disabled option, empty options, loading, validation error, clear action when relevant, and long value overflow
-- trigger height, border, radius, placeholder, arrow icon, selected text, menu width, option height, overlay layer, keyboard behavior, and mobile fallback
-
-Native `<select>` is allowed only when it is already the project's deliberate styled convention, the browser control is visually integrated, and the exception is called out in the final response. Otherwise, use or build a styled select/dropdown.
-
-## Feedback And Overlay Requirements
-
-- Toasts/snackbars confirm lightweight outcomes and should name what changed.
-- Inline alerts belong next to the field, row, card, or panel they affect.
-- Banners handle page-level risk, permission, environment, or outage messages.
-- Destructive confirmations need a project modal/drawer, inline confirmation, or undo. Do not use browser confirm dialogs.
-- Modal, drawer, popover, and menu interactions need visible close behavior, layering, focus expectation, escape behavior, and scroll handling.
-- `<dialog>` is allowed only when styled to the project system and paired with focus, backdrop, escape, and mobile behavior.
+- `patterns/select-and-combobox.md` for select, dropdown, autocomplete, or combobox work. A native `<select>` must be deliberately styled and limited to simple selection; never ship a default-looking browser control.
+- `patterns/modal-drawer-and-confirmation.md` for overlays and destructive decisions. `<dialog>` is acceptable only when styled and paired with focus, backdrop, escape, scroll, and mobile behavior.
+- `patterns/toast-alert-and-feedback.md` for outcome scope, recovery, and announcements.
+- `patterns/data-table-and-pagination.md` for filters, sorting, selection, row actions, loading/empty/error states, and pagination.
 
 ## Anti-Pattern Scan
 

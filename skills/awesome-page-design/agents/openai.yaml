@@ -1,7 +1,7 @@
 interface:
   display_name: "Awesome Page Design"
-  short_description: "UI design, local polish, and compliance"
+  short_description: "Visual direction, compatible UI, and quality checks"
   brand_color: "#4F46E5"
-  default_prompt: "Use $awesome-page-design to design or polish this UI, preserving existing project components and checking favicon, metadata, and UI primitives."
+  default_prompt: "Use $awesome-page-design to design or polish this UI, preserving existing project components, enforcing polished primitives, checking responsive and accessible behavior, and completing favicon and metadata for new projects."
 policy:
   allow_implicit_invocation: true

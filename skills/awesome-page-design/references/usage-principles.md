@@ -44,11 +44,11 @@ Use the visual style to shape how the layout feels. Do not let the sample previe
 
 For an existing-page local patch, identify the target region, neighbor regions, existing tokens, component variants, density, icons, state treatment, and responsive behavior before changing CSS or components. Use `local-ui-patch.md` and preserve the current system unless the user asks for a new direction.
 
-For an existing or legacy frontend project, inspect the current codebase before designing or coding. Find nearby pages, shared components, framework wrappers, tokens, and common select/dropdown, button, paginated table, statistics, modal, drawer, form, filter, pagination, icon, and feedback patterns. Use `existing-project-integration.md` and make the new work feel native to the product unless the user asks for a redesign.
+For an existing or legacy frontend project, inspect the current codebase before designing or coding. Use `existing-project-integration.md`, identify the nearest compatible production patterns, and make the new work feel native to the product unless the user asks for a redesign.
 
-For any real UI implementation that touches controls, forms, feedback, overlays, generated HTML, or copy/export behavior, read `ui-primitive-contract.md` and replace browser-default primitives with the project's styled components or a scoped designed fallback.
+For real UI controls, read `ui-primitive-contract.md` and the focused pattern reference for selects, overlays, feedback, or data tables. Replace browser-default primitives with project components or an accessible styled fallback.
 
-For a new site or app, include product shell polish as part of the UI, not as an afterthought. Add a product-specific title and description, generate or place `favicon.ico` in the framework's expected location, wire it through HTML/head metadata, and remove default framework icons or starter-template metadata.
+For a new site or app, use `new-project-shell.md`. Product-specific title, description, wired `favicon.ico`, language/viewport metadata, and starter-brand removal are part of the UI deliverable.
 
 Examples:
 
@@ -74,7 +74,7 @@ The selection brief should cover:
 - light, dark, or mixed preference when known
 - whether images or illustration are useful
 
-The user may also delegate the choice to the agent. In that case, recommend a small shortlist, explain why the options differ, apply the similarity guardrails from the style index, and ask for confirmation before final implementation unless the user explicitly says to proceed.
+The user may delegate the choice. If they explicitly ask to choose and proceed, state the selected style and reasoning, then implement. Otherwise, recommend a small shortlist, explain the differences, and wait for confirmation.
 
 If local previews cannot be opened, use `style-index.md` as the text fallback for selection.
 
@@ -133,17 +133,17 @@ Then map tokens onto real components. Adjust component layout to the product's n
 
 Always define top-level regions and responsive collapse behavior before final CSS polish.
 
-For new projects, finish the browser shell too: set the page title and description, add `favicon.ico` or the framework's favicon route, add app/touch icons when the product needs them, and remove default Vite, React, Next.js, or starter-template branding.
+For new projects, complete and verify the framework-specific checklist in `new-project-shell.md`, including `favicon.ico` output.
 
 For local UI patches, start from existing tokens and component rules instead of creating a new system. Define the target boundary, neighbor boundary, and any shared component boundary before editing.
 
-For existing-project features, start from the nearest production examples. Reuse existing selects/dropdowns, buttons, paginated tables, statistics blocks, modals, drawers, forms, filters, pagination, icons, and feedback states before adding a new visual treatment.
+For existing-project features, start from the nearest production examples and load only the focused component pattern documents required by the changed UI.
 
 Do not use `alert(...)`, `confirm(...)`, `prompt(...)`, or an unstyled native `<select>` as finished product UI. Use the project's toast, inline alert, banner, modal, drawer, undo, select, dropdown, combobox, menu, or pagination primitive instead.
 
 Keep accessibility intact. If a style uses low contrast, glow, glass, chrome, texture, or decorative motion, preserve readability and focus visibility first.
 
-When real UI code is changed, run the implementation compliance gate from `workflow.md`. Check semantic controls, accessible labels, focus-visible states, component state coverage, responsive text handling, stable media dimensions, reduced-motion behavior, and empty/error/loading recovery.
+When real UI code is changed, run the implementation compliance gate from `workflow.md` and the verification section of each focused component contract used.
 
 Use the layout guidance and anti-generic UI rules before adding decoration. Improve layout archetype, product scenario, information architecture, type scale, density, component states, or media direction before adding extra effects.
 

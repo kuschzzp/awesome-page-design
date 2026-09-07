@@ -20,7 +20,7 @@ Give coding agents stronger visual direction before they start building UI.
 
 Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers.
 
-It gives an agent a reusable library of 26 web layout-aware visual directions, all presented as a continuous Style 01-26 catalog. The styles cover layout archetypes, information architecture, composition strategy, grid behavior, responsive structure, color systems, typography, spacing, borders, radius, shadows, material effects, imagery, component tone, button systems, feedback patterns, interaction states, and visual density. The goal is simple: help new websites and web apps avoid the same generic default UI.
+It gives an agent a reusable library of 26 web layout-aware visual directions, all presented as a continuous Style 01-26 catalog. The styles cover layout archetypes, information architecture, composition strategy, responsive structure, visual systems, component tone, feedback, interaction states, and density. The workflow also helps new sites feel complete and existing frontends gain features without losing their established component language.
 
 This is **not** a fixed page-template library. The bundled HTML files are richer clickable previews so users can compare visual directions, copy a task-specific prompt, and ask an agent to apply the chosen style to their real product. Agents should reuse the visual language and redesign the actual page structure around the user's content and workflow.
 
@@ -119,13 +119,13 @@ The skill will guide the agent to:
 2. Route your request by task scale: new page, page redesign, existing-project feature, local UI patch, component polish, implementation compliance, or design-system output.
 3. Summarize your request as a short selection or patch brief.
 4. Identify the page job, primary content object, action model, layout archetype, responsive collapse behavior, and target region when editing an existing page.
-5. For existing or legacy projects, inspect nearby pages, shared components, UI framework wrappers, tokens, select/dropdown, button, paginated table, statistics table/card, modal, drawer, form, filter, pagination, icon, and feedback patterns before implementing UI.
+5. For existing or legacy projects, inspect nearby pages, shared components, wrappers, tokens, and the nearest compatible production patterns before implementing UI.
 6. Apply the UI primitive contract for real UI code: no product-facing browser alerts, confirm dialogs, prompt dialogs, or unstyled native selects unless a documented project convention requires them.
-7. For new sites and apps, add product shell assets such as `favicon.ico`, page title, description metadata, and app/touch icons when useful; remove starter framework branding.
-8. Open or provide the preview gallery for page-level visual direction when no style has been chosen yet.
+7. For new sites and apps, follow `new-project-shell.md`: add `favicon.ico` or the framework favicon route, title, description, language/viewport metadata, and remove starter branding.
+8. Resolve page-level direction through one of three paths: use the selected style, choose and proceed when explicitly delegated, or present previews and wait when direction is undecided.
 9. For existing local patches, preserve the current page style and inspect the target region plus nearby regions before editing.
-10. Ask you to copy one task-specific style prompt from the gallery for page-level work: full, landing page, dashboard, admin panel, or mobile.
-11. Recommend a small candidate shortlist only when you explicitly ask the agent to choose.
+10. Load focused contracts only for the components being changed: selects, overlays, feedback, or data tables and pagination.
+11. Recommend a small candidate shortlist when you delegate without asking the agent to proceed immediately.
 12. Read the matching style notes or the local patch workflow.
 13. Set design dials for layout variance, motion intensity, and visual density when a page-level style is selected.
 14. Apply the chosen or existing style through concrete layout structure, CSS variables, theme tokens, component detail rules, button rules, feedback rules, spacing rules, responsive rules, state rules, or component classes.
@@ -135,17 +135,19 @@ The skill will guide the agent to:
 
 ### Required Selection Gate
 
-For full pages and app screens, the Skill should not silently pick a final look after you describe the requirement. It should first send you to the preview gallery so you can compare the 26 visual styles, then continue after you select the prompt you want.
+For full pages and app screens, the selection gate has three explicit outcomes:
 
-If you prefer the agent to choose, say so explicitly. The agent should then propose 2-3 style candidates, explain the layout and visual trade-offs briefly, and ask for confirmation before final implementation unless you explicitly tell it to proceed.
+- If a style is already selected, the agent proceeds with it.
+- If you delegate the choice and explicitly ask it to proceed, the agent names the best-fit style and reasoning, then implements without another approval stop.
+- If direction is undecided, the agent opens the gallery or gives a 2-3 style shortlist and waits for your selection.
 
 For local changes to an existing page, the Skill should not force a new style selection. It should inspect the current page system, preserve nearby tokens and components, patch the target region, and only escalate to page redesign when the local issue comes from the full page structure.
 
 For existing or legacy projects, the Skill should inspect real frontend code before designing or coding: sibling pages, shared layout, component wrappers, tokens, select/dropdown patterns, button variants, paginated table behavior, statistics blocks, modals, drawers, forms, filters, pagination, icons, and feedback states. New UI should reuse those patterns by default.
 
-For real UI code, the Skill should also apply `ui-primitive-contract.md`: replace `alert`, `confirm`, `prompt`, and unstyled native selects with the project's toast, inline alert, banner, modal, drawer, undo, select, dropdown, combobox, menu, or pagination primitive.
+For real UI code, the Skill applies `ui-primitive-contract.md` plus focused pattern references. It replaces `alert`, `confirm`, `prompt`, and default-looking controls with a project primitive or an accessible styled fallback; a deliberately styled native select remains valid for simple new-project selection.
 
-For new sites and apps, the Skill should also generate or place `favicon.ico` in the project's expected asset location, wire it into the HTML/head or framework metadata, set a real page title and description, and remove default framework favicon/title branding.
+For new sites and apps, `new-project-shell.md` maps plain HTML, Vite, Next.js App Router, Nuxt, and Astro to the correct metadata and favicon locations, then requires emitted-output verification.
 
 ## Preview Styles
 
@@ -211,6 +213,8 @@ skills/awesome-page-design/
 │   ├── existing-project-integration.md # Existing/legacy project component inventory workflow
 │   ├── local-ui-patch.md            # Existing-page local patch workflow
 │   ├── ui-primitive-contract.md     # Hard rules for browser dialogs, native selects, overlays, and feedback primitives
+│   ├── new-project-shell.md          # Framework-specific title, metadata, favicon, and starter-brand checklist
+│   ├── patterns/                     # Select, overlay, feedback, and data-table/pagination contracts
 │   ├── design-dials.md              # Layout variance, motion intensity, and visual density controls
 │   ├── quality-checklist.md         # UI quality review checklist
 │   ├── anti-generic-ui.md           # Rules for avoiding default-looking generated pages
@@ -224,9 +228,12 @@ skills/awesome-page-design/
 │   └── styles/                      # Full style notes
 └── assets/
     ├── previews/
-    │   └── index.html               # Preview gallery
+    │   ├── index.html               # Preview gallery
+    │   └── asset-manifest.json      # HTML/PNG hashes and expected screenshot dimensions
     └── styles/                      # Visual style HTML and PNG preview assets
 ```
+
+Repository-level `evals/` contains 10 behavioral cases and 20 balanced trigger cases. `scripts/` contains their validators, preview-manifest checks, render auditing, tests, generation, and repository validation.
 
 ## Style Catalog
 
@@ -287,7 +294,19 @@ PREVIEW_STYLES=01,18 npm run previews
 npm run previews -- --styles 01,18
 ```
 
-Validate generated assets, prompt payloads, docs, mobile screenshots, UI primitive anti-patterns, and common implementation anti-patterns:
+Each completed desktop/mobile pair updates `asset-manifest.json`. Validation compares its paths, dimensions, and SHA-256 hashes with the current HTML and PNG files, so stale screenshots cannot silently pass. Add non-persisted narrow-width render audits when changing responsive layouts:
+
+```bash
+PREVIEW_AUDIT_WIDTHS=320 npm run previews -- --styles 01,15,24
+```
+
+Run the Node unit tests for evaluation schemas, manifest integrity, and render-audit formatting:
+
+```bash
+npm test
+```
+
+Validate generated assets, evaluation definitions, the manifest, prompt payloads, docs, screenshots, metadata, and UI primitive anti-patterns:
 
 ```bash
 npm run validate

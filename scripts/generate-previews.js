@@ -7,11 +7,14 @@ const net = require("node:net");
 const os = require("node:os");
 const path = require("node:path");
 const { assertPngHasVisibleContent } = require("./png-quality");
+const { updateManifestEntry } = require("./preview-manifest");
+const { formatRenderAuditErrors, renderAuditExpression } = require("./render-audit");
 
 const rootDir = path.resolve(__dirname, "..");
 const skillDir = path.join(rootDir, "skills", "awesome-page-design");
 const stylesDir = path.join(skillDir, "assets", "styles");
 const outputDir = path.join(skillDir, "assets", "previews");
+const manifestFile = path.join(outputDir, "asset-manifest.json");
 const referencesDir = path.join(skillDir, "references");
 const styleRefsDir = path.join(referencesDir, "styles");
 const bundledNodeModules = path.join(os.homedir(), ".cache", "codex-runtimes", "codex-primary-runtime", "dependencies", "node", "node_modules");
@@ -33,6 +36,15 @@ const mobileViewportWidth = Number(process.env.PREVIEW_MOBILE_WIDTH || 390);
 const mobileViewportHeight = Number(process.env.PREVIEW_MOBILE_HEIGHT || 844);
 const generateMobileScreenshots = process.env.PREVIEW_MOBILE !== "0";
 const chromeWait = Number(process.env.PREVIEW_WAIT || 5000);
+const allowUnauditedCli = process.env.PREVIEW_ALLOW_UNAUDITED_CLI === "1";
+const auditViewportWidths = [
+  ...new Set(
+    (process.env.PREVIEW_AUDIT_WIDTHS || "")
+      .split(",")
+      .map((value) => Number(value.trim()))
+      .filter((value) => Number.isFinite(value) && value > 0)
+  ),
+];
 
 const styles = [
   {
@@ -6011,7 +6023,10 @@ body.card-grid .state-pill {
 }
 .greenhouse-map {
   position: relative;
-  min-height: 540px;
+  min-height: 620px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
   padding: 30px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.24);
@@ -6090,6 +6105,44 @@ body.card-grid .state-pill {
 .plant-bed-map .bed-2 { right: 28%; bottom: 10%; width: 22%; height: 112px; }
 .plant-bed-map .bed-3 { left: 42%; top: 34%; width: 20%; height: 82px; }
 .plant-bed-map .bed-4 { right: 8%; top: 52%; width: 18%; height: 74px; }
+.greenhouse-map .canopy-lines,
+.greenhouse-map .climate-pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.greenhouse-map > .kicker,
+.greenhouse-map > h1,
+.greenhouse-map > p:not(.kicker) {
+  position: relative;
+  z-index: 1;
+}
+.greenhouse-map > .kicker { order: 1; }
+.greenhouse-map > h1 { order: 2; }
+.greenhouse-map > p:not(.kicker) { order: 3; }
+.greenhouse-map .zone-labels,
+.greenhouse-map .plant-bed-map {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+}
+.greenhouse-map .zone-labels {
+  order: 4;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.greenhouse-map .plant-bed-map {
+  order: 5;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.greenhouse-map .zone-labels span,
+.greenhouse-map .plant-bed-map span {
+  position: static;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 64px;
+}
 .climate-pane {
   background: rgba(255,255,255,.14);
   backdrop-filter: blur(18px);
@@ -6513,6 +6566,14 @@ body.card-grid .state-pill {
   padding: 10px;
   border: 1px solid #d8d0c4;
   background: rgba(255,253,247,.72);
+}
+.tea-scroll .seal-action {
+  position: absolute;
+  right: 34px;
+  bottom: 34px;
+  z-index: 2;
+  width: 96px;
+  height: 96px;
 }
 .tasting-wheel {
   display: grid;
@@ -12125,6 +12186,9 @@ body.industrial-control .feature-block {
   .press-matrix {
     grid-template-columns: 1fr;
   }
+  .volunteer-board {
+    grid-column: auto;
+  }
   .life-bento-market {
     min-height: auto;
     grid-template-columns: 1fr 1fr;
@@ -12344,6 +12408,29 @@ body.industrial-control .feature-block {
   .workspace-grid,
   .responsive-steps {
     display: grid;
+    grid-template-columns: 1fr;
+  }
+  body.neo-brutalism .brutal-release {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding-right: 8px;
+  }
+  body.neo-brutalism .brutal-copy,
+  body.neo-brutalism .proof-wall {
+    transform: none;
+  }
+  body.neo-brutalism .brutal-copy {
+    min-height: auto;
+    box-shadow: 8px 8px 0 var(--accent);
+  }
+  body.neo-brutalism .brutal-copy h1 {
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 1;
+  }
+  body.neo-brutalism .proof-wall {
+    box-shadow: -8px 8px 0 var(--primary);
+  }
+  body.neo-brutalism .proof-wall .metric-row {
     grid-template-columns: 1fr;
   }
   .ops-board,
@@ -12818,10 +12905,92 @@ body.industrial-control .feature-block {
   }
   .red-seal {
     position: static;
-    margin: 0 0 14px auto;
+    order: 1;
+    margin: 0 0 4px auto;
+  }
+  .tea-scroll {
+    min-height: auto;
+    display: grid;
+    gap: 14px;
+  }
+  .tea-scroll > .kicker { order: 2; }
+  .tea-scroll > h1 { order: 3; }
+  .tea-scroll > p:not(.kicker) { order: 4; }
+  .ridge-lots {
+    position: static;
+    order: 5;
+    grid-template-columns: 1fr;
+  }
+  .tea-scroll .seal-action {
+    position: static;
+    right: auto;
+    bottom: auto;
+    order: 6;
+    width: 100%;
+    height: auto;
+    min-height: 44px;
+    margin: 0;
+    justify-self: stretch;
+  }
+  .ink-mountain {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    order: 7;
+    width: 100%;
+    height: 140px;
+  }
+  .greenhouse-map {
+    min-height: auto;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+  .greenhouse-map .canopy-lines,
+  .greenhouse-map .climate-pins {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .greenhouse-map > .kicker {
+    position: relative;
+    z-index: 1;
+    order: 1;
   }
   .greenhouse-map h1 {
+    position: relative;
+    z-index: 1;
+    order: 2;
     line-height: 1.08;
+  }
+  .greenhouse-map > p:not(.kicker) {
+    position: relative;
+    z-index: 1;
+    order: 3;
+  }
+  .greenhouse-map .zone-labels,
+  .greenhouse-map .plant-bed-map {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 8px;
+  }
+  .greenhouse-map .zone-labels {
+    order: 4;
+    grid-template-columns: 1fr;
+  }
+  .greenhouse-map .plant-bed-map {
+    order: 5;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .greenhouse-map .zone-labels span,
+  .greenhouse-map .plant-bed-map span {
+    position: static;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 64px;
   }
   .admin-workspace {
     padding: 12px;
@@ -13569,6 +13738,14 @@ function findChromiumExecutable(playwright) {
     .sort((a, b) => browserExecutablePriority(a) - browserExecutablePriority(b) || b.localeCompare(a))[0];
 }
 
+function assertRenderAuditResult(result, htmlFile, width, height) {
+  const label = `${path.basename(htmlFile)} ${width}x${height}`;
+  const errors = formatRenderAuditErrors(result, label);
+  if (errors.length > 0) {
+    throw new Error(errors.join("; "));
+  }
+}
+
 async function screenshotWithPlaywright(htmlFile, options = {}) {
   const playwright = loadPlaywright();
   if (!playwright) {
@@ -13611,16 +13788,21 @@ async function screenshotWithPlaywright(htmlFile, options = {}) {
     await page.goto(targetUrl, { waitUntil: "load" });
     await page.waitForLoadState("networkidle", { timeout: Math.max(15000, chromeWait + 5000) }).catch(() => {});
     await page.waitForTimeout(chromeWait);
-    await page.screenshot({
-      path: outputPath,
-      fullPage: false,
-      animations: "disabled",
-    });
+    const auditResult = await page.evaluate(renderAuditExpression());
+    assertRenderAuditResult(auditResult, htmlFile, width, height);
+    if (!options.auditOnly) {
+      await page.screenshot({
+        path: outputPath,
+        fullPage: false,
+        animations: "disabled",
+      });
+    }
     await page.close();
   } finally {
     await browser?.close().catch(() => {});
   }
 
+  if (options.auditOnly) return null;
   assertPngHasVisibleContent(outputPath, `Playwright screenshot for ${path.basename(htmlFile)}`);
   return outputPath;
 }
@@ -13684,12 +13866,23 @@ async function screenshot(htmlFile, options = {}) {
     await waitForDocumentReady(client.send, Math.max(15000, chromeWait + 5000));
     await sleep(chromeWait);
 
-    const image = await client.send("Page.captureScreenshot", {
-      format: "png",
-      fromSurface: true,
-      captureBeyondViewport: false,
+    const auditResponse = await client.send("Runtime.evaluate", {
+      expression: renderAuditExpression(),
+      returnByValue: true,
     });
-    fs.writeFileSync(outputPath, Buffer.from(image.data, "base64"));
+    if (auditResponse.exceptionDetails) {
+      throw new Error(`Render audit evaluation failed: ${auditResponse.exceptionDetails.text || "unknown browser error"}`);
+    }
+    assertRenderAuditResult(auditResponse.result?.value, htmlFile, width, height);
+
+    if (!options.auditOnly) {
+      const image = await client.send("Page.captureScreenshot", {
+        format: "png",
+        fromSurface: true,
+        captureBeyondViewport: false,
+      });
+      fs.writeFileSync(outputPath, Buffer.from(image.data, "base64"));
+    }
   } finally {
     client?.close();
     if (chrome && chrome.exitCode === null && chrome.signalCode === null) chrome.kill("SIGTERM");
@@ -13701,6 +13894,7 @@ async function screenshot(htmlFile, options = {}) {
     await removeDirectoryWithRetry(userDataDir);
   }
 
+  if (options.auditOnly) return null;
   assertPngHasVisibleContent(outputPath, `Chrome screenshot for ${path.basename(htmlFile)}`);
   return outputPath;
 }
@@ -13713,6 +13907,10 @@ async function screenshotWithChromeCli(htmlFile, options = {}) {
   const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "awesome-page-design-chrome-"));
   let chrome;
   let stderr = "";
+
+  if (options.auditOnly) {
+    throw new Error("Chrome CLI cannot run a non-persisted render audit");
+  }
 
   if (!allowSystemChrome) {
     throw new Error("System Google Chrome CLI fallback is disabled. Set CHROME_PATH or PREVIEW_USE_SYSTEM_CHROME=1 to opt in.");
@@ -13787,6 +13985,11 @@ async function screenshotWithRetry(htmlFile, options = {}, attempts = 2) {
   try {
     return await screenshot(htmlFile, options);
   } catch (cdpError) {
+    if (options.auditOnly || !allowUnauditedCli) {
+      throw new Error(
+        `${cdpError?.message || lastError?.message || "CDP screenshot failed"}. Chrome CLI fallback cannot satisfy render auditing; set PREVIEW_ALLOW_UNAUDITED_CLI=1 only for an intentional screenshot-only override.`
+      );
+    }
     process.stdout.write("fallback cli... ");
     try {
       return await screenshotWithChromeCli(htmlFile, options);
@@ -14723,10 +14926,6 @@ ${quick}
   );
 }
 
-function findStyleHtmlFiles(stylesToScreenshot = allStyles) {
-  return stylesToScreenshot.map((style) => path.join(stylesDir, style.slug, `${style.slug}.html`));
-}
-
 async function main() {
   const previewStyles = resolvePreviewStyles();
   const isFilteredRun = previewStyles.length !== allStyles.length;
@@ -14754,20 +14953,23 @@ async function main() {
     return;
   }
 
-  const htmlFiles = findStyleHtmlFiles(previewStyles);
   if (isFilteredRun) {
     const selected = previewStyles.map((style) => style.id).join(", ");
-    console.log(`Generating ${htmlFiles.length}/${allStyles.length} selected style preview(s) [${selected}] with ${chromeWait}ms wait...`);
+    console.log(`Generating ${previewStyles.length}/${allStyles.length} selected style preview(s) [${selected}] with ${chromeWait}ms wait...`);
     console.log("Reusing existing screenshots for unselected styles; preview index is still refreshed.");
   } else {
-    console.log(`Generating ${htmlFiles.length} style previews with ${chromeWait}ms wait...`);
+    console.log(`Generating ${previewStyles.length} style previews with ${chromeWait}ms wait...`);
   }
   if (screenshotEngine === "chrome" || allowSystemChrome) {
     console.log("Screenshot engine: explicit Chrome fallback is enabled by environment opt-in.");
   } else {
     console.log("Screenshot engine: Playwright Chromium; system Google Chrome fallback is disabled.");
   }
-  for (const htmlFile of htmlFiles) {
+  if (auditViewportWidths.length > 0) {
+    console.log(`Additional non-persisted render audits: ${auditViewportWidths.join(", ")}px.`);
+  }
+  for (const style of previewStyles) {
+    const htmlFile = path.join(stylesDir, style.slug, `${style.slug}.html`);
     process.stdout.write(`- ${path.relative(rootDir, htmlFile)} -> `);
     const imageFile = await screenshotWithRetry(htmlFile);
     process.stdout.write(`${path.relative(rootDir, imageFile)}\n`);
@@ -14779,6 +14981,25 @@ async function main() {
         height: mobileViewportHeight,
       });
       process.stdout.write(`${path.relative(rootDir, mobileImageFile)}\n`);
+      updateManifestEntry({
+        manifestFile,
+        manifestRoot: outputDir,
+        slug: style.slug,
+        htmlFile,
+        desktopFile: imageFile,
+        mobileFile: mobileImageFile,
+        desktopSize: { width: viewportWidth, height: viewportHeight },
+        mobileSize: { width: mobileViewportWidth, height: mobileViewportHeight },
+      });
+    }
+    for (const auditWidth of auditViewportWidths) {
+      process.stdout.write(`  audit ${auditWidth}x${mobileViewportHeight} -> `);
+      await screenshotWithRetry(htmlFile, {
+        auditOnly: true,
+        width: auditWidth,
+        height: mobileViewportHeight,
+      });
+      process.stdout.write("passed\n");
     }
   }
 

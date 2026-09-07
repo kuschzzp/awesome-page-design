@@ -38,15 +38,16 @@ When possible, identify concrete source examples in the design brief so the impl
 
 ## Component Baselines To Match
 
-Check these component families before writing new UI:
+Load only the detailed contract for the component family being changed:
 
-- Selects and dropdowns: trigger height, border, radius, placeholder, selected text, clear action, arrow icon, menu width, option height, disabled options, search behavior, empty menu, validation, z-index, and overlay placement.
-- Buttons and action groups: primary, secondary, quiet, text, icon-only, destructive, success, loading, disabled, permission-disabled, selected/toggled, bulk-action, and toolbar variants.
-- Paginated tables: filter bar, toolbar, density, column alignment, row height, sticky header, sorter/filter affordances, selected rows, batch actions, loading rows, empty state, error state, pagination placement, page-size selector, and row action menu.
-- Statistics tables and metric panels: number formatting, tabular numerals, comparison deltas, labels, units, trend arrows, stale/loading/no-data states, grid rhythm, and chart/table relationship.
-- Modals, drawers, popovers, and menus: trigger pattern, title bar, close affordance, footer actions, destructive confirmation, scroll area, overlay layer, focus expectation, escape behavior, and mobile fallback.
-- Forms and filters: label position, required marks, validation placement, helper text, inline versus advanced filters, reset/apply behavior, saved filters, date/time/number formatting, and active filter chips.
-- Feedback states: toast, inline alert, banner, row-local status, field error, loading skeleton, retry, empty state, permission state, copy/export status, confirmation, and undo.
+| Changed UI | Required reference |
+|---|---|
+| Select, dropdown, autocomplete, combobox, or page-size chooser | `patterns/select-and-combobox.md` |
+| Modal, drawer, destructive confirmation, popover, or overlay | `patterns/modal-drawer-and-confirmation.md` |
+| Toast, inline alert, banner, save/copy/export outcome, or recovery message | `patterns/toast-alert-and-feedback.md` |
+| Data table, filters, sorting, selection, batch actions, or pagination | `patterns/data-table-and-pagination.md` |
+
+For buttons, forms, statistics panels, icons, and navigation, match the nearest production example and use `component-implementation.md`. The focused references own detailed state, accessibility, mobile, and verification lists so they do not drift across this workflow.
 
 If the project uses a UI framework such as Ant Design, Element Plus, Material UI, shadcn/ui, Bootstrap, Naive UI, or a custom wrapper library, prefer its existing wrappers and variants over raw framework components.
 
@@ -75,17 +76,14 @@ When escalating, explain which existing patterns were checked and why they canno
 
 ## Final Verification
 
-Before finishing, re-check the implemented UI against existing examples:
+Before finishing, re-check the implementation against the nearest production examples and every loaded pattern contract:
 
-- Selects/dropdowns match existing trigger, menu, option, clear, disabled, and validation patterns.
-- Buttons match existing action hierarchy, icon placement, loading, disabled, and destructive patterns.
-- Tables match existing row density, alignment, selection, loading, empty/error, pagination, and row-action patterns.
-- Statistics blocks match existing number formatting, labels, comparison states, and grid rhythm.
-- Modals/drawers match existing header, body, footer, close, overlay, scroll, and confirmation behavior.
-- Forms/filters match label, validation, reset/apply, advanced filter, and active filter conventions.
+- Changed components match existing dimensions, hierarchy, density, icons, terminology, state treatment, and responsive conventions.
+- Pattern-specific required states, keyboard/focus behavior, mobile fallback, and verification checks pass.
+- Buttons, forms, statistics blocks, and navigation still follow the closest compatible project implementation.
 - Feedback and confirmation flows use project toasts, inline alerts, banners, modals, drawers, undo, or page-level status instead of browser dialogs.
 - UI primitive anti-patterns from `ui-primitive-contract.md` have been scanned or manually checked in the changed files.
 - Icons, spacing, radius, shadows, typography, and colors still belong to the current project.
-- Desktop and mobile behavior follows the nearest existing page unless the change intentionally improves a documented weakness.
+- Desktop and mobile behavior follows the nearest existing page unless a higher-priority usability or accessibility rule requires a documented repair.
 
 In the final response, state which existing project patterns were preserved and which new variants were added.

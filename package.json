@@ -1,12 +1,13 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A layout-aware UI design skill for choosing, auditing, and applying distinctive web visual styles.",
+  "description": "A layout-aware web UI skill for visual direction, existing-project integration, polished components, and responsive quality checks.",
   "license": "MIT",
   "type": "commonjs",
   "skills": "./skills/",
   "files": [
     ".codex-plugin/",
+    "evals/",
     "scripts/",
     "skills/",
     "README.md",
@@ -16,8 +17,9 @@
   "scripts": {
     "previews": "node scripts/generate-previews.js",
     "preview:serve": "node scripts/serve-preview.js",
+    "test": "node --test scripts/*.test.js",
     "validate": "node scripts/validate-previews.js",
-    "check": "npm run validate"
+    "check": "npm test && npm run validate"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,13 @@
   "keywords": [
     "codex-skill",
     "web-design",
+    "existing-project",
+    "frontend-integration",
     "style-guide",
     "visual-styles",
     "layout-guidance",
     "design-system",
+    "accessibility",
     "ui"
   ],
   "engines": {
