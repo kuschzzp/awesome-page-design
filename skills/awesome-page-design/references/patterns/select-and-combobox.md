@@ -12,7 +12,7 @@ Use this order:
 existing wrapper -> installed accessible library component -> styled native select for simple selection -> custom combobox only for complex behavior
 ```
 
-Simple selection means one value from a short, static option set with no search, async loading, grouping, rich option content, or multi-select behavior. A styled native select is an accessibility-friendly option for that case in a new project, but it must look intentional in every supported browser. Complex behavior should use an installed accessible primitive before custom logic.
+Simple selection means one value from a static option set without search, async loading, rich option content, or multi-select behavior. A deliberately styled native select preserves accessible platform behavior; option count alone does not require a custom combobox or a new dependency. For example, a country list can remain native when the user does not want search. Use an installed accessible primitive when richer interaction is actually required.
 
 ## Required States
 
@@ -34,7 +34,7 @@ Simple selection means one value from a short, static option set with no search,
 - Inspect sibling forms, filters, table page-size controls, validation messages, overlay containers, and z-index conventions.
 - Reuse the nearest shared wrapper and its props, slots, option model, form integration, and clear/search conventions.
 - If nearby legacy pages use inaccessible or default-looking controls, add the smallest compatible wrapper or variant rather than copying the defect.
-- Do not add another select library for one feature without user approval.
+- Reuse an existing accessible wrapper before adding another dependency; add a library only when the required behavior cannot be supported by the current stack within the authorized scope.
 
 ## Mobile Behavior
 
@@ -44,6 +44,8 @@ Simple selection means one value from a short, static option set with no search,
 - Do not let a fixed menu extend beyond the viewport or sit under sticky navigation.
 
 ## Verification
+
+Check only supported states and behaviors, within the test permissions defined in [workflow.md](../workflow.md). Native selects retain platform keyboard behavior; custom comboboxes need the additional library-specific semantics above.
 
 - Test keyboard-only open, navigation, selection, clear, close, validation, and focus return.
 - Test short, empty, loading, failed, disabled, and longest-value states.

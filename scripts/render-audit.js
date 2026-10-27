@@ -1,6 +1,6 @@
 function renderAuditExpression() {
   return `(() => {
-    const selector = 'button, a[href], input, select, textarea, [role="button"], [role="option"], [role="tab"]';
+    const selector = 'button, a[href], input, select, textarea, summary, [role="button"], [role="option"], [role="tab"]';
     const viewport = { width: window.innerWidth, height: window.innerHeight };
     const documentWidth = Math.max(
       document.documentElement?.scrollWidth || 0,
@@ -10,6 +10,10 @@ function renderAuditExpression() {
     const isHidden = (element) => {
       let current = element;
       while (current && current.nodeType === 1) {
+        if (current.tagName === 'DETAILS' && !current.open) {
+          const summary = Array.from(current.children).find((child) => child.tagName === 'SUMMARY');
+          if (!summary || !summary.contains(element)) return true;
+        }
         const style = window.getComputedStyle(current);
         if (
           current.hidden ||

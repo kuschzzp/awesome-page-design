@@ -7,15 +7,15 @@
   "skills": "./skills/",
   "files": [
     ".codex-plugin/",
-    "evals/",
+    "catalog/",
     "scripts/",
     "skills/",
     "README.md",
-    "README.zh-CN.md",
-    "ROADMAP.md"
+    "README.zh-CN.md"
   ],
   "scripts": {
     "previews": "node scripts/generate-previews.js",
+    "docs": "node scripts/sync-catalog-docs.js",
     "preview:serve": "node scripts/serve-preview.js",
     "test": "node --test scripts/*.test.js",
     "validate": "node scripts/validate-previews.js",

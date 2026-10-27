@@ -1,150 +1,27 @@
 # Local UI Patch
 
-Use this reference when the user asks to improve, restyle, repair, or polish part of an existing page instead of creating a new page or changing the whole visual direction.
+Use for a targeted region of an existing page: a toolbar, modal, form, table area, sidebar, filter, card group, or action row. Retain the surrounding visual direction; selection and finish behavior are in [workflow.md](workflow.md).
 
-Local UI patch work should feel like a senior designer-developer joining an existing product: understand the current system, improve the target area, and avoid surprising changes elsewhere.
+## Set The Boundary Before Editing
 
-## When To Use
+Inspect the latest target implementation and the regions directly above, below, beside, or inside it. Identify:
 
-Use this mode for requests such as:
+- **Target:** the smallest component, slot, class, or section that solves the requested problem.
+- **Neighbors:** regions whose alignment, spacing, wrapping, layering, or responsive behavior could change.
+- **Shared surface:** a component or token used elsewhere; modify it only when the fix belongs at that level, otherwise add a local variant.
 
-- Improve this table toolbar.
-- Make this modal look better.
-- Polish this button group.
-- Fix the mobile layout in this section.
-- Make this card area less generic.
-- Improve a sidebar, filter bar, form block, empty state, toast, drawer, tabs, or action row.
-- Add or adjust a select, dropdown, button group, paginated table, statistics table/card, modal, drawer, filter form, or pagination block inside an existing project.
+Record the relevant current tokens, typography, density, icon family, action hierarchy, component states, and responsive behavior. Use [existing-project-integration.md](existing-project-integration.md) when tracing shared project patterns; do not inventory unrelated component families.
 
-Do not force the preview selection gate for a local patch unless the user explicitly asks for a new visual style or the existing page has no usable visual direction.
+## Keep The Repair Local
 
-Read `ui-primitive-contract.md` before changing local controls, selects/dropdowns, overlays, confirmation flows, feedback, copy/export behavior, or generated HTML.
+Prefer a scoped class or compatible component variant. Preserve working navigation, routing, data flow, unrelated copy/labels, and component APIs. Do not add a competing button language, radius/shadow scale, icon family, or decoration to conceal weak hierarchy.
 
-## Required Context Scan
+When a shared component changes, inspect its affected call sites and ensure the new behavior is compatible or opt-in. Use [component-implementation.md](component-implementation.md) and only the focused contract for the actual target; do not create a second local-patch state checklist.
 
-Before editing, inspect the current implementation and answer these questions:
+If the problem originates in page-wide information architecture, action placement, navigation, or responsive collapse, explain why the local fix is insufficient. Keep broader redesign as a proposed scope change unless the user already requested it.
 
-- Target region: what exact component, section, or interaction is being changed?
-- Neighbor regions: what sits directly above, below, beside, or inside the target region?
-- Current visual system: what colors, typography, spacing, radius, borders, shadows, icons, density, and interaction states already exist?
-- Current component system: are there reusable components, tokens, utilities, variants, or framework patterns that should be reused?
-- Current component baselines: how do existing selects/dropdowns, buttons, paginated tables, statistics blocks, modals, drawers, forms, filters, pagination controls, and action menus look and behave?
-- Current UI primitive rules: which project wrappers replace browser dialogs, native selects, default form controls, confirmation prompts, and copy/export feedback?
-- Current state model: which hover, focus, selected, disabled, loading, empty, error, warning, and success states already exist?
-- Current responsive behavior: how does the target region behave on desktop, tablet, and mobile?
-- Patch scope: what is the smallest change that solves the user's stated problem without weakening nearby UI?
+## Check The Boundary After Editing
 
-If the answers show that the issue is caused by page-level information architecture, navigation, action placement, or layout hierarchy, escalate to page redesign instead of forcing a local cosmetic fix.
+Review the diff for scope, then verify target and neighbors together at desktop and mobile sizes within the user's testing permissions. Check alignment with surrounding edges, toolbar wrapping, overlay/sticky overlap, reading order, and primary-action reachability. For a responsive bug, include the reported width and a narrower stress width, checking horizontal overflow and text fit; prefer stable flow/constraints over hiding required content. A neighbor spacing repair should not silently expand into a whole-page restyle.
 
-## Preserve Existing System
-
-Local patches should extend the existing page language before introducing a new one.
-
-- Reuse existing design tokens, CSS variables, Tailwind theme values, component props, utility conventions, icon family, and spacing rhythm.
-- Keep typography roles compatible with the surrounding page: headings, labels, metadata, helper text, row text, and numeric values should not suddenly change voice.
-- Match existing density unless the user explicitly asks for a denser or more spacious target region.
-- Keep action hierarchy consistent with nearby primary, secondary, destructive, and quiet actions.
-- Keep focus, hover, selected, disabled, loading, validation, and toast treatments related to the existing product states.
-- Use the project's styled primitives for selects/dropdowns, modals, drawers, toasts, banners, inline alerts, pagination, and confirmation flows.
-- Prefer local class extensions or component variants over broad global CSS changes.
-
-Do not add a new button style, card language, shadow system, radius scale, icon style, color personality, browser dialog, or unstyled native select that makes the target region look imported from another product.
-
-## Patch Boundary Rules
-
-Define the change boundary before editing:
-
-- Primary boundary: the smallest file, component, slot, class, or section that contains the requested change.
-- Neighbor boundary: adjacent regions that may need spacing, alignment, or responsive adjustments because the target region changed.
-- Shared boundary: reusable component or token updates that are justified only when the same issue appears in multiple places.
-
-For local patches:
-
-- Do not rewrite the whole page layout.
-- Do not replace working navigation, routing, data flow, or component APIs unless the user's request requires it.
-- Do not rename or restructure unrelated components to make the patch easier.
-- Do not introduce new dependencies for simple visual repair.
-- Do not turn an operational page into a marketing layout.
-- Do not change unrelated copy, data labels, or feature behavior.
-- Do not mask weak hierarchy with extra glow, blur, gradients, or decoration.
-- Do not use browser `alert`, `confirm`, or `prompt` dialogs for local product feedback or destructive decisions.
-- Do not use an unstyled native `<select>` when the project has a select, dropdown, combobox, menu, or pagination-size primitive.
-
-If a shared component must change, confirm that the new variant still works for existing uses or scope the new treatment to the current context.
-
-## Component And State Rules
-
-Every local patch should improve the actual component behavior, not only the default screenshot.
-
-- Buttons: preserve width during loading, expose disabled and focus-visible states, and keep primary/secondary/destructive hierarchy clear.
-- Forms: keep labels visible, place validation near the field, and avoid using placeholder text as the only label.
-- Tables and lists: preserve scanning, row alignment, selected state, empty state, loading row, and truncated content strategy.
-- Paginated tables: preserve filter/toolbar layout, row density, column alignment, sorter/filter affordances, selected rows, batch actions, row actions, pagination position, page-size control, loading rows, empty state, and error state.
-- Statistics tables and cards: preserve number formatting, unit labels, comparison deltas, tabular numerals, trend markers, loading/no-data/stale states, and grid rhythm.
-- Filters and tabs: expose active state visibly and keep removable filters or saved views understandable.
-- Modals and drawers: preserve close affordance, layering, scroll behavior, expected focus handling, destructive confirmation language, and mobile fallback.
-- Selects and dropdowns: preserve trigger height, border/radius, menu width, option height, selected/disabled states, clear action, placeholder style, validation style, overlay placement, keyboard behavior, empty/loading state, and mobile fallback.
-- Toasts and alerts: choose the right level for the issue and include what changed plus the next useful action; never use browser alerts as finished feedback.
-- Cards and panels: make each local object purposeful; avoid adding nested cards unless the nested object is real content.
-- Icon-only controls: provide accessible names or visible adjacent labels.
-
-When the current page lacks required states, add only the states relevant to the target region and keep their treatment aligned with the surrounding UI.
-
-## Responsive And Neighbor Checks
-
-After a local patch, verify the target region and nearby regions together.
-
-Check desktop:
-
-- The target region aligns with surrounding grids, gutters, and panel edges.
-- New controls do not crowd labels, tabs, filters, or action rows.
-- Long copy, user-generated content, metrics, and button labels wrap, truncate, or clamp intentionally.
-- Hover, focus, selected, loading, and disabled states do not resize the layout.
-
-Check mobile:
-
-- The target region has a clear reading order.
-- Primary action remains reachable and is not hidden behind ambiguous icons.
-- Toolbars wrap into stable rows or menus without overlap.
-- Tables have a small-screen strategy: priority columns, stacked rows, cards, horizontal scroll with context, or detail drawer.
-- Touch targets and gaps remain usable.
-- Safe areas, sticky actions, drawers, and modals do not cover required content.
-
-If a screenshot reveals that the patch breaks neighbor rhythm, repair the neighbor relationship rather than widening the patch into a full redesign.
-
-## Escalation To Page Redesign
-
-Escalate from local patch to page redesign when:
-
-- The target problem repeats across the whole page because the information architecture is weak.
-- Primary content object, main action, and current state are not visible anywhere useful.
-- Navigation, filters, sidebars, inspectors, or tables collapse badly across the whole layout.
-- The page uses multiple conflicting visual systems and a local patch would add another one.
-- The requested component depends on missing page-level state, routing, or data hierarchy.
-- The user explicitly asks for a new visual direction or complete redesign.
-
-When escalating, explain the reason briefly and move to the normal page-level workflow: design brief, layout archetype, style selection or delegated style choice, then implementation.
-
-## Final Verification
-
-Before final approval for a local patch:
-
-- Re-open the changed file regions and confirm the patch stayed within scope.
-- Compare the changed controls with existing project examples for selects/dropdowns, buttons, tables, statistics blocks, modals/drawers, filters/forms, and pagination.
-- Check target and neighbor regions on desktop and mobile.
-- Check semantic controls, accessible labels, focus-visible, reduced motion, stable dimensions, and content overflow.
-- Run or apply the anti-pattern scan from `ui-primitive-contract.md` when controls, overlays, forms, feedback, or generated HTML changed.
-- Check relevant default, hover, focus, selected, disabled, loading, error, warning, success, and empty states.
-- Confirm the target region still belongs to the existing page visually.
-- Mention if no screenshot could be taken, and state the remaining risk.
-
-## Output Expectations
-
-When reporting a local patch, include:
-
-- The target region changed.
-- The existing visual system that was preserved.
-- The component states or responsive behavior improved.
-- Any neighbor regions checked or adjusted.
-- Any escalation risk if the page needs broader redesign later.
-- Verification run, including screenshots when UI changed.
+Apply the common implementation/primitive checks through [workflow.md](workflow.md). Report the target, necessary neighbor adjustments, preserved project pattern, verification evidence, and any broader issue left outside scope.

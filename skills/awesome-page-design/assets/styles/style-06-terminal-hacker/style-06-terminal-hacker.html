@@ -7399,6 +7399,9 @@ body.industrial-control .feature-block {
   .press-matrix {
     grid-template-columns: 1fr;
   }
+  .volunteer-board {
+    grid-column: auto;
+  }
   .life-bento-market {
     min-height: auto;
     grid-template-columns: 1fr 1fr;
@@ -7618,6 +7621,29 @@ body.industrial-control .feature-block {
   .workspace-grid,
   .responsive-steps {
     display: grid;
+    grid-template-columns: 1fr;
+  }
+  body.neo-brutalism .brutal-release {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding-right: 8px;
+  }
+  body.neo-brutalism .brutal-copy,
+  body.neo-brutalism .proof-wall {
+    transform: none;
+  }
+  body.neo-brutalism .brutal-copy {
+    min-height: auto;
+    box-shadow: 8px 8px 0 var(--accent);
+  }
+  body.neo-brutalism .brutal-copy h1 {
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 1;
+  }
+  body.neo-brutalism .proof-wall {
+    box-shadow: -8px 8px 0 var(--primary);
+  }
+  body.neo-brutalism .proof-wall .metric-row {
     grid-template-columns: 1fr;
   }
   .ops-board,
@@ -8266,9 +8292,113 @@ body.industrial-control .feature-block {
     font-size: clamp(36px, 14vw, 52px);
   }
 }
+
+/* Library navigation stays visually separate from each fictional product. */
+.preview-context-shell {
+  color: #18202e;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  color-scheme: light;
+  font: 14px/1.4 ui-sans-serif, system-ui, sans-serif;
+}
+.preview-context {
+  width: min(100%, 1268px);
+  min-height: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin: 0 auto;
+  padding: 12px calc(24px + env(safe-area-inset-right)) 12px calc(24px + env(safe-area-inset-left));
+}
+.preview-context-back,
+.preview-context-use {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  text-decoration: none;
+  overflow-wrap: normal;
+}
+.preview-context-back { color: #475569; }
+.preview-context-back:hover { color: #0f172a; text-decoration: underline; }
+.preview-context-identity {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+.preview-context-number,
+.preview-context-identity > span:last-child { color: #64748b; font-size: 12px; }
+.preview-context-identity strong { font-size: 15px; font-weight: 650; }
+.preview-context-use {
+  flex: 0 0 auto;
+  padding: 0 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #0f172a;
+  background: #f8fafc;
+  font-weight: 600;
+}
+.preview-context-use:hover { border-color: #64748b; background: #f1f5f9; }
+.preview-context a:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+.reference-disclosure { margin-top: 40px; }
+.reference-disclosure > summary {
+  padding: 18px 0;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  cursor: pointer;
+}
+.reference-disclosure > summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+.reference-disclosure-hint { margin-left: 12px; color: var(--muted); font-size: 12px; }
+.reference-disclosure .reference-stack { margin-top: 24px; padding-top: 0; border-top: 0; }
+/* Keep the print ledger's decision separate from its long heading. */
+.life-print-ledger .ledger-header { align-items: center; }
+.life-print-ledger .ledger-header > div { flex: 1; max-width: 780px; }
+.life-print-ledger .ledger-header > .primary-action { flex: 0 0 auto; white-space: nowrap; }
+.life-print-ledger .ledger-sheet > p { max-width: 65ch; color: #475569; line-height: 1.65; }
+.life-print-ledger .job-ledger > span {
+  grid-template-columns: 90px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 12px;
+}
+.life-print-ledger .job-ledger b { color: #64748b; font-size: 13px; font-weight: 500; }
+.life-print-ledger .job-ledger strong { font-weight: 600; }
+.life-print-ledger .job-ledger em { color: #64748b; font-size: 12px; font-style: normal; }
+@media (max-width: 1024px) {
+  .life-print-ledger .ledger-header { align-items: stretch; }
+  .life-print-ledger .ledger-header > .primary-action { align-self: flex-start; width: auto; }
+}
+@media (max-width: 640px) {
+  .preview-context { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; padding: 12px 16px; }
+  .preview-context-identity { grid-column: 1 / -1; grid-row: 1; }
+  .preview-context-back { justify-self: start; }
+  .preview-context-use { padding: 0 12px; }
+  .reference-disclosure-hint { display: block; margin: 6px 0 0 18px; }
+  .life-print-ledger .print-production-grid { grid-template-columns: minmax(0, 1fr); }
+  .life-print-ledger .job-ledger > span { grid-template-columns: 64px minmax(0, 1fr); gap: 5px 12px; }
+  .life-print-ledger .job-ledger em { grid-column: 2; }
+}
 </style>
 </head>
 <body class="terminal-hacker">
+  <header class="preview-context-shell">
+    <nav class="preview-context" aria-label="Style preview navigation">
+      <a class="preview-context-back" href="../../previews/index.html"><span aria-hidden="true">←</span> <span lang="zh-CN">返回风格库</span></a>
+      <div class="preview-context-identity"><span class="preview-context-number">Style 06</span><strong>Terminal Hacker</strong><span lang="zh-CN">黑客终端</span></div>
+      <a class="preview-context-use" href="../../previews/index.html?style=06#style-06" lang="zh-CN">选用此风格 <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
   <main id="top" class="page">
     <nav class="top-nav" aria-label="Example navigation">
       <a class="brand-lockup" href="#top"><span>06</span><b>NullTrace</b></a>
@@ -8290,8 +8420,10 @@ body.industrial-control .feature-block {
           <div class="metric-row"><div class="metric-tile"><strong>0</strong><span>critical leaks</span></div><div class="metric-tile"><strong>31</strong><span>repos watched</span></div><div class="metric-tile"><strong>12s</strong><span>scan time</span></div></div>
         </aside>
       </section>
-    <section class="reference-stack" aria-label="Reusable interaction and implementation notes">
-      <section class="interaction-demo" aria-labelledby="interaction-title-06">
+    <details id="details" class="reference-disclosure">
+      <summary><span lang="zh-CN">交互与组件示例</span> <span class="reference-disclosure-hint">Interaction &amp; component examples</span></summary>
+      <section class="reference-stack" aria-label="Reusable interaction and implementation notes">
+        <section class="interaction-demo" aria-labelledby="interaction-title-06">
       <div class="interaction-copy">
         <p class="kicker">Component behavior</p>
         <h2 id="interaction-title-06">Buttons, feedback, spacing, and responsive rules.</h2>
@@ -8331,7 +8463,7 @@ body.industrial-control .feature-block {
         </div>
       </div>
     </section>
-      <section id="details" class="style-lab">
+        <section class="style-lab">
       <div class="lab-summary">
         <p class="kicker">Terminal Console · 终端控制台</p>
         <h2>Terminal Console in practice.</h2>
@@ -8358,7 +8490,8 @@ body.industrial-control .feature-block {
         <div class="related"><a href="../style-01-card-grid/style-01-card-grid.html">01. Card Grid</a><a href="../style-02-block-brutalism/style-02-block-brutalism.html">02. Block Brutalism</a><a href="../style-03-aurora-gradient/style-03-aurora-gradient.html">03. Aurora Gradient</a></div>
       </div>
     </section>
-    </section>
+      </section>
+    </details>
   </main>
 
   <aside class="modal" hidden data-modal role="dialog" aria-modal="false" aria-labelledby="style-note-title">
@@ -8378,6 +8511,15 @@ body.industrial-control .feature-block {
   const status = document.querySelector('[data-status]');
   const toast = document.querySelector('[data-toast]');
   const demo = {"launch":["Scan run","Start a scan, group findings by severity, and keep remediation commands one click away."],"metrics":["Risk trend","Track leak count, time to revoke, watched repos, and ignored warnings."],"assets":["Evidence log","Keep commit hashes, owners, file paths, and remediation notes in compact rows."]};
+  const referenceDetails = document.getElementById('details');
+  document.querySelectorAll('a[href="#details"]').forEach((link) => {
+    link.addEventListener('click', () => { referenceDetails.open = true; });
+  });
+  function revealReferenceFromHash() {
+    if (location.hash === '#details') referenceDetails.open = true;
+  }
+  revealReferenceFromHash();
+  window.addEventListener('hashchange', revealReferenceFromHash);
   let toastTimer;
   function showToast(message) {
     if (!toast) return;

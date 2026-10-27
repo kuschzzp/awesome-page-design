@@ -1,74 +1,39 @@
 # UI Primitive Contract
 
-Use this reference before implementing or reviewing real UI code, generated HTML, forms, overlays, feedback, selects/dropdowns, menus, tables, or page actions.
+Use before implementing or reviewing finished product controls, feedback, overlays, generated HTML, or page actions. This reference owns primitive acceptance and the anti-pattern scan; detailed behavior belongs to the focused pattern contracts.
 
-The goal is simple: product UI should feel intentionally designed. Browser-default dialogs and unstyled native controls are acceptable for throwaway debugging, but they are not acceptable as finished interface behavior.
+## Acceptance Rules
 
-## Hard Bans For Product UI
+- Replace browser `alert(...)`, `confirm(...)`, `prompt(...)`, and their `window.*` forms in product flows with integrated feedback, confirmation, or recovery UI. Throwaway debugging is outside this product-UI rule.
+- Do not ship an unstyled native `<select>` as a designed dropdown. Resolve simple versus complex selection through the [selection contract](patterns/select-and-combobox.md); preserve native keyboard behavior when a deliberately styled native select fits.
+- Native file, checkbox, and radio controls should follow the surrounding product's intentional style/wrapper convention.
+- Preserve visible focus. An outline reset is acceptable only with an explicit accessible focus-visible replacement; a scan match alone is not proof of a defect.
+- Animate specific properties rather than `transition: all`.
 
-Flag and replace these by default:
+Use [existing-project-integration.md](existing-project-integration.md) to find the product wrapper before creating a replacement. Do not introduce a new component engine for a local feature when the current system can support it.
 
-- Browser dialog primitives: `alert(...)`, `confirm(...)`, `prompt(...)`, `window.alert(...)`, `window.confirm(...)`, and `window.prompt(...)`.
-- Unstyled native `<select>` used as a designed dropdown, filter, page-size chooser, prompt picker, status selector, or form select.
-- Unstyled native file, checkbox, or radio controls when the surrounding product uses styled wrappers or custom state treatment.
-- Browser-default destructive confirmation flows that skip the project's modal, drawer, inline confirmation, or undo pattern.
-- Copy, export, save, delete, submit, publish, or queue feedback that only appears through a browser dialog.
-- `outline: none`, `outline-none`, or `transition: all` on finished interactive UI. Use explicit focus-visible rings and list animated properties instead.
+## Choose The Appropriate Primitive
 
-## Replacement Matrix
-
-| Need | Use Instead |
+| Need | Preferred product pattern |
 |---|---|
-| Lightweight success or copy feedback | Existing toast/snackbar/status component with `aria-live` |
-| Field or form error | Inline validation near the field plus summary when needed |
-| Page-level warning or permission issue | Banner or inline alert in the affected page region |
-| Destructive action | Project modal/drawer confirmation, inline confirmation, or undo pattern |
-| Basic dropdown/select | Existing project Select/Dropdown/Combobox wrapper or styled framework component |
-| Searchable or async select | Existing searchable select/cascader/autocomplete pattern with loading and empty states |
-| Page size or table filter select | Existing pagination/filter component, styled segmented control, or dropdown menu |
-| Copy fallback when clipboard API fails | Hidden textarea + `execCommand("copy")` fallback, then page-level status/toast |
-| Modal or drawer | Existing overlay component with focus handling, close affordance, scroll behavior, and mobile fallback |
+| Lightweight save/copy outcome | Toast/snackbar/status with suitable announcement |
+| Field or form error | Inline validation; summary when useful |
+| Page warning, permission issue, outage | Banner/alert in the affected region |
+| Destructive decision | Project confirmation, inline confirmation, or undo |
+| Simple selection | Existing wrapper; otherwise deliberately styled native select |
+| Searchable/async/complex selection | Existing accessible select/combobox/autocomplete |
+| Page size or table filter | Existing pagination/filter/select primitive |
+| Clipboard failure | Compatible copy fallback where available; otherwise recoverable page-level status, never a browser prompt |
+| Overlay | Existing styled modal/drawer/popover with appropriate focus and close behavior |
 
-## Existing Project Resolution Order
+Read only the matching contract: [selection](patterns/select-and-combobox.md), [overlays/confirmation](patterns/modal-drawer-and-confirmation.md), [feedback](patterns/toast-alert-and-feedback.md), or [tables/pagination](patterns/data-table-and-pagination.md). A styled native `<dialog>` is acceptable when its focus, backdrop, escape, scrolling, and mobile behavior satisfy the overlay contract.
 
-When working inside an existing codebase, choose primitives in this order:
+## Targeted Scan
 
-1. Reuse the nearest existing shared component or product wrapper.
-2. Reuse the project's UI framework component through the project's established wrapper or prop conventions.
-3. Add a narrow variant to the existing component family when the state or hierarchy is missing.
-4. Build a scoped styled primitive only when the project has no reusable pattern.
-
-Do not introduce a new UI library, icon family, modal manager, dropdown engine, or table component for a local feature unless the user approves or the project already uses it.
-
-## Component Pattern Routing
-
-This contract decides whether a primitive is acceptable. Load the focused reference for complete behavior and verification:
-
-- `patterns/select-and-combobox.md` for select, dropdown, autocomplete, or combobox work. A native `<select>` must be deliberately styled and limited to simple selection; never ship a default-looking browser control.
-- `patterns/modal-drawer-and-confirmation.md` for overlays and destructive decisions. `<dialog>` is acceptable only when styled and paired with focus, backdrop, escape, scroll, and mobile behavior.
-- `patterns/toast-alert-and-feedback.md` for outcome scope, recovery, and announcements.
-- `patterns/data-table-and-pagination.md` for filters, sorting, selection, row actions, loading/empty/error states, and pagination.
-
-## Anti-Pattern Scan
-
-For real UI changes, generated HTML, or preview assets, run a targeted scan before finishing:
+Scan changed UI files before finishing:
 
 ```bash
-rg -n "alert\\(|confirm\\(|prompt\\(|window\\.alert|window\\.confirm|window\\.prompt|<select\\b|outline\\s*:\\s*none|outline-none|transition\\s*:\\s*all" <changed-ui-files>
+rg -n '(^|[^[:alnum:]_])(alert|confirm|prompt)[[:space:]]*\(|<select\b|outline[[:space:]]*:[[:space:]]*none|outline-none|transition[[:space:]]*:[[:space:]]*all' <changed-ui-files>
 ```
 
-Default response to a hit:
-
-1. Replace browser dialogs with toast, inline alert, banner, modal, drawer, undo, or page-level status.
-2. Replace unstyled native selects with the project select/dropdown/combobox pattern.
-3. Replace `outline: none` with a visible focus-visible ring, or remove it when it only hides focus.
-4. Replace `transition: all` with exact animated properties.
-5. If a rare exception is intentional, document why it is acceptable and how it stays visually integrated.
-
-## Final Response Expectations
-
-When relevant, mention:
-
-- which project primitive or wrapper replaced browser defaults
-- how select/dropdown, feedback, and overlay states were handled
-- whether the anti-pattern scan was run, including focus/motion hits, and whether any exception remains
+Treat results as candidates, not automatic failures. Inspect whether a call is a browser dialog or unrelated function, whether a select is deliberately styled/simple, and whether an outline reset has a visible replacement. Replace actual product-UI violations with the matching pattern. Record scan scope/results and explain any intentional exception in the final verification report; report manually inspected scope when the scan cannot run.

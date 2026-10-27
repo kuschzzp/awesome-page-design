@@ -1,111 +1,38 @@
-# Design Quality Checklist
+# Visual Quality Review
 
-Use this checklist when reviewing an existing UI, polishing an implementation, or improving the bundled previews.
+Use for visual audits and final composition review. This file owns visual judgment; code/accessibility checks are in [interface-compliance.md](interface-compliance.md), component behavior is in [component-implementation.md](component-implementation.md), and finishing is in [workflow.md](workflow.md).
 
-## First Impression
+## Product And Hierarchy
 
-- The first viewport communicates a specific product or workflow, not a generic design slogan.
-- The layout archetype is recognizable within the first viewport.
-- The primary content object and main action are visible without reading explanatory feature copy.
-- The page has one clear visual hierarchy: primary action, main content, supporting proof, then secondary actions.
-- The selected style is visible in typography, color, surfaces, components, and state treatment, not only in background color.
-- The page avoids looking like a palette swap of another style.
-- The page avoids looking like the same skeleton with different colors, especially in hero layout, card rhythm, button shape, and action placement.
-- The selected prompt type matches the job: full, landing page, dashboard, admin panel, or mobile.
-- The page has visible product states, not only static marketing copy.
+- The first viewport communicates a specific workflow, primary content object, and main action rather than a generic slogan.
+- The layout fits the page job: operations foreground data/actions, creation tools foreground the workspace, and editorial pages preserve reading order/evidence.
+- Important information has deliberate hierarchy. Equal cards represent equal choices; unrelated urgency or ownership does not disappear into identical boxes.
+- Density, gutters, alignment, and section rhythm support scanning or reading. Expressive composition still has stable orientation.
 
-## Layout
+## Visual Direction
 
-- The layout matches the product type: dashboard, landing page, editorial page, portfolio, console, onboarding flow, or commerce surface.
-- The layout matches a clear archetype from `layout-guidance.md`.
-- The primary content object, top-level regions, and main action model are visible in the structure.
-- The layout matches the selected style's structural identity, not only its palette.
-- Operational tools expose filters, search, status, ownership, priority, and next actions before marketing copy.
-- Creation tools expose the editor/canvas, tool controls, preview, inspector, and output action before promotional sections.
-- Admin panels expose navigation, tables/forms, bulk actions, permissions, save feedback, empty states, and recovery paths.
-- Content-heavy pages preserve reading order, metadata, table of contents, captions, and evidence blocks before decorative modules.
-- Repeated cards have different jobs or clear grouping; they are not identical filler blocks.
-- Gutters, section spacing, and component spacing follow a consistent rhythm.
-- Dense pages use alignment, tables, filters, labels, and status chips to support scanning.
-- Expressive pages still preserve orientation, reading order, and obvious actions.
+- Typography, geometry, material, component tone, and states express the selected direction; the result is not a palette swap or repeated skeleton.
+- Headings, body, labels, metadata, and numbers have distinct roles. Long headings fit compact regions without awkward wrapping.
+- Semantic colors and surfaces remain legible; glow, glass, texture, chrome, and depth do not hide content or state.
+- Media explains the actual product or object. Icon family, stroke/fill, size, and alignment form one system.
+- Copy, metrics, and actions are specific enough to judge a real workflow, without placeholder brand references or unrelated decorative captions.
 
-## Typography
+Use [anti-generic-ui.md](anti-generic-ui.md) when composition feels generic, rather than applying more decoration.
 
-- Headings, body copy, labels, metadata, and numeric values have distinct roles.
-- Long headings wrap cleanly and do not overpower compact UI panels.
-- Body text is readable at desktop and mobile widths.
-- Monospace, display, condensed, or playful type choices are used intentionally and sparingly.
+## Existing And Local Work
 
-## Color And Material
+Compare the changed area with its chosen production baseline: typography, density, action hierarchy, spacing, geometry, and state treatment should still belong to the product. Check target and neighbors together for local changes using [local-ui-patch.md](local-ui-patch.md); do not reinterpret a visual check as permission to restyle the whole page.
 
-- Background, surface, text, muted text, primary, accent, border, focus, and state colors are assigned semantic roles.
-- Low-contrast muted text never carries important information.
-- Glow, glass, chrome, soft depth, gradients, and texture improve the selected mood without hurting legibility.
-- Destructive, warning, success, disabled, selected, and focus states are visually distinct.
+## Responsive Composition
 
-## Components
+Review desktop and mobile hierarchy with realistic long content. The primary object, state, and action must remain reachable; navigation, secondary panels, and proof should collapse intentionally rather than squeeze the desktop grid. Record missing visual evidence instead of claiming screenshots were checked.
 
-- Buttons have primary, secondary, disabled, focus, hover, and pressed states when relevant.
-- Button shape, density, border treatment, fill logic, and interaction feedback match the selected style instead of using one default SaaS button everywhere.
-- Buttons also define loading, selected/toggled, destructive, and success/error treatment when those actions appear.
-- Inputs, tabs, menus, filters, cards, tables, drawers, modals, empty states, and loading states inherit the chosen style.
-- Feedback patterns are explicit: toast, snackbar, banner, inline alert, validation message, row-local status, modal confirmation, or undo.
-- Spacing is specified beyond vague "generous spacing": page gutters, section rhythm, panel padding, row gaps, control height, and dense/touch-friendly variants are clear.
-- Icons share one visual system: same source family, stroke, fill logic, size, and alignment.
-- Overlays have clear stacking, backdrop, close affordance, and keyboard/focus behavior when implemented.
+## Recording Visual Evidence
 
-## Local UI Patch
+Review these five dimensions together: product task/action clarity; hierarchy/readability/density; consistency with the selected direction or existing product; real-content/responsive composition; and visible states/detail finish. Support each finding with the actual viewport and state inspected. Source inspection cannot establish rendered quality, and a single idle screenshot cannot establish error or pending-state finish.
 
-- The requested target region is named before changes are made.
-- Adjacent regions above, below, beside, or inside the target are inspected for spacing, alignment, and responsive impact.
-- Existing tokens, typography, component variants, icon system, density, radius, shadows, and interaction states are preserved unless they are the problem.
-- The patch stays within the target boundary and necessary neighbor adjustments instead of rewriting the whole page.
-- New local classes or variants extend the current system and do not introduce a competing visual language.
-- Shared component changes are justified by repeated use or scoped so they do not break other contexts.
-- The patch improves the actual states that matter: hover, focus-visible, selected, disabled, loading, empty, error, warning, or success.
-- The target region still belongs visually to the existing page after the polish.
-- If the issue cannot be fixed locally because of page-level structure, the work escalates to page redesign instead of applying decorative cover-ups.
+For a requested scored comparison, use the same scenes and evidence for every option. A useful 0–4 scale is: 0 unusable, 1 major defects, 2 usable with visible defects, 3 coherent and complete, 4 clear under realistic long content and constrained viewports. Leave missing dimensions unverified rather than assigning zero or inventing precision. Record broken actions, keyboard traps and other critical functional defects separately from visual scores. Ordinary delivery does not require numerical scoring.
 
-## Implementation Compliance
+## Maintaining This Library
 
-- Semantic controls are used: buttons for actions, links for navigation, labels for form controls, and meaningful names for inputs.
-- Icon-only controls have accessible labels or visible adjacent text.
-- Every interactive element has a visible `focus-visible` state.
-- The component state matrix from `component-implementation.md` is covered for the components that appear on the page.
-- Built-in previews include a visible component behavior block with buttons, loading, disabled, selected/toggled, inline feedback, input helper text, common product states, and responsive notes.
-- Images, screenshots, charts, and fixed-format media have stable dimensions or aspect-ratio rules.
-- Transitions list exact properties, avoid `transition: all`, and respect reduced-motion preferences when motion is present.
-- Long text, table cells, metrics, labels, and user-generated content have a wrapping, truncation, or clamp strategy.
-- Empty, loading, error, warning, success, disabled, selected, and permission-denied states explain the state and next action.
-- Destructive actions provide confirmation, undo, or a clear recovery path.
-- Dates, times, numbers, and currency values are formatted intentionally for product UI.
-
-## Content
-
-- Example copy names a real-feeling workflow, object, or decision.
-- Metrics, queue items, labels, and messages are specific enough to judge the UI.
-- Empty, error, loading, and success states use helpful text instead of vague filler.
-- The page avoids fake brand references, external source labels, and unrelated decorative captions.
-
-## Responsive
-
-- Mobile preserves the same hierarchy without forcing desktop grids into narrow columns.
-- The responsive collapse is intentional: filters, sidebars, inspectors, tables, media, and secondary actions move into usable drawers, tabs, accordions, or stacked regions.
-- The primary content object, current status, and primary action remain reachable on mobile.
-- Tablet and mobile order is defined for title, status, primary action, filters, main content, supporting proof, and secondary actions.
-- Important controls stay reachable and do not collapse into ambiguous icons.
-- Tables, charts, media, and dense panels have a readable small-screen treatment.
-- Text never overlaps, clips, or relies on viewport-scaled font sizes to fit.
-
-## Final Verification
-
-- Check desktop and mobile screenshots.
-- For local UI patches, check the target region and adjacent regions together on desktop and mobile.
-- Check that every built-in style has both desktop and mobile PNG previews after regeneration.
-- Check implementation compliance before final visual approval when real UI code or generated HTML is involved.
-- Check that copied style prompts do not instruct the agent to copy the sample layout.
-- Check that copied style prompts include full, landing page, dashboard, admin panel, and mobile variants where the preview gallery offers copy actions.
-- Check that copied style prompts include layout archetype, layout structure, page adaptation, component treatment, button rules, feedback patterns, spacing system, responsive behavior, icon/media direction, state rules, motion rules, implementation compliance, constraints, and verification checks.
-- Check that adjacent styles are distinguishable by structure, component tone, material, and content scenario.
-- Check that generated docs and previews do not contain obsolete or external reference wording.
-- Run `npm run validate` for this skill's own preview library before final approval.
+When this repository's own previews/prompts change, check that styles remain distinguishable by structure, component tone, material, and scenario; prompts adapt to product layout; gallery actions offer full/landing/dashboard/admin/mobile variants; and refreshed docs, previews, and screenshots correspond. Use the regeneration and validation flow in [workflow.md](workflow.md).

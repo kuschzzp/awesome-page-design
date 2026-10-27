@@ -4,7 +4,13 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { describePngQuality, hasVisibleContent, readPngQuality } = require("./png-quality");
 const { validateManifest } = require("./preview-manifest");
-const { validateBehaviorEvals, validateTriggerEvals } = require("./skill-quality");
+const { allStyles } = require("./preview-catalog");
+const { promptKinds: promptDefinitions, buildStylePrompt } = require("./preview-prompts");
+const { renderStyleDoc, renderStyleIndex } = require("./preview-documents");
+const { renderGallery } = require("./preview-gallery");
+const { unpackPrompt } = require("./gallery-model");
+const { updateReadme } = require("./sync-catalog-docs");
+const { inspectSkillReferences } = require("./skill-references");
 
 const rootDir = path.resolve(__dirname, "..");
 const skillDir = path.join(rootDir, "skills", "awesome-page-design");
@@ -14,23 +20,19 @@ const previewManifestFile = path.join(skillDir, "assets", "previews", "asset-man
 const referencesDir = path.join(skillDir, "references");
 const styleRefsDir = path.join(referencesDir, "styles");
 const skillFile = path.join(skillDir, "SKILL.md");
-const uiPrimitiveContractFile = path.join(referencesDir, "ui-primitive-contract.md");
 const readmeFile = path.join(rootDir, "README.md");
 const readmeZhFile = path.join(rootDir, "README.zh-CN.md");
 const pluginFile = path.join(rootDir, ".codex-plugin", "plugin.json");
 const packageFile = path.join(rootDir, "package.json");
-const roadmapFile = path.join(rootDir, "ROADMAP.md");
 const validationWorkflowFile = path.join(rootDir, ".github", "workflows", "validate.yml");
 const agentsOpenaiFile = path.join(skillDir, "agents", "openai.yaml");
-const behaviorEvalsFile = path.join(rootDir, "evals", "evals.json");
-const triggerEvalsFile = path.join(rootDir, "evals", "trigger-evals.json");
 
-const expectedStyleCount = 26;
+const expectedStyleCount = allStyles.length;
 const expectedDesktopWidth = 1440;
 const expectedDesktopHeight = 1200;
 const expectedMobileWidth = 390;
 const expectedMobileHeight = 844;
-const promptKinds = ["full", "landing", "dashboard", "admin", "mobile"];
+const promptKinds = promptDefinitions.map((kind) => kind.key);
 const narrowDomainAnchors = [
   ["C", "R", "M"].join(""),
   ["E", "R", "P"].join(""),
@@ -98,26 +100,22 @@ function checkPngContent(file, label, expectedWidth, expectedHeight) {
   }
 }
 
-function decodeHtml(value) {
-  return value
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
-}
-
 function getStyleDirs() {
   if (!fs.existsSync(stylesDir)) return [];
   return fs
     .readdirSync(stylesDir)
-    .filter((name) => /^style-\d{2}-/.test(name))
+    .filter((name) => /^style-\d{2,}-/.test(name))
     .sort();
 }
 
 function checkSkillDescription() {
   const skill = read(skillFile);
   const frontmatter = skill.match(/^---\n([\s\S]*?)\n---/);
-  const description = frontmatter?.[1]?.match(/^description:\s*(.*)$/m)?.[1] || "";
+  const fields = frontmatter?.[1] || "";
+  const descriptionField = fields.match(/^description:[ \t]*([^\n]*)/m)?.[1] || "";
+  const description = /^[>|][-+]?\s*$/.test(descriptionField)
+    ? (fields.match(/^description:[^\n]*\n((?:[ \t]+[^\n]*\n?)+)/m)?.[1] || "").trim().replace(/\s+/g, " ")
+    : descriptionField;
   assert(description.length > 0, "SKILL.md has a description");
   assert(description.length <= 1024, `SKILL.md description length is ${description.length}/1024`);
 }
@@ -145,7 +143,6 @@ function checkCoreDomainNeutrality() {
     path.join(rootDir, "scripts", "generate-previews.js"),
     pluginFile,
     packageFile,
-    roadmapFile,
     readmeFile,
     readmeZhFile,
   ];
@@ -204,7 +201,7 @@ function checkMetadataAlignment() {
   assert(/quality|polish|accessib|responsive/i.test(pluginDescription), "plugin metadata mentions UI quality verification");
 
   assert(/existing[- ]project|existing frontend/i.test(packageJson.description || ""), "package description mentions existing-project work");
-  assert(Array.isArray(packageJson.files) && packageJson.files.includes("evals/"), "package files include evals/");
+  assert(Array.isArray(packageJson.files) && packageJson.files.includes("catalog/"), "package files include the canonical catalog/");
 
   const agentMetadata = read(agentsOpenaiFile);
   assert(/responsive|accessib/i.test(agentMetadata), "agents/openai.yaml mentions responsive or accessibility checks");
@@ -213,7 +210,7 @@ function checkMetadataAlignment() {
     ["README.md", read(readmeFile)],
     ["README.zh-CN.md", read(readmeZhFile)],
   ].forEach(([label, content]) => {
-    ["evals/", "asset-manifest.json", "npm test", "npm run check", "PREVIEW_AUDIT_WIDTHS"].forEach((needle) => {
+    ["asset-manifest.json", "npm test", "npm run check", "PREVIEW_AUDIT_WIDTHS"].forEach((needle) => {
       assert(content.includes(needle), `${label} includes ${needle}`);
     });
   });
@@ -221,158 +218,67 @@ function checkMetadataAlignment() {
   assert(fs.existsSync(validationWorkflowFile), ".github/workflows/validate.yml exists");
 }
 
-function checkUiPrimitiveContract() {
-  assert(fs.existsSync(uiPrimitiveContractFile), "ui primitive contract reference exists");
-  const contract = read(uiPrimitiveContractFile);
-  [
-    "## Hard Bans For Product UI",
-    "## Replacement Matrix",
-    "## Anti-Pattern Scan",
-    "alert",
-    "confirm",
-    "prompt",
-    "<select>",
-    "outline",
-    "transition",
-  ].forEach((needle) => assert(contract.includes(needle), `ui primitive contract includes ${needle}`));
-
-  [
-    skillFile,
-    path.join(referencesDir, "workflow.md"),
-    path.join(referencesDir, "usage-principles.md"),
-    path.join(referencesDir, "existing-project-integration.md"),
-    path.join(referencesDir, "local-ui-patch.md"),
-    path.join(referencesDir, "component-implementation.md"),
-    path.join(referencesDir, "interface-compliance.md"),
-    readmeFile,
-    readmeZhFile,
-  ].forEach((file) => {
-    assert(read(file).includes("ui-primitive-contract.md"), `${path.relative(rootDir, file)} references ui-primitive-contract.md`);
-  });
+function checkSkillReferences() {
+  const result = inspectSkillReferences(skillDir);
+  if (result.errors.length) result.errors.forEach(fail);
+  else pass(`all ${result.files.length} skill documents have valid links and are reachable from SKILL.md`);
 }
 
-function checkNewProjectReadinessGuidance() {
-  [
-    skillFile,
-    path.join(referencesDir, "workflow.md"),
-    path.join(referencesDir, "usage-principles.md"),
-    path.join(referencesDir, "interface-compliance.md"),
-    readmeFile,
-    readmeZhFile,
-  ].forEach((file) => {
-    const content = read(file);
-    assert(content.includes("favicon.ico"), `${path.relative(rootDir, file)} includes favicon.ico guidance`);
-  });
-
-  [
-    skillFile,
-    path.join(referencesDir, "workflow.md"),
-    path.join(referencesDir, "interface-compliance.md"),
-  ].forEach((file) => {
-    const content = read(file);
-    assert(/favicon\.svg[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content) || /SVG[\s\S]{0,120}(supplement|not a replacement|does not replace|不能替代)/i.test(content), `${path.relative(rootDir, file)} says SVG favicon does not replace favicon.ico`);
-  });
-}
-
-function checkWorkflowHardening() {
-  const skill = read(skillFile);
-  const requiredPatternFiles = [
-    "select-and-combobox.md",
-    "modal-drawer-and-confirmation.md",
-    "toast-alert-and-feedback.md",
-    "data-table-and-pagination.md",
-  ];
-
-  assert(skill.includes("## Decision Precedence"), "SKILL.md defines decision precedence");
-  assert(skill.includes("references/new-project-shell.md"), "SKILL.md routes new project shell work");
-
-  requiredPatternFiles.forEach((name) => {
-    const file = path.join(referencesDir, "patterns", name);
-    assert(fs.existsSync(file), `pattern reference exists: ${name}`);
-    assert(skill.includes(`references/patterns/${name}`), `SKILL.md routes ${name}`);
-  });
-}
-
-function checkEvaluationDefinitions() {
-  const definitions = [
-    ["behavior evals", behaviorEvalsFile, validateBehaviorEvals],
-    ["trigger evals", triggerEvalsFile, validateTriggerEvals],
-  ];
-
-  definitions.forEach(([label, file, validator]) => {
-    if (!fs.existsSync(file)) {
-      fail(`${label} file exists`);
-      return;
-    }
-
+function checkCatalogOutputs() {
+  pass(`validated style catalog contains ${expectedStyleCount} entries`);
+  assert(read(previewIndex) === renderGallery(), "preview gallery matches the canonical catalog");
+  assert(read(path.join(referencesDir, "style-index.md")) === renderStyleIndex(), "style index matches the canonical catalog");
+  for (const [file, lang] of [[readmeFile, "en"], [readmeZhFile, "zh"]]) {
     try {
-      const errors = validator(JSON.parse(read(file)));
-      if (errors.length === 0) {
-        pass(`${label} definition is valid`);
-      } else {
-        errors.forEach((error) => fail(`${label}: ${error}`));
-      }
+      const content = read(file);
+      assert(updateReadme(content, lang) === content, `${path.basename(file)} catalog table is current`);
     } catch (error) {
-      fail(`${label} contains valid JSON: ${error.message}`);
+      fail(error.message);
     }
-  });
+  }
 }
 
 function checkPreviewIndex() {
   const html = read(previewIndex);
   const css = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map((match) => match[1]).join("\n");
-  const openLinks = [...html.matchAll(/<a href="\.\.\/styles\/[^"]+"[^>]*data-i18n="openHtml"/g)].map((match) => match[0]);
-  const promptButtons = [...html.matchAll(/<button type="button" data-prompts="([^"]+)"[^>]*data-i18n="copyPrompt"/g)].map((match) => match[1]);
-  const promptPickers = [...html.matchAll(/data-prompt-picker data-selected-kind="full"/g)];
-  const promptChooserLabels = [...html.matchAll(/data-i18n="promptChooser"/g)];
-  const promptOptionTitles = [...html.matchAll(/<span data-prompt-option-title>/g)];
-  const promptOptionDescriptions = [...html.matchAll(/<span data-prompt-option-description>/g)];
-  const nativePromptSelects = [...html.matchAll(/<select data-prompt-kind/g)];
-  const previewImages = [...html.matchAll(/<img\b[\s\S]*?data-preview-image[\s\S]*?>/g)];
-  const desktopSources = [...html.matchAll(/data-desktop-src="([^"]+\.png)"/g)].map((match) => match[1]);
-  const mobileSources = [...html.matchAll(/data-mobile-src="([^"]+-mobile\.png)"/g)].map((match) => match[1]);
-  const desktopDimensions = [...html.matchAll(/data-desktop-width="1440"\s+data-desktop-height="1200"/g)];
-  const mobileDimensions = [...html.matchAll(/data-mobile-width="390"\s+data-mobile-height="844"/g)];
-  const viewportButtons = [...html.matchAll(/data-preview-view="(desktop|mobile)"/g)].map((match) => match[1]);
-
-  assert(openLinks.length === expectedStyleCount, `preview index has ${expectedStyleCount} Open HTML links`);
-  assert(openLinks.every((link) => link.includes('target="_blank"') && link.includes('rel="noopener noreferrer"')), "Open HTML links open in new tabs safely");
-  assert(previewImages.length === expectedStyleCount, `preview index has ${expectedStyleCount} switchable preview images`);
-  assert(desktopSources.length === expectedStyleCount, `preview index has ${expectedStyleCount} desktop preview sources`);
-  assert(desktopSources.every((source) => !source.includes("-mobile")), "preview index desktop sources use desktop screenshots");
-  assert(mobileSources.length === expectedStyleCount, `preview index has ${expectedStyleCount} mobile preview sources`);
-  assert(desktopDimensions.length === expectedStyleCount, `preview index stores ${expectedStyleCount} desktop screenshot dimensions`);
-  assert(mobileDimensions.length === expectedStyleCount, `preview index stores ${expectedStyleCount} mobile screenshot dimensions`);
-  assert(viewportButtons.includes("desktop") && viewportButtons.includes("mobile"), "preview index has desktop and mobile viewport toggles");
-  assert(promptPickers.length === expectedStyleCount, `preview index has ${expectedStyleCount} custom prompt pickers`);
-  assert(promptChooserLabels.length === expectedStyleCount, `preview index labels ${expectedStyleCount} prompt pickers with a user-facing question`);
-  assert(promptOptionTitles.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible titles");
-  assert(promptOptionDescriptions.length === expectedStyleCount * promptKinds.length, "preview index prompt options include visible descriptions");
-  assert(!/transition\s*:\s*all\b/.test(css), "preview index CSS avoids transition: all");
-  assert(!/outline\s*:\s*none\b/.test(css), "preview index CSS avoids bare outline: none");
-  assert(html.includes("General") && html.includes("移动端"), "preview index uses user-facing prompt type labels");
-  assert(html.includes("Copy Dashboard") && html.includes("复制看板"), "preview index uses task-specific copy button labels");
-  assert(nativePromptSelects.length === 0, "preview index does not use native prompt select controls");
-  assert(html.includes('role="listbox"'), "preview index custom prompt menu uses listbox role");
-  assert(html.includes('aria-expanded="false"'), "preview index custom prompt trigger exposes expanded state");
-  assert(promptButtons.length === expectedStyleCount, `preview index has ${expectedStyleCount} prompt copy buttons`);
-
-  promptButtons.forEach((payload, index) => {
-    try {
-      const prompts = JSON.parse(decodeHtml(payload));
-      const hasAllKinds = ["en", "zh"].every((lang) =>
-        promptKinds.every((kind) => typeof prompts[lang]?.[kind] === "string" && prompts[lang][kind].length > 400)
-      );
-      assert(hasAllKinds, `prompt payload ${index + 1} includes all prompt kinds in EN and ZH`);
-    } catch (error) {
-      fail(`prompt payload ${index + 1} is valid JSON: ${error.message}`);
+  const cards = [...html.matchAll(/data-style-card="([^"]+)"/g)].map((match) => match[1]);
+  assert(JSON.stringify(cards) === JSON.stringify(allStyles.map((style) => style.id)), "gallery contains every catalog style in order");
+  for (const id of ["search", "empty", "selection-tray", "detail-dialog", "compare-dialog", "copy-prompt", "prompt-output"]) {
+    assert(html.includes(`id="${id}"`), `gallery has the ${id} interaction surface`);
+  }
+  assert(html.includes('type="search"'), "gallery search uses a semantic search input");
+  assert(html.includes('<dialog id="detail-dialog" aria-labelledby='), "style detail uses a labelled native dialog");
+  assert(html.includes('<dialog id="compare-dialog" aria-labelledby='), "comparison uses a labelled native dialog");
+  assert(html.includes('role="status"') && html.includes('aria-live="polite"'), "gallery exposes filter/copy feedback");
+  assert(!/transition\s*:\s*all\b/.test(css), "gallery avoids transition: all");
+  assert(!/outline\s*:\s*none\b/.test(css), "gallery preserves focus outlines");
+  const links = [...html.matchAll(/<a class="preview-link"[^>]*>/g)].map((match) => match[0]);
+  assert(links.length === expectedStyleCount, "every gallery card opens its live sample");
+  assert(links.every((link) => link.includes('target="_blank"') && link.includes('rel="noopener noreferrer"')), "live samples open in new tabs safely");
+  try {
+    const data = JSON.parse(html.match(/<script id="gallery-data" type="application\/json">([\s\S]*?)<\/script>/)?.[1]);
+    assert(data.styles.length === expectedStyleCount, "gallery metadata matches the catalog size");
+    assert(data.viewports.desktop.width === expectedDesktopWidth && data.viewports.desktop.height === expectedDesktopHeight, "gallery desktop dimensions match assets");
+    assert(data.viewports.mobile.width === expectedMobileWidth && data.viewports.mobile.height === expectedMobileHeight, "gallery mobile dimensions match assets");
+    for (const style of allStyles) {
+      const metadata = data.styles.find((entry) => entry.id === style.id);
+      assert(metadata?.slug === style.slug && metadata.selection, `${style.slug} has filterable metadata`);
+      for (const lang of ["en", "zh"]) for (const kind of promptKinds) {
+        assert(unpackPrompt(data.prompts[style.id][lang], kind) === buildStylePrompt(style, lang, kind), `${style.slug} ${lang}/${kind} prompt is lossless and current`);
+      }
     }
-  });
+  } catch (error) {
+    fail(`gallery data and prompt payload can be decoded: ${error.message}`);
+  }
+  for (const script of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((match) => match[1])) {
+    try { new Function(script); pass("gallery client script parses"); }
+    catch (error) { fail(`gallery client script parses: ${error.message}`); }
+  }
 }
 
 function checkStyleAssets() {
   const styleDirs = getStyleDirs();
-  assert(styleDirs.length === expectedStyleCount, `found ${expectedStyleCount} style directories`);
+  assert(JSON.stringify(styleDirs) === JSON.stringify(allStyles.map((style) => style.slug).sort()), "style directories match catalog IDs and slugs");
 
   styleDirs.forEach((dir) => {
     const slug = dir;
@@ -401,6 +307,10 @@ function checkStyleAssets() {
         "aria-live=\"polite\"",
       ].forEach((needle) => assert(html.includes(needle), `${slug} HTML includes ${needle}`));
 
+      assert(html.includes('class="preview-context-shell"'), `${slug} has style-library navigation`);
+      assert(html.includes(`?style=${allStyles.find((style) => style.slug === slug)?.id}#style-`), `${slug} links back to its selection detail`);
+      assert(/<details\b[^>]*class="reference-disclosure"/.test(html), `${slug} progressively discloses technical examples`);
+
       const css = (html.match(/<style>([\s\S]*?)<\/style>/) || [])[1] || "";
       assert(!/transition\s*:\s*all\b/.test(css), `${slug} CSS avoids transition: all`);
       assert(!/outline\s*:\s*none\b/.test(css), `${slug} CSS avoids bare outline: none`);
@@ -418,16 +328,8 @@ function checkStyleAssets() {
 
     if (fs.existsSync(docFile)) {
       const doc = read(docFile);
-      [
-        "## Component Detail System",
-        "## Page Adaptation Guide",
-        "### Full Prompt",
-        "### Landing Page",
-        "### Dashboard",
-        "### Admin Panel",
-        "### Mobile",
-        "Responsive behavior:",
-      ].forEach((needle) => assert(doc.includes(needle), `${slug} manual includes ${needle}`));
+      const style = allStyles.find((entry) => entry.slug === slug);
+      assert(style && doc === renderStyleDoc(style), `${slug} manual matches the catalog and shared-reference format`);
     }
   });
 }
@@ -436,7 +338,7 @@ function checkPreviewManifest() {
   const errors = validateManifest({
     manifestFile: previewManifestFile,
     manifestRoot: path.dirname(previewManifestFile),
-    expectedStyles: getStyleDirs(),
+    expectedStyles: allStyles.map((style) => style.slug),
     desktopSize: { width: expectedDesktopWidth, height: expectedDesktopHeight },
     mobileSize: { width: expectedMobileWidth, height: expectedMobileHeight },
   });
@@ -513,10 +415,8 @@ function main() {
   checkCoreDomainNeutrality();
   checkReadmes();
   checkMetadataAlignment();
-  checkUiPrimitiveContract();
-  checkNewProjectReadinessGuidance();
-  checkWorkflowHardening();
-  checkEvaluationDefinitions();
+  checkSkillReferences();
+  checkCatalogOutputs();
   checkPreviewIndex();
   checkStyleAssets();
   checkPreviewManifest();

@@ -1,0 +1,472 @@
+{
+  "styles": {
+    "10": {
+      "prompts": {
+        "en": {
+          "full": "a43cf89e7e310183acaf7b65f7ca2bbe8ae367ae9f2441ffa30b2f03b19162be",
+          "landing": "55cd0c3270d9b8647a66a1e0902eb721b6ab824f65816937822bed9cfbc6d609",
+          "dashboard": "9c37eb44e9e5eb3f88699b705a5eee43cfc2d5e6a55ab8e3f88164ae5cc17cdb",
+          "admin": "0a62370af48aec07d5c9d49e4c37dcf94d5d84d64282febb0c1602c111750719",
+          "mobile": "b4fb840fda682ed9b02ab5d65e1b05bebcfb138e58c8a6882355accedd2c1897"
+        },
+        "zh": {
+          "full": "da1c33358e790b7594845b8a0b8df47123a566b25169203f5c9420730ee420ac",
+          "landing": "ebf76c388c8aec583995903d653bd10bca65fc84a209b3376465130434d00212",
+          "dashboard": "01996cea56454170b253cf5d65c112f1c65026eefdaae6814e88dc9a51ffe695",
+          "admin": "51f8feaebcb40405f3ce8f824e96bb9d0f587feb73160d435680e8117c551cd2",
+          "mobile": "d8d018f1b60cecbb588e6207b306dfc6b703735144f63db7ccd25b2393bc2090"
+        }
+      }
+    },
+    "11": {
+      "prompts": {
+        "en": {
+          "full": "3b99709caacc87375e93b90ecf928fbbb924848cd734b035d2cb9e4ab8bae279",
+          "landing": "b0b624a8ae56c838a72892d5ad1449709f6a700f3214cc4eeca1e4f90ca28ec6",
+          "dashboard": "2044b99905e41a5e2d20b01d2c7f8107a063ffd5e9ec89f088b57126acc6a58c",
+          "admin": "5ae384aec5f998c1acf08c817424db8c3e3e89fdcfaeaf5e1d712ee4111013bc",
+          "mobile": "23b1fa81127b0c7574142c624dfc90417d01c7034b68ae8a8c486280e224337b"
+        },
+        "zh": {
+          "full": "c12ba7d4514afdbcea03efbdb272dc7883a5256218128c10213da698a1b1c423",
+          "landing": "60c1b5b88bc5fc1a41be46ab92ca9c2fbd92ebe9885211939aca07a60285dfe5",
+          "dashboard": "943e3fcf9facebd66ccbaa4f18e6dcfe0bf5ba79b477bcc7e3d20a313a7dcd22",
+          "admin": "5fd7c9b5ba8e96093349b99cfaff3ffc0f37dfd0778131eb278a1ebd1ee52fda",
+          "mobile": "0a07cea2933cd6967224aa6bc513dd0fc5f3a3b98d15ce2f96664a7e2a230207"
+        }
+      }
+    },
+    "12": {
+      "prompts": {
+        "en": {
+          "full": "b78dc5216b7fedb32fd0ad2223c8cc460a8a2d783e252000fe3b01d1817d6694",
+          "landing": "6e5d532bd6c75450b76ab934e650801535ad82460e7aa8d948f39e72b4724412",
+          "dashboard": "393371ec5ee4a1924fce7d5b5ecee019b29bd588bfd66df533ae49afbec78635",
+          "admin": "f23f3960f525c01d8a061109aeff5e62d6da7be8617564f126c8dbdc7db00e5e",
+          "mobile": "17580eab741970a0e2c85ddb73dd17909f8128656494e16df501e6e02f25a759"
+        },
+        "zh": {
+          "full": "ba668fc724b122d1aa637b84e5a620b42ac6ac5bf051d71c5c7ddbc0effbba5f",
+          "landing": "3de8ae98c06e0c29f71343d3a6ae09780bdbbf3958b0d005898205c41afa7a5d",
+          "dashboard": "c092672cce6d6265a5e87caaae7b6121c56d8022bbef041184059b8c3a104e74",
+          "admin": "62c6b6c5d89b0dd27a868072284d91634245b3b1505b378c588ca326b9bf6c16",
+          "mobile": "867c2b61486f4c3f3693d3f13ca1cbf519a9fa7ca5b78f2112d912f89bbb00ca"
+        }
+      }
+    },
+    "13": {
+      "prompts": {
+        "en": {
+          "full": "1b1eca31d76700c4308d9c6a7a36d78f063189854e34e0e4b226f0dfde6d1208",
+          "landing": "49079017a0ac856caeae5b2b757cbea517f5ea2e7e36ddedf5b8f541807717df",
+          "dashboard": "9d9007bd9c127785f4508390dbf85878b5ea1910bf122b06c3c4c3d2dc911d85",
+          "admin": "e92b8988f1e93de00e8b52bb9b2bfddc1d0a5c00b673daeaf8f27b6f3a309ec1",
+          "mobile": "2ea149682f7a4201c81de2fa3aba59e88e9f684891b881363aa37674c75cd044"
+        },
+        "zh": {
+          "full": "890bdd4029b269932f006b46be71493b866873ca23d14cf9cb00d32e2e395c63",
+          "landing": "0f6560ed67a41c02569841d70b1be70d93edb20db3995d98466af2d82ef15dcc",
+          "dashboard": "57620b6588f95c36437c596641bf014f9958521d284fd72f63ca57c63782efef",
+          "admin": "ad36676f6730f7d71e711ce18dd27bea57812c5fa44373fc75448bcacf5b37d0",
+          "mobile": "c8047875219aacf37c7bf46327753efee0aa600974be6ab87d5b5ac4c9d3aeb0"
+        }
+      }
+    },
+    "14": {
+      "prompts": {
+        "en": {
+          "full": "80c2172708f5e095c7bc76ddefcef2fc56a4e34d56b746d31e2ededf41430589",
+          "landing": "e0e157a167a17ccef187e2c311f5fb0c634183dcc3068cecaffba40e0838087d",
+          "dashboard": "21bf522f6816eceb4255fda9d37653ed2eada3c2cf27586b904f5638fa199574",
+          "admin": "0a726bbe3d5a9eff4f17982fd512ffdfe507a4667306959c9240baa9a400d399",
+          "mobile": "b13358398d487589c89bd6a9dc528d17419ae40a0e17c35b7c06a0ae719ab641"
+        },
+        "zh": {
+          "full": "ad9dc6f16bbaf7b228b227a5458b6667464b8974ea209c5f8551177eb2961c01",
+          "landing": "4df01dc176206d5af4e03a3f06821825aac8542d4a7128c4b9613c794efe9007",
+          "dashboard": "af689a495f6527fb3b873f6c191b9235b42298803c781ef246f87ec3b6fad15a",
+          "admin": "abd3ed57782540b22bd928d83655223d83a148c00ce06292829b9cd06aec3e54",
+          "mobile": "9d06c697152ce751662db63960ddf76b5b183db9113ae6b522af647154f0a547"
+        }
+      }
+    },
+    "15": {
+      "prompts": {
+        "en": {
+          "full": "328a3e79602c39ba3742695fc0d3585b5effb4a752e8b1567cc29d596e614736",
+          "landing": "7ef878d855cad6a77c19dce0f2d2e542ab25b450c22c95cd72343cef444fc3a1",
+          "dashboard": "a34f5859dadd5ba12d7898269fa982a1afacef47d0b4c5545a4fb569b231b990",
+          "admin": "4f942e730224c0606a0ef38e3a759a496fa5f1cbef9a3bf4c8a3bd754aee859e",
+          "mobile": "75045ddcf36a076c90e17e7615853ce13b900e006e4b0cacdb3b6b610d63bfe7"
+        },
+        "zh": {
+          "full": "4a59c531aa67bf929263889550def6caa57d7f80e28b2ba68acf061afcd9b0cf",
+          "landing": "3c614a0c9622a6a53a9675ba88fa6a5e8ad40cb6a2871b1e7f2f3802e4aad8eb",
+          "dashboard": "9bc755983cb3b34f0fab27b70a8505062838848da16e36864def8dd782ff4329",
+          "admin": "55e5456eb7b3953b9f392be3d8fe817eb14fe6846c2c6f5311a672780a7d1aa7",
+          "mobile": "5cd65adcbff482a2e2f7a52f9fb0e9875f978e044562959756d3df2f5d332af0"
+        }
+      }
+    },
+    "16": {
+      "prompts": {
+        "en": {
+          "full": "7023fbd29835f3bda549fc9cb8f7ebf67984c1de1e42208f90368418dcfb634c",
+          "landing": "558d2416ec63973b5d0af277a89bed0774520767cd58fdb44aabea4b534c4139",
+          "dashboard": "fc0cc2723e2b9238eb4683b0368e1cbd0efc5e63c96f551e7c09592c8cffdff1",
+          "admin": "de4cec57192e8fb32da47676d617cc1731f11e1d624d786dcaa68e420ba4962d",
+          "mobile": "7da6dbc4bea0302ba541d358c39aad8068fa8ccd56651dee5d08c5a1e9b37ec7"
+        },
+        "zh": {
+          "full": "7cd4152b2f4188e64cc491d590251b2a72ba45a9c3e6543f6a2ce9d9b78ae317",
+          "landing": "ca4708ee329fbec3505b5b2441247372600305bd92e35dce23f812385cf62ded",
+          "dashboard": "c7d09dd8d18b4377bc7b90277528ca11e8981c20019967f322b5a2de4498407c",
+          "admin": "2f31335d22f75175a604cf2703d0cba34f603202a9e960a5d9c0d4058416ea46",
+          "mobile": "bac913e4b16dbc9e4ee3eef9d6a0743bc92960269f59dbca02ccb733869169cc"
+        }
+      }
+    },
+    "17": {
+      "prompts": {
+        "en": {
+          "full": "153cb047e2a3eb0efcaa748cb2767e53fe2a24fb6301d091335c58d559e3b354",
+          "landing": "6aead7bacaab5221bc82d94c1bb124863155f284f34d3a3d869ea673b274b453",
+          "dashboard": "0b9fa915e0608fbf0e4e05b1877b41a3cdd43d2d29ce09df205d125576f060f4",
+          "admin": "90858b5a0d2ee943e444f1695f37fd24e3b99403778cd16a1d9f984f42938999",
+          "mobile": "c4d377528938b33368d47080cdcb541dbf7df9769671da5973176e3ac1914b1b"
+        },
+        "zh": {
+          "full": "8671bef24448c1b04204201c309f73594cb4c560811b587a67628d23c7123d84",
+          "landing": "921acff9029947be9d36954f3a3ed968710cbf0d003dd082ecb8240b2ab5a1cb",
+          "dashboard": "6b10687337fb59275deaf52f012fa35d4505e62e0a0ecec8f5498b72c584a7fc",
+          "admin": "3790da609f1b2075c9b3c6c0cc564f4e128e8f88d74e5d81b2481cedf91cfe27",
+          "mobile": "36b496bc59571a6257fbee6a01d02a4cc23d7f963bab2869cc965c9f2d08d526"
+        }
+      }
+    },
+    "18": {
+      "prompts": {
+        "en": {
+          "full": "8c9c08f4789d5d0d812b81766c9c3599eaf1ae2a831bc3ba11d1f802122019c9",
+          "landing": "22dbd99a667185ac18ab0b73e5f4636b71e78aa182899d20acb494a83eb1ba8d",
+          "dashboard": "b56b7141cabda4aa463a53cdb383c5ea1d1d7b873bfdc87286bc0cde08cf0a8f",
+          "admin": "a77e3027ab83d8eb7d277e29b0074dadcb5550010b8d9d457aaed46181faacfe",
+          "mobile": "a9a9b3df906aa55f502a3a894ec8e731bb18e613ff1e1e607a2f471da9e9fc3c"
+        },
+        "zh": {
+          "full": "8b169531b7db4afc9cac153b5db9632a7aa009fd8607bb8ac3185a4eade146b7",
+          "landing": "63621bb7bade3884139777e06b9aba935355936eae7bf85bfee1bf90d5133e4d",
+          "dashboard": "4a899c6ced5e530bf5246839f26825b00db020b008e8627ab0828b76660db831",
+          "admin": "054d29e3a36499a8c3e5b91416c72c51b575b2be2224dd03aba8046796173e98",
+          "mobile": "dd0b87cd03e46a7b989d1fdac37d54d0b54dd0f96065955cd62d556e68df2ab8"
+        }
+      }
+    },
+    "19": {
+      "prompts": {
+        "en": {
+          "full": "11944711c7c894092bc1e89de71ef6de31ecc201fb62441adb76d7bdec1e6ad7",
+          "landing": "d9896a579725491b897f5a2be78c8218028ebb23b64678d5e8163031371568e6",
+          "dashboard": "de335ca8c83a1488842f9db44715227a7e4667fe86b59621a13e23ec7044fde6",
+          "admin": "9d995ecf80faf2cbd533573d5ebbd6d92cc408ac2f42618e07e83c0e5ff05a68",
+          "mobile": "046297816258487826bb63d7805669d70bdef6e1a101ddb37a207a48b97ede51"
+        },
+        "zh": {
+          "full": "8784cd80d350a307b892cb2cfd6060fd05871cf759c4c602997783cfeca6b3f6",
+          "landing": "ae1da66802f5e89705887a5420d4f3e23f5900abe1491c738b7e9aada37a968f",
+          "dashboard": "1caa4aaa04ca0a3df347985874e680a64227a5b05e13b0f4e74b81567079da09",
+          "admin": "46a4027365074ce34a2067bfc7bbed554f167bd69d647251e15eb14e771b7e14",
+          "mobile": "187aadb9b24dc84c8697468cec1da9f334ce668c88591831963bcce1e3dd5505"
+        }
+      }
+    },
+    "20": {
+      "prompts": {
+        "en": {
+          "full": "1a68f0d3e57ce9a02fb3376387b8b022506bf1fc342824d51760e45dc976574d",
+          "landing": "b086e2685d28abdc5be801e122d8faecbea6226e32945eeb2e913e63ee94c51b",
+          "dashboard": "1c944e8e5b02609a7526bd71952fa1845c05954681f9b16d265b6b3269409d79",
+          "admin": "8c43ece247e4d40751d7dfb80f7efc461afb3c4853a6ce0b9fec56682b45a428",
+          "mobile": "bdbb0cd9448b181bbfd83c1346a28a64de64c095fd6d0357fde9a0b7e33d9fbf"
+        },
+        "zh": {
+          "full": "dd8642283564459d4a97612fc9845c5bd57534ed1c05db7e4a5686ed6fe76303",
+          "landing": "372d2f422bb6be65842e2da65091d2f919d71854ded622d680d82901480585cf",
+          "dashboard": "a94ed3a89ca930071e10d4ede94d736a1c805ff22a148b88ccc7093b309e4d80",
+          "admin": "ecbdf3067e87989c4525137ee83cf00b3b253206ab4c586777455e19ad3fcb1a",
+          "mobile": "6e65fedddc4df9dcbe075e665262d0d21432fee2e457fa9f3d739a0309497443"
+        }
+      }
+    },
+    "21": {
+      "prompts": {
+        "en": {
+          "full": "8d26ab21a8a86c52d52e9f98b4633feba93f5cb71426c364457e20d5920ed80b",
+          "landing": "87c0b664474f951be552972e22dc59cd05c4dd738afdfbb6b280165f3a3552ef",
+          "dashboard": "7a1e347da5174651d45e2abf53d21806f67a7fe7fda090cc1bfdfca79f92ffce",
+          "admin": "2453d3212a3a6e4cff40de7ad37c1510bfa555405e87c368cd7b3965feb9246d",
+          "mobile": "b6329e6a058a1b7ca2b81a7ef3e9b28488a2f43f2b75b14128c7e3ded6217af1"
+        },
+        "zh": {
+          "full": "7b99677dfe5a3dfe82b0ccd7cbfa0685d5b22bf6e1c920450bde25c41a1520c9",
+          "landing": "4c02c19e3eb2e01de59ad3386315f9b837aa95f6dfe108108105638f731288da",
+          "dashboard": "e56edc9c1574add69f532c9265e9abb4fc2449c7c04e8b33d730cda1f874c0f2",
+          "admin": "951ff702b334df34e26e97ccadab9d3645e8307347db7c63db2113c9f3b0187c",
+          "mobile": "b5f0951165a9dac0727671d7e4f787b7dd44112d7612844a3eb0aab6ade2b6b1"
+        }
+      }
+    },
+    "22": {
+      "prompts": {
+        "en": {
+          "full": "8216d875988f935d2317073950e13756c6e43f9bc7313d47746fe9dcb0802b6c",
+          "landing": "cc9effabc4c8d2c0eb11fe06bf1d58570caa570c2080aded7c86143be842d2d7",
+          "dashboard": "b4bd252a6183369ca8ecff3a80d6cfc0a30134c88c1d8e07895df75b7f88210b",
+          "admin": "666e932e66cf5f27fd65808c412451ab6cb1f1b2b625c8268a4853276f130b2e",
+          "mobile": "f31114e670160616a042afced4b737bf82f101589776ac9584f6601a254fc843"
+        },
+        "zh": {
+          "full": "22bdc642b3cf476696f59546bf990635a053ae7880f41d70adee309c7f1ea751",
+          "landing": "58c77a9312e02467117fd8a8223a5065f274f29cc8019c3f9b12c3e5d63f3130",
+          "dashboard": "82dc5ad9ca423299fcddb92493ea5f4e742e7f9c021b90f316e139183fc007fe",
+          "admin": "b857c23661d36a7d9c8b6485d75757acd8d51c2524bd067436be61f84e8d5547",
+          "mobile": "df166b3ebff872ac2cd95e60995294fa571a158692f2b04fe3edc102c55ca8a7"
+        }
+      }
+    },
+    "23": {
+      "prompts": {
+        "en": {
+          "full": "9a24a764cd4481751c08af3d8a114199158be581073dfef0bfeb3641d6d33b8b",
+          "landing": "bc0fc8846c45502c9fa94bfb28447a5ef58475eca1947290385f7068cd4f3837",
+          "dashboard": "9f3cc10b48cea67f54ab8ea4455a89331478de4353a3cce2424d3ae9c4c520b2",
+          "admin": "c618bb42dee6264b7b6160df8dc9f1ec69fc2f8e5dd796b0c0f48f03d151fc47",
+          "mobile": "123b0862d7544945aa442dfbbb3b12b550fad4e90190e812605430671ac9f2a6"
+        },
+        "zh": {
+          "full": "57c79b51f27de126012f6dd0c1ebf23d1d5b2074808e2d490cbbdd721e9dc200",
+          "landing": "5a7ead764e3ab102b458cf38bfc0640f3c9f96b9275fefc2b34161288cdb9963",
+          "dashboard": "6dd3add0bf92929e2bfa8b5a14f8e95fc88e1ce1b3ec1a18f3d22f2a790e50d3",
+          "admin": "8877e9b90bdce6aaa6567705563f29af423b833f04e19ec28d810e653006a5ba",
+          "mobile": "292fcf77063583ee418c2c073f4da90c99276345dd70af7fe1e2fd19052d1961"
+        }
+      }
+    },
+    "24": {
+      "prompts": {
+        "en": {
+          "full": "6122b8ba9e400edceeb497ca938b54879ed511f743a789730d2d701221b877ea",
+          "landing": "406a77adacde3e65359c984b82b25fc4cff203fd442cf0f477f9f364d0623ca7",
+          "dashboard": "1dfdcc6f7f98d5763f1fc393b2a0750389234ef7f3069ae06510125582e69ff1",
+          "admin": "d41de6f14257170516f48ccf68b1a01228dc18c7b3abd268a0d2a5b5d7820582",
+          "mobile": "d35297149e1b69d13891ec5e0439816445590ce5fc455d694b3bc131027ab54c"
+        },
+        "zh": {
+          "full": "a20578a46d5580847091c3c07f8b67228ff6945789686c5ea0def981fc8eabde",
+          "landing": "0ccd61d284b6d2cf323132b37e30470394cd3028beb773230269a6855e6f5185",
+          "dashboard": "6b96396f60050130a7728fe5671bbf1f962d6b3b45398e80fe817a0c29c39274",
+          "admin": "e801689e123af732fb2addf053df9f66449fbd921daf76733d4011cfec6807df",
+          "mobile": "99b43964fc2a6544ed52babf75a2984a54618160538572623df15106cc226d5a"
+        }
+      }
+    },
+    "25": {
+      "prompts": {
+        "en": {
+          "full": "e36c22d2dcff79a0b9b8700843824433b3e920b053d73b45b99a033404aac528",
+          "landing": "9ec24b97743e226d3bea39fb37a3efe2504e5162361ad71f1531ff1167a57505",
+          "dashboard": "429bb174c185999cbd7fbd5bff6fe7bef0e83b5a53838e414ae6e8643c25eca0",
+          "admin": "14aac596041e1bc004655609dcedc6a6dd944532afa58449069550bc5e96020f",
+          "mobile": "468bdcb48d2189fd039868d3bc33183c10348f18c47ec8135b2685a000242e83"
+        },
+        "zh": {
+          "full": "90eecc51f26fc88df160dc7f4ec951c6054acdee56ce3b09d44617fdb00b89b6",
+          "landing": "19b5088fe16e761ff945dc528ad7697dbb1438f6106991dc34ce472018de96a8",
+          "dashboard": "e0687832d833ba3078ea9246cf65b1535a93ccdb1b26186a3ae912e32720fb79",
+          "admin": "ab97ea039a72928fa1de162fe7b113af7a4f275e672a7c7a4fa3851ee171ba44",
+          "mobile": "7f98cb956a4b91cd877418e76901a5805b5e0acdbbfc542eb339486d01692542"
+        }
+      }
+    },
+    "26": {
+      "prompts": {
+        "en": {
+          "full": "b0df05fd6152bbd3f6cca1d2545b3e0a7e3d91dcf8c80352997bd1982f17535c",
+          "landing": "d2d2e10d9c14a65e5919d8bf6a730d33453348a30ba71232fa2ea81edc8e2c7e",
+          "dashboard": "a7c736e4b3e45719960f1642da4aad2f30ba5db6467ef941442624ed9fb9677b",
+          "admin": "28a7792cb1063aafcaa747c2fce4ed0ec2cd2d85a80ade8c3a457e1b5d18f2e3",
+          "mobile": "9e51993dcbcf378ca0b05dcbcf42a2bea014977cd0783b9441210a39fef0b3e7"
+        },
+        "zh": {
+          "full": "92457ccf065058063c0c7881a860c2541014517e6d8f7775ef6240ed3d091a60",
+          "landing": "d3676acbd249a89136f8fddab36ea492896e2e264a0a322f95b1a5d911abeab1",
+          "dashboard": "c8769154ce9249557c236746751086c7606a15d17ca6ab9b9ac20478e6fb4ec8",
+          "admin": "8dda30c8a15a1341232840932b1aa8e98c4a45c8b1a2594e23f632b5b51cd691",
+          "mobile": "a232525abbc868b7f4efd0970a95801efa1f06029dbc37a7b4752110d2fe71bf"
+        }
+      }
+    },
+    "01": {
+      "prompts": {
+        "en": {
+          "full": "d02f48eedb68269a038799e49df3312a1a2bc14806e5815a1e27502ad5c2c39f",
+          "landing": "e7fc31e3470cf7d88f5efcc021cca7e52febc32b55136f03a3d314c16cb6ec42",
+          "dashboard": "1a13e2b83f4b221748ccf0842358326e81daa58abf58e264ea5fa2edd80164ad",
+          "admin": "e4800868a7d5c9ca66230d4a5a57b5ce9e32263cdb3c558cf094c384fe4df771",
+          "mobile": "22ae2b3bd26942a8ec6e8669005b09809d31b809f6fb6875160d4665f21d2b50"
+        },
+        "zh": {
+          "full": "dac3d5f32c15f62902fa221989d9fe80b52e6198c01c76e4258e0f24f85fd574",
+          "landing": "4d31509b90161ce7f1e764e4d06097ac24fc148f4800bfb6da6512e7c851b81e",
+          "dashboard": "0caef3951c8a8a27365686b6e5feb723227e0f67927a898ad7f8a09c8cf6580f",
+          "admin": "f87074fda1eba339822c7a8d6559f3c7f79d38394136cf54f03b541e45d9a2a2",
+          "mobile": "ce3f1be6af350d1dc82200cfde031472eebe3b243fddc25d242120a26ed99bf2"
+        }
+      }
+    },
+    "02": {
+      "prompts": {
+        "en": {
+          "full": "0cd41e0f99ecc57fd68f515d5f7dfc17644348c0afcb9964af3794d898ad7b9a",
+          "landing": "008645450ca8e406a8fe156c6e98cadb529d36f19f5625bc58ff9c55529fd230",
+          "dashboard": "8714f1e9cf4024cab20c014008d5dcd20c8f29e36b7d7bec1625ba8d398b9cf4",
+          "admin": "e752977829b56c39b013616ef80ea46faa3b5fe36823d38c4e5b9ccab47d3fee",
+          "mobile": "0fdc05cd3a91f470b45d6df5f3c43efb80e25bae547a9396459d13a0f81553cd"
+        },
+        "zh": {
+          "full": "a5497c95e85ed2df6c41dda00e65e67df701ae1b4f0dedb3e512b57635b74c22",
+          "landing": "20fae170a4809a8aa9924fe077af15edde41f8b91705f27681b39ffe3e1b1a85",
+          "dashboard": "5f0f5cd352c7b726adf5a27980aeb2fa507e115debc7fe73bf6015fc08c26998",
+          "admin": "412661f6092f521125d091f90d2a9d39abf014d58515c0e55fb6f93306e530cd",
+          "mobile": "978c3010396b6016b3acce47a0c4f7a7c5101b30e7ffaf847baf3c72b4a14299"
+        }
+      }
+    },
+    "03": {
+      "prompts": {
+        "en": {
+          "full": "b7841516ed9a923f4e90e469b5b71eefff344dc40a7d1c6aa576a9ad8bffeace",
+          "landing": "6713581dc8c948ff9cd0ad70812d0bb913e753ced799093d5c1784cae30b97cb",
+          "dashboard": "eace924b10a8804caceb212ffd6fc88b7f4eccb60b651bcde2704eb34a440170",
+          "admin": "beadf9083fec604b5bdb913131459b125314c75a95b210b85fb12c51baa4560b",
+          "mobile": "d2576b54e3a381e2f1f8f3d05b69ca6f881e15bd286c2ff17ea3d8ab6139300c"
+        },
+        "zh": {
+          "full": "c89951061df7e707a4ddc35dbd3d0640a859ec67a950567d29e2724163c6c2e8",
+          "landing": "c97bea7b3276c6dfc7729e2a06e9c026b11a0dca9901f88021a8fc853729f73f",
+          "dashboard": "96511c631d218d46c09a193495256581f1024a3c24b75bb430e877c1b63a645e",
+          "admin": "c52f4e8a2aee588f6895a1d7227e4fe19cee93f6b867eb8b408b3158fbe49470",
+          "mobile": "b006bb6c6760edd21a45edd786aceaed5b5a48840e5ddd46d69b4f1d4a59618e"
+        }
+      }
+    },
+    "04": {
+      "prompts": {
+        "en": {
+          "full": "e0663539a688797b709eae32e27cdc11dd13d8697a5a8da9dd1f7ef51484e1a8",
+          "landing": "6d6c930164472c844ea9c0460e169de93dbfc46dee5218527975a7024aa9d0ce",
+          "dashboard": "b24e7c63609171bf9d8614503b07b8a483d536a28a06b9ad5a253b96fe56f424",
+          "admin": "533400710b0ac5c90f74a2169187eceec344230172cf292ba7c36be00c49c98d",
+          "mobile": "057b7f65bd62f46c8d41e1a62c3bff45c308c6953f84e48a1b18214b9335ef37"
+        },
+        "zh": {
+          "full": "dc966f29746d39ca93cbe653f32080eca108d2d3c5f6451e3a65c623f1e7c8a1",
+          "landing": "b8b39d17dfcaea0ff86028ddc744388c1a6b327b34527139270836725852df48",
+          "dashboard": "3787d6b3149b5f72383bd439f1a21510e624f500cfd3450fca35fbde9ac9e294",
+          "admin": "3722bd23701fdff352fa04f0c57216803b4991c94e529b13f1d470f070d54ca5",
+          "mobile": "148a1db41fa45976ad466a90cb2cc07ed3b003575ebc4a00f9567518d964fa72"
+        }
+      }
+    },
+    "05": {
+      "prompts": {
+        "en": {
+          "full": "ed6aa9bab2362d3d96c68da7a1e7b8d33e2b9648c3617685c89c3ef551e7f60a",
+          "landing": "b5d7468b51c51884801f7d8d5ab2bf3228b767f4d65a1dfe4ae3716598491294",
+          "dashboard": "b445e05cbe25e13eb8a2551226ae7a9ab1b348c14409adf20d0f8ac758af2ef2",
+          "admin": "e1ec9c3580e69b92f4148645f42a9111812c9d9132a7c6060d2fdaec07d6f83e",
+          "mobile": "9dd78fabfc3ca6e22f65526021ddb94fd2e3d9dc5cf94445334c4eeeaeaec3a5"
+        },
+        "zh": {
+          "full": "4f424223c934935ca177e31f6ad7c2294a50e7e9ad6a4e2afa89c99ac9069550",
+          "landing": "a53d3fc134a815b79c56981fbaa4fad3fee4ef75c1063c030164681b314ce65d",
+          "dashboard": "74632f2e50e5ac2df8df2e19b6944564b36d8521dcf70edc8846809b86fd4eb9",
+          "admin": "18d1d3f842ec98116db21032ef7099226853a3f3c1ac75531cbd0e3457af355e",
+          "mobile": "b151718869d35415a515aa4ff8f067182983c345d614953716ee834b3f0f2613"
+        }
+      }
+    },
+    "06": {
+      "prompts": {
+        "en": {
+          "full": "d400651b42e018260b78fb8c026bf76ea928c373d1b2dcabb9d489d6d94bfbe1",
+          "landing": "5f08cf26557731ca123961c0c5fb30db2b95b76a21722590af9dcf507e5a19d4",
+          "dashboard": "b43a8af226404ab9b2580484fa7368c9b1e8c28ba791b64c89b8d1d23e051dd8",
+          "admin": "55a29d99840696ba13cde60480f4be5013d90397066ddd1d6c9d41eb4ae933f1",
+          "mobile": "4a2aca2d3121c4154692c8a2f717b3a785b1744c5a84aa8b640cc67fb6000937"
+        },
+        "zh": {
+          "full": "c22ad68f30deb7cd0f7472c48f1be1fa7bd90e7009dad4df8a1cbe909efcf2eb",
+          "landing": "b36f18255d7ed17c02dcdca645f2a8f3b334e14c73ef8282ae3e23ea4f30fafd",
+          "dashboard": "45937b1a876b4ff210291f3a3badbfdc73cc55b2e35d835c59eb5fd49f78f3df",
+          "admin": "b45bf0c1c6e45caf917727c8ef7045f31c02322be7e0de781402440b43847894",
+          "mobile": "87bbd4d03f0e7820f9683e387287d3c7b41c45c0493f9d5e0fa33a5f770fa51b"
+        }
+      }
+    },
+    "07": {
+      "prompts": {
+        "en": {
+          "full": "fef940aab98ae3b68346506030ab0d5ae5594d1c192555413df54bbf2fad2e90",
+          "landing": "ab54f962774daa539ae2f1c057595b7454fef438b69609c752eb6f38492f3d13",
+          "dashboard": "d60fd0197ba68c4dce399a544e9cf090e911ff94b916e9ee82557bb7bfbb66eb",
+          "admin": "dd751c63d847fad5176e3b945e3d4f48b4cb5b99d1902e7ed5e71c27dcfa0d90",
+          "mobile": "ff8462578a047269f2e0865ee486bc1946852c2da7117cc5be57fda12877ac9d"
+        },
+        "zh": {
+          "full": "1cd591d1556275acb37331d5ebf28b320e6dd4ffa683c477e36b834af0e4a9ff",
+          "landing": "9ecc6cc4a3c0504758ee06cf2b01c03c23901dbc7174d1421943ab54ba7faae1",
+          "dashboard": "53e809134fe549092275d52fbeb6eff0a825ceb116fd082807522b2d1bfb64f7",
+          "admin": "8bbe2c9f8d0d9dd1e8893e052f5dffc1a632f5af680183bda04408edf137bf45",
+          "mobile": "f58c7f158eac33b82e7dc53bf823e853afe025b2660bdb9bca511f9b67b2846f"
+        }
+      }
+    },
+    "08": {
+      "prompts": {
+        "en": {
+          "full": "0b1e67ce9585c3f1a5915d8e18740ba888794dc68d7c0d039ef0cda6a42d420a",
+          "landing": "e0045bb8fb49508533dc6f644897c2f07cd2732b120284084ec28906b0213810",
+          "dashboard": "19ab3e5ba8cf6b77a692dde2387423ef02588cf268c4b27d36f86c9663dab6be",
+          "admin": "499f8e2f9b4b94c2526476816f654a89382920ed50205903dbf3863fcc6cfb33",
+          "mobile": "a238ddb641ae42e51f63af4c6ac18bad3a4e22a6dea286f897333d47934d853f"
+        },
+        "zh": {
+          "full": "4747fa632ad63dfac364dda8b44d5011ccd67dd57ec68a002a01ac5af5bc7686",
+          "landing": "0a011e5347a38946868c38745c820c5395e0b1e0ef67aee133bd846ea91ad95c",
+          "dashboard": "e2943736e253fbfb79d906570b80249cb82953ab5503d2868e20bcdad8881727",
+          "admin": "22981a0d5253fa1d3bef736cae2d03573513d962746c4128a8bba9e8d47ee8f4",
+          "mobile": "101fb4dfa86e1918a0969e6d90e625474190b89bd9e410058752f1d528321a86"
+        }
+      }
+    },
+    "09": {
+      "prompts": {
+        "en": {
+          "full": "6860aca0e7ee17f6f86a0519a141b38f53b247f2b2122345d58b85ca72576c9a",
+          "landing": "f94c9bb94414bfd507e6d084f362a7f44da30512fdff91d36f75a81cf67a3dc8",
+          "dashboard": "792eb180182f8f466717e54ba39133c1d52b9223d57d297edfaa1e9065c65ee2",
+          "admin": "3c08d237b0e52eba534e5c2cdc1cf41fd582b8ce4b48062a1289900f15ea3936",
+          "mobile": "a699dedaf6d0efada63b57d17762e8cc58b44343f4fa28565612a66b0c3400c3"
+        },
+        "zh": {
+          "full": "f9e5d3aff9c11114650dd56977d9bd86c2f0edd6d8560797422e8b0482ea39fd",
+          "landing": "ab217f9b5f171ccdaee37b34996adb4b96371a5c0162e6d554a1209e254c1a33",
+          "dashboard": "909283693f32cd8297dc55d66b6d4f7f86a2103c59e2d9d182ea031fc772bc88",
+          "admin": "afbbd1784f71a9fe61cc1f65cde9d1792fee862a68b4379a2fe4dffe2c6fb087",
+          "mobile": "80d3aa91fb29d40c28f40c38b1a718442c449ebf22fb2b7ed2000c0935b57f05"
+        }
+      }
+    }
+  }
+}
