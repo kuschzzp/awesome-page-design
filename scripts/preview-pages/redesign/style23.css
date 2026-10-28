@@ -1,0 +1,66 @@
+body.demo-style-23 { background:#f4efe6; }
+.s23 { color:#302a22; max-width:1320px; margin:auto; padding:0 46px; font-size:14px; line-height:1.8; }
+.s23-header { display:flex; justify-content:space-between; align-items:center; min-height:108px; border-bottom:1px solid #d8cdbc; gap:24px; }
+.s23-brand { display:flex; gap:16px; align-items:center; text-decoration:none; }
+.s23-brand>span { font:32px/1.4 Georgia,'Songti SC',serif; letter-spacing:.2em; }
+.s23-brand small { color:#766b5e; font-size:11px; writing-mode:vertical-rl; line-height:1.5; }
+.s23-header nav { display:flex; gap:28px; font-size:11px; color:#766b5e; align-items:center; }
+.s23-header nav a { text-decoration:none; padding:12px 0; }
+.s23-hero { display:grid; grid-template-columns:1fr 1.12fr; align-items:center; min-height:610px; gap:30px; }
+.s23 .s23-kicker { font:10px/1.6 ui-monospace,monospace; letter-spacing:.18em; color:#766b5e; }
+.s23 h1 { margin:32px 0 26px; font:500 clamp(32px,3.35vw,48px)/1.6 Georgia,'Songti SC',serif; letter-spacing:.04em; }
+.s23 .s23-intro { font-size:13px; color:#766b5e; line-height:2.1; }
+.s23-link { display:inline-flex; gap:36px; align-items:center; padding:16px 0 8px; border-bottom:1px solid #766b5e; text-decoration:none; font-size:12px; }
+.s23-number { display:flex; align-items:center; gap:24px; margin-top:42px; color:#766b5e; }
+.s23-number strong { font:32px/1.1 Georgia,serif; }
+.s23-number span { font-size:10px; line-height:1.8; }
+.s23-object { position:relative; background:radial-gradient(ellipse at 50% 70%,#e5ddcf 0,transparent 65%); }
+.s23-object svg { display:block; width:100%; }
+.s23-object-label { display:block; text-align:center; font-size:10px; color:#766b5e; letter-spacing:.1em; }
+.s23-chair-shape { transition:filter .4s ease; }
+.s23-object.is-waxed .s23-chair-shape { filter:sepia(.3) saturate(1.7) brightness(.9); }
+.s23-story { display:grid; grid-template-columns:.55fr 1.4fr .6fr; gap:35px; padding:52px 0; border-top:1px solid #d8cdbc; border-bottom:1px solid #d8cdbc; }
+.s23-side-label { color:#766b5e; font-size:11px; }
+.s23 h2 { font:500 27px/1.6 Georgia,'Songti SC',serif; }
+.s23-story div p { margin-top:19px; color:#766b5e; font-size:12px; line-height:2.2; }
+.s23-handnote { padding-left:25px; border-left:1px solid #d8cdbc; color:#5f6f52!important; font:18px/2 Georgia,'Songti SC',serif; transform:rotate(-3deg); }
+.s23-handnote span { display:block; font-size:10px; margin-top:12px; }
+.s23-planner { display:grid; grid-template-columns:.9fr 1.2fr .9fr; gap:45px; padding:68px 0; scroll-margin-top:24px; }
+.s23-plan-title h2 { margin:18px 0; }
+.s23-plan-title>p:last-child { font-size:12px; color:#766b5e; }
+.s23 fieldset { border:0; margin:0 0 24px; padding:0; }
+.s23 legend { font-size:11px; color:#766b5e; margin-bottom:10px; }
+.s23-options fieldset>label { display:flex; align-items:center; gap:11px; padding:14px 0; border-bottom:1px solid #d8cdbc; cursor:pointer; }
+.s23 input[type=checkbox],.s23 input[type=radio] {  width:15px; height:15px; flex:0 0 auto; }
+.s23-options label span:last-child:not(:nth-child(2)) { margin-left:auto; color:#9c8b74; }
+.s23-options label strong { font-size:13px; font-weight:500; }
+.s23-options label small { display:block; font-size:10px; color:#766b5e; }
+.s23-estimate { padding:24px; background:#ebe4d7; align-self:start; border-radius:4px 12px 5px 8px; }
+.s23-estimate>p { margin:18px 0 12px; font-size:12px; }
+.s23-estimate>strong { font:36px/1.4 Georgia,serif; font-weight:400; }
+.s23-estimate dl { font-size:10px; margin:20px 0; }
+.s23-estimate dl div { display:flex; justify-content:space-between; gap:10px; margin:8px 0; }
+.s23-estimate dt { color:#766b5e; }.s23-estimate dd { margin:0; }
+.s23-estimate button,.s23-dialog form button { display:block; width:100%; min-height:46px; color:#fffaf0; background:#5f6f52; border:1px solid #5f6f52; border-radius:3px; font-size:12px; padding:10px; }
+.s23-estimate button:disabled { opacity:.45; }.s23-estimate>small { display:block; color:#766b5e; font-size:9px; margin-top:14px; }
+.s23-footer { display:flex; justify-content:space-between; gap:16px; font-size:10px; color:#766b5e; padding:28px 0; border-top:1px solid #d8cdbc; }
+.s23-dialog { width:450px; background:#fffaf0; color:#302a22; border:1px solid #d8cdbc; padding:28px; border-radius:6px; }
+.s23-dialog header { display:flex; align-items:center; justify-content:space-between; gap:15px; }
+.s23-dialog .demo-close { border:1px solid #d8cdbc; background:transparent; color:#302a22; border-radius:3px; }
+.s23-dialog h2 { margin:20px 0; }.s23-dialog>p { font-size:12px; line-height:1.9; }
+.s23-dialog form { margin:20px 0; }.s23-dialog form>label { display:block; font-size:12px; margin:12px 0 6px; }
+.s23-dialog input,.s23-dialog select { width:100%; min-height:44px; border:1px solid #b4a58f; color:#302a22; background:#fffdf8; border-radius:3px; padding:8px 10px; }
+.s23-dialog form button { margin-top:24px; }.s23-book-result { margin:24px 0!important; padding:18px; border:1px solid #819174; color:#4c5f3e!important; }
+@media(max-width:900px){.s23{padding:0 26px}.s23-header nav span{display:none}.s23-hero{min-height:540px;gap:12px}.s23 h1{font-size:34px}.s23-planner{grid-template-columns:1fr 1.3fr;gap:28px}.s23-estimate{grid-column:2}.s23-story{grid-template-columns:.5fr 1.5fr}.s23-handnote{display:none}}
+@media(max-width:600px){.s23{padding:0 20px}.s23-header{min-height:90px}.s23-header nav{gap:15px;font-size:10px}.s23-brand{gap:8px}.s23-brand>span{font-size:25px}.s23-brand small{font-size:9px}.s23-hero{grid-template-columns:1fr;padding-top:38px;gap:10px}.s23 h1{font-size:31px;margin:22px 0}.s23-number{margin-top:27px}.s23-object{max-width:440px;margin:auto}.s23-story{grid-template-columns:1fr;gap:18px;padding:32px 0}.s23-planner{grid-template-columns:1fr;gap:28px;padding:40px 0}.s23-estimate{grid-column:auto}.s23-footer{display:block;line-height:2}.s23-footer span{display:block}.s23 h2{font-size:25px}}
+
+/* 修复选项：米纸与苔绿，不使用系统单选／多选图形。 */
+.s23 input[type=checkbox],.s23 input[type=radio] { appearance:none; -webkit-appearance:none; display:grid; place-content:center; margin:0; width:18px; height:18px; padding:0; border:1px solid #9c8b74; background:#fffdf8; border-radius:3px; cursor:pointer; }
+.s23 input[type=radio] { border-radius:50%; }
+.s23 input[type=checkbox]:checked { background:#5f6f52; border-color:#5f6f52; }
+.s23 input[type=checkbox]:checked::after { content:''; width:8px; height:5px; border-left:1.5px solid #fffaf0; border-bottom:1.5px solid #fffaf0; transform:translateY(-1px) rotate(-45deg); }
+.s23 input[type=radio]:checked { border-color:#5f6f52; background:radial-gradient(circle,#5f6f52 0 4px,#fffdf8 4.5px); }
+.s23 input:is([type=checkbox],[type=radio]):focus-visible { outline:2px solid #5f6f52; outline-offset:4px; }
+.s23-options fieldset>label:has(input:checked) { border-bottom-color:#859174; }
+
+@media (forced-colors:active) { .s23 input[type=checkbox],.s23 input[type=radio] { appearance:auto; -webkit-appearance:auto; transform:none; box-shadow:none; } .s23 input[type=checkbox]:checked::after,.s23 input[type=radio]:checked::after { content:none; } }

@@ -1,47 +1,47 @@
-# Data Table And Pagination Pattern
+# Data Table 与 Pagination 模式
 
-## When To Use
+## 适用场景
 
-Read this reference for data tables, result lists with table semantics, filter/search toolbars, sorting, row selection, batch actions, row menus, pagination, and page-size controls.
+任务涉及 Data Table、具有表格语义的结果列表、筛选/搜索 Toolbar、排序、行选择、批量操作、行菜单、Pagination 或每页条数控件时，阅读本文件。
 
-## Resolution Order
+## 选择顺序
 
-Reuse the project's shared table/page wrapper first, then its installed table library through established adapters, then a semantic scoped table for simple static data. Introduce virtualization, server-driven state, or another table engine only when data volume and product requirements justify it.
+先复用项目共享的 Table/页面包装组件，再通过既有适配器使用已安装的 Table 库，最后才为简单静态数据使用语义明确、作用域受控的 Table。只有数据规模和产品需求确有必要时，才引入虚拟化、服务端驱动状态或另一套 Table 引擎。
 
-## Required States
+## 必需状态
 
-- Initial loading, refresh loading, populated, no data, no filter results, recoverable error, permission-limited, and stale data when relevant.
-- Filters, active-filter summary, reset/apply behavior, sorting direction, selected rows, select-all scope, batch actions, and row actions.
-- Column labels, alignment, widths, wrapping/truncation, sticky regions, density, status cells, numeric/unit formatting, and long values.
-- Current page, total items, page count, previous/next, direct page access when useful, page size, and behavior when filtering or deleting changes the current page.
-- Clear distinction between all rows on the page and all matching rows across pages for bulk selection.
+- 按需覆盖初次加载、刷新加载、有数据、无数据、无筛选结果、可恢复错误、权限受限和数据过期。
+- 筛选器、当前筛选摘要、重置/应用行为、排序方向、已选行、全选范围、批量操作和行操作。
+- 列标签、对齐、宽度、换行/截断、吸附区域、密度、状态单元格、数值/单位格式和长值。
+- 当前页、总条数、页数、上一页/下一页、有用时提供直接跳页、每页条数，以及筛选或删除改变当前页时的行为。
+- 批量选择时，明确区分“本页全部行”和“跨页全部匹配行”。
 
-## Accessibility And Keyboard
+## 无障碍与键盘
 
-- Use semantic table structure for tabular relationships; provide a caption or accessible name when context is not already clear.
-- Expose sortable headers as buttons with current sort state. Do not make the entire header cell an unlabeled click target.
-- Label row-selection checkboxes with the row identity and announce selected count near batch actions.
-- Keep row actions, pagination, page-size selection, and retry controls keyboard reachable with visible focus.
-- Do not encode state only by color; preserve reading order when columns collapse or convert to cards.
+- 用语义 Table 结构表达表格关系；上下文不够明确时，提供 caption 或无障碍名称。
+- 可排序表头以 Button 呈现，并暴露当前排序状态。不要把整个表头单元格做成没有标签的点击目标。
+- 行选择 Checkbox 的标签应包含行身份，并在批量操作附近播报已选数量。
+- 行操作、Pagination、每页条数选择和重试控件应可由键盘到达，并有可见焦点。
+- 不只用颜色表达状态；列收拢或转换为 Card 时，保留阅读顺序。
 
-## Existing Project Integration
+## 既有项目集成
 
-- Inspect sibling list pages for query-state ownership, URL synchronization, filter form layout, table wrapper props, row keys, pagination placement, and loading/empty/error slots.
-- Reuse project number/date formatting, status badges, action menus, permission checks, selection rules, and density tokens.
-- Follow the existing server/client pagination contract; do not silently change index bases, page-size defaults, or reset behavior.
-- If a legacy table lacks an essential accessible state, add the narrowest shared wrapper improvement that keeps existing callers stable.
+- 检查相邻列表页的查询状态归属、URL 同步、筛选 Form 布局、Table 包装组件 props、行 key、Pagination 位置，以及加载/空/错误 slots。
+- 复用项目的数值和日期格式、状态 Badge、Action Menu、权限检查、选择规则和密度 Token。
+- 遵循现有服务端/客户端 Pagination 契约；不要悄悄改变索引起点、默认每页条数或重置行为。
+- 旧 Table 缺少必要无障碍状态时，以最小的共享包装组件改进补齐，保持既有调用方稳定。
 
-## Mobile Behavior
+## 移动端行为
 
-- Choose deliberately among horizontal scrolling with a sticky identifier column, priority-column reduction, stacked row details, or a card/list alternative.
-- Preserve the primary object identity, status, and main action. Do not shrink a desktop table until labels and controls become unreadable.
-- Keep filters in normal flow or an established drawer/sheet, show active filters outside the closed overlay, and keep reset/apply reachable.
-- Use compact pagination or load-more only when it preserves position, total/context, keyboard access, and recovery from errors.
+- 有意识地选择以下方式：横向滚动并固定标识列、按优先级减少列、堆叠行详情，或改为 Card/List。
+- 保留主要对象身份、状态和主要操作。不要把桌面 Table 缩小到标签和控件无法阅读。
+- 筛选器保持在正常文档流或既有 Drawer/Sheet 中；Overlay 关闭时仍展示已启用筛选，并保持重置/应用操作可达。
+- 只有在能保留位置、总量/上下文、键盘访问和错误恢复时，才使用紧凑 Pagination 或加载更多。
 
-## Verification
+## 验证
 
-- Test loading, populated, empty dataset, empty filtered result, error/retry, permission, and longest-cell states.
-- Test every sort direction, filter reset/apply, row action, selection scope, batch action, and delete-last-row page correction.
-- Test first, middle, and last pages plus page-size changes and invalid/out-of-range query state.
-- Verify semantic headers, sort state, selection labels/count, focus order, and keyboard operation.
-- Check desktop and mobile for clipped controls, hidden primary data, unstable column widths, and pagination overflow.
+- 测试加载、有数据、空数据集、空筛选结果、错误/重试、权限和最长单元格状态。
+- 测试各排序方向、筛选重置/应用、行操作、选择范围、批量操作，以及删除最后一行后的页码修正。
+- 测试首页、中间页、末页、每页条数变化，以及无效或越界的查询状态。
+- 验证语义表头、排序状态、选择标签/数量、焦点顺序和键盘操作。
+- 检查桌面和移动端是否存在控件裁切、主要数据隐藏、列宽不稳和 Pagination 溢出。

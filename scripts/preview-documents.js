@@ -1,137 +1,134 @@
 const { allStyles } = require("./preview-catalog");
 const { getScenario } = require("./preview-scenarios");
-const { getStylePlaybook, getGeometryProfile, getImplementationProfile, getAdaptationProfile } = require("./preview-style-profiles");
+const { getStylePlaybook, getGeometryProfile, getImplementationProfile } = require("./preview-style-profiles");
+// 中文说明单独维护，避免语言迁移改动现有双语预览及其提示词。
+const chineseStyleDocs = require("../catalog/style-docs.zh.json");
+
+function getChineseStyleDoc(style) {
+  const doc = chineseStyleDocs[style.id];
+  if (!doc) throw new Error(`风格 ${style.id} 缺少中文说明数据`);
+  return doc;
+}
 
 function renderStyleDoc(style) {
-  const label = style.label || `Style ${style.id}`;
+  const translated = getChineseStyleDoc(style);
   const scenario = getScenario(style);
-  const playbook = getStylePlaybook(style);
+  const example = translated.scenario;
+  const playbook = { ...getStylePlaybook(style), ...translated.playbook };
   const geometry = getGeometryProfile(style);
-  const implementation = getImplementationProfile(style);
-  const adaptation = getAdaptationProfile(style);
-  const notes = style.notes.map((note) => `- ${note}`).join("\n");
-  const features = scenario.features.map(([title, body]) => `- ${title}: ${body}`).join("\n");
-  const queue = scenario.queue.map(([title, state]) => `- ${title}: ${state}`).join("\n");
-  return `# ${label} - ${style.name} (${style.zhName})
+  const implementation = { ...getImplementationProfile(style), ...translated.implementation };
+  const adaptation = translated.adaptation;
+  const notes = translated.notes.map((note) => `- ${note}`).join("\n");
+  const features = example.features.map(([title, body]) => `- ${title}：${body}`).join("\n");
+  const queue = example.queue.map(([title, state]) => `- ${title}：${state}`).join("\n");
+  return `# 风格 ${style.id}：${style.zhName}
 
-## Summary
+## 概述
 
-${style.brief}
+${style.zhBrief}
 
-Chinese summary: ${style.zhBrief}
+## 适用场景
 
-## Best For
+${style.zhBestFor}
 
-${style.bestFor}
+## 示例场景
 
-## Example Scenario
+- 示例产品：${scenario.brand}
+- 页面任务：${example.eyebrow}
+- 标题：${example.headline}
+- 主要操作：${example.primaryAction}
+- 次要操作：${example.secondaryAction}
 
-- Product sample: ${scenario.brand}
-- Page job: ${scenario.eyebrow}
-- Headline: ${scenario.headline}
-- Primary action: ${scenario.primaryAction}
-- Secondary action: ${scenario.secondaryAction}
-
-## Scenario Components
+## 场景组件
 
 ${features}
 
-## Example States
+## 示例状态
 
 ${queue}
 
-## Layout Pattern
+## 布局模式
 
-- Pattern: ${playbook.name} (${playbook.zhName})
-- Archetype: ${playbook.name}
-- Structure: ${playbook.structure}
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: ${playbook.typography}
-- Components: ${playbook.components}
-- Buttons: ${playbook.buttons}
-- Icons and media: ${playbook.media}
-- States: ${playbook.states}
-- Avoid: ${playbook.avoid}
+- 模式：${playbook.zhName}
+- 结构：${playbook.zhStructure}
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：${playbook.zhTypography}
+- 组件：${playbook.zhComponents}
+- 按钮：${playbook.zhButtons}
+- 图标与媒体：${playbook.zhMedia}
+- 状态：${playbook.zhStates}
+- 避免：${playbook.zhAvoid}
 
-## Visual Language
+## 视觉语言
 
-- Background: \`${style.bg}\`
-- Surface: \`${style.surface}\`
-- Text: \`${style.text}\`
-- Muted text: \`${style.muted}\`
-- Primary: \`${style.primary}\`
-- Accent: \`${style.accent}\`
-- Border: \`${style.border}\`
-- Radius: \`${style.radius}\`
-- Panel radius: \`${geometry.panel}\`
-- Control radius: \`${geometry.control}\`
-- Chip radius: \`${geometry.chip}\`
-- Media radius: \`${geometry.media}\`
-- Geometry rule: ${geometry.description}; avoid making every button and card the same large rounded rectangle.
-- Shadow: \`${style.shadow}\`
+- 背景：\`${style.bg}\`
+- 表面：\`${style.surface}\`
+- 正文：\`${style.text}\`
+- 弱化文字：\`${style.muted}\`
+- 主色：\`${style.primary}\`
+- 强调色：\`${style.accent}\`
+- 边框：\`${style.border}\`
+- 圆角：\`${style.radius}\`
+- 面板圆角：\`${geometry.panel}\`
+- 控件圆角：\`${geometry.control}\`
+- Chip 圆角：\`${geometry.chip}\`
+- 媒体圆角：\`${geometry.media}\`
+- 几何规则：${translated.geometryDescription}；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：\`${style.shadow}\`
 
-## Component Detail System
+## 组件细节
 
-- Button system: ${implementation.buttons}
-- Feedback and alerts: ${implementation.feedback}
-- Spacing system: ${implementation.spacing}
-- Responsive behavior: ${implementation.responsive}
-
-Chinese implementation notes:
-
-- 按钮细节：${implementation.zhButtons}
+- 按钮系统：${implementation.zhButtons}
 - 提示与反馈：${implementation.zhFeedback}
 - 间距系统：${implementation.zhSpacing}
 - 响应式策略：${implementation.zhResponsive}
 
-## Page Adaptation Guide
+## 页面适配指南
 
-- Landing page: ${adaptation.landing}
-- Dashboard: ${adaptation.dashboard}
-- Admin panel: ${adaptation.admin}
-- Forms, tables, and data: ${adaptation.forms}
-- Mobile: ${adaptation.mobile}
-- Not a good fit for: ${adaptation.unsuitable}
+- 落地页：${adaptation.landing}
+- 数据看板：${adaptation.dashboard}
+- 管理后台：${adaptation.admin}
+- 表单、Table 与数据：${adaptation.forms}
+- 移动端：${adaptation.mobile}
+- 不适合：${adaptation.unsuitable}
 
-## Usage Notes
+## 使用要点
 
 ${notes}
 
-## Continue
+## 后续步骤
 
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。
 `;
 }
 
 function renderStyleIndex() {
-  const rows = allStyles
-    .map((style) => {
-      const playbook = getStylePlaybook(style);
-      return `| ${style.label || `Style ${style.id}`} | [${style.name}](styles/${style.slug}.md) | ${style.zhName} | ${style.bestFor} | ${playbook.name} | ${style.brief} |`;
-    })
-    .join("\n");
-  return `# Style Index
+  const rows = allStyles.map((style) => {
+    const playbook = getStylePlaybook(style);
+    return `| ${style.id} | [${style.zhName}](styles/${style.slug}.md) | ${style.zhBestFor} | ${playbook.zhName} | ${style.zhBrief} |`;
+  }).join("\n");
+  return `# 风格索引
 
-This index summarizes all ${allStyles.length} available visual styles, numbered continuously from Style 01 to Style ${allStyles.length}. Use these styles as visual direction and design the actual page structure around the user's product. Choose the user's layout archetype from \`layout-guidance.md\` before treating any style as a fixed page shape.
+本索引汇总全部 ${allStyles.length} 种视觉风格，编号从 01 连续排列至 ${allStyles.length}。把风格作为视觉方向，围绕用户产品设计实际页面结构。先依据[布局指南](layout-guidance.md)确定布局原型，不要把某种风格当成固定页面模板。
 
-| Style | Name | 中文名 | Best For | Layout Pattern | Visual Language |
-|---|---|---|---|---|---|
+| 编号 | 风格 | 适用场景 | 布局模式 | 视觉语言 |
+|---|---|---|---|---|
 ${rows}
 
-## Similarity Guardrails
+## 风格区分原则
 
-- Do not collapse Style 03 Aurora Gradient, Style 08 Resonant Stark, Style 10 Dark Theme, Style 15 Liquid Glass, Style 18 Precision Futurism, and Style 21 Acid Design into the same generic dark SaaS page. They differ by atmosphere, restraint, contrast, material, precision, and experimental intensity.
-- Do not collapse Style 09 Tech Minimal, Style 11 Structured Lines, and Style 12 Layered Material into one neutral white UI. They differ by whitespace, line structure, and elevation/tonal surface logic.
-- Do not collapse Style 02 Block Brutalism and Style 17 Neo-Brutalism. Style 02 is the original warm block campaign style; Style 17 is higher-collision, giant-type controlled chaos.
-- Do not collapse Style 04 Retro Y2K and Style 16 Retro Computing. Style 04 is candy/neon Y2K; Style 16 is pixel and old-operating-system texture.
-- Do not turn Style 13 Bento Layout into a fixed template. Treat it as a modular visual composition style, not a required information architecture.
-- Do not collapse Style 22 Art Deco, Style 24 Ink Wash, and Style 05 Swiss Editorial into one editorial page. They differ by gilded symmetry, scroll/paper rhythm, and strict modernist rules.
-- Do not collapse Style 23 Wabi-Sabi and Style 20 Soft Pop into one warm rounded UI. Style 23 is quiet material restraint; Style 20 is friendly playful learning/product energy.
-- Do not collapse Style 25 Blueprint, Style 18 Precision Futurism, and Style 26 Industrial Control into one technical dashboard. Style 25 is a measured plan sheet, Style 18 is a dark precision graph console, and Style 26 is rugged safety-critical operations.
-- Use Style 02, Style 04, Style 07, Style 16, Style 17, Style 19, Style 20, and Style 21 only when the brand can carry a strong personality.
+- 不要把 03 极光渐变、08 共鸣极简、10 深色主题、15 液态玻璃、18 精密未来风和 21 酸性设计都做成相同的通用深色 SaaS 页面。它们分别强调氛围、克制、对比、材质、精度和实验强度。
+- 不要把 09 科技极简风、11 结构线和 12 层级材质合并成同一种中性白色 UI。它们分别依靠留白、线条结构，以及层次与色调表面的逻辑建立区别。
+- 不要混淆 02 块状粗野主义和 17 新粗野主义。02 是暖色块状活动风格；17 以更强的视觉碰撞、巨型字体和受控混乱表达个性。
+- 不要混淆 04 复古 Y2K 和 16 复古主义。04 使用糖果色、霓虹和 Y2K 质感；16 使用像素和老式操作系统纹理。
+- 不要把 13 便当盒布局变成固定模板。它是一种模块化视觉构图方式，不规定信息架构。
+- 不要把 22 装饰艺术、24 水墨和 05 瑞士编辑风合并成同一种编辑页面。它们分别依靠金色对称、卷轴与纸面节奏、严格的现代主义排版建立区别。
+- 不要把 23 侘寂和 20 柔和流行合并成同一种暖色圆角 UI。23 强调安静、克制的材质；20 强调亲和、玩乐的学习与产品氛围。
+- 不要把 25 蓝图、18 精密未来风和 26 工业控制合并成同一种技术看板。25 是精确的规划图纸，18 是深色精密图谱控制台，26 是耐用、强调安全的操作界面。
+- 只有品牌能够承载鲜明个性时，才使用 02、04、07、16、17、19、20 和 21。
 `;
 }
 
-module.exports = { renderStyleDoc, renderStyleIndex };
+module.exports = { renderStyleDoc, renderStyleIndex, getChineseStyleDoc };

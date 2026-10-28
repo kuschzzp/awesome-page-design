@@ -1,38 +1,40 @@
-# Visual Quality Review
+# 视觉质量检查
 
-Use for visual audits and final composition review. This file owns visual judgment; code/accessibility checks are in [interface-compliance.md](interface-compliance.md), component behavior is in [component-implementation.md](component-implementation.md), and finishing is in [workflow.md](workflow.md).
+用于视觉审查和最终构图检查。本文件负责视觉判断；代码与无障碍检查见[实现合规](interface-compliance.md)，组件行为见[组件实现](component-implementation.md)，交付流程见[工作流](workflow.md)。
 
-## Product And Hierarchy
+## 产品与层级
 
-- The first viewport communicates a specific workflow, primary content object, and main action rather than a generic slogan.
-- The layout fits the page job: operations foreground data/actions, creation tools foreground the workspace, and editorial pages preserve reading order/evidence.
-- Important information has deliberate hierarchy. Equal cards represent equal choices; unrelated urgency or ownership does not disappear into identical boxes.
-- Density, gutters, alignment, and section rhythm support scanning or reading. Expressive composition still has stable orientation.
+- 首屏表达具体工作流、主要内容对象和主要操作，而不是通用口号。
+- 布局符合页面任务：操作类页面突出数据与操作，创作工具突出工作区，编辑类页面保留阅读顺序和证据。
+- 重要信息具有明确层级。等大的 Card 应代表同等选择；不同紧急程度或归属的信息不能被相同方框抹平。
+- 密度、间距、对齐和区块节奏支持扫描或阅读。富有表现力的构图仍应有稳定的方向感。
 
-## Visual Direction
+## 视觉方向
 
-- Typography, geometry, material, component tone, and states express the selected direction; the result is not a palette swap or repeated skeleton.
-- Headings, body, labels, metadata, and numbers have distinct roles. Long headings fit compact regions without awkward wrapping.
-- Semantic colors and surfaces remain legible; glow, glass, texture, chrome, and depth do not hide content or state.
-- Media explains the actual product or object. Icon family, stroke/fill, size, and alignment form one system.
-- Copy, metrics, and actions are specific enough to judge a real workflow, without placeholder brand references or unrelated decorative captions.
+- 字体、几何、材质、组件气质和状态共同表达所选方向；不能只换配色或重复同一骨架。
+- 标题、正文、标签、元数据和数字各有角色。长标题在紧凑区域内应自然换行。
+- 语义色和表面保持可读；发光、玻璃、纹理、金属和景深不能遮蔽内容或状态。
+- 媒体解释真实产品或对象。图标家族、描边与填充、尺寸和对齐形成统一系统。
+- 文案、指标和操作足够具体，可以据此判断真实工作流，不能混入占位品牌引用或无关装饰性标题。
 
-Use [anti-generic-ui.md](anti-generic-ui.md) when composition feels generic, rather than applying more decoration.
+构图显得模板化时，使用[避免模板化 UI](anti-generic-ui.md)，不要继续堆装饰。
 
-## Existing And Local Work
+## 既有项目与局部修改
 
-Compare the changed area with its chosen production baseline: typography, density, action hierarchy, spacing, geometry, and state treatment should still belong to the product. Check target and neighbors together for local changes using [local-ui-patch.md](local-ui-patch.md); do not reinterpret a visual check as permission to restyle the whole page.
+把修改区域与选定的生产基准比较：字体、密度、操作层级、间距、几何和状态处理仍应属于同一个产品。局部修改按[局部 UI 修补](local-ui-patch.md)一起检查目标和相邻区域；视觉检查不等于获准重设整个页面的风格。
 
-## Responsive Composition
+## 响应式构图
 
-Review desktop and mobile hierarchy with realistic long content. The primary object, state, and action must remain reachable; navigation, secondary panels, and proof should collapse intentionally rather than squeeze the desktop grid. Record missing visual evidence instead of claiming screenshots were checked.
+用真实长内容检查桌面和移动端层级。主要对象、状态和操作必须可达；导航、次要面板和可信依据应有意识地重排，不能只把桌面网格挤窄。缺少视觉证据时如实记录，不要声称已经检查截图。
 
-## Recording Visual Evidence
+## 记录视觉证据
 
-Review these five dimensions together: product task/action clarity; hierarchy/readability/density; consistency with the selected direction or existing product; real-content/responsive composition; and visible states/detail finish. Support each finding with the actual viewport and state inspected. Source inspection cannot establish rendered quality, and a single idle screenshot cannot establish error or pending-state finish.
+按本次改动选择检查项，无需每次遍历全部维度。功能与视觉结论分别记录：构建、测试或静态扫描通过，不能代替实际界面的视觉检查。简单修补查看目标和相邻区域即可；整页或批量工作先检查代表区域，再扩展，避免把明显缺陷复制到后续页面。检查时机与权限见[工作流](workflow.md)。
 
-For a requested scored comparison, use the same scenes and evidence for every option. A useful 0–4 scale is: 0 unusable, 1 major defects, 2 usable with visible defects, 3 coherent and complete, 4 clear under realistic long content and constrained viewports. Leave missing dimensions unverified rather than assigning zero or inventing precision. Record broken actions, keyboard traps and other critical functional defects separately from visual scores. Ordinary delivery does not require numerical scoring.
+按任务从以下五个维度选择检查项：产品任务与操作的清晰度；层级、可读性与密度；与所选方向或既有产品的一致性；真实内容与响应式构图；可见状态与细节完成度。每项发现都应有实际检查的视口和状态作为依据。源码检查不能证明渲染质量，一张静止状态截图也不能证明错误或提交中状态的完成度。
 
-## Maintaining This Library
+用户要求评分对比时，对所有候选使用相同场景和证据。可采用 0–4 分：0 表示无法使用，1 表示有重大缺陷，2 表示可用但有可见缺陷，3 表示协调完整，4 表示面对真实长内容和受限视口仍然清晰。缺少证据的维度保留为未验证，不要给零分或伪造精确度。操作失效、键盘焦点陷阱等关键功能缺陷应与视觉分数分开记录。普通交付不要求数值评分。
 
-When this repository's own previews/prompts change, check that styles remain distinguishable by structure, component tone, material, and scenario; prompts adapt to product layout; gallery actions offer full/landing/dashboard/admin/mobile variants; and refreshed docs, previews, and screenshots correspond. Use the regeneration and validation flow in [workflow.md](workflow.md).
+## 维护本库
+
+本仓库的预览或提示词变更时，检查不同风格在结构、组件气质、材质和场景上仍可区分；提示词适配产品布局；画廊提供完整页面、落地页、数据看板、管理后台和移动端变体；更新后的文档、预览和截图相互对应。使用[工作流](workflow.md)中的重新生成与校验流程。

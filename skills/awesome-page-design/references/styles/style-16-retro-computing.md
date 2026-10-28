@@ -1,96 +1,86 @@
-# Style 16 - Retro Computing (复古主义)
+# 风格 16：复古主义
 
-## Summary
+## 概述
 
-Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type.
+像素风、复古 UI、老式操作系统质感、80 年代计算机线索、块状窗口和像素字体。
 
-Chinese summary: 像素风、复古 UI、老式操作系统质感、80 年代计算机线索、块状窗口和像素字体。
+## 适用场景
 
-## Best For
+音乐网站、游戏相关产品、文化活动页
 
-music sites, game-adjacent products, cultural campaigns
+## 示例场景
 
-## Example Scenario
+- 示例产品：磁盘周刊
+- 页面任务：带有离线感的数字周刊
+- 标题：好内容，不用一直在线。
+- 主要操作：打开一期周刊
+- 次要操作：加入书签
 
-- Product sample: PixelDesk
-- Page job: Retro media workstation
-- Headline: Run the release from a chunky desktop board.
-- Primary action: Open player
-- Secondary action: View files
+## 场景组件
 
-## Scenario Components
+- 从文件进入阅读：桌面文件按钮打开实际文章，展示期号、日期、分类和原创正文。
+- 可工作的窗口：任务栏可恢复最小化的阅读窗，书签窗口可返回已收藏文章。
+- 保存一份文本：将当前期刊导出为真实 UTF-8 文本文件，无需注册账户。
 
-- Old system texture: Chunky windows, hard pixels, and bitmap rhythm create nostalgia with intent.
-- Functional chrome: Window bars, tabs, and file rows are real UI, not only decoration.
-- Bright precision: Crisp lines keep the playful palette from becoming messy.
+## 示例状态
 
-## Example States
+- 周末小事：可阅读
+- 手写纸条：阅读中
+- 旧收音机：可阅读
 
-- Track 03: Loop
-- Poster file: Open
-- Guest note: Saved
+## 布局模式
 
-## Layout Pattern
+- 模式：像素桌面周刊
+- 结构：奶黄像素桌面包含期刊文件图标、蓝色标题栏阅读窗、错位粉色书签窗与可恢复窗口的任务栏。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：等宽字体用于系统细节，文章标题克制，正文保留舒适行高。
+- 组件：奶黄像素桌面包含期刊文件图标、蓝色标题栏阅读窗、错位粉色书签窗与可恢复窗口的任务栏。
+- 按钮：使用像素硬边系统 Button，按下状态明确，支持键盘打开与恢复窗口。
+- 图标与媒体：使用清晰文件图标、软盘插画、原创文章排版与硬边系统窗口。
+- 状态：呈现打开期刊、最小化、恢复窗口、收藏文章、空书签和文本导出状态。
+- 避免：不要让页面看起来像坏掉；怀旧仍然需要清晰界面。
 
-- Pattern: Retro Desktop Workspace (复古桌面工作区)
-- Archetype: Retro Desktop Workspace
-- Structure: Old desktop environment with overlapping windows, title bars, pixel panels, and file-like action rows.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use monospace or bitmap-like rhythm, crisp labels, and short window titles.
-- Components: Windows, title bars, folder rows, mini players, file chips, and pixel dividers should feel functional.
-- Buttons: Buttons are rectangular system controls with hard borders and pressed offsets.
-- Icons and media: Use file windows, player bars, pixel diagrams, and desktop objects as the visual language.
-- States: Show open, saved, playing, minimized, selected file, and modal states.
-- Avoid: Do not make the page look broken; nostalgia still needs clear UI.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f3d77d`
+- 表面：`#fffae8`
+- 正文：`#241d12`
+- 弱化文字：`#766743`
+- 主色：`#195ada`
+- 强调色：`#cc4a72`
+- 边框：`#241d12`
+- 圆角：`2px`
+- 面板圆角：`2px`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`2px`
+- 几何规则：复古系统窗口搭配硬边像素几何；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`8px 8px 0 #1f1300`
 
-- Background: `#f8df7a`
-- Surface: `#fff8c9`
-- Text: `#1f1300`
-- Muted text: `#6f4b1d`
-- Primary: `#0057ff`
-- Accent: `#ff3bcb`
-- Border: `#1f1300`
-- Radius: `2px`
-- Panel radius: `2px`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `2px`
-- Geometry rule: retro system windows with hard pixel edges; avoid making every button and card the same large rounded rectangle.
-- Shadow: `8px 8px 0 #1f1300`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用像素硬边系统 Button，按下状态明确，支持键盘打开与恢复窗口。
+- 提示与反馈：必填错误贴近字段显示，完成操作提供可读反馈，所有可见状态都与本地演示数据一致。
+- 间距系统：窗口框架间距 8-14px，文件行紧凑，标题栏清晰。
+- 响应式策略：手机取消窗口重叠，依次排列文件行、阅读窗口、书签窗口和任务栏。
 
-- Button system: Use OS-window buttons, sharp pixel borders, hard active states, and disabled controls that look unavailable in-system.
-- Feedback and alerts: Use window-style alerts, file-status rows, and modal dialogs that feel like old desktop chrome.
-- Spacing system: Use 8-14px window chrome spacing, dense file rows, and clear title bars.
-- Responsive behavior: Desktop can overlap windows; mobile disables overlap and turns windows into stacked panels.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：使用复古窗口、标题栏、文件列表，以及有玩乐感的安装或播放操作。
+- 数据看板：使用相互叠放的桌面窗口呈现音乐、文件、队列和系统式状态。
+- 管理后台：仅用于主题化工具；文件状态、Dialog 和 Button 都应体现经过设计的旧系统质感。
+- 表单、Table 与数据：保留可见 Label，使用自定义行内错误与本地确认反馈，不使用浏览器原生校验气泡。
+- 移动端：手机取消窗口重叠，依次排列文件行、阅读窗口、书签窗口和任务栏。
+- 不适合：不适合严肃金融、医疗，或现代高级 SaaS。
 
-- 按钮细节：使用操作系统窗口按钮、锐利像素边框、硬按下态，以及系统内不可用的禁用控件。
-- 提示与反馈：使用窗口式提示、文件状态行，以及像旧桌面 chrome 的弹窗。
-- 间距系统：窗口 chrome 间距 8-14px，文件行紧凑，标题栏清楚。
-- 响应式策略：桌面可重叠窗口；手机取消重叠，窗口变成堆叠面板。
+## 使用要点
 
-## Page Adaptation Guide
+- 奶黄像素桌面包含期刊文件图标、蓝色标题栏阅读窗、错位粉色书签窗与可恢复窗口的任务栏。
+- 使用清晰文件图标、软盘插画、原创文章排版与硬边系统窗口。
+- 手机取消窗口重叠，依次排列文件行、阅读窗口、书签窗口和任务栏。
 
-- Landing page: Use retro windows, title bars, file lists, and a playful install/play action.
-- Dashboard: Use overlapping desktop windows for music, files, queues, and system-style status.
-- Admin panel: Use only for themed tools; make file states, dialogs, and buttons feel intentionally old-system.
-- Forms, tables, and data: Use title-bar groups, pixel borders, system alerts, and sharp validation states.
-- Mobile: Disable window overlap and turn windows into stacked panels with clear title bars.
-- Not a good fit for: Weak for serious finance, healthcare, or modern premium SaaS.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use hard windows, pixel dividers, and playful system chrome.
-- Keep nostalgia intentional, not broken.
-- Use bright accents with crisp black lines.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

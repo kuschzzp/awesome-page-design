@@ -1,96 +1,86 @@
-# Style 08 - Resonant Stark (共鸣极简)
+# 风格 08：共鸣极简
 
-## Summary
+## 概述
 
-Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint.
+近黑画布、细字重、微光、大留白、精细线条和高级克制感。
 
-Chinese summary: 近黑画布、细字重、微光、大留白、精细线条和高级克制感。
+## 适用场景
 
-## Best For
+摄影档案、高级暗色作品集、艺术、精品预告页
 
-photography archives, premium dark portfolios, art, high-end product teasers
+## 示例场景
 
-## Example Scenario
+- 示例产品：留白
+- 页面任务：建筑影像研究
+- 标题：光经过的地方。
+- 主要操作：生成印制意向单
+- 次要操作：选择作品
 
-- Product sample: Silver Contact
-- Page job: Monochrome photo archive
-- Headline: Review a print run through contact sheets, crop marks, and quiet provenance.
-- Primary action: Request proof
-- Secondary action: Open darkroom notes
+## 场景组件
 
-## Scenario Components
+- 先看见作品：大幅建筑场景承担画面重心，元信息保持稀疏。
+- 选片联动：联系印样同步切换作品、图注与印制意向对应的画面。
+- 意向可以留存：纸张、尺寸与份数组成可下载的本地意向单。
 
-- Contact first: The proof sheet becomes the main interface, with frame numbers and selected marks doing real work.
-- Private inquiry: Collector action stays precise and quiet rather than commercial.
-- Print evidence: Paper type, crop choice, and darkroom notes sit beside the selected frame.
+## 示例状态
 
-## Example States
+- 潮线回廊：已选
+- 午后阶影：作品 02
+- 空庭：作品 04
 
-- Frame 12: Selected
-- Fiber paper: Ready
-- Toning note: Draft
+## 布局模式
 
-## Layout Pattern
+- 模式：克制摄影联系印样
+- 结构：大幅建筑主画面与稀疏说明并列，下方是四幅联系印样，另设印制意向 Dialog。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用细字重中文标题、小型档案标签、窄图注与安静的表格式元信息。
+- 组件：用选片框、画面编号、印制规格和意向摘要替代通用暗色卡片。
+- 按钮：使用精准描边操作与克制选片按钮，明确标记选中态。
+- 图标与媒体：使用由几何、光与阴影组成的原创建筑场景，并标明视觉研究而非真实摄影。
+- 状态：呈现选中作品、元信息联动、数量错误、意向生成与任务单下载状态。
+- 避免：不要用等权卡片填满留白，也不要把虚构场景描述为真实建筑摄影。
 
-- Pattern: Stark Photo Contact Sheet (克制摄影联系印样)
-- Archetype: Stark Photo Contact Sheet
-- Structure: Monochrome archive layout with a contact sheet, selected frame, print ledger, darkroom notes, and sparse inquiry action.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use thin type, frame numbers, narrow captions, and table-like print metadata.
-- Components: Contact frames, crop marks, print rows, inquiry cells, and darkroom notes should stay quiet and exact.
-- Buttons: Use quiet text or outline actions with precise focus states.
-- Icons and media: Use frame grids, proof marks, print paper labels, and darkroom process notes.
-- States: Show selected, proof ready, draft note, private inquiry, and edition closed states.
-- Avoid: Do not fill the silence with equal dark cards.
+## 视觉语言
 
-## Visual Language
+- 背景：`#151614`
+- 表面：`#1c2118`
+- 正文：`#eeede7`
+- 弱化文字：`#8b9481`
+- 主色：`#d5ddcb`
+- 强调色：`#a8b09e`
+- 边框：`#393f32`
+- 圆角：`6px`
+- 面板圆角：`6px`
+- 控件圆角：`2px`
+- Chip 圆角：`0`
+- 媒体圆角：`4px`
+- 几何规则：直角画框与精细描边，大面积留白，不用柔软浮层堆叠。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 28px 100px rgba(200, 184, 255, .12)`
 
-- Background: `#0a0a0b`
-- Surface: `#141416`
-- Text: `#fafafa`
-- Muted text: `#8a8a8e`
-- Primary: `#c8b8ff`
-- Accent: `#ffb8c8`
-- Border: `rgba(255,255,255,.08)`
-- Radius: `6px`
-- Panel radius: `6px`
-- Control radius: `2px`
-- Chip radius: `0`
-- Media radius: `4px`
-- Geometry rule: stark near-square panels and thin editorial controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 28px 100px rgba(200, 184, 255, .12)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：保持描边按钮安静、选片状态明确，并让键盘焦点在暗色表面可见。
+- 提示与反馈：通过简短选片状态和易读意向单反馈结果，避免装饰性提示。
+- 间距系统：对象间距 35–65px，元信息行稀疏，每幅画面周围保留充足框景空间。
+- 响应式策略：手机先主画面再说明，联系印样排为两列，并保留印制意向操作。
 
-- Button system: Use restrained text buttons or hard-edged outline controls; keep hover/focus precise and quiet.
-- Feedback and alerts: Use sparse status notes, subtle border changes, and no decorative alert noise.
-- Spacing system: Use large negative space, 28-40px object gutters, and sparse metadata rows.
-- Responsive behavior: Desktop may hold an object stage beside notes; mobile places the object first, then proof rows and one clear action.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以一幅作品、克制来源信息和精准意向操作建立首屏。
+- 数据看板：使用含活跃元信息与档案画面的选片室，避免通用指标。
+- 管理后台：适用于轻量档案整理和印制意向审阅，字段保持稀疏。
+- 表单、Table 与数据：使用安静暗色字段、明确尺寸与纸张 Label、有限数量和行内错误。
+- 移动端：先展示画面、说明和主操作，联系印样保持紧凑两列网格。
+- 不适合：不适合高密度运营控制台与明亮促销电商。
 
-- 按钮细节：使用克制文字按钮或硬边描边控件；hover/focus 精确而安静。
-- 提示与反馈：使用稀疏状态说明、细微边框变化，避免装饰性提示噪声。
-- 间距系统：使用大面积留白、28-40px 对象间距和稀疏元信息行。
-- 响应式策略：桌面可让对象舞台和说明并列；手机先对象，再证明行，最后一个明确操作。
+## 使用要点
 
-## Page Adaptation Guide
+- 保留单一作品的视觉重心。
+- 用选片标记、图注与纸张信息提供真实工作线索。
+- 所有建筑画面均为原创虚构视觉研究。
 
-- Landing page: Use one object, one message, sparse proof rows, and a restrained action with premium whitespace.
-- Dashboard: Use only for high-end monitoring or portfolio dashboards where a single object/state matters most.
-- Admin panel: Use sparse review panels, minimal metadata, and precise outline controls; avoid dense bulk workflows.
-- Forms, tables, and data: Use few fields, large whitespace, clear labels, and quiet validation with strong contrast.
-- Mobile: Place object first, then proof rows and one action; avoid long multi-column content.
-- Not a good fit for: Weak for operational tools that need many visible controls at once.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use quiet space as the main visual move.
-- Keep glow delicate and premium.
-- Let content breathe instead of filling every gap.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

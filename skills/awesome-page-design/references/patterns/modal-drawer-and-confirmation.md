@@ -1,46 +1,46 @@
-# Modal, Drawer, And Confirmation Pattern
+# Modal、Drawer 与确认模式
 
-## When To Use
+## 适用场景
 
-Read this reference for modals, dialogs, drawers, sheets, destructive confirmations, blocking decisions, and overlays that move focus or prevent interaction with the page behind them.
+任务涉及 Modal、Dialog、Drawer、Sheet、破坏性操作确认、阻塞式决策，或会移动焦点、阻止操作背景页面的 Overlay 时，阅读本文件。
 
-## Resolution Order
+## 选择顺序
 
-First decide whether inline editing, undo, or a non-blocking confirmation is safer than an overlay. When an overlay is justified, use the existing project wrapper, then the installed framework primitive, then a scoped styled `<dialog>` or accessible overlay implementation. Never substitute browser `alert`, `confirm`, or `prompt`.
+先判断行内编辑、撤销或非阻塞确认是否比 Overlay 更安全。确有必要使用 Overlay 时，优先使用项目已有包装组件，其次是已安装框架的原语，最后才使用作用域受控且有样式的 `<dialog>` 或无障碍 Overlay 实现。不能用浏览器 `alert`、`confirm` 或 `prompt` 代替。
 
-## Required States
+## 必需状态
 
-- Closed, opening, open, submitting, success/close, recoverable error, disabled action, and closing states.
-- Clear title, visible close affordance, body, primary/secondary action hierarchy, destructive labeling, and scrollable overflow.
-- Backdrop, overlay layer, nested-overlay policy, unsaved-change handling, and async action protection.
-- For destructive work, name the affected object and consequence; require typed confirmation only when risk warrants the added friction.
+- 关闭、打开中、已打开、提交中、成功/关闭、可恢复错误、操作禁用和关闭中。
+- 清晰标题、可见关闭入口、正文、主次操作层级、破坏性操作标签和溢出内容滚动。
+- Backdrop、Overlay 层级、嵌套 Overlay 策略、未保存修改处理和异步操作保护。
+- 破坏性操作需说明影响对象和后果；只有风险足以证明额外阻力合理时，才要求输入文字确认。
 
-## Accessibility And Keyboard
+## 无障碍与键盘
 
-- Move focus to the most useful safe target on open, not automatically to a destructive action.
-- Contain focus while modal, support Escape unless the action cannot safely be dismissed, and restore focus to the invoking control on close.
-- Provide an accessible name and description, semantic dialog state, and announced validation or submission errors.
-- Keep a visible close control even when backdrop click or Escape is supported.
-- Backdrop clicks may dismiss only when accidental dismissal cannot lose work; destructive confirmations should not confirm or disappear from a stray backdrop click.
+- 打开时将焦点移到最有用且安全的目标，不要自动聚焦破坏性操作。
+- 处于模态状态时限制焦点范围；除非操作无法安全中断，否则支持 Escape；关闭时将焦点还给触发控件。
+- 提供无障碍名称和描述、语义 Dialog 状态，并播报校验或提交错误。
+- 即使支持 Backdrop 点击或 Escape，也要保留可见关闭控件。
+- 只有意外关闭不会丢失工作时，才允许 Backdrop 点击关闭；破坏性确认不能因误点 Backdrop 而确认或消失。
 
-## Existing Project Integration
+## 既有项目集成
 
-- Reuse project overlay roots, focus helpers, scroll-lock behavior, header/footer anatomy, width variants, z-index scale, and action ordering.
-- Compare at least one form modal and one confirmation flow when available.
-- Preserve established button language and destructive color semantics while repairing missing focus or Escape behavior.
-- Avoid introducing a second modal manager or portal root for a local feature.
+- 复用项目的 Overlay Root、焦点辅助函数、Scroll Lock、Header/Footer 构成、宽度变体、z-index 层级和操作顺序。
+- 有现成实现时，至少比较一个 Form Modal 和一个确认流程。
+- 修补缺失焦点或 Escape 行为时，保留既有 Button 语言和破坏性操作的颜色语义。
+- 局部功能不要引入第二套 Modal Manager 或 Portal Root。
 
-## Mobile Behavior
+## 移动端行为
 
-- Follow the product's existing modal, bottom-sheet, side-drawer, or full-screen fallback based on task length and input complexity.
-- Keep title and close action visible, body independently scrollable, and footer actions reachable above safe-area and software-keyboard insets.
-- Stack actions only when width requires it; keep the primary/destructive hierarchy unambiguous.
-- Prevent background scroll and avoid body content jumping when the overlay opens.
+- 根据任务长度和输入复杂度，沿用产品已有的 Modal、Bottom Sheet、Side Drawer 或全屏回退方案。
+- 标题和关闭操作保持可见，正文独立滚动，Footer 操作在安全区和软键盘内缩区域上方可达。
+- 只有宽度确实需要时才堆叠操作；主操作与破坏性操作的层级必须明确。
+- 防止背景滚动，避免 Overlay 打开时正文跳动。
 
-## Verification
+## 验证
 
-- Test open, initial focus, Tab/Shift+Tab containment, Escape, visible close, submit error, retry, and focus return.
-- Test backdrop behavior, long content, short viewport, software keyboard, and nested overlay cases allowed by the product.
-- Confirm background content is inert or otherwise unavailable while modal.
-- Confirm no browser dialog primitive remains and no destructive action can fire twice during loading.
-- Verify desktop and mobile scroll behavior without hidden actions or content overlap.
+- 测试打开、初始焦点、Tab/Shift+Tab 范围限制、Escape、可见关闭、提交错误、重试和焦点返回。
+- 测试 Backdrop 行为、长内容、短视口、软键盘，以及产品允许的嵌套 Overlay 场景。
+- 确认模态状态下背景内容为 inert 或无法访问。
+- 确认没有残留浏览器 Dialog 原语，加载期间破坏性操作不会触发两次。
+- 验证桌面和移动端滚动行为，操作不隐藏，内容不重叠。

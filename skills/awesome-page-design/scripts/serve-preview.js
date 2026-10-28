@@ -17,6 +17,7 @@ const mimeTypes = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml",
+  ".ico": "image/x-icon",
   ".webp": "image/webp",
   ".md": "text/markdown; charset=utf-8",
 };
@@ -40,7 +41,7 @@ function createServer() {
 
     if (!filePath || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
       res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
-      res.end("Not found");
+      res.end("未找到页面");
       return;
     }
 
@@ -65,8 +66,8 @@ function listen(port) {
   });
 
   server.listen(port, host, () => {
-    console.log(`Preview gallery: http://${host}:${port}/assets/previews/`);
-    console.log(`Skill root:       http://${host}:${port}/`);
+    console.log(`风格预览： http://${host}:${port}/assets/previews/`);
+    console.log(`Skill 目录： http://${host}:${port}/`);
   });
 }
 

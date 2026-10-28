@@ -1,0 +1,77 @@
+body.demo-style-19 { background: #fff9f4; }
+.s19 { color: #291b3c; background: radial-gradient(ellipse at 100% 0,#e9d8ff 0,transparent 40%),#fff9f4; }
+.s19 .run19-wrap { width: min(1240px,100% - 64px); margin: auto; }
+.s19 .run19-nav { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid #ddd0df; }
+.s19 .run19-brand { display: flex; align-items: center; gap: 9px; font-size: 22px; font-weight: 850; text-decoration: none; }
+.s19 .run19-brand > span { display: grid; place-items: center; width: 34px; height: 34px; background: #7b37df; border-radius: 50%; color: #fff; }
+.s19 .run19-brand small { font: 9px/1.5 monospace; max-width: 90px; margin-left: 8px; letter-spacing: .08em; }
+.s19 .run19-nav nav { display: flex; align-items: center; gap: 24px; font-size: 12px; }
+.s19 .run19-nav nav a { text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.s19 .run19-nav button { min-height: 40px; padding: 0 17px; color: #6d2ec9; background: transparent; border: 1px solid #b892df; border-radius: 24px; font-weight: 700; }
+.s19 .run19-hero { display: grid; grid-template-columns: 1.08fr 1fr; gap: 30px; align-items: center; padding: 68px 0 65px; }
+.s19 .run19-eyebrow { display: flex; gap: 9px; align-items: center; color: #785592; font: 11px/1.5 monospace; letter-spacing: .1em; }
+.s19 .run19-eyebrow span { width: 7px; height: 7px; background: #ca3fc3; border-radius: 50%; }
+.s19 h1 { font-size: clamp(38px,4.8vw,68px); line-height: 1.18; letter-spacing: -.065em; font-weight: 900; margin: 25px 0; }
+.s19 h1 > span { background: linear-gradient(100deg,#8d35d6,#e637a5,#f07b45); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.s19 .run19-intro { font-size: 14px; line-height: 1.9; color: #6e587f; }
+.s19 .run19-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 31px; }
+.s19 .run19-primary { min-height: 48px; padding: 0 23px; border: 0; border-radius: 28px; color: #fff; background: linear-gradient(110deg,#7d38d9,#d42d94); box-shadow: 0 8px 22px #9a42cc2b; font-size: 13px; font-weight: 750; display: inline-flex; justify-content: center; align-items: center; gap: 25px; }
+.s19 .run19-primary:hover { filter: brightness(1.08); }
+.s19 .run19-cta > span { font-size: 12px; font-weight: 700; line-height: 1.7; }
+.s19 .run19-cta small { color: #846f90; font-size: 10px; font-weight: 400; }
+.s19 .run19-edition { display: flex; align-items: center; gap: 17px; margin-top: 40px; font-size: 11px; line-height: 1.8; }
+.s19 .run19-edition > b { font: 700 26px/1.4 monospace; border-right: 1px solid #d4c4d9; padding-right: 17px; }
+.s19 .run19-avatars { display: inline-flex; align-items: center; justify-content: center; position: relative; width: 32px; height: 32px; margin-left: 10px; background: #e9b7a1; border: 2px solid #fff9f4; border-radius: 50%; font-size: 10px; }
+.s19 .run19-avatars span, .s19 .run19-avatars i { display: grid; place-items: center; position: absolute; left: 22px; width: 32px; height: 32px; border: 2px solid #fff9f4; border-radius: 50%; background: #d2beed; font-style: normal; }
+.s19 .run19-avatars i { left: 44px; background: #b4d9c1; }
+.s19 .run19-orbit { position: relative; min-height: 440px; }
+.s19 .run19-orbit svg { width: 100%; height: auto; display: block; }
+.s19 .run19-orbit-label { position: absolute; top: 0; left: 45px; font: 11px/1.5 monospace; letter-spacing: .13em; color: #7b5b93; }
+.s19 .run19-floating { position: absolute; top: 100px; right: -8px; padding: 14px 20px; background: #ffffffdf; box-shadow: 0 10px 35px #8a58af1f; transform: rotate(7deg); border: 1px solid #f8efff; border-radius: 12px; font-size: 12px; line-height: 1.8; }
+.s19 .run19-pace { position: absolute; bottom: 12px; left: 12px; font: 800 16px/1.4 monospace; color: #8d40c6; transform: rotate(-8deg); }
+.s19 .run19-route-section { padding: 35px 0 0; scroll-margin-top: 20px; }
+.s19 .run19-section-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 25px; margin-bottom: 24px; }
+.s19 .run19-section-title p { font: 10px/1.5 monospace; letter-spacing: .1em; color: #9a6aa8; margin-bottom: 10px; }
+.s19 h2 { font-size: 29px; letter-spacing: -.05em; line-height: 1.4; font-weight: 800; }
+.s19 .run19-distance { display: flex; padding: 4px; border-radius: 14px; border: 1px solid #e4d5ee; background: #f0e6f7; }
+.s19 .run19-distance button { min-height: 48px; border: 0; background: transparent; color: #80618e; padding: 4px 18px; border-radius: 10px; font-size: 13px; font-weight: 800; }
+.s19 .run19-distance small { display: block; font-size: 9px; font-weight: 400; margin-top: 2px; }
+.s19 .run19-distance button[aria-pressed=true] { background: #fff; color: #7b2fc7; box-shadow: 0 3px 9px #7d459414; }
+.s19 .run19-route-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 24px; align-items: stretch; }
+.s19 .run19-map { position: relative; background: #f0edf5; border-radius: 22px; overflow: hidden; }
+.s19 .run19-map svg { width: 100%; height: 100%; min-height: 350px; display: block; }
+.s19 .run19-map-note { position: absolute; left: 16px; bottom: 13px; font-size: 10px; color: #716486; padding: 5px 9px; border-radius: 6px; background: #ffffffd9; }
+.s19 .run19-route-info { background: #fff; border: 1px solid #eee1f1; border-radius: 22px; padding: 28px; }
+.s19 .run19-mini { font: 9px/1.5 monospace; color: #9b72ac; letter-spacing: .1em; }
+.s19 h3 { font-size: 20px; font-weight: 800; line-height: 1.5; margin: 10px 0; }
+.s19 .run19-distance-stat { display: flex; align-items: center; gap: 12px; padding: 10px 0 19px; }
+.s19 .run19-distance-stat strong { font: 800 66px/1 monospace; color: #9a36cf; letter-spacing: -.1em; }
+.s19 .run19-distance-stat span { font-size: 10px; line-height: 1.7; color: #80618e; }
+.s19 label { display: block; margin-bottom: 7px; font-size: 12px; font-weight: 700; }
+.s19 select, .s19 input { width: 100%; min-height: 44px; padding: 0 12px; background: #fcf9ff; border: 1px solid #dfcde9; border-radius: 8px; color: #432956; font-size: 12px; }
+.s19 .run19-estimate { display: flex; align-items: center; justify-content: space-between; font-size: 11px; margin-top: 14px; color: #80618e; }
+.s19 .run19-estimate strong { color: #432956; font-size: 13px; }
+.s19 .run19-waypoints { color: #80618e; font-size: 11px; line-height: 1.9; margin: 20px 0; min-height: 42px; }
+.s19 .run19-route-info .run19-primary { width: 100%; }
+.s19 .run19-details { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 45px; padding: 55px 0; }
+.s19 .run19-details > div { border-top: 1px solid #dfd1e5; padding-top: 20px; }
+.s19 .run19-details > div > span { font: 12px/1.5 monospace; color: #b376c4; }
+.s19 .run19-details h3 { font-size: 17px; }
+.s19 .run19-details p { font-size: 12px; color: #80618e; line-height: 1.9; }
+.s19 .run19-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; padding: 25px 0 35px; border-top: 1px solid #dfd1e5; }
+.s19 .run19-footer strong { font-size: 16px; }
+.s19 .run19-dialog { width: 450px; padding: 28px; border: 1px solid #e0c7ed; background: #fffaff; color: #432956; border-radius: 24px; box-shadow: 0 20px 90px #351d5540; }
+.s19 .run19-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; font: 9px/1.5 monospace; color: #a275b0; }
+.s19 .demo-close { border: 1px solid #e0c7ed; border-radius: 50%; background: #f4eaf9; color: #67467a; }
+.s19 .run19-dialog h2 { font-size: 25px; margin: 12px 0 20px; }
+.s19 .run19-booking-route { padding: 12px; background: #f2e6fc; border-radius: 9px; font-size: 12px; margin-bottom: 22px; }
+.s19 .run19-dialog .demo-field-error { margin: 5px 0 12px; }
+.s19 .run19-dialog .demo-local-note { margin: 18px 0; }
+.s19 .run19-dialog .run19-primary { width: 100%; }
+.s19 [data-run-confirmation] { text-align: center; }
+.s19 .run19-confirm-star { font-size: 62px; color: #c234bb; line-height: 1.2; }
+.s19 [data-run-confirmation] p { font-size: 12px; line-height: 1.9; }
+.s19 [data-run-confirmation] small { display: block; margin: 18px 0; font-size: 10px; color: #80618e; }
+.s19 .run19-confirm-code { margin: 22px 0; padding: 18px 10px; border: 1px dashed #bc8bcd; border-radius: 12px; font: 12px/1.5 monospace; background: #f4e8fc; }
+@media(max-width:900px) { .s19 .run19-wrap { width: calc(100% - 40px); } .s19 .run19-nav nav { gap: 14px; } .s19 .run19-brand small { display: none; } .s19 .run19-hero { gap: 10px; padding: 45px 0; } .s19 .run19-orbit { min-height: 0; } .s19 .run19-floating { top: 70px; right: 0; font-size: 10px; padding: 10px; } .s19 .run19-orbit-label { left: 20px; font-size: 9px; } .s19 .run19-pace { bottom: -15px; font-size: 12px; } .s19 .run19-route-grid { grid-template-columns: 1.5fr 1fr; gap: 16px; } .s19 .run19-route-info { padding: 20px; } .s19 .run19-details { gap: 22px; } }
+@media(max-width:640px) { .s19 .run19-wrap { width: calc(100% - 32px); } .s19 .run19-nav { height: 77px; } .s19 .run19-brand { font-size: 19px; } .s19 .run19-nav nav a { display: none; } .s19 .run19-nav nav button { padding: 0 12px; font-size: 11px; } .s19 .run19-hero { grid-template-columns: 1fr; padding: 36px 0 25px; } .s19 h1 { font-size: clamp(37px,9vw,58px); margin: 23px 0; } .s19 .run19-intro { font-size: 13px; } .s19 .run19-edition { margin-top: 28px; } .s19 .run19-orbit { width: min(100%,420px); margin: 25px auto 0; } .s19 .run19-floating { top: 60px; right: 5px; } .s19 .run19-orbit-label { top: 0; } .s19 .run19-pace { bottom: 0; } .s19 .run19-section-title { align-items: stretch; flex-direction: column; gap: 20px; } .s19 h2 { font-size: 25px; } .s19 .run19-distance { align-self: flex-start; } .s19 .run19-route-grid { grid-template-columns: 1fr; } .s19 .run19-map svg { min-height: 0; height: auto; } .s19 .run19-map-note { font-size: 9px; } .s19 .run19-route-info { padding: 24px; } .s19 .run19-route-info .run19-waypoints { min-height: 0; } .s19 .run19-distance-stat { padding-block: 17px; } .s19 .run19-details { grid-template-columns: 1fr; padding: 35px 0; gap: 22px; } .s19 .run19-dialog { padding: 22px; } }

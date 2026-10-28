@@ -1,96 +1,86 @@
-# Style 15 - Liquid Glass (液态玻璃)
+# 风格 15：液态玻璃
 
-## Summary
+## 概述
 
-Frosted glass, transparent layering, blurred materials, and a futuristic technology mood.
+毛玻璃、透明层次、磨砂质感、科技感和未来感。
 
-Chinese summary: 毛玻璃、透明层次、磨砂质感、科技感和未来感。
+## 适用场景
 
-## Best For
+植物园地图、空间化仪表盘、高级未来感工具
 
-botanical maps, spatial dashboards, premium futuristic tools
+## 示例场景
 
-## Example Scenario
+- 示例产品：夜航
+- 页面任务：夜间街区路线规划
+- 标题：晚一点，也有好风景。
+- 主要操作：导出路线
+- 次要操作：选择停靠点
 
-- Product sample: Glasshouse Nine
-- Page job: Botanical glasshouse map
-- Headline: Float humidity, watering, and visitor paths over a living conservatory.
-- Primary action: Open canopy map
-- Secondary action: Schedule watering
+## 场景组件
 
-## Scenario Components
+- 地图与行程联动：地点针点、介绍、路线顺序和预计步行时间围绕同一状态更新。
+- 可读的玻璃层：磨砂面板叠在克制的夜间地图上，保证文字与选中状态清晰。
+- 自由增减路线：添加或移除停靠点，并导出真实的文本行程文件。
 
-- Living map: Glass layers sit over beds, paths, and climate zones instead of a generic sci-fi background.
-- Readable translucency: Tint and borders protect text while still feeling like glass.
-- Garden operations: Visitor route, water schedule, and climate status are visible at once.
+## 示例状态
 
-## Example States
+- 旧码头：路线内
+- 不眠书店：已选中
+- 月影桥：路线内
 
-- Fern room: Stable
-- Orchid mist: Due
-- West path: Open
+## 布局模式
 
-## Layout Pattern
+- 模式：夜航城市漫游
+- 结构：夜间街区示意地图作为主体，左侧为窄玻璃路线面板，地图叠加可选针点、地点详情和预计步行时长。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：标签干净克制，标题舒展，玻璃背景上的文字保持高对比。
+- 组件：夜间街区示意地图作为主体，左侧为窄玻璃路线面板，地图叠加可选针点、地点详情和预计步行时长。
+- 按钮：使用可读玻璃控件，以选中边框和稳定色调变化表达状态。
+- 图标与媒体：使用原创街区线稿、水道、发光针点和虚线路径，所有视觉对象服务于路线选择。
+- 状态：呈现已选地点、路线内外、自定路线、空行程和导出成功状态。
+- 避免：不要把低对比文字放在复杂透明场景上。
 
-- Pattern: Glasshouse Climate Map (玻璃温室气候图)
-- Archetype: Glasshouse Climate Map
-- Structure: Translucent conservatory map with climate panes, water zones, canopy paths, plant notes, and visitor route controls.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use clean futuristic labels with high contrast over every glass layer.
-- Components: Glass panels, climate pins, watering rows, plant cards, and route overlays should stay readable.
-- Buttons: Use bordered glass controls and bright active states that do not rely on blur alone.
-- Icons and media: Use plant beds, canopy maps, mist zones, roof lines, and watering schedules.
-- States: Show stable, due, open path, climate drift, selected zone, and mist running states.
-- Avoid: Do not put low-contrast text over busy translucent scenery.
+## 视觉语言
 
-## Visual Language
+- 背景：`#07111f`
+- 表面：`rgba(255,255,255,.13)`
+- 正文：`#f8fbff`
+- 弱化文字：`#b9c5d6`
+- 主色：`#dff7ff`
+- 强调色：`#8b5cf6`
+- 边框：`rgba(255,255,255,.26)`
+- 圆角：`24px`
+- 面板圆角：`24px`
+- 控件圆角：`14px`
+- Chip 圆角：`10px`
+- 媒体圆角：`20px`
+- 几何规则：用可见结构平衡玻璃质感曲线；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 28px 90px rgba(15, 23, 42, .45)`
 
-- Background: `#07111f`
-- Surface: `rgba(255,255,255,.13)`
-- Text: `#f8fbff`
-- Muted text: `#b9c5d6`
-- Primary: `#dff7ff`
-- Accent: `#8b5cf6`
-- Border: `rgba(255,255,255,.26)`
-- Radius: `24px`
-- Panel radius: `24px`
-- Control radius: `14px`
-- Chip radius: `10px`
-- Media radius: `20px`
-- Geometry rule: glass curves balanced by visible structure; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 28px 90px rgba(15, 23, 42, .45)`
+## 组件细节
 
-## Component Detail System
-
-- Button system: Use glass buttons with visible borders, readable labels, and hover states based on tint rather than blur alone.
-- Feedback and alerts: Use translucent toasts, map-layer alerts, and readable inline status cards over glass.
-- Spacing system: Use 20-28px glass panels, 14px translucent gaps, and stable backdrops under text.
-- Responsive behavior: Desktop can split map and controls; mobile places controls above the map when the action matters more than ambience.
-
-Chinese implementation notes:
-
-- 按钮细节：使用带可见边框的玻璃按钮、可读标签，以及基于色调而不是只靠模糊的 hover。
-- 提示与反馈：使用半透明 toast、地图层提示，以及玻璃上可读的内联状态卡。
+- 按钮系统：使用可读玻璃控件，以选中边框和稳定色调变化表达状态。
+- 提示与反馈：必填错误贴近字段显示，完成操作提供可读反馈，所有可见状态都与本地演示数据一致。
 - 间距系统：玻璃面板 20-28px，透明层间距 14px，文本下方背景稳定。
-- 响应式策略：桌面可拆分地图和控件；手机在操作更重要时把控件放到地图前。
+- 响应式策略：手机先展示路线控件，再展示地图；地点面板位于针点区域下方。
 
-## Page Adaptation Guide
+## 页面适配指南
 
-- Landing page: Use a glass map or spatial product story with readable translucent panels and stable media backdrops.
-- Dashboard: Use signal layers, selected rooms, map pins, translucent controls, and readable alerts.
-- Admin panel: Use for premium spatial tools, not conventional back-office CRUD unless the map/object is central.
-- Forms, tables, and data: Use glass fields only over stable surfaces; focus and errors need visible borders and text.
-- Mobile: Place controls above ambience when action matters; keep glass panels readable over every background.
-- Not a good fit for: Weak for low-power devices, accessibility-critical dense forms, or plain official portals.
+- 落地页：使用玻璃地图或空间产品叙事，搭配易读的半透明面板和稳定的媒体背景。
+- 数据看板：使用信号层、选中房间、地图标记、半透明控件和易读的 Alert。
+- 管理后台：用于高级空间工具；除非地图或空间对象是核心，否则不要用于常规后台 CRUD。
+- 表单、Table 与数据：保留可见 Label，使用自定义行内错误与本地确认反馈，不使用浏览器原生校验气泡。
+- 移动端：手机先展示路线控件，再展示地图；地点面板位于针点区域下方。
+- 不适合：不适合低性能设备、对无障碍要求严格的密集 Form，或朴素的官方门户。
 
-## Usage Notes
+## 使用要点
 
-- Layer translucent panels over vivid but softened media.
-- Use blur, tint, and borders to keep text readable.
-- Avoid low-contrast glass over busy images.
+- 夜间街区示意地图作为主体，左侧为窄玻璃路线面板，地图叠加可选针点、地点详情和预计步行时长。
+- 使用原创街区线稿、水道、发光针点和虚线路径，所有视觉对象服务于路线选择。
+- 手机先展示路线控件，再展示地图；地点面板位于针点区域下方。
 
-## Continue
+## 后续步骤
 
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

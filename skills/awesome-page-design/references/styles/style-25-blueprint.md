@@ -1,96 +1,86 @@
-# Style 25 - Blueprint (蓝图)
+# 风格 25：蓝图
 
-## Summary
+## 概述
 
-Deep blue technical grid, cyan linework, annotated structure, measured components, and plan-sheet precision.
+深蓝技术网格、青色线稿、标注结构、测量式组件和工程图纸精度。
 
-Chinese summary: 深蓝技术网格、青色线稿、标注结构、测量式组件和工程图纸精度。
+## 适用场景
 
-## Best For
+建筑工具、改造规划、系统地图、技术图纸
 
-architecture tools, renovation planning, systems maps, technical plans
+## 示例场景
 
-## Example Scenario
+- 示例产品：泊位
+- 页面任务：露营车内装规划与尺寸复核
+- 标题：把远方，装进 6.5 平方米。
+- 主要操作：确认当前方案
+- 次要操作：导出配置
 
-- Product sample: Loft Plan Works
-- Page job: Small studio renovation sheet
-- Headline: Measure a live-work loft before the first wall is moved.
-- Primary action: Approve plan
-- Secondary action: Export drawing
+## 场景组件
 
-## Scenario Components
+- 尺寸联动：柜深与床铺尺寸直接决定主通道净宽。
+- 图纸有信息：可调整模块与固定水电模块在俯视图中明确区分。
+- 可带走的配置：导出真实 JSON 文件，记录尺寸、模式与检查结果。
 
-- Measured living: Dimensions, furniture blocks, and lighting runs are part of the UI, not background texture.
-- Build clarity: Crew notes, room callouts, and unresolved spans stay attached to the plan.
-- Plan-sheet precision: The layout feels technical while remaining about a real home.
+## 示例状态
 
-## Example States
+- 基础床铺：已选
+- 柜深 450 mm：可调整
+- 净宽 450 mm：检查通过
 
-- Kitchen wall: Measure
-- Bookshelf bay: Approved
-- Pendant run: Revise
+## 布局模式
 
-## Layout Pattern
+- 模式：露营车内装图纸
+- 结构：深蓝工程图纸上方展示车型尺寸与图号，中央俯视图联动右侧模式与柜深参数，下方呈现通道冲突和配置导出说明。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用紧凑界面字体、等宽尺寸与图号，数值始终带明确单位。
+- 组件：床铺与餐桌模式 Button、柜深 Range、尺寸标注 Checkbox、SVG 占位模块、净通道计算、冲突反馈与 JSON 导出。
+- 按钮：参数模式使用低圆角细线按钮，选中态像图纸标记，冲突时确认按钮明确禁用。
+- 图标与媒体：使用原创露营车俯视 SVG、网格、尺寸线、水电模块、侧滑门轨迹与比例尺；线条承载真实关系。
+- 状态：展示模式已选、标注开关、合格净宽、通道冲突、不可确认和已导出；冲突时禁用方案确认。
+- 避免：不要把精确尺寸图做成无信息的科幻发光背景。
 
-- Pattern: Blueprint Renovation Sheet (蓝图改造图纸)
-- Archetype: Blueprint Renovation Sheet
-- Structure: Home renovation plan sheet with room dimensions, furniture blocks, lighting runs, material callouts, and crew notes.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use compact technical labels, tabular dimensions, and clear sheet titles.
-- Components: Dimension lines, room nodes, fixture labels, unresolved spans, export controls, and material notes should be measured.
-- Buttons: Use technical annotation controls with thin borders and clear focus.
-- Icons and media: Use room plans, section marks, furniture outlines, lighting routes, and material callouts.
-- States: Show measured, approved, revise, open note, blocked span, and exported states.
-- Avoid: Do not turn blueprint precision into generic sci-fi glow.
+## 视觉语言
 
-## Visual Language
+- 背景：`#061a33`
+- 表面：`rgba(7, 28, 52, .88)`
+- 正文：`#e8f7ff`
+- 弱化文字：`#8bb8d8`
+- 主色：`#9edbff`
+- 强调色：`#34d3ff`
+- 边框：`#2d6796`
+- 圆角：`4px`
+- 面板圆角：`4px`
+- 控件圆角：`2px`
+- Chip 圆角：`0`
+- 媒体圆角：`4px`
+- 几何规则：低圆角图纸面板、精确细边、矩形参数控件与对齐的工程标注。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 0 0 1px rgba(158, 219, 255, .24), 0 24px 70px rgba(0, 38, 76, .45)`
 
-- Background: `#061a33`
-- Surface: `rgba(7, 28, 52, .88)`
-- Text: `#e8f7ff`
-- Muted text: `#8bb8d8`
-- Primary: `#9edbff`
-- Accent: `#34d3ff`
-- Border: `#2d6796`
-- Radius: `4px`
-- Panel radius: `4px`
-- Control radius: `2px`
-- Chip radius: `0`
-- Media radius: `4px`
-- Geometry rule: technical plan-sheet geometry with measured low-radius panels; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 0 0 1px rgba(158, 219, 255, .24), 0 24px 70px rgba(0, 38, 76, .45)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：参数模式使用低圆角细线按钮，选中态像图纸标记，冲突时确认按钮明确禁用。
+- 提示与反馈：展示模式已选、标注开关、合格净宽、通道冲突、不可确认和已导出；冲突时禁用方案确认。
+- 间距系统：图纸面板间距 16–24px，参数间距 8–12px，尺寸与单位始终对齐。
+- 响应式策略：手机按车型摘要、图纸、参数、冲突与导出说明排列；图纸按视口缩放，控件保持可触达。
 
-- Button system: Use compact command buttons, coordinate chips, thin measured borders, and active states that look selected on a drawing sheet.
-- Feedback and alerts: Use callout notes, dimension-line warnings, export confirmations, and blocked-span labels tied to exact nodes.
-- Spacing system: Use 16-24px sheet panels, 8-12px annotation gaps, thin grid lines, and dense but aligned metric rows.
-- Responsive behavior: Desktop keeps the sheet, annotations, and trace list visible; mobile shows plan summary, primary action, graph, then unresolved spans.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：深蓝工程图纸上方展示车型尺寸与图号，中央俯视图联动右侧模式与柜深参数，下方呈现通道冲突和配置导出说明。
+- 数据看板：适合尺寸、模块、冲突与图纸复核的技术工作台。
+- 管理后台：用于空间配置与工程审阅，图形与参数保持联动。
+- 表单、Table 与数据：使用 Range、Checkbox 与明确单位，尺寸冲突靠近参数和图形展示；冲突时禁用确认，不隐藏问题。
+- 移动端：手机按车型摘要、图纸、参数、冲突与导出说明排列；图纸按视口缩放，控件保持可触达。
+- 不适合：不适合柔和生活叙事、感性品牌或图片主导的奢华页面。
 
-- 按钮细节：使用紧凑命令按钮、坐标 chip、细测量边框，以及像图纸中选中对象的 active 状态。
-- 提示与反馈：使用标注说明、尺寸线警告、导出确认和绑定到具体节点的阻塞跨度标签。
-- 间距系统：图纸面板 16-24px，标注间距 8-12px，细网格线，指标密集但对齐。
-- 响应式策略：桌面保留图纸、标注和追踪列表；手机先显示计划摘要和主操作，再显示图和未解决跨度。
+## 使用要点
 
-## Page Adaptation Guide
+- 网格、标注与比例尺表达真实尺寸关系，避免科幻式泛光。
+- 参数变化同步作用于图形、净宽与确认状态。
+- 冲突保持可见，导出同时保留配置和检查结果。
 
-- Landing page: Use a technical plan sheet with dependency graph, annotations, export action, and engineering proof.
-- Dashboard: Use grid, nodes, callouts, trace rows, unresolved spans, and plan readiness metrics.
-- Admin panel: Use for infrastructure, API, architecture, and planning tools where diagrams and review gates are central.
-- Forms, tables, and data: Use compact labels, coordinate-like grouping, exact validation, and export/review confirmations.
-- Mobile: Show summary and action first, then graph, unresolved spans, annotations, and export details.
-- Not a good fit for: Weak for soft lifestyle, emotional storytelling, and image-led luxury pages.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use grid, scale, labels, and dimension lines as real information structure.
-- Keep linework thin and exact instead of glowing like a sci-fi console.
-- Make annotations explain relationships, ownership, and next actions.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

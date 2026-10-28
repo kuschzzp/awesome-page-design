@@ -1,44 +1,44 @@
-# Style Index
+# 风格索引
 
-This index summarizes all 26 available visual styles, numbered continuously from Style 01 to Style 26. Use these styles as visual direction and design the actual page structure around the user's product. Choose the user's layout archetype from `layout-guidance.md` before treating any style as a fixed page shape.
+本索引汇总全部 26 种视觉风格，编号从 01 连续排列至 26。把风格作为视觉方向，围绕用户产品设计实际页面结构。先依据[布局指南](layout-guidance.md)确定布局原型，不要把某种风格当成固定页面模板。
 
-| Style | Name | 中文名 | Best For | Layout Pattern | Visual Language |
-|---|---|---|---|---|---|
-| Style 01 | [Card Grid](styles/style-01-card-grid.md) | 卡片网格 | admin panels, enterprise consoles, permission systems, operations dashboards | Blue Admin Console | Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels. |
-| Style 02 | [Block Brutalism](styles/style-02-block-brutalism.md) | 块状粗野主义 | bold campaigns, indie products, playful utilities | Street Poster Launch | Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy. |
-| Style 03 | [Aurora Gradient](styles/style-03-aurora-gradient.md) | 极光渐变 | immersive art venues, futuristic products, premium dark experiences | Aurora Listening Room | Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium immersive atmosphere. |
-| Style 04 | [Retro Y2K](styles/style-04-retro-y2k.md) | 复古 Y2K | music, fashion, youth culture, playful campaigns | Glossy Y2K Stage | Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism. |
-| Style 05 | [Swiss Editorial](styles/style-05-swiss-editorial.md) | 瑞士编辑风 | portfolios, cultural sites, design studios, serious content | Swiss Archive Board | Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm. |
-| Style 06 | [Terminal Hacker](styles/style-06-terminal-hacker.md) | 黑客终端 | developer tools, CLI products, security, open source | Terminal Console | Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility. |
-| Style 07 | [Cute-alism](styles/style-07-cutealism.md) | 可爱主义 | playful productivity, education tools, creator utilities | Cute Daily Desk | Soft playful surfaces, friendly object shapes, pastel accents, compact controls, and warm task-board clarity. |
-| Style 08 | [Resonant Stark](styles/style-08-resonant-stark.md) | 共鸣极简 | photography archives, premium dark portfolios, art, high-end product teasers | Stark Photo Contact Sheet | Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint. |
-| Style 09 | [Tech Minimal](styles/style-09-tech-minimal.md) | 科技极简风 | print studios, editorial tools, focused utility pages | Minimal Print Ledger | Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface. |
-| Style 10 | [Dark Theme](styles/style-10-dark-theme.md) | 深色主题 | micro-cinemas, creative studios, premium launch pages | Dark Cinema Review | Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual. |
-| Style 11 | [Structured Lines](styles/style-11-structured-lines.md) | 结构线 | museum maps, workflow products, structured B2B sites | Line Museum Plan | Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy. |
-| Style 12 | [Layered Material](styles/style-12-layered-material.md) | 层级材质 | interior sample boards, consumer tools, product dashboards | Layered Interior Samples | Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces. |
-| Style 13 | [Bento Layout](styles/style-13-bento-layout.md) | 便当盒布局 | restaurant menus, creator profiles, modular product overviews | Bento Market Table | Widget-like card zones, modular composition, and clearly chunked information. |
-| Style 14 | [Neumorphism](styles/style-14-neumorphism.md) | 新拟态 | home devices, audio tools, calm utilities, wellness and focus products | Neumo Lamp Console | Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces. |
-| Style 15 | [Liquid Glass](styles/style-15-liquid-glass.md) | 液态玻璃 | botanical maps, spatial dashboards, premium futuristic tools | Glasshouse Climate Map | Frosted glass, transparent layering, blurred materials, and a futuristic technology mood. |
-| Style 16 | [Retro Computing](styles/style-16-retro-computing.md) | 复古主义 | music sites, game-adjacent products, cultural campaigns | Retro Desktop Workspace | Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type. |
-| Style 17 | [Neo-Brutalism](styles/style-17-neo-brutalism.md) | 新粗野主义 | developer launches, bold campaigns, playful product sites | Brutal Proof Release | Thick lines, strong color clashes, unpolished giant type, and controlled chaos. |
-| Style 18 | [Precision Futurism](styles/style-18-precision-futurism.md) | 精密未来风 | issue trackers, AI operations tools, technical SaaS | Precision Incident Map | Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision. |
-| Style 19 | [Gradient Pop](styles/style-19-gradient-pop.md) | 渐变风 | festival pages, launch walls, creator campaign tools | Gradient Festival Wall | Bright gradients, tech or trend energy, and an immediately eye-catching first viewport. |
-| Style 20 | [Soft Pop](styles/style-20-soft-pop.md) | 柔和流行 | community classes, education, writing tools, creative productivity | Soft Garden Class | Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes. |
-| Style 21 | [Acid Design](styles/style-21-acid-design.md) | 酸性设计 | experimental portfolios, music/fashion drops, immersive campaigns | Acid Signal Poster | Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension. |
-| Style 22 | [Art Deco](styles/style-22-art-deco.md) | 装饰艺术 | luxury hospitality, cultural venues, premium events, editorial brand launches | Deco Theatre Foyer | Symmetric poster composition, dark jewel tones, gilded rules, stepped geometry, and polished hospitality drama. |
-| Style 23 | [Wabi-Sabi](styles/style-23-wabi-sabi.md) | 侘寂 | ceramics, wellness, slow commerce, craft portfolios, mindful editorial pages | Wabi Repair Studio | Earthy restraint, natural texture, handmade imperfection, quiet whitespace, and slow material confidence. |
-| Style 24 | [Ink Wash](styles/style-24-ink-wash.md) | 水墨 | tea culture, museums, literature, cultural ecommerce, heritage product stories | Ink Tea Scroll | Paper-white canvas, black ink hierarchy, red seal accents, scroll rhythm, and poetic editorial restraint. |
-| Style 25 | [Blueprint](styles/style-25-blueprint.md) | 蓝图 | architecture tools, renovation planning, systems maps, technical plans | Blueprint Renovation Sheet | Deep blue technical grid, cyan linework, annotated structure, measured components, and plan-sheet precision. |
-| Style 26 | [Industrial Control](styles/style-26-industrial-control.md) | 工业控制 | print rooms, factory monitoring, logistics control, hardware fleets, incident rooms | Industrial Print Room | Rugged dark panels, safety accents, dense status rows, machine labels, and maintainable control-room clarity. |
+| 编号 | 风格 | 适用场景 | 布局模式 | 视觉语言 |
+|---|---|---|---|---|
+| 01 | [卡片网格](styles/style-01-card-grid.md) | 后台管理、企业控制台、权限系统、运营仪表盘 | 清爽青蓝后台 | 白色侧栏与顶栏、浅灰工作区、青蓝操作色、细边框 Table 面板、紧凑筛选、克制的状态标签和清晰的双列表单弹窗。 |
+| 02 | [块状粗野主义](styles/style-02-block-brutalism.md) | 创意市集、文化活动、独立出版、预约领票 | 创意市集海报 | 暖白画布、亮黄主海报、黑色硬边与偏移阴影，辅以橙红点缀，呈现独立创意市集的街头气质。 |
+| 03 | [极光渐变](styles/style-03-aurora-gradient.md) | 天文导览、沉浸学习、探索工具 | 夜航星空观测台 | 深蓝夜空、克制青紫极光、微光天体标注与安静星图工作区。 |
+| 04 | [复古 Y2K](styles/style-04-retro-y2k.md) | 照片编辑、趣味创作工具、个人纪念品 | 千禧亮面拍贴亭 | 糖果粉 Y2K 拍贴亭，亮面控件围绕四格长条拍贴，搭配粉彩渐变与收藏感贴纸。 |
+| 05 | [瑞士编辑风](styles/style-05-swiss-editorial.md) | 视觉档案、文化收藏、图像编辑索引 | 街字视觉档案 | 米白编辑档案，红黑层级、编号索引、非对称图像排布与严格细线对齐。 |
+| 06 | [黑客终端](styles/style-06-terminal-hacker.md) | 开发者诊断、命令控制台、技术报告 | 本地链路巡检控制台 | 近黑终端、克制绿色等宽文字、可操作响应行、语义状态色与可停止的本地运行。 |
+| 07 | [可爱主义](styles/style-07-cutealism.md) | 玩乐生产力、教育工具、创作者实用工具 | 可爱日程桌面 | 柔和玩乐表面、友好对象形状、粉彩点缀、紧凑控件和温暖任务板层级。 |
+| 08 | [共鸣极简](styles/style-08-resonant-stark.md) | 摄影档案、高级暗色作品集、艺术、精品预告页 | 克制摄影联系印样 | 近黑画布、细字重、微光、大留白、精细线条和高级克制感。 |
+| 09 | [科技极简风](styles/style-09-tech-minimal.md) | 印刷工作室、编辑工具、聚焦型实用页面 | 极简印刷账页 | 大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。 |
+| 10 | [深色主题](styles/style-10-dark-theme.md) | 微型影院、创意工作室、高级发布页 | 暗色影院审阅 | 暗背景、高对比度，并用单色亮色强化主按钮和主视觉。 |
+| 11 | [结构线](styles/style-11-structured-lines.md) | 包裹追踪、配送进度、运输线路记录 | 包裹运输线路账页 | 细线框、结构化、专业严肃、信息层级清晰。 |
+| 12 | [层级材质](styles/style-12-layered-material.md) | 阅读计划、个人书架、温和学习工具 | 层叠阅读小角落 | 层次分明、大色块卡片、大圆角、有秩序且适合触控的表面。 |
+| 13 | [便当盒布局](styles/style-13-bento-layout.md) | 午餐搭配、餐品点选、模块化商品配置 | 午餐便当搭配台 | 小组件式卡片分区、模块化排布、信息清晰分块。 |
+| 14 | [新拟态](styles/style-14-neumorphism.md) | 环境声音播放器、专注计时、平静音频工具 | 触感声音控制台 | 柔光、内凹层次感圆角、柔和阴影和触感表面。 |
+| 15 | [液态玻璃](styles/style-15-liquid-glass.md) | 植物园地图、空间化仪表盘、高级未来感工具 | 夜航城市漫游 | 毛玻璃、透明层次、磨砂质感、科技感和未来感。 |
+| 16 | [复古主义](styles/style-16-retro-computing.md) | 音乐网站、游戏相关产品、文化活动页 | 像素桌面周刊 | 像素风、复古 UI、老式操作系统质感、80 年代计算机线索、块状窗口和像素字体。 |
+| 17 | [新粗野主义](styles/style-17-neo-brutalism.md) | 开发者发布页、强品牌活动、趣味产品站 | 撞色海报制作器 | 粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。 |
+| 18 | [精密未来风](styles/style-18-precision-futurism.md) | Issue 工具、AI 运营工具、技术型 SaaS | 动画渲染管线台 | 深色背景、发光边框、未来科技感和科幻 UI 精度。 |
+| 19 | [渐变风](styles/style-19-gradient-pop.md) | 节日活动页、发布墙、创作者活动工具 | 夜跑电台 | 大标题与跑者轨道渐变形成首屏，下方以路线图为主对象，旁侧选择距离与配速，报名弹窗生成本地凭单。 |
+| 20 | [柔和流行](styles/style-20-soft-pop.md) | 社区课堂、教育、写作工具、创意生产力 | 慢拍子 | 轻涂鸦引导区下接课程小路、四拍练习谱和速度滑杆；跟拍反馈与练习记录围绕同一节奏任务展开。 |
+| 21 | [酸性设计](styles/style-21-acid-design.md) | 实验作品集、音乐/时尚发布、沉浸式活动页 | 失真档案 | 铬面环状 SVG 与错位标题形成声音舞台，下接曲目切片和可排序试听清单；底部播放器保持稳定位置。 |
+| 22 | [装饰艺术](styles/style-22-art-deco.md) | 高级酒店、文化场馆、精品活动、编辑型品牌发布 | 海上电台 | 对称金线请柬形成首屏，日期人数选择、舞台桌位平面图与套餐摘要组成订位主区，下方以三栏呈现晚宴菜单。 |
+| 23 | [侘寂](styles/style-23-wabi-sabi.md) | 陶艺、健康生活、慢电商、手作作品集、安静编辑页 | 旧木修复档案 | 低饱和大地色、自然纹理、手作不完美、安静留白和缓慢的材质信任感。 |
+| 24 | [水墨](styles/style-24-ink-wash.md) | 茶文化、博物馆、文学、文化电商、传统产品叙事 | 地方志长卷阅览 | 宣纸白底、墨色层级、朱红印章强调、卷轴节奏和诗性编辑克制。 |
+| 25 | [蓝图](styles/style-25-blueprint.md) | 建筑工具、改造规划、系统地图、技术图纸 | 露营车内装图纸 | 深蓝技术网格、青色线稿、标注结构、测量式组件和工程图纸精度。 |
+| 26 | [工业控制](styles/style-26-industrial-control.md) | 印刷工作室、工厂监控、物流控制、硬件设备队列、事故指挥室 | 冷库值班控制台 | 耐用暗色面板、安全色强调、密集状态行、机器标签和可维护的控制室清晰度。 |
 
-## Similarity Guardrails
+## 风格区分原则
 
-- Do not collapse Style 03 Aurora Gradient, Style 08 Resonant Stark, Style 10 Dark Theme, Style 15 Liquid Glass, Style 18 Precision Futurism, and Style 21 Acid Design into the same generic dark SaaS page. They differ by atmosphere, restraint, contrast, material, precision, and experimental intensity.
-- Do not collapse Style 09 Tech Minimal, Style 11 Structured Lines, and Style 12 Layered Material into one neutral white UI. They differ by whitespace, line structure, and elevation/tonal surface logic.
-- Do not collapse Style 02 Block Brutalism and Style 17 Neo-Brutalism. Style 02 is the original warm block campaign style; Style 17 is higher-collision, giant-type controlled chaos.
-- Do not collapse Style 04 Retro Y2K and Style 16 Retro Computing. Style 04 is candy/neon Y2K; Style 16 is pixel and old-operating-system texture.
-- Do not turn Style 13 Bento Layout into a fixed template. Treat it as a modular visual composition style, not a required information architecture.
-- Do not collapse Style 22 Art Deco, Style 24 Ink Wash, and Style 05 Swiss Editorial into one editorial page. They differ by gilded symmetry, scroll/paper rhythm, and strict modernist rules.
-- Do not collapse Style 23 Wabi-Sabi and Style 20 Soft Pop into one warm rounded UI. Style 23 is quiet material restraint; Style 20 is friendly playful learning/product energy.
-- Do not collapse Style 25 Blueprint, Style 18 Precision Futurism, and Style 26 Industrial Control into one technical dashboard. Style 25 is a measured plan sheet, Style 18 is a dark precision graph console, and Style 26 is rugged safety-critical operations.
-- Use Style 02, Style 04, Style 07, Style 16, Style 17, Style 19, Style 20, and Style 21 only when the brand can carry a strong personality.
+- 不要把 03 极光渐变、08 共鸣极简、10 深色主题、15 液态玻璃、18 精密未来风和 21 酸性设计都做成相同的通用深色 SaaS 页面。它们分别强调氛围、克制、对比、材质、精度和实验强度。
+- 不要把 09 科技极简风、11 结构线和 12 层级材质合并成同一种中性白色 UI。它们分别依靠留白、线条结构，以及层次与色调表面的逻辑建立区别。
+- 不要混淆 02 块状粗野主义和 17 新粗野主义。02 是暖色块状活动风格；17 以更强的视觉碰撞、巨型字体和受控混乱表达个性。
+- 不要混淆 04 复古 Y2K 和 16 复古主义。04 使用糖果色、霓虹和 Y2K 质感；16 使用像素和老式操作系统纹理。
+- 不要把 13 便当盒布局变成固定模板。它是一种模块化视觉构图方式，不规定信息架构。
+- 不要把 22 装饰艺术、24 水墨和 05 瑞士编辑风合并成同一种编辑页面。它们分别依靠金色对称、卷轴与纸面节奏、严格的现代主义排版建立区别。
+- 不要把 23 侘寂和 20 柔和流行合并成同一种暖色圆角 UI。23 强调安静、克制的材质；20 强调亲和、玩乐的学习与产品氛围。
+- 不要把 25 蓝图、18 精密未来风和 26 工业控制合并成同一种技术看板。25 是精确的规划图纸，18 是深色精密图谱控制台，26 是耐用、强调安全的操作界面。
+- 只有品牌能够承载鲜明个性时，才使用 02、04、07、16、17、19、20 和 21。

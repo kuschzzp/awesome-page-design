@@ -69,7 +69,7 @@ async function syncCatalogDocs(directory = path.resolve(__dirname, "..")) {
 }
 
 if (require.main === module) {
-  syncCatalogDocs().then(() => console.log("README tables, style manuals, and style index synchronized from catalog/styles.json; HTML and screenshots were not changed.")).catch((error) => {
+  syncCatalogDocs().then(() => console.log("已同步中英文 README 表格、中文风格说明和索引；HTML 和截图未改动。")).catch((error) => {
     console.error(error);
     process.exitCode = 1;
   });

@@ -1,58 +1,58 @@
-# Component Implementation
+# 组件实现
 
-Use this to turn the selected or existing design language into stateful controls. Apply only states that the component actually supports; a static panel does not need an invented interaction.
+用于将选定或已有的设计语言落实为有状态控件。只处理组件实际支持的状态；静态 Panel 不需要凭空添加交互。
 
-## Ownership Of Detailed Contracts
+## 详细契约的职责划分
 
-This file owns buttons, forms, tabs, cards, metrics, shared geometry, density, and content behavior. Read only the focused contract for other component families:
+本文件负责 Button、Form、Tabs、Card、指标、共享几何、密度和内容行为。其他组件类别只需阅读对应的专项契约：
 
-| Component family | Behavior and verification owner |
+| 组件类别 | 行为与验证参考 |
 |---|---|
-| Select, dropdown, autocomplete, combobox, cascader | [select-and-combobox.md](patterns/select-and-combobox.md) |
-| Modal, drawer, popover, destructive confirmation | [modal-drawer-and-confirmation.md](patterns/modal-drawer-and-confirmation.md) |
-| Toast, banner, inline alert, outcome and recovery feedback | [toast-alert-and-feedback.md](patterns/toast-alert-and-feedback.md) |
-| Table, sorting, filtering, row selection, batch actions, pagination | [data-table-and-pagination.md](patterns/data-table-and-pagination.md) |
+| Select、Dropdown、Autocomplete、Combobox、Cascader | [选择控件契约](patterns/select-and-combobox.md) |
+| Modal、Drawer、Popover、破坏性操作 Confirmation | [浮层与确认契约](patterns/modal-drawer-and-confirmation.md) |
+| Toast、Banner、行内 Alert、结果与恢复反馈 | [反馈契约](patterns/toast-alert-and-feedback.md) |
+| Table、排序、筛选、行选择、批量操作、Pagination | [数据表格与分页契约](patterns/data-table-and-pagination.md) |
 
-Primitive acceptance and anti-pattern scanning belong to [ui-primitive-contract.md](ui-primitive-contract.md); project reuse belongs to [existing-project-integration.md](existing-project-integration.md).
+基础控件验收和反模式扫描由 [UI 基础控件契约](ui-primitive-contract.md)负责；项目复用由[现有项目集成](existing-project-integration.md)负责。
 
-## Common Component Anatomy
+## 通用组件结构
 
-Map semantic tokens to height, padding, radius, border, material, typography, icon placement, and action hierarchy. Define page gutters, section gaps, panel padding, row/control height, and compact versus touch-friendly variants using the current project scale where available.
+将语义 Token 映射到高度、内边距、圆角、边框、材质、字体层级、图标位置和操作层级。尽量使用项目已有尺度，定义页面留白、区块间距、Panel 内边距、行与控件高度，以及紧凑和适合触控的变体。
 
-Style identity should appear in geometry, material, state treatment, density, and placement, not only color. Poster, terminal, editorial, tactile, glass, pixel, and precision directions need distinct control language. If the result looks generic, improve those decisions before adding effects.
+风格特点应体现在几何、材质、状态表现、密度和位置中，而不只是颜色。海报、终端、编辑、触感、玻璃、像素和精密方向需要各自不同的控件语言。结果显得通用时，应先改善这些设计决策，再添加效果。
 
-Define how long labels, user-generated text, units, numbers, and helper text wrap, truncate, clamp, or expand. State changes should preserve the component's layout footprint.
+明确长 Label、用户生成文字、单位、数值和辅助文字如何换行、截断、限制行数或展开。状态变化应保持组件占用空间稳定。
 
-## Buttons And Links
+## Button 与 Link
 
-- Distinguish primary, secondary, quiet, and destructive actions; do not give destructive and happy-path actions identical emphasis.
-- Cover default, hover, focus-visible, pressed, disabled, and loading when relevant. Preserve button width during loading and make disabled state recognizable without implying clickability.
-- Expose toggled/selected state using semantics appropriate to the control, such as `aria-pressed` or `aria-selected`, with a visible marker.
-- Give links current/active or visited treatment only where meaningful. Action labels should describe the result, such as `Export CSV` or `Save Draft`.
-- Preserve project permission-disabled conventions when those states exist.
+- 区分主要、次要、低强调和破坏性操作；破坏性操作与正常流程操作不能使用相同强调程度。
+- 相关时覆盖默认、Hover、`focus-visible`、按下、禁用和加载状态。加载时保留 Button 宽度；禁用状态应可辨识，且不应暗示仍可点击。
+- 使用符合控件语义的属性公开切换或选中状态，例如 `aria-pressed` 或 `aria-selected`，并提供可见标记。
+- 仅在有意义时为 Link 提供当前、激活或已访问状态。操作文案应说明结果，例如“导出 CSV”或“保存草稿”。
+- 项目已有权限禁用状态时，保留相关约定。
 
-## Forms
+## Form
 
-- Keep labels visible after fields are filled; placeholders are hints, not labels.
-- Cover empty, focused, filled, invalid, disabled, and read-only states as supported; connect helper/error text to the field.
-- Place validation near the field, explain recovery, and make the first invalid field easy to find after submit.
-- Use appropriate email, URL, phone, number, search, and password input types. Checkbox/radio labels should share a hit target with the control.
+- 字段填写后仍保留 Label；Placeholder 是提示，不能代替 Label。
+- 根据组件支持情况覆盖空白、聚焦、已填写、无效、禁用和只读状态；将辅助文字与错误文字关联到字段。
+- 将校验信息放在字段附近，解释恢复方法，并让提交后的第一个无效字段容易找到。
+- 使用适合 Email、URL、电话、数值、搜索和密码的 Input 类型。Checkbox、Radio 的 Label 应与控件共用可点击区域。
 
-## Tabs, Filters, And Cards
+## Tabs、Filter 与 Card
 
-- Tabs and segmented controls need selected, focus-visible, hover, and disabled states when supported, with consistent keyboard semantics.
-- Filters should expose active/removable values and empty results; use saved-view or URL state when the product expects it.
-- Cards can be static, clickable, selected, expanded, disabled, or warning-bearing according to their actual job. Keep nested cards only for real contained objects, not decorative framing.
+- Tabs 和 Segmented Control 在支持时需要选中、`focus-visible`、Hover 和禁用状态，并保持一致的键盘语义。
+- Filter 应显示已生效、可移除的值和空结果；产品有此预期时，使用已保存视图或 URL 状态。
+- Card 根据实际任务，可以是静态、可点击、选中、展开、禁用或带警告的。只有确实存在包含关系的对象才使用嵌套 Card，不把嵌套当成装饰边框。
 
-## Metrics And Product States
+## 指标与产品状态
 
-- Metrics/charts need loading, no-data, stale, warning, selected-series, and comparison treatment where relevant.
-- Align numeric values and use consistent number formatting, units, comparison deltas, tabular numerals, and trend markers. Do not communicate change through color alone.
-- Empty states distinguish first use, filtered empty, permission denial, and failure; offer the relevant next action.
-- Loading preserves structure; errors expose repair/retry; success names what changed. For delivery scope and announcements use the focused feedback contract.
+- 指标和图表在相关时需要加载、无数据、过期、警告、选中序列及对比状态。
+- 对齐数值，统一数值格式、单位、比较差值、等宽数字和趋势标记。不要只通过颜色表达变化。
+- 空状态应区分首次使用、筛选无结果、权限不足和失败，并提供对应的下一步操作。
+- 加载时保留结构；错误时提供修复或重试入口；成功时说明发生了什么变化。反馈范围和状态播报见反馈专项契约。
 
-## Responsive Component Choices
+## 响应式组件选择
 
-Preserve the primary object, current state, and main action when panels collapse. Toolbars need stable wrapping or menus; filters need a visible mobile entry; dense tables use their focused contract's small-screen strategy. Touch-friendly spacing should not turn every surface into a card wall.
+Panel 收缩时保留核心对象、当前状态和主要操作。Toolbar 应稳定换行或收进 Menu；Filter 需要可见的移动端入口；密集 Table 使用专项契约中的小屏策略。适合触控的间距不应把每个区域都变成 Card 墙。
 
-Check supported states with short and longest realistic content. Verify the changed interactions through the finish flow in [workflow.md](workflow.md), including focused-contract checks for any family used above.
+使用简短内容和现实中可能出现的最长内容检查所支持的状态。通过[工作流程](workflow.md)的收尾步骤验证修改后的交互，并覆盖上述实际涉及组件类别的专项检查。

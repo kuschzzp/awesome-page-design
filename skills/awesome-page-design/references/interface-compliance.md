@@ -1,41 +1,41 @@
-# Interface Compliance
+# 界面实现规范
 
-Use for real UI implementation and code/screenshot audits. Apply checks to the requested surface, without expanding the assignment. Primitive-specific acceptance and scan rules are owned by [ui-primitive-contract.md](ui-primitive-contract.md); detailed component states belong to [component-implementation.md](component-implementation.md) and its focused references.
+用于实际 UI 实现，以及源码或截图审查。只检查请求涉及的界面，不扩大任务范围。基础控件的专项验收和扫描规则由 [UI 基础控件契约](ui-primitive-contract.md)负责；组件详细状态由[组件实现](component-implementation.md)及其专项参考负责。
 
-## Review Priorities
+## 审查优先级
 
-Classify findings by their actual impact:
+根据实际影响给问题分级：
 
-- **P0:** blocks a core workflow, accessible operation, or usable responsive layout.
-- **P1:** weakens common-path clarity, recovery, performance, or trust.
-- **P2:** visual consistency or polish issue.
+- **P0：**阻断核心工作流程、无障碍操作，或可用的响应式布局。
+- **P1：**削弱常见路径的清晰度、恢复能力、性能或可信度。
+- **P2：**视觉一致性或细节打磨问题。
 
-Lead with findings. Use source `file:line` when available, otherwise the affected page region. Give a concrete fix when it is not obvious; do not require style selection during a pure compliance audit.
+先给出问题。能定位源码时使用 `file:line`，否则指出受影响的页面区域。修复方法不明显时给出具体建议；纯实现规范审查不要求选择风格。
 
-## Semantics And Accessible Operation
+## 语义与无障碍操作
 
-- Actions use buttons, navigation uses links, and fields have labels and meaningful names. Icon-only controls have accessible names.
-- Keyboard-reachable controls have visible focus. Focus order, overlay behavior, and announcements follow the applicable component contract.
-- Important state is understandable beyond color or hover. Required actions remain discoverable.
-- Motion respects reduced-motion preferences, does not block input, and animates explicit properties; use [motion-guidance.md](motion-guidance.md) for motion work.
-- Mobile zoom remains available. Touch targets and spacing support reliable input.
+- 操作使用 Button，导航使用 Link，字段具有 Label 和有意义的名称。纯图标控件需要无障碍名称。
+- 键盘可达的控件具有可见焦点。焦点顺序、浮层行为和状态播报遵循适用的组件契约。
+- 重要状态不能只依赖颜色或 Hover 才能理解。必要操作应始终可被发现。
+- 动效尊重减少动态效果的偏好，不阻塞输入，并明确指定动画属性；涉及动效时使用[动效指南](motion-guidance.md)。
+- 保留移动端缩放。触控目标和间距应支持可靠输入。
 
-## Responsive Layout, Text, And Media
+## 响应式布局、文字与媒体
 
-- Small screens preserve the primary object, current state, main action, and intentional reading order; desktop-only grids do not simply shrink.
-- Long text, labels, cells, and user content have an intentional wrap/truncation/expansion strategy without overlap or clipped required content.
-- Layout-affecting images/charts/media have stable dimensions or aspect ratio. Above-fold media loads predictably; decorative media does not delay the core workflow.
-- Sticky controls, safe areas, software keyboards, and overlays do not cover necessary content or actions.
-- Dark themes preserve native-control and scrollbar legibility. Decorative effects preserve contrast and state visibility.
+- 小屏保留核心对象、当前状态、主要操作和有意安排的阅读顺序；不能只是把桌面网格缩小。
+- 长文字、Label、Cell 和用户内容应有明确的换行、截断或展开策略，避免重叠或裁掉必要内容。
+- 会影响布局的图片、图表和媒体需要稳定尺寸或宽高比。首屏媒体的加载应可预测；装饰媒体不应拖慢核心工作流程。
+- Sticky 控件、安全区域、软键盘和浮层不能遮住必要内容或操作。
+- 深色主题下，原生控件和滚动条仍应清晰可读。装饰效果不能破坏对比度和状态可见性。
 
-## State And Recovery
+## 状态与恢复
 
-Verify only the relevant states from the component owner, including keyboard use, loading/empty/error recovery, destructive decisions, and longest realistic content. Do not add arbitrary states to satisfy a blanket matrix.
+仅验证组件专项参考中与任务相关的状态，包括键盘使用、加载、空结果、错误恢复、破坏性操作决策，以及现实中可能出现的最长内容。不要为了满足一张通用矩阵而凭空增加状态。
 
-Use visible selected/expanded/filter/pagination state; preserve URL state where sharing, refresh, or back navigation is part of the product. Use locale-aware dates, times, numbers, and currency for product data. Large lists and tables should retain responsive input and readable density.
+让选中、展开、筛选和分页状态清楚可见；产品涉及分享、刷新或返回导航时，保留 URL 状态。产品数据中的日期、时间、数值和货币应按地区习惯格式化。大型列表和 Table 应保持输入响应及时、密度清晰可读。
 
-For a new site/app or shell audit, use [new-project-shell.md](new-project-shell.md) as the sole metadata/favicon checklist. Existing local patches do not imply unrelated shell changes.
+新网站、应用或基础配置审查，统一使用[新项目基础配置](new-project-shell.md)中的元数据和 favicon 清单。现有页面的局部修补，不代表需要修改无关基础配置。
 
-## Verification And Reporting
+## 验证与汇报
 
-Run the targeted primitive scan from [ui-primitive-contract.md](ui-primitive-contract.md), then inspect matches in context. Focused contracts own interaction tests; [quality-checklist.md](quality-checklist.md) owns visual judgment. Re-check changed regions after fixes and follow [workflow.md](workflow.md) to report completed checks, intentional exceptions, and unverified behavior.
+执行 [UI 基础控件契约](ui-primitive-contract.md)中的定向扫描，再结合上下文检查匹配项。交互测试由各专项契约负责，视觉判断由[质量检查清单](quality-checklist.md)负责。修复后重新检查修改区域，并按[工作流程](workflow.md)报告已完成的检查、有意保留的例外和未验证的行为。

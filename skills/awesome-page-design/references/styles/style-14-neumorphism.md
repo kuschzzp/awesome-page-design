@@ -1,96 +1,86 @@
-# Style 14 - Neumorphism (新拟态)
+# 风格 14：新拟态
 
-## Summary
+## 概述
 
-Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces.
+柔光、内凹层次感圆角、柔和阴影和触感表面。
 
-Chinese summary: 柔光、内凹层次感圆角、柔和阴影和触感表面。
+## 适用场景
 
-## Best For
+环境声音播放器、专注计时、平静音频工具
 
-home devices, audio tools, calm utilities, wellness and focus products
+## 示例场景
 
-## Example Scenario
+- 示例产品：慢拍
+- 页面任务：本地声音与专注控制台
+- 标题：留一段时间，听见安静的自己。
+- 主要操作：播放或暂停声音
+- 次要操作：开始一段专注
 
-- Product sample: Luma Shelf
-- Page job: Tactile home light console
-- Headline: Tune the evening shelf with soft light, music, and one calm timer.
-- Primary action: Start evening scene
-- Secondary action: Save preset
+## 场景组件
 
-## Scenario Components
+- 真正播放的声音：用户操作后通过本地音频合成产生声音；播放、暂停、场景和音量控制实际声场。
+- 柔软但明确的控件：内凹唱盘、凸起播放键、按下的场景行和清楚数字建立触感，不隐藏操作状态。
+- 有明确结束的专注：选择一分钟体验或更长时段，可暂停、继续和重置；完成后停止声音，离开页面停止所有音源与计时。
 
-- Physical controls: Raised pads, inset wells, and a central dial make the page feel like a real object.
-- Home scale: The interface focuses on a shelf, a lamp, and an evening routine rather than a dense dashboard.
-- Soft states: Pressed, saved, dimmed, and timer states stay readable despite the gentle surface.
+## 示例状态
 
-## Example States
+- 雨后书房：待播放
+- 专注计时：二十五分钟
+- 播放音量：百分之三十五
 
-- Reading glow: Active
-- Rain track: Low
-- Sunrise timer: Saved
+## 布局模式
 
-## Layout Pattern
+- 模式：触感声音控制台
+- 结构：左侧大幅内凹唱盘承载播放器，右侧独立声音场景选择器与圆形专注计时器分层排列。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用平静中文标题、大号等宽计时数字和有足够对比的短功能标签。
+- 组件：凸起播放键、内凹唱盘、音量滑杆、场景按下态、时长选择、进度环和暂停重置构成真实音频工具。
+- 按钮：主操作使用柔和凸起表面，按下态内凹；播放与选择不能只靠阴影区分。
+- 图标与媒体：采用原创唱盘纹路、唱臂、安静色标和功能性计时圆环，不依赖远程音频素材。
+- 状态：呈现待播放、播放中、已暂停、静音、选中场景、计时中、计时暂停、完成、重置与音频不可用状态。
+- 避免：不要自动播放或伪造声音播放，不要让柔和表面隐藏按下态和焦点。
 
-- Pattern: Neumo Lamp Console (新拟态灯光控制)
-- Archetype: Neumo Lamp Console
-- Structure: Tactile home console with raised lamp dial, inset timer, scene pads, audio strip, and saved evening routines.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use calm labels, large readable values, and limited headings for relaxed operation.
-- Components: Dials, pads, inset meters, scene rows, and timer controls should feel physical and focused.
-- Buttons: Use raised and pressed states with enough contrast for tactile controls.
-- Icons and media: Use lamp glow, shelf surfaces, audio waves, and timer wells instead of finance widgets.
-- States: Show active, saved, dimmed, timer running, muted, and pressed states.
-- Avoid: Do not let soft shadows hide state or reduce readability.
+## 视觉语言
 
-## Visual Language
+- 背景：`#e8edef`
+- 表面：`#e8edef`
+- 正文：`#526466`
+- 弱化文字：`#5d736e`
+- 主色：`#719184`
+- 强调色：`#9eb8ae`
+- 边框：`#d5dfe1`
+- 圆角：`30px`
+- 面板圆角：`30px`
+- 控件圆角：`11px`
+- Chip 圆角：`8px`
+- 媒体圆角：`50%`
+- 几何规则：内凹圆形唱盘搭配凸起播放控件和柔和圆角计时表面。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`8px 8px 18px rgba(192,204,207,.53),-8px -8px 18px rgba(255,255,255,.67)`
 
-- Background: `#e9eef5`
-- Surface: `#e9eef5`
-- Text: `#172033`
-- Muted text: `#667085`
-- Primary: `#243b6b`
-- Accent: `#6aa6ff`
-- Border: `#f8fbff`
-- Radius: `30px`
-- Panel radius: `30px`
-- Control radius: `22px`
-- Chip radius: `18px`
-- Media radius: `26px`
-- Geometry rule: soft tactile curves for raised and inset controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `14px 14px 34px rgba(148, 163, 184, .42), -14px -14px 34px rgba(255,255,255,.86)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：仅用户操作才能创建或恢复音频环境；提供按下语义、图标名称、大触控目标和音量数值。
+- 提示与反馈：播放失败给出可恢复提示，专注完成只播报一次并停止声音，不使用浏览器弹窗。
+- 间距系统：使用三十像素柔和表面、大圆形内凹区、四十二至六十六像素主控件，并在场景与计时设置间留足空间。
+- 响应式策略：移动端先播放器，再场景和计时；三百二十像素下音量滑杆和全部时长选项保持在视口内。
 
-- Button system: Use raised and inset tactile buttons, pressed states that sink inward, and loading states that keep the soft surface stable.
-- Feedback and alerts: Use gentle inset alerts, saved-preset confirmations, and calm validation messages.
-- Spacing system: Use 22-30px soft panels, 14-18px mixer gaps, and large tap targets.
-- Responsive behavior: Desktop can use multiple tactile columns; mobile stacks controls and keeps the active preset near the primary action.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：通过真实可用控件与平静产品价值进行展示，不使用假旋钮装饰。
+- 数据看板：使用少量触感音频控件、明确状态文本和独立会话计时器。
+- 管理后台：仅适合小型设置工具，不用于密集后台表格或紧急操作。
+- 表单、Table 与数据：滑杆经过有意设计并显示数值；按下与禁用状态不只依赖阴影。
+- 移动端：以播放为中心，随后显示当前场景，最后放置专注计时，触控目标足够大。
+- 不适合：不适合紧急事故、密集业务表格和需要明确严重等级的控制界面。
 
-- 按钮细节：使用凸起和内凹触感按钮，按下态向内沉，加载态保持柔和表面稳定。
-- 提示与反馈：使用柔和内凹提示、预设保存确认和平静校验消息。
-- 间距系统：柔和面板内边距 22-30px，混音器间距 14-18px，点击目标要大。
-- 响应式策略：桌面可使用多列触感控件；手机堆叠控件，并让当前预设靠近主操作。
+## 使用要点
 
-## Page Adaptation Guide
+- 所有声音由浏览器本地合成，只有用户点击后才会创建音频环境。
+- 倒计时按目标截止时间计算，后台停顿后仍保持剩余时间准确。
+- 完成专注后停止声音；离开页面关闭音频环境并清除计时。
 
-- Landing page: Use tactile controls, session state, presets, and soft proof for calm utility products.
-- Dashboard: Use knobs, sliders, preset pads, active layers, and session meters rather than card grids.
-- Admin panel: Use sparingly for small settings tools; keep contrast and state clarity higher than the soft surface.
-- Forms, tables, and data: Use inset fields, raised buttons, calm validation, and large tap targets.
-- Mobile: Stack controls, keep active preset near the primary action, and avoid dense tables.
-- Not a good fit for: Weak for dense admin systems, long documents, or high-alert operational products.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Keep contrast high enough despite the soft surface.
-- Use inset states for pressed controls.
-- Limit the style to focused, calm interfaces.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

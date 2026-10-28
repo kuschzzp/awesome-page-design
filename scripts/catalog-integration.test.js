@@ -16,6 +16,7 @@ test("one catalog edit propagates into every generated consumer without editing 
   const catalog = JSON.parse(fs.readFileSync(file, "utf8"));
   Object.assign(catalog.styles[0], { name: "Catalog mutation", zhName: "目录变更", brief: "Distinctive mutation description", zhBrief: "目录变更说明" });
   catalog.styles[0].playbook.name = "Changed layout";
+  catalog.styles[0].playbook.zhName = "变更后的布局";
   fs.writeFileSync(file, JSON.stringify(catalog));
   const script = `
     const { allStyles } = require('./scripts/preview-catalog');
@@ -35,9 +36,10 @@ test("one catalog edit propagates into every generated consumer without editing 
     }));
   `;
   const outputs = JSON.parse(execFileSync(process.execPath, ["-e", script], { cwd: root, encoding: "utf8", timeout: 10000, maxBuffer: 4 * 1024 * 1024 }));
-  for (const name of ["html", "manual", "index", "gallery", "prompt", "englishReadme"]) {
+  for (const name of ["html", "gallery", "prompt", "englishReadme"]) {
     assert.ok(outputs[name].includes("Catalog mutation"), `${name} did not update`);
   }
-  for (const name of ["chinesePrompt", "chineseReadme"]) assert.ok(outputs[name].includes("目录变更"), `${name} did not update`);
-  for (const name of ["manual", "index", "prompt", "englishReadme"]) assert.ok(outputs[name].includes("Changed layout"), `${name} lost the profile update`);
+  for (const name of ["manual", "index", "chinesePrompt", "chineseReadme"]) assert.ok(outputs[name].includes("目录变更"), `${name} did not update`);
+  for (const name of ["prompt", "englishReadme"]) assert.ok(outputs[name].includes("Changed layout"), `${name} lost the profile update`);
+  for (const name of ["manual", "index"]) assert.ok(outputs[name].includes("变更后的布局"), `${name} lost the Chinese profile update`);
 });

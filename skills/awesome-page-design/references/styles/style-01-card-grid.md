@@ -1,96 +1,86 @@
-# Style 01 - Card Grid (卡片网格)
+# 风格 01：卡片网格
 
-## Summary
+## 概述
 
-Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.
+白色侧栏与顶栏、浅灰工作区、青蓝操作色、细边框 Table 面板、紧凑筛选、克制的状态标签和清晰的双列表单弹窗。
 
-Chinese summary: 真实后台外壳、白色侧栏、白色顶栏、灰蓝工作区、指标卡、快捷入口、筛选栏、密集表格和工具面板。
+## 适用场景
 
-## Best For
+后台管理、企业控制台、权限系统、运营仪表盘
 
-admin panels, enterprise consoles, permission systems, operations dashboards
+## 示例场景
 
-## Example Scenario
+- 示例产品：栖物仓
+- 页面任务：共享物资工作台
+- 标题：物资台账
+- 主要操作：登记物资
+- 次要操作：查看流转记录
 
-- Product sample: OpsFlow
-- Page job: Operations management dashboard
-- Headline: Run the daily admin workspace from one dense console.
-- Primary action: New record
-- Secondary action: More actions
+## 场景组件
 
-## Scenario Components
+- 清楚的工作框架：侧栏负责视图，顶栏交代当前位置，主面板集中处理物资。
+- 围绕 Table 操作：检索、库位筛选、行内处理和分页围绕同一份台账展开。
+- 清晰的登记流程：双列表单分组呈现物资信息，在窄屏中收为单列。
 
-- Application shell first: Sidebar modules, top search, page tabs, and workspace panels establish a real system before any decorative styling.
-- Operational density: KPI cards, quick actions, filters, tables, charts, rankings, approvals, and schedules share one scan-friendly grid.
-- Admin-specific states: Selected menu items, disabled tools, empty states, warning rows, approval tabs, and row actions stay visible.
+## 示例状态
 
-## Example States
+- 便携录音套装：可领用
+- 无线投屏器：归还跟进
+- 桌面支架组：待检修
 
-- Sales contract approval: Pending
-- Inactive account follow-up: Warning
-- Monthly audit export: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：清爽青蓝后台
+- 结构：白色侧栏与紧凑顶栏围合浅灰工作区。单个白色面板承载标题、主操作、筛选、浅青 Table 表头、真实数据行和分页；登记与调整使用居中的双列表单弹窗。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用紧凑的非衬线界面字体、清晰的中文 Label、等宽数字和克制的标题字号。
+- 组件：Sidebar、Topbar、检索工具条、自定义 Select、Table、状态 Badge、Pagination、原生 Dialog、带 Label 的表单字段和行内反馈共同形成安静一致的后台系统。
+- 按钮：使用紧凑青蓝色主按钮和浅色描边次操作，行内操作使用清楚分开的文字按钮。
+- 图标与媒体：用真实 Table 行和可编辑表单控件呈现产品，不使用装饰图片或图表墙。
+- 状态：清楚呈现导航选中、控件聚焦、条目流转情况、空结果、行内校验、提交中和登记成功。
+- 避免：不要使用营销大标题、KPI 卡片墙、无关图表、过大圆角控件，或在 Table 上方再堆一层看板。
 
-- Pattern: Blue Admin Console (浅蓝后台控制台)
-- Archetype: Blue Admin Console
-- Structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.
-- Components: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.
-- Buttons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.
-- Icons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.
-- States: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.
-- Avoid: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f5f7fa`
+- 表面：`#ffffff`
+- 正文：`#344350`
+- 弱化文字：`#7b8895`
+- 主色：`#23879a`
+- 强调色：`#e5f2f4`
+- 边框：`#e2e8ef`
+- 圆角：`6px`
+- 面板圆角：`6px`
+- 控件圆角：`4px`
+- Chip 圆角：`4px`
+- 媒体圆角：`6px`
+- 几何规则：小而统一的圆角、精细边框，以及接近平面的白色面板；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 1px 3px rgba(31, 50, 65, .03)`
 
-- Background: `#eef6ff`
-- Surface: `#ffffff`
-- Text: `#0f172a`
-- Muted text: `#64748b`
-- Primary: `#1677ff`
-- Accent: `#0ea5e9`
-- Border: `#d7e7fb`
-- Radius: `8px`
-- Panel radius: `8px`
-- Control radius: `6px`
-- Chip radius: `4px`
-- Media radius: `8px`
-- Geometry rule: real admin shell geometry with compact panels, dense rows, and precise controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 46px rgba(22, 119, 255, .10)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用 36–40px 的青蓝色主控件、浅色描边次控件和低调的行内操作，并保留清晰键盘焦点及触控区域。
+- 提示与反馈：使用浅色状态 Badge、行内校验和简短 Toast 反馈，不用大面积色块覆盖工作区。
+- 间距系统：侧栏约 224px、顶栏 64px、工作区留白 24px、面板内边距 24px，Table 行高 48–56px。
+- 响应式策略：窄屏使用可关闭的侧栏 Drawer，筛选条件换行，仅 Table 内部横向滚动，表单字段改为单列并保持弹窗操作可达。
 
-- Button system: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.
-- Feedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.
-- Spacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.
-- Responsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：仅在公开页面需要展示真实后台产品截图时使用；截图仍应包含侧栏、顶栏、Table、筛选器和小组件。
+- 数据看板：保留侧栏和顶栏，突出当前任务；只有确实有助于工作流程时，才添加汇总指标。
+- 管理后台：使用紧凑 Table、工具栏筛选、日期范围、批量操作、列设置、行级状态、空状态、权限控件和详情 Drawer。
+- 表单、Table 与数据：使用可见 Label、紧凑辅助说明、分组区域、行内校验、Table 邻近编辑、权限警告和保存／取消工具栏。
+- 移动端：使用侧栏 Drawer，保留标题和主操作，筛选条件换行，并将 Table 横向滚动限制在内部区域。
+- 不适合：不擅长表现力强的时尚品牌、沉浸式艺术，或需要情绪化首屏叙事而非清晰管理信息的页面。
 
-- 按钮细节：使用紧凑蓝色主按钮、低调描边次按钮、方形图标工具、标签按钮，以及在顶栏或表格工具条内保持宽度稳定的加载按钮。
-- 提示与反馈：用同一套后台语言呈现侧栏选中、激活标签、行内警告、小型状态 toast、空表格、待处理标签和禁用工具。
-- 间距系统：侧栏 220-260px，顶栏 56-72px，工作区留白 16-20px，面板内边距 14-18px，行间距 8-12px，控件 40-44px，适合反复扫描。
-- 响应式策略：桌面保留侧栏、顶栏、指标行、图表/排行面板和表格；平板把右侧面板下移；手机把侧栏变成横向模块条，并让表格可横向滚动。
+## 使用要点
 
-## Page Adaptation Guide
+- 先建立白色侧栏与紧凑顶栏，将实际工作集中在清楚的 Table 面板中。
+- 青蓝色用于主操作和选中态，浅青色用于 Table 表头，中性细边框负责结构。
+- 筛选、行内处理、分页和表单弹窗应务实直接，避免装饰性 KPI 卡片、营销首屏与无关图表。
 
-- Landing page: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.
-- Dashboard: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.
-- Admin panel: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.
-- Forms, tables, and data: Use visible labels, compact helper text, grouped sections, inline validation, table-adjacent editing, permission warnings, and save/cancel toolbars.
-- Mobile: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.
-- Not a good fit for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling instead of management clarity.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Start with the admin application frame: sidebar, top bar, breadcrumb or tabs, workspace, and table-first modules.
-- Use search, filters, KPI cards, quick entries, ranking lists, calendars, approvals, and dense tables as real management anchors.
-- Avoid hero sections, decorative card walls, oversized marketing typography, and abstract product art.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

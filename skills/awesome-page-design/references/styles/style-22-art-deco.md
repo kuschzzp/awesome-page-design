@@ -1,96 +1,86 @@
-# Style 22 - Art Deco (装饰艺术)
+# 风格 22：装饰艺术
 
-## Summary
+## 概述
 
-Symmetric poster composition, dark jewel tones, gilded rules, stepped geometry, and polished hospitality drama.
+对称金线请柬形成首屏，日期人数选择、舞台桌位平面图与套餐摘要组成订位主区，下方以三栏呈现晚宴菜单。
 
-Chinese summary: 对称海报构图、暗色宝石调、金色线框、阶梯几何和精致的高级场景感。
+## 适用场景
 
-## Best For
+高级酒店、文化场馆、精品活动、编辑型品牌发布
 
-luxury hospitality, cultural venues, premium events, editorial brand launches
+## 示例场景
 
-## Example Scenario
+- 示例产品：海上电台
+- 页面任务：海上电台
+- 标题：把夜晚，留给一张唱片。
+- 主要操作：生成预订凭单
+- 次要操作：选择晚宴桌位
 
-- Product sample: Marble Fox Theatre
-- Page job: Jazz theatre foyer
-- Headline: Reserve a velvet table for a brass set and midnight dessert.
-- Primary action: Reserve table
-- Secondary action: View seating plan
+## 场景组件
 
-## Scenario Components
+- 择一个夜晚：在三个日期与同行人数之间选择。
+- 为彼此留席：日期人数联动桌位，已订或人数不合适的桌子不可选。
+- 留一份邀约：选择套餐后填写称呼，生成本地凭单，无实际付款。
 
-- Axial drama: Symmetry, stepped frames, and gold rules feel like a theatre foyer, not a luxury wallpaper.
-- Reservation proof: Tables, set times, bar notes, and program states become polished labels.
-- Ceremony with use: The primary action is staged but still immediate.
+## 示例状态
 
-## Example States
+- 晚宴入席：19:30
+- 时令晚宴：每位 228 元
+- 预订凭单：本地演示
 
-- Table 7: Open
-- Dessert card: Signed
-- First set: 9PM
+## 布局模式
 
-## Layout Pattern
+- 模式：海上电台
+- 结构：对称金线请柬形成首屏，日期人数选择、舞台桌位平面图与套餐摘要组成订位主区，下方以三栏呈现晚宴菜单。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：中文衬线标题搭配疏朗英文小字与克制的价格数字，保持请柬般阅读节奏。
+- 组件：择一个夜晚、为彼此留席、留一份邀约。
+- 按钮：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 图标与媒体：原创阶梯几何金线、听音舞台与八桌座位平面图。
+- 状态：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 避免：不要用通用圆角卡片破坏对称层级，不暗示真实付费订位。
 
-- Pattern: Deco Theatre Foyer (装饰艺术剧场门厅)
-- Archetype: Deco Theatre Foyer
-- Structure: Symmetric jazz-theatre booking page with marquee axis, table availability, program cards, bar notes, and gilded seating plan.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use elegant display headings, refined numerals, and short polished venue labels.
-- Components: Marquee frames, table rows, set-time labels, program strips, and ceremonial booking controls should align to the center axis.
-- Buttons: Use framed gold primary buttons and fine outline secondary actions.
-- Icons and media: Use seating plans, stage labels, program cards, velvet textures, and bar menu notes.
-- States: Show open, signed, first set, held, waitlist, and invitation states.
-- Avoid: Do not scatter gold trim without information value.
+## 视觉语言
 
-## Visual Language
+- 背景：`#101b1b`
+- 表面：`#1b2a26`
+- 正文：`#eae0c3`
+- 弱化文字：`#a99e7e`
+- 主色：`#d8bd73`
+- 强调色：`#b09351`
+- 边框：`#766740`
+- 圆角：`2px`
+- 面板圆角：`2px`
+- 控件圆角：`2px`
+- Chip 圆角：`0`
+- 媒体圆角：`0`
+- 几何规则：阶梯几何、细金线与对称边框；桌位与表单具备明确状态和稳定尺寸。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 26px 80px rgba(212, 175, 55, .18)`
 
-- Background: `#0e1020`
-- Surface: `#171526`
-- Text: `#fff4d6`
-- Muted text: `#d8c58e`
-- Primary: `#d4af37`
-- Accent: `#2dd4bf`
-- Border: `#d4af37`
-- Radius: `2px`
-- Panel radius: `2px`
-- Control radius: `2px`
-- Chip radius: `0`
-- Media radius: `0`
-- Geometry rule: stepped Art Deco geometry with crisp framed surfaces; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 26px 80px rgba(212, 175, 55, .18)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 提示与反馈：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 间距系统：围绕主对象安排区块、说明与操作，辅助内容保持次要层级。
+- 响应式策略：窄屏按任务顺序堆叠主对象和控件，避免横向溢出。
 
-- Button system: Use framed gold primary buttons, fine outline secondary buttons, centered labels, and pressed states that feel like a mechanical latch.
-- Feedback and alerts: Use polished labels, reserved alert strips, invitation confirmations, and availability states aligned to the poster axis.
-- Spacing system: Use 24-34px ceremonial panels, tight 8-12px label gaps, and generous space around the headline and reservation action.
-- Responsive behavior: Desktop can use symmetry and side proof panels; mobile keeps the monogram, headline, primary action, availability, then room details in one centered stack.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：对称金线请柬形成首屏，日期人数选择、舞台桌位平面图与套餐摘要组成订位主区，下方以三栏呈现晚宴菜单。
+- 数据看板：保留该视觉语言，围绕真实任务状态和可读控件组织信息。
+- 管理后台：按实际内容选择性应用视觉语言与本地工作流程。
+- 表单、Table 与数据：字段保留 Label，预留行内错误位置，并提供明确结果摘要。
+- 移动端：主要操作与关键信息优先于辅助装饰内容。
+- 不适合：不要用通用圆角卡片破坏对称层级，不暗示真实付费订位。
 
-- 按钮细节：使用金色框线主按钮、细描边次按钮、居中标签，以及像机械扣件一样明确的按下态。
-- 提示与反馈：使用精致标签、克制提示条、邀请确认和沿海报轴线对齐的可用状态。
-- 间距系统：仪式化面板内边距 24-34px，标签间距 8-12px，标题和预订操作周围保留充足空间。
-- 响应式策略：桌面可使用对称和侧边证明面板；手机按字标、标题、主操作、可用性、房间详情的顺序居中堆叠。
+## 使用要点
 
-## Page Adaptation Guide
+- 对称金线请柬形成首屏，日期人数选择、舞台桌位平面图与套餐摘要组成订位主区，下方以三栏呈现晚宴菜单。
+- 原创阶梯几何金线、听音舞台与八桌座位平面图。
+- 不要用通用圆角卡片破坏对称层级，不暗示真实付费订位。
 
-- Landing page: Use a symmetrical event or venue poster with gilded proof, availability, refined offer copy, and one ceremonial booking action.
-- Dashboard: Use sparingly for concierge, venue, or premium booking dashboards where room status and appointments are the main objects.
-- Admin panel: Use for curated hospitality/event operations only; keep tables simplified and avoid ornamental bulk-action clutter.
-- Forms, tables, and data: Use short reservation forms, visible labels, elegant validation, and framed confirmation states.
-- Mobile: Order as monogram, offer, primary booking action, availability, room proof, then secondary story.
-- Not a good fit for: Weak for dense operational tools, casual consumer apps, and utilitarian admin pages.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Build the page around symmetry, axial alignment, and staged reveal.
-- Use gold rules as structure, not random trim.
-- Keep copy refined and short so the ornament has room to breathe.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

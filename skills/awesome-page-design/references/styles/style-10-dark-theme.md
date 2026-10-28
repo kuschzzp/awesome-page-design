@@ -1,96 +1,86 @@
-# Style 10 - Dark Theme (深色主题)
+# 风格 10：深色主题
 
-## Summary
+## 概述
 
-Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual.
+暗背景、高对比度，并用单色亮色强化主按钮和主视觉。
 
-Chinese summary: 暗背景、高对比度，并用单色亮色强化主按钮和主视觉。
+## 适用场景
 
-## Best For
+微型影院、创意工作室、高级发布页
 
-micro-cinemas, creative studios, premium launch pages
+## 示例场景
 
-## Example Scenario
+- 示例产品：晚场放映室
+- 页面任务：独立晚间放映
+- 标题：潮声抵达之前
+- 主要操作：确认座位
+- 次要操作：切换场次
 
-- Product sample: Velvet Screen
-- Page job: Micro-cinema program
-- Headline: Stage tonight's screening with reels, seats, and projection notes.
-- Primary action: Hold two seats
-- Secondary action: View program
+## 场景组件
 
-## Scenario Components
+- 影片决定画面：全景原创场景、片名与简洁影片信息建立场馆气氛。
+- 选座路径真实：场次切换联动影片、余座、单价与当前选择。
+- 完成本地出票：可用座位经过摘要确认，生成可下载的模拟影票。
 
-- Frame led layout: The main viewer behaves like a screening window, with reel notes and seat status attached.
-- Night atmosphere: Dark panels and a single bright action support the cinema mood without hiding details.
-- Operational culture: Program order, cue sheet, and booth status make the page useful, not only pretty.
+## 示例状态
 
-## Example States
+- 潮声抵达之前：19:30
+- 夜路慢行：21:45
+- 一号厅：可选座
 
-- Short reel: Queued
-- Row C: Held
-- Booth note: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：暗色影院审阅
+- 结构：全景电影画幅下方放置两个场次按钮，再以影片说明和紧凑选座面板形成双列。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用电影感且可读的标题、克制双语影片标签、对齐时间与高对比座位状态。
+- 组件：电影画幅、场次选择、影厅座位、金额汇总、影票确认与本地下载构成同一流程。
+- 按钮：出票主操作保持浅色聚焦；选中和已售座位需有明确无障碍标签。
+- 图标与媒体：绘制原创虚构海岸与夜间列车场景，不使用受版权约束的电影剧照。
+- 状态：呈现当前场次、可选、已选、已售、数量上限、未选座错误和出票成功状态。
+- 避免：不要用缺少影片、场馆和预订结构的通用暗卡，也不要暗示演示票可以实际入场。
 
-- Pattern: Dark Cinema Review (暗色影院审阅)
-- Archetype: Dark Cinema Review
-- Structure: Cinematic venue board with a screening frame, program strip, seat ledger, booth status, and night-mode actions.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use high-contrast dark UI text, restrained labels, and cinematic but readable titles.
-- Components: Screen frames, film strips, seat holds, booth notes, and program cards should feel operational.
-- Buttons: Primary action is bright and focused; secondary actions use dark outlines.
-- Icons and media: Use reels, frame crops, reserved rows, cue sheets, and booth readiness notes.
-- States: Show queued, held, ready, late doors, sold out, and booth warning states.
-- Avoid: Do not use dark cards without a media or venue structure.
+## 视觉语言
 
-## Visual Language
+- 背景：`#111616`
+- 表面：`#18221a`
+- 正文：`#e6e8e1`
+- 弱化文字：`#8da18d`
+- 主色：`#c7ca96`
+- 强调色：`#d5bc83`
+- 边框：`#334a33`
+- 圆角：`8px`
+- 面板圆角：`8px`
+- 控件圆角：`4px`
+- Chip 圆角：`2px`
+- 媒体圆角：`6px`
+- 几何规则：低圆角暗色场馆面板、圆顶银幕线与清晰座位按钮。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 24px 90px rgba(125, 211, 252, .14)`
 
-- Background: `#050505`
-- Surface: `#111113`
-- Text: `#f8fafc`
-- Muted text: `#a1a1aa`
-- Primary: `#ffffff`
-- Accent: `#7dd3fc`
-- Border: `#27272a`
-- Radius: `8px`
-- Panel radius: `8px`
-- Control radius: `4px`
-- Chip radius: `2px`
-- Media radius: `6px`
-- Geometry rule: cinematic dark surfaces with compact angular controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 24px 90px rgba(125, 211, 252, .14)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用单一明亮出票按钮、明确场次选中态和可键盘操作的座位按钮。
+- 提示与反馈：展示座位选择、金额计算、四席上限与仅在本地生效的出票确认。
+- 间距系统：保留宽幅电影画面，选座面板内边距 20–28px，座位间距 4–8px。
+- 响应式策略：手机先影片，再场次和选座，把较长观影说明移到选择之后。
 
-- Button system: Use high-contrast dark buttons, cinematic hover states, and loading states that feel like render progress.
-- Feedback and alerts: Use dark toasts, cost warnings, render-complete confirmations, and visible retry actions.
-- Spacing system: Use 20-28px panels, 14px media gaps, and clear separation between viewer and queue.
-- Responsive behavior: Desktop keeps viewer and queue split; mobile shows viewer, primary render action, then queue and budget details.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：使用电影感原创场景、简洁影片元信息与聚焦场次选择。
+- 数据看板：使用场馆排期、座位可用性与影票状态，避免渲染任务指标。
+- 管理后台：适用于小型放映场馆的节目、影厅与预订记录。
+- 表单、Table 与数据：暗色 Label 保持可见，明确选座要求、摘要确认与本地结果。
+- 移动端：选座放在长说明前，确保每个座位在窄屏中仍可操作。
+- 不适合：不适用于长篇文档与不需要电影画幅的明亮编辑页面。
 
-- 按钮细节：使用高对比暗色按钮、电影感 hover，以及像渲染进度的加载态。
-- 提示与反馈：使用暗色 toast、成本警告、渲染完成确认和可见重试操作。
-- 间距系统：面板内边距 20-28px，媒体间距 14px，查看器和队列清楚分隔。
-- 响应式策略：桌面拆分查看器和队列；手机先查看器，再主渲染操作，之后队列和预算。
+## 使用要点
 
-## Page Adaptation Guide
+- 电影画面与场次选择承担首要层级。
+- 座位状态同时使用颜色、文字与无障碍标签表达。
+- 出票只生成本地模拟结果，不连接影院或支付。
 
-- Landing page: Use a cinematic viewer, render proof, budget/status warnings, and one bright primary action.
-- Dashboard: Use render queues, review states, media thumbnails, failure badges, and retry actions.
-- Admin panel: Use dark production controls, batch review tables, and visible cost/error states.
-- Forms, tables, and data: Use dark fields, high-contrast labels, stable loading buttons, and retry-focused errors.
-- Mobile: Show viewer, primary action, queue, then budget and errors; avoid hiding retry actions.
-- Not a good fit for: Weak for text-heavy documentation or low-contrast casual reading.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Reserve the bright accent for conversion and focus.
-- Use deep blacks with subtle panel separation.
-- Keep imagery cinematic but readable.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,21 +1,21 @@
-# Using The Visual Library
+# 视觉库使用原则
 
-Read this for page-level style selection and adaptation. Execution and the selection decision are defined in [workflow.md](workflow.md).
+进行页面级风格选择和适配时阅读本文件。执行流程和风格选择决策见 [workflow.md](workflow.md)。
 
-## Reuse Visual Language, Design The Product Structure
+## 复用视觉语言，为产品设计结构
 
-Reuse color roles, typography, geometry, borders, shadows/material, surface texture, media direction, component tone, interaction treatment, animation timing, and density. The preview demonstrates a style; its exact page layout, information architecture, module order, grid, navigation, brand, and copy are examples.
+复用配色角色、字体、几何、边框、阴影与材质、表面纹理、媒体方向、组件气质、交互处理、动画时序和信息密度。预览用于展示风格；其中的页面布局、信息架构、模块顺序、网格、导航、品牌和文案都只是示例。
 
-Choose structure for the real content object and task using [layout-guidance.md](layout-guidance.md). A dashboard foregrounds filtering, status, data, and actions; a creation tool needs its canvas/editor and inspector; documentation needs reading order and evidence; a campaign needs schedule, proof, and conversion. Do not force these into one hero-and-card skeleton.
+根据真实内容对象和任务，使用[布局指南](layout-guidance.md)选择结构。数据看板应突出筛选、状态、数据和操作；创作工具需要 Canvas/Editor 与 Inspector；文档需要阅读顺序和证据；活动页面需要日程、可信依据和转化路径。不要把这些任务都塞进同一种 Hero 加 Card 的骨架。
 
-A style's structural identity can guide composition without fixing the product layout: editorial styles emphasize type/rules/captions, consoles emphasize logs/tables/workflow evidence, poster styles emphasize bold conversion modules, and experimental styles retain stable navigation, actions, and body text. Use [anti-generic-ui.md](anti-generic-ui.md) when the result feels generic.
+风格的结构特征可以指导构图，但不能固定产品布局：编辑类风格强调字体、分隔线和图注；控制台强调日志、Table 和工作流证据；海报类风格强调鲜明的转化模块；实验风格仍要保留稳定的导航、操作和正文。结果显得模板化时，阅读[避免模板化 UI](anti-generic-ui.md)。
 
-## Selection Heuristics
+## 选择参考
 
-- Style 09 Tech Minimal, 11 Structured Lines, 12 Layered Material, or 18 Precision Futurism suit serious product clarity.
-- Style 10 Dark Theme, 15 Liquid Glass, 18 Precision Futurism, or 21 Acid Design suit different dark/immersive directions; retain their material and component differences.
-- Style 13 Bento Layout suits modular widget-like zones, but does not require every page to use cards.
-- Styles 02 Block Brutalism, 04 Retro Y2K, 16 Retro Computing, 17 Neo-Brutalism, 19 Gradient Pop, 20 Soft Pop, and 21 Acid Design suit brands or campaigns with strong visual personality.
-- Use Style 14 Neumorphism when a soft tactile interface fits and accessibility remains strong.
+- 风格 09 科技极简风、11 结构线、12 层级材质和 18 精密未来风，适合强调清晰度的严肃产品。
+- 风格 10 深色主题、15 液态玻璃、18 精密未来风和 21 酸性设计，分别适合不同的深色或沉浸式方向；保留它们在材质和组件上的差异。
+- 风格 13 便当盒布局适合模块化、类似 Widget 的区域，但不要求每个页面都使用 Card。
+- 风格 02 块状粗野主义、04 复古 Y2K、16 复古主义、17 新粗野主义、19 渐变风、20 柔和流行和 21 酸性设计，适合视觉个性鲜明的品牌或活动。
+- 只有在柔和触感界面适合产品、且无障碍表现仍然可靠时，才使用风格 14 新拟态。
 
-Use the similarity guardrails in [style-index.md](style-index.md) when comparing adjacent styles. When images help explain the product, prefer actual product screenshots, brand photography, customer images, or carefully matched neutral media over unrelated decoration.
+比较相近风格时，使用[风格索引](style-index.md)中的差异边界。图片有助于解释产品时，优先使用真实产品截图、品牌摄影、客户图片或经过仔细匹配的中性媒体，不要使用无关装饰。

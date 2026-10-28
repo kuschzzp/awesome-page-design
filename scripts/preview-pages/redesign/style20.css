@@ -1,0 +1,96 @@
+body.demo-style-20 { background: #fbf6ed; }
+.s20 { color: #453b32; background: #fbf6ed; }
+.s20 .beat20-wrap { width: min(1190px,100% - 64px); margin: auto; }
+.s20 .beat20-header { min-height: 100px; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+.s20 .beat20-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; font-size: 24px; font-weight: 900; letter-spacing: -.05em; }
+.s20 .beat20-brand > span { display: grid; place-items: center; width: 37px; height: 42px; border-radius: 17px 17px 20px 12px; background: #f5b5a7; color: #754d3c; font: 800 32px/1 serif; transform: rotate(-8deg); }
+.s20 .beat20-brand small { margin-left: 10px; color: #9a8c7b; font-size: 10px; letter-spacing: 0; font-weight: 400; }
+.s20 .beat20-header nav { display: flex; align-items: center; gap: 25px; font-size: 12px; }
+.s20 .beat20-header nav a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.s20 .beat20-user { display: flex; align-items: center; gap: 12px; border-left: 1px solid #e3d8c8; padding-left: 25px; color: #978674; font-size: 11px; }
+.s20 .beat20-user i { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #dae5ce; color: #687d5c; font: 24px/1 serif; }
+.s20 .beat20-intro { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; padding: 32px 12px 42px; }
+.s20 .beat20-eyebrow { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 10px; color: #a08c77; }
+.s20 .beat20-eyebrow span { font: 10px/1.6 monospace; letter-spacing: .08em; color: #7c9471; }
+.s20 h1 { font-size: clamp(34px,4.1vw,56px); line-height: 1.35; font-weight: 850; letter-spacing: -.05em; margin: 19px 0; }
+.s20 h1 > span { position: relative; z-index: 0; }
+.s20 h1 > span::after { content: ''; position: absolute; left: -5px; right: -4px; bottom: 0; height: .35em; border-radius: 50%; background: #f4c7b4; z-index: -1; transform: rotate(-4deg); }
+.s20 .beat20-intro > div > p:not(.beat20-eyebrow) { color: #9b8a78; font-size: 13px; line-height: 1.9; }
+.s20 .beat20-small-note { display: flex; gap: 9px; align-items: center; color: #8a9277; font-size: 11px; margin-top: 23px; }
+.s20 .beat20-small-note span { font-size: 23px; color: #b6c49b; }
+.s20 .beat20-doodle { text-align: center; position: relative; transform: rotate(3deg); }
+.s20 .beat20-doodle svg { display: block; width: 100%; }
+.s20 .beat20-doodle-label { position: relative; top: -15px; display: inline-block; background: #fff9df; border-radius: 4px; padding: 7px 17px; color: #9c8c64; font-size: 11px; box-shadow: 0 4px 8px #b3a3880d; transform: rotate(-6deg); }
+.s20 .beat20-workspace { display: grid; grid-template-columns: 270px 1fr; gap: 27px; align-items: start; padding-top: 10px; scroll-margin-top: 20px; }
+.s20 .beat20-kicker { font-size: 11px; color: #a4907b; letter-spacing: .03em; margin-bottom: 18px; }
+.s20 .beat20-lessons { padding-top: 14px; }
+.s20 .beat20-lessons > button { display: flex; align-items: center; gap: 12px; text-align: left; width: 100%; min-height: 82px; padding: 14px; margin-bottom: 12px; background: transparent; color: #786b5d; border: 1px solid #e6dccd; border-radius: 17px; }
+.s20 .beat20-lessons > button[aria-pressed=true] { background: #edf1df; color: #586d48; border-color: #d6dfc1; box-shadow: 0 4px 0 #d7dfc6; }
+.s20 .beat20-lesson-icon { flex: 0 0 auto; width: 36px; height: 39px; display: grid; place-items: center; background: #fffaf2; border-radius: 13px; font: 13px/1 monospace; }
+.s20 .beat20-lessons strong { display: block; font-size: 13px; margin-bottom: 4px; }
+.s20 .beat20-lessons small { display: block; color: #a39480; font-size: 10px; }
+.s20 .beat20-lessons i { margin-left: auto; font-style: normal; }
+.s20 .beat20-tip { position: relative; margin: 36px 13px 0 4px; padding: 24px 20px 22px; background: #f7e7d2; border-radius: 5px 25px 8px 24px; transform: rotate(-3deg); }
+.s20 .beat20-tip > span { position: absolute; top: -14px; right: 14px; color: #e6ad77; font-size: 35px; }
+.s20 h3 { font-size: 14px; margin-bottom: 10px; line-height: 1.5; }
+.s20 .beat20-tip p { font-size: 11px; line-height: 1.9; color: #a58c6f; }
+.s20 .beat20-tip-line { height: 7px; margin-top: 15px; width: 72px; border-bottom: 2px wavy #d9b38a; }
+.s20 .beat20-practice { position: relative; padding: 28px 35px 24px; background: #fffcf7; border: 1px solid #eee5d9; border-radius: 30px; box-shadow: 0 10px 30px #a28c6c09; }
+.s20 .beat20-practice-head { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #ab9b89; margin-bottom: 19px; }
+.s20 .beat20-practice-head > span:first-child { padding: 5px 10px; background: #f5e5db; border-radius: 8px; color: #ba8c74; }
+.s20 h2 { font-size: 26px; line-height: 1.5; letter-spacing: -.04em; font-weight: 800; }
+.s20 .beat20-practice > p:not(.beat20-pattern) { color: #a29381; font-size: 12px; line-height: 1.8; margin-top: 7px; }
+.s20 .beat20-beats { display: flex; justify-content: center; gap: 24px; margin: 30px 0 18px; }
+.s20 .beat20-beats > span { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.s20 .beat20-beats b { width: 62px; height: 62px; display: grid; place-items: center; border-radius: 48% 50% 45% 52%; border: 1px solid #d8e1cb; background: #edf1e5; color: #8d9b7b; font-size: 22px; transition: background .1s ease,transform .1s ease; }
+.s20 .beat20-beats > span:nth-child(even) b { border-radius: 47% 44% 51% 48%; }
+.s20 .beat20-beats i { width: 4px; height: 4px; background: #d1d8c7; border-radius: 50%; }
+.s20 .beat20-beats .is-beat b { background: #c1d2aa; color: #536b3e; border-color: #a6bd8b; transform: translateY(-4px); }
+.s20 .beat20-beats .is-beat i { background: #92a979; }
+.s20 .beat20-pattern { text-align: center; font-size: 14px; letter-spacing: .16em; color: #a59987; min-height: 25px; }
+.s20 .beat20-speed { margin: 26px auto 23px; max-width: 390px; }
+.s20 .beat20-speed > label { display: flex; align-items: center; justify-content: space-between; color: #b1a28e; font-size: 9px; }
+.s20 .beat20-speed > label > span { color: #8a9975; font-size: 10px; }
+.s20 .beat20-speed strong { font: 700 22px/1.5 monospace; margin-right: 3px; }
+.s20 input[type=range] { display: block; width: 100%; height: 26px;  margin-top: 8px; cursor: pointer; }
+.s20 .beat20-practice-actions { display: flex; gap: 12px; align-items: center; }
+.s20 .beat20-start,.s20 .beat20-tap { min-height: 47px; flex: 1; border: 1px solid #bbcba9; border-radius: 15px; background: #dce8cc; color: #5e744c; font-size: 12px; font-weight: 750; }
+.s20 .beat20-start:hover { background: #cfdfbd; }
+.s20 .beat20-tap { background: #f6d0bd; border-color: #eabda8; color: #a06e54; box-shadow: 0 4px 0 #e7b49a; }
+.s20 .beat20-tap:active { transform: translateY(3px); box-shadow: 0 1px 0 #e7b49a; }
+.s20 .beat20-tap:disabled { background: #f3e9dd; border-color: #e7dacb; color: #b3a38f; box-shadow: none; }
+.s20 .beat20-feedback { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; min-height: 44px; margin-top: 20px; color: #8d997d; font-size: 11px; line-height: 1.8; }
+.s20 .beat20-feedback b { white-space: nowrap; font: 11px/1.8 monospace; }
+.s20 .beat20-mute { display: inline-flex; gap: 8px; align-items: center; color: #ac9e8b; font-size: 10px; min-height: 30px; }
+.s20 .beat20-mute input {  margin: 0; }
+.s20 .beat20-hidden-count { display: none; }
+.s20 .beat20-records { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; padding: 54px 10px 40px; align-items: start; scroll-margin-top: 20px; }
+.s20 .beat20-records h2 { font-size: 25px; }
+.s20 .beat20-records > div > p:not(.beat20-kicker) { font-size: 12px; color: #a49683; line-height: 1.9; margin-top: 10px; }
+.s20 .beat20-record-head { display: flex; justify-content: space-between; gap: 15px; padding-bottom: 13px; border-bottom: 1px solid #e4d9c8; font-size: 11px; color: #9c8d78; }
+.s20 .beat20-record-head strong { color: #91a179; font-weight: 650; }
+.s20 .beat20-record-list ul { margin: 0; padding: 0; list-style: none; }
+.s20 .beat20-record-list li { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid #e8dfd2; font-size: 11px; color: #a19583; }
+.s20 .beat20-record-list li strong { color: #91a179; }
+.s20 .beat20-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; border-top: 1px solid #e4d9c8; padding: 24px 0 30px; color: #ae9f8c; font-size: 10px; }
+.s20 .demo-local-note { max-width: 550px; }
+@media(max-width:900px) { .s20 .beat20-wrap { width: calc(100% - 40px); } .s20 .beat20-brand small { display: none; } .s20 .beat20-user { padding-left: 15px; } .s20 .beat20-header nav { gap: 17px; } .s20 .beat20-intro { gap: 10px; padding-inline: 0; } .s20 .beat20-workspace { grid-template-columns: 220px 1fr; gap: 20px; } .s20 .beat20-practice { padding: 24px; } .s20 .beat20-beats { gap: 16px; } .s20 .beat20-beats b { width: 51px; height: 51px; } }
+@media(max-width:640px) { .s20 .beat20-wrap { width: calc(100% - 32px); } .s20 .beat20-header { min-height: 78px; } .s20 .beat20-brand { font-size: 21px; } .s20 .beat20-header nav a { display: none; } .s20 .beat20-user { border: 0; padding: 0; font-size: 10px; gap: 7px; } .s20 .beat20-user i { width: 30px; height: 30px; } .s20 .beat20-intro { grid-template-columns: 1fr; padding: 24px 0 26px; } .s20 h1 { font-size: clamp(34px,8vw,46px); margin: 18px 0; } .s20 .beat20-intro > div > p:not(.beat20-eyebrow) { font-size: 12px; } .s20 .beat20-doodle { display: none; } .s20 .beat20-workspace { display: flex; flex-direction: column-reverse; gap: 28px; } .s20 .beat20-workspace > * { width: 100%; } .s20 .beat20-practice { padding: 20px 16px; border-radius: 23px; } .s20 h2 { font-size: 22px; } .s20 .beat20-practice > p:not(.beat20-pattern) { font-size: 11px; } .s20 .beat20-beats { gap: 15px; margin-top: 25px; } .s20 .beat20-beats b { width: 46px; height: 46px; font-size: 18px; } .s20 .beat20-pattern { font-size: 11px; letter-spacing: .02em; } .s20 .beat20-practice-actions { gap: 9px; } .s20 .beat20-start,.s20 .beat20-tap { font-size: 11px; padding: 5px 7px; } .s20 .beat20-feedback { font-size: 10px; } .s20 .beat20-lessons { padding-top: 0; } .s20 .beat20-tip { margin: 22px 5px 0; } .s20 .beat20-records { grid-template-columns: 1fr; padding: 38px 0; gap: 25px; } .s20 .beat20-records h2 { font-size: 23px; } }
+
+/* 自绘滑杆：轨道、刻度感滑块与键盘焦点使用页面色系。 */
+.s20 input[type=range] { appearance:none; -webkit-appearance:none; display:block; width:100%; height:28px; padding:0; border:0; border-radius:0; background:transparent; cursor:ew-resize; }
+.s20 input[type=range]::-webkit-slider-runnable-track { height:5px; background:#eee4d6; border:1px solid #a4bc8966; border-radius:50%; }
+.s20 input[type=range]::-moz-range-track { height:5px; background:#eee4d6; border:1px solid #a4bc8966; border-radius:50%; }
+.s20 input[type=range]::-moz-range-progress { height:5px; background:#a4bc89; border-radius:50%; }
+.s20 input[type=range]::-webkit-slider-thumb { appearance:none; -webkit-appearance:none; width:17px; height:17px; border:3px solid #fffaf0; border-radius:50%; background:#a4bc89; box-shadow:0 2px 5px #6e5c4926; margin-top:-7px; }
+.s20 input[type=range]::-moz-range-thumb { appearance:none; -webkit-appearance:none; width:17px; height:17px; border:3px solid #fffaf0; border-radius:50%; background:#a4bc89; box-shadow:0 2px 5px #6e5c4926; }
+.s20 input[type=range]:focus-visible { outline:2px solid #a4bc89; outline-offset:3px; border-radius:3px; }
+
+/* 练习静音：奶油纸上的手绘方勾。 */
+.s20 .beat20-mute { cursor:pointer; }
+.s20 .beat20-mute input { appearance:none; -webkit-appearance:none; display:grid; place-content:center; width:17px; height:17px; padding:0; border:1px solid #aa987f; border-radius:4px; background:#fffaf0; color:#514638; cursor:pointer; flex:0 0 auto; }
+.s20 .beat20-mute input:checked { background:#a4bc89; border-color:#7b9565; }
+.s20 .beat20-mute input:checked::after { content:''; width:8px; height:5px; border-left:2px solid #34462a; border-bottom:2px solid #34462a; transform:translateY(-1px) rotate(-45deg); }
+.s20 .beat20-mute input:focus-visible { outline:2px solid #7b9565; outline-offset:3px; }
+
+@media (forced-colors:active) { .s20 .beat20-mute input { appearance:auto; -webkit-appearance:auto; transform:none; box-shadow:none; } .s20 .beat20-mute input:checked::after { content:none; } }

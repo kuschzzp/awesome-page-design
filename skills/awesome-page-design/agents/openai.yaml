@@ -1,7 +1,7 @@
 interface:
   display_name: "Awesome Page Design"
-  short_description: "Visual direction, compatible UI, and quality checks"
+  short_description: "提供视觉方向、兼容现有项目的 UI 组件集成，以及响应式与无障碍质量检查"
   brand_color: "#4F46E5"
-  default_prompt: "Use $awesome-page-design to design or polish this UI, preserving existing project components, enforcing polished primitives, checking responsive and accessible behavior, and completing favicon and metadata for new projects."
+  default_prompt: "使用 $awesome-page-design 设计或优化这个 UI，保留现有项目组件，完善交互原语、响应式与无障碍表现，并为新项目补齐 favicon 和元数据。"
 policy:
   allow_implicit_invocation: true

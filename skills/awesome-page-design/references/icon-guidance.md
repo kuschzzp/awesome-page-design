@@ -1,24 +1,24 @@
-# Icon Guidance
+# 图标指南
 
-Use icons as part of the design system, not as decoration.
+把图标作为设计系统的一部分，而不是装饰。
 
-## Selection
+## 选择
 
-- Prefer the icon library already used by the project.
-- Use one icon family per surface unless the product already has a deliberate mixed-icon system.
-- Pick icons for meaning, not visual noise.
-- Avoid overused symbols when a clearer domain object exists.
+- 优先使用项目已有的图标库。
+- 除非产品已经有明确设计的混合图标系统，否则同一界面只使用一个图标家族。
+- 按含义选择图标，不要制造视觉噪声。
+- 有更清楚的业务对象图标时，不要使用泛滥的通用符号。
 
-## Styling
+## 样式
 
-- Keep stroke width, corner style, fill logic, and optical size consistent.
-- Align icons to text baseline and control height.
-- Use the selected style's color roles: muted for passive icons, primary or accent for actions, state colors for feedback.
-- Do not place icons inside text badges when a standard icon button or leading icon would read better.
+- 保持描边宽度、转角风格、填充逻辑和视觉尺寸一致。
+- 让图标与文字基线和控件高度对齐。
+- 使用所选风格的配色角色：非操作性图标使用弱化色，操作使用主色或强调色，反馈使用状态色。
+- 标准 Icon Button 或前置图标更容易理解时，不要把图标塞进文字 Badge。
 
-## Component Rules
+## 组件规则
 
-- Icon buttons need accessible labels or visible text nearby.
-- Toolbars should use icons for familiar actions and text for commands that need clarity.
-- Empty states may use one larger icon or illustration, but it must support the message.
-- Tables and dense lists should use restrained icons so rows remain scannable.
+- Icon Button 需要无障碍名称或附近可见的文字。
+- Toolbar 中熟悉的操作可以用图标表达，需要明确说明的命令应使用文字。
+- 空状态可以使用一个较大的图标或插画，但必须服务于信息表达。
+- Table 和密集列表应克制使用图标，让行内容仍然易于扫描。

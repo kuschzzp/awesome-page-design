@@ -1,46 +1,46 @@
-# Motion Guidance
+# 动效指南
 
-Use this reference when the selected style or product flow needs animation. Motion should communicate continuity, cause, and state change. It should not exist only to make the page feel busy.
+所选风格或产品流程需要动画时阅读本文件。动效应传达连续性、因果关系和状态变化，不应只是让页面显得忙碌。
 
-## Motion Principles
+## 动效原则
 
-- Add motion only when it explains what changed, where the user moved, or which object stayed the same.
-- Prefer short, interruptible transitions that do not block input.
-- Use `transform` and `opacity` first. Avoid animating layout-heavy properties unless there is a clear need.
-- Never use `transition: all`; list exact properties.
-- Respect `prefers-reduced-motion` with a reduced or disabled variant.
-- Keep operational tools calmer than campaigns, portfolios, or expressive launch pages.
+- 仅在动效能解释变化、用户移动的位置或保持不变的对象时添加。
+- 优先使用短暂、可中断且不阻塞输入的过渡。
+- 优先使用 `transform` 和 `opacity`。没有明确需要时，避免动画影响布局的属性。
+- 不使用 `transition: all`，明确列出属性。
+- 为 `prefers-reduced-motion` 提供减弱或关闭动画的变体。
+- 操作工具的动效应比活动页、作品集或表现力强的发布页更克制。
 
-## Motion Intensity
+## 动效强度
 
-Use the `motion intensity` design dial from `design-dials.md`.
+使用[设计调节项](design-dials.md)中的动效强度。
 
-- `None`: keep motion limited to focus, pressed, and immediate state feedback.
-- `Subtle`: use hover lift, fade, selected-state movement, loading shimmer, or disclosure transitions.
-- `Expressive`: use staged reveals, shared-object continuity, spatial transitions, or kinetic accents when the brand can support it.
+- **无**：仅保留焦点、按下和即时状态反馈所需的动效。
+- **轻微**：使用悬停抬升、淡入淡出、选中态位移、加载微光或内容展开过渡。
+- **鲜明**：品牌能够承载时，使用分阶段呈现、共享对象连续性、空间过渡或动态强调。
 
-## Semantic Motion Patterns
+## 语义动效模式
 
-- Object continuity: the same item expands, moves to detail view, or remains selected.
-- Disclosure: a menu, drawer, accordion, or inspector opens from the control that caused it.
-- Data arrival: skeleton or placeholder resolves into loaded content.
-- List identity: reordered items move without losing their identity.
-- Progress: upload, render, export, or approval state advances visibly.
-- Error recovery: failed state directs attention to the repair action.
+- 对象连续性：同一对象展开、移入详情或保持选中。
+- 内容展开：Menu、Drawer、Accordion 或 Inspector 从触发控件处打开。
+- 数据到达：Skeleton 或占位内容转换为加载完成的内容。
+- 列表身份：重排对象移动时仍能辨认各自身份。
+- 进度：上传、渲染、导出或审批状态有可见推进。
+- 错误恢复：失败状态将注意力引向修复操作。
 
-## Avoid
+## 避免
 
-- Constant background drifting that competes with content.
-- Delayed controls that make the interface feel slow.
-- Directional motion for unordered tabs or unrelated sections.
-- Motion on small body text, dense tables, form validation, or critical alerts that harms legibility.
-- Sparkle, parallax, glow, or glass animation used to compensate for weak hierarchy.
+- 持续漂移的背景与内容争夺注意力。
+- 控件延迟出现，让界面显得缓慢。
+- 为没有顺序的 Tab 或无关区块添加方向性动效。
+- 在小号正文、密集 Table、表单校验或关键 Alert 上使用损害可读性的动效。
+- 用闪光、视差、发光或玻璃动画弥补薄弱层级。
 
-## Implementation Checklist
+## 实现清单
 
-- Define what each animation communicates.
-- List the animated properties.
-- Provide a reduced-motion behavior.
-- Keep focus and keyboard behavior independent of animation.
-- Check that layout does not jump at the start or end of the transition.
-- Verify mobile performance and touch responsiveness.
+- 定义每段动画传达什么。
+- 列出动画属性。
+- 提供减弱动效行为。
+- 焦点和键盘行为不依赖动画。
+- 检查过渡开始与结束时布局是否跳动。
+- 验证移动端性能和触控响应。

@@ -1,96 +1,86 @@
-# Style 17 - Neo-Brutalism (新粗野主义)
+# 风格 17：新粗野主义
 
-## Summary
+## 概述
 
-Thick lines, strong color clashes, unpolished giant type, and controlled chaos.
+粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。
 
-Chinese summary: 粗线条、强烈撞色、无修饰巨型字体，混乱但有张力。
+## 适用场景
 
-## Best For
+开发者发布页、强品牌活动、趣味产品站
 
-developer launches, bold campaigns, playful product sites
+## 示例场景
 
-## Example Scenario
+- 示例产品：放大字
+- 页面任务：好消息，大声说
+- 标题：好消息，大声说。
+- 主要操作：下载我的海报
+- 次要操作：切换构图
 
-- Product sample: RawLaunch
-- Page job: Developer release page
-- Headline: Ship a louder tool without sanding off the edges.
-- Primary action: Ship build
-- Secondary action: Read proof
+## 场景组件
 
-## Scenario Components
+- 文字就是主视觉：活动标题占据画布，搭配硬朗几何和单个大图形形成张力。
+- 实时构图：文字、配色和版式切换会即时更新同一张海报画布。
+- 真实 SVG 输出：必填内容使用行内错误提示，下载文件包含已编辑的海报。
 
-- Controlled collision: Thick lines, loud blocks, and giant type create force while keeping actions obvious.
-- Proof over polish: Benchmarks, changelog, and install commands carry the story.
-- Hard feedback: Errors, warnings, and selected states are unapologetically visible.
+## 示例状态
 
-## Example States
+- 活动标题：可编辑
+- 撞色配方：三组配色
+- SVG 海报：可导出
 
-- Benchmark card: Live
-- Install copy: Ready
-- Issue cleanup: 4 left
+## 布局模式
 
-## Layout Pattern
+- 模式：撞色海报制作器
+- 结构：左侧大幅实时海报画布，右侧粗边文本与配色编辑器，下方提供三种不同构图缩略选择。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：海报标题使用超大直接字形，表单 Label 紧凑，日期与编号使用等宽字体。
+- 组件：左侧大幅实时海报画布，右侧粗边文本与配色编辑器，下方提供三种不同构图缩略选择。
+- 按钮：使用方形粗边控件与硬阴影，明确突出导出操作。
+- 图标与媒体：使用原创 SVG 字体构图、直接的星芒图形、硬偏移阴影与构图缩略图。
+- 状态：呈现实时文字、已选配色、已选构图、必填项错误、重置画布和导出成功状态。
+- 避免：不要用柔和阴影或礼貌灰卡磨平这个风格。
 
-- Pattern: Brutal Proof Release (粗野证明发布)
-- Archetype: Brutal Proof Release
-- Structure: Release page built from giant type, proof slabs, install commands, issue strips, and collision blocks.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use oversized blunt headings, compact proof labels, and high-contrast code or numbers.
-- Components: Install commands, benchmarks, issue cards, badges, changelog strips, and alerts carry the story.
-- Buttons: Buttons are hard, loud, border-heavy, and visibly interactive.
-- Icons and media: Use code blocks, stamps, benchmark charts, and launch proof instead of decorative art.
-- States: Show copied, failing, benchmark live, issue closed, warning, and shipped states.
-- Avoid: Do not sand off the energy with soft shadows or polite muted cards.
+## 视觉语言
 
-## Visual Language
+- 背景：`#00e5ff`
+- 表面：`#fff15c`
+- 正文：`#111111`
+- 弱化文字：`#24111f`
+- 主色：`#111111`
+- 强调色：`#ff2bd6`
+- 边框：`#111111`
+- 圆角：`0`
+- 面板圆角：`0`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`0`
+- 几何规则：粗野主义直角几何和直接有力的控件；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`10px 10px 0 #ff2bd6`
 
-- Background: `#00e5ff`
-- Surface: `#fff15c`
-- Text: `#111111`
-- Muted text: `#24111f`
-- Primary: `#111111`
-- Accent: `#ff2bd6`
-- Border: `#111111`
-- Radius: `0`
-- Panel radius: `0`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `0`
-- Geometry rule: brutalist square geometry and blunt controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `10px 10px 0 #ff2bd6`
+## 组件细节
 
-## Component Detail System
-
-- Button system: Use square high-impact buttons, thick borders, blunt hover shifts, and unmistakable disabled/error blocks.
-- Feedback and alerts: Use loud but structured alert slabs, command confirmations, and status rows with strong contrast.
-- Spacing system: Use 18-30px collision gaps, oversized slabs, and intentionally uneven but readable groups.
-- Responsive behavior: Desktop can collide panels; mobile removes rotation and turns slabs into a single readable sequence.
-
-Chinese implementation notes:
-
-- 按钮细节：使用方形高冲击按钮、粗边框、直接的 hover 位移，以及非常明确的禁用/错误块。
-- 提示与反馈：使用响亮但有结构的提示块、命令确认，以及强对比状态行。
+- 按钮系统：使用方形粗边控件与硬阴影，明确突出导出操作。
+- 提示与反馈：必填错误贴近字段显示，完成操作提供可读反馈，所有可见状态都与本地演示数据一致。
 - 间距系统：使用 18-30px 碰撞式间距、大块面板，以及不均衡但可读的分组。
-- 响应式策略：桌面可让面板碰撞；手机取消旋转，块面变成单一可读序列。
+- 响应式策略：手机依次堆叠预览、编辑器和构图选项，保留大字并避免控件碰撞。
 
-## Page Adaptation Guide
+## 页面适配指南
 
-- Landing page: Use collision panels, giant type, command proof, and high-impact install or launch actions.
-- Dashboard: Use brutal status walls, issue queues, benchmark slabs, and unmistakable warnings.
-- Admin panel: Use for bold developer/internal tools; keep forms blocky, explicit, and lower density.
-- Forms, tables, and data: Use square controls, thick borders, direct labels, and loud but structured errors.
-- Mobile: Remove rotation/collision, stack slabs, and keep controls large and readable.
-- Not a good fit for: Weak for quiet trust, long reading, or restrained enterprise procurement.
+- 落地页：使用碰撞式面板、巨型文字、命令行证据，以及有强烈冲击力的安装或发布操作。
+- 数据看板：使用粗野状态墙、Issue 队列、性能基准大面板和一目了然的警告。
+- 管理后台：用于风格大胆的开发者或内部工具；Form 应块状、明确，并降低密度。
+- 表单、Table 与数据：保留可见 Label，使用自定义行内错误与本地确认反馈，不使用浏览器原生校验气泡。
+- 移动端：手机依次堆叠预览、编辑器和构图选项，保留大字并避免控件碰撞。
+- 不适合：不适合安静可信的表达、长篇阅读，或克制的企业采购场景。
 
-## Usage Notes
+## 使用要点
 
-- Make the hierarchy loud and unmistakable.
-- Use strong geometry and intentionally hard shadows.
-- Preserve usability under the visual tension.
+- 左侧大幅实时海报画布，右侧粗边文本与配色编辑器，下方提供三种不同构图缩略选择。
+- 使用原创 SVG 字体构图、直接的星芒图形、硬偏移阴影与构图缩略图。
+- 手机依次堆叠预览、编辑器和构图选项，保留大字并避免控件碰撞。
 
-## Continue
+## 后续步骤
 
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

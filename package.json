@@ -1,7 +1,7 @@
 {
   "name": "awesome-page-design",
   "version": "0.1.0",
-  "description": "A layout-aware web UI skill for visual direction, existing-project integration, polished components, and responsive quality checks.",
+  "description": "支持视觉方向选择、产品布局适配、现有项目集成、组件优化和响应式质量检查的网页 UI 设计 Skill。",
   "license": "MIT",
   "type": "commonjs",
   "skills": "./skills/",

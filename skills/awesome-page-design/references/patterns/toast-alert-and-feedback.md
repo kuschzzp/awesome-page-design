@@ -1,57 +1,57 @@
-# Toast, Alert, And Feedback Pattern
+# Toast、Alert 与反馈模式
 
-## When To Use
+## 适用场景
 
-Read this reference for save, copy, export, submit, delete, publish, sync, queue, validation, permission, outage, loading, retry, and undo feedback.
+任务涉及保存、复制、导出、提交、删除、发布、同步、排队、校验、权限、故障、加载、重试或撤销反馈时，阅读本文件。
 
-## Resolution Order
+## 选择顺序
 
-Choose feedback by the scope and recovery path:
+根据影响范围和恢复路径选择反馈：
 
-| Scope | Preferred pattern |
+| 范围 | 优先模式 |
 |---|---|
-| Field or form problem | Inline validation near the cause, plus a summary when several errors exist |
-| Row, card, or panel problem | Inline alert or local status in that region |
-| Lightweight completed outcome | Toast/snackbar or persistent status when the result must remain visible |
-| Page-wide risk, permission, environment, or outage | Banner or page-level alert |
-| Decision that blocks progress | Project modal/drawer or inline confirmation |
-| Reversible destructive outcome | Immediate action plus undo when reversal is reliable |
+| 字段或 Form 问题 | 在原因附近提供行内校验，多项错误时补充摘要 |
+| Row、Card 或 Panel 问题 | 在该区域提供 Inline Alert 或局部状态 |
+| 轻量的已完成结果 | Toast/Snackbar；结果需要一直可见时使用持久状态 |
+| 整页风险、权限、环境或故障 | Banner 或页面级 Alert |
+| 阻止继续的决策 | 项目已有 Modal/Drawer 或行内确认 |
+| 可逆的破坏性操作结果 | 能可靠恢复时，立即执行并提供撤销 |
 
-Do not use browser dialogs as feedback.
+不要用浏览器 Dialog 作为反馈。
 
-## Required States
+## 必需状态
 
-- Idle, pending, success, warning, recoverable error, terminal error, and retry or undo when meaningful.
-- Specific outcome text that names what changed; avoid generic messages such as "Success" without context.
-- Duplicate-event policy, timeout/persistence rules, queue or stack behavior, dismissal, and action state.
-- Loading feedback that does not masquerade as completion and error feedback that preserves the user's input.
+- 空闲、处理中、成功、警告、可恢复错误、终止性错误，以及有意义时的重试或撤销。
+- 用具体结果说明什么发生了变化；避免脱离上下文的“成功”等通用消息。
+- 重复事件策略、超时/持久规则、队列或堆叠行为、关闭和操作状态。
+- 加载反馈不能伪装成完成，错误反馈应保留用户输入。
 
-## Accessibility And Keyboard
+## 无障碍与键盘
 
-- Use polite live announcements for routine outcomes and assertive announcements only for urgent blockers.
-- Do not move focus to routine toasts. Move or guide focus to the first actionable error when submission cannot continue.
-- Keep interactive toast/banner actions keyboard reachable for long enough to use; pause dismissal while hovered or focused when auto-dismiss exists.
-- Pair color and iconography with explicit text. Announce updated inline states without repeating the entire page.
-- Dismiss buttons need accessible names and visible focus styles.
+- 常规结果使用 polite 实时播报，仅紧急阻塞问题使用 assertive 播报。
+- 常规 Toast 不移动焦点。提交无法继续时，将焦点移动或引导到首个可操作错误。
+- 交互式 Toast/Banner 操作应保持足够久，让键盘用户能操作；存在自动关闭时，在悬停或聚焦期间暂停关闭。
+- 颜色和图标应配合明确文字。播报更新的行内状态时，不要重复整页内容。
+- Dismiss Button 需要无障碍名称和可见焦点样式。
 
-## Existing Project Integration
+## 既有项目集成
 
-- Reuse the project's toast provider, alert/banner components, form error system, status vocabulary, icons, duration, placement, and action patterns.
-- Inspect how sibling flows report copy/save/delete failures and whether undo is actually supported by the data layer.
-- Add a local inline state when a global toast would separate the message from its cause.
-- Do not install another notification system for one feature.
+- 复用项目的 Toast Provider、Alert/Banner 组件、Form 错误系统、状态用语、图标、持续时间、位置和操作模式。
+- 检查相邻流程如何报告复制/保存/删除失败，以及数据层是否真正支持撤销。
+- 全局 Toast 会让消息与原因分离时，添加局部行内状态。
+- 不要为一个功能安装另一套通知系统。
 
-## Mobile Behavior
+## 移动端行为
 
-- Keep transient feedback clear of browser controls, safe areas, sticky navigation, keyboards, and primary actions.
-- Allow messages and actions to wrap without shrinking text or covering content.
-- Prefer inline or persistent feedback for errors that require reading or recovery; do not hide critical guidance behind a short timeout.
-- Keep stacked messages bounded and avoid filling the first viewport with repeated notifications.
+- 短暂反馈应避开浏览器控件、安全区、Sticky Navigation、键盘和主要操作。
+- 消息和操作可以换行，但不能缩小文字或覆盖内容。
+- 需要阅读或恢复的错误，优先使用行内或持久反馈；不要让关键指引因短暂超时而消失。
+- 限制消息堆叠，避免重复通知占满首屏。
 
-## Verification
+## 验证
 
-- Trigger every pending, success, warning, error, retry, and undo path supported by the feature.
-- Confirm the feedback appears at the scope where the user can understand and recover from it.
-- Check live-region behavior, keyboard access, timeout behavior, long localized copy, duplicate events, and mobile safe areas.
-- Confirm failure paths preserve input and explain the next action.
-- Scan changed UI for `alert`, `confirm`, and `prompt`; document only non-product debugging exceptions.
+- 触发功能支持的每条处理中、成功、警告、错误、重试和撤销路径。
+- 确认反馈出现在用户能理解并据此恢复的范围内。
+- 检查 live-region 行为、键盘访问、超时行为、本地化长文案、重复事件和移动安全区。
+- 确认失败路径保留输入，并说明下一步操作。
+- 扫描修改区域中的 `alert`、`confirm` 和 `prompt`；仅记录非产品调试用途的例外。

@@ -1,96 +1,86 @@
-# Style 03 - Aurora Gradient (极光渐变)
+# 风格 03：极光渐变
 
-## Summary
+## 概述
 
-Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium immersive atmosphere.
+深蓝夜空、克制青紫极光、微光天体标注与安静星图工作区。
 
-Chinese summary: 暗色画布、极光色场、柔光、漂移渐变能量和高级沉浸氛围。
+## 适用场景
 
-## Best For
+天文导览、沉浸学习、探索工具
 
-immersive art venues, futuristic products, premium dark experiences
+## 示例场景
 
-## Example Scenario
+- 示例产品：夜航天象台
+- 页面任务：向安静的天空看一眼
+- 标题：今晚，向星空出发。
+- 主要操作：加入今晚清单
+- 次要操作：导出观测清单
 
-- Product sample: Northlight Rooms
-- Page job: Immersive listening salon
-- Headline: Book a quiet room where color, sound, and time move together.
-- Primary action: Reserve a session
-- Secondary action: View room map
+## 场景组件
 
-## Scenario Components
+- 找到一束光：选中天体，查看方向、模拟高度与视星等。
+- 慢慢推移夜晚：在 20:00 至午夜之间调整模拟观测时间。
+- 留下一份计划：在当前页面收藏天体，导出文本观测清单。
 
-- Light as schedule: The aurora field marks session phases, entry time, and room intensity instead of acting as decoration.
-- Human pace: Capacity, quiet rules, and host notes stay close to the booking action.
-- Spatial proof: Room map, sound cues, and visitor notes make the page feel like a real venue.
+## 示例状态
 
-## Example States
+- 点选天体：探索
+- 调整时刻：比较
+- 带走清单：下载
 
-- Dusk Room: Open
-- Rain Chamber: Few seats
-- North Alcove: Private
+## 布局模式
 
-## Layout Pattern
+- 模式：夜航星空观测台
+- 结构：主星图及贴底时间轴占据大画面，窄侧栏呈现天体资料和观测清单。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：中文标题采用安静中等字重，小型星图标签适度字距，辅助信息使用可读灰蓝文字。
+- 组件：组件包括可选星图标记、自绘轨道和滑块的时间 Range、天体资料、收藏切换与文本导出。
+- 按钮：主 Button 使用浅青色，次级动作采用克制描边或文字并提供明显焦点。
+- 图标与媒体：用原创 SVG 星点、星座连线与低透明度极光色场构造星图。
+- 状态：区分天体选中、时间变更、已收藏、清单为空和下载完成状态。
+- 避免：避免伪造天文精确度、自动播放特效和通用发光指标卡片。
 
-- Pattern: Aurora Listening Room (极光听觉房间)
-- Archetype: Aurora Listening Room
-- Structure: Immersive venue layout with a luminous room field, session rail, capacity notes, and sound-light booking controls.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use calm dark UI type, generous line height, small venue metadata, and restrained luminous headings.
-- Components: Room fields, session chips, ticket states, host notes, map legends, and quiet booking controls should feel like a real cultural venue.
-- Buttons: Primary actions may glow softly; secondary actions stay translucent with clear borders.
-- Icons and media: Use aurora light, room maps, sound rings, seat notes, and session bands as useful objects.
-- States: Show open, few seats, private, selected room, check-in soon, and sold-out states.
-- Avoid: Do not make the page a generic AI glow dashboard.
+## 视觉语言
 
-## Visual Language
+- 背景：`#060a1f`
+- 表面：`#0e142b`
+- 正文：`#edf4ff`
+- 弱化文字：`#a3b0cc`
+- 主色：`#c5e1ef`
+- 强调色：`#a4f0df`
+- 边框：`#27334e`
+- 圆角：`12px`
+- 面板圆角：`12px`
+- 控件圆角：`4px`
+- Chip 圆角：`4px`
+- 媒体圆角：`12px`
+- 几何规则：大面积圆角星图与克制侧栏，天体用发光点标注，时间轴紧贴主图。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 0 30px #59dbc61c`
 
-- Background: `#060a1f`
-- Surface: `rgba(255,255,255,.08)`
-- Text: `#f8fbff`
-- Muted text: `#b8c2d8`
-- Primary: `#f8fbff`
-- Accent: `#22d3ee`
-- Border: `rgba(255,255,255,.18)`
-- Radius: `14px`
-- Panel radius: `14px`
-- Control radius: `8px`
-- Chip radius: `6px`
-- Media radius: `12px`
-- Geometry rule: restrained aurora panels with crisp controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 28px 90px rgba(34, 211, 238, .18)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：星点的实际可点击区域大于可见光点，并暴露按下状态。
+- 提示与反馈：立即更新资料，播报收藏变化，并说明数据为本地模拟。
+- 间距系统：星图保留开放空间，只有资料侧栏使用紧凑数据行。
+- 响应式策略：小屏纵向排列星图、时间轴和资料栏，标记与清单动作不超出视口。
 
-- Button system: Use luminous but restrained buttons, translucent secondary controls, and selected states that glow only at the edge.
-- Feedback and alerts: Use soft toast panels, score-change alerts, and low-noise validation hints over dark panels.
-- Spacing system: Use 22-28px glass panel padding, 14px component gaps, and generous breathing room around comparison cards.
-- Responsive behavior: Desktop keeps evidence, comparison, and review notes side by side; mobile stacks them as review cards and keeps the score/primary action visible before media.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以可探索星空和一个明确观测邀请开场。
+- 数据看板：以空间主图配选中对象读数，避免等权 KPI 卡。
+- 管理后台：管理表格保持克制，微光颜色仅用于选择状态。
+- 表单、Table 与数据：控件精简且标签直接，选择操作可逆。
+- 移动端：先展示星图，再展示资料，时间控件始终易触达。
+- 不适合：不适合作为导航、专业天文计算或安全相关实时数据工具。
 
-- 按钮细节：使用克制发光按钮、半透明次级控件，以及只在边缘发光的选中态。
-- 提示与反馈：使用柔和 toast、分数变化提示，以及暗色面板上的低噪声校验提示。
-- 间距系统：玻璃面板内边距 22-28px，组件间距 14px，对比卡周围保持足够呼吸感。
-- 响应式策略：桌面并列证据、对比和审阅备注；手机堆叠成审阅卡，并把分数和主操作放在媒体之前。
+## 使用要点
 
-## Page Adaptation Guide
+- 让星图成为主要对象，极光色场辅助阅读而不遮蔽星点。
+- 天体选择、时间调整与收藏均可独立撤回。
+- 明确星图为本地模拟，导出内容仅为已选观测计划。
 
-- Landing page: Use a premium dark product narrative with comparison panels, evidence cards, soft media, and restrained glow.
-- Dashboard: Use model runs, confidence scores, review notes, and selected-state panels rather than generic dark cards.
-- Admin panel: Use review workflows, validation queues, and low-noise status panels; keep destructive states crisp.
-- Forms, tables, and data: Use translucent field groups over stable dark surfaces with clear focus and validation edges.
-- Mobile: Show score and primary action before media; stack comparison cards with readable text over every panel.
-- Not a good fit for: Weak for dense clerical tools or pages that must feel plain and official.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use glow as atmosphere around important content.
-- Keep text panels calm and readable.
-- Avoid turning every surface into a rainbow gradient.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,96 +1,86 @@
-# Style 04 - Retro Y2K (复古 Y2K)
+# 风格 04：复古 Y2K
 
-## Summary
+## 概述
 
-Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism.
+糖果粉 Y2K 拍贴亭，亮面控件围绕四格长条拍贴，搭配粉彩渐变与收藏感贴纸。
 
-Chinese summary: 糖果渐变、霓虹细节、复古标题字、星光能量和千禧年数字乐观感。
+## 适用场景
 
-## Best For
+照片编辑、趣味创作工具、个人纪念品
 
-music, fashion, youth culture, playful campaigns
+## 示例场景
 
-## Example Scenario
+- 示例产品：闪拍照相亭
+- 页面任务：给普通的一天，加一点亮面。
+- 标题：今天，闪亮登场。
+- 主要操作：带走这份闪亮
+- 次要操作：选择我的照片
 
-- Product sample: PulseRoom
-- Page job: Culture drop page
-- Headline: Stage the drop, preview tracks, and collect reminders.
-- Primary action: Join the list
-- Secondary action: See lineup
+## 场景组件
 
-## Scenario Components
+- 装入四个瞬间：本地读取 JPG、PNG 或 WebP，空位保留原创插画样片。
+- 挑选今天的心情：切换粉、蓝、银边框，挑选贴纸，再写一句短话。
+- 把快乐带走：下载内嵌所选照片、可独立打开的 SVG。
 
-- Glossy emphasis: Shine, neon outlines, and bubbly forms carry the mood while keeping copy legible.
-- Hype modules: Track cards, countdowns, artist notes, and badges feel like part of one event.
-- Controlled sparkle: Decorative energy stays around the primary objects instead of covering the interface.
+## 示例状态
 
-## Example States
+- 本地照片：选择
+- 边框与贴纸：搭配
+- 内嵌 SVG：下载
 
-- Cover crop: Ready
-- Countdown tile: Live
-- Track preview: Queued
+## 布局模式
 
-## Layout Pattern
+- 模式：千禧亮面拍贴亭
+- 结构：倾斜四格长条拍贴置于中央舞台，一侧是简短引导，另一侧为编辑工作台。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：活泼粗体中文标题配紧凑步骤标签与清晰辅助说明。
+- 组件：使用本地 File Input、带按下状态的边框和贴纸选项、短句 Input 与真实 SVG 下载。
+- 按钮：亮面圆角矩形 Button 带轻微硬底阴影，突出导出动作。
+- 图标与媒体：样片为原创插画，用户本地照片可直接内嵌进导出的 SVG。
+- 状态：展示已选边框和贴纸、照片读取中、读取错误、导出完成与恢复样片状态。
+- 避免：不上传本地照片，不接收含主动内容风险的 SVG 文件，不让装饰贴纸遮挡控件。
 
-- Pattern: Glossy Y2K Stage (千禧亮面舞台)
-- Archetype: Glossy Y2K Stage
-- Structure: A glossy stage with marquee bars, circular media, sticker controls, and a playful release lineup.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Pair expressive display words with readable short captions and badge labels.
-- Components: Lineup cards, track pills, shiny badges, countdown chips, and signup controls should feel collectible.
-- Buttons: Buttons are glossy, thick, and high-energy with clear hover and pressed states.
-- Icons and media: Use cover art crops, neon frames, sparkles, and real promo fragments.
-- States: Show queued, live, saved, reminder-on, and preview-playing states.
-- Avoid: Do not let sparkle effects cover interface meaning.
+## 视觉语言
 
-## Visual Language
+- 背景：`#fff0fb`
+- 表面：`#fffaff`
+- 正文：`#623670`
+- 弱化文字：`#88628e`
+- 主色：`#e775c5`
+- 强调色：`#a0e7ef`
+- 边框：`#ddbcdd`
+- 圆角：`12px`
+- 面板圆角：`12px`
+- 控件圆角：`7px`
+- Chip 圆角：`15px`
+- 媒体圆角：`7px`
+- 几何规则：圆润亮面工具区围绕细长拍贴，贴纸是图像内容，控件保持清晰命中区域。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 3px 0 #bc71b2`
 
-- Background: `#fff0fb`
-- Surface: `#ffffff`
-- Text: `#26113d`
-- Muted text: `#7c3aed`
-- Primary: `#ff2db2`
-- Accent: `#00d9ff`
-- Border: `#ffb6ef`
-- Radius: `16px`
-- Panel radius: `16px`
-- Control radius: `10px`
-- Chip radius: `8px`
-- Media radius: `14px`
-- Geometry rule: glossy Y2K shapes without default pill buttons; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 22px 70px rgba(255, 45, 178, .24)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用 aria-pressed 呈现选中选项，照片读取时禁用导出。
+- 提示与反馈：就近校验文件格式及大小，清楚提示解码失败与下载完成。
+- 间距系统：拍贴舞台留出充足空间，编辑步骤用细线组织。
+- 响应式策略：手机端预览在上、控件在下，完整拍贴保持在舞台范围内。
 
-- Button system: Use glossy compact buttons, bright pill-like chips only for real states, and active feedback that feels like a music player control.
-- Feedback and alerts: Use energetic launch toasts, live/reminder badges, and inline signup confirmation.
-- Spacing system: Use 18-24px stage padding, 8-12px pill gaps, and compact countdown blocks.
-- Responsive behavior: Desktop may use a stage and control panel; mobile moves lineup, countdown, and signup into a single sequenced flow.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以一份活泼纪念品预览承接主要动作。
+- 数据看板：优先使用带实时输出的编辑工作台，避免装饰指标。
+- 管理后台：操作表格减少亮面装饰，保留清晰选择状态。
+- 表单、Table 与数据：使用短标签与少量图像、文字控件。
+- 移动端：完整拍贴先于边框、贴纸和导出控件展示。
+- 不适合：不适合严肃金融、法律、医疗及密集专业文字流程。
 
-- 按钮细节：使用有光泽的紧凑按钮，只在真实状态上使用亮色 chip，按下反馈像音乐播放器控件。
-- 提示与反馈：使用有活力的发布 toast、live/reminder 徽章，以及内联报名确认。
-- 间距系统：舞台内边距 18-24px，胶囊间距 8-12px，倒计时块保持紧凑。
-- 响应式策略：桌面可使用舞台和控制面板；手机把 lineup、倒计时和报名变成单列流程。
+## 使用要点
 
-## Page Adaptation Guide
+- 装饰创作结果，不牺牲编辑器可用性。
+- 导出的 SVG 必须包含与预览一致的照片、边框、贴纸和短句。
+- 图像处理留在本地，限制为常见静态图像格式。
 
-- Landing page: Use a glossy stage, lineup, countdown, signup module, and collectible media fragments.
-- Dashboard: Use launch signals, reminder counts, live badges, and compact activity strips for campaign operations.
-- Admin panel: Use bright but bounded controls for content scheduling, asset approval, and release checklists.
-- Forms, tables, and data: Use compact glossy fields, visible signup confirmation, and playful but readable validation.
-- Mobile: Sequence headline, media, countdown, signup, lineup, then proof; avoid tiny pills as primary controls.
-- Not a good fit for: Weak for serious enterprise workflows or high-trust official services.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use playful shine and neon in controlled zones.
-- Pair expressive display type with readable body copy.
-- Keep nostalgia bright, not cluttered.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,213 +1,213 @@
-# Variant Guidance
+# 风格变体指南
 
-Use this reference when the user asks for a mood or sub-style that is adjacent to the numbered catalog, or when a selected style needs a more specific flavor without becoming a separate template.
+用户要求的气质或子风格与编号目录相近，或所选风格需要更具体的表现、但不应成为独立模板时，使用本文件。
 
-Variants are not copy-paste sources and are not complete page structures. Treat them as controlled adjustments to layout archetype, material, typography, color role, media direction, and component tone. Keep the user's real product workflow first.
+变体不是可直接复制的来源，也不是完整页面结构。把它视为对布局原型、材质、字体、配色角色、媒体方向和组件气质的受控调整，始终优先考虑用户真实产品工作流。
 
-## When To Use A Variant
+## 何时使用变体
 
-Use a variant when:
+以下情况可以使用：
 
-- The user names a mood that is close to an existing style, such as biophilic, solarpunk, film noir, dark academia, paper cutout, hand-drawn sketch, Bauhaus, or mid-century modern.
-- A selected numbered style fits the page job, but the brand needs a sharper cultural or material cue.
-- The page needs more personality while still preserving the chosen layout archetype and component behavior.
+- 用户指定与现有风格相近的气质，例如亲自然、太阳朋克、黑色电影、暗黑学院、剪纸、手绘草图、包豪斯或世纪中期现代主义。
+- 编号风格适合页面任务，但品牌需要更鲜明的文化或材质线索。
+- 页面需要更多个性，同时仍保留选定的布局原型和组件行为。
 
-Do not use a variant when:
+以下情况不要使用：
 
-- The user only needs a local UI patch. Preserve the existing page system first.
-- The style selection is still undecided. Use the preview gate and style index first.
-- The variant would hide the primary workflow, reduce accessibility, or turn a dashboard/admin page into a decorative scene.
+- 用户只需要局部 UI 修补。先保留既有页面系统。
+- 风格尚未决定。先使用预览选择流程和风格索引。
+- 变体会遮蔽主要工作流、降低无障碍表现，或将数据看板/管理页面变成装饰场景。
 
-## Nature And Eco Technology
+## 自然与生态科技
 
-### Biophilic
+### 亲自然
 
-Best base styles:
+适合的基础风格：
 
-- Style 20 - Soft Pop for warm learning, wellness, family, and consumer products.
-- Style 23 - Wabi-Sabi for craft, slow commerce, retreats, or material-led storytelling.
-- Style 12 - Layered Material for calm utility apps that need touch-friendly controls.
+- 风格 20 柔和流行：适合温暖的学习、健康、家庭和消费产品。
+- 风格 23 侘寂：适合手作、慢电商、静修或材质主导的叙事。
+- 风格 12 层级材质：适合需要触控友好控件的安静实用应用。
 
-Adjustments:
+调整方式：
 
-- Use plant, water, stone, paper, wood, and daylight references as functional media cues.
-- Prefer muted greens, clay, moss, fog, warm white, and soft contrast.
-- Use organic spacing and gentle curves while keeping labels and controls stable.
-- Use icons and imagery for recognition, not as scattered decoration.
+- 用植物、水、石头、纸、木材和日光作为具有功能意义的媒体线索。
+- 优先使用低饱和绿、陶土、苔藓、雾色、暖白和柔和对比。
+- 使用自然的间距和温和曲线，同时保持标签和控件稳定。
+- 图标和图像用于识别，不要散落为装饰。
 
-Guardrails:
+边界：
 
-- Do not make every surface green.
-- Do not replace product screenshots, data, or forms with atmospheric nature imagery.
-- Keep medical, finance, and operational workflows readable and direct.
+- 不要让每个表面都变绿。
+- 不要用营造自然氛围的图片替代产品截图、数据或 Form。
+- 医疗、金融和操作工作流应保持可读、直接。
 
-### Solarpunk
+### 太阳朋克
 
-Best base styles:
+适合的基础风格：
 
-- Style 25 - Blueprint for civic systems, infrastructure, urban planning, and grid-connected products.
-- Style 19 - Gradient Pop for optimistic launch pages and creator tools.
-- Style 12 - Layered Material for approachable utility surfaces.
+- 风格 25 蓝图：适合公共系统、基础设施、城市规划和电网相关产品。
+- 风格 19 渐变风：适合乐观的发布页和创作者工具。
+- 风格 12 层级材质：适合亲和的实用界面。
 
-Adjustments:
+调整方式：
 
-- Combine clean technical structure with sunny accents, renewable energy cues, modular maps, and community proof.
-- Use yellow, leaf green, sky cyan, white, and dark technical lines in balanced roles.
-- Make charts, infrastructure diagrams, maps, and resource flows the visual objects.
-- Keep the tone optimistic, engineered, and practical.
+- 将清晰的技术结构与阳光感强调、可再生能源线索、模块化地图和社区证据结合。
+- 平衡使用黄色、叶绿、天空青、白色和深色技术线条。
+- 将图表、基础设施图、地图和资源流作为视觉对象。
+- 气质保持乐观、工程化、实用。
 
-Guardrails:
+边界：
 
-- Avoid fantasy eco decoration with no product meaning.
-- Keep contrast high; pale yellow and green often fail on white.
-- Do not let optimistic color weaken admin or monitoring clarity.
+- 避免没有产品含义的幻想式生态装饰。
+- 保持高对比；浅黄和浅绿放在白色上经常难以辨认。
+- 不要让乐观配色削弱后台或监控的清晰度。
 
-## Narrative Dark Variants
+## 叙事型深色变体
 
-### Film Noir
+### 黑色电影
 
-Best base styles:
+适合的基础风格：
 
-- Style 10 - Dark Theme for media review, cinematic tools, and story-led products.
-- Style 08 - Resonant Stark for premium portfolio or single-object pages.
-- Style 22 - Art Deco for venue, hospitality, cultural, or event pages with period drama.
+- 风格 10 深色主题：适合媒体审阅、电影感工具和故事主导产品。
+- 风格 08 共鸣极简：适合高端作品集或单一对象页面。
+- 风格 22 装饰艺术：适合具有年代戏剧感的场馆、酒店、文化或活动页面。
 
-Adjustments:
+调整方式：
 
-- Use high-contrast light/shadow, narrow spotlit media, sharp captions, and evidence-like panels.
-- Prefer black, charcoal, ivory, brass, and one muted danger/accent color.
-- Make shadows structural: reveal hierarchy, current state, or the active case.
-- Use photography or frame crops when the page benefits from cinematic proof.
+- 使用高对比明暗、窄幅聚光媒体、利落图注和类似证据的 Panel。
+- 优先使用黑色、炭灰、象牙白、黄铜色，以及一种低饱和危险色或强调色。
+- 让阴影承担结构作用：揭示层级、当前状态或活动案例。
+- 页面能从电影式证据中获益时，使用摄影或画面裁切。
 
-Guardrails:
+边界：
 
-- Do not lower text contrast for mood.
-- Do not add fake mystery copy to operational workflows.
-- Keep buttons and forms free of smoky overlays.
+- 不要为氛围降低文字对比。
+- 不要给操作工作流添加虚假的神秘文案。
+- Button 和 Form 不应被烟雾式 Overlay 覆盖。
 
-### Dark Academia
+### 暗黑学院
 
-Best base styles:
+适合的基础风格：
 
-- Style 05 - Swiss Editorial for serious essays, archives, docs, and cultural material.
-- Style 24 - Ink Wash for literature, museum, or heritage content with disciplined paper rhythm.
-- Style 10 - Dark Theme for premium learning, research, and media libraries.
+- 风格 05 瑞士编辑风：适合严肃文章、档案、文档和文化材料。
+- 风格 24 水墨：适合需要有序纸面节奏的文学、博物馆或文化遗产内容。
+- 风格 10 深色主题：适合高端学习、研究和媒体库。
 
-Adjustments:
+调整方式：
 
-- Use bookish typography, footnotes, index rows, marginalia, citations, and reading progress.
-- Prefer warm black, oxblood, parchment, muted gold, library green, and paper neutrals.
-- Make source notes, annotations, tags, and excerpt blocks part of the UI system.
-- Use restrained texture: paper grain, rules, bookmarks, catalog labels.
+- 使用书卷气字体、脚注、索引行、页边批注、引用和阅读进度。
+- 优先使用暖黑、暗红、羊皮纸色、低饱和金色、图书馆绿和纸张中性色。
+- 将来源说明、注释、Tag 和摘录区块纳入 UI 系统。
+- 纹理应克制：纸张颗粒、分隔线、书签和目录标签。
 
-Guardrails:
+边界：
 
-- Do not create a decorative library wallpaper behind dense UI.
-- Avoid tiny low-contrast serif text in app controls.
-- Keep long-form reading and navigation comfortable on mobile.
+- 不要在密集 UI 后铺设装饰性图书馆壁纸。
+- 应用控件中避免细小、低对比的衬线文字。
+- 移动端长文阅读和导航应保持舒适。
 
-## Paper And Handmade Variants
+## 纸张与手作变体
 
-### Paper Cutout
+### 剪纸
 
-Best base styles:
+适合的基础风格：
 
-- Style 20 - Soft Pop for education, family, creator, and friendly consumer products.
-- Style 07 - Cute-alism for youth brands, stickers, and playful commerce.
-- Style 13 - Bento Layout for modular storytelling with layered objects.
+- 风格 20 柔和流行：适合教育、家庭、创作者和友好的消费产品。
+- 风格 07 可爱主义：适合年轻品牌、贴纸和活泼电商。
+- 风格 13 便当盒布局：适合通过层叠对象展开的模块化叙事。
 
-Adjustments:
+调整方式：
 
-- Use layered paper planes, slight offset shadows, torn or cut edges, flat color blocks, and visible object stacking.
-- Make cards look like purposeful paper pieces: lesson, note, receipt, sticker, ticket, or step.
-- Keep button shapes familiar and stable even if the surrounding media is handmade.
-- Use a limited set of paper colors rather than a full rainbow.
+- 使用层叠纸面、轻微错位阴影、撕边或切边、平涂色块和清晰对象堆叠。
+- 让 Card 像有明确用途的纸片：课程、笔记、收据、贴纸、票券或步骤。
+- 周围媒体即使采用手作表达，Button 形状仍应熟悉、稳定。
+- 使用有限的纸张配色，而不是整套彩虹色。
 
-Guardrails:
+边界：
 
-- Do not turn every component into a decorative cutout.
-- Keep form labels, focus states, and error messages crisp.
-- Avoid childish tone unless the audience actually calls for it.
+- 不要把每个组件都变成装饰性剪纸。
+- Form 标签、焦点状态和错误消息应清晰锐利。
+- 除非受众确实需要，否则避免幼稚气质。
 
-### Hand-Drawn Sketch
+### 手绘草图
 
-Best base styles:
+适合的基础风格：
 
-- Style 20 - Soft Pop for learning, journaling, and encouraging productivity.
-- Style 23 - Wabi-Sabi for handmade craft and studio notes.
-- Style 11 - Structured Lines when the sketch marks support process diagrams.
+- 风格 20 柔和流行：适合学习、日记和鼓励式生产力工具。
+- 风格 23 侘寂：适合手作工艺和工作室笔记。
+- 风格 11 结构线：适合草图线条能帮助表达流程图的场景。
 
-Adjustments:
+调整方式：
 
-- Use imperfect lines, small doodles, annotated arrows, note cards, and rough diagram marks.
-- Pair hand-drawn accents with a highly readable UI font.
-- Let sketch marks explain sequence, emphasis, or feedback instead of filling empty space.
-- Keep motion gentle and tactile.
+- 使用不完美线条、小涂鸦、注释箭头、笔记 Card 和粗略图示标记。
+- 手绘强调应配合高度易读的 UI 字体。
+- 草图标记用于解释顺序、强调或反馈，不要只是填补空白。
+- 动效保持轻柔、有触感。
 
-Guardrails:
+边界：
 
-- Do not make buttons, inputs, or tables look unreliable.
-- Avoid handwriting for dense body text.
-- Preserve alignment under the hand-drawn surface.
+- 不要让 Button、Input 或 Table 看起来不可靠。
+- 密集正文避免手写字体。
+- 手绘表面之下仍应保留对齐。
 
-## Modernist Variants
+## 现代主义变体
 
-### Bauhaus
+### 包豪斯
 
-Best base styles:
+适合的基础风格：
 
-- Style 05 - Swiss Editorial for cultural, portfolio, and design studio pages.
-- Style 11 - Structured Lines for B2B pages that need geometry and rigor.
-- Style 22 - Art Deco only when the page needs a more theatrical poster feeling.
+- 风格 05 瑞士编辑风：适合文化、作品集和设计工作室页面。
+- 风格 11 结构线：适合需要几何感与严谨性的 B2B 页面。
+- 风格 22 装饰艺术：仅用于页面需要更具戏剧感的海报表达时。
 
-Adjustments:
+调整方式：
 
-- Use primary shapes, red/yellow/blue accents, black rules, strict grids, and bold composition.
-- Treat circles, squares, triangles, and rails as layout devices with content roles.
-- Use typography as structure: scale, alignment, and type weight create the design.
-- Keep page sections flat and confident.
+- 使用基本形状、红黄蓝强调、黑色分隔线、严格网格和鲜明构图。
+- 将圆、方、三角和轨道作为有内容角色的布局工具。
+- 字体承担结构作用：尺度、对齐和字重共同建立设计。
+- 页面区块保持平面、明确。
 
-Guardrails:
+边界：
 
-- Do not scatter geometric shapes without information value.
-- Avoid turning Bauhaus into generic primary-color confetti.
-- Keep spacing and alignment stricter than the palette.
+- 不要散落没有信息价值的几何形状。
+- 不要把包豪斯做成通用的三原色纸屑装饰。
+- 间距和对齐应比配色更严格。
 
-### Mid-Century Modern
+### 世纪中期现代主义
 
-Best base styles:
+适合的基础风格：
 
-- Style 05 - Swiss Editorial for content-led modernism.
-- Style 23 - Wabi-Sabi for warm interiors, furniture, craft, and object-led pages.
-- Style 13 - Bento Layout for approachable product overviews with modular rhythm.
+- 风格 05 瑞士编辑风：适合内容主导的现代主义。
+- 风格 23 侘寂：适合温暖室内、家具、手作和对象主导页面。
+- 风格 13 便当盒布局：适合有模块化节奏、亲和的产品总览。
 
-Adjustments:
+调整方式：
 
-- Use warm neutrals, olive, rust, teal, walnut, cream, and black as restrained accents.
-- Use clean geometry, product photography, furniture-like spacing, and editorial captions.
-- Prefer flat surfaces, simple shadows, and measured asymmetry.
-- Make component shapes feel designed but not overly rounded.
+- 使用暖中性色、橄榄、锈红、蓝绿、胡桃木、奶油和黑色作为克制强调。
+- 使用简洁几何、产品摄影、类似家具陈列的间距和编辑式图注。
+- 优先使用平面表面、简单阴影和有分寸的不对称。
+- 组件形状应有设计感，但不要过度圆润。
 
-Guardrails:
+边界：
 
-- Do not let brown/orange dominate the whole UI.
-- Do not use retro illustration if the user needs to inspect real products.
-- Keep forms, tables, and repeated actions modern and accessible.
+- 不要让棕色或橙色主导整个 UI。
+- 用户需要查看真实产品时，不要用复古插画代替。
+- Form、Table 和重复操作保持现代且无障碍。
 
-## How To Apply
+## 应用方式
 
-When applying a variant, state:
+应用变体时说明：
 
-- Base numbered style.
-- Variant name.
-- Layout archetype.
-- Which tokens change.
-- Which component behaviors stay unchanged.
-- Which media or texture cues are allowed.
-- Which guardrails matter for the user's page type.
+- 基础编号风格。
+- 变体名称。
+- 布局原型。
+- 哪些 Token 改变。
+- 哪些组件行为保持不变。
+- 允许使用哪些媒体或纹理线索。
+- 对用户页面类型重要的边界。
 
-Example:
+示例：
 
 ```text
-Use Style 25 - Blueprint with a restrained Solarpunk variant: keep the technical plan-sheet layout, graph nodes, annotations, compact command buttons, and mobile order from Blueprint; shift accents toward sun yellow and leaf green, use infrastructure diagrams and resource-flow proof, and avoid decorative eco imagery that hides state or controls.
+使用风格 25 蓝图，并加入克制的太阳朋克变体：保留蓝图的技术图纸布局、图节点、注释、紧凑命令 Button 和移动端顺序；强调色转向阳光黄和叶绿，使用基础设施图与资源流证据，避免用生态装饰图像遮住状态或控件。
 ```

@@ -1,96 +1,86 @@
-# Style 02 - Block Brutalism (块状粗野主义)
+# 风格 02：块状粗野主义
 
-## Summary
+## 概述
 
-Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy.
+暖白画布、亮黄主海报、黑色硬边与偏移阴影，辅以橙红点缀，呈现独立创意市集的街头气质。
 
-Chinese summary: 暖黄画布、硬黑边框、块状控件、高饱和标签和强活动感。
+## 适用场景
 
-## Best For
+创意市集、文化活动、独立出版、预约领票
 
-bold campaigns, indie products, playful utilities
+## 示例场景
 
-## Example Scenario
+- 示例产品：越界创意市集
+- 页面任务：独立创意市集 · 2026.11.14–15
+- 标题：把好点子 / 带到街上。
+- 主要操作：免费预约电子票
+- 次要操作：看看两日安排
 
-- Product sample: BlockParty
-- Page job: Street launch builder
-- Headline: Make the launch impossible to ignore.
-- Primary action: Publish drop
-- Secondary action: Edit rules
+## 场景组件
 
-## Scenario Components
+- 插画出版：翻看独立小刊、插画故事与纸上实验。
+- 独立手作：认识把纸张、织物和日常物件做出新意的创作者。
+- 现场音乐：在逛摊间隙停一停，听两天轮番上演的小型现场。
 
-- Hard hierarchy: Black borders, block labels, and oversized type make the core action unmistakable.
-- Campaign pressure: Timers, scarcity notes, and status slabs create energy without hiding the rules.
-- Readable chaos: The grid feels loud, but actions and requirements stay obvious.
+## 示例状态
 
-## Example States
+- 插画出版：翻翻看
+- 独立手作：逛一逛
+- 现场音乐：听现场
 
-- Prize rules approved: Done
-- Hero slab contrast: Check
-- Referral badge: Live
+## 布局模式
 
-## Layout Pattern
+- 模式：创意市集海报
+- 结构：暖白画布上放置亮黄主海报与领票入口，下接两日活动安排及摊位内容；次级区域用细分隔线组织。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：黑色超大标题主动分行，日期标签紧凑，辅助正文保持清晰可读。
+- 组件：使用切换两天活动的 Tabs、摊位列表，以及仅含昵称和到访日期的领票 Modal。
+- 按钮：矩形 Button 采用黑色或亮黄块面与硬边框，偏移阴影集中用于主要领票动作。
+- 图标与媒体：用亮黄、黑色、橙红几何形状组成原创拼贴，不借用真实活动海报或品牌内容。
+- 状态：明确区分选中日期、票券生成中、字段错误和本地领票成功状态。
+- 避免：避免所有区域都套粗框、通用圆角卡片、虚构紧迫感，以及不必要的联系信息字段。
 
-- Pattern: Street Poster Launch (街头海报发布)
-- Archetype: Street Poster Launch
-- Structure: Poster-first composition with slab headline blocks, ticket strips, hard stamps, and intentionally loud hierarchy.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use huge block type, compressed labels, blunt numbers, and minimal body copy.
-- Components: Tickets, stamps, countdowns, rule panels, and claim modules should look physical and direct.
-- Buttons: Buttons are black or saturated slabs with hard borders and offset shadows, never soft pills.
-- Icons and media: Use poster blocks, product labels, stickers, or campaign artifacts as the main image language.
-- States: Use stamped states such as live, locked, claimed, expired, and warning with strong contrast.
-- Avoid: Do not soften the style with generic rounded SaaS cards.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f5f1e8`
+- 表面：`#fffdf6`
+- 正文：`#171713`
+- 弱化文字：`#625f54`
+- 主色：`#fff04d`
+- 强调色：`#f04b2e`
+- 边框：`#171713`
+- 圆角：`0`
+- 面板圆角：`0`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`0`
+- 几何规则：海报与票券采用方正几何形态；主海报使用粗边，次级内容用细线分隔。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`8px 8px 0 #171713`
 
-- Background: `#fff04d`
-- Surface: `#fffbea`
-- Text: `#111111`
-- Muted text: `#3f3f46`
-- Primary: `#111111`
-- Accent: `#ff3d00`
-- Border: `#111111`
-- Radius: `0`
-- Panel radius: `0`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `0`
-- Geometry rule: hard square geometry with no softened SaaS corners; avoid making every button and card the same large rounded rectangle.
-- Shadow: `10px 10px 0 #111111`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：矩形 Button 明确呈现悬停、焦点、按下、处理中和禁用状态；仅在需要强调层级的位置使用硬偏移阴影。
+- 提示与反馈：字段错误就近提示，成功后展示清晰的本地电子票，并说明演示不会生成真实预约。
+- 间距系统：主海报周围留出充足空白，活动信息紧凑排列，次级区域使用细分隔线，避免重复套框。
+- 响应式策略：手机端将海报与领票入口纵向排列，活动信息自然换行，日期 Tabs 易于触达，票券 Modal 在视口内滚动。
 
-- Button system: Use blunt rectangular buttons with thick borders, hard offset shadows, pressed translation, and no soft disabled treatment.
-- Feedback and alerts: Use poster-like alert strips, stamped success labels, and obvious error blocks with hard borders.
-- Spacing system: Use large 24-32px slabs, abrupt 12-16px gaps, and intentionally chunky control groups.
-- Responsive behavior: Desktop can be asymmetric; tablet collapses poster and proof wall; mobile becomes a single stack with full-width slab buttons and no horizontal overflow.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：一个亮黄主海报配明确日期地点、可切换的两日安排，以及字段精简的免费领票入口。
+- 数据看板：将硬边层级用于简洁的活动运营列表，避免给每项指标都套装饰海报框。
+- 管理后台：表格使用克制的分隔线和明确动作，亮黄及硬阴影保留给主要操作。
+- 表单、Table 与数据：使用清晰的 Label、方正 Input、就近错误提示及简短确认，只收集任务所需信息。
+- 移动端：按阅读顺序纵向排布，超大标题安全换行，Tabs 与领票控件易用且不产生横向溢出。
+- 不适合：不适合需要安静克制语气的金融、医疗、法律或长篇阅读体验。
 
-- 按钮细节：使用钝感矩形按钮、粗边框、硬偏移阴影、按下位移，并避免柔和的禁用态。
-- 提示与反馈：使用海报式提示条、印章式成功标签，以及粗边框错误块。
-- 间距系统：使用 24-32px 大块内边距、12-16px 明确间距，以及厚重的控件组。
-- 响应式策略：桌面可以不对称；平板折叠海报和证明墙；手机变成单列，按钮全宽且不能横向溢出。
+## 使用要点
 
-## Page Adaptation Guide
+- 粗边和硬阴影集中用于主海报及领票动作，辅助内容使用细分隔线。
+- 用亮黄、黑色和橙红形状组成原创几何拼贴，日期地点保持易读。
+- 免费领票仅需昵称和到访日期；2026.11.14–15、江湾·旧印厂均为虚构活动示例，领票仅在本地演示。
 
-- Landing page: Use a campaign poster, stamped proof, bold offer slab, and one loud call-to-action with hard-edged supporting tickets.
-- Dashboard: Use chunky status slabs and urgent queues only for high-energy launch or moderation dashboards.
-- Admin panel: Use blunt forms, strong section borders, and obvious destructive confirmation; keep density lower than a neutral admin shell.
-- Forms, tables, and data: Use large labels, hard field borders, poster-like errors, and full-width confirmation blocks.
-- Mobile: Stack slabs in a strong reading order; remove side collisions and keep buttons full-width with no horizontal overflow.
-- Not a good fit for: Weak for quiet finance, medical, legal, or long-form reading products.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use loud hierarchy and hard geometry.
-- Let tension come from shape and contrast, not randomness.
-- Keep forms and actions obvious.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

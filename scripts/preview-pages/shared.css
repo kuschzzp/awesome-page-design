@@ -48,12 +48,6 @@ body.card-grid .page {
 body.card-grid .top-nav {
   display: none;
 }
-body.card-grid .interaction-demo,
-body.card-grid .style-lab {
-  width: min(100% - 48px, 1268px);
-  margin-right: auto;
-  margin-left: auto;
-}
 body.card-grid .primary-action,
 body.card-grid .tabs button.active,
 body.card-grid .toggle-chip[aria-pressed="true"],
@@ -62,13 +56,7 @@ body.card-grid .segmented .active {
   border-color: var(--primary);
   color: #ffffff;
 }
-body.card-grid .interaction-copy,
-body.card-grid .state-board,
-body.card-grid .lab-summary,
-body.card-grid .lab-workspace,
-body.card-grid .panel,
-body.card-grid .implementation-list li,
-body.card-grid .state-pill {
+body.card-grid .panel{
   border-color: #d7e3f2;
   background: #ffffff;
 }
@@ -3650,17 +3638,6 @@ button:disabled,
   margin: 0 auto;
   padding: 24px calc(24px + env(safe-area-inset-right)) 64px calc(24px + env(safe-area-inset-left));
 }
-.reference-stack {
-  display: grid;
-  gap: 32px;
-  margin-top: 88px;
-  padding-top: 30px;
-  border-top: 1px solid color-mix(in srgb, var(--border), transparent 30%);
-}
-.reference-stack .interaction-demo,
-.reference-stack .style-lab {
-  margin-top: 0;
-}
 .top-nav {
   min-height: 60px;
   display: flex;
@@ -3783,7 +3760,6 @@ p {
 }
 .metric-row,
 .metric-tile,
-.detail-pills,
 .queue-list,
 .feature-block {
   min-width: 0;
@@ -6807,11 +6783,7 @@ body.art-deco .poster-copy,
 body.art-deco .poster-stack,
 body.art-deco .deco-wing,
 body.art-deco .deco-centerpiece,
-body.art-deco .deco-floorplan,
-body.art-deco .interaction-copy,
-body.art-deco .state-board,
-body.art-deco .lab-summary,
-body.art-deco .lab-workspace {
+body.art-deco .deco-floorplan{
   border-color: var(--primary);
   box-shadow: inset 0 0 0 1px rgba(212,175,55,.32), var(--shadow);
 }
@@ -6870,9 +6842,7 @@ body.wabi-sabi .object-stage .media::before {
 body.wabi-sabi .object-stage .media::after,
 body.wabi-sabi .material-caption span,
 body.wabi-sabi .object-ledger span,
-body.wabi-sabi .metric-tile,
-body.wabi-sabi .state-pill,
-body.wabi-sabi .implementation-list li {
+body.wabi-sabi .metric-tile{
   background: color-mix(in srgb, var(--surface), var(--bg) 18%);
 }
 body.wabi-sabi .primary-action {
@@ -6922,11 +6892,7 @@ body.ink-wash .seal-action {
 body.ink-wash .feature-block,
 body.ink-wash .metric-tile,
 body.ink-wash .queue-card,
-body.ink-wash .panel,
-body.ink-wash .lab-summary,
-body.ink-wash .lab-workspace,
-body.ink-wash .interaction-copy,
-body.ink-wash .state-board {
+body.ink-wash .panel{
   box-shadow: none;
 }
 body.blueprint .node-graph,
@@ -6974,11 +6940,7 @@ body.industrial-control .ticket-card,
 body.industrial-control .control-header,
 body.industrial-control .status-filters,
 body.industrial-control .alarm-board,
-body.industrial-control .machine-inspector,
-body.industrial-control .interaction-copy,
-body.industrial-control .state-board,
-body.industrial-control .lab-summary,
-body.industrial-control .lab-workspace {
+body.industrial-control .machine-inspector{
   border-color: #4b5545;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.04), var(--shadow);
 }
@@ -6992,8 +6954,7 @@ body.industrial-control .toggle-chip[aria-pressed="true"] {
   border-color: var(--primary);
 }
 body.industrial-control .ticket-card span,
-body.industrial-control .inline-alert,
-body.industrial-control .state-pill.warning {
+body.industrial-control .inline-alert{
   color: #11130f;
   background: var(--accent);
   border-color: var(--accent);
@@ -7006,68 +6967,6 @@ body.industrial-control .queue-card,
 body.industrial-control .metric-tile,
 body.industrial-control .feature-block {
   background: color-mix(in srgb, var(--surface), #000 12%);
-}
-.interaction-demo {
-  display: grid;
-  grid-template-columns: .84fr 1.16fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: stretch;
-}
-.interaction-copy,
-.state-board {
-  padding: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--panel-radius);
-  box-shadow: var(--shadow);
-}
-.interaction-copy h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.implementation-list {
-  display: grid;
-  gap: 10px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.implementation-list li {
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.implementation-list b {
-  color: var(--text);
-}
-.state-board {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-}
-.state-board-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-.state-board-head span {
-  min-width: 0;
-  color: var(--muted);
-  font-weight: 800;
-}
-.state-board-head strong {
-  font-size: 28px;
-  font-variant-numeric: tabular-nums;
 }
 .button-row {
   display: flex;
@@ -7149,58 +7048,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   line-height: 1.45;
 }
-.state-stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-.state-pill {
-  min-width: 0;
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.42;
-}
-.state-pill b {
-  color: var(--text);
-}
-.state-pill.success {
-  border-color: color-mix(in srgb, #16a34a, var(--border) 52%);
-}
-.state-pill.loading {
-  border-color: color-mix(in srgb, var(--accent), var(--border) 48%);
-}
-.state-pill.empty {
-  opacity: .86;
-}
-.state-pill.error {
-  border-color: color-mix(in srgb, #dc2626, var(--border) 46%);
-}
-.responsive-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.responsive-steps span {
-  min-width: 0;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 14%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.responsive-steps b {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--text);
-}
 .toast {
   position: fixed;
   left: 50%;
@@ -7224,15 +7071,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   font-size: 14px;
 }
-.style-lab {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: start;
-}
-.lab-summary,
-.lab-workspace,
 .panel {
   padding: 20px;
   background: var(--surface);
@@ -7240,25 +7078,6 @@ body.industrial-control .feature-block {
   border-radius: var(--panel-radius);
   box-shadow: var(--shadow);
 }
-.detail-pills {
-  display: grid;
-  gap: 8px;
-  margin-top: 16px;
-}
-.detail-pills span {
-  max-width: 100%;
-  padding: 8px 10px;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.lab-summary h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.lab-summary p,
 .panel p {
   font-size: 15px;
 }
@@ -7334,10 +7153,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     max-width: none;
     padding: 0 0 48px;
-  }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 28px, 760px);
   }
   .life-aurora,
   .life-stark-contact,
@@ -7583,10 +7398,7 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
-  .workspace-grid,
-  .responsive-steps {
+  .workspace-grid{
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -7698,13 +7510,9 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
   .workspace-grid,
-  .responsive-steps,
   .metric-row,
-  .queue-list,
-  .state-stack {
+  .queue-list{
     min-width: 0;
     max-width: 100%;
   }
@@ -7716,8 +7524,7 @@ body.industrial-control .feature-block {
   .cute-actions,
   .catalog-actions,
   .shift-actions,
-  .related,
-  .detail-pills {
+  .related{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -7797,8 +7604,7 @@ body.industrial-control .feature-block {
   .launch-counters,
   .asset-mosaic,
   .alarm-room-head,
-  .progress-path,
-  .state-stack {
+  .progress-path{
     grid-template-columns: 1fr;
   }
   .toolbar-actions {
@@ -8042,10 +7848,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     padding: 0 0 44px;
   }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 24px, 460px);
-  }
   .life-bento-market {
     grid-template-columns: 1fr;
   }
@@ -8244,8 +8046,6 @@ body.industrial-control .feature-block {
   .trace-panel,
   .glass-panel,
   .render-queue,
-  .lab-summary,
-  .lab-workspace,
   .panel,
   .feature-block,
   .filter-rail {
@@ -8260,75 +8060,103 @@ body.industrial-control .feature-block {
   }
 }
 
-/* Library navigation stays visually separate from each fictional product. */
+/* 统一的预览工具栏，与演示产品的导航保持清晰层次。 */
 .preview-context-shell {
-  color: #18202e;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  color-scheme: light;
-  font: 14px/1.4 ui-sans-serif, system-ui, sans-serif;
+  color: #f4f4f5;
+  background: #232529;
+  border-bottom: 1px solid #35373c;
+  color-scheme: dark;
+  font: 13px/1.4 ui-sans-serif, system-ui, sans-serif;
 }
 .preview-context {
-  width: min(100%, 1268px);
-  min-height: 72px;
+  width: 100%;
+  height: 47px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 16px 24px;
-  margin: 0 auto;
-  padding: 12px calc(24px + env(safe-area-inset-right)) 12px calc(24px + env(safe-area-inset-left));
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 0 calc(24px + env(safe-area-inset-right)) 0 calc(24px + env(safe-area-inset-left));
+}
+.preview-context-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.preview-context-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 24px;
+  min-width: 30px;
+  padding: 0 6px;
+  border: 1px solid #50535b;
+  border-radius: 4px;
+  color: #d4d6dc;
+  background: #303238;
+  font: 500 11px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.preview-context-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.preview-context-actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 20px;
 }
 .preview-context-back,
 .preview-context-use {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   min-height: 44px;
   text-decoration: none;
   overflow-wrap: normal;
+  white-space: nowrap;
+  border-radius: 5px;
 }
-.preview-context-back { color: #475569; }
-.preview-context-back:hover { color: #0f172a; text-decoration: underline; }
-.preview-context-identity {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 10px;
-}
-.preview-context-number,
-.preview-context-identity > span:last-child { color: #64748b; font-size: 12px; }
-.preview-context-identity strong { font-size: 15px; font-weight: 650; }
-.preview-context-use {
+.preview-context svg {
+  width: 15px;
+  height: 15px;
   flex: 0 0 auto;
-  padding: 0 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  color: #0f172a;
-  background: #f8fafc;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.preview-context-back { color: #c2c5cc; }
+.preview-context-back:hover { color: #ffffff; }
+.preview-context-use { color: #24262b; }
+.preview-context-use-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid #f4f4f5;
+  border-radius: 5px;
+  background: #f4f4f5;
   font-weight: 600;
+  transition: background .15s ease, border-color .15s ease;
 }
-.preview-context-use:hover { border-color: #64748b; background: #f1f5f9; }
+.preview-context-use:hover .preview-context-use-label { background: #dedfe3; border-color: #dedfe3; }
 .preview-context a:focus-visible {
-  outline: 3px solid #2563eb;
-  outline-offset: 3px;
+  outline: 2px solid #a5c8ff;
+  outline-offset: 1px;
 }
-.reference-disclosure { margin-top: 40px; }
-.reference-disclosure > summary {
-  padding: 18px 0;
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  font-size: 15px;
-  cursor: pointer;
-}
-.reference-disclosure > summary:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-}
-.reference-disclosure-hint { margin-left: 12px; color: var(--muted); font-size: 12px; }
-.reference-disclosure .reference-stack { margin-top: 24px; padding-top: 0; border-top: 0; }
 /* Keep the print ledger's decision separate from its long heading. */
 .life-print-ledger .ledger-header { align-items: center; }
 .life-print-ledger .ledger-header > div { flex: 1; max-width: 780px; }
@@ -8347,11 +8175,11 @@ body.industrial-control .feature-block {
   .life-print-ledger .ledger-header > .primary-action { align-self: flex-start; width: auto; }
 }
 @media (max-width: 640px) {
-  .preview-context { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; padding: 12px 16px; }
-  .preview-context-identity { grid-column: 1 / -1; grid-row: 1; }
-  .preview-context-back { justify-self: start; }
-  .preview-context-use { padding: 0 12px; }
-  .reference-disclosure-hint { display: block; margin: 6px 0 0 18px; }
+  .preview-context { gap: 10px; padding: 0 calc(12px + env(safe-area-inset-right)) 0 calc(12px + env(safe-area-inset-left)); font-size: 12px; }
+  .preview-context-identity { gap: 7px; }
+  .preview-context-name { font-size: 12px; }
+  .preview-context-actions { gap: 12px; }
+  .preview-context-use-label { gap: 5px; padding: 0 9px; }
   .life-print-ledger .print-production-grid { grid-template-columns: minmax(0, 1fr); }
   .life-print-ledger .job-ledger > span { grid-template-columns: 64px minmax(0, 1fr); gap: 5px 12px; }
   .life-print-ledger .job-ledger em { grid-column: 2; }

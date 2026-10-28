@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Style 02 - Block Brutalism</title>
+<link rel="icon" href="../../previews/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../previews/favicon.svg" type="image/svg+xml" sizes="any">
 <style>
 *,
 *::before,
@@ -17,19 +19,19 @@ body {
   overflow-x: hidden;
 }
 :root {
-  --bg: #fff04d;
-  --surface: #fffbea;
-  --text: #111111;
-  --muted: #3f3f46;
-  --primary: #111111;
-  --accent: #ff3d00;
-  --border: #111111;
+  --bg: #f5f1e8;
+  --surface: #fffdf6;
+  --text: #171713;
+  --muted: #625f54;
+  --primary: #fff04d;
+  --accent: #f04b2e;
+  --border: #171713;
   --radius: 0;
   --panel-radius: 0;
   --control-radius: 0;
   --chip-radius: 0;
   --media-radius: 0;
-  --shadow: 10px 10px 0 #111111;
+  --shadow: 8px 8px 0 #171713;
 }
 body {
   min-height: 100vh;
@@ -81,12 +83,6 @@ body.card-grid .page {
 body.card-grid .top-nav {
   display: none;
 }
-body.card-grid .interaction-demo,
-body.card-grid .style-lab {
-  width: min(100% - 48px, 1268px);
-  margin-right: auto;
-  margin-left: auto;
-}
 body.card-grid .primary-action,
 body.card-grid .tabs button.active,
 body.card-grid .toggle-chip[aria-pressed="true"],
@@ -95,13 +91,7 @@ body.card-grid .segmented .active {
   border-color: var(--primary);
   color: #ffffff;
 }
-body.card-grid .interaction-copy,
-body.card-grid .state-board,
-body.card-grid .lab-summary,
-body.card-grid .lab-workspace,
-body.card-grid .panel,
-body.card-grid .implementation-list li,
-body.card-grid .state-pill {
+body.card-grid .panel{
   border-color: #d7e3f2;
   background: #ffffff;
 }
@@ -3683,17 +3673,6 @@ button:disabled,
   margin: 0 auto;
   padding: 24px calc(24px + env(safe-area-inset-right)) 64px calc(24px + env(safe-area-inset-left));
 }
-.reference-stack {
-  display: grid;
-  gap: 32px;
-  margin-top: 88px;
-  padding-top: 30px;
-  border-top: 1px solid color-mix(in srgb, var(--border), transparent 30%);
-}
-.reference-stack .interaction-demo,
-.reference-stack .style-lab {
-  margin-top: 0;
-}
 .top-nav {
   min-height: 60px;
   display: flex;
@@ -3816,7 +3795,6 @@ p {
 }
 .metric-row,
 .metric-tile,
-.detail-pills,
 .queue-list,
 .feature-block {
   min-width: 0;
@@ -6840,11 +6818,7 @@ body.art-deco .poster-copy,
 body.art-deco .poster-stack,
 body.art-deco .deco-wing,
 body.art-deco .deco-centerpiece,
-body.art-deco .deco-floorplan,
-body.art-deco .interaction-copy,
-body.art-deco .state-board,
-body.art-deco .lab-summary,
-body.art-deco .lab-workspace {
+body.art-deco .deco-floorplan{
   border-color: var(--primary);
   box-shadow: inset 0 0 0 1px rgba(212,175,55,.32), var(--shadow);
 }
@@ -6903,9 +6877,7 @@ body.wabi-sabi .object-stage .media::before {
 body.wabi-sabi .object-stage .media::after,
 body.wabi-sabi .material-caption span,
 body.wabi-sabi .object-ledger span,
-body.wabi-sabi .metric-tile,
-body.wabi-sabi .state-pill,
-body.wabi-sabi .implementation-list li {
+body.wabi-sabi .metric-tile{
   background: color-mix(in srgb, var(--surface), var(--bg) 18%);
 }
 body.wabi-sabi .primary-action {
@@ -6955,11 +6927,7 @@ body.ink-wash .seal-action {
 body.ink-wash .feature-block,
 body.ink-wash .metric-tile,
 body.ink-wash .queue-card,
-body.ink-wash .panel,
-body.ink-wash .lab-summary,
-body.ink-wash .lab-workspace,
-body.ink-wash .interaction-copy,
-body.ink-wash .state-board {
+body.ink-wash .panel{
   box-shadow: none;
 }
 body.blueprint .node-graph,
@@ -7007,11 +6975,7 @@ body.industrial-control .ticket-card,
 body.industrial-control .control-header,
 body.industrial-control .status-filters,
 body.industrial-control .alarm-board,
-body.industrial-control .machine-inspector,
-body.industrial-control .interaction-copy,
-body.industrial-control .state-board,
-body.industrial-control .lab-summary,
-body.industrial-control .lab-workspace {
+body.industrial-control .machine-inspector{
   border-color: #4b5545;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.04), var(--shadow);
 }
@@ -7025,8 +6989,7 @@ body.industrial-control .toggle-chip[aria-pressed="true"] {
   border-color: var(--primary);
 }
 body.industrial-control .ticket-card span,
-body.industrial-control .inline-alert,
-body.industrial-control .state-pill.warning {
+body.industrial-control .inline-alert{
   color: #11130f;
   background: var(--accent);
   border-color: var(--accent);
@@ -7039,68 +7002,6 @@ body.industrial-control .queue-card,
 body.industrial-control .metric-tile,
 body.industrial-control .feature-block {
   background: color-mix(in srgb, var(--surface), #000 12%);
-}
-.interaction-demo {
-  display: grid;
-  grid-template-columns: .84fr 1.16fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: stretch;
-}
-.interaction-copy,
-.state-board {
-  padding: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--panel-radius);
-  box-shadow: var(--shadow);
-}
-.interaction-copy h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.implementation-list {
-  display: grid;
-  gap: 10px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.implementation-list li {
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.implementation-list b {
-  color: var(--text);
-}
-.state-board {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-}
-.state-board-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-.state-board-head span {
-  min-width: 0;
-  color: var(--muted);
-  font-weight: 800;
-}
-.state-board-head strong {
-  font-size: 28px;
-  font-variant-numeric: tabular-nums;
 }
 .button-row {
   display: flex;
@@ -7182,58 +7083,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   line-height: 1.45;
 }
-.state-stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-.state-pill {
-  min-width: 0;
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.42;
-}
-.state-pill b {
-  color: var(--text);
-}
-.state-pill.success {
-  border-color: color-mix(in srgb, #16a34a, var(--border) 52%);
-}
-.state-pill.loading {
-  border-color: color-mix(in srgb, var(--accent), var(--border) 48%);
-}
-.state-pill.empty {
-  opacity: .86;
-}
-.state-pill.error {
-  border-color: color-mix(in srgb, #dc2626, var(--border) 46%);
-}
-.responsive-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.responsive-steps span {
-  min-width: 0;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 14%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.responsive-steps b {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--text);
-}
 .toast {
   position: fixed;
   left: 50%;
@@ -7257,15 +7106,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   font-size: 14px;
 }
-.style-lab {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: start;
-}
-.lab-summary,
-.lab-workspace,
 .panel {
   padding: 20px;
   background: var(--surface);
@@ -7273,25 +7113,6 @@ body.industrial-control .feature-block {
   border-radius: var(--panel-radius);
   box-shadow: var(--shadow);
 }
-.detail-pills {
-  display: grid;
-  gap: 8px;
-  margin-top: 16px;
-}
-.detail-pills span {
-  max-width: 100%;
-  padding: 8px 10px;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.lab-summary h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.lab-summary p,
 .panel p {
   font-size: 15px;
 }
@@ -7367,10 +7188,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     max-width: none;
     padding: 0 0 48px;
-  }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 28px, 760px);
   }
   .life-aurora,
   .life-stark-contact,
@@ -7616,10 +7433,7 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
-  .workspace-grid,
-  .responsive-steps {
+  .workspace-grid{
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -7731,13 +7545,9 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
   .workspace-grid,
-  .responsive-steps,
   .metric-row,
-  .queue-list,
-  .state-stack {
+  .queue-list{
     min-width: 0;
     max-width: 100%;
   }
@@ -7749,8 +7559,7 @@ body.industrial-control .feature-block {
   .cute-actions,
   .catalog-actions,
   .shift-actions,
-  .related,
-  .detail-pills {
+  .related{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -7830,8 +7639,7 @@ body.industrial-control .feature-block {
   .launch-counters,
   .asset-mosaic,
   .alarm-room-head,
-  .progress-path,
-  .state-stack {
+  .progress-path{
     grid-template-columns: 1fr;
   }
   .toolbar-actions {
@@ -8075,10 +7883,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     padding: 0 0 44px;
   }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 24px, 460px);
-  }
   .life-bento-market {
     grid-template-columns: 1fr;
   }
@@ -8277,8 +8081,6 @@ body.industrial-control .feature-block {
   .trace-panel,
   .glass-panel,
   .render-queue,
-  .lab-summary,
-  .lab-workspace,
   .panel,
   .feature-block,
   .filter-rail {
@@ -8293,75 +8095,103 @@ body.industrial-control .feature-block {
   }
 }
 
-/* Library navigation stays visually separate from each fictional product. */
+/* 统一的预览工具栏，与演示产品的导航保持清晰层次。 */
 .preview-context-shell {
-  color: #18202e;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  color-scheme: light;
-  font: 14px/1.4 ui-sans-serif, system-ui, sans-serif;
+  color: #f4f4f5;
+  background: #232529;
+  border-bottom: 1px solid #35373c;
+  color-scheme: dark;
+  font: 13px/1.4 ui-sans-serif, system-ui, sans-serif;
 }
 .preview-context {
-  width: min(100%, 1268px);
-  min-height: 72px;
+  width: 100%;
+  height: 47px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 16px 24px;
-  margin: 0 auto;
-  padding: 12px calc(24px + env(safe-area-inset-right)) 12px calc(24px + env(safe-area-inset-left));
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 0 calc(24px + env(safe-area-inset-right)) 0 calc(24px + env(safe-area-inset-left));
+}
+.preview-context-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.preview-context-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 24px;
+  min-width: 30px;
+  padding: 0 6px;
+  border: 1px solid #50535b;
+  border-radius: 4px;
+  color: #d4d6dc;
+  background: #303238;
+  font: 500 11px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.preview-context-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.preview-context-actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 20px;
 }
 .preview-context-back,
 .preview-context-use {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   min-height: 44px;
   text-decoration: none;
   overflow-wrap: normal;
+  white-space: nowrap;
+  border-radius: 5px;
 }
-.preview-context-back { color: #475569; }
-.preview-context-back:hover { color: #0f172a; text-decoration: underline; }
-.preview-context-identity {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 10px;
-}
-.preview-context-number,
-.preview-context-identity > span:last-child { color: #64748b; font-size: 12px; }
-.preview-context-identity strong { font-size: 15px; font-weight: 650; }
-.preview-context-use {
+.preview-context svg {
+  width: 15px;
+  height: 15px;
   flex: 0 0 auto;
-  padding: 0 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  color: #0f172a;
-  background: #f8fafc;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.preview-context-back { color: #c2c5cc; }
+.preview-context-back:hover { color: #ffffff; }
+.preview-context-use { color: #24262b; }
+.preview-context-use-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid #f4f4f5;
+  border-radius: 5px;
+  background: #f4f4f5;
   font-weight: 600;
+  transition: background .15s ease, border-color .15s ease;
 }
-.preview-context-use:hover { border-color: #64748b; background: #f1f5f9; }
+.preview-context-use:hover .preview-context-use-label { background: #dedfe3; border-color: #dedfe3; }
 .preview-context a:focus-visible {
-  outline: 3px solid #2563eb;
-  outline-offset: 3px;
+  outline: 2px solid #a5c8ff;
+  outline-offset: 1px;
 }
-.reference-disclosure { margin-top: 40px; }
-.reference-disclosure > summary {
-  padding: 18px 0;
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  font-size: 15px;
-  cursor: pointer;
-}
-.reference-disclosure > summary:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-}
-.reference-disclosure-hint { margin-left: 12px; color: var(--muted); font-size: 12px; }
-.reference-disclosure .reference-stack { margin-top: 24px; padding-top: 0; border-top: 0; }
 /* Keep the print ledger's decision separate from its long heading. */
 .life-print-ledger .ledger-header { align-items: center; }
 .life-print-ledger .ledger-header > div { flex: 1; max-width: 780px; }
@@ -8380,121 +8210,411 @@ body.industrial-control .feature-block {
   .life-print-ledger .ledger-header > .primary-action { align-self: flex-start; width: auto; }
 }
 @media (max-width: 640px) {
-  .preview-context { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; padding: 12px 16px; }
-  .preview-context-identity { grid-column: 1 / -1; grid-row: 1; }
-  .preview-context-back { justify-self: start; }
-  .preview-context-use { padding: 0 12px; }
-  .reference-disclosure-hint { display: block; margin: 6px 0 0 18px; }
+  .preview-context { gap: 10px; padding: 0 calc(12px + env(safe-area-inset-right)) 0 calc(12px + env(safe-area-inset-left)); font-size: 12px; }
+  .preview-context-identity { gap: 7px; }
+  .preview-context-name { font-size: 12px; }
+  .preview-context-actions { gap: 12px; }
+  .preview-context-use-label { gap: 5px; padding: 0 9px; }
   .life-print-ledger .print-production-grid { grid-template-columns: minmax(0, 1fr); }
   .life-print-ledger .job-ledger > span { grid-template-columns: 64px minmax(0, 1fr); gap: 5px 12px; }
   .life-print-ledger .job-ledger em { grid-column: 2; }
 }
+/* Style02：越界创意市集。所有业务样式限定在 ym 命名空间。 */
+body.block-brutalism { background: #f5f1e8; }
+body.block-brutalism .page { width: min(100%, 1328px); padding: 0 32px 0; }
+body.block-brutalism .page > .top-nav { display: none; }
+.ym-market { --ym-ink: #171713; --ym-paper: #fffdf6; --ym-yellow: #fff04d; --ym-orange: #f04b2e; color: var(--ym-ink); font: 15px/1.6 "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif; }
+.ym-market *, .ym-market *::before, .ym-market *::after { box-sizing: border-box; }
+.ym-market [hidden] { display: none !important; }
+.ym-market button, .ym-market input { font: inherit; }
+.ym-market button { cursor: pointer; }
+.ym-market a { color: inherit; }
+.ym-market button, .ym-market a { -webkit-tap-highlight-color: transparent; }
+.ym-market :is(button,a,input):focus-visible { outline: 3px solid #2352c6; outline-offset: 4px; }
+.ym-market :is(h1,h2,h3,p) { margin: 0; color: inherit; }
+.ym-market h1, .ym-market h2, .ym-market h3 { font-family: inherit; }
+.ym-market .ym-header { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.ym-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-size: 24px; font-weight: 900; line-height: 1.2; }
+.ym-brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border: 2px solid var(--ym-ink); background: var(--ym-yellow); font-size: 32px; }
+.ym-brand-sub { display: block; margin-top: 5px; font: 10px/1.3 ui-monospace, monospace; letter-spacing: .1em; }
+.ym-header nav { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 700; }
+.ym-header nav a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.ym-header nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.ym-header nav button { min-height: 44px; padding: 0 14px; border: 1.5px solid var(--ym-ink); border-radius: 0; color: var(--ym-ink); background: transparent; }
+.ym-header nav button:hover { background: var(--ym-yellow); }
+.ym-hero { display: grid; grid-template-columns: 1.17fr 1fr; border: 2px solid var(--ym-ink); box-shadow: 7px 7px 0 var(--ym-ink); }
+.ym-hero-copy { display: flex; flex-direction: column; padding: 30px 36px 20px; background: var(--ym-yellow); border-right: 2px solid var(--ym-ink); }
+.ym-eyebrow { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 700; }
+.ym-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ym-ink); }
+.ym-edition { margin-left: auto; border: 1px solid var(--ym-ink); padding: 2px 7px; font-size: 11px; }
+.ym-market .ym-hero h1 { margin: 44px 0 28px; font-size: clamp(52px, 6.3vw, 88px); font-weight: 950; line-height: 1.14; letter-spacing: -.07em; text-transform: none; }
+.ym-underlined { position: relative; white-space: nowrap; }
+.ym-underlined::after { content: ''; position: absolute; left: 1%; right: 3%; bottom: -6px; height: 7px; background: var(--ym-orange); transform: rotate(-2deg); }
+.ym-market .ym-intro { margin: 4px 0 28px; font-size: 14px; line-height: 1.9; }
+.ym-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 36px; }
+.ym-market .ym-button { display: inline-flex; justify-content: center; align-items: center; gap: 25px; min-height: 48px; padding: 0 20px; border: 2px solid var(--ym-ink); border-radius: 0; font-size: 14px; font-weight: 750; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+.ym-market .ym-button-black { background: var(--ym-ink); color: var(--ym-paper); box-shadow: 3px 3px 0 var(--ym-orange); }
+.ym-market .ym-button-black:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ym-orange); }
+.ym-market .ym-button-black:active { transform: translate(2px,2px); box-shadow: none; }
+.ym-text-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; font-weight: 750; text-decoration: underline; text-underline-offset: 5px; }
+.ym-hero-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--ym-ink); font-size: 10px; }
+.ym-mono { font-family: ui-monospace, monospace; letter-spacing: .06em; }
+.ym-hero-right { display: flex; flex-direction: column; background: var(--ym-paper); }
+.ym-poster { display: grid; place-items: center; flex: 1; min-height: 365px; padding: 15px 25px; background-image: radial-gradient(#bcb7a7 .65px, transparent .65px); background-size: 8px 8px; overflow: hidden; }
+.ym-artwork { display: block; width: 100%; max-width: 470px; height: auto; overflow: visible; }
+.ym-event-ticket { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 26px; border-top: 2px dashed var(--ym-ink); }
+.ym-caption { display: block; font-size: 10px; font-weight: 650; letter-spacing: .08em; }
+.ym-event-ticket strong { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-top: 5px; font: 800 33px/1.3 ui-monospace, monospace; letter-spacing: -.06em; }
+.ym-event-ticket strong span { font: 10px/1.4 ui-monospace, monospace; letter-spacing: 0; }
+.ym-market .ym-event-ticket p { margin-top: 8px; font-size: 12px; font-weight: 700; }
+.ym-event-ticket p span { margin-left: 16px; font-family: ui-monospace, monospace; font-weight: 400; }
+.ym-ticket-arrow { font-size: 40px; line-height: 1; }
+.ym-strip { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 39px 0 0; padding: 14px 0; border-top: 1px solid var(--ym-ink); border-bottom: 1px solid var(--ym-ink); font-size: 16px; font-weight: 800; }
+.ym-strip i { color: var(--ym-orange); font-size: 26px; line-height: 1; font-style: normal; }
+.ym-strip-end { font-size: 25px; }
+.ym-section { padding: 64px 0; scroll-margin-top: 20px; }
+.ym-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 25px; }
+.ym-market .ym-kicker { margin-bottom: 12px; font: 11px/1.4 ui-monospace, monospace; letter-spacing: .1em; }
+.ym-market h2 { font-size: 30px; font-weight: 850; line-height: 1.35; letter-spacing: -.04em; }
+.ym-market .ym-section-head > p { font-size: 12px; color: #625f54; }
+.ym-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.ym-filters button { padding: 5px 15px; min-height: 40px; background: transparent; color: var(--ym-ink); border: 1px solid #aaa79b; border-radius: 0; font-size: 12px; }
+.ym-filters button[aria-pressed=true] { background: var(--ym-ink); color: var(--ym-paper); border-color: var(--ym-ink); }
+.ym-filters button:hover { border-color: var(--ym-ink); }
+.ym-stalls { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.ym-stall-art { position: relative; display: grid; place-items: center; height: 220px; overflow: hidden; border: 1.5px solid var(--ym-ink); background: #d5e3ed; }
+.ym-stall-number { position: absolute; top: 12px; left: 12px; font: 10px/1.3 ui-monospace, monospace; z-index: 1; }
+.ym-stall-art > b { position: absolute; right: 12px; bottom: 10px; font-size: 15px; letter-spacing: -.03em; }
+.ym-art-object { position: relative; display: block; width: 115px; height: 140px; border: 2px solid var(--ym-ink); box-shadow: 8px 8px 0 var(--ym-ink); transform: rotate(-12deg); background: repeating-linear-gradient(0deg,transparent 0 20px,var(--ym-ink) 20px 22px), #fffdf6; }
+.ym-art-object::before { content: '小小\A出走'; white-space: pre; position: absolute; top: 25px; left: 13px; padding: 2px; background: var(--ym-yellow); font-size: 27px; font-weight: 900; line-height: 1.2; }
+.ym-stall-art-craft { background: #f4b5a3; }
+.ym-stall-art-craft .ym-art-object { width: 113px; height: 106px; border-radius: 18px 18px 42px 42px; background: #c75c36; box-shadow: inset -12px -8px 0 #a94525; transform: rotate(-8deg); }
+.ym-stall-art-craft .ym-art-object::before { content: ''; top: 18px; left: 107px; width: 35px; height: 54px; border: 9px solid #a94525; border-radius: 0 25px 25px 0; background: transparent; }
+.ym-stall-art-music { background: #bccca9; }
+.ym-stall-art-music .ym-art-object { width: 143px; height: 143px; border-radius: 50%; background: repeating-radial-gradient(circle,#292922 0 3px,#11110e 4px 7px); box-shadow: 8px 8px 0 #7f936e; transform: rotate(12deg); }
+.ym-stall-art-music .ym-art-object::before { content: ''; top: 48px; left: 48px; width: 44px; height: 44px; border-radius: 50%; background: var(--ym-yellow); border: 16px solid var(--ym-orange); }
+.ym-stall-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 12px; font-size: 10px; }
+.ym-stall-meta > span { color: #625f54; }
+.ym-stall-meta button { min-height: 36px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--ym-ink); font-size: 11px; text-decoration: underline; text-underline-offset: 4px; }
+.ym-market .ym-stall h3 { margin-bottom: 9px; font-size: 21px; font-weight: 800; }
+.ym-market .ym-stall > p { font-size: 12px; line-height: 1.85; color: #625f54; }
+.ym-program-section { display: grid; grid-template-columns: 1fr 1.4fr; gap: 55px; padding: 50px 0; border-top: 2px solid var(--ym-ink); scroll-margin-top: 20px; }
+.ym-market .ym-program-intro > p:not(.ym-kicker) { margin-top: 18px; color: #625f54; font-size: 13px; }
+.ym-program-flower { display: block; margin-top: 20px; font-size: 100px; line-height: 1.1; color: var(--ym-orange); }
+.ym-day-switch { display: flex; gap: 0; border-bottom: 2px solid var(--ym-ink); }
+.ym-day-switch button { flex: 1; min-height: 54px; padding: 8px; border: 1px solid var(--ym-ink); border-bottom: 0; background: transparent; color: var(--ym-ink); border-radius: 0; font: 700 20px/1.4 ui-monospace, monospace; }
+.ym-day-switch button + button { border-left: 0; }
+.ym-day-switch button span { margin-left: 5px; font: 12px/1.4 ui-sans-serif, sans-serif; }
+.ym-day-switch button[aria-pressed=true] { background: var(--ym-yellow); }
+.ym-program-list { padding: 0; margin: 0; list-style: none; }
+.ym-program-list li { display: grid; grid-template-columns: 68px 1fr auto; gap: 16px; align-items: start; padding: 23px 0; border-bottom: 1px solid #aaa79b; }
+.ym-program-list time { font: 600 15px/1.5 ui-monospace, monospace; }
+.ym-market .ym-program-list h3 { font-size: 15px; font-weight: 750; }
+.ym-market .ym-program-list p { margin-top: 4px; font-size: 12px; color: #625f54; }
+.ym-market .ym-program-note { margin-top: 15px; font-size: 11px; color: #625f54; }
+.ym-footer { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding: 32px; background: var(--ym-yellow); border: 2px solid var(--ym-ink); margin: 0 0 32px; }
+.ym-footer strong { font-size: 24px; font-weight: 850; }
+.ym-market .ym-footer p { margin-top: 5px; font-size: 12px; }
+.ym-footer small { flex-basis: 100%; border-top: 1px solid var(--ym-ink); padding-top: 16px; font-size: 10px; }
+.ym-dialog { width: min(480px,calc(100% - 32px)); max-height: calc(100dvh - 40px); overflow-y: auto; padding: 36px; border: 2px solid var(--ym-ink); border-radius: 0; color: var(--ym-ink); background: var(--ym-paper); box-shadow: 7px 7px 0 var(--ym-ink); margin: auto; }
+.ym-dialog::backdrop { background: rgb(23 23 19 / .6); }
+.ym-market .ym-dialog-close { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; min-height: 36px; padding: 0; display: grid; place-items: center; border: 1px solid var(--ym-ink); border-radius: 0; background: var(--ym-yellow); color: var(--ym-ink); line-height: 1; }
+.ym-dialog-close svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; }
+.ym-dialog-close:hover { background: #e8db28; }
+.ym-dialog-close::after { content: ''; position: absolute; inset: -4px; }
+
+.ym-market .ym-dialog h2 { margin: 20px 0 24px; font-size: 27px; }
+.ym-field { display: grid; gap: 8px; margin-bottom: 20px; font-size: 13px; font-weight: 700; }
+.ym-field input { width: 100%; min-height: 46px; padding: 0 12px; border: 1.5px solid var(--ym-ink); border-radius: 0; background: #ffffff; color: var(--ym-ink); }
+.ym-field-error { display: flex; align-items: flex-start; gap: 6px; min-height: 20px; color: #b13220; font-size: 11px; font-weight: 600; line-height: 20px; }
+.ym-field-error:not(:empty)::before { content: '!'; flex: 0 0 auto; font-weight: 900; }
+.ym-field input[aria-invalid="true"] { border-color: #b13220; }
+.ym-market .ym-field input[aria-invalid="true"]:focus-visible { outline: 2px solid #b13220; outline-offset: 3px; }
+.ym-visit-days { display: flex; gap: 12px; margin: 0 0 24px; padding: 0; border: 0; }
+.ym-visit-days legend { padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 700; }
+.ym-visit-days label { position: relative; flex: 1; cursor: pointer; }
+.ym-visit-days input { position: absolute; left: 12px; top: 50%; width: 16px; height: 16px; margin: 0; transform: translateY(-50%); appearance: none; -webkit-appearance: none; border: 1.5px solid var(--ym-ink); border-radius: 0; background: var(--ym-paper); cursor: pointer; }
+.ym-visit-days label > span { display: block; padding: 12px 10px 12px 34px; border: 1px solid var(--ym-ink); font: 700 18px/1.5 ui-monospace, monospace; }
+.ym-visit-days small { font: 12px/1.5 ui-sans-serif, sans-serif; }
+.ym-visit-days input:checked + span { background: var(--ym-yellow); box-shadow: 3px 3px 0 var(--ym-ink); }
+.ym-visit-days input:focus-visible + span { outline: 3px solid #2352c6; outline-offset: 3px; }
+.ym-form-summary { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-top: 1px dashed var(--ym-ink); font-size: 13px; }
+.ym-form-summary strong { font: 800 26px/1.3 ui-monospace, monospace; }
+.ym-market .ym-form-note { margin: 10px 0 20px; color: #625f54; font-size: 11px; }
+.ym-dialog .ym-button { width: 100%; }
+.ym-issued-ticket { padding: 22px; border: 2px solid var(--ym-ink); background: var(--ym-yellow); }
+.ym-market .ym-issued-ticket h3 { margin: 22px 0 16px; overflow-wrap: anywhere; font-size: 22px; }
+.ym-market .ym-issued-ticket p { margin: 8px 0; font-size: 13px; }
+.ym-barcode { height: 44px; margin: 24px 0 10px; background: repeating-linear-gradient(90deg,#171713 0 2px,transparent 2px 5px,#171713 5px 6px,transparent 6px 9px,#171713 9px 13px,transparent 13px 16px); }
+.ym-issued-ticket small { font: 9px/1.5 ui-monospace, monospace; }
+.ym-market .ym-stall-description { font-size: 15px; line-height: 1.9; }
+.ym-market .ym-stall-location { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--ym-ink); font-size: 12px; }
+.ym-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (min-width: 1500px) { .ym-market .ym-hero h1 { font-size: 92px; } }
+@media (max-width: 980px) {
+  body.block-brutalism .page { max-width: none; padding-inline: 24px; }
+  .ym-hero-copy { padding: 25px; }
+  .ym-market .ym-hero h1 { font-size: clamp(45px,6.3vw,65px); margin: 30px 0 24px; }
+  .ym-hero-actions { gap: 14px; }
+  .ym-market .ym-button { padding-inline: 14px; font-size: 12px; }
+  .ym-poster { min-height: 320px; padding-inline: 12px; }
+  .ym-event-ticket { padding: 20px 16px; }
+  .ym-event-ticket strong { font-size: 28px; }
+  .ym-event-ticket p span { display: block; margin-left: 0; margin-top: 3px; }
+  .ym-stalls { gap: 18px; }
+  .ym-stall-art { height: 180px; }
+  .ym-program-section { gap: 28px; }
+}
+@media (max-width: 700px) {
+  body.block-brutalism .page { padding: 0 16px; }
+  .ym-market .ym-header { min-height: 82px; gap: 12px; }
+  .ym-brand { font-size: 20px; gap: 8px; }
+  .ym-brand-mark { width: 34px; height: 34px; font-size: 25px; }
+  .ym-brand-sub { font-size: 8px; letter-spacing: .02em; }
+  .ym-header nav { gap: 0; }
+  .ym-header nav a { display: none; }
+  .ym-header nav button { padding: 0 10px; font-size: 11px; }
+  .ym-hero { grid-template-columns: 1fr; box-shadow: 4px 4px 0 var(--ym-ink); }
+  .ym-hero-copy { padding: 22px; border-right: 0; border-bottom: 2px solid var(--ym-ink); }
+  .ym-eyebrow { font-size: 10px; gap: 7px; }
+  .ym-edition { font-size: 10px; }
+  .ym-market .ym-hero h1 { font-size: clamp(46px,11.6vw,76px); margin: 30px 0 22px; }
+  .ym-market .ym-intro { font-size: 12px; margin-bottom: 22px; }
+  .ym-intro br { display: none; }
+  .ym-hero-actions { margin-bottom: 24px; gap: 12px; }
+  .ym-hero-actions .ym-button { flex: 1; min-width: 170px; }
+  .ym-text-link { font-size: 11px; }
+  .ym-hero-bottom { font-size: 9px; }
+  .ym-poster { min-height: 0; padding: 20px; }
+  .ym-artwork { max-width: 370px; }
+  .ym-event-ticket { order: -1; padding: 17px 22px; border-top: 0; border-bottom: 2px dashed var(--ym-ink); }
+  .ym-event-ticket p span { display: inline; margin-left: 10px; }
+  .ym-strip { gap: 10px; margin-top: 28px; padding: 12px 0; font-size: 12px; flex-wrap: wrap; justify-content: center; }
+  .ym-strip span:nth-last-child(2), .ym-strip i:nth-last-child(3), .ym-strip-end { display: none; }
+  .ym-strip i { font-size: 21px; }
+  .ym-section { padding: 40px 0; }
+  .ym-section-head { display: block; }
+  .ym-market h2 { font-size: 25px; }
+  .ym-market .ym-section-head > p { margin-top: 10px; }
+  .ym-filters { gap: 6px; }
+  .ym-filters button { padding: 5px 9px; font-size: 11px; }
+  .ym-stalls { grid-template-columns: 1fr; gap: 28px; }
+  .ym-stall-art { height: 230px; }
+  .ym-program-section { grid-template-columns: 1fr; gap: 28px; padding: 36px 0; }
+  .ym-program-flower { display: none; }
+  .ym-market .ym-program-intro > p:not(.ym-kicker) { margin-top: 12px; }
+  .ym-program-list li { grid-template-columns: 52px 1fr auto; gap: 9px; }
+  .ym-market .ym-program-list h3 { font-size: 13px; }
+  .ym-program-list time { font-size: 13px; }
+  .ym-footer { padding: 22px; gap: 18px; margin-bottom: 20px; }
+  .ym-footer strong { font-size: 20px; }
+  .ym-footer .ym-button { width: 100%; }
+  .ym-dialog { padding: 28px 22px; }
+  .ym-market .ym-dialog h2 { font-size: 23px; }
+  .ym-visit-days label > span { display: grid; gap: 2px; padding: 10px 8px 10px 30px; font-size: 16px; }
+  .ym-visit-days small { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) { .ym-market .ym-button { transition: none; } }
+
+/* 入场日期：方形票签标记，延续粗线与黄色纸张。 */
+.ym-visit-days input:checked { background: var(--ym-ink); box-shadow: inset 0 0 0 3px var(--ym-yellow); }
+.ym-visit-days label:hover > span { border-color: var(--ym-orange); }
+
+@media (forced-colors:active) { .ym-visit-days input { appearance:auto; -webkit-appearance:auto; transform:none; box-shadow:none; } .ym-visit-days input:checked::after { content:none; } }
+/* Shared interaction geometry; each demonstration supplies its own material palette. */
+.pd-choice,.pd-stepper{--control-bg:#fff;--control-ink:#344650;--control-line:#d6dfe3;--control-accent:#23879a;--control-hover:#eff6f7;--control-radius:5px;--control-shadow:0 12px 32px #172c3a20;color:var(--control-ink);font:inherit}
+.pd-choice{display:block;position:relative;width:100%;text-align:left}
+.pd-choice>input[type=hidden]{display:none!important}
+.demo-root .pd-choice-trigger,.stock-page .pd-choice-trigger{appearance:none;width:100%;min-height:44px;padding:10px 12px;margin:0;display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--control-bg);color:var(--control-ink);border:1px solid var(--control-line);border-radius:var(--control-radius);font:inherit;text-align:left;line-height:1.5;box-shadow:none;cursor:pointer}
+.pd-choice-trigger>[data-choice-label]{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pd-choice-trigger>svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform .15s}
+.pd-choice-trigger[aria-expanded=true]>svg{transform:rotate(180deg)}
+.demo-root .pd-choice-trigger:hover,.demo-root .pd-choice-trigger[aria-expanded=true]{border-color:var(--control-accent);background:var(--control-hover)}
+.demo-root .pd-choice-trigger:focus-visible{outline:2px solid var(--control-accent);outline-offset:3px}
+.pd-choice-list{box-sizing:border-box;z-index:1000;display:block;overflow-y:auto;overscroll-behavior:contain;padding:5px;background:var(--control-bg);color:var(--control-ink);border:1px solid var(--control-line);border-radius:var(--control-radius);box-shadow:var(--control-shadow);font:inherit;line-height:1.5;scroll-padding:5px}
+.pd-choice-list[hidden]{display:none!important}
+.pd-choice-option{display:flex;align-items:center;gap:10px;min-height:42px;padding:10px 11px;border-radius:max(0px,calc(var(--control-radius) - 3px));cursor:pointer;font-size:12px;line-height:1.5;white-space:normal}
+.pd-choice-option>span{flex:1}
+.pd-choice-option>svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--control-accent);stroke-width:1.7;opacity:0}
+.pd-choice-option[aria-selected=true]{color:var(--control-accent);font-weight:600}
+.pd-choice-option[aria-selected=true]>svg{opacity:1}
+.pd-choice-option.pd-active,.pd-choice-option:hover{background:var(--control-hover)}
+.pd-choice-option[aria-disabled=true]{opacity:.4;cursor:not-allowed}
+.pd-swatch{width:24px;height:28px;flex:none;background:#f5f0df;border:1px solid #d6cfbd}
+.pd-swatch-1{background:repeating-linear-gradient(90deg,#d9d4c9 0 1px,#f5f3e9 1px 3px)}
+.pd-swatch-2{background-color:#e6ddc2;background-image:radial-gradient(#867d6099 .7px,transparent .7px);background-size:5px 6px}
+.pd-stepper{display:flex!important;align-items:stretch;width:100%;border:1px solid var(--control-line);border-radius:var(--control-radius);background:var(--control-bg);overflow:hidden}
+.pd-stepper:focus-within{outline:2px solid var(--control-accent);outline-offset:3px}
+.pd-stepper input[type=number]{appearance:textfield;-moz-appearance:textfield;min-width:0;width:100%;height:auto;min-height:42px;padding:8px 3px!important;margin:0!important;text-align:center;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--control-ink);font:inherit;outline:0!important}
+.pd-stepper input::-webkit-inner-spin-button,.pd-stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.demo-root .pd-stepper>button,.stock-dialog .pd-stepper>button{width:38px;min-width:32px;min-height:42px;padding:0;margin:0;flex:0 0 38px;display:grid;place-items:center;border:0;border-radius:0;background:transparent;color:var(--control-accent);font:18px/1 ui-sans-serif,system-ui;box-shadow:none;cursor:pointer}
+.demo-root .pd-stepper>button:hover,.stock-dialog .pd-stepper>button:hover{background:var(--control-hover)}
+.pd-stepper>button:disabled{opacity:.3;cursor:not-allowed}
+.pd-stepper>button[data-step="-1"]{order:-1}
+.pd-stepper>button:focus-visible{outline:2px solid var(--control-accent);outline-offset:-4px}
+.s05 .pd-choice,.pd-theme-05{--control-bg:#f7f5ef;--control-ink:#252521;--control-line:#9f9d95;--control-accent:#c8282b;--control-hover:#ece8df;--control-radius:0px;--control-shadow:4px 4px 0 #282824}
+.s05 .pd-choice-trigger{min-width:128px;font:12px ui-monospace,monospace}
+.s07 .pd-choice,.pd-theme-07{--control-bg:#fffdf5;--control-ink:#4b5845;--control-line:#cbd4b8;--control-accent:#476947;--control-hover:#edf2df;--control-radius:14px;--control-shadow:0 10px 0 -5px #d9ddc6,0 18px 35px #46543820}
+.s07 .pd-choice-trigger{border-width:2px;padding:11px 14px}
+.s08 .pd-choice,.s08 .pd-stepper,.pd-theme-08{--control-bg:#20231e;--control-ink:#d7dbcf;--control-line:#4c5346;--control-accent:#e2e9ce;--control-hover:#30372a;--control-radius:0px;--control-shadow:0 14px 36px #0008}
+.s08 .pd-choice-trigger{font-size:12px}
+.s09 .pd-choice,.s09 .pd-stepper,.pd-theme-09{--control-bg:#fff;--control-ink:#3d4a54;--control-line:#d8dfe3;--control-accent:#27343e;--control-hover:#f2f5f6;--control-radius:3px;--control-shadow:0 12px 28px #24313b1c}
+.s09 .pd-choice-trigger{font-size:11px;min-height:42px}
+.s09 .pd-choice-list{padding:5px}
+.s09 .pd-stepper{font-size:12px}
+.s12 .pd-stepper{--control-bg:#fffaff;--control-ink:#5e456c;--control-line:#d9c9e3;--control-accent:#79528e;--control-hover:#f0e8f5;--control-radius:6px}
+.s19 .pd-choice,.pd-theme-19{--control-bg:#fff;--control-ink:#382c4e;--control-line:#ddcfe9;--control-accent:#773ec9;--control-hover:#f2eafa;--control-radius:12px;--control-shadow:0 16px 36px #54298c24}
+.s19 .pd-choice{margin-bottom:16px}
+.s19 .pd-choice-trigger{font-size:13px;min-height:46px}
+.s22 .pd-choice,.pd-theme-22{--control-bg:#163f35;--control-ink:#f2e9d3;--control-line:#987d4b;--control-accent:#e2c58b;--control-hover:#284c3f;--control-radius:0px;--control-shadow:0 15px 35px #001d1acc}
+.s22 .pd-choice{margin-bottom:22px}
+.s22 .pd-choice-list{border-top:3px double #c8ac72;padding:6px}
+.s22 .pd-choice-option{border-bottom:1px solid #c8ac7220}
+.s23 .pd-choice,.pd-theme-23{--control-bg:#f8f5ed;--control-ink:#645846;--control-line:#cbbfa9;--control-accent:#806341;--control-hover:#eee5d4;--control-radius:6px;--control-shadow:0 15px 35px #51463320}
+.s23 .pd-choice{margin:8px 0 18px}
+.s23 .pd-choice-trigger{font-size:13px;min-height:46px}
+@media(max-width:640px){.pd-choice-option{min-height:46px}.demo-root .pd-stepper>button{flex-basis:34px;width:34px}.s05 .pd-choice-trigger{min-width:0}}
+@media(prefers-reduced-motion:reduce){.pd-choice-trigger>svg{transition:none}}
+
+
+.demo-root .demo-date{position:relative;display:block;width:100%;min-width:0}
+.demo-root .demo-date>input{width:100%;padding-right:42px;cursor:pointer;font-variant-numeric:tabular-nums}
+.demo-root .demo-date-trigger{position:absolute;right:5px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:32px;height:32px;min-height:0;padding:6px;border:0;border-radius:7px;color:inherit;background:transparent;box-shadow:none}
+.demo-root .demo-date-trigger svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.5}
+.demo-root .demo-date-trigger:hover{background:#647a4920}
+.demo-calendar{--calendar-bg:#fffdf6;--calendar-ink:#4b5844;--calendar-muted:#7b896d;--calendar-line:#d8e1c9;--calendar-tint:#edf3e3;--calendar-accent:#597547;position:fixed;inset:auto;margin:0;width:304px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;padding:15px;border:1.5px solid var(--calendar-line);border-radius:17px;background:var(--calendar-bg);color:var(--calendar-ink);box-shadow:0 12px 40px #293b2729;font:13px/1.5 "PingFang SC","Microsoft YaHei",sans-serif;z-index:1000}
+.demo-calendar-reading{--calendar-bg:#fffaff;--calendar-ink:#5e456c;--calendar-muted:#927d9d;--calendar-line:#d9c9e3;--calendar-tint:#f0e8f5;--calendar-accent:#79528e;border-radius:18px;box-shadow:0 12px 36px #513c6026}
+.demo-calendar[hidden]{display:none!important}
+.demo-calendar *{box-sizing:border-box}
+.demo-calendar button{font:inherit;cursor:pointer;box-shadow:none;min-width:0;min-height:0;line-height:1.5;letter-spacing:0}
+.demo-calendar button:focus-visible{outline:2px solid var(--calendar-accent);outline-offset:2px}
+.demo-calendar-head{display:grid;grid-template-columns:32px 1fr 32px;align-items:center;gap:8px;margin-bottom:13px}
+.demo-calendar-head strong{text-align:center;font-size:14px;font-weight:650}
+.demo-calendar-head button{border:1px solid var(--calendar-line);border-radius:8px;width:32px;height:32px;padding:0;background:var(--calendar-tint);color:var(--calendar-ink);font-size:23px}
+.demo-calendar-week,.demo-calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.demo-calendar-week{color:var(--calendar-muted);font-size:10px;text-align:center;margin-bottom:6px}
+.demo-calendar-days button{border:1px solid transparent;border-radius:8px;aspect-ratio:1;padding:0;background:transparent;color:var(--calendar-ink);font-size:12px;font-variant-numeric:tabular-nums}
+.demo-calendar-days button:not(:disabled):hover{background:var(--calendar-tint);border-color:var(--calendar-line)}
+.demo-calendar-days button[aria-current=date]{border-color:var(--calendar-accent)}
+.demo-calendar-days button[aria-pressed=true]{background:var(--calendar-accent);color:var(--calendar-bg);font-weight:700}
+.demo-calendar-days button[aria-pressed=true]:hover{background:var(--calendar-accent)}
+.demo-calendar button:disabled{opacity:.3;cursor:not-allowed}
+.demo-calendar-footer{display:flex;align-items:center;justify-content:space-between;gap:7px;border-top:1px dashed var(--calendar-line);margin-top:12px;padding-top:10px;font-size:10px;color:var(--calendar-muted)}
+.demo-calendar-footer button{padding:5px 7px;border:0;border-radius:6px;background:transparent;color:var(--calendar-accent);font-size:11px}
+.demo-calendar-footer button:hover{background:var(--calendar-tint)}
+
 </style>
 </head>
 <body class="block-brutalism">
   <header class="preview-context-shell">
-    <nav class="preview-context" aria-label="Style preview navigation">
-      <a class="preview-context-back" href="../../previews/index.html"><span aria-hidden="true">←</span> <span lang="zh-CN">返回风格库</span></a>
-      <div class="preview-context-identity"><span class="preview-context-number">Style 02</span><strong>Block Brutalism</strong><span lang="zh-CN">块状粗野主义</span></div>
-      <a class="preview-context-use" href="../../previews/index.html?style=02#style-02" lang="zh-CN">选用此风格 <span aria-hidden="true">→</span></a>
+    <nav class="preview-context" aria-label="风格预览导航">
+      <div class="preview-context-identity" role="group" aria-label="风格 02：块状粗野主义" title="块状粗野主义"><span class="preview-context-number">02</span><strong class="preview-context-name" lang="zh-CN">块状粗野主义</strong></div>
+      <div class="preview-context-actions">
+        <a class="preview-context-back" href="../../previews/index.html" lang="zh-CN"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14"/></svg><span>风格库</span></a>
+        <a class="preview-context-use" href="../../previews/index.html?style=02#style-02" lang="zh-CN"><span class="preview-context-use-label">选用此风格<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>
+      </div>
     </nav>
   </header>
   <main id="top" class="page">
     <nav class="top-nav" aria-label="Example navigation">
-      <a class="brand-lockup" href="#top"><span>02</span><b>BlockParty</b></a>
-      <div class="nav-links"><a href="#details">Drops</a><a href="#details">Tickets</a><a href="#details">Rules</a></div>
+      <a class="brand-lockup" href="#top"><span>02</span><b>越界创意市集</b></a>
+      <div class="nav-links"><a href="#style-note-title" data-open-modal>Explore</a><a href="#style-note-title" data-open-modal>Two-day program</a><a href="#style-note-title" data-open-modal>Free tickets</a></div>
       <button type="button" class="ghost-action" data-open-modal>Style notes</button>
     </nav>
-    <section class="street-poster">
-        <div class="poster-copy">
-          <p class="kicker">Style 02 · Street launch builder</p>
-          <h1>Make the launch impossible to ignore.</h1>
-          <p>A loud campaign workspace for bold releases, urgent signups, waitlists, and punchy product announcements.</p>
-          <div class="poster-actions"><button type="button" class="primary-action" data-copy>Publish drop</button><button type="button" class="secondary-action" data-open-modal>Edit rules</button></div>
-        </div>
-        <aside class="poster-stack">
-          <div class="stamp big">14K</div>
-          <div class="ticket-strip"><span><b>Done</b>Prize rules approved</span><span><b>Check</b>Hero slab contrast</span><span><b>Live</b>Referral badge</span></div>
-          <div class="rule-panel"><article class="feature-block"><span>01</span><h3>Hard hierarchy</h3><p>Black borders, block labels, and oversized type make the core action unmistakable.</p></article><article class="feature-block"><span>02</span><h3>Campaign pressure</h3><p>Timers, scarcity notes, and status slabs create energy without hiding the rules.</p></article><article class="feature-block"><span>03</span><h3>Readable chaos</h3><p>The grid feels loud, but actions and requirements stay obvious.</p></article></div>
-        </aside>
-      </section>
-    <details id="details" class="reference-disclosure">
-      <summary><span lang="zh-CN">交互与组件示例</span> <span class="reference-disclosure-hint">Interaction &amp; component examples</span></summary>
-      <section class="reference-stack" aria-label="Reusable interaction and implementation notes">
-        <section class="interaction-demo" aria-labelledby="interaction-title-02">
-      <div class="interaction-copy">
-        <p class="kicker">Component behavior</p>
-        <h2 id="interaction-title-02">Buttons, feedback, spacing, and responsive rules.</h2>
-        <p>Tickets, stamps, countdowns, rule panels, and claim modules should look physical and direct.</p>
-        <ul class="implementation-list"><li><b>Buttons</b><span>Use blunt rectangular buttons with thick borders, hard offset shadows, pressed translation, and no soft disabled treatment.</span></li><li><b>Feedback</b><span>Use poster-like alert strips, stamped success labels, and obvious error blocks with hard borders.</span></li><li><b>Spacing</b><span>Use large 24-32px slabs, abrupt 12-16px gaps, and intentionally chunky control groups.</span></li><li><b>Responsive</b><span>Desktop can be asymmetric; tablet collapses poster and proof wall; mobile becomes a single stack with full-width slab buttons and no horizontal overflow.</span></li></ul>
-      </div>
-      <div class="state-board">
-        <div class="state-board-head">
-          <span>BlockParty</span>
-          <strong>14K</strong>
-        </div>
-        <div class="button-row" aria-label="Button state examples">
-          <button type="button" class="primary-action" data-toast-trigger>Publish drop</button>
-          <button type="button" class="secondary-action loading-action" data-loading-demo>Save state</button>
-          <button type="button" class="secondary-action" disabled>Disabled</button>
-          <button type="button" class="toggle-chip" aria-pressed="false" data-toggle-demo>Filter off</button>
-        </div>
-        <div class="inline-alert warning" data-inline-alert role="status">
-          <b>State warning</b>
-          <span>Prize rules approved: Done. Use poster-like alert strips, stamped success labels, and obvious error blocks with hard borders.</span>
-        </div>
-        <label class="field-group" for="demo-input-02">
-          <span>Visible label</span>
-          <input id="demo-input-02" type="text" value="Hero slab contrast" aria-describedby="field-help-02" data-demo-input>
-          <small id="field-help-02" data-field-help>Helper text stays visible after the field is filled.</small>
-        </label>
-        <div class="state-stack" aria-label="Common product states">
-          <span class="state-pill success"><b>Success</b>Saved and ready for review.</span>
-          <span class="state-pill loading"><b>Loading</b>Preserve the layout while data refreshes.</span>
-          <span class="state-pill empty"><b>Empty</b>No matching results; clear filters or create one.</span>
-          <span class="state-pill error"><b>Error</b>Retry with a clear recovery action.</span>
-        </div>
-        <div class="responsive-steps" aria-label="Responsive behavior">
-          <span><b>Desktop</b>Show the full layout archetype with supporting panels.</span>
-          <span><b>Tablet</b>Collapse secondary panels without losing state.</span>
-          <span><b>Mobile</b>Desktop can be asymmetric; tablet collapses poster and proof wall; mobile becomes a single stack with full-width slab buttons and no horizontal overflow.</span>
-        </div>
-      </div>
+    <div class="ym-market">
+    <header class="ym-header"><a href="#top" class="ym-brand" aria-label="越界创意市集首页"><span class="ym-brand-mark" aria-hidden="true">↗</span><span>越界<span class="ym-brand-sub">创意市集 / OFF THE GRID</span></span></a><nav aria-label="市集导航"><a href="#ym-stalls">逛什么</a><a href="#ym-program">活动安排</a><button type="button" data-ym-ticket data-ym-my-ticket>我的票券 ↗</button></nav></header>
+    <section class="ym-hero" aria-labelledby="ym-headline">
+      <div class="ym-hero-copy"><div class="ym-eyebrow"><span class="ym-dot"></span> 把周末交给有趣的人 <span class="ym-edition">第三回</span></div><h1 id="ym-headline">把好点子<br>带到<span class="ym-underlined">街上。</span></h1><p class="ym-intro">翻一本没见过的小志，碰一件有脾气的手作。<br>再听完一首歌，认识几个同样有趣的人。</p><div class="ym-hero-actions"><button type="button" class="ym-button ym-button-black" data-ym-ticket>领取免费入场券 <span aria-hidden="true">↗</span></button><a class="ym-text-link" href="#ym-stalls">先逛逛摊位 <span aria-hidden="true">↓</span></a></div><div class="ym-hero-bottom"><span>独立创作 · 好奇心不限量</span><span class="ym-mono">COME AS YOU ARE.</span></div></div>
+      <div class="ym-hero-right"><div class="ym-poster"><svg class="ym-artwork" viewBox="0 0 480 390" role="img" aria-label="原创几何拼贴：太阳、棋盘、印刷纸张和跃动的黑色曲线">
+    <defs><pattern id="ym-check" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#fffdf6"/><path d="M0 0h16v16H0zM16 16h16v16H16z" fill="#171713"/></pattern></defs>
+    <rect x="24" y="34" width="330" height="304" fill="#171713" transform="rotate(-7 190 190)"/>
+    <g transform="rotate(-7 190 190)"><rect x="14" y="24" width="330" height="304" fill="#fffdf6" stroke="#171713" stroke-width="2"/><rect x="32" y="42" width="294" height="43" fill="url(#ym-check)"/>
+      <text x="38" y="160" font-size="64" font-weight="900" fill="#171713">灵感</text><text x="38" y="232" font-size="64" font-weight="900" fill="#171713">不打烊</text><path d="M38 258h260M38 269h180" stroke="#171713" stroke-width="2"/><text x="38" y="303" font-family="monospace" font-size="13" fill="#171713">GOOD IDEAS. GREAT COMPANY.</text></g>
+    <g transform="translate(357 110) rotate(12)"><path d="M0-82 16-48 47-68 45-32 80-29 57 0 80 29 45 32 47 68 16 48 0 82-16 48-47 68-45 32-80 29-57 0-80-29-45-32-47-68-16-48Z" fill="#f04b2e" stroke="#171713" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="18" font-weight="800" fill="#171713">好点子</text><text x="0" y="22" text-anchor="middle" font-size="18" font-weight="800" fill="#171713">集合！</text></g>
+    <path d="M310 279c-25-70 65-86 73-35s-65 59-43 101c17 33 72 0 86-41" fill="none" stroke="#171713" stroke-width="22"/>
+    <rect x="286" y="333" width="157" height="38" fill="#fff04d" stroke="#171713" stroke-width="2" transform="rotate(5 360 350)"/><text x="365" y="359" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#171713" transform="rotate(5 360 350)">VOL. 03 / 2026</text>
+  </svg></div><div class="ym-event-ticket"><div><span class="ym-caption">这个周末的坐标</span><strong>11.14—15<span>2026 / SAT—SUN</span></strong><p>江湾 · 旧印厂 <span>11:00—18:00</span></p></div><span class="ym-ticket-arrow" aria-hidden="true">↗</span></div></div>
     </section>
-        <section class="style-lab">
-      <div class="lab-summary">
-        <p class="kicker">Street Poster Launch · 街头海报发布</p>
-        <h2>Street Poster Launch in practice.</h2>
-        <p>Poster-first composition with slab headline blocks, ticket strips, hard stamps, and intentionally loud hierarchy.</p>
-        <div class="detail-pills"><span>Street Poster Launch</span><span>Buttons are black or saturated slabs with hard borders and offset shadows, never soft pills.</span><span>Use stamped states such as live, locked, claimed, expired, and warning with strong contrast.</span></div>
-      </div>
-      <div class="lab-workspace">
-        <div class="tabs" role="tablist" aria-label="Demo tabs">
-          <button type="button" class="active" role="tab" aria-selected="true" data-tab="launch">Launch</button>
-          <button type="button" role="tab" aria-selected="false" data-tab="metrics">Metrics</button>
-          <button type="button" role="tab" aria-selected="false" data-tab="assets">Assets</button>
-        </div>
-        <div class="workspace-grid">
-          <article class="panel">
-            <h3 data-demo-title>Drop control</h3>
-            <p data-demo-copy>Lock the headline, ticket rules, and urgency modules before the campaign goes live.</p>
-            <div class="chart" aria-hidden="true"><i style="height:92%"></i><i style="height:54%"></i><i style="height:78%"></i><i style="height:100%"></i><i style="height:61%"></i><i style="height:86%"></i><i style="height:69%"></i></div>
-          </article>
-          <aside class="panel">
-            <h3>Action queue</h3>
-            <div class="queue-list"><button type="button" class="queue-card" data-open-modal><b>Prize rules approved</b><span>Done</span></button><button type="button" class="queue-card" data-open-modal><b>Hero slab contrast</b><span>Check</span></button><button type="button" class="queue-card" data-open-modal><b>Referral badge</b><span>Live</span></button></div>
-          </aside>
-        </div>
-        <div class="related"><a href="../style-01-card-grid/style-01-card-grid.html">01. Card Grid</a><a href="../style-03-aurora-gradient/style-03-aurora-gradient.html">03. Aurora Gradient</a><a href="../style-04-retro-y2k/style-04-retro-y2k.html">04. Retro Y2K</a></div>
-      </div>
-    </section>
-      </section>
-    </details>
+    <div class="ym-strip" aria-label="插画出版、独立手作、现场音乐与好点子"><span>插画出版</span><i aria-hidden="true">✳</i><span>独立手作</span><i aria-hidden="true">✳</i><span>现场音乐</span><i aria-hidden="true">✳</i><span>还有你的好点子</span><span class="ym-strip-end" aria-hidden="true">↗</span></div>
+    <section class="ym-section" id="ym-stalls" aria-labelledby="ym-stalls-title"><div class="ym-section-head"><div><p class="ym-kicker">01 / MEET THE MAKERS</p><h2 id="ym-stalls-title">每一摊，都有点来头。</h2></div><p>小批量创作，大方地分享。</p></div><div class="ym-filters" role="group" aria-label="筛选摊位类别"><button type="button" data-ym-category="all" aria-pressed="true">全部摊位</button><button type="button" data-ym-category="print" aria-pressed="false">插画出版</button><button type="button" data-ym-category="craft" aria-pressed="false">独立手作</button><button type="button" data-ym-category="music" aria-pressed="false">现场音乐</button></div><p class="ym-sr-only" role="status" data-ym-filter-status>当前展示 3 个摊位</p><div class="ym-stalls"><article class="ym-stall" data-ym-stall data-ym-category="print" data-ym-number="A—01"><div class="ym-stall-art ym-stall-art-print" aria-hidden="true"><span class="ym-stall-number">A—01</span><span class="ym-art-object"></span><b>一张纸的远行</b></div><div class="ym-stall-meta"><span>插画出版</span><button type="button" data-ym-stall-open aria-label="了解纸间散步">了解摊主 ↗</button></div><h3>纸间散步</h3><p data-ym-description>把城市里的小事，印成可以带走的风景。独立小志、丝网版画与旅行手帖。</p></article><article class="ym-stall" data-ym-stall data-ym-category="craft" data-ym-number="B—06"><div class="ym-stall-art ym-stall-art-craft" aria-hidden="true"><span class="ym-stall-number">B—06</span><span class="ym-art-object"></span><b>有一点不一样</b></div><div class="ym-stall-meta"><span>独立手作</span><button type="button" data-ym-stall-open aria-label="了解慢物制造所">了解摊主 ↗</button></div><h3>慢物制造所</h3><p data-ym-description>不太规整，也不急着一样。手捏陶器、织物与日常里刚刚好的小物。</p></article><article class="ym-stall" data-ym-stall data-ym-category="music" data-ym-number="C—03"><div class="ym-stall-art ym-stall-art-music" aria-hidden="true"><span class="ym-stall-number">C—03</span><span class="ym-art-object"></span><b>让耳朵出门</b></div><div class="ym-stall-meta"><span>现场音乐</span><button type="button" data-ym-stall-open aria-label="了解半拍唱片行">了解摊主 ↗</button></div><h3>半拍唱片行</h3><p data-ym-description>从一张旧唱片开始聊天。独立发行、黑胶试听，还有午后的街角演出。</p></article></div></section>
+    <section class="ym-program-section" id="ym-program" aria-labelledby="ym-program-title"><div class="ym-program-intro"><p class="ym-kicker">02 / MAKE A DAY OF IT</p><h2 id="ym-program-title">别赶时间。<br>好玩的，慢慢来。</h2><p>逛累了就坐一会儿。<br>下午的工作台和小舞台，总有新鲜事。</p><span class="ym-program-flower" aria-hidden="true">✳</span></div><div class="ym-program-board"><div class="ym-day-switch" role="group" aria-label="选择活动日期"><button type="button" aria-pressed="true" data-ym-day="saturday">11.14 <span>周六</span></button><button type="button" aria-pressed="false" data-ym-day="sunday">11.15 <span>周日</span></button></div><div data-ym-program="saturday"><ol class="ym-program-list"><li><time>11:00</time><div><h3>开门，先逛一圈</h3><p>全场 · 摊主们已经就位</p></div><span aria-hidden="true">↗</span></li><li><time>14:00</time><div><h3>把灵感印在纸上</h3><p>工作台 · 丝网印刷体验</p></div><span aria-hidden="true">↗</span></li><li><time>16:30</time><div><h3>街角留给一首歌</h3><p>小舞台 · 半拍乐队现场</p></div><span aria-hidden="true">↗</span></li></ol></div><div data-ym-program="sunday" hidden><ol class="ym-program-list"><li><time>11:00</time><div><h3>周日也慢慢来</h3><p>全场 · 市集开放</p></div><span aria-hidden="true">↗</span></li><li><time>13:30</time><div><h3>捏一个不标准的杯子</h3><p>工作台 · 手捏陶土体验</p></div><span aria-hidden="true">↗</span></li><li><time>16:00</time><div><h3>最后一张唱片</h3><p>小舞台 · 黑胶分享与收场曲</p></div><span aria-hidden="true">↗</span></li></ol></div><p class="ym-program-note">工作坊现场报名，座位有限。市集入场免费。</p></div></section>
+    <footer class="ym-footer"><div><strong>周末见，带上好奇心。</strong><p>越界创意市集 · 第三回</p></div><button type="button" class="ym-button ym-button-black" data-ym-ticket>给我留张票 <span aria-hidden="true">↗</span></button><small>原创虚构活动，仅作页面演示；票券保存在本次页面中，刷新后清空。</small></footer>
+    <dialog class="ym-dialog" id="ym-ticket-dialog" aria-labelledby="ym-ticket-title"><button type="button" class="ym-dialog-close" data-ym-ticket-close aria-label="关闭领票窗口"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button><p class="ym-kicker">OFF THE GRID / FREE ENTRY</p><h2 id="ym-ticket-title">给这个周末，留张票。</h2><form data-ym-ticket-form novalidate><div class="ym-field"><label for="ym-nickname">怎么称呼你？</label><input id="ym-nickname" name="nickname" placeholder="写下你的昵称" maxlength="16" required autocomplete="off" aria-describedby="ym-nickname-error"><span class="ym-field-error" id="ym-nickname-error" role="alert" aria-atomic="true"></span></div><fieldset class="ym-visit-days"><legend>哪天来逛？</legend><label><input type="radio" name="visitDay" value="saturday" checked><span>11.14 <small>周六</small></span></label><label><input type="radio" name="visitDay" value="sunday"><span>11.15 <small>周日</small></span></label></fieldset><div class="ym-form-summary"><span>单人入场券</span><strong>¥ 0</strong></div><p class="ym-form-note">无需手机或邮箱。此为本地演示，不会提交个人信息。</p><button type="submit" class="ym-button ym-button-black">生成我的入场券 ↗</button></form><section data-ym-ticket-result hidden aria-label="你的演示入场券"><div class="ym-issued-ticket"><span class="ym-caption">越界创意市集 / VOL.03</span><h3><span data-ym-ticket-name></span>，欢迎越界。</h3><p data-ym-ticket-date></p><p>江湾 · 旧印厂 / 11:00—18:00</p><div class="ym-barcode" aria-hidden="true"></div><small>OFF—2026—001 / 演示票券，无实际入场效力</small></div><p class="ym-form-note">再次点击“我的票券”即可查看，刷新页面后清空。</p><button type="button" class="ym-button ym-button-black" data-ym-ticket-close>收好票，继续逛</button></section></dialog>
+    <dialog class="ym-dialog ym-stall-dialog" id="ym-stall-dialog" aria-labelledby="ym-stall-title"><button type="button" class="ym-dialog-close" data-ym-stall-close aria-label="关闭摊位介绍"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button><p class="ym-kicker">MEET THE MAKER</p><h2 id="ym-stall-title"></h2><p class="ym-stall-description" data-ym-stall-description></p><p class="ym-stall-location" data-ym-stall-location></p></dialog>
+    <script>(function initMarket() {
+  const root = document.querySelector('.ym-market');
+  const $ = selector => root.querySelector(selector);
+  const ticketDialog = $('#ym-ticket-dialog'), detailDialog = $('#ym-stall-dialog');
+  let ticket = null, ticketOpener = null, detailOpener = null;
+  function setNicknameError(message) {
+    const input = $('#ym-nickname');
+    if (message) input.setAttribute('aria-invalid', 'true');
+    else input.removeAttribute('aria-invalid');
+    $('#ym-nickname-error').textContent = message;
+  }
+  const days = { saturday: '11 月 14 日 · 周六', sunday: '11 月 15 日 · 周日' };
+  function showTicket(opener) {
+    ticketOpener = opener;
+    setNicknameError('');
+    $('[data-ym-ticket-form]').hidden = Boolean(ticket);
+    $('[data-ym-ticket-result]').hidden = !ticket;
+    $('#ym-ticket-title').textContent = ticket ? '周末，街上见。' : '给这个周末，留张票。';
+    ticketDialog.showModal();
+    (ticket ? $('[data-ym-ticket-close]') : $('#ym-nickname')).focus();
+  }
+  root.querySelectorAll('[data-ym-ticket]').forEach(button => button.addEventListener('click', () => showTicket(button)));
+  root.querySelectorAll('[data-ym-ticket-close]').forEach(button => button.addEventListener('click', () => ticketDialog.close()));
+  ticketDialog.addEventListener('close', () => ticketOpener?.focus());
+  $('[data-ym-ticket-form]').addEventListener('submit', event => {
+    event.preventDefault();
+    const form = event.currentTarget, nickname = form.elements.nickname.value.trim();
+    if (!nickname) {
+      setNicknameError('请填写昵称，方便生成你的入场券。');
+      form.elements.nickname.focus();
+      return;
+    }
+    setNicknameError('');
+    ticket = { nickname, day: form.elements.visitDay.value };
+    $('[data-ym-ticket-name]').textContent = ticket.nickname;
+    $('[data-ym-ticket-date]').textContent = days[ticket.day];
+    $('[data-ym-ticket-form]').hidden = true; $('[data-ym-ticket-result]').hidden = false;
+    $('#ym-ticket-title').textContent = '周末，街上见。';
+    $('[data-ym-my-ticket]').textContent = '我的票券 ↗';
+    $('[data-ym-ticket-close]').focus();
+  });
+  $('#ym-nickname').addEventListener('input', event => {
+    if (event.target.value.trim()) setNicknameError('');
+  });
+  root.querySelectorAll('[data-ym-category]').forEach(button => button.addEventListener('click', () => {
+    root.querySelectorAll('[data-ym-category]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    let count = 0;
+    root.querySelectorAll('[data-ym-stall]').forEach(card => { card.hidden = button.dataset.ymCategory !== 'all' && card.dataset.ymCategory !== button.dataset.ymCategory; if (!card.hidden) count++; });
+    $('[data-ym-filter-status]').textContent = `当前展示 ${count} 个摊位`;
+  }));
+  root.querySelectorAll('[data-ym-day]').forEach(button => button.addEventListener('click', () => {
+    root.querySelectorAll('[data-ym-day]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    root.querySelectorAll('[data-ym-program]').forEach(panel => panel.hidden = panel.dataset.ymProgram !== button.dataset.ymDay);
+  }));
+  root.querySelectorAll('[data-ym-stall-open]').forEach(button => button.addEventListener('click', () => {
+    const card = button.closest('[data-ym-stall]'); detailOpener = button;
+    $('#ym-stall-title').textContent = card.querySelector('h3').textContent;
+    $('[data-ym-stall-description]').textContent = card.querySelector('[data-ym-description]').textContent;
+    $('[data-ym-stall-location]').textContent = `${card.dataset.ymNumber} · 两天都在，欢迎来聊聊`;
+    detailDialog.showModal();
+  }));
+  $('[data-ym-stall-close]').addEventListener('click', () => detailDialog.close());
+  detailDialog.addEventListener('close', () => detailOpener?.focus());
+  [ticketDialog, detailDialog].forEach(dialog => dialog.addEventListener('click', event => {
+    const rect = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  }));
+})();</script>
+  </div>
   </main>
 
   <aside class="modal" hidden data-modal role="dialog" aria-modal="false" aria-labelledby="style-note-title">
     <h3 id="style-note-title">Style 02: Block Brutalism</h3>
-    <ul><li>Use loud hierarchy and hard geometry.</li><li>Let tension come from shape and contrast, not randomness.</li><li>Keep forms and actions obvious.</li></ul>
+    <ul><li>Concentrate heavy borders and hard shadows on the main poster and ticket action; separate supporting sections with fine rules.</li><li>Build an original geometric collage with yellow, black, and orange-red shapes; keep event details readable.</li><li>Keep the free ticket form short: nickname and visit date only, with clear local-demo feedback.</li></ul>
     <button type="button" class="secondary-action" data-close-modal>Close</button>
   </aside>
   <div class="toast" hidden data-toast role="status" aria-live="polite">
@@ -8504,20 +8624,10 @@ body.industrial-control .feature-block {
   <div class="sr-status" aria-live="polite" data-status></div>
 
   <script>
-  const prompt = "Use awesome-page-design Style 02 - Block Brutalism as the page design direction.\nPrompt type: Full Prompt.\nBest fit: bold campaigns, indie products, playful utilities.\nVisual mood: Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy.\nScenario focus:\nLanding adaptation: Use a campaign poster, stamped proof, bold offer slab, and one loud call-to-action with hard-edged supporting tickets.\nDashboard adaptation: Use chunky status slabs and urgent queues only for high-energy launch or moderation dashboards.\nAdmin adaptation: Use blunt forms, strong section borders, and obvious destructive confirmation; keep density lower than a neutral admin shell.\nForms/data adaptation: Use large labels, hard field borders, poster-like errors, and full-width confirmation blocks.\nMobile adaptation: Stack slabs in a strong reading order; remove side collisions and keep buttons full-width with no horizontal overflow.\nAvoid for: Weak for quiet finance, medical, legal, or long-form reading products.\nLayout archetype: Street Poster Launch.\nLayout structure: Poster-first composition with slab headline blocks, ticket strips, hard stamps, and intentionally loud hierarchy.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #fff04d; surface #fffbea; text #111111; muted #3f3f46; primary #111111; accent #ff3d00; border #111111; radius 0; shadow/material 10px 10px 0 #111111.\nGeometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use huge block type, compressed labels, blunt numbers, and minimal body copy.\nComponents: Tickets, stamps, countdowns, rule panels, and claim modules should look physical and direct.\nButtons: Buttons are black or saturated slabs with hard borders and offset shadows, never soft pills.\nButton details: Use blunt rectangular buttons with thick borders, hard offset shadows, pressed translation, and no soft disabled treatment.\nFeedback and alerts: Use poster-like alert strips, stamped success labels, and obvious error blocks with hard borders.\nSpacing system: Use large 24-32px slabs, abrupt 12-16px gaps, and intentionally chunky control groups.\nResponsive behavior: Desktop can be asymmetric; tablet collapses poster and proof wall; mobile becomes a single stack with full-width slab buttons and no horizontal overflow.\nIcons and media: Use poster blocks, product labels, stickers, or campaign artifacts as the main image language.\nStates: Use stamped states such as live, locked, claimed, expired, and warning with strong contrast.\nComponent state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.\nMotion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.\nImplementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.\nExample content direction: you may use the specificity of \"BlockParty / Street launch builder\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not soften the style with generic rounded SaaS cards. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.";
+  const prompt = "Use awesome-page-design Style 02 - Block Brutalism as the page design direction.\nPrompt type: Full Prompt.\nBest fit: creative fairs, cultural events, independent publishing, ticket reservations.\nVisual mood: Warm off-white canvas, a vivid yellow poster, black outlines, hard shadows, and orange-red accents for an independent creative fair.\nScenario focus:\nLanding adaptation: Use one vivid event poster, explicit date and venue, a switchable two-day program, and a free-ticket action with minimal fields.\nDashboard adaptation: Translate the same hard-edged hierarchy into concise event-operation lists; avoid decorative poster blocks around every metric.\nAdmin adaptation: Use restrained table rules and explicit actions; keep the stronger yellow and hard shadows for primary operations.\nForms/data adaptation: Use visible Labels, square Inputs, inline errors, and a short confirmation; collect only the information needed for the task.\nMobile adaptation: Stack content in reading order, wrap oversized headings safely, and keep Tabs and ticket controls usable without horizontal overflow.\nAvoid for: Poor fit for quiet financial, medical, legal, or long-form reading experiences that require a restrained tone.\nLayout archetype: Creative Fair Poster.\nLayout structure: Place a large yellow poster and ticket action on a warm off-white canvas; follow with a two-day program and stall content separated by thin rules.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #f5f1e8; surface #fffdf6; text #171713; muted #625f54; primary #fff04d; accent #f04b2e; border #171713; radius 0; shadow/material 8px 8px 0 #171713.\nGeometry: panel radius 0; control radius 0; chip/state radius 0; media radius 0. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use oversized black display type with deliberate line breaks, compact date labels, and readable supporting copy.\nComponents: Use day-switching Tabs, stall listings, and a short ticket Modal with nickname and visit date only.\nButtons: Use rectangular black or yellow buttons with hard borders; reserve offset shadows for the main ticket action.\nButton details: Use rectangular buttons with clear hover, focus, pressed, pending, and disabled states; use a hard offset shadow only where hierarchy needs it.\nFeedback and alerts: Show inline field validation and a distinct locally generated ticket; explain that the demonstration does not create a real reservation.\nSpacing system: Use generous whitespace around the main poster, compact event metadata, and fine separators between supporting sections rather than repeated boxed cards.\nResponsive behavior: On mobile stack the poster and ticket entry, wrap event details, keep day Tabs reachable, and let the ticket Modal scroll within the viewport.\nIcons and media: Compose an original geometric collage from simple yellow, black, and orange-red shapes; do not borrow real event posters or branding.\nStates: Make the selected day, pending ticket generation, inline errors, and successful local ticket visibly distinct.\nComponent state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.\nMotion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.\nImplementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.\nExample content direction: you may use the specificity of \"越界创意市集 / Independent creative fair · 2026.11.14–15\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Avoid boxing every section, generic rounded cards, invented urgency, and unnecessary contact-information fields. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.";
   const modal = document.querySelector('[data-modal]');
   const status = document.querySelector('[data-status]');
   const toast = document.querySelector('[data-toast]');
-  const demo = {"launch":["Drop control","Lock the headline, ticket rules, and urgency modules before the campaign goes live."],"metrics":["Claim pressure","Track waitlist growth, claim rate, failed attempts, and referral lift during the launch window."],"assets":["Poster kit","Reuse stickers, stamps, product blocks, and oversized labels across the campaign."]};
-  const referenceDetails = document.getElementById('details');
-  document.querySelectorAll('a[href="#details"]').forEach((link) => {
-    link.addEventListener('click', () => { referenceDetails.open = true; });
-  });
-  function revealReferenceFromHash() {
-    if (location.hash === '#details') referenceDetails.open = true;
-  }
-  revealReferenceFromHash();
-  window.addEventListener('hashchange', revealReferenceFromHash);
   let toastTimer;
   function showToast(message) {
     if (!toast) return;
@@ -8555,7 +8665,8 @@ body.industrial-control .feature-block {
     helper.remove();
     return copied;
   }
-  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
+  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', (event) => {
+    event.preventDefault();
     modal.hidden = false;
     document.querySelector('[data-close-modal]').focus();
   }));
@@ -8576,59 +8687,176 @@ body.industrial-control .feature-block {
       }
     });
   });
-  document.querySelectorAll('[data-toast-trigger]').forEach((button) => {
-    button.addEventListener('click', () => showToast('Primary action confirmed'));
-  });
-  document.querySelectorAll('[data-loading-demo]').forEach((button) => {
-    const original = button.textContent;
-    button.addEventListener('click', () => {
-      if (button.getAttribute('aria-busy') === 'true') return;
-      button.setAttribute('aria-busy', 'true');
-      button.disabled = true;
-      status.textContent = 'Saving state';
-      setTimeout(() => {
-        button.setAttribute('aria-busy', 'false');
-        button.disabled = false;
-        button.textContent = original;
-        showToast('State saved without layout shift');
-      }, 1200);
-    });
-  });
-  document.querySelectorAll('[data-toggle-demo]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const pressed = button.getAttribute('aria-pressed') === 'true';
-      button.setAttribute('aria-pressed', String(!pressed));
-      button.textContent = pressed ? 'Filter off' : 'Filter on';
-      showToast(pressed ? 'Filter removed' : 'Filter applied');
-    });
-  });
-  document.querySelectorAll('[data-demo-input]').forEach((input) => {
-    input.addEventListener('input', () => {
-      const helper = input.closest('.field-group')?.querySelector('[data-field-help]');
-      if (!helper) return;
-      if (input.value.trim().length < 3) {
-        input.setAttribute('aria-invalid', 'true');
-        helper.textContent = 'Add at least three characters so the field has a recoverable validation state.';
-        status.textContent = 'Field validation warning';
-      } else {
-        input.removeAttribute('aria-invalid');
-        helper.textContent = 'Filled state is valid and helper text remains visible.';
-        status.textContent = 'Field validation cleared';
-      }
-    });
-  });
-  document.querySelectorAll('[data-tab]').forEach((button) => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('[data-tab]').forEach((node) => {
-        const active = node === button;
-        node.classList.toggle('active', active);
-        node.setAttribute('aria-selected', String(active));
-      });
-      document.querySelector('[data-demo-title]').textContent = demo[button.dataset.tab][0];
-      document.querySelector('[data-demo-copy]').textContent = demo[button.dataset.tab][1];
-      status.textContent = demo[button.dataset.tab][0] + ' tab selected';
-    });
-  });
   </script>
+<script>(function initializeControls() {
+  function bind() {
+    const controllers = [];
+    document.querySelectorAll('[data-choice]').forEach(box => {
+      const input = box.querySelector('input'), trigger = box.querySelector('.pd-choice-trigger'), list = box.querySelector('[role=listbox]'), options = [...list.querySelectorAll('[role=option]')];
+      const initialValue = input.value;
+      let active = 0, opened = false, search = '', searchTimer;
+      const enabled = i => options[i]?.getAttribute('aria-disabled') !== 'true';
+      const selectedIndex = () => Math.max(0, options.findIndex(option => option.dataset.value === input.value));
+      function highlight(i) { active = i; options.forEach((option,n) => option.classList.toggle('pd-active', n === i)); trigger.setAttribute('aria-activedescendant', options[i].id); options[i].scrollIntoView({block:'nearest'}); }
+      function position() {
+        const r = trigger.getBoundingClientRect(), below = innerHeight-r.bottom-12, above = r.top-12;
+        const height = Math.min(300, Math.max(90, Math.max(below, above))), up = below < 180 && above > below;
+        const width = Math.min(Math.max(r.width, 200), innerWidth-24);
+        Object.assign(list.style,{position:'fixed',margin:'0',left:`${Math.max(12,Math.min(r.left,innerWidth-width-12))}px`,width:`${width}px`,maxHeight:`${height}px`,top:up?'auto':`${r.bottom+6}px`,bottom:up?`${innerHeight-r.top+6}px`:'auto'});
+      }
+      function close() { if (!opened) return; opened = false; if (list.hidePopover && list.matches(':popover-open')) list.hidePopover(); list.hidden = true; trigger.setAttribute('aria-expanded','false'); trigger.removeAttribute('aria-activedescendant'); search='';clearTimeout(searchTimer); }
+      function open(index=selectedIndex()) { if(trigger.disabled)return;controllers.forEach(c=>c.close());opened=true;list.hidden=false;position();if(list.showPopover)list.showPopover();trigger.setAttribute('aria-expanded','true');highlight(index); }
+      function sync() { const i=selectedIndex(); box.querySelector('[data-choice-label]').textContent=options[i].querySelector('span').textContent; options.forEach((option,n)=>option.setAttribute('aria-selected',String(n===i))); }
+      function choose(i) { if(!enabled(i))return;input.value=options[i].dataset.value;sync();close();trigger.focus();input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true})); }
+      trigger.addEventListener('click',()=>opened?close():open());
+      trigger.addEventListener('keydown',event=>{
+        const key=event.key;
+        if(['ArrowDown','ArrowUp','Home','End'].includes(key)) { event.preventDefault(); if(!opened){open(key==='Home'?0:key==='End'?options.length-1:selectedIndex());return;} let n=key==='Home'?0:key==='End'?options.length-1:active+(key==='ArrowDown'?1:-1); n=Math.max(0,Math.min(options.length-1,n));while(!enabled(n)&&n>=0&&n<options.length)n+=key==='ArrowUp'||key==='End'?-1:1;if(options[n]&&enabled(n))highlight(n); }
+        else if(key==='Escape'&&opened){event.preventDefault();event.stopPropagation();close();}
+        else if((key==='Enter'||key===' ')&&opened){event.preventDefault();choose(active);}
+        else if(key==='Tab')close();
+        else if(key.length===1&&!event.ctrlKey&&!event.metaKey&&key!==' '){event.preventDefault();search+=key.toLocaleLowerCase();clearTimeout(searchTimer);searchTimer=setTimeout(()=>search='',600);const n=options.findIndex((o,i)=>enabled(i)&&o.textContent.trim().toLocaleLowerCase().startsWith(search));if(n>=0){if(!opened)open(n);else highlight(n);}}
+      });
+      list.addEventListener('pointerdown',event=>event.preventDefault());
+      list.addEventListener('click',event=>{const option=event.target.closest('[role=option]');if(option){event.preventDefault();choose(options.indexOf(option));}});
+      document.addEventListener('pointerdown',event=>{if(!box.contains(event.target))close();});
+      document.addEventListener('focusin',event=>{if(!box.contains(event.target))close();});
+      box.closest('dialog')?.addEventListener('close',close);
+      box.closest('dialog')?.addEventListener('cancel',event=>{if(opened){event.preventDefault();close();}});
+      input.form?.addEventListener('reset',()=>setTimeout(()=>{input.value=initialValue;close();sync();},0));
+      controllers.push({close,position,isOpen:()=>opened});sync();
+    });
+    addEventListener('resize',()=>controllers.forEach(c=>c.isOpen()&&c.position()));
+    document.addEventListener('scroll',()=>controllers.forEach(c=>c.isOpen()&&c.position()),true);
+    document.querySelectorAll('.pd-stepper').forEach(box=>{
+      const input=box.querySelector('input'),buttons=[...box.querySelectorAll('button')];
+      function sync(){buttons[0].disabled=input.disabled||input.min!==''&&Number(input.value)<=Number(input.min);buttons[1].disabled=input.disabled||input.max!==''&&Number(input.value)>=Number(input.max);}
+      buttons.forEach(button=>button.addEventListener('click',()=>{try{Number(button.dataset.step)>0?input.stepUp():input.stepDown();}catch{return;}input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));sync();}));
+      input.addEventListener('input',sync);input.form?.addEventListener('reset',()=>setTimeout(sync,0));
+      new MutationObserver(sync).observe(input,{attributes:true,attributeFilter:['min','max','disabled']});
+      input.closest('dialog')?.addEventListener('toggle',sync);sync();
+    });
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',bind,{once:true}):bind();
+})();(function initializeDateControls() {
+  const iso = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  const parse = value => /^\d{4}-\d{2}-\d{2}$/.test(value || '') ? new Date(`${value}T12:00:00`) : null;
+  const addDays = (date, count) => { const next = new Date(date); next.setDate(next.getDate() + count); return next; };
+  const today = () => { const date = new Date(); date.setHours(12, 0, 0, 0); return date; };
+  let sequence = 0;
+  function bind() {
+    document.querySelectorAll('.demo-root input[data-calendar-field]').forEach(input => {
+      if (input.dataset.demoCalendar) return;
+      input.dataset.demoCalendar = 'true';
+      const root = input.closest('.demo-root'), value = input.value;
+      input.type = 'text'; input.value = value; input.readOnly = true; input.placeholder = '选择日期';
+      input.setAttribute('aria-haspopup', 'dialog'); input.setAttribute('aria-expanded', 'false');
+      const wrapper = document.createElement('span'); wrapper.className = 'demo-date';
+      input.before(wrapper); wrapper.appendChild(input);
+      const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'demo-date-trigger';
+      trigger.setAttribute('aria-label', '打开日期选择'); trigger.setAttribute('aria-haspopup', 'dialog'); trigger.setAttribute('aria-expanded', 'false');
+      trigger.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v15H5zM8 3v4m8-4v4M5 10h14M8 13h2m4 0h2m-8 4h2"/></svg>';
+      wrapper.appendChild(trigger);
+      const popup = document.createElement('div'), id = `demo-calendar-${++sequence}`;
+      popup.id = id; popup.className = `demo-calendar ${root.classList.contains('s07') ? 'demo-calendar-garden' : 'demo-calendar-reading'}`;
+      popup.setAttribute('role', 'dialog'); popup.setAttribute('aria-label', '选择日期'); popup.setAttribute('popover', 'manual');
+      popup.hidden = true;
+      popup.innerHTML = `<div class="demo-calendar-head"><button type="button" data-calendar-prev aria-label="上一个月">‹</button><strong data-calendar-month aria-live="polite"></strong><button type="button" data-calendar-next aria-label="下一个月">›</button></div><div class="demo-calendar-week" aria-hidden="true">${['一','二','三','四','五','六','日'].map(day => `<span>${day}</span>`).join('')}</div><div class="demo-calendar-days" role="group" aria-label="本月日期"></div><div class="demo-calendar-footer"><button type="button" data-calendar-today>今天</button><span data-calendar-selection role="status"></span><button type="button" data-calendar-clear>清空</button></div>`;
+      wrapper.appendChild(popup); input.setAttribute('aria-controls', id); trigger.setAttribute('aria-controls', id);
+      const monthLabel = popup.querySelector('[data-calendar-month]'), grid = popup.querySelector('.demo-calendar-days');
+      const previous = popup.querySelector('[data-calendar-prev]'), next = popup.querySelector('[data-calendar-next]');
+      let active = false, focused = today(), month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12);
+      const valid = date => (!input.min || iso(date) >= input.min) && (!input.max || iso(date) <= input.max);
+      function clamp(date) {
+        if (input.min && iso(date) < input.min) return parse(input.min);
+        if (input.max && iso(date) > input.max) return parse(input.max);
+        return date;
+      }
+      function validate() {
+        const date = parse(input.value);
+        input.setCustomValidity(input.value && (!date || !valid(date)) ? '请选择允许范围内的日期。' : '');
+      }
+      function render(focusDay = false) {
+        monthLabel.textContent = `${month.getFullYear()} 年 ${month.getMonth() + 1} 月`;
+        const first = new Date(month.getFullYear(), month.getMonth(), 1, 12), offset = (first.getDay() + 6) % 7;
+        const days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+        previous.disabled = !!input.min && iso(new Date(month.getFullYear(), month.getMonth(), 0, 12)) < input.min;
+        next.disabled = !!input.max && iso(new Date(month.getFullYear(), month.getMonth() + 1, 1, 12)) > input.max;
+        grid.innerHTML = Array.from({length: offset}, () => '<span aria-hidden="true"></span>').join('') + Array.from({length: days}, (_, index) => {
+          const date = new Date(month.getFullYear(), month.getMonth(), index + 1, 12), key = iso(date), selected = input.value === key;
+          return `<button type="button" data-calendar-day="${key}" tabindex="${key === iso(focused) ? '0' : '-1'}" aria-label="${month.getFullYear()}年${month.getMonth() + 1}月${index + 1}日${selected ? '，已选中' : ''}" aria-pressed="${selected}"${key === iso(today()) ? ' aria-current="date"' : ''}${valid(date) ? '' : ' disabled'}>${index + 1}</button>`;
+        }).join('');
+        popup.querySelector('[data-calendar-today]').disabled = !valid(today());
+        popup.querySelector('[data-calendar-selection]').textContent = input.value ? `已选 ${input.value.slice(5).replace('-', ' / ')}` : '尚未选择';
+        if (focusDay) grid.querySelector(`[data-calendar-day="${iso(focused)}"]`)?.focus();
+      }
+      function position() {
+        const rect = wrapper.getBoundingClientRect(), width = Math.min(304, window.innerWidth - 24);
+        popup.style.width = `${width}px`;
+        const height = popup.getBoundingClientRect().height, below = window.innerHeight - rect.bottom - 12;
+        popup.style.left = `${Math.max(12, Math.min(rect.left, window.innerWidth - width - 12))}px`;
+        popup.style.top = `${Math.max(12, below >= height || rect.top < height + 12 ? Math.min(rect.bottom + 7, window.innerHeight - height - 12) : rect.top - height - 7)}px`;
+      }
+      function close(restore = false) {
+        if (!active) return;
+        active = false;
+        if (typeof popup.hidePopover === 'function' && popup.matches(':popover-open')) popup.hidePopover();
+        popup.hidden = true; input.setAttribute('aria-expanded', 'false'); trigger.setAttribute('aria-expanded', 'false');
+        if (restore) input.focus();
+      }
+      function open() {
+        if (active) { close(true); return; }
+        focused = clamp(parse(input.value) || today()); month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12);
+        active = true; render(); popup.hidden = false;
+        if (typeof popup.showPopover === 'function') popup.showPopover();
+        input.setAttribute('aria-expanded', 'true'); trigger.setAttribute('aria-expanded', 'true'); position();
+        grid.querySelector(`[data-calendar-day="${iso(focused)}"]`)?.focus();
+      }
+      function choose(value) {
+        input.value = value; validate();
+        input.dispatchEvent(new Event('input', {bubbles: true})); input.dispatchEvent(new Event('change', {bubbles: true})); close(true);
+      }
+      function moveMonth(count) {
+        month = new Date(month.getFullYear(), month.getMonth() + count, 1, 12);
+        const end = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+        focused = clamp(new Date(month.getFullYear(), month.getMonth(), Math.min(focused.getDate(), end), 12));
+        month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12); render(true); position();
+      }
+      trigger.addEventListener('click', open); input.addEventListener('click', open);
+      input.addEventListener('keydown', event => { if (['ArrowDown','Enter',' '].includes(event.key)) {event.preventDefault(); open();} });
+      input.addEventListener('input', validate); input.addEventListener('change', validate);
+      previous.addEventListener('click', () => moveMonth(-1)); next.addEventListener('click', () => moveMonth(1));
+      popup.querySelector('[data-calendar-today]').addEventListener('click', () => choose(iso(today())));
+      popup.querySelector('[data-calendar-clear]').addEventListener('click', () => choose(''));
+      grid.addEventListener('click', event => {const button = event.target.closest('[data-calendar-day]'); if (button && !button.disabled) choose(button.dataset.calendarDay);});
+      // Some fields live inside a wrapping label; calendar clicks must not activate that label again.
+      popup.addEventListener('click', event => event.preventDefault());
+      popup.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {event.preventDefault();event.stopPropagation();close(true);return;}
+        if (event.key === 'Tab') {
+          const controls = [...popup.querySelectorAll('button:not(:disabled)')].filter(button => button.tabIndex >= 0);
+          if (event.shiftKey && document.activeElement === controls[0]) {event.preventDefault(); controls.at(-1)?.focus();}
+          else if (!event.shiftKey && document.activeElement === controls.at(-1)) {event.preventDefault();controls[0]?.focus();}
+          return;
+        }
+        if (!event.target.matches('[data-calendar-day]')) return;
+        let change = ({ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7})[event.key];
+        if (event.key === 'Home') change = -((focused.getDay()+6)%7);
+        if (event.key === 'End') change = 6-((focused.getDay()+6)%7);
+        if (change !== undefined) {event.preventDefault();focused = clamp(addDays(focused,change));month = new Date(focused.getFullYear(),focused.getMonth(),1,12);render(true);position();}
+        else if (event.key === 'PageUp' || event.key === 'PageDown') {event.preventDefault();moveMonth(event.key === 'PageUp' ? -1 : 1);}
+      });
+      document.addEventListener('pointerdown', event => { if (active && !wrapper.contains(event.target)) close(); });
+      const dialog = input.closest('dialog');
+      dialog?.addEventListener('close', () => close());
+      dialog?.addEventListener('cancel', event => {if (active) {event.preventDefault(); close(true);}});
+      input.form?.addEventListener('reset', () => setTimeout(validate,0));
+      window.addEventListener('resize', () => {if (active) position();});
+      document.addEventListener('scroll', event => {if (active && !popup.contains(event.target)) position();},true);
+      validate();
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, {once:true}); else bind();
+})();</script>
 </body>
 </html>

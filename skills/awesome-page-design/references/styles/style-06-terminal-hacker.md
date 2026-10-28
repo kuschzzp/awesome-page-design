@@ -1,96 +1,86 @@
-# Style 06 - Terminal Hacker (黑客终端)
+# 风格 06：黑客终端
 
-## Summary
+## 概述
 
-Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility.
+近黑终端、克制绿色等宽文字、可操作响应行、语义状态色与可停止的本地运行。
 
-Chinese summary: 黑色画布、终端绿、等宽字体、CRT 扫描线、命令行细节和开发者可信感。
+## 适用场景
 
-## Best For
+开发者诊断、命令控制台、技术报告
 
-developer tools, CLI products, security, open source
+## 示例场景
 
-## Example Scenario
+- 示例产品：链路巡检台
+- 页面任务：链接完整性 / 发布前检查
+- 标题：别让用户，走进一条断掉的链接。
+- 主要操作：运行巡检
+- 次要操作：停止
 
-- Product sample: NullTrace
-- Page job: Security command line
-- Headline: Trace exposed secrets before they ship.
-- Primary action: Run scan
-- Secondary action: View logs
+## 场景组件
 
-## Scenario Components
+- 运行可以掌控：启动定时本地巡检，中途停止仍保留已完成记录。
+- 读懂每条响应：筛选正常、跳转或失效路径，并查看对应处理建议。
+- 带走一份报告：按输入目标生成明确标注模拟数据的报告，可复制或下载。
 
-- Command rhythm: Monospace surfaces, prompts, and log rows make the product feel credible to developers.
-- Sharp states: Warnings, failures, and successful checks are unmistakable in a dark console.
-- Useful texture: Scanlines and glow stay subtle so long logs remain readable.
+## 示例状态
 
-## Example States
+- 预置响应巡检：运行 / 停止
+- 问题路径：检查
+- 模拟报告：复制 / 下载
 
-- Token revoked: Pass
-- Stale key owner: Find
-- Webhook secret: Mask
+## 布局模式
 
-## Layout Pattern
+- 模式：本地链路巡检控制台
+- 结构：URL 命令条下接大日志区与窄运行检查栏，下方展开响应记录表。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：等宽日志行严格对齐，中文诊断文案清楚，小型运行标签配表格数字。
+- 组件：使用带校验 URL Input、运行和停止 Button、自绘轨道和填充的 Progress、状态筛选、响应选择与报告导出。
+- 按钮：可执行运行命令使用绿色实底，停止采用描边，禁用态明确区分。
+- 图标与媒体：让日志行、路径、响应码与处理建议承载视觉结构。
+- 状态：覆盖示例报告、运行中、停止后的部分结果、运行完成、筛选为空、复制失败与无效目标。
+- 避免：不宣称真实扫描网络，不留下失控定时器，不用浓重绿光影响日志阅读。
 
-- Pattern: Terminal Console (终端控制台)
-- Archetype: Terminal Console
-- Structure: Command-line console with log panes, prompt rows, file paths, severity lanes, and a compact run summary.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use monospace for the main interface and keep long log rows aligned.
-- Components: Prompt inputs, log rows, severity chips, file paths, command buttons, and inline remediation blocks are central.
-- Buttons: Buttons should look like executable commands, with brackets, prompt marks, or terminal borders.
-- Icons and media: Use logs, code snippets, repo paths, and scan traces instead of abstract graphics.
-- States: Show pass, fail, warning, masked, ignored, running, and copied command states.
-- Avoid: Do not use green glow so heavily that logs become hard to read.
+## 视觉语言
 
-## Visual Language
+- 背景：`#020604`
+- 表面：`#071009`
+- 正文：`#b9d5c3`
+- 弱化文字：`#86b196`
+- 主色：`#8ef3aa`
+- 强调色：`#e6a295`
+- 边框：`#294d36`
+- 圆角：`0`
+- 面板圆角：`0`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`0`
+- 几何规则：矩形终端面板、等宽日志行和细线表格，状态色只用于响应含义。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`none`
 
-- Background: `#020403`
-- Surface: `#07130d`
-- Text: `#d1fae5`
-- Muted text: `#7ddf9e`
-- Primary: `#00ff88`
-- Accent: `#33ffcc`
-- Border: `#14532d`
-- Radius: `2px`
-- Panel radius: `2px`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `2px`
-- Geometry rule: terminal-like square controls and tiny window corners; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 0 36px rgba(0, 255, 136, .16)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：运行时禁用冲突控件，始终保留可用的停止动作。
+- 提示与反馈：就近校验 URL 协议，播报运行变化，剪贴板不可用时提供下载。
+- 间距系统：重复日志与表格行紧凑排列，运行控制和诊断输出明确分区。
+- 响应式策略：小屏堆叠日志及检查栏，宽表格仅在内部区域滚动。
 
-- Button system: Use command-style buttons, terminal labels, sharp focus rings, and disabled states that look locked rather than faded away.
-- Feedback and alerts: Use log-line alerts, command output toasts, and inline error rows with exact recovery commands.
-- Spacing system: Use 12-18px monospace panels, 8-10px log rows, and compact control groups.
-- Responsive behavior: Desktop keeps console and severity board split; mobile stacks logs first, then metrics, then secondary evidence.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：展示有用命令和真实本地结果，不编造安全承诺。
+- 数据看板：优先日志、严重程度筛选和上下文诊断，避免装饰图表。
+- 管理后台：命令执行提供停止动作与明确运行状态。
+- 表单、Table 与数据：启动定时任务前，就近校验必要命令参数。
+- 移动端：依次呈现运行控制、日志、诊断，宽表格内部滚动。
+- 不适合：不适合普通消费者引导或要求真实网络测量的业务流程。
 
-- 按钮细节：使用命令式按钮、终端标签、锐利焦点环，以及像 locked 而不是淡掉的禁用态。
-- 提示与反馈：使用日志行提示、命令输出 toast，以及带修复命令的内联错误行。
-- 间距系统：终端面板内边距 12-18px，日志行间距 8-10px，控件组紧凑。
-- 响应式策略：桌面拆分控制台和严重度面板；手机先显示日志，再显示指标，再显示次级证据。
+## 使用要点
 
-## Page Adaptation Guide
+- 所有响应均为预置本地数据，输入 URL 只用于标注报告路径。
+- 停止运行会保留已完成结果并取消后续定时任务。
+- 语义状态色克制使用，长路径保持可读。
 
-- Landing page: Use terminal output, command examples, severity proof, and a clear install or run action.
-- Dashboard: Use log streams, severity filters, health metrics, command results, and incident queues.
-- Admin panel: Use CLI-like settings, permission warnings, and exact recovery commands for technical operators.
-- Forms, tables, and data: Use command labels, sharp focus rings, monospace helper text, and exact error recovery.
-- Mobile: Show logs first, then metrics and recovery actions; keep command snippets wrap-safe.
-- Not a good fit for: Weak for consumer lifestyle, soft wellness, or image-led brand storytelling.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use monospace rhythm and command metaphors.
-- Keep scanline or terminal texture subtle.
-- Make focus and error states unmistakable.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,96 +1,86 @@
-# Style 21 - Acid Design (酸性设计)
+# 风格 21：酸性设计
 
-## Summary
+## 概述
 
-Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension.
+铬面环状 SVG 与错位标题形成声音舞台，下接曲目切片和可排序试听清单；底部播放器保持稳定位置。
 
-Chinese summary: 金属光泽、液态金属字体、铬材质、扭曲排版、镭射光、暗黑科幻和致幻感。
+## 适用场景
 
-## Best For
+实验作品集、音乐/时尚发布、沉浸式活动页
 
-experimental portfolios, music/fashion drops, immersive campaigns
+## 示例场景
 
-## Example Scenario
+- 示例产品：失真档案
+- 页面任务：失真档案
+- 标题：失真，也有秩序。
+- 主要操作：试听原创音色
+- 次要操作：编排试听清单
 
-- Product sample: ChromeRift
-- Page job: Experimental release page
-- Headline: Make the page feel like a warped signal.
-- Primary action: Enter drop
-- Secondary action: View archive
+## 场景组件
 
-## Scenario Components
+- 声音切片：选择四段原创浏览器合成音色。
+- 稳定播放：暂停、调整试听进度与音量，关闭页面即停止。
+- 自己的顺序：加入、移动、移除曲目并导出本地清单。
 
-- Controlled distortion: Chrome, laser color, and warped type create impact while body text stays readable.
-- Stable anchors: Navigation, actions, and status chips keep the experience usable inside the chaos.
-- Rare intensity: The style is strongest when used for brands that can carry risk and attitude.
+## 示例状态
 
-## Example States
+- 夜光折线：已选择
+- 液态回声：在清单中
+- 播放器：已暂停
 
-- Timer shard: Live
-- Chrome title: Tune
-- Archive cut: Hidden
+## 布局模式
 
-## Layout Pattern
+- 模式：失真档案
+- 结构：铬面环状 SVG 与错位标题形成声音舞台，下接曲目切片和可排序试听清单；底部播放器保持稳定位置。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：展示标题可轻度扭曲，曲目名称、播放状态与时间使用稳定清晰的文字。
+- 组件：声音切片、稳定播放、自己的顺序。
+- 按钮：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 图标与媒体：原创铬面环、荧光切线与合成音色波形，不使用商业录音。
+- 状态：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 避免：不要扭曲功能文字，不自动发声，不让噪点与装饰遮挡控件。
 
-- Pattern: Acid Signal Poster (酸性信号海报)
-- Archetype: Acid Signal Poster
-- Structure: Asymmetric experimental poster with chrome slabs, laser cuts, warped title treatment, and stable navigation anchors.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use distorted display moments only for headlines; keep body copy and controls readable.
-- Components: Signal shards, timer chips, archive cuts, chrome buttons, and high-contrast anchor controls define the UI.
-- Buttons: Buttons can be metallic or laser-outlined but must remain obvious actions.
-- Icons and media: Use chrome slabs, cut-up images, laser rules, and dark surreal fields as content anchors.
-- States: Show live drop, hidden shard, tuned title, entered, archived, and expired states.
-- Avoid: Do not apply distortion to small text, forms, or critical controls.
+## 视觉语言
 
-## Visual Language
+- 背景：`#08050d`
+- 表面：`#17101f`
+- 正文：`#eee8fa`
+- 弱化文字：`#a99bb6`
+- 主色：`#d6ff00`
+- 强调色：`#be81f7`
+- 边框：`#453750`
+- 圆角：`8px`
+- 面板圆角：`8px`
+- 控件圆角：`4px`
+- Chip 圆角：`2px`
+- 媒体圆角：`6px`
+- 几何规则：不规则主视觉与稳定播放器并置；曲目列表保持清晰边界与足够操作空间。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 24px 90px rgba(214, 255, 0, .16)`
 
-- Background: `#050108`
-- Surface: `#130818`
-- Text: `#f8f0ff`
-- Muted text: `#c4b5fd`
-- Primary: `#e5e7eb`
-- Accent: `#d6ff00`
-- Border: `#7c3aed`
-- Radius: `8px`
-- Panel radius: `8px`
-- Control radius: `4px`
-- Chip radius: `2px`
-- Media radius: `6px`
-- Geometry rule: acid-edged geometry with sharp anchor controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 24px 90px rgba(214, 255, 0, .16)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 提示与反馈：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 间距系统：围绕主对象安排区块、说明与操作，辅助内容保持次要层级。
+- 响应式策略：窄屏按任务顺序堆叠主对象和控件，避免横向溢出。
 
-- Button system: Use sharp chrome or laser-outline buttons, stable labels, and active states that stay readable under visual distortion.
-- Feedback and alerts: Use high-contrast signal alerts, archive confirmations, and expired-state warnings without distorting body text.
-- Spacing system: Use 18-26px experimental slabs, 10-14px shard gaps, and stable anchor zones for controls.
-- Responsive behavior: Desktop may be asymmetric and surreal; mobile removes distortion from controls and stacks title, action, media, and shards.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：铬面环状 SVG 与错位标题形成声音舞台，下接曲目切片和可排序试听清单；底部播放器保持稳定位置。
+- 数据看板：保留该视觉语言，围绕真实任务状态和可读控件组织信息。
+- 管理后台：按实际内容选择性应用视觉语言与本地工作流程。
+- 表单、Table 与数据：字段保留 Label，预留行内错误位置，并提供明确结果摘要。
+- 移动端：主要操作与关键信息优先于辅助装饰内容。
+- 不适合：不要扭曲功能文字，不自动发声，不让噪点与装饰遮挡控件。
 
-- 按钮细节：使用锐利铬面或镭射描边按钮、稳定标签，以及在视觉扭曲下仍可读的 active 状态。
-- 提示与反馈：使用高对比信号提示、归档确认和过期警告，但不要扭曲正文。
-- 间距系统：实验块面 18-26px，碎片间距 10-14px，并为控件保留稳定锚点区域。
-- 响应式策略：桌面可不对称且超现实；手机移除控件扭曲，并堆叠标题、操作、媒体和碎片。
+## 使用要点
 
-## Page Adaptation Guide
+- 铬面环状 SVG 与错位标题形成声音舞台，下接曲目切片和可排序试听清单；底部播放器保持稳定位置。
+- 原创铬面环、荧光切线与合成音色波形，不使用商业录音。
+- 不要扭曲功能文字，不自动发声，不让噪点与装饰遮挡控件。
 
-- Landing page: Use experimental title, chrome media, laser cuts, stable nav anchors, and a readable entry action.
-- Dashboard: Use only for expressive live signal or archive surfaces with strong stable control zones.
-- Admin panel: Use sparingly; critical forms and tables must be distortion-free and high contrast.
-- Forms, tables, and data: Use sharp fields, clear labels, no text distortion, and high-contrast expired/error states.
-- Mobile: Remove distortion from controls and stack title, action, media, and shards.
-- Not a good fit for: Weak for accessibility-critical admin, long copy, or conservative institutional products.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use distortion and chrome as brand moments, not body text.
-- Keep enough stable UI for orientation.
-- Let neon accents cut through a dark surreal base.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

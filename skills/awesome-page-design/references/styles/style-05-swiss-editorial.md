@@ -1,96 +1,86 @@
-# Style 05 - Swiss Editorial (瑞士编辑风)
+# 风格 05：瑞士编辑风
 
-## Summary
+## 概述
 
-Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm.
+米白编辑档案，红黑层级、编号索引、非对称图像排布与严格细线对齐。
 
-Chinese summary: 紧凑编辑网格、红黑字体层级、细分割线、极小页边距和克制内容节奏。
+## 适用场景
 
-## Best For
+视觉档案、文化收藏、图像编辑索引
 
-portfolios, cultural sites, design studios, serious content
+## 示例场景
 
-## Example Scenario
+- 示例产品：街字档案
+- 页面任务：街道观察 / 字体 / 日常设计
+- 标题：字在街上，时间在里面。
+- 主要操作：收藏到我的选集
+- 次要操作：导出我的选集
 
-- Product sample: Neue Archive
-- Page job: Swiss issue system
-- Headline: Index the issue with type, rules, and evidence.
-- Primary action: Open issue
-- Secondary action: View sources
+## 场景组件
 
-## Scenario Components
+- 看看街上的字：原创招牌插画体现材质、色彩和工艺差异。
+- 读一段街道生活：查看虚构地点、年代、保存状况与招牌故事。
+- 编一册自己的选集：按材质和年代筛选，收藏喜爱对象并导出 CSV 目录。
 
-- Baseline grid: Every headline, caption, and data row locks to a visible publishing rhythm.
-- Object proof: Image crops, labels, and accession marks sit in the same rule system as the copy.
-- Index table: Readers can scan issue entries without losing the editorial hierarchy.
+## 示例状态
 
-## Example States
+- 街头招牌：浏览
+- 材质与年代：筛选
+- 个人选集：导出
 
-- Caption audit: 8 notes
-- Index order: Locked
-- Object board: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：街字视觉档案
+- 结构：编号刊头、非对称封面及模块化对象索引组成页面，首件招牌跨列放大。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：强烈中文展示字、红色期号、细小目录标签与一致数据基线相互配合。
+- 组件：使用材质及年代 Select、对象详情 Dialog、可撤销收藏 Button 与 CSV 导出。
+- 按钮：方正文字动作与细下划线为主，导出和收藏确认可用黑色实底。
+- 图标与媒体：绘制体现材质的原创 SVG 招牌，不使用真实店铺品牌或通用缩略图。
+- 状态：明确筛选条件、已收藏对象、只看选集、空结果与详情选择状态。
+- 避免：避免圆角卡壳、营销功能行，以及抹平编辑层级的等大图像。
 
-- Pattern: Swiss Archive Board (瑞士档案索引板)
-- Archetype: Swiss Archive Board
-- Structure: Objective issue board with masthead rules, accession numbers, object crops, dense source rows, and a visible modular grid.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use grotesk type, tabular numerals, uppercase labels, strict alignment, and oversized issue numbers.
-- Components: Mastheads, object boards, accession rows, source ledgers, issue metrics, and compact text actions define the page.
-- Buttons: Buttons are hard-edged text or rule-line controls that align to the grid.
-- Icons and media: Use cropped catalog objects, source fragments, accession labels, and table-like evidence blocks.
-- States: Show selected issue, locked index, source-open, caption-needed, saved object, and empty source states.
-- Avoid: Do not let the page collapse into a generic editorial article with sidebars.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f7f5ef`
+- 表面：`#e8e6dd`
+- 正文：`#1b1b19`
+- 弱化文字：`#6f6e61`
+- 主色：`#d92f29`
+- 强调色：`#527b68`
+- 边框：`#1b1b19`
+- 圆角：`0`
+- 面板圆角：`0`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`0`
+- 几何规则：硬边图像索引、跨列大图、细线分隔和严格编号对齐。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`none`
 
-- Background: `#f7f5ef`
-- Surface: `#fffdf8`
-- Text: `#111111`
-- Muted text: `#525252`
-- Primary: `#e11d2e`
-- Accent: `#111111`
-- Border: `#111111`
-- Radius: `0`
-- Panel radius: `0`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `0`
-- Geometry rule: editorial hard edges and rule-line structure; avoid making every button and card the same large rounded rectangle.
-- Shadow: `none`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：无需打开详情即可收藏，关闭 Dialog 或重绘索引后恢复焦点。
+- 提示与反馈：播报收藏变化、解释空索引，并实际导出所选对象 CSV。
+- 间距系统：细线、标签与图像边缘对齐，在受控列网格中改变对象尺度。
+- 响应式策略：小屏变为两列，首件跨双列展示，元数据自然堆叠且不横向溢出。
 
-- Button system: Use text-link buttons, underlined actions, rule-line tabs, and almost no filled buttons unless the action is decisive.
-- Feedback and alerts: Use editorial callouts, margin notes, and rule-separated validation messages instead of colored bubbles.
-- Spacing system: Use column gutters of 24-32px, strict baselines, thin dividers, and wide reading measures.
-- Responsive behavior: Desktop uses columns; tablet narrows metadata into a top strip; mobile preserves reading order with actions under the headline.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以编辑主张和真实档案对象开场。
+- 数据看板：使用编号行和精确元数据，避免大型装饰指标卡。
+- 管理后台：保留规则线及编号对齐，同时清楚提供收藏或记录动作。
+- 表单、Table 与数据：紧凑标签字段对齐编辑网格。
+- 移动端：双列索引中对象编号与收藏动作依然清晰。
+- 不适合：不适合强动效游戏界面或密集实时运营。
 
-- 按钮细节：使用文字链接按钮、下划线操作、规则线 tab，除非动作非常关键，否则少用填充按钮。
-- 提示与反馈：使用编辑式 callout、边注和规则线分隔的校验消息，而不是彩色气泡。
-- 间距系统：列间距 24-32px，严格基线、细分割线和宽阅读区域。
-- 响应式策略：桌面使用分栏；平板把元信息压成顶部条；手机保持阅读顺序，操作放在标题下。
+## 使用要点
 
-## Page Adaptation Guide
+- 每件招牌使用独立原创图像，材质和虚构来历各有差异。
+- 用细线和对齐提供结构，不给所有内容套卡。
+- 筛选、详情、收藏与 CSV 导出组成完整本地档案流程。
 
-- Landing page: Use editorial columns, rule lines, captions, proof excerpts, and understated text actions.
-- Dashboard: Use index tables, metadata columns, and structured evidence rather than cards.
-- Admin panel: Use form sections, audit rows, legal/procurement evidence blocks, and rule-line navigation.
-- Forms, tables, and data: Use persistent labels, narrow measures, divider-separated validation, and underlined actions.
-- Mobile: Preserve reading order: headline, metadata, action, article body, index; avoid hidden sidebars.
-- Not a good fit for: Weak for playful commerce, heavy animation, or highly visual immersive demos.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Let typography and rules create the visual system.
-- Use red sparingly for hierarchy and urgency.
-- Avoid soft SaaS cards.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

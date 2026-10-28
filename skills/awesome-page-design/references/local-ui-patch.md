@@ -1,27 +1,27 @@
-# Local UI Patch
+# 局部 UI 修补
 
-Use for a targeted region of an existing page: a toolbar, modal, form, table area, sidebar, filter, card group, or action row. Retain the surrounding visual direction; selection and finish behavior are in [workflow.md](workflow.md).
+用于现有页面中的指定区域，例如 Toolbar、Modal、Form、Table 区域、Sidebar、Filter、Card 组或操作行。保留周围的视觉方向；选择与收尾方式见[工作流程](workflow.md)。
 
-## Set The Boundary Before Editing
+## 修改前明确边界
 
-Inspect the latest target implementation and the regions directly above, below, beside, or inside it. Identify:
+检查目标实现的最新内容，以及它正上方、正下方、旁边或内部的区域。识别：
 
-- **Target:** the smallest component, slot, class, or section that solves the requested problem.
-- **Neighbors:** regions whose alignment, spacing, wrapping, layering, or responsive behavior could change.
-- **Shared surface:** a component or token used elsewhere; modify it only when the fix belongs at that level, otherwise add a local variant.
+- **目标：**能够解决请求问题的最小组件、Slot、Class 或区块。
+- **相邻区域：**对齐、间距、换行、层叠或响应式行为可能受影响的区域。
+- **共享部分：**其他位置也在使用的组件或 Token；只有修复应属于该层级时才直接修改，否则添加局部变体。
 
-Record the relevant current tokens, typography, density, icon family, action hierarchy, component states, and responsive behavior. Use [existing-project-integration.md](existing-project-integration.md) when tracing shared project patterns; do not inventory unrelated component families.
+记录相关的当前 Token、字体层级、密度、图标体系、操作层级、组件状态和响应式行为。追踪共享项目模式时使用[现有项目集成](existing-project-integration.md)，不要盘点无关组件类别。
 
-## Keep The Repair Local
+## 保持修复范围局部化
 
-Prefer a scoped class or compatible component variant. Preserve working navigation, routing, data flow, unrelated copy/labels, and component APIs. Do not add a competing button language, radius/shadow scale, icon family, or decoration to conceal weak hierarchy.
+优先使用有作用域的 Class 或兼容的组件变体。保留正常运行的导航、路由、数据流、无关文案与标签，以及组件 API。不要引入另一套 Button 语言、圆角与阴影尺度、图标体系，或用装饰掩盖层级问题。
 
-When a shared component changes, inspect its affected call sites and ensure the new behavior is compatible or opt-in. Use [component-implementation.md](component-implementation.md) and only the focused contract for the actual target; do not create a second local-patch state checklist.
+共享组件发生变化时，检查受影响的调用点，确保新行为兼容，或需要主动启用才生效。使用[组件实现](component-implementation.md)，并只读取实际目标对应的专项契约；不要再建立一套局部修补状态清单。
 
-If the problem originates in page-wide information architecture, action placement, navigation, or responsive collapse, explain why the local fix is insufficient. Keep broader redesign as a proposed scope change unless the user already requested it.
+问题若来自整页的信息架构、操作位置、导航或响应式收缩方式，应解释为什么局部修复不足。除非用户已要求重设计，否则把更大范围的重设计作为范围变更建议。
 
-## Check The Boundary After Editing
+## 修改后检查边界
 
-Review the diff for scope, then verify target and neighbors together at desktop and mobile sizes within the user's testing permissions. Check alignment with surrounding edges, toolbar wrapping, overlay/sticky overlap, reading order, and primary-action reachability. For a responsive bug, include the reported width and a narrower stress width, checking horizontal overflow and text fit; prefer stable flow/constraints over hiding required content. A neighbor spacing repair should not silently expand into a whole-page restyle.
+先检查 diff 是否超出范围，再在用户允许的测试范围内，以桌面和移动端尺寸一起验证目标及相邻区域。检查与周围边缘的对齐、Toolbar 换行、浮层与 Sticky 区域重叠、阅读顺序，以及主要操作是否可达。对于响应式问题，应覆盖用户报告的宽度和更窄的压力尺寸，检查横向溢出与文字适配；优先采用稳定的文档流和约束，而非隐藏必要内容。修复相邻区域间距时，不应悄悄扩展为整页换肤。
 
-Apply the common implementation/primitive checks through [workflow.md](workflow.md). Report the target, necessary neighbor adjustments, preserved project pattern, verification evidence, and any broader issue left outside scope.
+通过[工作流程](workflow.md)应用通用实现和基础控件检查。交付时报告目标、必要的相邻区域调整、保留的项目模式、验证证据，以及范围外尚未处理的更大问题。

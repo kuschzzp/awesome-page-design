@@ -1,96 +1,86 @@
-# Style 13 - Bento Layout (便当盒布局)
+# 风格 13：便当盒布局
 
-## Summary
+## 概述
 
-Widget-like card zones, modular composition, and clearly chunked information.
+小组件式卡片分区、模块化排布、信息清晰分块。
 
-Chinese summary: 小组件式卡片分区、模块化排布、信息清晰分块。
+## 适用场景
 
-## Best For
+午餐搭配、餐品点选、模块化商品配置
 
-restaurant menus, creator profiles, modular product overviews
+## 示例场景
 
-## Example Scenario
+- 示例产品：午后厨房
+- 页面任务：工作日午餐搭配与自取
+- 标题：把喜欢的，装进一个便当。
+- 主要操作：生成取餐单
+- 次要操作：选择一道主食
 
-- Product sample: Supper Blocks
-- Page job: Seasonal tasting menu
-- Headline: Build a dinner story from market crates, chef notes, and table timing.
-- Primary action: Book table
-- Secondary action: See market list
+## 场景组件
 
-## Scenario Components
+- 每一格有自己的任务：主食大格、配菜小格、横向汤品和深色订单汇总，分别承担具体点餐任务。
+- 跟着搭配变化的价格：切换主食、勾选或移除配菜，餐品清单与总价立即更新。
+- 完整的自取交接：选择取餐时段、填写称呼，生成递增演示取餐号及可核对的搭配摘要。
 
-- Food blocks: Large and small tiles follow actual service meaning: hero course, producer note, quote, timing, and booking.
-- Market texture: Ingredient blocks carry the visual energy instead of decorative shapes.
-- Uneven but useful: The grid changes size by content value, not randomly.
+## 示例状态
 
-## Example States
+- 照烧鸡腿饭：二十六元
+- 溏心蛋：已加入
+- 十三点取餐时段：已约满
 
-- Tomato course: Lead
-- Bread pickup: 11AM
-- Window table: Open
+## 布局模式
 
-## Layout Pattern
+- 模式：午餐便当搭配台
+- 结构：主食大格跨两行，侧边放置较小加餐格；横向汤品连接取餐时段与深色订单汇总表面。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用温暖菜单标题、紧凑餐品说明、明确价格，以及每格内部清晰层级。
+- 组件：主食选项、配菜复选框、取餐时段、称呼输入、实时合计和取餐单分别属于明确的业务区域。
+- 按钮：将点选控件嵌入对应餐品格，只为生成取餐单保留一个强对比主操作。
+- 图标与媒体：使用原创便当、溏心蛋、时蔬和汤品插画，不依赖远程食物照片。
+- 状态：呈现选中主食、已加或移除配菜、变动合计、选中时段、已约满、称呼错误和已生成取餐单。
+- 避免：不要把所有格子做成同一尺寸，也不要将本地演示伪装成真实付款订单。
 
-- Pattern: Bento Market Table (便当市集餐桌)
-- Archetype: Bento Market Table
-- Structure: Irregular food-service bento with hero course, producer notes, market run, table status, chef quote, and booking block.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use compact tile labels, warm menu headings, and clear local hierarchy in each block.
-- Components: Course tiles, market crates, table chips, chef notes, and service timing blocks should vary by content value.
-- Buttons: Use embedded tile actions and one confident reservation control.
-- Icons and media: Use ingredient blocks, menu notes, market labels, and service timing as the visual language.
-- States: Show lead course, open table, market pickup, sold out, prepping, and saved states.
-- Avoid: Do not make every bento tile the same size.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f4f0e5`
+- 表面：`#faf7ed`
+- 正文：`#343a2c`
+- 弱化文字：`#8a8e7c`
+- 主色：`#537042`
+- 强调色：`#e7c978`
+- 边框：`#ddd9ca`
+- 圆角：`24px`
+- 面板圆角：`24px`
+- 控件圆角：`10px`
+- Chip 圆角：`20px`
+- 媒体圆角：`24px`
+- 几何规则：大小错落的圆角餐品模块搭配紧凑选择控件，深色汇总格收束流程。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 3px 5px rgba(75,102,48,.04)`
 
-- Background: `#f4f4f5`
-- Surface: `#ffffff`
-- Text: `#18181b`
-- Muted text: `#71717a`
-- Primary: `#18181b`
-- Accent: `#f97316`
-- Border: `#e4e4e7`
-- Radius: `18px`
-- Panel radius: `18px`
-- Control radius: `10px`
-- Chip radius: `8px`
-- Media radius: `16px`
-- Geometry rule: modular bento curves without making every item identical; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 55px rgba(24, 24, 27, .10)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：主食与时段有按下态，原生复选框经过有意设计，已满时段禁用，取餐单操作标签明确。
+- 提示与反馈：价格变更轻量播报，未填称呼在输入下方提示，有效提交后打开逐项核对的取餐单。
+- 间距系统：使用十六像素格间距、二十四像素圆角、变化跨度、稳定插画区域和独立格内间距。
+- 响应式策略：窄屏将主食置顶，保留两格小配菜，再依次堆叠汤品、时段和订单汇总，避免水平溢出。
 
-- Button system: Use compact buttons embedded only where a tile has a job; selected tiles need obvious but not loud treatment.
-- Feedback and alerts: Use tile-local badges, progress chips, and empty tile states with next actions.
-- Spacing system: Use 16px grid gaps, varied tile padding, and stable aspect ratios for visual rhythm.
-- Responsive behavior: Desktop can use varied tile spans; mobile becomes one column while preserving tile order by importance.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：让每一格承担具体内容或转化任务，不填充纯装饰网格。
+- 数据看板：用不同尺寸模块承载独立选择、实时汇总和最终核对操作。
+- 管理后台：仅在工作流能够拆为独立模块时使用，长表格不要硬塞入便当格。
+- 表单、Table 与数据：输入错误留在对应格内，校验失败时保留已经选择的餐品。
+- 移动端：保持主食、加餐、时段、最终价格的顺序，控件保留舒适触控尺寸。
+- 不适合：不适合长篇法律阅读、密集数据表和严格线性的审批流程。
 
-- 按钮细节：只在有明确任务的模块内嵌紧凑按钮；选中模块要明显但不吵。
-- 提示与反馈：使用模块内徽章、进度 chip，以及带下一步的空模块状态。
-- 间距系统：网格间距 16px，模块内边距可变化，使用稳定宽高比形成节奏。
-- 响应式策略：桌面可使用不同跨度模块；手机变成单列，并按重要性保持模块顺序。
+## 使用要点
 
-## Page Adaptation Guide
+- 主食、配菜和时段都能改变订单摘要，不设置无响应的装饰操作。
+- 总价必须由所选条目计算，生成取餐单时保存当次摘要。
+- 取餐号只在当前页面递增，不能用于真实取餐或付款。
 
-- Landing page: Use uneven tiles where each block has a job: proof, media, quote, stat, timeline, and action.
-- Dashboard: Use modular status tiles, varied spans, local actions, and progress badges.
-- Admin panel: Use admin only when modules are independent; avoid forcing dense tables into bento tiles.
-- Forms, tables, and data: Use forms inside purposeful tiles with local validation and stable tile dimensions.
-- Mobile: Collapse to one column while preserving tile order by importance.
-- Not a good fit for: Weak for long tables, legal documents, or workflows needing strict linear review.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use varied card sizes with one consistent grid.
-- Each block should have a clear job.
-- Avoid turning every block into identical cards.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

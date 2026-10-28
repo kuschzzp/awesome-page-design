@@ -1,96 +1,86 @@
-# Style 26 - Industrial Control (工业控制)
+# 风格 26：工业控制
 
-## Summary
+## 概述
 
-Rugged dark panels, safety accents, dense status rows, machine labels, and maintainable control-room clarity.
+耐用暗色面板、安全色强调、密集状态行、机器标签和可维护的控制室清晰度。
 
-Chinese summary: 耐用暗色面板、安全色强调、密集状态行、机器标签和可维护的控制室清晰度。
+## 适用场景
 
-## Best For
+印刷工作室、工厂监控、物流控制、硬件设备队列、事故指挥室
 
-print rooms, factory monitoring, logistics control, hardware fleets, incident rooms
+## 示例场景
 
-## Example Scenario
+- 示例产品：冷链哨站
+- 页面任务：冷库值班与模拟告警处置
+- 标题：北区冷库 · 值班总览
+- 主要操作：确认告警并记录处置
+- 次要操作：查看库区
 
-- Product sample: Press Room 12
-- Page job: Printmaking studio control
-- Headline: Run a letterpress shift through ink, plates, rollers, and cleanup.
-- Primary action: Acknowledge hold
-- Secondary action: Open cleanup log
+## 场景组件
 
-## Scenario Components
+- 温区可定位：点击库区联动温度、曲线、门磁和负载。
+- 处置有闭环：确认、填写处置、模拟复测与归档逐步展开。
+- 记录可追溯：事件队列保留每一步本地操作与恢复结果。
 
-- Shop-floor density: Line cards, alarms, ink batches, and service notes stay visible for fast scanning.
-- Safety color: Amber, red, green, and neutral states map to real press-room meaning.
-- Rugged craft: The page feels industrial without becoming a factory clone.
+## 示例状态
 
-## Example States
+- C—01 超温：未确认
+- 门磁状态：已关闭
+- 温度复测：待处置后执行
 
-- Press B: Hold
-- Cyan batch: Mixing
-- Cleanup sink: Open
+## 布局模式
 
-## Layout Pattern
+- 模式：冷库值班控制台
+- 结构：耐用暗色控制台先呈现告警条与值班摘要，中部库区矩阵和温度检查面板并列，下方事件日志与处置工作单保持可见。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用紧凑清晰的界面字体、等宽温度与时间，机器编号和状态优先。
+- 组件：库区选择 Button、异常 Filter、温度曲线、门磁状态、负载条、事件 Table、处置 Form 与确认/复测/归档操作。
+- 按钮：操作使用耐用矩形按钮，告警确认、复测和归档按状态逐步开放。
+- 图标与媒体：使用原创库区矩阵、机器编号、阈值曲线和短事件行，安全色只表示正常、超温与恢复。
+- 状态：展示未确认、处置中、待复测、温度已恢复、待归档、已归档和异常筛选空结果；每步更新日志。
+- 避免：不要把操作界面软化为装饰性数据大屏，也不要伪装连接真实设备。
 
-- Pattern: Industrial Print Room (工业印刷工作室)
-- Archetype: Industrial Print Room
-- Structure: Rugged print-studio control room with press matrix, ink batch table, drying rack, safety hold, cleanup log, and service evidence.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use rugged UI type, tabular machine values, short state names, and strong row scanning.
-- Components: Press cards, ink rows, lockout notes, rack meters, service tags, and acknowledgement buttons should feel shop-floor ready.
-- Buttons: Use durable rectangular controls; warning and acknowledgement states must be unmistakable.
-- Icons and media: Use press labels, ink batches, roller checks, drying racks, service logs, and safety notes.
-- States: Show hold, mixing, open, locked out, recovered, warning, and acknowledged states.
-- Avoid: Do not soften safety-critical craft operations into glossy consumer UI.
+## 视觉语言
 
-## Visual Language
+- 背景：`#11130f`
+- 表面：`#1d211c`
+- 正文：`#f2f2ea`
+- 弱化文字：`#a7ac9e`
+- 主色：`#d6ff3f`
+- 强调色：`#ffb000`
+- 边框：`#3d4438`
+- 圆角：`2px`
+- 面板圆角：`2px`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`2px`
+- 几何规则：硬朗矩形控制面板、小圆角或直角控件、紧凑对齐的机器值与日志行。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 18px 60px rgba(0, 0, 0, .35)`
 
-- Background: `#11130f`
-- Surface: `#1d211c`
-- Text: `#f2f2ea`
-- Muted text: `#a7ac9e`
-- Primary: `#d6ff3f`
-- Accent: `#ffb000`
-- Border: `#3d4438`
-- Radius: `2px`
-- Panel radius: `2px`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `2px`
-- Geometry rule: rugged industrial geometry with hard serviceable controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 60px rgba(0, 0, 0, .35)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：操作使用耐用矩形按钮，告警确认、复测和归档按状态逐步开放。
+- 提示与反馈：展示未确认、处置中、待复测、温度已恢复、待归档、已归档和异常筛选空结果；每步更新日志。
+- 间距系统：面板间距 16–22px，日志行紧凑且有分隔，核心操作保持可触达。
+- 响应式策略：手机先显示告警与摘要，再排列库区、检查面板、日志和工作单；事件表仅在自身容器横向滚动。
 
-- Button system: Use hard rectangular controls, explicit acknowledgement buttons, safety-color destructive states, and disabled states that look locked out.
-- Feedback and alerts: Use alarm banners, row-local warnings, service-log confirmations, and recovery actions attached to the affected machine.
-- Spacing system: Use 16-22px rugged panels, 8-10px dense status rows, 44-52px control heights, and compact filter rails.
-- Responsive behavior: Desktop keeps filters, alarms, metrics, and inspector visible; mobile shows alarm summary, acknowledge action, filters, then service detail.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：耐用暗色控制台先呈现告警条与值班摘要，中部库区矩阵和温度检查面板并列，下方事件日志与处置工作单保持可见。
+- 数据看板：适合库区监控、阈值告警、值班事件与设备运营台。
+- 管理后台：用于仓储、设备和事件处置，保留明确责任与恢复步骤。
+- 表单、Table 与数据：处置 Form 保留 Label、值班员与说明字段，使用行内校验禁用原生气泡；确认后才开放复测，恢复后才允许归档。
+- 移动端：手机先显示告警与摘要，再排列库区、检查面板、日志和工作单；事件表仅在自身容器横向滚动。
+- 不适合：不适合奢华编辑、安静生活方式或长篇阅读。
 
-- 按钮细节：使用硬朗矩形控件、明确确认按钮、安全色危险态，以及像 lockout 的禁用态。
-- 提示与反馈：使用告警 banner、行内警告、维修日志确认，以及绑定到受影响机器的恢复操作。
-- 间距系统：耐用面板 16-22px，密集状态行 8-10px，控件高度 44-52px，筛选栏紧凑。
-- 响应式策略：桌面保留筛选、告警、指标和检查面板；手机先显示告警摘要和确认操作，再显示筛选和维修详情。
+## 使用要点
 
-## Page Adaptation Guide
+- 安全色用于异常与恢复语义，不做装饰性配色。
+- 告警、阈值、机器编号和后续操作必须快速可读。
+- 所有数据和操作均为本地模拟，不连接真实设备。
 
-- Landing page: Use a rugged operations story only when the public page is about equipment, reliability, service, or safety proof.
-- Dashboard: Use alarms, filters, threshold metrics, service queues, ownership chips, and row-local recovery actions.
-- Admin panel: Use for operations consoles, hardware fleets, logistics control, safety checks, and service management.
-- Forms, tables, and data: Use clear labels, hard field borders, machine IDs, explicit validation, and locked/destructive confirmations.
-- Mobile: Show alarm summary, acknowledge action, active filters, alarm list, and service detail in that order.
-- Not a good fit for: Weak for luxury editorial, calm wellness, playful education, or long-form reading.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Prioritize durable controls, visible warnings, and operator scan speed.
-- Use color as safety semantics, not decorative variety.
-- Keep layouts serviceable: labels, owners, thresholds, and recovery actions must be obvious.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

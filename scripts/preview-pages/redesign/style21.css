@@ -1,0 +1,91 @@
+body.demo-style-21 { background: #08050d; }
+.s21 { color: #eee8fa; background: #08050d; padding-bottom: 100px; }
+.s21 .acid21-nav { min-height: 92px; margin: 0 auto; width: min(1280px,100% - 72px); display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid #453750; }
+.s21 .acid21-brand { text-decoration: none; font-size: 23px; font-weight: 850; letter-spacing: -.03em; }
+.s21 .acid21-brand span { display: block; font: 8px/1.6 monospace; letter-spacing: .2em; color: #a99bb6; margin-top: 5px; }
+.s21 .acid21-nav nav { display: flex; align-items: center; gap: 28px; font-size: 11px; }
+.s21 .acid21-nav nav a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; text-decoration: none; }
+.s21 .acid21-nav b { color: #d6ff00; font: 10px/1.5 monospace; }
+.s21 .acid21-nav nav > span { font: 9px/1.5 monospace; color: #897796; }
+.s21 .acid21-hero { position: relative; min-height: 580px; width: min(1280px,100% - 72px); margin: auto; border-bottom: 1px solid #453750; overflow: hidden; }
+.s21 .acid21-hero-rules { position: absolute; inset: 22px 0 0; background: linear-gradient(90deg,transparent calc(50% - .5px),#281b34 50%,transparent calc(50% + .5px)); }
+.s21 .acid21-issue { position: absolute; top: 28px; right: 5px; display: grid; gap: 8px; z-index: 1; text-align: right; }
+.s21 .acid21-issue > span { font: 9px/1.5 monospace; color: #bca6cf; letter-spacing: .1em; }
+.s21 .acid21-issue b { font: 700 15px/1.5 monospace; color: #d6ff00; }
+.s21 .acid21-issue small { font-size: 10px; color: #806e90; }
+.s21 .acid21-sculpture { position: absolute; right: -20px; top: 12px; width: 60%; }
+.s21 .acid21-sculpture svg { width: 100%; display: block; }
+.s21 .acid21-title { position: relative; z-index: 1; padding-top: 88px; }
+.s21 .acid21-title > p { margin-bottom: 20px; padding-left: 5px; color: #b69bc7; font-size: 11px; letter-spacing: .2em; }
+.s21 h1 { font-size: clamp(48px,7.3vw,102px); font-weight: 950; line-height: 1.18; letter-spacing: -.07em; transform: skew(-8deg); transform-origin: left bottom; color: #e6e3eb; text-shadow: 2px 2px 0 #64596c; }
+.s21 h1 > span { background: linear-gradient(180deg,#fff 4%,#a09aa9 25%,#2a2333 45%,#fff 52%,#b1a5c2 75%,#4b3f5c 100%); background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: none; -webkit-text-stroke: .6px #d1cbd9; }
+.s21 .acid21-title-bottom { display: flex; gap: 22px; align-items: center; margin: 32px 0 0 10px; }
+.s21 .acid21-play { min-height: 47px; padding: 0 24px; color: #111006; background: #d6ff00; border: 1px solid #d6ff00; border-radius: 0; font: 700 12px/1.5 monospace; }
+.s21 .acid21-play:hover { background: #e4ff59; }
+.s21 .acid21-title-bottom > span { color: #9f8dad; font-size: 11px; line-height: 1.8; }
+.s21 .acid21-hero-track { position: absolute; bottom: 25px; right: 35px; display: grid; grid-template-columns: 1fr auto; gap: 7px 28px; width: 220px; padding: 14px 0; border-top: 1px solid #66507c; }
+.s21 .acid21-hero-track > span { font: 8px/1.5 monospace; letter-spacing: .13em; color: #9e80b3; }
+.s21 .acid21-hero-track strong { font-size: 13px; grid-column: 1; }
+.s21 .acid21-hero-track i { grid-column: 2; grid-row: 1/3; color: #d6ff00; font-size: 30px; font-style: normal; }
+.s21 .acid21-side-type { position: absolute; top: 160px; right: 0; writing-mode: vertical-rl; color: #746281; font: 9px/1.5 monospace; letter-spacing: .18em; }
+.s21 .acid21-catalog { width: min(1280px,100% - 72px); margin: 0 auto; padding: 47px 0; scroll-margin-top: 20px; }
+.s21 .acid21-section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 27px; }
+.s21 .acid21-section-head p { color: #9b7cad; font: 10px/1.5 monospace; letter-spacing: .08em; margin-bottom: 10px; }
+.s21 h2 { font-size: 27px; line-height: 1.5; font-weight: 800; letter-spacing: -.04em; }
+.s21 .acid21-section-head > span { font: 9px/1.5 monospace; color: #78638a; }
+.s21 .acid21-track { display: flex; gap: 18px; align-items: center; border-top: 1px solid #3c2c49; position: relative; }
+.s21 .acid21-track:last-child { border-bottom: 1px solid #3c2c49; }
+.s21 .acid21-track-select { flex: 1; display: grid; grid-template-columns: 55px 1.5fr 1fr 60px 28px; gap: 20px; align-items: center; min-height: 105px; text-align: left; border: 0; border-radius: 0; color: #d9cde2; background: transparent; padding: 15px 10px; }
+.s21 .acid21-track-select[aria-pressed=true] { color: #d6ff00; }
+.s21 .acid21-track-select[aria-pressed=true]::before { content: ''; position: absolute; width: 3px; height: 33px; left: -18px; top: 35px; background: #d6ff00; }
+.s21 .acid21-track-index { font: 12px/1.5 monospace; color: #735e85; }
+.s21 .acid21-track-name { display: grid; gap: 6px; }
+.s21 .acid21-track-name b { font-size: 19px; letter-spacing: -.02em; }
+.s21 .acid21-track-name small { font: 8px/1.5 monospace; letter-spacing: .1em; color: #8a719b; }
+.s21 .acid21-track-wave { display: flex; align-items: center; justify-content: center; gap: 3px; height: 46px; opacity: .45; }
+.s21 .acid21-track-wave i { display: block; width: 2px; height: var(--height); background: currentColor; }
+.s21 .acid21-track-bpm { font: 14px/1.4 monospace; }
+.s21 .acid21-track-bpm small { font: 8px/1.4 monospace; display: block; color: #8a719b; }
+.s21 .acid21-track-arrow { font-size: 25px; }
+.s21 .acid21-add { width: 100px; min-height: 38px; margin-right: 10px; background: transparent; border: 1px solid #685078; border-radius: 0; color: #a58bb7; font-size: 10px; }
+.s21 .acid21-add:hover { border-color: #d6ff00; color: #d6ff00; }
+.s21 .acid21-add:disabled { border-color: #33273d; color: #665570; }
+.s21 .acid21-playlist-section { width: min(1280px,100% - 72px); margin: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 85px; padding: 18px 0 55px; scroll-margin-top: 20px; }
+.s21 .acid21-playlist-copy > p:first-child { font: 9px/1.5 monospace; color: #a17db6; letter-spacing: .09em; margin-bottom: 15px; }
+.s21 .acid21-playlist-copy > span { display: block; color: #9c86ad; font-size: 12px; line-height: 1.9; margin: 17px 0 25px; }
+.s21 .demo-local-note { color: #776284; font-size: 10px; }
+.s21 .acid21-playlist { border: 1px solid #4a315f; background: #100917; padding: 22px; }
+.s21 .acid21-playlist-head { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; }
+.s21 .acid21-playlist-head > span { font: 8px/1.7 monospace; color: #9b7cab; }
+.s21 .acid21-playlist-head button { min-height: 36px; padding: 0 10px; background: #251430; color: #d1b9e3; border: 1px solid #604076; font-size: 10px; white-space: nowrap; }
+.s21 .acid21-playlist-head button:disabled { color: #735d82; }
+.s21 .acid21-playlist > ol { padding: 0; margin: 0 0 20px; list-style: none; }
+.s21 .acid21-playlist li { min-height: 51px; display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid #33223e; font-size: 11px; }
+.s21 .acid21-playlist li > div { display: flex; gap: 5px; flex: 0 0 auto; }
+.s21 .acid21-playlist li button { display: grid; place-items: center; width: 30px; height: 32px; background: transparent; border: 1px solid #44324f; color: #bba5c9; font-size: 13px; }
+.s21 .acid21-playlist li button:disabled { color: #55435f; border-color: #2a1e32; }
+.s21 [data-queue-empty] { color: #8d759d; font-size: 12px; line-height: 1.8; padding: 10px 0 25px; }
+.s21 .acid21-footer { width: min(1280px,100% - 72px); margin: auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; border-top: 1px solid #3d2b4a; padding: 22px 0 35px; font: 9px/1.5 monospace; color: #735b84; }
+.s21 .acid21-player { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; min-height: 82px; padding: 15px max(28px,calc((100vw - 1280px)/2)); background: #100b17f5; border-top: 1px solid #67487e; display: flex; align-items: center; gap: 26px; backdrop-filter: blur(14px); }
+.s21 .acid21-player-track { display: flex; align-items: center; gap: 12px; flex: 0 0 230px; }
+.s21 .acid21-player-art { width: 42px; height: 42px; display: grid; place-items: center; color: #d6ff00; background: repeating-conic-gradient(#362647 0 25%,#120a1c 0 50%) 0/15px 15px; font-size: 28px; }
+.s21 .acid21-player-track strong { font-size: 12px; font-weight: 700; display: block; }
+.s21 .acid21-player-track small { display: block; margin-top: 5px; font: 8px/1.5 monospace; color: #8c719f; }
+.s21 .acid21-player-toggle { flex: 0 0 auto; min-height: 40px; padding: 0 16px; border: 1px solid #a9c635; background: #d6ff00; color: #151608; font: 700 10px/1.5 monospace; }
+.s21 .acid21-player-progress { flex: 1; }
+.s21 .acid21-player-time { display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 8px/1.5 monospace; color: #9a84a9; }
+.s21 .acid21-player input[type=range] { display: block; width: 100%; height: 18px; margin: 4px 0 0;  }
+.s21 .acid21-live-wave { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; gap: 2px; opacity: .5; }
+.s21 .acid21-live-wave i { width: 2px; height: 12px; background: #d6ff00; transition: height .12s ease; }
+.s21 .acid21-volume { flex: 0 0 80px; color: #9278a3; font-size: 9px; }
+@media(max-width:950px) { .s21 .acid21-nav,.s21 .acid21-hero,.s21 .acid21-catalog,.s21 .acid21-playlist-section,.s21 .acid21-footer { width: calc(100% - 48px); } .s21 .acid21-hero { min-height: 520px; } .s21 .acid21-title { padding-top: 90px; } .s21 .acid21-sculpture { top: 65px; right: -20px; width: 65%; } .s21 .acid21-title-bottom { margin-top: 25px; } .s21 .acid21-hero-track { bottom: 22px; right: 14px; } .s21 .acid21-playlist-section { gap: 35px; } .s21 .acid21-track-select { grid-template-columns: 30px 1.5fr 1fr 38px 20px; gap: 13px; } .s21 .acid21-player { gap: 18px; padding-inline: 24px; } .s21 .acid21-player-track { flex-basis: 180px; } .s21 .acid21-live-wave,.s21 .acid21-volume { display: none; } }
+@media(max-width:640px) { .s21 { padding-bottom: 142px; } .s21 .acid21-nav,.s21 .acid21-hero,.s21 .acid21-catalog,.s21 .acid21-playlist-section,.s21 .acid21-footer { width: calc(100% - 32px); } .s21 .acid21-nav { min-height: 80px; gap: 12px; } .s21 .acid21-brand { font-size: 20px; flex: 0 0 auto; } .s21 .acid21-brand span { font-size: 7px; } .s21 .acid21-nav nav { gap: 13px; font-size: 10px; } .s21 .acid21-nav nav > span { display: none; } .s21 .acid21-hero { min-height: 640px; } .s21 .acid21-title { padding-top: 34px; } .s21 h1 { font-size: clamp(47px,12vw,70px); } .s21 .acid21-title > p { font-size: 9px; } .s21 .acid21-title-bottom { gap: 14px; margin: 23px 0 0; } .s21 .acid21-title-bottom > span { font-size: 10px; } .s21 .acid21-play { padding: 0 18px; min-height: 44px; font-size: 10px; } .s21 .acid21-sculpture { top: 260px; right: -18px; width: 100%; } .s21 .acid21-issue { top: auto; bottom: 25px; right: 0; text-align: left; left: 0; z-index: 2; } .s21 .acid21-issue > span { font-size: 8px; } .s21 .acid21-issue small { display: none; } .s21 .acid21-hero-track { right: 0; bottom: 27px; width: 142px; z-index: 2; gap: 5px 12px; } .s21 .acid21-hero-track > span { font-size: 7px; } .s21 .acid21-hero-track strong { font-size: 11px; } .s21 .acid21-hero-track i { display: none; } .s21 .acid21-side-type { top: 325px; font-size: 7px; } .s21 .acid21-catalog { padding: 35px 0; } .s21 .acid21-section-head { display: block; } .s21 h2 { font-size: 23px; } .s21 .acid21-section-head > span { display: block; margin-top: 12px; font-size: 8px; } .s21 .acid21-track { gap: 6px; } .s21 .acid21-track-select { grid-template-columns: 23px 1fr 29px; gap: 8px; min-height: 90px; padding-inline: 0; } .s21 .acid21-track-wave,.s21 .acid21-track-arrow { display: none; } .s21 .acid21-track-name b { font-size: 15px; } .s21 .acid21-track-name small { font-size: 7px; letter-spacing: 0; } .s21 .acid21-track-bpm { font-size: 11px; } .s21 .acid21-track-bpm small { font-size: 7px; } .s21 .acid21-track-select[aria-pressed=true]::before { left: -9px; height: 25px; top: 32px; } .s21 .acid21-add { width: 70px; margin-right: 0; font-size: 9px; padding: 0 5px; } .s21 .acid21-playlist-section { grid-template-columns: 1fr; gap: 27px; padding: 0 0 35px; } .s21 .acid21-playlist { padding: 18px; } .s21 .acid21-player { min-height: 120px; flex-wrap: wrap; gap: 10px; padding: 13px 16px; } .s21 .acid21-player-track { flex: 1; } .s21 .acid21-player-track strong { font-size: 11px; } .s21 .acid21-player-art { width: 34px; height: 34px; } .s21 .acid21-player-toggle { min-height: 36px; padding: 0 11px; font-size: 9px; } .s21 .acid21-player-progress { flex-basis: 100%; } .s21 .acid21-player-time { font-size: 8px; } .s21 .acid21-footer { padding-bottom: 25px; } }
+
+/* 自绘滑杆：轨道、刻度感滑块与键盘焦点使用页面色系。 */
+.s21 .acid21-player input[type=range] { appearance:none; -webkit-appearance:none; display:block; width:100%; height:28px; padding:0; border:0; border-radius:0; background:transparent; cursor:ew-resize; }
+.s21 .acid21-player input[type=range]::-webkit-slider-runnable-track { height:5px; background:#33223f; border:1px solid #d6ff0066; border-radius:0; }
+.s21 .acid21-player input[type=range]::-moz-range-track { height:5px; background:#33223f; border:1px solid #d6ff0066; border-radius:0; }
+.s21 .acid21-player input[type=range]::-moz-range-progress { height:5px; background:#d6ff00; border-radius:0; }
+.s21 .acid21-player input[type=range]::-webkit-slider-thumb { appearance:none; -webkit-appearance:none; width:17px; height:17px; border:1px solid #d6ff00; border-radius:0; background:#d6ff00; box-shadow:2px 2px 0 #b33cff; margin-top:-7px; }
+.s21 .acid21-player input[type=range]::-moz-range-thumb { appearance:none; -webkit-appearance:none; width:17px; height:17px; border:1px solid #d6ff00; border-radius:0; background:#d6ff00; box-shadow:2px 2px 0 #b33cff; }
+.s21 .acid21-player input[type=range]:focus-visible { outline:2px solid #d6ff00; outline-offset:3px; border-radius:3px; }

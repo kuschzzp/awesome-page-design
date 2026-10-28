@@ -1,26 +1,26 @@
-# Existing Project Integration
+# 现有项目集成
 
-Use this for UI work inside an existing frontend, including legacy business systems. Reuse the product's language unless the user requests a redesign. The decision precedence is in [SKILL.md](../SKILL.md).
+用于现有前端中的 UI 工作，包括旧业务系统。除非用户要求重设计，否则复用产品已有的视觉与交互语言。决策优先级见 [SKILL.md](../SKILL.md)。
 
-## Inspect Before Designing Or Coding
+## 设计或编码前先检查
 
-Read current target files, then the nearest sibling page that solves the same job. Trace its shared components or framework wrappers, relevant tokens/theme values, global styling constraints, and state/data conventions. Identify concrete source examples rather than assuming the framework's defaults are the product standard.
+先阅读目标文件的当前内容，再查看承担同类任务、距离最近的相邻页面。追踪它使用的共享组件或框架封装、相关设计 Token 或主题值、全局样式约束，以及状态和数据约定。找出具体源码示例，不要假定框架默认样式就是产品标准。
 
-Inspect only families touched by the request: for example a filter/table feature needs the existing search area, table, row actions, pagination, and detail flow; it does not require inventorying every modal or chart in the app. Match relevant control dimensions, density, icon source, terminology, spacing, state treatment, and responsive conventions.
+只检查请求涉及的组件类别。例如筛选和 Table 功能需要查看已有搜索区、Table、行操作、分页和详情流程，不需要盘点应用中的每个 Modal 或图表。对齐相关控件尺寸、信息密度、图标来源、术语、间距、状态表现和响应式约定。
 
-When examples disagree, prefer the nearest compatible, most reused, or newest production pattern and state which you followed. Accessible behavior takes priority over legacy defects.
+已有示例不一致时，优先采用距离最近且兼容、复用最多，或较新的生产模式，并说明遵循了哪一套。无障碍行为优先于旧实现的缺陷。
 
-## Reuse And Compatibility
+## 复用与兼容
 
-- Prefer the product wrapper and its props/slots over a raw framework component. Add a narrow variant only for a missing state or hierarchy; inspect affected call sites when changing shared code.
-- Preserve route structure, state management, layout shells, naming conventions, preprocessors, and component APIs unless the requested feature requires changes.
-- Avoid a new dependency, icon family, styling system, or component engine for a local feature when an existing pattern can solve it. A style choice is not a reason to replace project infrastructure.
-- Reuse the current token and density system; translate a selected visual direction into those primitives instead of importing preview HTML.
+- 优先使用产品封装组件及其 props、slots，而非原始框架组件。只有缺少必要状态或层级时才添加局部变体；修改共享代码时检查受影响的调用点。
+- 保留路由结构、状态管理、布局框架、命名约定、预处理器和组件 API，除非请求的功能确实需要修改。
+- 现有模式能解决局部功能时，不要引入新依赖、图标体系、样式系统或组件引擎。风格选择不是替换项目基础设施的理由。
+- 复用当前 Token 和密度体系，将选定视觉方向转换到这些基础规则中，不要直接引入预览 HTML。
 
-Component behavior and verification belong to [component-implementation.md](component-implementation.md) and its focused pattern contracts. Primitive acceptance and the final scan belong to [ui-primitive-contract.md](ui-primitive-contract.md), rather than a second set of integration-specific component rules.
+组件行为和验证由[组件实现](component-implementation.md)及其专项契约负责。基础控件验收和最终扫描由 [UI 基础控件契约](ui-primitive-contract.md)负责，不再为集成工作重复一套组件规则。
 
-## When Local Reuse Is Insufficient
+## 局部复用不足时
 
-If the request depends on missing page-level state, incompatible information architecture, or widespread accessibility/responsive defects, explain which existing patterns were checked and why a narrow variant cannot solve it. Implement the compatible portion within scope and propose broader work where needed; inconsistency alone is not authorization to reset the product's design.
+如果请求依赖尚不存在的页面级状态、不兼容的信息架构，或大范围的无障碍、响应式缺陷，应说明检查过哪些已有模式，以及为什么局部变体无法解决。在范围内实现兼容部分，必要时提出更大范围的工作；仅有不一致，不代表允许重置产品设计。
 
-Before finishing, compare affected components with the chosen production example and disclose any intentional difference. Keep concrete reuse evidence: the nearby source path, the component/helper/API used, and where the changed flow calls it. An import alone does not demonstrate reuse when the rendered flow bypasses it. For shared changes, inspect the existing callers that could inherit the new behavior. Report the relevant evidence, added variants, and compatibility checks once through [workflow.md](workflow.md).
+收尾前，将受影响组件与选定的生产示例对照，并说明任何有意保留的差异。保留具体复用证据：邻近源码路径、使用的组件、辅助函数或 API，以及修改后的流程在哪里调用它。渲染流程若绕开了某项依赖，仅有 import 不能证明实际复用。修改共享代码时，检查可能继承新行为的已有调用方。通过[工作流程](workflow.md)统一报告相关证据、新增变体和兼容性检查，不重复汇报。

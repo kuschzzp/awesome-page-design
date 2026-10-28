@@ -1,0 +1,21 @@
+body.demo-redesign .page { width: 100%; max-width: none; margin: 0; padding: 0; }
+.demo-root { isolation: isolate; min-height: calc(100vh - 48px); font-family: "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif; }
+.demo-root *, .demo-root *::before, .demo-root *::after { box-sizing: border-box; min-width: 0; }
+.demo-root [hidden] { display: none !important; }
+.demo-root :is(button,input,select,textarea) { font: inherit; }
+.demo-root button { cursor: pointer; }
+.demo-root :is(h1,h2,h3,p) { margin: 0; color: inherit; }
+.demo-root :is(h1,h2,h3) { font-family: inherit; text-transform: none; }
+.demo-root a { color: inherit; }
+.demo-root :is(button,a,input,select,textarea):focus-visible { outline: 3px solid #5896e8; outline-offset: 3px; }
+.demo-root button:disabled { cursor: not-allowed; }
+.demo-root img, .demo-root svg { max-width: 100%; }
+.demo-root dialog { margin: auto; max-width: calc(100vw - 32px); max-height: calc(100dvh - 40px); overflow: auto; }
+.demo-root dialog::backdrop { background: rgb(4 8 18 / .68); }
+.demo-root .demo-close { width: 36px; height: 36px; min-height: 36px; padding: 0; display: grid; place-items: center; flex: 0 0 auto; }
+.demo-root .demo-close svg { width: 18px; height: 18px; display: block; fill: none; stroke: currentColor; stroke-width: 2; }
+.demo-field-error { display: block; min-height: 20px; font-size: 12px; line-height: 20px; color: #c23f38; }
+.demo-root input[aria-invalid=true], .demo-root textarea[aria-invalid=true] { border-color: #c23f38; }
+.demo-toast { position: fixed; z-index: 100; left: 50%; bottom: 24px; transform: translateX(-50%); max-width: calc(100vw - 32px); width: max-content; padding: 12px 20px; color: #ffffff; background: #202832; border: 1px solid #8794a3; border-radius: 5px; box-shadow: 0 5px 20px #0003; font-size: 13px; line-height: 1.5; }
+.demo-local-note { font-size: 11px; line-height: 1.6; opacity: .72; }
+@media (prefers-reduced-motion: reduce) { .demo-root *, .demo-root *::before, .demo-root *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

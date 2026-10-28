@@ -18,7 +18,7 @@ Give coding agents stronger visual direction before they start building UI.
 
 ## What Is Awesome Page Design?
 
-Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers.
+Awesome Page Design is a UI design Skill for agentic coding tools and frontend developers. Its instructions and reference documents are written in Chinese, with standard English component names and API identifiers retained. The README and preview gallery remain bilingual.
 
 It gives an agent a reusable library of 26 web layout-aware visual directions, all presented as a continuous Style 01-26 catalog. The styles cover layout archetypes, information architecture, composition strategy, responsive structure, visual systems, component tone, feedback, interaction states, and density. The workflow also helps new sites feel complete and existing frontends gain features without losing their established component language.
 
@@ -130,7 +130,7 @@ Then open the URL printed by the command:
 http://127.0.0.1:<port>/assets/previews/
 ```
 
-The gallery includes all 26 visual styles with keyword search, product-scenario and appearance filters, desktop/mobile previews, and English/Chinese switching. Compare two or three styles, inspect and copy full/landing/dashboard/admin/mobile prompts, then open an interactive example. Each example includes a return link and a collapsed component reference section. The gallery remains a standalone, offline-capable HTML file.
+The gallery includes all 26 visual styles with English/Chinese switching and desktop/mobile previews inside each style detail. Inspect and copy full/landing/dashboard/admin/mobile prompts, then open an interactive example. Each example includes a return link; explore its interactions directly on the demo page. The gallery remains a standalone, offline-capable HTML file.
 
 When the skill is installed into a client, package scripts may not be available. From the installed `awesome-page-design` skill directory, start the bundled static server:
 
@@ -163,7 +163,7 @@ open assets/styles/style-09-tech-minimal/style-09-tech-minimal.html
 
 The examples are static single-file HTML pages. Wait a few seconds before taking screenshots so rendering can settle.
 
-Every style includes a desktop screenshot and a mobile screenshot after running the preview generator. The gallery can switch all cards between the two screenshot modes.
+Every style includes a desktop screenshot and a mobile screenshot after running the preview generator. Gallery cards show desktop screenshots; each style detail can switch between desktop and mobile previews.
 The generator uses Chrome headless with explicit desktop and mobile viewport metrics so screenshots match the intended responsive layouts.
 
 ## What Is Included?
@@ -206,37 +206,37 @@ skills/awesome-page-design/
 <!-- style-catalog:start -->
 | Style | Name | Layout Pattern | Best For | Visual Language |
 |:---:|---|---|---|---|
-| 01 | Card Grid | Blue Admin Console | admin panels, enterprise consoles, permission systems, operations dashboards | Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels. |
-| 02 | Block Brutalism | Street Poster Launch | bold campaigns, indie products, playful utilities | Warm yellow canvas, hard black borders, blocky controls, saturated labels, and strong campaign energy. |
-| 03 | Aurora Gradient | Aurora Listening Room | immersive art venues, futuristic products, premium dark experiences | Dark canvas, aurora color fields, soft glow, drifting gradient energy, and premium immersive atmosphere. |
-| 04 | Retro Y2K | Glossy Y2K Stage | music, fashion, youth culture, playful campaigns | Candy gradients, neon details, retro display type, sparkle energy, and early-2000s digital optimism. |
-| 05 | Swiss Editorial | Swiss Archive Board | portfolios, cultural sites, design studios, serious content | Tight editorial grid, red-black typographic hierarchy, rule lines, minimal gutters, and disciplined content rhythm. |
-| 06 | Terminal Hacker | Terminal Console | developer tools, CLI products, security, open source | Black canvas, terminal green, monospace, CRT scanlines, command-line details, and developer credibility. |
+| 01 | Card Grid | Quiet Teal Admin | admin panels, enterprise consoles, permission systems, operations dashboards | A quiet teal administration interface with a white sidebar and top bar, light-gray workspace, one bordered table panel, compact filters, restrained status labels, and a clear two-column form dialog. |
+| 02 | Block Brutalism | Creative Fair Poster | creative fairs, cultural events, independent publishing, ticket reservations | Warm off-white canvas, a vivid yellow poster, black outlines, hard shadows, and orange-red accents for an independent creative fair. |
+| 03 | Aurora Gradient | Night Sky Observatory | astronomy guides, immersive learning, exploration tools | Deep-blue sky, restrained cyan-violet aurora, luminous observation points, and a quiet star-atlas workspace. |
+| 04 | Retro Y2K | Glossy Photo Booth | photo editors, playful creative tools, personal keepsakes | Candy-pink Y2K photo booth with glossy controls, a tall four-frame strip, pastel gradients, and collectible stickers. |
+| 05 | Swiss Editorial | Street Letter Archive | visual archives, cultural collections, image-led editorial indexes | Off-white editorial archive with red-black hierarchy, accession numbers, asymmetric image indexing, and strict fine-rule alignment. |
+| 06 | Terminal Hacker | Local Link Inspection Console | developer diagnostics, command consoles, technical reports | Near-black terminal with restrained green monospace text, actionable response rows, severity colors, and a real stoppable local run. |
 | 07 | Cute-alism | Cute Daily Desk | playful productivity, education tools, creator utilities | Soft playful surfaces, friendly object shapes, pastel accents, compact controls, and warm task-board clarity. |
 | 08 | Resonant Stark | Stark Photo Contact Sheet | photography archives, premium dark portfolios, art, high-end product teasers | Near-black canvas, thin type, subtle glow, extreme whitespace, delicate lines, and premium restraint. |
 | 09 | Tech Minimal | Minimal Print Ledger | print studios, editorial tools, focused utility pages | Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface. |
 | 10 | Dark Theme | Dark Cinema Review | micro-cinemas, creative studios, premium launch pages | Dark background, high contrast, and one bright monochrome accent for primary actions and the main visual. |
-| 11 | Structured Lines | Line Museum Plan | museum maps, workflow products, structured B2B sites | Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy. |
-| 12 | Layered Material | Layered Interior Samples | interior sample boards, consumer tools, product dashboards | Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces. |
-| 13 | Bento Layout | Bento Market Table | restaurant menus, creator profiles, modular product overviews | Widget-like card zones, modular composition, and clearly chunked information. |
-| 14 | Neumorphism | Neumo Lamp Console | home devices, audio tools, calm utilities, wellness and focus products | Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces. |
-| 15 | Liquid Glass | Glasshouse Climate Map | botanical maps, spatial dashboards, premium futuristic tools | Frosted glass, transparent layering, blurred materials, and a futuristic technology mood. |
-| 16 | Retro Computing | Retro Desktop Workspace | music sites, game-adjacent products, cultural campaigns | Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type. |
-| 17 | Neo-Brutalism | Brutal Proof Release | developer launches, bold campaigns, playful product sites | Thick lines, strong color clashes, unpolished giant type, and controlled chaos. |
-| 18 | Precision Futurism | Precision Incident Map | issue trackers, AI operations tools, technical SaaS | Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision. |
-| 19 | Gradient Pop | Gradient Festival Wall | festival pages, launch walls, creator campaign tools | Bright gradients, tech or trend energy, and an immediately eye-catching first viewport. |
-| 20 | Soft Pop | Soft Garden Class | community classes, education, writing tools, creative productivity | Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes. |
-| 21 | Acid Design | Acid Signal Poster | experimental portfolios, music/fashion drops, immersive campaigns | Metal sheen, liquid chrome type, distorted composition, laser light, dark sci-fi, and psychedelic tension. |
-| 22 | Art Deco | Deco Theatre Foyer | luxury hospitality, cultural venues, premium events, editorial brand launches | Symmetric poster composition, dark jewel tones, gilded rules, stepped geometry, and polished hospitality drama. |
-| 23 | Wabi-Sabi | Wabi Repair Studio | ceramics, wellness, slow commerce, craft portfolios, mindful editorial pages | Earthy restraint, natural texture, handmade imperfection, quiet whitespace, and slow material confidence. |
-| 24 | Ink Wash | Ink Tea Scroll | tea culture, museums, literature, cultural ecommerce, heritage product stories | Paper-white canvas, black ink hierarchy, red seal accents, scroll rhythm, and poetic editorial restraint. |
-| 25 | Blueprint | Blueprint Renovation Sheet | architecture tools, renovation planning, systems maps, technical plans | Deep blue technical grid, cyan linework, annotated structure, measured components, and plan-sheet precision. |
-| 26 | Industrial Control | Industrial Print Room | print rooms, factory monitoring, logistics control, hardware fleets, incident rooms | Rugged dark panels, safety accents, dense status rows, machine labels, and maintainable control-room clarity. |
+| 11 | Structured Lines | Parcel Route Ledger | parcel tracking, delivery timelines, route-based service records | Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy. |
+| 12 | Layered Material | Layered Reading Corner | reading plans, personal bookshelves, calm learning utilities | Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces. |
+| 13 | Bento Layout | Lunch Box Configurator | lunch customization, food ordering, modular product configuration | Widget-like card zones, modular composition, and clearly chunked information. |
+| 14 | Neumorphism | Tactile Sound Room | ambient sound players, focus timers, calm audio utilities | Soft light, inset depth, rounded controls, and gentle shadows with tactile surfaces. |
+| 15 | Liquid Glass | Nightwalk Route Planner | botanical maps, spatial dashboards, premium futuristic tools | Frosted glass, transparent layering, blurred materials, and a futuristic technology mood. |
+| 16 | Retro Computing | Disk Weekly Reader | music sites, game-adjacent products, cultural campaigns | Pixel mood, old operating-system texture, 80s computing cues, chunky windows, and bitmap type. |
+| 17 | Neo-Brutalism | Loud Type Poster Studio | developer launches, bold campaigns, playful product sites | Thick lines, strong color clashes, unpolished giant type, and controlled chaos. |
+| 18 | Precision Futurism | Frame Sequence Render Console | issue trackers, AI operations tools, technical SaaS | Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision. |
+| 19 | Gradient Pop | After Hours Run Club | festival pages, launch walls, creator campaign tools | A large running silhouette and orbit gradient lead into a readable route map, distance choices, pace settings and a local registration slip. |
+| 20 | Soft Pop | Slow Beats | community classes, education, writing tools, creative productivity | A friendly illustrated introduction opens onto a lesson rail, a central four-beat practice sheet, a tempo slider and a local completion record. |
+| 21 | Acid Design | Distorted Archive | experimental portfolios, music/fashion drops, immersive campaigns | A chrome vector sculpture and offset typographic stage lead into track slices, a reorderable personal sequence and a stable bottom player. |
+| 22 | Art Deco | The Sea Radio | luxury hospitality, cultural venues, premium events, editorial brand launches | A symmetrical gold-lined invitation introduces the evening; date and party size flank a stage-and-table floor plan, with a menu and price summary at the side. |
+| 23 | Wabi-Sabi | Wabi Wood Repair | ceramics, wellness, slow commerce, craft portfolios, mindful editorial pages | Earthy restraint, natural texture, handmade imperfection, quiet whitespace, and slow material confidence. |
+| 24 | Ink Wash | Ink Chronicle Reader | tea culture, museums, literature, cultural ecommerce, heritage product stories | Paper-white canvas, black ink hierarchy, red seal accents, scroll rhythm, and poetic editorial restraint. |
+| 25 | Blueprint | Camper Plan Sheet | architecture tools, renovation planning, systems maps, technical plans | Deep blue technical grid, cyan linework, annotated structure, measured components, and plan-sheet precision. |
+| 26 | Industrial Control | Cold Store Shift Console | print rooms, factory monitoring, logistics control, hardware fleets, incident rooms | Rugged dark panels, safety accents, dense status rows, machine labels, and maintainable control-room clarity. |
 <!-- style-catalog:end -->
 
 ## Manual Validation
 
-Validate the gallery and Skill output manually in real tasks. Check search/filter reset, empty results, two-to-three-style comparison, language switching, copied prompts and example return navigation. Inspect desktop, 390px and 320px layouts, keyboard focus, error recovery and neighboring regions affected by a local change.
+Validate the gallery and Skill output manually in real tasks. Check language switching, copied prompts and example return navigation. Inspect desktop, 390px and 320px layouts, keyboard focus, error recovery and neighboring regions affected by a local change.
 
 Share the task, screen size, reproduction steps, expected and actual behavior, and screenshots or console errors with the AI for analysis. AI analysis should distinguish observed evidence from behavior that has not been checked. This repository does not include an automated model-evaluation runner or benchmark projects.
 
@@ -244,7 +244,7 @@ Share the task, screen size, reproduction steps, expected and actual behavior, a
 
 The preview generator is split by responsibility. `scripts/generate-previews.js` coordinates file writes, screenshots, and transactional publication; rendering modules return strings without writing generated assets.
 
-Edit style metadata and effective profiles only in `catalog/styles.json`. It contains each style's base fields, scenario, layout playbook, geometry, implementation rules, and adaptations. `fallbacks` preserves compatibility for unknown style IDs; `removedStyleSlugs` tracks intentional removals. The loader rejects incomplete fields, unsafe paths, duplicate identifiers, and invalid fallback references.
+Edit style metadata and effective profiles only in `catalog/styles.json`. It contains each style's base fields, scenario, layout playbook, geometry, implementation rules, and adaptations. `fallbacks` preserves compatibility for unknown style IDs; `removedStyleSlugs` tracks intentional removals. The loader rejects incomplete fields, unsafe paths, duplicate identifiers, and invalid fallback references. Chinese-only style prose is maintained in `catalog/style-docs.zh.json`, alongside the existing bilingual preview data.
 
 | Module under `scripts/` | Responsibility |
 |---|---|
@@ -253,12 +253,12 @@ Edit style metadata and effective profiles only in `catalog/styles.json`. It con
 | `preview-prompts.js` | Prompt kinds and bilingual prompt generation |
 | `preview-page-renderer.js`, `preview-pages/shared.css` | HTML templates and shared page CSS |
 | `preview-documents.js`, `preview-gallery.js` | Style manuals, style index, and preview gallery |
-| `gallery-model.js`, `gallery-client.js`, `gallery-copy.js`, `preview-pages/gallery.css` | Selection metadata, lossless prompt packing, gallery interactions, bilingual labels, and gallery styling |
+| `gallery-model.js`, `gallery-client.js`, `gallery-copy.js`, `preview-pages/gallery.css` | Style metadata, lossless prompt packing, gallery interactions, bilingual labels, and gallery styling |
 | `preview-config.js`, `preview-selection.js` | Environment settings and style selectors |
 | `preview-screenshots.js`, `preview-transaction.js` | Browser execution, cleanup, staged publication, and rollback |
 | `sync-catalog-docs.js` | Generated README tables, concise style manuals, and style index |
 
-`preview-output.test.js` preserves the exported prompt hashes and checks preview structure and manual coverage. Gallery tests verify standalone rendering, safe embedded data, filtering, and lossless reconstruction of all 260 prompt variants. `catalog-integration.test.js` verifies that one JSON edit reaches every consumer; validation also detects stale generated documentation and broken or unreachable Skill references.
+`preview-output.test.js` preserves the exported prompt hashes and checks preview structure and manual coverage. Gallery tests verify standalone rendering, safe embedded data and lossless reconstruction of all 260 prompt variants. `catalog-integration.test.js` verifies that one JSON edit reaches every consumer; validation also detects stale generated documentation and broken or unreachable Skill references.
 
 For documentation-only changes, refresh both README tables, all style manuals, and the style index without rewriting HTML, screenshots, or their manifest:
 

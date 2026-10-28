@@ -1,96 +1,86 @@
-# Style 20 - Soft Pop (柔和流行)
+# 风格 20：柔和流行
 
-## Summary
+## 概述
 
-Friendly playful color, doodle or cartoon illustration, rounded expressive type, and elastic shapes.
+轻涂鸦引导区下接课程小路、四拍练习谱和速度滑杆；跟拍反馈与练习记录围绕同一节奏任务展开。
 
-Chinese summary: 亲和力和玩乐色彩、手绘涂鸦/卡通插画、圆润夸张字体和带弹性的造型。
+## 适用场景
 
-## Best For
+社区课堂、教育、写作工具、创意生产力
 
-community classes, education, writing tools, creative productivity
+## 示例场景
 
-## Example Scenario
+- 示例产品：慢拍子
+- 页面任务：慢拍子
+- 标题：先不用很厉害，跟着感觉慢慢来。
+- 主要操作：开始一轮练习
+- 次要操作：跟拍练习
 
-- Product sample: Seedling Club
-- Page job: Neighborhood garden lessons
-- Headline: Plan a weekend workshop around soil, seedlings, and shared notes.
-- Primary action: Join class
-- Secondary action: Open seed notes
+## 场景组件
 
-## Scenario Components
+- 选择节奏：切换四拍入门和八分节奏。
+- 跟随圆点：调整速度后跟拍，同一拍只计一次。
+- 留下进步：显示节奏偏差反馈并记录本次完成轮数。
 
-- Gentle learning: Workshop steps, garden objects, and notes create structure without feeling like school software.
-- Warm utility: The design stays friendly while still showing time, capacity, and next action.
-- Shared notes: Seed care, class progress, and retry prompts belong to the same garden board.
+## 示例状态
 
-## Example States
+- 四拍入门：准备开始
+- 节拍声音：主动播放
+- 练习记录：当前页面
 
-- Soil demo: Ready
-- Tomato tray: Watered
-- Compost note: Saved
+## 布局模式
 
-## Layout Pattern
+- 模式：慢拍子
+- 结构：轻涂鸦引导区下接课程小路、四拍练习谱和速度滑杆；跟拍反馈与练习记录围绕同一节奏任务展开。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：圆润温和的标题与大号拍点数字，说明文字采用清楚的正常字重。
+- 组件：选择节奏、跟随圆点、留下进步。
+- 按钮：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 图标与媒体：原创节奏小花插画与四枚节拍圆点，声音由浏览器合成。
+- 状态：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 避免：不要把轻松练习做成高密度分数看板，不自动播放音频。
 
-- Pattern: Soft Garden Class (柔和花园课堂)
-- Archetype: Soft Garden Class
-- Structure: Friendly workshop board with garden plan, lesson card, seed notes, progress path, and cheerful class controls.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use rounded readable type with useful, human, non-childish microcopy.
-- Components: Seed trays, class steps, note cards, progress tokens, and retry prompts should feel warm and practical.
-- Buttons: Use warm rounded buttons with clear focus, saved, and disabled states.
-- Icons and media: Use garden beds, seed trays, lesson notes, and soft doodle cues.
-- States: Show ready, watered, saved, class full, retry, and completed states.
-- Avoid: Do not make friendly design vague or babyish.
+## 视觉语言
 
-## Visual Language
+- 背景：`#fbf6ed`
+- 表面：`#fffdf7`
+- 正文：`#453b32`
+- 弱化文字：`#8b7a6d`
+- 主色：`#826d56`
+- 强调色：`#f5b5a7`
+- 边框：`#e4d9c8`
+- 圆角：`28px`
+- 面板圆角：`28px`
+- 控件圆角：`18px`
+- Chip 圆角：`14px`
+- 媒体圆角：`24px`
+- 几何规则：柔和有机曲线、圆润控件与充足触控空间；反馈区预留稳定高度。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 18px 55px rgba(255, 107, 107, .18)`
 
-- Background: `#fff8f1`
-- Surface: `#ffffff`
-- Text: `#2b1d16`
-- Muted text: `#8f5f4a`
-- Primary: `#ff6b6b`
-- Accent: `#ffd166`
-- Border: `#f5d7c6`
-- Radius: `28px`
-- Panel radius: `28px`
-- Control radius: `18px`
-- Chip radius: `14px`
-- Media radius: `24px`
-- Geometry rule: soft friendly curves limited to the learning mood; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 55px rgba(255, 107, 107, .18)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 提示与反馈：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 间距系统：围绕主对象安排区块、说明与操作，辅助内容保持次要层级。
+- 响应式策略：窄屏按任务顺序堆叠主对象和控件，避免横向溢出。
 
-- Button system: Use warm rounded buttons, gentle hover, kind disabled language, and retry buttons that feel helpful rather than punitive.
-- Feedback and alerts: Use encouraging success notes, kind error messages, saved-note toasts, and empty lessons with clear next steps.
-- Spacing system: Use 20-28px friendly panels, 12-16px lesson gaps, and comfortable reading line height.
-- Responsive behavior: Desktop can show path, practice, and notes; mobile shows practice first, then path, then progress notes.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：轻涂鸦引导区下接课程小路、四拍练习谱和速度滑杆；跟拍反馈与练习记录围绕同一节奏任务展开。
+- 数据看板：保留该视觉语言，围绕真实任务状态和可读控件组织信息。
+- 管理后台：按实际内容选择性应用视觉语言与本地工作流程。
+- 表单、Table 与数据：字段保留 Label，预留行内错误位置，并提供明确结果摘要。
+- 移动端：主要操作与关键信息优先于辅助装饰内容。
+- 不适合：不要把轻松练习做成高密度分数看板，不自动播放音频。
 
-- 按钮细节：使用温暖圆角按钮、温和 hover、有善意的禁用文案，以及不惩罚用户的重试按钮。
-- 提示与反馈：使用鼓励型成功说明、友好错误文案、保存笔记 toast，以及带下一步的空课程状态。
-- 间距系统：友好面板 20-28px，课程间距 12-16px，阅读行高舒适。
-- 响应式策略：桌面可显示路径、练习和笔记；手机先练习，再路径，再进度笔记。
+## 使用要点
 
-## Page Adaptation Guide
+- 轻涂鸦引导区下接课程小路、四拍练习谱和速度滑杆；跟拍反馈与练习记录围绕同一节奏任务展开。
+- 原创节奏小花插画与四枚节拍圆点，声音由浏览器合成。
+- 不要把轻松练习做成高密度分数看板，不自动播放音频。
 
-- Landing page: Use friendly learning story, progress path, saved notes, and encouraging primary action.
-- Dashboard: Use practice cards, lesson paths, note stacks, streaks, and kind retry states.
-- Admin panel: Use for education/community tools, not dense finance or strict enterprise approvals.
-- Forms, tables, and data: Use readable labels, kind errors, saved-note toasts, and comfortable line height.
-- Mobile: Show practice first, then path, then notes; keep touch targets generous.
-- Not a good fit for: Weak for severe incidents, high-density analytics, or luxury minimal portfolios.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Round the typography and interaction shapes.
-- Pair friendly copy with lively but readable components.
-- Use illustration sparingly as a human signal.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

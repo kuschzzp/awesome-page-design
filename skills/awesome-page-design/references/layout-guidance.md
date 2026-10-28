@@ -1,85 +1,85 @@
-# Layout Guidance
+# 布局指南
 
-Use this reference before choosing or applying a visual style. Layout is not decoration; it is the structure that lets the user's real workflow make sense.
+选择或应用视觉风格前阅读本文件。布局不是装饰，而是让用户真实工作流成立的结构。
 
-## Layout-First Rule
+## 先确定布局
 
-Choose the page layout archetype from the user's task before deciding how expressive the visual style should become.
+先根据用户任务选择页面布局原型，再决定视觉风格的表现力。
 
-A good page direction should name:
+好的页面方向应明确：
 
-- The page job: what the user is trying to decide, compare, create, buy, read, approve, or monitor.
-- The primary content object: table row, document, asset, lesson, incident, product, lead, report, file, message, or media frame.
-- The main action model: create, approve, filter, compare, review, publish, buy, configure, continue, or recover.
-- The top-level regions: navigation, filters, content surface, detail pane, action queue, inspector, timeline, proof area, or conversion area.
-- The responsive collapse: what stays visible first on mobile, what moves into a drawer, and which actions remain reachable.
+- 页面任务：用户要决定、比较、创建、购买、阅读、审批还是监控什么。
+- 主要内容对象：Table 行、文档、资产、课程、事故、商品、线索、报告、文件、消息或媒体帧。
+- 主要操作模型：创建、审批、筛选、比较、审阅、发布、购买、配置、继续或恢复。
+- 顶层区域：导航、筛选器、内容区、详情面板、操作队列、Inspector、时间线、证据区或转化区。
+- 响应式收拢：移动端优先显示什么，什么移入 Drawer，哪些操作必须保持可达。
 
-Do not start from a generic hero, three feature cards, and a final call to action unless the page is actually a marketing narrative.
+除非页面确实是营销叙事，否则不要从通用 Hero、三个功能 Card 和结尾行动入口出发。
 
-## Decision Flow
+## 决策流程
 
-1. Identify the page job and the primary content object.
-2. Choose a layout archetype from the catalog below.
-3. Define the hierarchy of regions before styling: persistent nav, transient filters, main content, detail view, proof, status, and actions.
-4. Set density: sparse, normal, dense, or operational.
-5. Pick or confirm the visual style.
-6. Adapt the style's color, type, surfaces, buttons, media, and states onto the chosen layout archetype.
-7. Verify desktop and mobile screenshots against the user's actual workflow.
+1. 确认页面任务和主要内容对象。
+2. 从下方目录选择布局原型。
+3. 设置样式前，先定义区域层级：常驻导航、临时筛选、主要内容、详情、可信依据、状态和操作。
+4. 设置密度：疏朗、适中、密集或操作型。
+5. 选择或确认视觉风格。
+6. 将风格的配色、字体、表面、Button、媒体和状态适配到所选布局原型。
+7. 根据用户真实工作流检查桌面和移动端截图。
 
-## Layout Archetypes
+## 布局原型
 
-| Archetype | Use For | Structural Pattern | Avoid |
+| 原型 | 适用场景 | 结构模式 | 避免 |
 |---|---|---|---|
-| Operational Workbench | dashboards, admin panels, internal tools, analytics, logistics, finance, support queues | App shell, filter rail, dense metrics, table/list, detail or action queue, visible state chips | Giant marketing hero, equal feature cards, decorative media |
-| Data Review Console | AI ops, incident review, issue tracking, QA, security, observability | Split panes, traces/logs, evidence surface, status lanes, compact command actions | Atmospheric dark cards without data structure |
-| Creation Studio | editors, AI builders, media tools, design tools, content creation | Canvas or editor center, tool rail, asset strip, inspector, preview, publish/export actions | Landing-page sections that hide the creation surface |
-| Product Landing Narrative | SaaS, product launch, conversion pages | Offer, proof, demo/media, use cases, pricing or action module, supporting trust | Vague slogans, repeated cards, action hidden below decoration |
-| Campaign Poster | launches, events, music/fashion drops, expressive announcements | Poster-first composition, bold type, schedule/ticket/proof blocks, focused conversion | Soft SaaS chrome, over-explained body copy |
-| Editorial / Documentation | articles, docs portals, cultural pages, reports, knowledge bases | Reading column, table of contents, metadata rail, index rows, captions, code or evidence blocks | Card-heavy dashboards, vague hero art |
-| Commerce Catalog | ecommerce, marketplaces, product selection, plan comparison | Search/filter/sort, product grid or list, compare surface, cart/action panel, inventory states | Hero-first pages when users need to browse and compare |
-| Onboarding / Setup Flow | signup, configuration, migration, wizard, learning setup | Stepper, focused form, validation, progress, summary, support context, recoverable errors | Decorative steps without validation and state handling |
-| Portfolio / Object Focus | portfolios, case studies, galleries, high-end object pages | One dominant object or project, quiet metadata, index navigation, restrained actions | Filling the page with equal generic cards |
-| Touch Utility | mobile-first apps, wellness, routines, consumer utilities | Large tap targets, bottom or local actions, routine clusters, day/status panels, forgiving empty states | Dense desktop widgets squeezed onto mobile |
+| 操作工作台 | 数据看板、管理后台、内部工具、分析、物流、财务、客服队列 | App Shell、筛选栏、密集指标、Table/List、详情或操作队列、可见状态 Chip | 巨大营销 Hero、等大功能 Card、装饰性媒体 |
+| 数据审查控制台 | AI 运维、事故审查、Issue 跟踪、质量保证、安全、可观测性 | 分栏、Trace/Log、证据区、状态通道、紧凑命令操作 | 缺少数据结构、只营造氛围的深色 Card |
+| 创作工作室 | Editor、AI 构建工具、媒体工具、设计工具、内容创作 | 中央 Canvas 或 Editor、工具栏、资产条、Inspector、Preview、发布与导出操作 | 遮蔽创作区域的落地页区块 |
+| 产品落地页叙事 | SaaS、产品发布、转化页面 | 产品价值、可信依据、演示或媒体、使用场景、定价或操作模块、信任支撑 | 含糊口号、重复 Card、装饰之后才出现的操作 |
+| 活动海报 | 发布、活动、音乐或时尚上新、鲜明公告 | 海报主导构图、粗大字体、日程/票务/证据区块、聚焦转化 | 柔和的 SaaS 外壳、过度解释的正文 |
+| 编辑与文档 | 文章、文档门户、文化页面、报告、知识库 | 阅读栏、目录、元数据栏、索引行、图注、代码或证据区块 | 堆满 Card 的数据看板、含糊的 Hero 插画 |
+| 商品目录 | 电商、市场平台、商品选择、方案比较 | 搜索/筛选/排序、商品网格或列表、比较区、购物车或操作面板、库存状态 | 用户需要浏览比较时仍以 Hero 为先的页面 |
+| 引导与设置流程 | 注册、配置、迁移、Wizard、学习设置 | Stepper、聚焦的 Form、校验、进度、摘要、辅助上下文、可恢复错误 | 没有校验和状态处理的装饰性步骤 |
+| 作品集与对象聚焦 | 作品集、案例、画廊、高端对象页面 | 一个主导对象或项目、克制元数据、索引导航、少量操作 | 用等大通用 Card 填满页面 |
+| 触控实用工具 | 移动优先应用、健康、日常习惯、消费者工具 | 大点击目标、底部或局部操作、日常任务分组、日期/状态面板、友好的空状态 | 将密集桌面 Widget 硬塞入移动端 |
 
-## Matching Layout And Style
+## 匹配布局与风格
 
-Use the layout archetype as the skeleton of meaning, then let the visual style decide how that skeleton feels.
+以布局原型建立内容含义的骨架，再由视觉风格决定表达方式。
 
-- A dashboard can use Card Grid, Structured Lines, Layered Material, Precision Futurism, or Liquid Glass, but it still needs filters, state, dense scanning, and real actions.
-- A landing page can use Tech Minimal, Gradient Pop, Block Brutalism, Soft Pop, or Acid Design, but it still needs offer, proof, demo, and conversion flow.
-- A developer tool can use Terminal Hacker, Precision Futurism, Structured Lines, or Tech Minimal, but it should foreground logs, traces, files, commands, and states.
-- A content-heavy page can use Swiss Editorial, Resonant Stark, or Tech Minimal, but it should rely on reading order, metadata, captions, and index structure before decorative cards.
+- 数据看板可以使用卡片网格、结构线、层级材质、精密未来风或液态玻璃，但仍需要筛选、状态、密集扫描和真实操作。
+- 落地页可以使用科技极简风、渐变风、块状粗野主义、柔和流行或酸性设计，但仍需要价值主张、可信依据、演示和转化流程。
+- 开发者工具可以使用黑客终端、精密未来风、结构线或科技极简风，但应突出 Log、Trace、文件、命令和状态。
+- 内容密集页面可以使用瑞士编辑风、共鸣极简或科技极简风，但应先依赖阅读顺序、元数据、图注和索引结构，再考虑装饰性 Card。
 
-Do not force a chosen visual style's sample page structure onto a different product. Preserve the style's structural identity only when it supports the user's real workflow.
+不要把所选风格的示例页面结构强加给不同产品。只有当风格的结构特征支持用户真实工作流时，才保留它。
 
-## Responsive Rules
+## 响应式规则
 
-- Operational workbenches: collapse filters into a drawer or top segmented row; preserve search, primary action, critical metric, and one active queue.
-- Data consoles: keep the selected object and current status visible first; move secondary traces into tabs or accordions.
-- Creation studios: keep the canvas/editor and primary action visible; move asset libraries and inspectors behind tabs or drawers.
-- Product landing pages: preserve offer, primary action, and proof in the first viewport; avoid stacking so much hero text that the next section disappears.
-- Editorial pages: keep reading width comfortable; move metadata and table of contents above or below the article on mobile.
-- Commerce pages: preserve search/filter, product identity, price/state, and add/compare action.
+- 操作工作台：把筛选器收拢到 Drawer 或顶部 Segmented Row；保留搜索、主要操作、关键指标和一个活动队列。
+- 数据控制台：优先显示选中对象和当前状态；把次要 Trace 放入 Tab 或 Accordion。
+- 创作工作室：保持 Canvas/Editor 和主要操作可见；资产库和 Inspector 移到 Tab 或 Drawer 后。
+- 产品落地页：首屏保留产品价值、主要操作和可信依据；不要堆叠过多 Hero 文案，让下一区块完全消失。
+- 编辑类页面：保持舒适阅读宽度；移动端把元数据和目录移到文章上方或下方。
+- 商品页面：保留搜索与筛选、商品身份、价格与状态，以及添加或比较操作。
 
-## Anti-Patterns
+## 反模式
 
-- Do not use the same nav, hero split, metric strip, card grid, and bottom call-to-action across unrelated styles.
-- Do not place dashboard tasks inside a marketing page shell.
-- Do not make every layout a centered headline plus cards.
-- Do not use equal card grids when the content has different urgency or job types.
-- Do not put UI cards inside decorative section cards.
-- Do not hide required controls behind vague icon-only actions.
-- Do not let visual effects replace information architecture.
+- 不要跨无关风格使用相同导航、分栏 Hero、指标条、Card 网格和底部行动入口。
+- 不要把数据看板任务放入营销页面外壳。
+- 不要把所有布局都做成居中标题加 Card。
+- 内容紧急程度或任务类型不同时，不要使用等大 Card 网格。
+- 不要把 UI Card 放入装饰性区块 Card。
+- 不要把必要控件藏在含义不明的纯图标操作后。
+- 不要用视觉效果代替信息架构。
 
-## Prompt Requirements
+## 提示词要求
 
-When creating or copying a style prompt, include:
+创建或复制风格提示词时，包含：
 
-- Layout archetype.
-- Primary content object.
-- Top-level regions.
-- Main action model.
-- Density target.
-- Responsive collapse behavior.
-- Style-specific visual language, buttons, media, and states.
-- Explicit instruction not to copy the bundled sample layout.
+- 布局原型。
+- 主要内容对象。
+- 顶层区域。
+- 主要操作模型。
+- 密度目标。
+- 响应式收拢方式。
+- 风格专属的视觉语言、Button、媒体和状态。
+- 明确说明不要复制随附示例布局。

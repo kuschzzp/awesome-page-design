@@ -1,96 +1,86 @@
-# Style 19 - Gradient Pop (渐变风)
+# 风格 19：渐变风
 
-## Summary
+## 概述
 
-Bright gradients, tech or trend energy, and an immediately eye-catching first viewport.
+大标题与跑者轨道渐变形成首屏，下方以路线图为主对象，旁侧选择距离与配速，报名弹窗生成本地凭单。
 
-Chinese summary: 亮色渐变、科技或潮流气质，首屏视觉抓眼。
+## 适用场景
 
-## Best For
+节日活动页、发布墙、创作者活动工具
 
-festival pages, launch walls, creator campaign tools
+## 示例场景
 
-## Example Scenario
+- 示例产品：夜跑电台
+- 页面任务：夜跑电台
+- 标题：把城市的夜，跑成你的主场。
+- 主要操作：留一个起跑位
+- 次要操作：选择夜跑路线
 
-- Product sample: Block Party Press
-- Page job: Community festival wall
-- Headline: Turn a street festival into posters, stages, and volunteer moments.
-- Primary action: Publish poster
-- Secondary action: Review lineup
+## 场景组件
 
-## Scenario Components
+- 路线选择：切换 5 或 10 公里，地图与里程同步更新。
+- 自己的配速：配速组联动预计用时，先按状态选择距离。
+- 出发凭单：选择波次并填写昵称，生成本地报名凭单。
 
-- Poster energy: Gradient color becomes a print wall, lineup ribbon, and stage schedule.
-- Full canvas: The page is packed with usable festival objects so no side feels empty.
-- Public action: Publish, lineup, and volunteer states remain clearer than the color field.
+## 示例状态
 
-## Example States
+- 滨水轻跑线：5 公里
+- 自在组：7 分钟 / 公里
+- 报名凭单：本地演示
 
-- Main poster: Approved
-- Food lane: Mapped
-- Volunteer tent: Needs lead
+## 布局模式
 
-## Layout Pattern
+- 模式：夜跑电台
+- 结构：大标题与跑者轨道渐变形成首屏，下方以路线图为主对象，旁侧选择距离与配速，报名弹窗生成本地凭单。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：运动感粗标题、紧凑路线 Label 与等宽距离数字，正文保持清晰。
+- 组件：路线选择、自己的配速、出发凭单。
+- 按钮：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 图标与媒体：原创跑者 SVG、渐变轨道与两条可切换的滨水路线。
+- 状态：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 避免：不要用装饰性指标替代路线，也不要隐藏集合时间与地点。
 
-- Pattern: Gradient Festival Wall (渐变街区节日墙)
-- Archetype: Gradient Festival Wall
-- Structure: Bright public-event board with poster wall, lineup ribbon, volunteer rail, stage map, and print-ready actions.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use energetic headings, clear public labels, and readable schedule copy.
-- Components: Poster tiles, artist slots, food-lane blocks, volunteer states, and publish gates should fill the canvas.
-- Buttons: Use confident color for the public action and calmer secondary controls.
-- Icons and media: Use posters, lineup cards, stage strips, volunteer tags, and print sizes.
-- States: Show approved, mapped, needs lead, live, printed, and delayed states.
-- Avoid: Do not let gradients overpower schedule readability.
+## 视觉语言
 
-## Visual Language
+- 背景：`#fff9f4`
+- 表面：`#ffffff`
+- 正文：`#291b3c`
+- 弱化文字：`#76627f`
+- 主色：`#7b37df`
+- 强调色：`#ff714b`
+- 边框：`#ddd0df`
+- 圆角：`14px`
+- 面板圆角：`14px`
+- 控件圆角：`8px`
+- Chip 圆角：`6px`
+- 媒体圆角：`12px`
+- 几何规则：圆润渐变主视觉与易读地图分区；路线选择、报名控件保持明确边界。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 24px 70px rgba(219, 39, 119, .20)`
 
-- Background: `#fff7ed`
-- Surface: `#ffffff`
-- Text: `#24111f`
-- Muted text: `#7c3aed`
-- Primary: `#db2777`
-- Accent: `#06b6d4`
-- Border: `#f3d4ff`
-- Radius: `14px`
-- Panel radius: `14px`
-- Control radius: `8px`
-- Chip radius: `6px`
-- Media radius: `12px`
-- Geometry rule: energetic gradient surfaces with controlled curves; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 24px 70px rgba(219, 39, 119, .20)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：操作名称对应实际结果，选中、禁用和键盘聚焦状态清晰。
+- 提示与反馈：提供本地结果、可恢复的行内错误，以及清楚的空白、已选或暂停状态。
+- 间距系统：围绕主对象安排区块、说明与操作，辅助内容保持次要层级。
+- 响应式策略：窄屏按任务顺序堆叠主对象和控件，避免横向溢出。
 
-- Button system: Use confident gradient or solid buttons, restrained secondary buttons, and progress/loading states that feel like a builder flow.
-- Feedback and alerts: Use bright publish toasts, checklist warnings, and inline success cards near the stepper.
-- Spacing system: Use 20-28px builder panels, 12-16px template gaps, and clear separation between canvas and checklist.
-- Responsive behavior: Desktop can show copy, canvas, and checklist; mobile orders them as headline, primary action, canvas, checklist.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：大标题与跑者轨道渐变形成首屏，下方以路线图为主对象，旁侧选择距离与配速，报名弹窗生成本地凭单。
+- 数据看板：保留该视觉语言，围绕真实任务状态和可读控件组织信息。
+- 管理后台：按实际内容选择性应用视觉语言与本地工作流程。
+- 表单、Table 与数据：字段保留 Label，预留行内错误位置，并提供明确结果摘要。
+- 移动端：主要操作与关键信息优先于辅助装饰内容。
+- 不适合：不要用装饰性指标替代路线，也不要隐藏集合时间与地点。
 
-- 按钮细节：使用自信的渐变或实色按钮、克制次按钮，以及像构建流程的进度/加载态。
-- 提示与反馈：使用明亮发布 toast、清单警告，以及靠近 stepper 的内联成功卡。
-- 间距系统：构建器面板 20-28px，模板间距 12-16px，画布和清单分隔清楚。
-- 响应式策略：桌面可显示文案、画布和清单；手机顺序为标题、主操作、画布、清单。
+## 使用要点
 
-## Page Adaptation Guide
+- 大标题与跑者轨道渐变形成首屏，下方以路线图为主对象，旁侧选择距离与配速，报名弹窗生成本地凭单。
+- 原创跑者 SVG、渐变轨道与两条可切换的滨水路线。
+- 不要用装饰性指标替代路线，也不要隐藏集合时间与地点。
 
-- Landing page: Use a bright builder narrative with live canvas, stepper, checklist, and publish action.
-- Dashboard: Use activation metrics, template states, progress cards, and publish readiness checks.
-- Admin panel: Use for creator/admin builders, content setup, template management, and launch checklists.
-- Forms, tables, and data: Use colorful but restrained inputs, progress validation, checklist warnings, and success cards.
-- Mobile: Order as headline, primary action, canvas, checklist, then supporting proof.
-- Not a good fit for: Weak for restrained legal, formal docs, or very dense reporting dashboards.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use a gradient hero with calmer supporting surfaces.
-- Let color communicate energy and momentum.
-- Prevent gradients from overpowering text.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,96 +1,86 @@
-# Style 07 - Cute-alism (可爱主义)
+# 风格 07：可爱主义
 
-## Summary
+## 概述
 
-Soft playful surfaces, friendly object shapes, pastel accents, compact controls, and warm task-board clarity.
+柔和玩乐表面、友好对象形状、粉彩点缀、紧凑控件和温暖任务板层级。
 
-Chinese summary: 柔和玩乐表面、友好对象形状、粉彩点缀、紧凑控件和温暖任务板层级。
+## 适用场景
 
-## Best For
+玩乐生产力、教育工具、创作者实用工具
 
-playful productivity, education tools, creator utilities
+## 示例场景
 
-## Example Scenario
+- 示例产品：芽芽阳台
+- 页面任务：属于你的植物养护桌面
+- 标题：早呀，今天也一起发点芽。
+- 主要操作：登记植物
+- 次要操作：浇水打卡
 
-- Product sample: MochiDesk
-- Page job: Playful task studio
-- Headline: Turn small lessons, chores, and creator tasks into a calm daily board.
-- Primary action: Plan today
-- Secondary action: Open reward shelf
+## 场景组件
 
-## Scenario Components
+- 每盆都有名字：昵称、种类与安放位置，让养护卡对应一盆具体的植物。
+- 先观察再浇水：日期用于提醒检查土壤，不替代对实际干湿情况的观察。
+- 照顾留下记录：打卡后同步更新下次检查日期和当日照顾进度。
 
-- Cute workflow: Soft objects mark real states such as next, blocked, finished, and reward-ready.
-- Daily clarity: The board keeps today, later, and reward notes visible without becoming a dense admin table.
-- Friendly feedback: Pastel panels and chunky controls make progress feel encouraging while labels stay clear.
+## 示例状态
 
-## Example States
+- 小卷：今天看看土壤
+- 阿绿：今天看看土壤
+- 刺刺：慢慢长大中
 
-- Sketch practice: Next
-- Reading note: Done
-- Reward shelf: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：可爱日程桌面
+- 结构：温暖的每日养护桌面，包含问候区、植物插画群、养护便签、进度条与三列植物架。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用友好粗标题、短植物昵称、易读养护日期与克制辅助标签。
+- 组件：植物卡、观察日期、浇水按钮、进度条与登记 Dialog 使用柔和描边和有触感的表面。
+- 按钮：使用厚实圆角控件和明确阴影；完成态保留清晰文字，避免重复打卡。
+- 图标与媒体：绘制原创友好植物插画，让有表情的对象紧邻真实养护信息。
+- 状态：呈现待观察、今日已浇水、下次检查日期、登记错误和新增成功状态。
+- 避免：不要用装饰奖励替代养护细节，也不要暗示每次提醒都必须浇水。
 
-- Pattern: Cute Daily Desk (可爱日程桌面)
-- Archetype: Cute Daily Desk
-- Structure: Playful task desk with today lanes, reward shelf, sticky notes, soft objects, and compact progress controls.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use friendly bold headings, short task labels, and calm readable status text.
-- Components: Task tiles, reward tokens, progress meters, note pads, and friendly state chips should be tactile but useful.
-- Buttons: Buttons are chunky, softly outlined, playful, and clearly clickable without neon glare.
-- Icons and media: Use soft object shapes, note cards, badges, and task-board cues as workflow anchors.
-- States: Show next, done, ready, skipped, reward-ready, and gentle blocked states.
-- Avoid: Do not let cuteness remove workflow clarity or make the palette painfully bright.
+## 视觉语言
 
-## Visual Language
+- 背景：`#fbf8ed`
+- 表面：`#fffdf6`
+- 正文：`#4b5844`
+- 弱化文字：`#8a907e`
+- 主色：`#63774f`
+- 强调色：`#efce72`
+- 边框：`#d9dfc8`
+- 圆角：`22px`
+- 面板圆角：`22px`
+- 控件圆角：`12px`
+- Chip 圆角：`10px`
+- 媒体圆角：`18px`
+- 几何规则：圆润植物卡、贴纸式便签与有触感的小阴影。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`6px 6px 0 #ffd1e8`
 
-- Background: `#fff7fb`
-- Surface: `#fffdf8`
-- Text: `#18181b`
-- Muted text: `#64748b`
-- Primary: `#ef5da8`
-- Accent: `#8ee6c8`
-- Border: `#31283a`
-- Radius: `22px`
-- Panel radius: `22px`
-- Control radius: `12px`
-- Chip radius: `10px`
-- Media radius: `18px`
-- Geometry rule: playful sticker curves with hard-shadow contrast; avoid making every button and card the same large rounded rectangle.
-- Shadow: `6px 6px 0 #ffd1e8`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：柔绿主操作、对应具体植物的打卡按钮与明确完成文字，让趣味桌面保持可用。
+- 提示与反馈：同步更新下次日期与进度，通过平静 Toast 播报打卡和新增结果。
+- 间距系统：植物卡内边距 20–24px，架上间距 24px，为插画对象保留充足空间。
+- 响应式策略：植物架收为单列，问候区保持紧凑，养护便签移到下方。
 
-- Button system: Use sticker-like buttons with firm shadows, playful active motion, and high-contrast disabled labels.
-- Feedback and alerts: Use friendly shop toasts, cart confirmations, and inline proof states that feel tactile.
-- Spacing system: Use 18-24px playful padding, 12-16px sticker gaps, and irregular but aligned product zones.
-- Responsive behavior: Desktop can show builder plus catalog; mobile puts builder first, then product cards, then cart summary.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：用插画养护对象搭配具体每日操作与友好介绍。
+- 数据看板：围绕植物身份、到期日期、养护完成态与小型进度汇总组织内容。
+- 管理后台：用于轻量个人收藏管理，确保登记与养护记录易读。
+- 表单、Table 与数据：使用可见 Label、厚实 Input、行内错误与明确下次检查日期。
+- 移动端：堆叠植物卡，保留完整养护操作，避免插画挤占控件。
+- 不适合：不适用于严肃机构服务与高密度运营分析。
 
-- 按钮细节：使用贴纸感按钮、明确阴影、俏皮按下动效和高对比禁用标签。
-- 提示与反馈：使用友好的商店 toast、购物车确认，以及有触感的内联 proof 状态。
-- 间距系统：使用 18-24px 俏皮内边距、12-16px 贴纸间距，以及不完全规整但对齐的商品区域。
-- 响应式策略：桌面显示构建器加目录；手机先构建器，再商品卡，最后购物车摘要。
+## 使用要点
 
-## Page Adaptation Guide
+- 可爱插画服务于植物身份与养护流程。
+- 提醒观察土壤，不把日期当作强制浇水指令。
+- 通过颜色和文字共同表达照顾状态。
 
-- Landing page: Use a playful product builder, sticker-like media, price/proof tags, and a friendly cart action.
-- Dashboard: Use creator shop metrics, order states, fulfillment cards, and tactile product previews.
-- Admin panel: Use readable commerce controls, variant forms, inventory warnings, and friendly confirmation states.
-- Forms, tables, and data: Use chunky labels, tactile inputs, high-contrast validation, and clear cart/save feedback.
-- Mobile: Put builder first, then product cards, cart summary, and proof; keep playful elements from crowding controls.
-- Not a good fit for: Weak for sober B2B, dense analytics, or official documentation portals.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use cute objects as workflow anchors, not decoration.
-- Keep controls chunky but calm enough for daily use.
-- Balance pastel warmth with readable operational detail.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -7,8 +7,7 @@ function initializeGallery() {
   const all = (selector) => Array.from(document.querySelectorAll(selector));
   const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
   const words = data.copy;
-  // "editorial" names both a use case and a visual family; both mean editing-led design.
-  const state = { lang: "zh", query: "", useCase: "all", appearance: "all", view: "desktop", selected: new Set(), active: null, kind: "full" };
+  const state = { lang: "zh", view: "desktop", active: null, kind: "full" };
   try { if (localStorage.getItem("apd-language") === "en") state.lang = "en"; } catch {}
   const t = (key) => words[state.lang][key] || key;
   const name = (style) => state.lang === "zh" ? style.zhName : style.name;
@@ -19,7 +18,7 @@ function initializeGallery() {
   let toastTimer;
 
   function announce(message) {
-    const host = $("detail-dialog").open ? $("detail-dialog") : $("compare-dialog").open ? $("compare-dialog") : document.body;
+    const host = $("detail-dialog").open ? $("detail-dialog") : document.body;
     if ($("toast").parentElement !== host) host.appendChild($("toast"));
     $("status").textContent = message;
     $("toast").textContent = message;
@@ -30,40 +29,13 @@ function initializeGallery() {
 
   function applyView() {
     all("[data-preview-view]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.previewView === state.view)));
-    all("[data-preview-image]").forEach((image) => {
-      const style = byId.get(image.dataset.style);
-      image.src = imageSource(style);
-      image.alt = `${name(style)} · ${t(state.view)}`;
-      image.width = data.viewports[state.view].width;
-      image.height = data.viewports[state.view].height;
-      image.classList.toggle("mobile", state.view === "mobile");
-      image.closest(".preview-link, .detail-preview")?.classList.toggle("mobile", state.view === "mobile");
-    });
-  }
-
-  function applyFilters() {
-    const matching = new Set(filterGalleryStyles(styles, state).map((style) => style.id));
-    all("[data-style-card]").forEach((card) => { card.hidden = !matching.has(card.dataset.styleCard); });
-    $("result-count").textContent = `${matching.size} ${t("result")}`;
-    $("empty").hidden = matching.size !== 0;
-    $("filter-status").textContent = `${matching.size} ${t("result")}`;
-    all("[data-use-case]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.useCase === state.useCase)));
-    all("[data-appearance]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.appearance === state.appearance)));
-    $("reset-filters").hidden = !state.query && state.useCase === "all" && state.appearance === "all";
-  }
-
-  function renderSelection() {
-    all("[data-compare-style]").forEach((button) => {
-      const selected = state.selected.has(button.dataset.compareStyle);
-      button.setAttribute("aria-pressed", String(selected));
-      button.textContent = t(selected ? "compared" : "compare");
-      button.setAttribute("aria-label", `${t(selected ? "remove" : "compare")} ${name(byId.get(button.dataset.compareStyle))}`);
-      button.closest(".card")?.classList.toggle("selected", selected);
-    });
-    $("selection-tray").hidden = state.selected.size === 0;
-    $("selected-items").innerHTML = Array.from(state.selected, (id) => `<button type="button" data-remove="${id}" aria-label="${esc(t("remove") + " " + name(byId.get(id)))}">${esc(name(byId.get(id)))} · ${esc(t("remove"))}</button>`).join("");
-    $("selection-count").textContent = `${state.selected.size}/3 ${t("selected")}`;
-    $("compare-open").disabled = state.selected.size < 2;
+    if (!state.active) return;
+    const style = byId.get(state.active);
+    const image = $("detail-image");
+    image.src = imageSource(style);
+    image.alt = `${name(style)} · ${t(state.view)}`;
+    image.width = data.viewports[state.view].width;
+    image.height = data.viewports[state.view].height;
   }
 
   function currentPrompt() {
@@ -98,10 +70,9 @@ function initializeGallery() {
 
   function openDetail(id, trigger) {
     if (!byId.has(id)) return;
-    lastFocus = trigger || $("search");
-    if ($("compare-dialog").open) $("compare-dialog").close();
+    lastFocus = trigger || document.querySelector(`[data-open-style="${id}"]`);
     state.active = id;
-    state.kind = ["landing", "dashboard", "admin"].includes(state.useCase) ? state.useCase : "full";
+    state.kind = "full";
     renderDetail();
     $("prompt-disclosure").open = false;
     if (!$("detail-dialog").open) $("detail-dialog").showModal();
@@ -114,69 +85,30 @@ function initializeGallery() {
     } catch {}
   }
 
-  function renderComparison() {
-    const selected = Array.from(state.selected, (id) => byId.get(id));
-    $("compare-grid").style.setProperty("--columns", selected.length);
-    $("compare-grid").innerHTML = selected.map((style) => `<article class="compare-card">
-      <img data-preview-image data-style="${style.id}" src="${imageSource(style)}" alt="${esc(name(style))}" width="${data.viewports[state.view].width}" height="${data.viewports[state.view].height}">
-      <h3>${style.id} / ${esc(name(style))}</h3>
-      <div class="swatches">${Object.values(style.palette).map((color) => `<span style="--swatch:${esc(color)}"></span>`).join("")}</div>
-      <dl><dt>${esc(t("family"))}</dt><dd>${esc(t(style.selection.family === "editorial" ? "family_editorial" : style.selection.family))}</dd><dt>${esc(t("density"))}</dt><dd>${esc(t(style.selection.density))}</dd><dt>${esc(t("fit"))}</dt><dd>${esc(bestFor(style))}</dd><dt>${esc(t("structure"))}</dt><dd>${esc(state.lang === "zh" ? style.layout.zhName : style.layout.name)}</dd></dl>
-      <button type="button" class="button" data-use-style="${style.id}">${esc(t("select"))}</button></article>`).join("");
-    applyView();
-  }
-
   function setLanguage(lang) {
     state.lang = lang;
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title = lang === "zh" ? "风格库 · Awesome Page Design" : "Style library · Awesome Page Design";
     all("[data-i18n]").forEach((element) => { element.textContent = t(element.dataset.i18n); });
     all("[data-en][data-zh]").forEach((element) => { element.textContent = element.dataset[lang]; });
+    all("[data-style-card]").forEach((card) => { card.querySelector("img").alt = `${name(byId.get(card.dataset.styleCard))} · ${t("desktop")}`; });
     all("[data-tag]").forEach((element) => { element.textContent = t(element.dataset.tag); });
     all("[data-lang]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === lang)));
-    $("search").placeholder = t("search");
-    $("search").setAttribute("aria-label", t("searchLabel"));
-    $("selected-items").setAttribute("aria-label", t("shortlist"));
-    renderSelection();
-    applyFilters();
+    $("result-count").textContent = `${styles.length} ${t("result")}`;
     if (state.active) renderDetail();
-    if ($("compare-dialog").open) renderComparison();
     applyView();
     try { localStorage.setItem("apd-language", lang); } catch {}
   }
 
-  $("search").addEventListener("input", (event) => { state.query = event.target.value; applyFilters(); });
   document.addEventListener("click", (event) => {
     const button = event.target.closest("button");
     if (!button) return;
     if (button.dataset.lang) setLanguage(button.dataset.lang);
     if (button.dataset.previewView) { state.view = button.dataset.previewView; applyView(); }
-    if (button.dataset.useCase) { state.useCase = button.dataset.useCase; applyFilters(); }
-    if (button.dataset.appearance) { state.appearance = button.dataset.appearance; applyFilters(); }
     if (button.dataset.openStyle) openDetail(button.dataset.openStyle, button);
-    if (button.dataset.useStyle) openDetail(button.dataset.useStyle, $("compare-open"));
     if (button.dataset.promptKind) { state.kind = button.dataset.promptKind; renderPrompt(); }
-    if (button.dataset.compareStyle) {
-      const id = button.dataset.compareStyle;
-      if (state.selected.has(id)) state.selected.delete(id);
-      else if (state.selected.size < 3) state.selected.add(id);
-      else { announce(t("max")); return; }
-      renderSelection();
-    }
-    if (button.dataset.remove) {
-      state.selected.delete(button.dataset.remove);
-      renderSelection();
-      (state.selected.size ? $("compare-open") : $("search")).focus();
-    }
   });
 
-  all("[data-reset]").forEach((button) => button.addEventListener("click", () => {
-    state.query = ""; state.useCase = "all"; state.appearance = "all"; $("search").value = ""; applyFilters(); $("search").focus();
-  }));
-  $("clear-selection").addEventListener("click", () => { state.selected.clear(); renderSelection(); $("search").focus(); });
-  $("compare-open").addEventListener("click", () => {
-    lastFocus = $("compare-open"); renderComparison(); $("compare-dialog").showModal(); document.body.style.overflow = "hidden";
-  });
   all("[data-close-dialog]").forEach((button) => button.addEventListener("click", () => button.closest("dialog").close()));
   all("dialog").forEach((dialog) => {
     dialog.addEventListener("click", (event) => {
@@ -191,7 +123,7 @@ function initializeGallery() {
       }
       if (!all("dialog").some((item) => item.open)) {
         document.body.style.overflow = "";
-        const target = lastFocus && document.contains(lastFocus) && !lastFocus.closest("[hidden]") ? lastFocus : $("search");
+        const target = lastFocus && document.contains(lastFocus) && !lastFocus.closest("[hidden]") ? lastFocus : document.querySelector("[data-open-style]");
         target?.focus();
       }
     });

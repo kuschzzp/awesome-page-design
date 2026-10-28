@@ -1,96 +1,86 @@
-# Style 23 - Wabi-Sabi (侘寂)
+# 风格 23：侘寂
 
-## Summary
+## 概述
 
-Earthy restraint, natural texture, handmade imperfection, quiet whitespace, and slow material confidence.
+低饱和大地色、自然纹理、手作不完美、安静留白和缓慢的材质信任感。
 
-Chinese summary: 低饱和大地色、自然纹理、手作不完美、安静留白和缓慢的材质信任感。
+## 适用场景
 
-## Best For
+陶艺、健康生活、慢电商、手作作品集、安静编辑页
 
-ceramics, wellness, slow commerce, craft portfolios, mindful editorial pages
+## 示例场景
 
-## Example Scenario
+- 示例产品：拾木修复工作室
+- 页面任务：旧木修复工作室与物件档案
+- 标题：留住旧时光，也留住一把好椅子。
+- 主要操作：预约到店咨询
+- 次要操作：制定修复计划
 
-- Product sample: Mend Clay
-- Page job: Ceramic repair studio
-- Headline: Give a cracked bowl a slower second life with gold, clay, and care.
-- Primary action: Book repair
-- Secondary action: Read care note
+## 场景组件
 
-## Scenario Components
+- 一把旧椅：木纹插画与档案编号建立真实对象感。
+- 修复可比较：结构、表面和坐面问题联动估价与工期。
+- 安静的预约：称呼和到店时段组成短表单，错误贴近字段。
 
-- Repair table: Objects, cracks, slips, and care notes create the layout language.
-- Useful imperfection: Irregular shapes are tied to real ceramic states such as drying, sealed, and reserved.
-- Slow conversion: The action follows trust, material notes, and process evidence.
+## 示例状态
 
-## Example States
+- 榫卯紧固：可选
+- 保留旧色：已选
+- 到店咨询：待预约
 
-- Tea bowl: Drying
-- Gold seam: Curing
-- Care card: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：旧木修复档案
+- 结构：以一把原创旧木椅为主对象，左侧叙事与档案编号，右侧大幅木纹插画；下方按修复项目、表面方案、估价与预约组成安静的工作台。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用温暖宋体标题、清楚的小 Label 和低密度正文，为物件留出安静空间。
+- 组件：旧椅示意、Checkbox 修复项目、Radio 表面选择、即时估价、工期说明与到店预约 Dialog。
+- 按钮：使用低填充或温和实心按钮，选中状态清楚且不过分跳动。
+- 图标与媒体：使用原创山毛榉椅 SVG、细木纹、磨损刻痕和自然阴影，表面处理选择联动色泽。
+- 状态：展示未选项目、原色、上蜡、可预约、字段错误和咨询已预约；没有项目时禁用预约。
+- 避免：不要用明亮装饰、厚重卡片或抹平所有旧物痕迹。
 
-- Pattern: Wabi Repair Studio (侘寂修补工作室)
-- Archetype: Wabi Repair Studio
-- Structure: Quiet ceramic repair table with object stage, process notes, drying ledger, care card, and grounded booking action.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use warm body text, small honest labels, and enough whitespace around each object.
-- Components: Crack diagrams, clay bodies, cure timing, repair status, and care notes should feel handmade but aligned.
-- Buttons: Use quiet grounded buttons that become precise on focus or selected state.
-- Icons and media: Use ceramic forms, repair seams, worktable marks, clay labels, and care cards.
-- States: Show drying, curing, ready, reserved, care needed, and repaired states.
-- Avoid: Do not polish away the material irregularity.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f4efe6`
+- 表面：`#fffaf0`
+- 正文：`#302a22`
+- 弱化文字：`#766b5e`
+- 主色：`#5f6f52`
+- 强调色：`#b26b4b`
+- 边框：`#d8cdbc`
+- 圆角：`6px`
+- 面板圆角：`6px`
+- 控件圆角：`3px`
+- Chip 圆角：`2px`
+- 媒体圆角：`8px`
+- 几何规则：小幅自然圆角、细边框、安静的分隔与略不对称的物件留白。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 16px 48px rgba(77, 61, 43, .10)`
 
-- Background: `#f4efe6`
-- Surface: `#fffaf0`
-- Text: `#302a22`
-- Muted text: `#766b5e`
-- Primary: `#5f6f52`
-- Accent: `#b26b4b`
-- Border: `#d8cdbc`
-- Radius: `6px`
-- Panel radius: `6px`
-- Control radius: `3px`
-- Chip radius: `2px`
-- Media radius: `8px`
-- Geometry rule: quiet handmade geometry with small irregular-feeling corners; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 16px 48px rgba(77, 61, 43, .10)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用低填充或温和实心按钮，选中状态清楚且不过分跳动。
+- 提示与反馈：展示未选项目、原色、上蜡、可预约、字段错误和咨询已预约；没有项目时禁用预约。
+- 间距系统：使用 28–44px 安静留白与 14–18px 可读图注间距。
+- 响应式策略：手机先展示标题和修复入口，再展示木椅、故事、方案与估价；预约表单单列。
 
-- Button system: Use quiet text or low-fill buttons with visible focus, modest hover, and selected states that feel gently pressed into paper.
-- Feedback and alerts: Use small inline notes, care labels, reserved marks, and calm confirmations near the affected object.
-- Spacing system: Use 28-44px quiet gutters, uneven but intentional object spacing, and 14-18px readable caption gaps.
-- Responsive behavior: Desktop may place one object stage beside notes; mobile shows object, material caption, availability, then action without crowding.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以一把原创旧木椅为主对象，左侧叙事与档案编号，右侧大幅木纹插画；下方按修复项目、表面方案、估价与预约组成安静的工作台。
+- 数据看板：适合低密度修复进度与工作室物件管理，避免高压指标。
+- 管理后台：只用于安静物件整理与预约管理，避免高密度批处理。
+- 表单、Table 与数据：使用少量持久 Label、修复项目选择与原生 Dialog；自定义行内校验，禁用浏览器校验气泡。
+- 移动端：手机先展示标题和修复入口，再展示木椅、故事、方案与估价；预约表单单列。
+- 不适合：不适合紧急告警、密集分析或高饱和科技发布。
 
-- 按钮细节：使用安静文字或低填充按钮，保留可见焦点、克制 hover，并让选中态像轻轻压入纸面。
-- 提示与反馈：在对象附近使用小型内联说明、养护标签、预留标记和平静确认。
-- 间距系统：安静留白 28-44px，对象间距可不完全均匀但要有意图，图注间距 14-18px。
-- 响应式策略：桌面可让对象舞台和说明并列；手机按对象、材质图注、可用状态、操作顺序呈现，避免拥挤。
+## 使用要点
 
-## Page Adaptation Guide
+- 使用自然大地色、木纹与真实物件痕迹，不用装饰性裂纹堆叠。
+- 留白围绕木椅、材料档案与修复操作展开。
+- 估价和工期清楚可见，预约结果保持安静且明确。
 
-- Landing page: Use one material object, generous space, process notes, human copy, and a slow primary action after proof.
-- Dashboard: Use for studio inventory, wellness progress, or small collections where low density and material context matter.
-- Admin panel: Use only for calm curation or catalog management; avoid high-volume tables and urgent batch operations.
-- Forms, tables, and data: Use few fields, grounded labels, quiet helper text, and validation that stays close to the field.
-- Mobile: Show object, caption, status, care/process note, then action; preserve whitespace instead of squeezing more modules in.
-- Not a good fit for: Weak for urgent alerts, high-density analytics, loud campaigns, or glossy tech launches.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Let asymmetry feel found and intentional, not careless.
-- Use texture and edge softness instead of bright decoration.
-- Leave enough silence around product objects, quotes, and primary actions.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

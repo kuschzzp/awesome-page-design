@@ -33,3 +33,14 @@ test("catalog text cannot terminate the gallery data script", (t) => {
   assert.equal(readData(html).styles[0].name, unsafe);
   assert.ok(!html.includes(unsafe));
 });
+
+test("language controls stay on the homepage and viewport controls stay inside details", () => {
+  const html = renderGallery();
+  const main = html.match(/<main>([\s\S]*?)<\/main>/)[1];
+  const detail = html.match(/<dialog id="detail-dialog"[\s\S]*?<\/dialog>/)[0];
+  assert.equal((html.match(/data-lang="/g) || []).length, 2);
+  assert.equal((detail.match(/data-preview-view="/g) || []).length, 2);
+  assert.ok(!main.includes("data-preview-view="));
+  assert.ok(!detail.includes("data-lang="));
+  assert.ok(!html.includes("data-compare-style=") && !html.includes('id="selection-tray"'));
+});

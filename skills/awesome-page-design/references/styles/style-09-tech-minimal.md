@@ -1,96 +1,86 @@
-# Style 09 - Tech Minimal (科技极简风)
+# 风格 09：科技极简风
 
-## Summary
+## 概述
 
-Large whitespace, few colors, one visual focus, modern sans-serif type, and a quiet interface.
+大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。
 
-Chinese summary: 大面积空白、少色、单一视觉焦点、现代非衬线字体、界面极简。
+## 适用场景
 
-## Best For
+印刷工作室、编辑工具、聚焦型实用页面
 
-print studios, editorial tools, focused utility pages
+## 示例场景
 
-## Example Scenario
+- 示例产品：一张印务
+- 页面任务：在线印刷规格配置
+- 标题：从一张纸开始。
+- 主要操作：确认规格，生成需求单
+- 次要操作：查看出血校样
 
-- Product sample: Riso Ledger
-- Page job: Print studio job sheet
-- Headline: Track a small edition from paper stock to pickup shelf.
-- Primary action: Approve proof
-- Secondary action: Print docket
+## 场景组件
 
-## Scenario Components
+- 中心纸样可操作：纸张、尺寸和印色变化会联动同一幅原创海报纸样。
+- 演示报价可理解：数量、印制单价和制版费用共同呈现，规格改变即刻更新。
+- 记录前先确认：先审阅规格摘要，再生成本地需求单，不实际安排生产。
 
-- Ledger focus: A single production sheet anchors the page instead of a generic SaaS hero.
-- Studio precision: Paper, ink, drying time, and pickup status read like a real workshop record.
-- Quiet hierarchy: Whitespace is used to separate job stages, not to make the page feel empty.
+## 示例状态
 
-## Example States
+- 纸张与尺寸：已配置
+- 出血校样：可查看
+- 需求单：待确认
 
-- Blue pass: Drying
-- Proof crop: Approved
-- Pickup shelf: 4PM
+## 布局模式
 
-## Layout Pattern
+- 模式：极简印刷账页
+- 结构：双列工作台包含中心纸样、规格表单、即时暂估与三步生产说明。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用安静标题、紧凑字段 Label、对齐报价数字与小型生产说明。
+- 组件：用纸张表面、尺寸与印色 Select、出血标记、报价算式与需求摘要承载流程。
+- 按钮：使用对齐的简洁深色主按钮与小型选中态校样切换。
+- 图标与媒体：在不同纸张肌理上展示原创展览海报；预览仅作示意，不作色彩校准。
+- 状态：呈现纸张选择、尺寸变化、出血视图、数量错误、暂估重算与需求生成状态。
+- 避免：不要用装饰代码片段或无意义空白替代实际生产证据。
 
-- Pattern: Minimal Print Ledger (极简印刷账页)
-- Archetype: Minimal Print Ledger
-- Structure: Sparse production sheet with print job header, paper and ink ledger, proof panel, pickup rail, and clean decision controls.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use small labels, tabular quantities, quiet headings, and precise production notes.
-- Components: Job rows, ink passes, proof approval, drying status, and pickup windows should feel like studio paperwork.
-- Buttons: Buttons are minimal rectangles or text actions with high alignment.
-- Icons and media: Use paper stocks, ink passes, proof crops, and docket rows instead of code snippets.
-- States: Show drying, approved, pickup due, low stock, selected proof, and printed states.
-- Avoid: Do not turn minimalism into a blank page with no production evidence.
+## 视觉语言
 
-## Visual Language
+- 背景：`#ffffff`
+- 表面：`#f5f6f7`
+- 正文：`#252b31`
+- 弱化文字：`#8b949b`
+- 主色：`#27343e`
+- 强调色：`#df723e`
+- 边框：`#e2e7e9`
+- 圆角：`8px`
+- 面板圆角：`8px`
+- 控件圆角：`4px`
+- Chip 圆角：`2px`
+- 媒体圆角：`6px`
+- 几何规则：小圆角规格控件、精细边框与居中直角纸样。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 20px 60px rgba(15, 23, 42, .08)`
 
-- Background: `#f8fafc`
-- Surface: `#ffffff`
-- Text: `#0f172a`
-- Muted text: `#64748b`
-- Primary: `#111827`
-- Accent: `#2563eb`
-- Border: `#e2e8f0`
-- Radius: `8px`
-- Panel radius: `8px`
-- Control radius: `4px`
-- Chip radius: `2px`
-- Media radius: `6px`
-- Geometry rule: minimal small-radius surfaces with precise controls; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 20px 60px rgba(15, 23, 42, .08)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用单一深色确认操作、安静校样切换与明确键盘焦点。
+- 提示与反馈：行内更新暂估，在确认前校验数量，并提供可下载本地需求单。
+- 间距系统：表单内边距 24–32px，字段间距 14px，纸样四周留出充足空间。
+- 响应式策略：手机把纸样放在配置上方，同时保留暂估、算式和主操作。
 
-- Button system: Use minimal dark primary buttons, quiet secondary actions, clear focus rings, and no decorative button glow.
-- Feedback and alerts: Use plain inline alerts, compact success toasts, and reserved empty states.
-- Spacing system: Use 24-32px page rhythm, 16px component gaps, and narrow text measures around product proof.
-- Responsive behavior: Desktop can be sparse; mobile preserves the single focus object and moves secondary controls below it.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：以可感知纸样和简短规格承诺组织首屏。
+- 数据看板：使用聚焦配置与报价账页，避免无关指标。
+- 管理后台：用于小批量生产任务、校样审批记录与印制需求。
+- 表单、Table 与数据：使用紧凑可见 Label、风格一致的自定义 Listbox、有限数量、行内错误与确认步骤。
+- 移动端：先纸样后字段，保留报价透明度，把生产说明移到主操作下方。
+- 不适合：不擅长沉浸式活动与强烈视觉表现的产品。
 
-- 按钮细节：使用极简深色主按钮、安静次按钮、清晰焦点环，不使用装饰性按钮发光。
-- 提示与反馈：使用朴素内联提示、紧凑成功 toast 和克制空状态。
-- 间距系统：页面节奏 24-32px，组件间距 16px，产品证明周围文本宽度克制。
-- 响应式策略：桌面可稀疏；手机保留单一焦点对象，并把次级控件下移。
+## 使用要点
 
-## Page Adaptation Guide
+- 让纸张与生产规格成为界面中心。
+- 报价明确标注演示，并展示可理解的计算依据。
+- 校样切换和需求摘要必须对应当前规格。
 
-- Landing page: Use a focused product brief with one central proof object, concise copy, and quiet secondary links.
-- Dashboard: Use clean metrics, simple lists, small charts, and generous whitespace around the main decision.
-- Admin panel: Use orderly forms, tables, and settings pages with minimal decoration and strong alignment.
-- Forms, tables, and data: Use simple labels, compact helper text, precise focus rings, and calm error states.
-- Mobile: Keep one focus object, primary action, then details; move secondary controls below content.
-- Not a good fit for: Weak for brands that need strong personality or dramatic visual storytelling.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use one strong hero object or product surface.
-- Keep secondary UI quiet and highly aligned.
-- Prefer black, white, slate, and one measured blue accent.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

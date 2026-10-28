@@ -1,96 +1,86 @@
-# Style 12 - Layered Material (层级材质)
+# 风格 12：层级材质
 
-## Summary
+## 概述
 
-Clear elevation, large tonal cards, generous radius, and orderly touch-friendly surfaces.
+层次分明、大色块卡片、大圆角、有秩序且适合触控的表面。
 
-Chinese summary: 层次分明、大色块卡片、大圆角、有秩序且适合触控的表面。
+## 适用场景
 
-## Best For
+阅读计划、个人书架、温和学习工具
 
-interior sample boards, consumer tools, product dashboards
+## 示例场景
 
-## Example Scenario
+- 示例产品：书间
+- 页面任务：个人阅读计划与书架
+- 标题：翻开书，也打开一小段自己的时间。
+- 主要操作：记下读到的页码
+- 次要操作：安排阅读时间
 
-- Product sample: Room & Grain
-- Page job: Interior material board
-- Headline: Compare wood, textile, stone, and paint before the room is built.
-- Primary action: Approve board
-- Secondary action: Compare samples
+## 场景组件
 
-## Scenario Components
+- 以书为中心：书封、当前页码和进度条构成核心对象，不把阅读变成指标墙。
+- 各自保留的阅读足迹：切换三本演示书目，每本书的页码和章节位置分别保留在当前页面。
+- 与自己约半小时：选择日期与时段，为当前书目安排半小时；取消预约时保留阅读页码。
 
-- Sample stack: Physical layers, swatches, and supplier labels replace abstract product cards.
-- Room logic: Each material is tied to a real placement such as wall, floor, counter, or textile.
-- Approval trail: Availability, finish note, and owner decision remain visible together.
+## 示例状态
 
-## Example States
+- 把日子慢慢读：读到第一百二十六页
+- 树影里的来信：读到第四十二页
+- 周末去看海：读到第十八页
 
-- Oak veneer: Chosen
-- Linen weave: Hold
-- Warm limewash: Sample due
+## 布局模式
 
-## Layout Pattern
+- 模式：层叠阅读小角落
+- 结构：以触感书封和阅读进度纸张构成主表面；侧边时间面板与下方横向书架形成错落材质层级。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用平静的中文标题、小书架标签、清楚页码数字和舒展行距。
+- 组件：书封、章节行、实色进度轨、调性日程控件和书架对象共享柔和材质层级。
+- 按钮：记录进度使用梅紫实色操作，安排时段使用调性按钮；选中书目有边框和明确按下态。
+- 图标与媒体：采用原创窗边与叶片书封插画，以及尺寸稳定的小书脊。
+- 状态：呈现当前书目、已读章节、当前章节、未读章节、页码错误、已安排和已取消时段。
+- 避免：不要用通用任务卡替代阅读对象，也不要暗示会发送系统日历提醒。
 
-- Pattern: Layered Interior Samples (层叠室内样板)
-- Archetype: Layered Interior Samples
-- Structure: Material-board layout with stacked samples, swatch lanes, room placement notes, supplier rows, and approval rail.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use friendly material labels, room placement captions, and clear stock values.
-- Components: Swatches, sample stacks, supplier chips, placement notes, and approval states should share tactile depth.
-- Buttons: Use touch-friendly tonal buttons with visible selected states.
-- Icons and media: Use wood, textile, stone, paint, room plans, and supplier labels as content.
-- States: Show chosen, hold, sample due, low stock, approved, and compare states.
-- Avoid: Do not make layered material look like a generic task dashboard.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f1edf3`
+- 表面：`#fffcff`
+- 正文：`#3f3446`
+- 弱化文字：`#8b7a92`
+- 主色：`#79528e`
+- 强调色：`#b997c3`
+- 边框：`#dcd5df`
+- 圆角：`28px`
+- 面板圆角：`28px`
+- 控件圆角：`13px`
+- Chip 圆角：`5px`
+- 媒体圆角：`10px`
+- 几何规则：用层叠纸张、柔和书封边角和舒适调性按钮组织阅读工具。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 12px 35px rgba(99,80,113,.04)`
 
-- Background: `#f7f2fa`
-- Surface: `#ffffff`
-- Text: `#1d1b20`
-- Muted text: `#625b71`
-- Primary: `#6750a4`
-- Accent: `#eaddff`
-- Border: `#e7e0ec`
-- Radius: `22px`
-- Panel radius: `22px`
-- Control radius: `16px`
-- Chip radius: `12px`
-- Media radius: `18px`
-- Geometry rule: material-friendly curves reserved for touch surfaces; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 50px rgba(103, 80, 164, .16)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：提供舒适的实色与调性控件、持续可见的选中书目、带标签表单和明确取消确认。
+- 提示与反馈：按当前书目页数就地校验，同步更新进度与章节，并用轻量消息反馈操作结果。
+- 间距系统：阅读纸张采用二十八像素圆角，按钮圆角十三像素，使用柔和错位阴影和二十四至三十二像素书封间距。
+- 响应式策略：移动端将书封放在页码控件上方，日程与书架放到主要阅读表面之后。
 
-- Button system: Use touch-friendly filled and tonal buttons, clear selected states, and disabled states that preserve material depth.
-- Feedback and alerts: Use calm snackbars, inline helper text, and clear routine-complete confirmations.
-- Spacing system: Use 24px touch panels, 12-16px list gaps, and comfortable 44-52px controls.
-- Responsive behavior: Desktop can show phone panel and cloud; mobile keeps the daily panel first and converts side content into stacked cards.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：先展示可感知的产品对象和温和的个人价值，再展开辅助表面。
+- 数据看板：围绕当前书目组织页码、章节和个人阅读时段。
+- 管理后台：层级材质适合小型个人计划工具，不宜覆盖密集企业表格。
+- 表单、Table 与数据：表单带可见标签和对应书目的数值边界；取消预约不清空阅读进度。
+- 移动端：先显示书目、当前页码和记录操作，再展示章节与日程。
+- 不适合：不适合紧急事故控制室、严密工程图纸和高密度交易处理。
 
-- 按钮细节：使用适合触控的实色和调性按钮、清楚选中态，以及保留材质深度的禁用态。
-- 提示与反馈：使用平静 snackbar、内联帮助文本和清晰日程完成确认。
-- 间距系统：触控面板 24px，列表间距 12-16px，控件高度 44-52px。
-- 响应式策略：桌面可展示手机面板和信息云；手机先日程面板，侧内容变为堆叠卡片。
+## 使用要点
 
-## Page Adaptation Guide
+- 书目均为演示创作，不使用虚构阅读指标充当真实业务。
+- 每本书分别保存本次访问的页码和预约，刷新后还原。
+- 取消阅读时段必须保留已经记录的页码。
 
-- Landing page: Use layered product surfaces, touch-friendly proof cards, and calm utility storytelling.
-- Dashboard: Use large touch panels, routine cards, tonal status surfaces, and comfortable controls.
-- Admin panel: Use settings, forms, and utility dashboards where clarity and touch targets matter.
-- Forms, tables, and data: Use filled and tonal inputs, clear helper text, calm snackbars, and large touch targets.
-- Mobile: Put the daily or utility panel first; convert side content into stacked cards.
-- Not a good fit for: Weak for hard-edged technical consoles or editorial layouts that need strict rules.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Use large touch-friendly controls.
-- Separate hierarchy with tonal surfaces.
-- Keep motion and states calm and systematic.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

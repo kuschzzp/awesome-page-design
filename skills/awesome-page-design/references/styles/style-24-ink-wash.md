@@ -1,96 +1,86 @@
-# Style 24 - Ink Wash (水墨)
+# 风格 24：水墨
 
-## Summary
+## 概述
 
-Paper-white canvas, black ink hierarchy, red seal accents, scroll rhythm, and poetic editorial restraint.
+宣纸白底、墨色层级、朱红印章强调、卷轴节奏和诗性编辑克制。
 
-Chinese summary: 宣纸白底、墨色层级、朱红印章强调、卷轴节奏和诗性编辑克制。
+## 适用场景
 
-## Best For
+茶文化、博物馆、文学、文化电商、传统产品叙事
 
-tea culture, museums, literature, cultural ecommerce, heritage product stories
+## 示例场景
 
-## Example Scenario
+- 示例产品：山水旧札
+- 页面任务：原创地方志数字阅览
+- 标题：山水之间，人间日常。
+- 主要操作：添加页边批注
+- 次要操作：查看摘录册
 
-- Product sample: Mist Valley Tea
-- Page job: Tea mountain origin scroll
-- Headline: Trace one tea lot from foggy ridge to tasting table.
-- Primary action: Open tasting scroll
-- Secondary action: Browse lots
+## 场景组件
 
-## Scenario Components
+- 长卷阅读：山川、街巷、岁时三篇原创短文按卷次展开。
+- 页边留字：在具体段落上批注，想法保留在页边摘录册。
+- 有来处的摘录：每则批注可返回对应篇目与段落，也可移除。
 
-- Scroll pacing: Story, lot ledger, and tasting note unfold vertically like a quiet product record.
-- Seal semantics: Red is reserved for chosen lot, provenance proof, and decisive action.
-- Cultural restraint: Ink, blank paper, and source notes carry information instead of decoration.
+## 示例状态
 
-## Example States
+- 山川记：卷一
+- 街巷录：卷二
+- 岁时笺：卷三
 
-- Lot MV-04: Selected
-- Roast note: Saved
-- Source seal: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：地方志长卷阅览
+- 结构：宣纸长卷由刊头、水墨山峦与卷名开篇；左侧窄篇目栏、中间正文、右侧页边小记形成阅读工作区。篇目切换联动正文与进度，摘录可返回原段落。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：标题使用宋体与小幅书写节奏，正文横排、宽松行距，卷次与页边信息使用小字号。
+- 组件：篇目选择 Button、阅读 Progress、段落批注入口、页边摘录列表、移除操作与批注 Dialog。
+- 按钮：使用细线文字操作与朱红决定性按钮，焦点可见且不破坏阅读。
+- 图标与媒体：使用原创山峦与渡舟 SVG、浅纸纹和少量朱红卷印，正文不依赖花哨装饰。
+- 状态：展示当前篇目、阅读进度、空摘录册、批注错误、已收录和原文高亮；用户批注仅作为文本展示。
+- 避免：不要把地方志做成传统符号拼贴，也不要牺牲正文可读性。
 
-- Pattern: Ink Tea Scroll (水墨茶山卷轴)
-- Archetype: Ink Tea Scroll
-- Structure: Scroll-like tea origin page with ink landscape, lot ledger, tasting notes, provenance seal, and quiet commerce path.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use brush-like moments only for headings or seals; keep body copy disciplined and readable.
-- Components: Origin notes, tea lots, tasting rows, seal states, and source strips should feel archival.
-- Buttons: Primary actions can read like a seal; secondary actions should be text or rule-line controls.
-- Icons and media: Use paper, mist, ink fields, tea lot rows, red seals, and tasting notes.
-- States: Show selected lot, saved note, source seal, archived, warning, and tasting open states.
-- Avoid: Do not use decorative cultural symbols without structure.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f8f5ef`
+- 表面：`#fffdf7`
+- 正文：`#1f1f1c`
+- 弱化文字：`#68645c`
+- 主色：`#111111`
+- 强调色：`#c43a32`
+- 边框：`#d8d0c4`
+- 圆角：`2px`
+- 面板圆角：`0`
+- 控件圆角：`0`
+- Chip 圆角：`0`
+- 媒体圆角：`2px`
+- 几何规则：纸页式细线分栏、近直角控件、狭窄页边与朱红方印。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 18px 45px rgba(31, 31, 28, .08)`
 
-- Background: `#f8f5ef`
-- Surface: `#fffdf7`
-- Text: `#1f1f1c`
-- Muted text: `#68645c`
-- Primary: `#111111`
-- Accent: `#c43a32`
-- Border: `#d8d0c4`
-- Radius: `2px`
-- Panel radius: `0`
-- Control radius: `0`
-- Chip radius: `0`
-- Media radius: `2px`
-- Geometry rule: paper-and-rule geometry with seals and scroll-like edges; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 45px rgba(31, 31, 28, .08)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用细线文字操作与朱红决定性按钮，焦点可见且不破坏阅读。
+- 提示与反馈：展示当前篇目、阅读进度、空摘录册、批注错误、已收录和原文高亮；用户批注仅作为文本展示。
+- 间距系统：正文和篇目采用明确栏距，段落行距约 2.2 倍，页边批注保持安静。
+- 响应式策略：手机篇目栏改为横向三项选择，正文与摘录册依次排列；保持纸面留白和阅读字号。
 
-- Button system: Use seal-like primary actions, underlined text actions, and square focus states that preserve the paper rhythm.
-- Feedback and alerts: Use red seal confirmations, margin notes, rule-separated warnings, and source-open indicators.
-- Spacing system: Use wide paper margins, strict vertical rhythm, thin rule lines, and generous caption spacing.
-- Responsive behavior: Desktop can keep metadata, lead story, and index columns; mobile preserves scroll order with seal action after the title and source notes after the content.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：宣纸长卷由刊头、水墨山峦与卷名开篇；左侧窄篇目栏、中间正文、右侧页边小记形成阅读工作区。篇目切换联动正文与进度，摘录可返回原段落。
+- 数据看板：适合藏品与阅读记录，保持内容优先。
+- 管理后台：可用于出版或文化档案整理，不套通用后台。
+- 表单、Table 与数据：批注使用持久 Label 与字段附近的行内错误，禁用浏览器校验气泡；摘录通过文本节点安全呈现。
+- 移动端：手机篇目栏改为横向三项选择，正文与摘录册依次排列；保持纸面留白和阅读字号。
+- 不适合：不适合高密度指标、强游戏化或复杂实时操作。
 
-- 按钮细节：使用印章式主操作、下划线文字操作，以及保持纸面节奏的方形焦点态。
-- 提示与反馈：使用朱红印章确认、边注、规则线分隔警告和来源打开指示。
-- 间距系统：使用宽纸面边距、严格纵向节奏、细规则线和充足图注间距。
-- 响应式策略：桌面可保留元信息、主叙事和索引列；手机保持卷轴阅读顺序，标题后放印章操作，内容后放来源说明。
+## 使用要点
 
-## Page Adaptation Guide
+- 黑、灰与纸白构成主体，朱红仅用于卷印、选中篇目和批注操作。
+- 正文保持横排与舒适行距，书写感用于篇章标题。
+- 篇目、进度和批注都服务于阅读，不把传统元素堆成拼贴。
 
-- Landing page: Use a scroll-like editorial sequence with origin, source notes, product proof, and seal-like primary action.
-- Dashboard: Use only for cultural archives, catalog review, or editorial systems where index rows and provenance matter.
-- Admin panel: Use for museum, publishing, or cultural ecommerce back offices with careful metadata, not generic CRUD shells.
-- Forms, tables, and data: Use persistent labels, margin notes, rule-line validation, and a red seal only for decisive states.
-- Mobile: Preserve reading order as scroll sections: title, seal action, story, proof, index, source notes.
-- Not a good fit for: Weak for modern SaaS metrics, playful apps, or pages that need heavy chart density.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Treat black, gray, and blank paper as the main palette.
-- Use red only as a seal, warning, or decisive action accent.
-- Do not turn the page into a generic Asian decorative collage.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

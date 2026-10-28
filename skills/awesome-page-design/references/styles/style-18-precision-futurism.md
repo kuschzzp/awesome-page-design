@@ -1,96 +1,86 @@
-# Style 18 - Precision Futurism (精密未来风)
+# 风格 18：精密未来风
 
-## Summary
+## 概述
 
-Dark background, glowing borders, futuristic technology polish, and sci-fi UI precision.
+深色背景、发光边框、未来科技感和科幻 UI 精度。
 
-Chinese summary: 深色背景、发光边框、未来科技感和科幻 UI 精度。
+## 适用场景
 
-## Best For
+Issue 工具、AI 运营工具、技术型 SaaS
 
-issue trackers, AI operations tools, technical SaaS
+## 示例场景
 
-## Example Scenario
+- 示例产品：帧序
+- 页面任务：动画渲染任务工作台
+- 标题：让每一帧，顺利抵达。
+- 主要操作：补齐资源并重试
+- 次要操作：导出当前日志
 
-- Product sample: VectorOps
-- Page job: Precision incident map
-- Headline: Pin every failing span on one technical operations map.
-- Primary action: Replay incident
-- Secondary action: Export trace
+## 场景组件
 
-## Scenario Components
+- 以管线为主体：处理图占据中央，当前节点的技术说明附着在右侧。
+- 可恢复的状态：重试从已完成帧继续，联动节点、进度、输出文件名和事件日志。
+- 有节制的精密感：等宽数值、细边框和受控紫光区分选中、失败、暂停与完成状态。
 
-- Map-first layout: The topology field takes the main space while side data stays attached to active nodes.
-- Compact evidence: Trace rows, span IDs, retry state, and command actions stay dense and deliberate.
-- Controlled glow: Light is reserved for selected paths, errors, and replay-ready states.
+## 示例状态
 
-## Example States
+- 雨后街角：需要恢复
+- 最后一班夜车：已暂停
+- 纸上城市：已完成
 
-- Retry storm: Watch
-- Span 7B: Fail
-- Replay batch: Ready
+## 布局模式
 
-## Layout Pattern
+- 模式：动画渲染管线台
+- 结构：三栏技术控制台包含左侧任务队列、中央五节点处理图与帧进度、右侧节点检查器和底部事件日志。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：使用紧凑技术标签和对齐等宽数字，较大字号留给当前任务。
+- 组件：三栏技术控制台包含左侧任务队列、中央五节点处理图与帧进度、右侧节点检查器和底部事件日志。
+- 按钮：使用紧凑暗色命令控件，紫色突出恢复操作，禁用态说明任务完成。
+- 图标与媒体：使用处理节点、有向路径、帧数、输出序列文件名和事件日志，不以装饰科幻背景填充空间。
+- 状态：呈现节点失败、上游完成、下游等待、重试运行、任务暂停和输出校验完成状态。
+- 避免：不要用过量发光遮住精确信息。
 
-- Pattern: Precision Incident Map (精密事故地图)
-- Archetype: Precision Incident Map
-- Structure: Full-width technical map with topology canvas, span lanes, replay command bar, incident ticker, and attached evidence panels.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use compact technical UI type, precise labels, and aligned numeric values.
-- Components: Topology nodes, span lanes, incident chips, command buttons, latency strips, and replay fragments should feel engineered.
-- Buttons: Buttons are compact dark controls with glow reserved for active or critical actions.
-- Icons and media: Use topology maps, traces, logs, span diagrams, and evidence overlays instead of generic sci-fi backgrounds.
-- States: Show active path, fail, retry, replay ready, incident open, and selected node states.
-- Avoid: Do not cover precise information with excessive glow.
+## 视觉语言
 
-## Visual Language
+- 背景：`#08090d`
+- 表面：`#0f0e15`
+- 正文：`#e9e8ef`
+- 弱化文字：`#9a89b0`
+- 主色：`#e9e8ef`
+- 强调色：`#a777f4`
+- 边框：`#2b2635`
+- 圆角：`6px`
+- 面板圆角：`6px`
+- 控件圆角：`4px`
+- Chip 圆角：`2px`
+- 媒体圆角：`4px`
+- 几何规则：精密控制台几何搭配小圆角面板；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18)`
 
-- Background: `#08090d`
-- Surface: `#101117`
-- Text: `#f4f4f5`
-- Muted text: `#a1a1aa`
-- Primary: `#f4f4f5`
-- Accent: `#8b5cf6`
-- Border: `#27272f`
-- Radius: `6px`
-- Panel radius: `6px`
-- Control radius: `4px`
-- Chip radius: `2px`
-- Media radius: `4px`
-- Geometry rule: precision console geometry with low-radius panels; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 0 0 1px rgba(139, 92, 246, .22), 0 24px 80px rgba(139, 92, 246, .18)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：使用紧凑暗色命令控件，紫色突出恢复操作，禁用态说明任务完成。
+- 提示与反馈：必填错误贴近字段显示，完成操作提供可读反馈，所有可见状态都与本地演示数据一致。
+- 间距系统：控制台面板 16-20px，Trace 行 8-12px，指标紧凑且使用对齐的表格数字。
+- 响应式策略：手机先展示任务摘要，再展示管线图、节点检查器和事件日志，保证紧凑标签仍可读。
 
-- Button system: Use precise command buttons, thin glow only on active/focus states, and compact disabled states for technical control.
-- Feedback and alerts: Use trace toasts, incident chips, warning rows, and replay confirmations tied to real system state.
-- Spacing system: Use 16-20px console panels, 8-12px trace rows, and dense tabular metrics.
-- Responsive behavior: Desktop keeps graph, trace panel, and queue; mobile shows trace summary, then graph, then queue.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：使用精确的技术产品叙事，呈现图关系、Trace、事故和命令操作。
+- 数据看板：使用图形控制台、Trace 列表、紧凑指标、事故 Chip 和重放控件。
+- 管理后台：用于技术型 SaaS 运营、Issue 分诊、可观测性和工作流重放。
+- 表单、Table 与数据：保留可见 Label，使用自定义行内错误与本地确认反馈，不使用浏览器原生校验气泡。
+- 移动端：手机先展示任务摘要，再展示管线图、节点检查器和事件日志，保证紧凑标签仍可读。
+- 不适合：不适合柔和的消费品牌，或更需要温暖而非精密感的页面。
 
-- 按钮细节：使用精密命令按钮，只在 active/focus 使用细发光，并为技术控件提供紧凑禁用态。
-- 提示与反馈：使用 trace toast、incident chip、警告行，以及绑定真实系统状态的 replay 确认。
-- 间距系统：控制台面板 16-20px，trace 行 8-12px，指标紧凑且表格数字对齐。
-- 响应式策略：桌面保留图、trace 面板和队列；手机先 trace 摘要，再图，再队列。
+## 使用要点
 
-## Page Adaptation Guide
+- 三栏技术控制台包含左侧任务队列、中央五节点处理图与帧进度、右侧节点检查器和底部事件日志。
+- 使用处理节点、有向路径、帧数、输出序列文件名和事件日志，不以装饰科幻背景填充空间。
+- 手机先展示任务摘要，再展示管线图、节点检查器和事件日志，保证紧凑标签仍可读。
 
-- Landing page: Use a precise technical product story with graph, traces, incidents, and command action.
-- Dashboard: Use graph console, trace list, compact metrics, incident chips, and replay controls.
-- Admin panel: Use for technical SaaS operations, issue triage, observability, and workflow replay.
-- Forms, tables, and data: Use compact dark inputs, command buttons, exact validation, and visible focused edges.
-- Mobile: Show trace summary, graph, queue, and replay action in that order.
-- Not a good fit for: Weak for soft consumer brands or pages needing warmth over precision.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Keep the surface quiet and precise.
-- Use glow as a state signal, not decoration everywhere.
-- Favor clean lists, compact cards, and command-like actions.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Style 01 - Card Grid</title>
+<link rel="icon" href="../../previews/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../previews/favicon.svg" type="image/svg+xml" sizes="any">
 <style>
 *,
 *::before,
@@ -17,19 +19,19 @@ body {
   overflow-x: hidden;
 }
 :root {
-  --bg: #eef6ff;
+  --bg: #f5f7fa;
   --surface: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --primary: #1677ff;
-  --accent: #0ea5e9;
-  --border: #d7e7fb;
-  --radius: 8px;
-  --panel-radius: 8px;
-  --control-radius: 6px;
+  --text: #344350;
+  --muted: #7b8895;
+  --primary: #23879a;
+  --accent: #e5f2f4;
+  --border: #e2e8ef;
+  --radius: 6px;
+  --panel-radius: 6px;
+  --control-radius: 4px;
   --chip-radius: 4px;
-  --media-radius: 8px;
-  --shadow: 0 18px 46px rgba(22, 119, 255, .10);
+  --media-radius: 6px;
+  --shadow: 0 1px 3px rgba(31, 50, 65, .03);
 }
 body {
   min-height: 100vh;
@@ -81,12 +83,6 @@ body.card-grid .page {
 body.card-grid .top-nav {
   display: none;
 }
-body.card-grid .interaction-demo,
-body.card-grid .style-lab {
-  width: min(100% - 48px, 1268px);
-  margin-right: auto;
-  margin-left: auto;
-}
 body.card-grid .primary-action,
 body.card-grid .tabs button.active,
 body.card-grid .toggle-chip[aria-pressed="true"],
@@ -95,13 +91,7 @@ body.card-grid .segmented .active {
   border-color: var(--primary);
   color: #ffffff;
 }
-body.card-grid .interaction-copy,
-body.card-grid .state-board,
-body.card-grid .lab-summary,
-body.card-grid .lab-workspace,
-body.card-grid .panel,
-body.card-grid .implementation-list li,
-body.card-grid .state-pill {
+body.card-grid .panel{
   border-color: #d7e3f2;
   background: #ffffff;
 }
@@ -3683,17 +3673,6 @@ button:disabled,
   margin: 0 auto;
   padding: 24px calc(24px + env(safe-area-inset-right)) 64px calc(24px + env(safe-area-inset-left));
 }
-.reference-stack {
-  display: grid;
-  gap: 32px;
-  margin-top: 88px;
-  padding-top: 30px;
-  border-top: 1px solid color-mix(in srgb, var(--border), transparent 30%);
-}
-.reference-stack .interaction-demo,
-.reference-stack .style-lab {
-  margin-top: 0;
-}
 .top-nav {
   min-height: 60px;
   display: flex;
@@ -3816,7 +3795,6 @@ p {
 }
 .metric-row,
 .metric-tile,
-.detail-pills,
 .queue-list,
 .feature-block {
   min-width: 0;
@@ -6840,11 +6818,7 @@ body.art-deco .poster-copy,
 body.art-deco .poster-stack,
 body.art-deco .deco-wing,
 body.art-deco .deco-centerpiece,
-body.art-deco .deco-floorplan,
-body.art-deco .interaction-copy,
-body.art-deco .state-board,
-body.art-deco .lab-summary,
-body.art-deco .lab-workspace {
+body.art-deco .deco-floorplan{
   border-color: var(--primary);
   box-shadow: inset 0 0 0 1px rgba(212,175,55,.32), var(--shadow);
 }
@@ -6903,9 +6877,7 @@ body.wabi-sabi .object-stage .media::before {
 body.wabi-sabi .object-stage .media::after,
 body.wabi-sabi .material-caption span,
 body.wabi-sabi .object-ledger span,
-body.wabi-sabi .metric-tile,
-body.wabi-sabi .state-pill,
-body.wabi-sabi .implementation-list li {
+body.wabi-sabi .metric-tile{
   background: color-mix(in srgb, var(--surface), var(--bg) 18%);
 }
 body.wabi-sabi .primary-action {
@@ -6955,11 +6927,7 @@ body.ink-wash .seal-action {
 body.ink-wash .feature-block,
 body.ink-wash .metric-tile,
 body.ink-wash .queue-card,
-body.ink-wash .panel,
-body.ink-wash .lab-summary,
-body.ink-wash .lab-workspace,
-body.ink-wash .interaction-copy,
-body.ink-wash .state-board {
+body.ink-wash .panel{
   box-shadow: none;
 }
 body.blueprint .node-graph,
@@ -7007,11 +6975,7 @@ body.industrial-control .ticket-card,
 body.industrial-control .control-header,
 body.industrial-control .status-filters,
 body.industrial-control .alarm-board,
-body.industrial-control .machine-inspector,
-body.industrial-control .interaction-copy,
-body.industrial-control .state-board,
-body.industrial-control .lab-summary,
-body.industrial-control .lab-workspace {
+body.industrial-control .machine-inspector{
   border-color: #4b5545;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.04), var(--shadow);
 }
@@ -7025,8 +6989,7 @@ body.industrial-control .toggle-chip[aria-pressed="true"] {
   border-color: var(--primary);
 }
 body.industrial-control .ticket-card span,
-body.industrial-control .inline-alert,
-body.industrial-control .state-pill.warning {
+body.industrial-control .inline-alert{
   color: #11130f;
   background: var(--accent);
   border-color: var(--accent);
@@ -7039,68 +7002,6 @@ body.industrial-control .queue-card,
 body.industrial-control .metric-tile,
 body.industrial-control .feature-block {
   background: color-mix(in srgb, var(--surface), #000 12%);
-}
-.interaction-demo {
-  display: grid;
-  grid-template-columns: .84fr 1.16fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: stretch;
-}
-.interaction-copy,
-.state-board {
-  padding: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--panel-radius);
-  box-shadow: var(--shadow);
-}
-.interaction-copy h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.implementation-list {
-  display: grid;
-  gap: 10px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.implementation-list li {
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.implementation-list b {
-  color: var(--text);
-}
-.state-board {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-}
-.state-board-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-.state-board-head span {
-  min-width: 0;
-  color: var(--muted);
-  font-weight: 800;
-}
-.state-board-head strong {
-  font-size: 28px;
-  font-variant-numeric: tabular-nums;
 }
 .button-row {
   display: flex;
@@ -7182,58 +7083,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   line-height: 1.45;
 }
-.state-stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-.state-pill {
-  min-width: 0;
-  display: grid;
-  gap: 4px;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 12%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.42;
-}
-.state-pill b {
-  color: var(--text);
-}
-.state-pill.success {
-  border-color: color-mix(in srgb, #16a34a, var(--border) 52%);
-}
-.state-pill.loading {
-  border-color: color-mix(in srgb, var(--accent), var(--border) 48%);
-}
-.state-pill.empty {
-  opacity: .86;
-}
-.state-pill.error {
-  border-color: color-mix(in srgb, #dc2626, var(--border) 46%);
-}
-.responsive-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.responsive-steps span {
-  min-width: 0;
-  padding: 12px;
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface), var(--bg) 14%);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.responsive-steps b {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--text);
-}
 .toast {
   position: fixed;
   left: 50%;
@@ -7257,15 +7106,6 @@ body.industrial-control .feature-block {
   color: var(--muted);
   font-size: 14px;
 }
-.style-lab {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 18px;
-  margin-top: 28px;
-  align-items: start;
-}
-.lab-summary,
-.lab-workspace,
 .panel {
   padding: 20px;
   background: var(--surface);
@@ -7273,25 +7113,6 @@ body.industrial-control .feature-block {
   border-radius: var(--panel-radius);
   box-shadow: var(--shadow);
 }
-.detail-pills {
-  display: grid;
-  gap: 8px;
-  margin-top: 16px;
-}
-.detail-pills span {
-  max-width: 100%;
-  padding: 8px 10px;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--chip-radius);
-  font-size: 13px;
-  line-height: 1.45;
-}
-.lab-summary h2 {
-  font-size: 30px;
-  line-height: 1.12;
-}
-.lab-summary p,
 .panel p {
   font-size: 15px;
 }
@@ -7367,10 +7188,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     max-width: none;
     padding: 0 0 48px;
-  }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 28px, 760px);
   }
   .life-aurora,
   .life-stark-contact,
@@ -7616,10 +7433,7 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
-  .workspace-grid,
-  .responsive-steps {
+  .workspace-grid{
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -7731,13 +7545,9 @@ body.industrial-control .feature-block {
   .canvas-layers,
   .soft-learning,
   .acid-poster,
-  .interaction-demo,
-  .style-lab,
   .workspace-grid,
-  .responsive-steps,
   .metric-row,
-  .queue-list,
-  .state-stack {
+  .queue-list{
     min-width: 0;
     max-width: 100%;
   }
@@ -7749,8 +7559,7 @@ body.industrial-control .feature-block {
   .cute-actions,
   .catalog-actions,
   .shift-actions,
-  .related,
-  .detail-pills {
+  .related{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -7830,8 +7639,7 @@ body.industrial-control .feature-block {
   .launch-counters,
   .asset-mosaic,
   .alarm-room-head,
-  .progress-path,
-  .state-stack {
+  .progress-path{
     grid-template-columns: 1fr;
   }
   .toolbar-actions {
@@ -8075,10 +7883,6 @@ body.industrial-control .feature-block {
   body.card-grid .page {
     padding: 0 0 44px;
   }
-  body.card-grid .interaction-demo,
-  body.card-grid .style-lab {
-    width: min(100% - 24px, 460px);
-  }
   .life-bento-market {
     grid-template-columns: 1fr;
   }
@@ -8277,8 +8081,6 @@ body.industrial-control .feature-block {
   .trace-panel,
   .glass-panel,
   .render-queue,
-  .lab-summary,
-  .lab-workspace,
   .panel,
   .feature-block,
   .filter-rail {
@@ -8293,75 +8095,103 @@ body.industrial-control .feature-block {
   }
 }
 
-/* Library navigation stays visually separate from each fictional product. */
+/* 统一的预览工具栏，与演示产品的导航保持清晰层次。 */
 .preview-context-shell {
-  color: #18202e;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  color-scheme: light;
-  font: 14px/1.4 ui-sans-serif, system-ui, sans-serif;
+  color: #f4f4f5;
+  background: #232529;
+  border-bottom: 1px solid #35373c;
+  color-scheme: dark;
+  font: 13px/1.4 ui-sans-serif, system-ui, sans-serif;
 }
 .preview-context {
-  width: min(100%, 1268px);
-  min-height: 72px;
+  width: 100%;
+  height: 47px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 16px 24px;
-  margin: 0 auto;
-  padding: 12px calc(24px + env(safe-area-inset-right)) 12px calc(24px + env(safe-area-inset-left));
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 0 calc(24px + env(safe-area-inset-right)) 0 calc(24px + env(safe-area-inset-left));
+}
+.preview-context-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.preview-context-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 24px;
+  min-width: 30px;
+  padding: 0 6px;
+  border: 1px solid #50535b;
+  border-radius: 4px;
+  color: #d4d6dc;
+  background: #303238;
+  font: 500 11px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.preview-context-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.preview-context-actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 20px;
 }
 .preview-context-back,
 .preview-context-use {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   min-height: 44px;
   text-decoration: none;
   overflow-wrap: normal;
+  white-space: nowrap;
+  border-radius: 5px;
 }
-.preview-context-back { color: #475569; }
-.preview-context-back:hover { color: #0f172a; text-decoration: underline; }
-.preview-context-identity {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 10px;
-}
-.preview-context-number,
-.preview-context-identity > span:last-child { color: #64748b; font-size: 12px; }
-.preview-context-identity strong { font-size: 15px; font-weight: 650; }
-.preview-context-use {
+.preview-context svg {
+  width: 15px;
+  height: 15px;
   flex: 0 0 auto;
-  padding: 0 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  color: #0f172a;
-  background: #f8fafc;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.preview-context-back { color: #c2c5cc; }
+.preview-context-back:hover { color: #ffffff; }
+.preview-context-use { color: #24262b; }
+.preview-context-use-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid #f4f4f5;
+  border-radius: 5px;
+  background: #f4f4f5;
   font-weight: 600;
+  transition: background .15s ease, border-color .15s ease;
 }
-.preview-context-use:hover { border-color: #64748b; background: #f1f5f9; }
+.preview-context-use:hover .preview-context-use-label { background: #dedfe3; border-color: #dedfe3; }
 .preview-context a:focus-visible {
-  outline: 3px solid #2563eb;
-  outline-offset: 3px;
+  outline: 2px solid #a5c8ff;
+  outline-offset: 1px;
 }
-.reference-disclosure { margin-top: 40px; }
-.reference-disclosure > summary {
-  padding: 18px 0;
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  font-size: 15px;
-  cursor: pointer;
-}
-.reference-disclosure > summary:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-}
-.reference-disclosure-hint { margin-left: 12px; color: var(--muted); font-size: 12px; }
-.reference-disclosure .reference-stack { margin-top: 24px; padding-top: 0; border-top: 0; }
 /* Keep the print ledger's decision separate from its long heading. */
 .life-print-ledger .ledger-header { align-items: center; }
 .life-print-ledger .ledger-header > div { flex: 1; max-width: 780px; }
@@ -8380,192 +8210,502 @@ body.industrial-control .feature-block {
   .life-print-ledger .ledger-header > .primary-action { align-self: flex-start; width: auto; }
 }
 @media (max-width: 640px) {
-  .preview-context { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; padding: 12px 16px; }
-  .preview-context-identity { grid-column: 1 / -1; grid-row: 1; }
-  .preview-context-back { justify-self: start; }
-  .preview-context-use { padding: 0 12px; }
-  .reference-disclosure-hint { display: block; margin: 6px 0 0 18px; }
+  .preview-context { gap: 10px; padding: 0 calc(12px + env(safe-area-inset-right)) 0 calc(12px + env(safe-area-inset-left)); font-size: 12px; }
+  .preview-context-identity { gap: 7px; }
+  .preview-context-name { font-size: 12px; }
+  .preview-context-actions { gap: 12px; }
+  .preview-context-use-label { gap: 5px; padding: 0 9px; }
   .life-print-ledger .print-production-grid { grid-template-columns: minmax(0, 1fr); }
   .life-print-ledger .job-ledger > span { grid-template-columns: 64px minmax(0, 1fr); gap: 5px 12px; }
   .life-print-ledger .job-ledger em { grid-column: 2; }
 }
+/* Style 01：栖物仓。只作用于物资调度示例。 */
+.stock-app {
+  --stock-accent:#23879a;
+  --stock-accent-strong:#176e7f;
+  --stock-text:#344350;
+  --stock-muted:#85919f;
+  --stock-line:#e4eaf0;
+  display:grid;
+  grid-template-columns:224px minmax(0,1fr);
+  grid-template-rows:64px 1fr;
+  min-height:calc(100dvh - 48px);
+  background:#f5f7fa;
+  color:var(--stock-text);
+  font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  text-align:left;
+  isolation:isolate;
+}
+.stock-app *, .stock-app *::before, .stock-app *::after { box-sizing:border-box; }
+.stock-app button,.stock-app input,.stock-app textarea { font:inherit; }
+.stock-app button { cursor:pointer; }
+.stock-app button:disabled { cursor:default; opacity:.42; }
+.stock-app button:focus-visible,.stock-app a:focus-visible,.stock-app input:focus-visible,.stock-app textarea:focus-visible,.stock-table-scroll:focus-visible { outline:3px solid #23879a66; outline-offset:2px; }
+.stock-app [hidden] { display:none!important; }
+.stock-app svg { display:block; flex-shrink:0; width:20px; height:20px; }
+.stock-brand { display:flex; align-items:center; gap:10px; min-width:0; padding:0 24px; border-bottom:1px solid var(--stock-line); border-right:1px solid var(--stock-line); background:#fff; color:var(--stock-accent); text-decoration:none; }
+.stock-brand-icon svg { width:27px; height:27px; stroke-width:1.6; }
+.stock-brand strong { font-size:21px; letter-spacing:1px; white-space:nowrap; }
+.stock-brand-note { display:none; }
+.stock-topbar { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 24px; border-bottom:1px solid var(--stock-line); background:#fff; }
+.stock-topbar-left,.stock-topbar-right { display:flex; align-items:center; gap:14px; min-width:0; }
+.stock-current-location { font-size:15px; font-weight:600; white-space:nowrap; }
+.stock-topbar-right { gap:12px; }
+.stock-workspace { color:#7d8996; font-size:13px; }
+.stock-topbar-divider { height:20px; border-left:1px solid var(--stock-line); margin:0 4px; }
+.stock-avatar { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:#edf6f7; color:#4794a1; }
+.stock-avatar svg { width:18px; height:18px; }
+.stock-person { font-size:13px; white-space:nowrap; }
+.stock-person>span { margin-left:9px; padding:2px 6px; border:1px solid var(--stock-line); border-radius:3px; font-size:11px; color:#8c97a2; }
+.stock-icon-button { position:relative; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; width:40px; height:40px; padding:0; border:1px solid transparent; border-radius:4px; color:#7a8896; background:transparent; }
+.stock-icon-button:hover { color:var(--stock-accent); background:#f0f7f8; }
+.stock-notification-dot { position:absolute; width:5px; height:5px; top:8px; right:10px; background:#d38a52; border-radius:50%; }
+.stock-sidebar { grid-column:1; grid-row:2; position:relative; display:flex; flex-direction:column; min-height:620px; padding:26px 12px 0; border-right:1px solid var(--stock-line); background:#fff; }
+.stock-nav-caption { margin:0 14px 14px; color:#a0a9b3; font-size:11px; letter-spacing:1.5px; }
+.stock-nav-item { display:flex; align-items:center; gap:12px; width:100%; min-height:48px; margin-bottom:7px; padding:10px 14px; border:0; border-radius:5px; background:transparent; color:#74818e; text-align:left; }
+.stock-nav-item>svg { width:19px; height:19px; stroke-width:1.6; }
+.stock-nav-item:hover { background:#f4f8f9; }
+.stock-nav-item.is-active { background:#e9f4f6; color:var(--stock-accent); font-weight:600; }
+.stock-nav-count { margin-left:auto; font-size:11px; color:#9ba7b2; font-variant-numeric:tabular-nums; }
+.stock-nav-item.is-active .stock-nav-count { color:#5095a2; }
+.stock-sidebar-bottom { display:flex; align-items:center; gap:7px; margin-top:auto; padding:28px 13px 23px; color:#a0aab4; font-size:10px; white-space:nowrap; }
+.stock-connection-dot { width:5px; height:5px; border-radius:50%; background:#7fb6ad; }
+.stock-sidebar-mobile-head,.stock-drawer-toggle,.stock-drawer-backdrop { display:none; }
+.stock-workspace-area { grid-column:2; grid-row:2; min-width:0; padding:24px; }
+.stock-panel { padding:24px 24px 0; border:1px solid var(--stock-line); border-radius:6px; background:#fff; }
+.stock-panel-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:24px; }
+.stock-panel-heading h1 { margin:0; color:#344350; font-size:19px; line-height:1.5; font-weight:650; letter-spacing:0; }
+.stock-panel-heading p { margin:6px 0 0; color:#9aa4ae; font-size:12px; line-height:1.6; }
+.stock-button { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; gap:7px; min-height:38px; padding:7px 15px; border:1px solid #dce4eb; border-radius:4px; background:#fff; color:#788593; line-height:1.5; white-space:nowrap; }
+.stock-button>svg { width:16px; height:16px; }
+.stock-button:hover { border-color:#7eb6c1; color:var(--stock-accent); background:#f9fcfc; }
+.stock-button-primary { border-color:var(--stock-accent); background:var(--stock-accent); color:#fff; }
+.stock-button-primary:hover { border-color:var(--stock-accent-strong); background:var(--stock-accent-strong); color:#fff; }
+.stock-button-quiet { border-color:transparent; color:#8d98a3; padding-right:0; }
+.stock-button-quiet:hover { border-color:transparent; background:transparent; }
+.stock-button-danger { border-color:#d97573; background:#d97573; color:#fff; }
+.stock-button-danger:hover { border-color:#ba5555; background:#ba5555; color:#fff; }
+.stock-filters { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:20px; }
+.stock-search { display:flex; align-items:center; position:relative; width:254px; max-width:100%; }
+.stock-search>svg { position:absolute; left:12px; width:16px; height:16px; color:#a5afb9; pointer-events:none; }
+.stock-search input { width:100%; min-width:0; height:38px; padding:8px 12px 8px 36px; border:1px solid #dce4eb; border-radius:4px; background:#fff; color:var(--stock-text); outline-offset:1px; }
+.stock-search input::placeholder,.stock-field input::placeholder,.stock-field textarea::placeholder { color:#b0b8c1; }
+.stock-select { position:relative; width:158px; }
+.stock-select-trigger { display:flex; justify-content:space-between; align-items:center; gap:12px; width:100%; min-height:38px; padding:7px 12px; border:1px solid #dce4eb; border-radius:4px; background:#fff; color:#7f8c99; text-align:left; }
+.stock-select-trigger>span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.stock-select-trigger>svg { width:15px; height:15px; color:#a6b0ba; }
+.stock-select-trigger:hover,.stock-select-trigger[aria-expanded=true] { border-color:#86bbc6; }
+.stock-select-options { position:absolute; z-index:12; top:calc(100% + 5px); left:0; width:max(100%,170px); max-width:100%; max-height:210px; overflow:auto; padding:5px; border:1px solid var(--stock-line); border-radius:5px; box-shadow:0 8px 24px #34435014; background:#fff; }
+.stock-select-up .stock-select-options { top:auto; bottom:calc(100% + 5px); }
+.stock-select-options [role=option] { display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%; min-height:34px; padding:7px 8px; border:0; border-radius:3px; background:#fff; color:#6c7a88; text-align:left; font-size:13px; }
+.stock-select-options [role=option]>svg { width:14px; height:14px; visibility:hidden; }
+.stock-select-options [role=option]:hover,.stock-select-options [role=option]:focus-visible { background:#f1f8f9; }
+.stock-select-options [role=option][aria-selected=true] { color:var(--stock-accent); background:#edf6f7; }
+.stock-select-options [role=option][aria-selected=true]>svg { visibility:visible; }
+.stock-table-scroll { max-width:100%; overflow:auto; scrollbar-width:thin; scrollbar-color:#d7dfe5 transparent; }
+.stock-table { width:100%; min-width:1010px; border-spacing:0; border-collapse:separate; font-size:13px; }
+.stock-table th { height:46px; padding:10px 12px; background:#e6f1f3; border-bottom:1px solid #e2edf0; color:#506976; font-weight:600; text-align:left; white-space:nowrap; }
+.stock-table td { height:64px; padding:10px 12px; border-bottom:1px solid #edf0f4; color:#596b79; white-space:nowrap; }
+.stock-table tbody tr:hover { background:#fafcfd; }
+.stock-table th:last-child,.stock-table td:last-child { position:sticky; right:0; z-index:1; min-width:104px; border-left:1px solid #edf0f4; }
+.stock-table th:last-child { background:#e6f1f3; }
+.stock-table td:last-child { background:#fff; }
+.stock-table tbody tr:hover td:last-child { background:#fafcfd; }
+.stock-col-code { width:105px; }
+.stock-col-name { width:236px; }
+.stock-col-actions { width:100px; }
+.stock-code { color:#748491; font-size:12px; letter-spacing:.15px; font-variant-numeric:tabular-nums; }
+.stock-item-name { display:block; color:#425766; font-size:14px; line-height:1.6; font-weight:500; }
+.stock-item-detail { display:block; max-width:220px; margin-top:3px; overflow:hidden; text-overflow:ellipsis; color:#8594a0; font-size:12px; line-height:1.5; }
+.stock-table .stock-numeric { text-align:right; font-variant-numeric:tabular-nums; }
+.stock-unit { color:#8796a2; font-size:11px; }
+.stock-date { font-variant-numeric:tabular-nums; font-size:12px; }
+.stock-badge { display:inline-block; padding:2px 7px; border:1px solid; border-radius:3px; font-size:12px; line-height:1.5; }
+.stock-badge.is-ready { color:#74ad5b; border-color:#dfedda; background:#f3f9ef; }
+.stock-badge.is-borrowed { color:#ba9b55; border-color:#efe5ca; background:#fcf9f0; }
+.stock-badge.is-repair { color:#9a93b2; border-color:#e8e4f0; background:#f6f4f9; }
+.stock-private-note { display:block; margin-top:4px; color:#a5a0af; font-size:9px; }
+.stock-row-actions { display:flex; align-items:center; gap:12px; }
+.stock-row-actions button { min-height:32px; padding:3px 0; border:0; background:transparent; color:#398fa0; font-size:12px; }
+.stock-row-actions button:hover { text-decoration:underline; }
+.stock-row-actions .stock-row-remove { color:#d88a88; }
+.stock-empty { padding:48px 16px; text-align:center; color:#99a4ae; }
+.stock-empty>svg { width:30px; height:30px; margin:0 auto 13px; color:#aac3ca; }
+.stock-empty strong { display:block; margin:0 0 5px; color:#73828f; font-weight:500; }
+.stock-empty p { margin:0 0 16px; font-size:12px; }
+.stock-table-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; min-height:72px; }
+.stock-table-footer>p { margin:0; color:#9ba6b0; font-size:12px; }
+.stock-pagination { display:flex; align-items:center; gap:7px; }
+.stock-page-size { margin-right:10px; padding:7px 12px; border:1px solid #e0e6ec; border-radius:4px; color:#91a0ad; font-size:12px; white-space:nowrap; }
+.stock-pagination .stock-icon-button { width:30px; height:34px; }
+.stock-pagination .stock-icon-button>svg { width:15px; height:15px; }
+.stock-page-buttons { display:flex; gap:4px; }
+.stock-page-number { min-width:28px; height:32px; padding:3px 8px; border:0; border-radius:4px; background:transparent; color:#91a0ac; font-size:12px; }
+.stock-page-number.is-active { color:var(--stock-accent); font-weight:600; }
+.stock-page-number:hover { background:#edf6f7; }
+.stock-page-footnote { margin:20px 0 0; text-align:center; font-size:11px; letter-spacing:.3px; color:#b1bac3; }
+.stock-dialog { width:min(720px,calc(100% - 40px)); max-height:calc(100dvh - 64px); padding:0; border:1px solid #e3e9ee; border-radius:8px; background:#fff; color:var(--stock-text); box-shadow:0 20px 64px #1d2e3b29; }
+.stock-dialog::backdrop { background:#1b222b77; }
+.stock-dialog>form { display:grid; grid-template-rows:auto minmax(0,1fr) auto; max-height:calc(100dvh - 66px); margin:0; }
+.stock-dialog-head { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:68px; padding:15px 24px; border-bottom:1px solid #e9edf2; }
+.stock-dialog-head h2 { margin:0; font-size:17px; font-weight:600; }
+.stock-dialog-head .stock-icon-button { width:32px; height:32px; color:#9aa5af; }
+.stock-dialog-head .stock-icon-button>svg { width:17px; height:17px; }
+.stock-dialog-body { min-height:0; max-height:calc(100dvh - 210px); padding:24px; overflow-y:auto; overscroll-behavior:contain; }
+.stock-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:19px 20px; }
+.stock-field { display:flex; flex-direction:column; gap:8px; min-width:0; color:#6b7c8b; font-size:13px; }
+.stock-field>span,.stock-field>label { font-weight:550; }
+.stock-field b { margin-left:3px; color:#dc8a8c; font-weight:500; }
+.stock-field input,.stock-field textarea { width:100%; min-height:38px; padding:8px 11px; border:1px solid #dce4eb; border-radius:4px; background:#fff; color:#596c7b; line-height:1.5; }
+.stock-field textarea { resize:vertical; min-height:70px; max-height:160px; }
+.stock-field input[readonly] { background:#f8fafc; color:#9aa6b1; }
+.stock-field input[aria-invalid=true] { border-color:#db8c8c; }
+.stock-field small { margin-top:-3px; color:#a6afb8; font-size:10px; line-height:1.5; }
+.stock-field .stock-field-error { min-height:0; color:#c67676; }
+.stock-field .stock-field-error:empty { display:none; }
+.stock-field .stock-select { width:100%; }
+.stock-field-wide { grid-column:1 / -1; }
+.stock-switch-field { flex-direction:row; align-items:center; justify-content:space-between; padding:4px 0; }
+.stock-switch-field>div { display:flex; flex-direction:column; gap:7px; }
+.stock-switch-field small { margin:0; }
+.stock-switch { position:relative; flex-shrink:0; width:38px; height:22px; padding:2px; border:0; border-radius:20px; background:#bcc9d1; }
+.stock-switch>span { display:block; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 3px #18343a21; transition:transform .16s; }
+.stock-switch[aria-checked=true] { background:var(--stock-accent); }
+.stock-switch[aria-checked=true]>span { transform:translateX(16px); }
+.stock-form-message { margin:0; font-size:12px; color:#c67676; }
+.stock-form-message:empty { display:none; }
+.stock-dialog-footer { display:flex; align-items:center; justify-content:flex-end; gap:12px; padding:18px 24px; border-top:1px solid #edf0f4; }
+.stock-confirm { width:min(440px,calc(100% - 40px)); }
+.stock-confirm .stock-dialog-body { font-size:13px; }
+.stock-confirm .stock-dialog-body>p { margin:0; line-height:1.8; overflow-wrap:anywhere; }
+.stock-confirm .stock-dialog-body>.stock-muted { margin-top:12px; color:#a0aab3; font-size:12px; }
+.stock-toast { position:fixed; z-index:30; left:50%; top:118px; transform:translateX(-50%); display:flex; align-items:center; gap:9px; max-width:calc(100% - 32px); padding:11px 18px; border:1px solid #d8e9e5; border-radius:6px; background:#f5fbf8; color:#5a8c7c; box-shadow:0 8px 24px #304c4210; font-size:13px; }
+.stock-toast>svg { width:17px; height:17px; }
+.stock-sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+@media(min-width:1600px) {
+  .stock-workspace-area { padding:26px 28px; }
+  .stock-panel { padding:26px 28px 0; }
+  .stock-table td { height:68px; }
+}
+@media(max-width:1100px) {
+  .stock-app { grid-template-columns:200px minmax(0,1fr); }
+  .stock-brand { padding:0 20px; }
+  .stock-workspace-area { padding:20px; }
+  .stock-panel { padding:20px 20px 0; }
+  .stock-topbar { padding:0 20px; }
+  .stock-workspace { display:none; }
+  .stock-topbar-divider { display:none; }
+  .stock-search { width:220px; }
+  .stock-select { width:150px; }
+}
+@media(max-width:760px) {
+  .stock-app { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:56px 1fr; }
+  .stock-brand { display:none; }
+  .stock-topbar { grid-column:1; grid-row:1; gap:12px; padding:0 14px; }
+  .stock-topbar-left { gap:8px; }
+  .stock-current-location { font-size:14px; }
+  .stock-drawer-toggle { display:inline-flex; width:36px; height:36px; }
+  .stock-topbar-right { gap:8px; }
+  .stock-person>span { display:none; }
+  .stock-avatar { width:30px; height:30px; }
+  .stock-topbar-right>.stock-icon-button { display:none; }
+  .stock-sidebar { position:fixed; z-index:26; top:0; left:0; bottom:0; width:240px; min-height:0; padding:0 12px; transform:translateX(-100%); transition:transform .2s; box-shadow:8px 0 32px #2437471a; visibility:hidden; }
+  .stock-drawer-open .stock-sidebar { transform:translateX(0); visibility:visible; }
+  .stock-sidebar-mobile-head { display:flex; justify-content:space-between; align-items:center; min-height:76px; padding:0 10px; color:#536b76; }
+  .stock-sidebar-mobile-head strong { font-size:15px; }
+  .stock-sidebar .stock-nav-caption { margin-top:18px; }
+  .stock-drawer-backdrop { position:fixed; display:block; z-index:25; inset:0; background:#23313d66; }
+  .stock-workspace-area { grid-column:1; grid-row:2; padding:16px 12px; }
+  .stock-panel { padding:18px 14px 0; }
+  .stock-panel-heading { align-items:center; gap:10px; margin-bottom:20px; }
+  .stock-panel-heading h1 { font-size:18px; }
+  .stock-panel-heading p { display:none; }
+  .stock-button { min-height:40px; padding:8px 12px; font-size:12px; }
+  .stock-filters { gap:9px; margin-bottom:16px; }
+  .stock-search { width:100%; }
+  .stock-search input { height:40px; }
+  .stock-filters>.stock-select { flex:1; width:calc(50% - 5px); min-width:110px; }
+  .stock-filters>.stock-button { min-width:64px; }
+  .stock-filters>.stock-button-quiet { padding-left:4px; }
+  .stock-select-trigger { min-height:40px; font-size:12px; }
+  .stock-table { min-width:1000px; }
+  .stock-table td { height:62px; }
+  .stock-table-footer { align-items:flex-start; flex-direction:column; gap:12px; padding:16px 0; }
+  .stock-table-footer>p { font-size:11px; }
+  .stock-pagination { align-self:flex-end; gap:3px; }
+  .stock-page-size { margin-right:5px; font-size:11px; padding:6px 8px; }
+  .stock-page-footnote { margin:17px 0 2px; font-size:10px; }
+  .stock-dialog { width:calc(100% - 24px); max-height:calc(100dvh - 28px); }
+  .stock-dialog>form { max-height:calc(100dvh - 30px); }
+  .stock-dialog-head { min-height:60px; padding:12px 16px; }
+  .stock-dialog-head h2 { font-size:16px; }
+  .stock-dialog-body { max-height:calc(100dvh - 166px); padding:20px 16px; }
+  .stock-form-grid { grid-template-columns:1fr; gap:17px; }
+  .stock-field-wide { grid-column:auto; }
+  .stock-dialog-footer { padding:14px 16px; }
+  .stock-field input,.stock-field textarea { min-height:40px; }
+  .stock-toast { top:112px; font-size:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .stock-app * { transition-duration:.001ms!important; scroll-behavior:auto!important; }
+}
+
+/* 数量由页面步进按钮控制，取消浏览器默认微型箭头。 */
+.stock-app input[type=number] { appearance:textfield; -moz-appearance:textfield; font-variant-numeric:tabular-nums; }
+.stock-app input[type=number]::-webkit-inner-spin-button,.stock-app input[type=number]::-webkit-outer-spin-button { -webkit-appearance:none; margin:0; }
+/* Shared interaction geometry; each demonstration supplies its own material palette. */
+.pd-choice,.pd-stepper{--control-bg:#fff;--control-ink:#344650;--control-line:#d6dfe3;--control-accent:#23879a;--control-hover:#eff6f7;--control-radius:5px;--control-shadow:0 12px 32px #172c3a20;color:var(--control-ink);font:inherit}
+.pd-choice{display:block;position:relative;width:100%;text-align:left}
+.pd-choice>input[type=hidden]{display:none!important}
+.demo-root .pd-choice-trigger,.stock-page .pd-choice-trigger{appearance:none;width:100%;min-height:44px;padding:10px 12px;margin:0;display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--control-bg);color:var(--control-ink);border:1px solid var(--control-line);border-radius:var(--control-radius);font:inherit;text-align:left;line-height:1.5;box-shadow:none;cursor:pointer}
+.pd-choice-trigger>[data-choice-label]{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pd-choice-trigger>svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform .15s}
+.pd-choice-trigger[aria-expanded=true]>svg{transform:rotate(180deg)}
+.demo-root .pd-choice-trigger:hover,.demo-root .pd-choice-trigger[aria-expanded=true]{border-color:var(--control-accent);background:var(--control-hover)}
+.demo-root .pd-choice-trigger:focus-visible{outline:2px solid var(--control-accent);outline-offset:3px}
+.pd-choice-list{box-sizing:border-box;z-index:1000;display:block;overflow-y:auto;overscroll-behavior:contain;padding:5px;background:var(--control-bg);color:var(--control-ink);border:1px solid var(--control-line);border-radius:var(--control-radius);box-shadow:var(--control-shadow);font:inherit;line-height:1.5;scroll-padding:5px}
+.pd-choice-list[hidden]{display:none!important}
+.pd-choice-option{display:flex;align-items:center;gap:10px;min-height:42px;padding:10px 11px;border-radius:max(0px,calc(var(--control-radius) - 3px));cursor:pointer;font-size:12px;line-height:1.5;white-space:normal}
+.pd-choice-option>span{flex:1}
+.pd-choice-option>svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--control-accent);stroke-width:1.7;opacity:0}
+.pd-choice-option[aria-selected=true]{color:var(--control-accent);font-weight:600}
+.pd-choice-option[aria-selected=true]>svg{opacity:1}
+.pd-choice-option.pd-active,.pd-choice-option:hover{background:var(--control-hover)}
+.pd-choice-option[aria-disabled=true]{opacity:.4;cursor:not-allowed}
+.pd-swatch{width:24px;height:28px;flex:none;background:#f5f0df;border:1px solid #d6cfbd}
+.pd-swatch-1{background:repeating-linear-gradient(90deg,#d9d4c9 0 1px,#f5f3e9 1px 3px)}
+.pd-swatch-2{background-color:#e6ddc2;background-image:radial-gradient(#867d6099 .7px,transparent .7px);background-size:5px 6px}
+.pd-stepper{display:flex!important;align-items:stretch;width:100%;border:1px solid var(--control-line);border-radius:var(--control-radius);background:var(--control-bg);overflow:hidden}
+.pd-stepper:focus-within{outline:2px solid var(--control-accent);outline-offset:3px}
+.pd-stepper input[type=number]{appearance:textfield;-moz-appearance:textfield;min-width:0;width:100%;height:auto;min-height:42px;padding:8px 3px!important;margin:0!important;text-align:center;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--control-ink);font:inherit;outline:0!important}
+.pd-stepper input::-webkit-inner-spin-button,.pd-stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.demo-root .pd-stepper>button,.stock-dialog .pd-stepper>button{width:38px;min-width:32px;min-height:42px;padding:0;margin:0;flex:0 0 38px;display:grid;place-items:center;border:0;border-radius:0;background:transparent;color:var(--control-accent);font:18px/1 ui-sans-serif,system-ui;box-shadow:none;cursor:pointer}
+.demo-root .pd-stepper>button:hover,.stock-dialog .pd-stepper>button:hover{background:var(--control-hover)}
+.pd-stepper>button:disabled{opacity:.3;cursor:not-allowed}
+.pd-stepper>button[data-step="-1"]{order:-1}
+.pd-stepper>button:focus-visible{outline:2px solid var(--control-accent);outline-offset:-4px}
+.s05 .pd-choice,.pd-theme-05{--control-bg:#f7f5ef;--control-ink:#252521;--control-line:#9f9d95;--control-accent:#c8282b;--control-hover:#ece8df;--control-radius:0px;--control-shadow:4px 4px 0 #282824}
+.s05 .pd-choice-trigger{min-width:128px;font:12px ui-monospace,monospace}
+.s07 .pd-choice,.pd-theme-07{--control-bg:#fffdf5;--control-ink:#4b5845;--control-line:#cbd4b8;--control-accent:#476947;--control-hover:#edf2df;--control-radius:14px;--control-shadow:0 10px 0 -5px #d9ddc6,0 18px 35px #46543820}
+.s07 .pd-choice-trigger{border-width:2px;padding:11px 14px}
+.s08 .pd-choice,.s08 .pd-stepper,.pd-theme-08{--control-bg:#20231e;--control-ink:#d7dbcf;--control-line:#4c5346;--control-accent:#e2e9ce;--control-hover:#30372a;--control-radius:0px;--control-shadow:0 14px 36px #0008}
+.s08 .pd-choice-trigger{font-size:12px}
+.s09 .pd-choice,.s09 .pd-stepper,.pd-theme-09{--control-bg:#fff;--control-ink:#3d4a54;--control-line:#d8dfe3;--control-accent:#27343e;--control-hover:#f2f5f6;--control-radius:3px;--control-shadow:0 12px 28px #24313b1c}
+.s09 .pd-choice-trigger{font-size:11px;min-height:42px}
+.s09 .pd-choice-list{padding:5px}
+.s09 .pd-stepper{font-size:12px}
+.s12 .pd-stepper{--control-bg:#fffaff;--control-ink:#5e456c;--control-line:#d9c9e3;--control-accent:#79528e;--control-hover:#f0e8f5;--control-radius:6px}
+.s19 .pd-choice,.pd-theme-19{--control-bg:#fff;--control-ink:#382c4e;--control-line:#ddcfe9;--control-accent:#773ec9;--control-hover:#f2eafa;--control-radius:12px;--control-shadow:0 16px 36px #54298c24}
+.s19 .pd-choice{margin-bottom:16px}
+.s19 .pd-choice-trigger{font-size:13px;min-height:46px}
+.s22 .pd-choice,.pd-theme-22{--control-bg:#163f35;--control-ink:#f2e9d3;--control-line:#987d4b;--control-accent:#e2c58b;--control-hover:#284c3f;--control-radius:0px;--control-shadow:0 15px 35px #001d1acc}
+.s22 .pd-choice{margin-bottom:22px}
+.s22 .pd-choice-list{border-top:3px double #c8ac72;padding:6px}
+.s22 .pd-choice-option{border-bottom:1px solid #c8ac7220}
+.s23 .pd-choice,.pd-theme-23{--control-bg:#f8f5ed;--control-ink:#645846;--control-line:#cbbfa9;--control-accent:#806341;--control-hover:#eee5d4;--control-radius:6px;--control-shadow:0 15px 35px #51463320}
+.s23 .pd-choice{margin:8px 0 18px}
+.s23 .pd-choice-trigger{font-size:13px;min-height:46px}
+@media(max-width:640px){.pd-choice-option{min-height:46px}.demo-root .pd-stepper>button{flex-basis:34px;width:34px}.s05 .pd-choice-trigger{min-width:0}}
+@media(prefers-reduced-motion:reduce){.pd-choice-trigger>svg{transition:none}}
+
+
+.demo-root .demo-date{position:relative;display:block;width:100%;min-width:0}
+.demo-root .demo-date>input{width:100%;padding-right:42px;cursor:pointer;font-variant-numeric:tabular-nums}
+.demo-root .demo-date-trigger{position:absolute;right:5px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:32px;height:32px;min-height:0;padding:6px;border:0;border-radius:7px;color:inherit;background:transparent;box-shadow:none}
+.demo-root .demo-date-trigger svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.5}
+.demo-root .demo-date-trigger:hover{background:#647a4920}
+.demo-calendar{--calendar-bg:#fffdf6;--calendar-ink:#4b5844;--calendar-muted:#7b896d;--calendar-line:#d8e1c9;--calendar-tint:#edf3e3;--calendar-accent:#597547;position:fixed;inset:auto;margin:0;width:304px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;padding:15px;border:1.5px solid var(--calendar-line);border-radius:17px;background:var(--calendar-bg);color:var(--calendar-ink);box-shadow:0 12px 40px #293b2729;font:13px/1.5 "PingFang SC","Microsoft YaHei",sans-serif;z-index:1000}
+.demo-calendar-reading{--calendar-bg:#fffaff;--calendar-ink:#5e456c;--calendar-muted:#927d9d;--calendar-line:#d9c9e3;--calendar-tint:#f0e8f5;--calendar-accent:#79528e;border-radius:18px;box-shadow:0 12px 36px #513c6026}
+.demo-calendar[hidden]{display:none!important}
+.demo-calendar *{box-sizing:border-box}
+.demo-calendar button{font:inherit;cursor:pointer;box-shadow:none;min-width:0;min-height:0;line-height:1.5;letter-spacing:0}
+.demo-calendar button:focus-visible{outline:2px solid var(--calendar-accent);outline-offset:2px}
+.demo-calendar-head{display:grid;grid-template-columns:32px 1fr 32px;align-items:center;gap:8px;margin-bottom:13px}
+.demo-calendar-head strong{text-align:center;font-size:14px;font-weight:650}
+.demo-calendar-head button{border:1px solid var(--calendar-line);border-radius:8px;width:32px;height:32px;padding:0;background:var(--calendar-tint);color:var(--calendar-ink);font-size:23px}
+.demo-calendar-week,.demo-calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.demo-calendar-week{color:var(--calendar-muted);font-size:10px;text-align:center;margin-bottom:6px}
+.demo-calendar-days button{border:1px solid transparent;border-radius:8px;aspect-ratio:1;padding:0;background:transparent;color:var(--calendar-ink);font-size:12px;font-variant-numeric:tabular-nums}
+.demo-calendar-days button:not(:disabled):hover{background:var(--calendar-tint);border-color:var(--calendar-line)}
+.demo-calendar-days button[aria-current=date]{border-color:var(--calendar-accent)}
+.demo-calendar-days button[aria-pressed=true]{background:var(--calendar-accent);color:var(--calendar-bg);font-weight:700}
+.demo-calendar-days button[aria-pressed=true]:hover{background:var(--calendar-accent)}
+.demo-calendar button:disabled{opacity:.3;cursor:not-allowed}
+.demo-calendar-footer{display:flex;align-items:center;justify-content:space-between;gap:7px;border-top:1px dashed var(--calendar-line);margin-top:12px;padding-top:10px;font-size:10px;color:var(--calendar-muted)}
+.demo-calendar-footer button{padding:5px 7px;border:0;border-radius:6px;background:transparent;color:var(--calendar-accent);font-size:11px}
+.demo-calendar-footer button:hover{background:var(--calendar-tint)}
+
 </style>
+<!-- Lucide icons: ISC; Feather-derived icons: MIT. Notices: ./style01-icons.LICENSE -->
 </head>
 <body class="card-grid">
   <header class="preview-context-shell">
-    <nav class="preview-context" aria-label="Style preview navigation">
-      <a class="preview-context-back" href="../../previews/index.html"><span aria-hidden="true">←</span> <span lang="zh-CN">返回风格库</span></a>
-      <div class="preview-context-identity"><span class="preview-context-number">Style 01</span><strong>Card Grid</strong><span lang="zh-CN">卡片网格</span></div>
-      <a class="preview-context-use" href="../../previews/index.html?style=01#style-01" lang="zh-CN">选用此风格 <span aria-hidden="true">→</span></a>
+    <nav class="preview-context" aria-label="风格预览导航">
+      <div class="preview-context-identity" role="group" aria-label="风格 01：卡片网格" title="卡片网格"><span class="preview-context-number">01</span><strong class="preview-context-name" lang="zh-CN">卡片网格</strong></div>
+      <div class="preview-context-actions">
+        <a class="preview-context-back" href="../../previews/index.html" lang="zh-CN"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14"/></svg><span>风格库</span></a>
+        <a class="preview-context-use" href="../../previews/index.html?style=01#style-01" lang="zh-CN"><span class="preview-context-use-label">选用此风格<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>
+      </div>
     </nav>
   </header>
   <main id="top" class="page">
     <nav class="top-nav" aria-label="Example navigation">
-      <a class="brand-lockup" href="#top"><span>01</span><b>OpsFlow</b></a>
-      <div class="nav-links"><a href="#details">Home</a><a href="#details">Records</a><a href="#details">Reports</a></div>
+      <a class="brand-lockup" href="#top"><span>01</span><b>栖物仓</b></a>
+      <div class="nav-links"><a href="#style-note-title" data-open-modal>物资台账</a><a href="#style-note-title" data-open-modal>归还跟进</a><a href="#style-note-title" data-open-modal>库位分布</a></div>
       <button type="button" class="ghost-action" data-open-modal>Style notes</button>
     </nav>
-    <section class="admin-console" aria-label="Enterprise admin console mockup">
-        <aside class="admin-sidebar">
-          <a class="admin-brand" href="#top"><span>AF</span><b>OpsFlow Console</b></a>
-          <nav class="admin-menu" aria-label="Admin modules"><div class="admin-menu-group"><span>Console</span><button type="button" class="active" data-open-modal><i aria-hidden="true">01</i>Dashboard</button><button type="button" class="" data-open-modal><i aria-hidden="true">02</i>Task Log</button><button type="button" class="" data-open-modal><i aria-hidden="true">03</i>Usage Log</button></div><div class="admin-menu-group"><span>Operations</span><button type="button" class="" data-open-modal><i aria-hidden="true">01</i>Customers</button><button type="button" class="" data-open-modal><i aria-hidden="true">02</i>Procurement</button><button type="button" class="" data-open-modal><i aria-hidden="true">03</i>Products</button><button type="button" class="" data-open-modal><i aria-hidden="true">04</i>Workflows</button><button type="button" class="" data-open-modal><i aria-hidden="true">05</i>Approvals</button></div><div class="admin-menu-group"><span>System</span><button type="button" class="" data-open-modal><i aria-hidden="true">01</i>Reports</button><button type="button" class="" data-open-modal><i aria-hidden="true">02</i>Monitoring</button><button type="button" class="" data-open-modal><i aria-hidden="true">03</i>Access Control</button><button type="button" class="" data-open-modal><i aria-hidden="true">04</i>Settings</button></div></nav>
-          <div class="admin-side-card">
-            <b>Execution status</b>
-            <span>dev <em>0/5</em></span>
-            <span>k8s-prod <em>Offline</em></span>
-            <span>prdci <em>0/3</em></span>
-          </div>
-        </aside>
-        <div class="admin-shell">
-          <header class="admin-topbar">
-            <button type="button" class="admin-icon" aria-label="Toggle sidebar" data-open-modal><span aria-hidden="true">&#9776;</span></button>
-            <div class="admin-breadcrumb"><span>Home</span><b>Data Center</b></div>
-            <label class="admin-search"><span>Search</span><input type="search" value="" placeholder="Search records" aria-label="Search admin records"></label>
-            <div class="admin-top-actions">
-              <button type="button" class="admin-icon" aria-label="Notifications" data-open-modal><span aria-hidden="true">!</span></button>
-              <button type="button" class="admin-icon" aria-label="Display settings" data-open-modal><span aria-hidden="true">[]</span></button>
-              <button type="button" class="primary-action" data-copy>More actions</button>
-              <span class="admin-avatar" aria-label="Current user">K</span>
-            </div>
-          </header>
-          <main class="admin-workspace">
-            <div class="admin-tabs" role="tablist" aria-label="Workspace tabs">
-              <button type="button" class="active" role="tab" aria-selected="true">Home</button>
-              <button type="button" role="tab" aria-selected="false">Task Log</button>
-              <button type="button" role="tab" aria-selected="false">Approvals</button>
-            </div>
-            <div class="admin-title-row">
-              <div>
-                <p class="kicker">Operations management dashboard</p>
-                <h1>Data Center</h1>
-              </div>
-              <button type="button" class="primary-action" data-copy>New record</button>
-            </div>
-            <section class="admin-kpi-row" aria-label="Key metrics"><article class="admin-kpi"><span>Pipeline value</span><strong>$482K</strong><em>+8.6%</em></article><article class="admin-kpi"><span>Customer records</span><strong>1,284</strong><em>+42</em></article><article class="admin-kpi"><span>Open tasks</span><strong>312</strong><em>24 due soon</em></article><article class="admin-kpi"><span>Completed orders</span><strong>87</strong><em>9 today</em></article></section>
-            <section class="shortcut-panel" aria-label="Quick entries">
-              <h2>Quick Entries</h2>
-              <div class="shortcut-row"><button type="button" class="shortcut-card shortcut-1" data-open-modal><i aria-hidden="true"></i><b>Create customer</b><span>Primary entry</span></button><button type="button" class="shortcut-card shortcut-2" data-open-modal><i aria-hidden="true"></i><b>Create deal</b><span>Sales pipeline</span></button><button type="button" class="shortcut-card shortcut-3" data-open-modal><i aria-hidden="true"></i><b>Review approval</b><span>3 pending</span></button></div>
-            </section>
-            <section class="task-panel">
-              <header class="panel-heading">
-                <div><h2>Task Records</h2><p>Filter operational logs by time, task ID, type, and status.</p></div>
-                <button type="button" class="secondary-action" data-open-modal>Compact list</button>
-              </header>
-              <div class="table-toolbar">
-                <span class="date-range">Last 24 hours <b>~</b> Current workspace</span>
-                <label class="toolbar-search"><span>Task ID</span><input type="search" placeholder="Task ID" aria-label="Filter by task ID"></label>
-                <div class="toolbar-buttons">
-                  <button type="button" data-open-modal>Search</button>
-                  <button type="button" data-open-modal>Reset</button>
-                  <button type="button" data-open-modal>Columns</button>
-                </div>
-              </div>
-              <div class="admin-table-wrap">
-                <table class="admin-table">
-                  <thead><tr><th>Submitted</th><th>Finished</th><th>Duration</th><th>Platform</th><th>Type</th><th>Task ID</th><th>Status</th><th>Progress</th><th>Details</th></tr></thead>
-                  <tbody><tr><td>Today 09:12</td><td>Today 09:48</td><td>36 min</td><td>Web</td><td>Approval</td><td><a href="#details">TASK-8421</a></td><td><span class="status-chip pending">Pending</span></td><td><span class="progress-line" style="--progress:68%"><i></i>68%</span></td><td><button type="button" class="row-action" aria-label="Open task TASK-8421" data-open-modal>Details</button></td></tr><tr><td>Today 08:40</td><td>Today 08:56</td><td>16 min</td><td>API</td><td>Export</td><td><a href="#details">TASK-8378</a></td><td><span class="status-chip done">Complete</span></td><td><span class="progress-line" style="--progress:100%"><i></i>100%</span></td><td><button type="button" class="row-action" aria-label="Open task TASK-8378" data-open-modal>Details</button></td></tr><tr><td>Yesterday 18:21</td><td>Yesterday 18:33</td><td>12 min</td><td>Web</td><td>Customer</td><td><a href="#details">TASK-8269</a></td><td><span class="status-chip warn">Needs review</span></td><td><span class="progress-line" style="--progress:42%"><i></i>42%</span></td><td><button type="button" class="row-action" aria-label="Open task TASK-8269" data-open-modal>Details</button></td></tr><tr><td>Yesterday 15:03</td><td>Yesterday 15:19</td><td>16 min</td><td>Mobile</td><td>Access</td><td><a href="#details">TASK-8155</a></td><td><span class="status-chip done">Complete</span></td><td><span class="progress-line" style="--progress:100%"><i></i>100%</span></td><td><button type="button" class="row-action" aria-label="Open task TASK-8155" data-open-modal>Details</button></td></tr></tbody>
-                </table>
-              </div>
-            </section>
-            <section class="admin-dashboard-grid">
-              <article class="chart-panel">
-                <div class="panel-heading"><div><h2>Revenue Trend</h2><p>Fictional sales totals by period</p></div><div class="segmented"><button type="button">This year</button><button type="button">3 years</button><button type="button" class="active">5 years</button></div></div>
-                <div class="admin-chart" aria-label="Sales chart"><i style="height:74%"></i><i style="height:52%"></i><i style="height:88%"></i><i style="height:64%"></i><i style="height:93%"></i><i style="height:72%"></i><i style="height:58%"></i></div>
-              </article>
-              <aside class="ranking-panel">
-                <h2>Sales Ranking</h2>
-                <ol><li><span>1</span><b>Avery Stone</b><em>$482,910</em></li><li><span>2</span><b>Morgan Lee</b><em>$318,440</em></li><li><span>3</span><b>Jordan Patel</b><em>$246,800</em></li><li><span>4</span><b>Riley Chen</b><em>$190,250</em></li><li><span>5</span><b>Taylor Brooks</b><em>$132,600</em></li></ol>
-              </aside>
-              <article class="mini-panel">
-                <h2>Approvals</h2>
-                <div class="approval-tabs"><span class="active">To do</span><span>Started</span><span>Copied</span><span>@ me</span></div>
-                <div class="approval-list"><button type="button" data-open-modal><b>Discount exception</b><span>Pending</span></button><button type="button" data-open-modal><b>Customer profile change</b><span>Copied</span></button><button type="button" data-open-modal><b>Renewal date update</b><span>Mentioned</span></button></div>
-              </article>
-              <article class="calendar-panel">
-                <div class="panel-heading"><div><h2>My Schedule</h2><p>Sample week</p></div><button type="button" data-open-modal>Today</button></div>
-                <div class="calendar-strip"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b></div>
-              </article>
-            </section>
-          </main>
-        </div>
-      </section>
-    <details id="details" class="reference-disclosure">
-      <summary><span lang="zh-CN">交互与组件示例</span> <span class="reference-disclosure-hint">Interaction &amp; component examples</span></summary>
-      <section class="reference-stack" aria-label="Reusable interaction and implementation notes">
-        <section class="interaction-demo" aria-labelledby="interaction-title-01">
-      <div class="interaction-copy">
-        <p class="kicker">Component behavior</p>
-        <h2 id="interaction-title-01">Buttons, feedback, spacing, and responsive rules.</h2>
-        <p>Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.</p>
-        <ul class="implementation-list"><li><b>Buttons</b><span>Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.</span></li><li><b>Feedback</b><span>Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.</span></li><li><b>Spacing</b><span>Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.</span></li><li><b>Responsive</b><span>Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.</span></li></ul>
-      </div>
-      <div class="state-board">
-        <div class="state-board-head">
-          <span>OpsFlow</span>
-          <strong>$482K</strong>
-        </div>
-        <div class="button-row" aria-label="Button state examples">
-          <button type="button" class="primary-action" data-toast-trigger>New record</button>
-          <button type="button" class="secondary-action loading-action" data-loading-demo>Save state</button>
-          <button type="button" class="secondary-action" disabled>Disabled</button>
-          <button type="button" class="toggle-chip" aria-pressed="false" data-toggle-demo>Filter off</button>
-        </div>
-        <div class="inline-alert warning" data-inline-alert role="status">
-          <b>State warning</b>
-          <span>Sales contract approval: Pending. Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.</span>
-        </div>
-        <label class="field-group" for="demo-input-01">
-          <span>Visible label</span>
-          <input id="demo-input-01" type="text" value="Inactive account follow-up" aria-describedby="field-help-01" data-demo-input>
-          <small id="field-help-01" data-field-help>Helper text stays visible after the field is filled.</small>
-        </label>
-        <div class="state-stack" aria-label="Common product states">
-          <span class="state-pill success"><b>Success</b>Saved and ready for review.</span>
-          <span class="state-pill loading"><b>Loading</b>Preserve the layout while data refreshes.</span>
-          <span class="state-pill empty"><b>Empty</b>No matching results; clear filters or create one.</span>
-          <span class="state-pill error"><b>Error</b>Retry with a clear recovery action.</span>
-        </div>
-        <div class="responsive-steps" aria-label="Responsive behavior">
-          <span><b>Desktop</b>Show the full layout archetype with supporting panels.</span>
-          <span><b>Tablet</b>Collapse secondary panels without losing state.</span>
-          <span><b>Mobile</b>Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.</span>
-        </div>
-      </div>
-    </section>
-        <section class="style-lab">
-      <div class="lab-summary">
-        <p class="kicker">Blue Admin Console · 浅蓝后台控制台</p>
-        <h2>Blue Admin Console in practice.</h2>
-        <p>Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.</p>
-        <div class="detail-pills"><span>Blue Admin Console</span><span>Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.</span><span>Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.</span></div>
-      </div>
-      <div class="lab-workspace">
-        <div class="tabs" role="tablist" aria-label="Demo tabs">
-          <button type="button" class="active" role="tab" aria-selected="true" data-tab="launch">Launch</button>
-          <button type="button" role="tab" aria-selected="false" data-tab="metrics">Metrics</button>
-          <button type="button" role="tab" aria-selected="false" data-tab="assets">Assets</button>
-        </div>
-        <div class="workspace-grid">
-          <article class="panel">
-            <h3 data-demo-title>Task review</h3>
-            <p data-demo-copy>Filter task records, inspect owner/status columns, and keep empty or warning states inside the table frame.</p>
-            <div class="chart" aria-hidden="true"><i style="height:74%"></i><i style="height:52%"></i><i style="height:88%"></i><i style="height:64%"></i><i style="height:93%"></i><i style="height:72%"></i><i style="height:58%"></i></div>
-          </article>
-          <aside class="panel">
-            <h3>Action queue</h3>
-            <div class="queue-list"><button type="button" class="queue-card" data-open-modal><b>Sales contract approval</b><span>Pending</span></button><button type="button" class="queue-card" data-open-modal><b>Inactive account follow-up</b><span>Warning</span></button><button type="button" class="queue-card" data-open-modal><b>Monthly audit export</b><span>Ready</span></button></div>
-          </aside>
-        </div>
-        <div class="related"><a href="../style-02-block-brutalism/style-02-block-brutalism.html">02. Block Brutalism</a><a href="../style-03-aurora-gradient/style-03-aurora-gradient.html">03. Aurora Gradient</a><a href="../style-04-retro-y2k/style-04-retro-y2k.html">04. Retro Y2K</a></div>
-      </div>
-    </section>
-      </section>
-    </details>
+    <section class="stock-app" aria-label="栖物仓物资调度台">
+    <a class="stock-brand" href="#top" aria-label="栖物仓物资调度台首页"><span class="stock-brand-icon"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg></span><strong>栖物仓</strong><span class="stock-brand-note">物资调度台</span></a>
+    <header class="stock-topbar"><div class="stock-topbar-left"><button class="stock-icon-button stock-drawer-toggle" type="button" data-stock-drawer-toggle aria-label="展开物资导航" aria-expanded="false" aria-controls="stock-sidebar"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button><span class="stock-current-location" data-stock-location>物资台账</span></div><div class="stock-topbar-right"><span class="stock-workspace">望山协作空间</span><span class="stock-topbar-divider"></span><span class="stock-avatar"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="stock-person">林予安<span>物资协作员</span></span><button class="stock-icon-button" type="button" aria-label="查看待办提醒" data-stock-reminder><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><i class="stock-notification-dot"></i></button></div></header>
+    <div class="stock-drawer-backdrop" data-stock-drawer-backdrop hidden></div>
+    <aside class="stock-sidebar" id="stock-sidebar"><div class="stock-sidebar-mobile-head"><strong>物资工作台</strong><button class="stock-icon-button" type="button" data-stock-drawer-close aria-label="收起物资导航"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><p class="stock-nav-caption">清单与流转</p><nav aria-label="物资视图"><button type="button" class="stock-nav-item is-active" data-stock-view="all" aria-current="page"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg><span>全部物资</span><span class="stock-nav-count" data-stock-count="all"></span></button><button type="button" class="stock-nav-item" data-stock-view="ready"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg><span>可领用物资</span><span class="stock-nav-count" data-stock-count="ready"></span></button><button type="button" class="stock-nav-item" data-stock-view="borrowed"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg><span>归还跟进</span><span class="stock-nav-count" data-stock-count="borrowed"></span></button><button type="button" class="stock-nav-item" data-stock-view="repair"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg><span>待检修物资</span><span class="stock-nav-count" data-stock-count="repair"></span></button></nav><div class="stock-sidebar-bottom"><span class="stock-connection-dot"></span><span>记录仅保存在本次演示</span></div></aside>
+    <div class="stock-workspace-area"><section class="stock-panel" aria-labelledby="stock-page-title"><header class="stock-panel-heading"><div><h1 id="stock-page-title" data-stock-page-title>物资台账</h1><p data-stock-page-description>记录器材去向，让每一次领用都有据可查。</p></div><button class="stock-button stock-button-primary" type="button" data-stock-create><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5v14"/></svg><span>登记物资</span></button></header>
+      <form class="stock-filters" data-stock-filters><label class="stock-search"><span class="stock-sr-only">按物资或编号检索</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg><input name="query" placeholder="按物资或编号检索" autocomplete="off"></label><div class="stock-select" data-stock-select><button type="button" class="stock-select-trigger" id="stock-room-filter-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="stock-room-filter-options" aria-label="按库位筛查" data-stock-select-trigger><span data-stock-select-label>全部库位</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><input type="hidden" id="stock-room-filter" value=""><div class="stock-select-options" role="listbox" id="stock-room-filter-options" aria-label="按库位筛查" hidden><button type="button" role="option" aria-selected="true" data-stock-option="">全部库位<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="东侧器材间">东侧器材间<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="共享工作区">共享工作区<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="西侧储物室">西侧储物室<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button></div></div><div class="stock-select" data-stock-select><button type="button" class="stock-select-trigger" id="stock-stage-filter-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="stock-stage-filter-options" aria-label="按流转情况筛查" data-stock-select-trigger><span data-stock-select-label>全部流转情况</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><input type="hidden" id="stock-stage-filter" value=""><div class="stock-select-options" role="listbox" id="stock-stage-filter-options" aria-label="按流转情况筛查" hidden><button type="button" role="option" aria-selected="true" data-stock-option="">全部流转情况<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="可领用">可领用<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="借出中">借出中<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="检修中">检修中<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button></div></div><button class="stock-button" type="submit">筛查</button><button class="stock-button stock-button-quiet" type="button" data-stock-clear>清空条件</button></form>
+      <div class="stock-table-scroll" tabindex="0" aria-label="物资清单，可横向滚动"><table class="stock-table"><thead><tr><th class="stock-col-code">物资编号</th><th class="stock-col-name">物资名称</th><th>物资分组</th><th>所在库位</th><th class="stock-numeric">可领数量</th><th>保管同事</th><th>流转情况</th><th>最近流转</th><th class="stock-col-actions">条目处理</th></tr></thead><tbody data-stock-rows></tbody></table><div class="stock-empty" data-stock-empty hidden><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg><strong>没有找到对应物资</strong><p>换一组条件，或先登记一件物资。</p><button type="button" class="stock-button" data-stock-empty-clear>查看全部物资</button></div></div>
+      <footer class="stock-table-footer"><p data-stock-total>共 16 件物资</p><div class="stock-pagination"><span class="stock-page-size">每页 8 件</span><button class="stock-icon-button" type="button" aria-label="上一页物资" data-stock-prev><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button><div class="stock-page-buttons" data-stock-pages></div><button class="stock-icon-button" type="button" aria-label="下一页物资" data-stock-next><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button></div></footer>
+    </section><p class="stock-page-footnote">让物尽其用，也让协作更轻一点。</p></div>
+    <dialog class="stock-dialog" id="stock-item-dialog" aria-labelledby="stock-dialog-title"><form data-stock-item-form novalidate><header class="stock-dialog-head"><h2 id="stock-dialog-title">登记一件物资</h2><button class="stock-icon-button" type="button" data-stock-dismiss aria-label="收起物资表单"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></header><div class="stock-dialog-body"><div class="stock-form-grid"><label class="stock-field"><span>物资编号</span><input name="code" readonly aria-describedby="stock-code-help"><small id="stock-code-help">新物资将自动分配编号</small></label><label class="stock-field"><span>物资名称 <b aria-hidden="true">*</b></span><input name="name" placeholder="例如：便携录音套装" maxlength="60" required aria-describedby="stock-name-error"><small class="stock-field-error" id="stock-name-error" data-stock-error="name"></small></label><div class="stock-field"><label for="stock-category-trigger">物资分组</label><div class="stock-select" data-stock-select><button type="button" class="stock-select-trigger" id="stock-category-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="stock-category-options" aria-label="物资分组" data-stock-select-trigger><span data-stock-select-label>影音器材</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><input type="hidden" id="stock-category" value="影音器材"><div class="stock-select-options" role="listbox" id="stock-category-options" aria-label="物资分组" hidden><button type="button" role="option" aria-selected="true" data-stock-option="影音器材">影音器材<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="办公设备">办公设备<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="空间用品">空间用品<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="活动物料">活动物料<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button></div></div></div><label class="stock-field"><span>保管同事 <b aria-hidden="true">*</b></span><input name="keeper" placeholder="填写负责接收与归还的同事" maxlength="20" required aria-describedby="stock-keeper-error"><small class="stock-field-error" id="stock-keeper-error" data-stock-error="keeper"></small></label><div class="stock-field stock-field-wide"><label for="stock-room-trigger">所在库位</label><div class="stock-select" data-stock-select><button type="button" class="stock-select-trigger" id="stock-room-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="stock-room-options" aria-label="所在库位" data-stock-select-trigger><span data-stock-select-label>东侧器材间</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><input type="hidden" id="stock-room" value="东侧器材间"><div class="stock-select-options" role="listbox" id="stock-room-options" aria-label="所在库位" hidden><button type="button" role="option" aria-selected="true" data-stock-option="东侧器材间">东侧器材间<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="共享工作区">共享工作区<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="西侧储物室">西侧储物室<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button></div></div></div><label class="stock-field stock-field-wide"><span>物资说明</span><textarea name="detail" placeholder="记录规格、配件或需要留意的事项" rows="2" maxlength="120"></textarea></label><label class="stock-field"><span>可领数量 <b aria-hidden="true">*</b></span><span class="pd-stepper"><input name="count" type="number" min="0" max="9999" step="1" value="1" required aria-describedby="stock-count-error"><button type="button" data-step="-1" aria-label="减少数量">−</button><button type="button" data-step="1" aria-label="增加数量">＋</button></span><small class="stock-field-error" id="stock-count-error" data-stock-error="count"></small></label><div class="stock-field"><label for="stock-stage-trigger">流转情况</label><div class="stock-select" data-stock-select><button type="button" class="stock-select-trigger" id="stock-stage-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="stock-stage-options" aria-label="流转情况" data-stock-select-trigger><span data-stock-select-label>可领用</span><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><input type="hidden" id="stock-stage" value="可领用"><div class="stock-select-options" role="listbox" id="stock-stage-options" aria-label="流转情况" hidden><button type="button" role="option" aria-selected="true" data-stock-option="可领用">可领用<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="借出中">借出中<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button><button type="button" role="option" aria-selected="false" data-stock-option="检修中">检修中<svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></button></div></div></div><div class="stock-field stock-field-wide stock-switch-field"><div><span>开放领用登记</span><small>关闭后，这件物资仍会保留在台账中。</small></div><button class="stock-switch" type="button" role="switch" aria-checked="true" aria-label="开放领用登记" data-stock-available><span></span></button></div></div><p class="stock-form-message" data-stock-form-message aria-live="polite"></p></div><footer class="stock-dialog-footer"><button class="stock-button" type="button" data-stock-dismiss>稍后填写</button><button class="stock-button stock-button-primary" type="submit" data-stock-submit>完成登记</button></footer></form></dialog>
+    <dialog class="stock-dialog stock-confirm" id="stock-remove-dialog" aria-labelledby="stock-remove-title"><header class="stock-dialog-head"><h2 id="stock-remove-title">将这件物资移出台账？</h2><button class="stock-icon-button" type="button" data-stock-remove-dismiss aria-label="返回物资台账"><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></header><div class="stock-dialog-body"><p data-stock-remove-copy></p><p class="stock-muted">本次演示中移出的条目不会继续出现在清单里。</p></div><footer class="stock-dialog-footer"><button class="stock-button" type="button" data-stock-remove-dismiss>继续保留</button><button class="stock-button stock-button-danger" type="button" data-stock-remove-confirm>确认移出</button></footer></dialog>
+    <div class="stock-toast" role="status" aria-live="polite" data-stock-toast hidden><svg class="stock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span data-stock-toast-text></span></div>
+  </section><script>(function initializeInventory(initial) {
+  const root = document.querySelector(".stock-app");
+  if (!root) return;
+  const $ = selector => root.querySelector(selector);
+  const $$ = selector => [...root.querySelectorAll(selector)];
+  const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+  const state = { items: initial.map(item => ({ ...item })), view: "all", page: 1, query: "", room: "", stage: "", editing: null, removing: null, open: true, saving: false, trigger: null, nextId: 1049 };
+  const titles = { all: ["物资台账", "记录器材去向，让每一次领用都有据可查。"], ready: ["可领用物资", "这些物资已备妥，可以安排下一次协作。"], borrowed: ["归还跟进", "跟进已借出器材，及时衔接下一次使用。"], repair: ["待检修物资", "把需要照料的器材单独留意起来。"] };
+  const dialog = $("#stock-item-dialog"), removeDialog = $("#stock-remove-dialog"), form = $("[data-stock-item-form]");
+  let toastTimer, previousOverflow = "", drawerOverflow = "";
+  const drawerInert = [];
+  function toast(message) { $("[data-stock-toast-text]").textContent = message; $("[data-stock-toast]").hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { $("[data-stock-toast]").hidden = true; }, 3200); }
+  function setSelect(id, value) {
+    const input = $("#" + id), select = input.closest("[data-stock-select]"); input.value = value;
+    const options = [...select.querySelectorAll("[data-stock-option]")];
+    options.forEach(option => option.setAttribute("aria-selected", String(option.dataset.stockOption === value)));
+    const selected = options.find(option => option.dataset.stockOption === value);
+    select.querySelector("[data-stock-select-label]").textContent = selected?.textContent.trim() || value;
+  }
+  function closeSelects(restore = false) { $$("[data-stock-select]").forEach(select => { const trigger = select.querySelector("[data-stock-select-trigger]"), options = select.querySelector('[role="listbox"]'); if (trigger.getAttribute("aria-expanded") === "true") { trigger.setAttribute("aria-expanded", "false"); options.hidden = true; if (restore) trigger.focus(); } }); }
+  function toggleSelect(select, keyboard = false) {
+    const trigger = select.querySelector("[data-stock-select-trigger]"), options = select.querySelector('[role="listbox"]');
+    const wasOpen = trigger.getAttribute("aria-expanded") === "true"; closeSelects();
+    if (wasOpen) return;
+    trigger.setAttribute("aria-expanded", "true"); options.hidden = false;
+    const bounds = options.getBoundingClientRect(), limit = select.closest(".stock-dialog-body")?.getBoundingClientRect().bottom || innerHeight;
+    select.classList.toggle("stock-select-up", bounds.bottom > limit - 12 && select.getBoundingClientRect().top - bounds.height > 60);
+    if (keyboard) (options.querySelector('[aria-selected="true"]') || options.querySelector("button"))?.focus();
+  }
+  function filtered() { return state.items.filter(item => (state.view === "all" || state.view === "ready" && item.stage === "可领用" && item.open || state.view === "borrowed" && item.stage === "借出中" || state.view === "repair" && item.stage === "检修中") && (!state.query || (item.name + " " + item.code + " " + item.detail).toLowerCase().includes(state.query.toLowerCase())) && (!state.room || item.room === state.room) && (!state.stage || item.stage === state.stage)); }
+  function render() {
+    const list = filtered(), pageCount = Math.max(1, Math.ceil(list.length / 8)); state.page = Math.min(state.page, pageCount);
+    const current = list.slice((state.page - 1) * 8, state.page * 8);
+    $("[data-stock-rows]").innerHTML = current.map(item => `<tr><td><span class="stock-code">${esc(item.code)}</span></td><td><strong class="stock-item-name">${esc(item.name)}</strong><small class="stock-item-detail">${esc(item.detail || "尚未补充器材说明")}</small></td><td>${esc(item.category)}</td><td>${esc(item.room)}</td><td class="stock-numeric">${item.count}<span class="stock-unit"> 件</span></td><td>${esc(item.keeper)}</td><td><span class="stock-badge ${item.stage === "可领用" ? "is-ready" : item.stage === "借出中" ? "is-borrowed" : "is-repair"}">${esc(item.stage)}</span>${!item.open ? '<small class="stock-private-note">暂不开放领用</small>' : ""}</td><td class="stock-date">${esc(item.date)}</td><td><div class="stock-row-actions"><button type="button" data-stock-edit="${esc(item.code)}" aria-label="调整${esc(item.name)}">调整</button><button type="button" class="stock-row-remove" data-stock-remove="${esc(item.code)}" aria-label="移出${esc(item.name)}">移出</button></div></td></tr>`).join("");
+    $("[data-stock-empty]").hidden = list.length !== 0;
+    $("[data-stock-total]").textContent = `共 ${list.length} 件物资${list.length ? `，当前展示 ${(state.page - 1) * 8 + 1}–${Math.min(state.page * 8, list.length)} 件` : ""}`;
+    $("[data-stock-prev]").disabled = state.page === 1; $("[data-stock-next]").disabled = state.page === pageCount;
+    $("[data-stock-pages]").innerHTML = Array.from({ length: pageCount }, (_, i) => `<button type="button" class="stock-page-number${i + 1 === state.page ? " is-active" : ""}" data-stock-page="${i + 1}" aria-label="第 ${i + 1} 页物资"${i + 1 === state.page ? ' aria-current="page"' : ""}>${i + 1}</button>`).join("");
+    $("[data-stock-count='all']").textContent = state.items.length; $("[data-stock-count='ready']").textContent = state.items.filter(item => item.stage === "可领用" && item.open).length; $("[data-stock-count='borrowed']").textContent = state.items.filter(item => item.stage === "借出中").length; $("[data-stock-count='repair']").textContent = state.items.filter(item => item.stage === "检修中").length;
+    $("[data-stock-page-title]").textContent = titles[state.view][0]; $("[data-stock-location]").textContent = titles[state.view][0]; $("[data-stock-page-description]").textContent = titles[state.view][1];
+  }
+  function clearFilters() { $("[data-stock-filters]").reset(); setSelect("stock-room-filter", ""); setSelect("stock-stage-filter", ""); state.query = ""; state.room = ""; state.stage = ""; state.page = 1; render(); }
+  function closeDrawer(restoreFocus = true) {
+    if (!root.classList.contains("stock-drawer-open")) return;
+    root.classList.remove("stock-drawer-open"); $("[data-stock-drawer-backdrop]").hidden = true; $("[data-stock-drawer-toggle]").setAttribute("aria-expanded", "false");
+    $("#stock-sidebar").removeAttribute("role"); $("#stock-sidebar").removeAttribute("aria-modal");
+    drawerInert.splice(0).forEach(element => { element.inert = false; }); document.body.style.overflow = drawerOverflow;
+    if (restoreFocus) (innerWidth <= 760 ? $("[data-stock-drawer-toggle]") : $("[data-stock-view].is-active"))?.focus();
+  }
+  function openDrawer() {
+    root.classList.add("stock-drawer-open"); $("[data-stock-drawer-backdrop]").hidden = false; $("[data-stock-drawer-toggle]").setAttribute("aria-expanded", "true");
+    const sidebar = $("#stock-sidebar"), backdrop = $("[data-stock-drawer-backdrop]");
+    sidebar.setAttribute("role", "dialog"); sidebar.setAttribute("aria-modal", "true"); sidebar.setAttribute("aria-label", "物资工作台");
+    let branch = sidebar;
+    while (branch && branch !== document.body) {
+      for (const sibling of branch.parentElement.children) if (sibling !== branch && sibling !== backdrop && sibling.tagName !== "SCRIPT" && !sibling.inert) { sibling.inert = true; drawerInert.push(sibling); }
+      branch = branch.parentElement;
+    }
+    drawerOverflow = document.body.style.overflow; document.body.style.overflow = "hidden"; $("[data-stock-drawer-close]").focus();
+  }
+  function openItem(code, trigger) {
+    closeSelects(); state.editing = code || null; state.trigger = trigger; state.saving = false; form.reset();
+    $$("[data-stock-error]").forEach(error => { error.textContent = ""; }); form.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute("aria-invalid")); $("[data-stock-form-message]").textContent = "";
+    const item = state.items.find(item => item.code === code);
+    form.elements.code.value = item?.code || `QW-${state.nextId}`; form.elements.name.value = item?.name || ""; form.elements.keeper.value = item?.keeper || ""; form.elements.detail.value = item?.detail || ""; form.elements.count.value = item?.count ?? 1;
+    setSelect("stock-category", item?.category || "影音器材"); setSelect("stock-room", item?.room || "东侧器材间"); setSelect("stock-stage", item?.stage || "可领用"); state.open = item?.open ?? true; $("[data-stock-available]").setAttribute("aria-checked", String(state.open));
+    $("#stock-dialog-title").textContent = item ? "调整物资信息" : "登记一件物资"; $("[data-stock-submit]").textContent = item ? "完成调整" : "完成登记"; $("[data-stock-submit]").disabled = false;
+    previousOverflow = document.body.style.overflow; document.body.style.overflow = "hidden"; dialog.showModal(); form.elements.name.focus();
+  }
+  function afterClose() { closeSelects(); document.body.style.overflow = previousOverflow; const trigger = state.trigger?.isConnected ? state.trigger : $("[data-stock-create]"); trigger?.focus(); }
+  dialog.addEventListener("close", afterClose); removeDialog.addEventListener("close", afterClose);
+  dialog.addEventListener("cancel", event => { if (state.saving) event.preventDefault(); });
+  $$("[data-stock-dismiss]").forEach(button => button.addEventListener("click", () => { if (!state.saving) dialog.close(); }));
+  $$("[data-stock-remove-dismiss]").forEach(button => button.addEventListener("click", () => removeDialog.close()));
+  root.addEventListener("click", event => {
+    const trigger = event.target.closest("button"); if (!trigger) return;
+    if (trigger.hasAttribute("data-stock-select-trigger")) toggleSelect(trigger.closest("[data-stock-select]"));
+    if (trigger.hasAttribute("data-stock-option")) { const select = trigger.closest("[data-stock-select]"), input = select.querySelector('input[type="hidden"]'); setSelect(input.id, trigger.dataset.stockOption); closeSelects(); select.querySelector("[data-stock-select-trigger]").focus(); }
+    if (trigger.dataset.stockView) { state.view = trigger.dataset.stockView; state.page = 1; clearFilters(); $$("[data-stock-view]").forEach(button => { button.classList.toggle("is-active", button === trigger); if (button === trigger) button.setAttribute("aria-current", "page"); else button.removeAttribute("aria-current"); }); closeDrawer(); }
+    if (trigger.hasAttribute("data-stock-create")) openItem(null, trigger);
+    if (trigger.dataset.stockEdit) openItem(trigger.dataset.stockEdit, trigger);
+    if (trigger.dataset.stockRemove) { state.removing = trigger.dataset.stockRemove; state.trigger = trigger; $("[data-stock-remove-copy]").textContent = `「${state.items.find(item => item.code === state.removing).name}」将从本次清单中移出。`; previousOverflow = document.body.style.overflow; document.body.style.overflow = "hidden"; removeDialog.showModal(); $("[data-stock-remove-dismiss]").focus(); }
+    if (trigger.hasAttribute("data-stock-prev") && state.page > 1) { state.page--; render(); }
+    if (trigger.hasAttribute("data-stock-next")) { state.page++; render(); }
+    if (trigger.dataset.stockPage) { state.page = Number(trigger.dataset.stockPage); render(); $('[data-stock-page="' + state.page + '"]')?.focus(); }
+    if (trigger.hasAttribute("data-stock-available")) { state.open = !state.open; trigger.setAttribute("aria-checked", String(state.open)); }
+    if (trigger.hasAttribute("data-stock-reminder")) toast("有 3 件物资需要跟进归还，2 件等待检修安排。");
+  });
+  root.addEventListener("keydown", event => {
+    const select = event.target.closest("[data-stock-select]");
+    if (select && ["ArrowDown", "ArrowUp", "Home", "End", "Escape"].includes(event.key)) {
+      event.preventDefault();
+      if (event.key === "Escape") { event.stopPropagation(); closeSelects(true); return; }
+      const trigger = select.querySelector("[data-stock-select-trigger]");
+      if (trigger.getAttribute("aria-expanded") !== "true") { toggleSelect(select, true); return; }
+      const options = [...select.querySelectorAll("[data-stock-option]")], i = options.indexOf(document.activeElement);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? options.length - 1 : event.key === "ArrowUp" ? (i - 1 + options.length) % options.length : (i + 1) % options.length;
+      options[next].focus();
+    }
+    if (event.key === "Escape" && root.classList.contains("stock-drawer-open") && !dialog.open && !removeDialog.open) { closeDrawer(); $("[data-stock-drawer-toggle]").focus(); }
+    if (event.key === "Tab") {
+      closeSelects();
+      if (root.classList.contains("stock-drawer-open")) {
+        const buttons = [...$("#stock-sidebar").querySelectorAll("button")].filter(button => !button.disabled && button.getClientRects().length);
+        if (event.shiftKey && document.activeElement === buttons[0]) { event.preventDefault(); buttons.at(-1)?.focus(); }
+        else if (!event.shiftKey && document.activeElement === buttons.at(-1)) { event.preventDefault(); buttons[0]?.focus(); }
+      }
+    }
+  });
+  document.addEventListener("click", event => { if (!event.target.closest("[data-stock-select]")) closeSelects(); });
+  $("[data-stock-filters]").addEventListener("submit", event => { event.preventDefault(); closeSelects(); state.query = new FormData(event.currentTarget).get("query").trim(); state.room = $("#stock-room-filter").value; state.stage = $("#stock-stage-filter").value; state.page = 1; render(); });
+  $("[data-stock-clear]").addEventListener("click", clearFilters);
+  $("[data-stock-empty-clear]").addEventListener("click", () => { state.view = "all"; clearFilters(); $$("[data-stock-view]").forEach(button => { const active = button.dataset.stockView === "all"; button.classList.toggle("is-active", active); if (active) button.setAttribute("aria-current", "page"); else button.removeAttribute("aria-current"); }); });
+  $("[data-stock-drawer-toggle]").addEventListener("click", () => { if (root.classList.contains("stock-drawer-open")) closeDrawer(); else openDrawer(); });
+  window.addEventListener("resize", () => { if (innerWidth > 760) closeDrawer(); });
+  $("[data-stock-drawer-close]").addEventListener("click", closeDrawer); $("[data-stock-drawer-backdrop]").addEventListener("click", closeDrawer);
+  $("[data-stock-remove-confirm]").addEventListener("click", () => { const name = state.items.find(item => item.code === state.removing)?.name; state.items = state.items.filter(item => item.code !== state.removing); removeDialog.close(); render(); toast(`已将「${name}」移出台账`); });
+  form.addEventListener("submit", event => {
+    event.preventDefault(); if (state.saving) return;
+    const values = Object.fromEntries(new FormData(form)); let firstInvalid = null;
+    for (const [key, message] of [["name", "请填写物资名称"], ["keeper", "请填写保管同事"], ["count", "可领数量应为 0–9999 之间的整数"]]) {
+      const invalid = key === "count" ? !/^\d+$/.test(values.count) || Number(values.count) > 9999 : !values[key].trim();
+      $("[data-stock-error='" + key + "']").textContent = invalid ? message : ""; form.elements[key].setAttribute("aria-invalid", String(invalid)); if (invalid && !firstInvalid) firstInvalid = form.elements[key];
+    }
+    if (firstInvalid) { firstInvalid.focus(); return; }
+    const record = { code: values.code, name: values.name.trim(), keeper: values.keeper.trim(), detail: values.detail.trim(), count: Number(values.count), category: $("#stock-category").value, room: $("#stock-room").value, stage: $("#stock-stage").value, open: state.open, date: "2026-10-28" };
+    closeSelects(); state.saving = true; form.querySelectorAll("button,input,textarea").forEach(control => { control.disabled = true; }); $("[data-stock-submit]").textContent = state.editing ? "正在调整…" : "正在登记…"; $("[data-stock-submit]").setAttribute("aria-busy", "true");
+    setTimeout(() => {
+      if (state.editing) state.items = state.items.map(item => item.code === state.editing ? record : item); else { state.items.unshift(record); state.nextId++; }
+      state.saving = false; form.querySelectorAll("button,input,textarea").forEach(control => { control.disabled = false; }); $("[data-stock-submit]").removeAttribute("aria-busy"); dialog.close(); state.view = "all"; clearFilters(); $$("[data-stock-view]").forEach(button => { const active = button.dataset.stockView === "all"; button.classList.toggle("is-active", active); if (active) button.setAttribute("aria-current", "page"); else button.removeAttribute("aria-current"); }); toast(state.editing ? `「${record.name}」的资料已更新` : `「${record.name}」已登记到台账`);
+    }, 500);
+  });
+  render();
+})([{"code":"QW-1048","name":"便携录音套装","detail":"双通道录音机 · 含防风罩与收纳包","category":"影音器材","room":"东侧器材间","count":6,"keeper":"周知夏","date":"2026-10-27","stage":"可领用","open":true},{"code":"QW-1047","name":"无线投屏器","detail":"会议协作用 · USB-C 接口","category":"办公设备","room":"共享工作区","count":12,"keeper":"林予安","date":"2026-10-27","stage":"可领用","open":true},{"code":"QW-1046","name":"桌面支架组","detail":"铝合金折叠支架 · 三件套","category":"空间用品","room":"西侧储物室","count":8,"keeper":"许明澈","date":"2026-10-26","stage":"可领用","open":true},{"code":"QW-1045","name":"便携摄影灯","detail":"双色温补光灯 · 60W","category":"影音器材","room":"东侧器材间","count":0,"keeper":"周知夏","date":"2026-10-26","stage":"借出中","open":true},{"code":"QW-1044","name":"移动展示屏","detail":"27 英寸 · 带升降支架","category":"办公设备","room":"共享工作区","count":2,"keeper":"林予安","date":"2026-10-25","stage":"可领用","open":true},{"code":"QW-1043","name":"手持对讲机","detail":"六台一组 · 附充电底座","category":"活动物料","room":"西侧储物室","count":0,"keeper":"陈听禾","date":"2026-10-25","stage":"检修中","open":false},{"code":"QW-1042","name":"折叠展示架","detail":"A3 竖版 · 磁吸面板","category":"空间用品","room":"西侧储物室","count":10,"keeper":"许明澈","date":"2026-10-24","stage":"可领用","open":true},{"code":"QW-1041","name":"活动收纳箱","detail":"45L 带轮款 · 可叠放","category":"活动物料","room":"西侧储物室","count":0,"keeper":"陈听禾","date":"2026-10-24","stage":"借出中","open":true},{"code":"QW-1040","name":"会议拾音麦克风","detail":"全向拾音 · 桌面款","category":"影音器材","room":"共享工作区","count":4,"keeper":"林予安","date":"2026-10-23","stage":"可领用","open":true},{"code":"QW-1039","name":"长焦镜头","detail":"70–200mm · 含镜头包","category":"影音器材","room":"东侧器材间","count":1,"keeper":"周知夏","date":"2026-10-22","stage":"可领用","open":true},{"code":"QW-1038","name":"便携标签打印机","detail":"蓝牙连接 · 热敏打印","category":"办公设备","room":"共享工作区","count":3,"keeper":"林予安","date":"2026-10-22","stage":"可领用","open":true},{"code":"QW-1037","name":"户外延长线","detail":"20 米防雨线盘","category":"活动物料","room":"西侧储物室","count":0,"keeper":"陈听禾","date":"2026-10-21","stage":"检修中","open":false},{"code":"QW-1036","name":"轻便三脚架","detail":"碳纤维 · 旅行款","category":"影音器材","room":"东侧器材间","count":5,"keeper":"周知夏","date":"2026-10-21","stage":"可领用","open":true},{"code":"QW-1035","name":"桌面理线盒","detail":"六位插排收纳","category":"空间用品","room":"共享工作区","count":7,"keeper":"许明澈","date":"2026-10-20","stage":"可领用","open":true},{"code":"QW-1034","name":"布面折叠椅","detail":"深灰款 · 单把","category":"空间用品","room":"西侧储物室","count":0,"keeper":"许明澈","date":"2026-10-19","stage":"借出中","open":true},{"code":"QW-1033","name":"数字绘图板","detail":"中号压感板 · 含手写笔","category":"办公设备","room":"共享工作区","count":2,"keeper":"林予安","date":"2026-10-18","stage":"可领用","open":true}]);</script>
   </main>
 
   <aside class="modal" hidden data-modal role="dialog" aria-modal="false" aria-labelledby="style-note-title">
     <h3 id="style-note-title">Style 01: Card Grid</h3>
-    <ul><li>Start with the admin application frame: sidebar, top bar, breadcrumb or tabs, workspace, and table-first modules.</li><li>Use search, filters, KPI cards, quick entries, ranking lists, calendars, approvals, and dense tables as real management anchors.</li><li>Avoid hero sections, decorative card walls, oversized marketing typography, and abstract product art.</li></ul>
+    <ul><li>Start with a white sidebar and compact top bar; place the real work inside one clear table panel.</li><li>Use teal for the primary action and selection, pale teal for table headings, and fine neutral borders for structure.</li><li>Keep filters, row actions, pagination and form dialogs practical; avoid decorative KPI cards, hero sections and unrelated charts.</li></ul>
     <button type="button" class="secondary-action" data-close-modal>Close</button>
   </aside>
   <div class="toast" hidden data-toast role="status" aria-live="polite">
@@ -8575,20 +8715,10 @@ body.industrial-control .feature-block {
   <div class="sr-status" aria-live="polite" data-status></div>
 
   <script>
-  const prompt = "Use awesome-page-design Style 01 - Card Grid as the page design direction.\nPrompt type: Full Prompt.\nBest fit: admin panels, enterprise consoles, permission systems, operations dashboards.\nVisual mood: Real admin shell with white sidebar, white top bar, gray-blue workspace, KPI cards, quick entries, filters, dense tables, and utility panels.\nScenario focus:\nLanding adaptation: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.\nDashboard adaptation: Use a real app shell with white sidebar, top search, page tabs, KPI row, quick entries, chart cards, ranking lists, approval panes, and calendar widgets.\nAdmin adaptation: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.\nForms/data adaptation: Use visible labels, compact helper text, grouped sections, inline validation, table-adjacent editing, permission warnings, and save/cancel toolbars.\nMobile adaptation: Turn sidebar navigation into a horizontal module strip, keep the page title and primary action near the top, stack widgets, and make dense tables scroll horizontally.\nAvoid for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling instead of management clarity.\nLayout archetype: Blue Admin Console.\nLayout structure: Full admin application shell: white sidebar, white top bar, breadcrumb/tab strip, gray-blue workspace, KPI row, quick entries, chart cards, ranking panel, approval/calendar widgets, and a dense data table.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #eef6ff; surface #ffffff; text #0f172a; muted #64748b; primary #1677ff; accent #0ea5e9; border #d7e7fb; radius 8px; shadow/material 0 18px 46px rgba(22, 119, 255, .10).\nGeometry: panel radius 8px; control radius 6px; chip/state radius 4px; media radius 8px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use compact sans-serif UI text, practical section titles, tabular numerals, muted labels, and table-first hierarchy instead of hero-scale headings.\nComponents: Persistent sidebar navigation, top search, icon buttons, account menu, active tabs, KPI cards, shortcut tiles, filter toolbar, date range controls, status chips, data tables, charts, approval tabs, ranking lists, and calendar strips should feel like one admin system.\nButtons: Primary buttons are practical solid controls; secondary actions stay quiet as bordered controls.\nButton details: Use compact blue primary buttons, quiet bordered secondary buttons, square icon tools, tab buttons, and stable loading buttons inside the top bar or table toolbar.\nFeedback and alerts: Use selected sidebar states, active tabs, row-local warnings, small status toasts, empty table states, pending chips, and disabled tools in the same admin language.\nSpacing system: Use a 220-260px sidebar, 56-72px top bar, 16-20px workspace gutters, 14-18px panel padding, 8-12px row gaps, and 40-44px controls for repeated scanning.\nResponsive behavior: Desktop keeps sidebar, top bar, KPI row, chart/ranking panels, and table visible; tablet collapses right panels below; mobile turns sidebar into a horizontal module strip and makes tables horizontally scrollable.\nIcons and media: Use real interface evidence: table rows, chart grids, ranked lists, empty states, approval panes, calendars, and product screenshots instead of abstract hero art.\nStates: Show selected sidebar item, active tab, search/filter state, pending approvals, warning rows, empty tables, disabled tools, loading rows, and focus rings clearly.\nComponent state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.\nMotion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.\nImplementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.\nExample content direction: you may use the specificity of \"OpsFlow / Operations management dashboard\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not use marketing hero sections, oversized display copy, decorative card walls, abstract dashboards, or isolated cards without navigation context. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.";
+  const prompt = "Use awesome-page-design Style 01 - Card Grid as the page design direction.\nPrompt type: Full Prompt.\nBest fit: admin panels, enterprise consoles, permission systems, operations dashboards.\nVisual mood: A quiet teal administration interface with a white sidebar and top bar, light-gray workspace, one bordered table panel, compact filters, restrained status labels, and a clear two-column form dialog.\nScenario focus:\nLanding adaptation: Use only when the public page needs to show an actual admin product screenshot; the screenshot should still include sidebar, top bar, tables, filters, and widgets.\nDashboard adaptation: Keep the sidebar and top bar, foreground the current task, and add summary metrics only when they improve the workflow.\nAdmin adaptation: Use compact tables, toolbar filters, date ranges, bulk actions, column settings, row-level status, empty states, permission controls, and detail drawers.\nForms/data adaptation: Use visible labels, compact helper text, grouped sections, inline validation, table-adjacent editing, permission warnings, and save/cancel toolbars.\nMobile adaptation: Use a sidebar Drawer, keep title and primary action visible, wrap filters, and contain table scrolling inside its own region.\nAvoid for: Weak for expressive fashion, immersive art, or pages that need emotional hero storytelling instead of management clarity.\nLayout archetype: Quiet Teal Admin.\nLayout structure: A white sidebar and compact top bar frame a light-gray workspace. One white panel contains a heading, primary action, filters, a pale-teal table header, realistic rows and pagination. Use a centered two-column form dialog for registration and editing.\nLayout adaptation: define the user's real primary content object, top-level regions, main action model, information density, and responsive collapse before styling; preserve the archetype's structural identity without copying the sample page.\nColor tokens: background #f5f7fa; surface #ffffff; text #344350; muted #7b8895; primary #23879a; accent #e5f2f4; border #e2e8ef; radius 6px; shadow/material 0 1px 3px rgba(31, 50, 65, .03).\nGeometry: panel radius 6px; control radius 4px; chip/state radius 4px; media radius 6px. Avoid making every button and card the same large rounded rectangle or pill.\nTypography: Use compact sans-serif interface text, readable Chinese labels, tabular numerals and restrained heading sizes.\nComponents: Sidebar navigation, top bar, searchable filter toolbar, custom Select, Table, status badges, pagination, native Dialog, labeled form fields and inline feedback should belong to one quiet admin system.\nButtons: Use a compact teal primary button and light bordered secondary actions; keep row actions textual and clearly separated.\nButton details: Use 36–40px teal primary controls, light outlined secondary controls and quiet row actions; retain clear keyboard focus and touch targets.\nFeedback and alerts: Use pale status badges, inline validation and short Toast feedback without repainting the whole workspace.\nSpacing system: Use a roughly 224px sidebar, a 64px top bar, 24px workspace gutters, 24px panel padding, and 48–56px table rows.\nResponsive behavior: On narrow screens use a dismissible sidebar Drawer, wrap filters, scroll only the Table horizontally, and stack form fields while keeping dialog actions reachable.\nIcons and media: Use actual table rows and editable form controls as product evidence; avoid decorative imagery and chart walls.\nStates: Show active navigation, focused controls, meaningful row statuses, empty results, inline validation, saving and successful registration.\nComponent state matrix: define visible, style-consistent states for the buttons, links, inputs, filters, cards, lists, tables, modals, drawers, empty states, error states, loading states, disabled states, selected states, warning states, and success states that appear in the UI.\nMotion: every transition should communicate entry, exit, disclosure, loading, object continuity, list reordering, or progress. Avoid transition: all and provide reduced-motion behavior.\nImplementation compliance: use semantic controls; give icon-only buttons accessible names; make focus-visible obvious; keep media dimensions stable with width/height or aspect-ratio; handle long text with wrapping, truncation, or clamping; make empty/error/loading states explain the next action.\nExample content direction: you may use the specificity of \"栖物仓 / 共享物资工作台\" as inspiration, but replace it with the user's real product, real information architecture, and real copy.\nDesign dials: set layout variance, motion intensity, and visual density for the actual product; do not reuse the sample page structure by default.\nDo not: Do not use large marketing headings, KPI card walls, unrelated charts, oversized rounded controls or a second dashboard above the table. Do not copy the sample HTML, brand, copy, or layout; do not reduce the style to a color swap; do not generate a generic AI-looking hero plus three cards.\nBefore finishing: check desktop and mobile screenshots, text fit, semantic controls, accessible labels, focus-visible, reduced motion, stable media, and style-consistent buttons, inputs, cards, tables, modals, empty states, error, loading, disabled, hover, selected, warning, and success states.";
   const modal = document.querySelector('[data-modal]');
   const status = document.querySelector('[data-status]');
   const toast = document.querySelector('[data-toast]');
-  const demo = {"launch":["Task review","Filter task records, inspect owner/status columns, and keep empty or warning states inside the table frame."],"metrics":["Data center","Compare annual value, record count, opportunities, signed orders, ranking lists, and approval tabs."],"assets":["System modules","Use records, purchasing, products, workflow, reports, monitoring, permissions, and settings sections as real navigation."]};
-  const referenceDetails = document.getElementById('details');
-  document.querySelectorAll('a[href="#details"]').forEach((link) => {
-    link.addEventListener('click', () => { referenceDetails.open = true; });
-  });
-  function revealReferenceFromHash() {
-    if (location.hash === '#details') referenceDetails.open = true;
-  }
-  revealReferenceFromHash();
-  window.addEventListener('hashchange', revealReferenceFromHash);
   let toastTimer;
   function showToast(message) {
     if (!toast) return;
@@ -8626,7 +8756,8 @@ body.industrial-control .feature-block {
     helper.remove();
     return copied;
   }
-  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', () => {
+  document.querySelectorAll('[data-open-modal]').forEach((node) => node.addEventListener('click', (event) => {
+    event.preventDefault();
     modal.hidden = false;
     document.querySelector('[data-close-modal]').focus();
   }));
@@ -8647,59 +8778,176 @@ body.industrial-control .feature-block {
       }
     });
   });
-  document.querySelectorAll('[data-toast-trigger]').forEach((button) => {
-    button.addEventListener('click', () => showToast('Primary action confirmed'));
-  });
-  document.querySelectorAll('[data-loading-demo]').forEach((button) => {
-    const original = button.textContent;
-    button.addEventListener('click', () => {
-      if (button.getAttribute('aria-busy') === 'true') return;
-      button.setAttribute('aria-busy', 'true');
-      button.disabled = true;
-      status.textContent = 'Saving state';
-      setTimeout(() => {
-        button.setAttribute('aria-busy', 'false');
-        button.disabled = false;
-        button.textContent = original;
-        showToast('State saved without layout shift');
-      }, 1200);
-    });
-  });
-  document.querySelectorAll('[data-toggle-demo]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const pressed = button.getAttribute('aria-pressed') === 'true';
-      button.setAttribute('aria-pressed', String(!pressed));
-      button.textContent = pressed ? 'Filter off' : 'Filter on';
-      showToast(pressed ? 'Filter removed' : 'Filter applied');
-    });
-  });
-  document.querySelectorAll('[data-demo-input]').forEach((input) => {
-    input.addEventListener('input', () => {
-      const helper = input.closest('.field-group')?.querySelector('[data-field-help]');
-      if (!helper) return;
-      if (input.value.trim().length < 3) {
-        input.setAttribute('aria-invalid', 'true');
-        helper.textContent = 'Add at least three characters so the field has a recoverable validation state.';
-        status.textContent = 'Field validation warning';
-      } else {
-        input.removeAttribute('aria-invalid');
-        helper.textContent = 'Filled state is valid and helper text remains visible.';
-        status.textContent = 'Field validation cleared';
-      }
-    });
-  });
-  document.querySelectorAll('[data-tab]').forEach((button) => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('[data-tab]').forEach((node) => {
-        const active = node === button;
-        node.classList.toggle('active', active);
-        node.setAttribute('aria-selected', String(active));
-      });
-      document.querySelector('[data-demo-title]').textContent = demo[button.dataset.tab][0];
-      document.querySelector('[data-demo-copy]').textContent = demo[button.dataset.tab][1];
-      status.textContent = demo[button.dataset.tab][0] + ' tab selected';
-    });
-  });
   </script>
+<script>(function initializeControls() {
+  function bind() {
+    const controllers = [];
+    document.querySelectorAll('[data-choice]').forEach(box => {
+      const input = box.querySelector('input'), trigger = box.querySelector('.pd-choice-trigger'), list = box.querySelector('[role=listbox]'), options = [...list.querySelectorAll('[role=option]')];
+      const initialValue = input.value;
+      let active = 0, opened = false, search = '', searchTimer;
+      const enabled = i => options[i]?.getAttribute('aria-disabled') !== 'true';
+      const selectedIndex = () => Math.max(0, options.findIndex(option => option.dataset.value === input.value));
+      function highlight(i) { active = i; options.forEach((option,n) => option.classList.toggle('pd-active', n === i)); trigger.setAttribute('aria-activedescendant', options[i].id); options[i].scrollIntoView({block:'nearest'}); }
+      function position() {
+        const r = trigger.getBoundingClientRect(), below = innerHeight-r.bottom-12, above = r.top-12;
+        const height = Math.min(300, Math.max(90, Math.max(below, above))), up = below < 180 && above > below;
+        const width = Math.min(Math.max(r.width, 200), innerWidth-24);
+        Object.assign(list.style,{position:'fixed',margin:'0',left:`${Math.max(12,Math.min(r.left,innerWidth-width-12))}px`,width:`${width}px`,maxHeight:`${height}px`,top:up?'auto':`${r.bottom+6}px`,bottom:up?`${innerHeight-r.top+6}px`:'auto'});
+      }
+      function close() { if (!opened) return; opened = false; if (list.hidePopover && list.matches(':popover-open')) list.hidePopover(); list.hidden = true; trigger.setAttribute('aria-expanded','false'); trigger.removeAttribute('aria-activedescendant'); search='';clearTimeout(searchTimer); }
+      function open(index=selectedIndex()) { if(trigger.disabled)return;controllers.forEach(c=>c.close());opened=true;list.hidden=false;position();if(list.showPopover)list.showPopover();trigger.setAttribute('aria-expanded','true');highlight(index); }
+      function sync() { const i=selectedIndex(); box.querySelector('[data-choice-label]').textContent=options[i].querySelector('span').textContent; options.forEach((option,n)=>option.setAttribute('aria-selected',String(n===i))); }
+      function choose(i) { if(!enabled(i))return;input.value=options[i].dataset.value;sync();close();trigger.focus();input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true})); }
+      trigger.addEventListener('click',()=>opened?close():open());
+      trigger.addEventListener('keydown',event=>{
+        const key=event.key;
+        if(['ArrowDown','ArrowUp','Home','End'].includes(key)) { event.preventDefault(); if(!opened){open(key==='Home'?0:key==='End'?options.length-1:selectedIndex());return;} let n=key==='Home'?0:key==='End'?options.length-1:active+(key==='ArrowDown'?1:-1); n=Math.max(0,Math.min(options.length-1,n));while(!enabled(n)&&n>=0&&n<options.length)n+=key==='ArrowUp'||key==='End'?-1:1;if(options[n]&&enabled(n))highlight(n); }
+        else if(key==='Escape'&&opened){event.preventDefault();event.stopPropagation();close();}
+        else if((key==='Enter'||key===' ')&&opened){event.preventDefault();choose(active);}
+        else if(key==='Tab')close();
+        else if(key.length===1&&!event.ctrlKey&&!event.metaKey&&key!==' '){event.preventDefault();search+=key.toLocaleLowerCase();clearTimeout(searchTimer);searchTimer=setTimeout(()=>search='',600);const n=options.findIndex((o,i)=>enabled(i)&&o.textContent.trim().toLocaleLowerCase().startsWith(search));if(n>=0){if(!opened)open(n);else highlight(n);}}
+      });
+      list.addEventListener('pointerdown',event=>event.preventDefault());
+      list.addEventListener('click',event=>{const option=event.target.closest('[role=option]');if(option){event.preventDefault();choose(options.indexOf(option));}});
+      document.addEventListener('pointerdown',event=>{if(!box.contains(event.target))close();});
+      document.addEventListener('focusin',event=>{if(!box.contains(event.target))close();});
+      box.closest('dialog')?.addEventListener('close',close);
+      box.closest('dialog')?.addEventListener('cancel',event=>{if(opened){event.preventDefault();close();}});
+      input.form?.addEventListener('reset',()=>setTimeout(()=>{input.value=initialValue;close();sync();},0));
+      controllers.push({close,position,isOpen:()=>opened});sync();
+    });
+    addEventListener('resize',()=>controllers.forEach(c=>c.isOpen()&&c.position()));
+    document.addEventListener('scroll',()=>controllers.forEach(c=>c.isOpen()&&c.position()),true);
+    document.querySelectorAll('.pd-stepper').forEach(box=>{
+      const input=box.querySelector('input'),buttons=[...box.querySelectorAll('button')];
+      function sync(){buttons[0].disabled=input.disabled||input.min!==''&&Number(input.value)<=Number(input.min);buttons[1].disabled=input.disabled||input.max!==''&&Number(input.value)>=Number(input.max);}
+      buttons.forEach(button=>button.addEventListener('click',()=>{try{Number(button.dataset.step)>0?input.stepUp():input.stepDown();}catch{return;}input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));sync();}));
+      input.addEventListener('input',sync);input.form?.addEventListener('reset',()=>setTimeout(sync,0));
+      new MutationObserver(sync).observe(input,{attributes:true,attributeFilter:['min','max','disabled']});
+      input.closest('dialog')?.addEventListener('toggle',sync);sync();
+    });
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',bind,{once:true}):bind();
+})();(function initializeDateControls() {
+  const iso = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  const parse = value => /^\d{4}-\d{2}-\d{2}$/.test(value || '') ? new Date(`${value}T12:00:00`) : null;
+  const addDays = (date, count) => { const next = new Date(date); next.setDate(next.getDate() + count); return next; };
+  const today = () => { const date = new Date(); date.setHours(12, 0, 0, 0); return date; };
+  let sequence = 0;
+  function bind() {
+    document.querySelectorAll('.demo-root input[data-calendar-field]').forEach(input => {
+      if (input.dataset.demoCalendar) return;
+      input.dataset.demoCalendar = 'true';
+      const root = input.closest('.demo-root'), value = input.value;
+      input.type = 'text'; input.value = value; input.readOnly = true; input.placeholder = '选择日期';
+      input.setAttribute('aria-haspopup', 'dialog'); input.setAttribute('aria-expanded', 'false');
+      const wrapper = document.createElement('span'); wrapper.className = 'demo-date';
+      input.before(wrapper); wrapper.appendChild(input);
+      const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'demo-date-trigger';
+      trigger.setAttribute('aria-label', '打开日期选择'); trigger.setAttribute('aria-haspopup', 'dialog'); trigger.setAttribute('aria-expanded', 'false');
+      trigger.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v15H5zM8 3v4m8-4v4M5 10h14M8 13h2m4 0h2m-8 4h2"/></svg>';
+      wrapper.appendChild(trigger);
+      const popup = document.createElement('div'), id = `demo-calendar-${++sequence}`;
+      popup.id = id; popup.className = `demo-calendar ${root.classList.contains('s07') ? 'demo-calendar-garden' : 'demo-calendar-reading'}`;
+      popup.setAttribute('role', 'dialog'); popup.setAttribute('aria-label', '选择日期'); popup.setAttribute('popover', 'manual');
+      popup.hidden = true;
+      popup.innerHTML = `<div class="demo-calendar-head"><button type="button" data-calendar-prev aria-label="上一个月">‹</button><strong data-calendar-month aria-live="polite"></strong><button type="button" data-calendar-next aria-label="下一个月">›</button></div><div class="demo-calendar-week" aria-hidden="true">${['一','二','三','四','五','六','日'].map(day => `<span>${day}</span>`).join('')}</div><div class="demo-calendar-days" role="group" aria-label="本月日期"></div><div class="demo-calendar-footer"><button type="button" data-calendar-today>今天</button><span data-calendar-selection role="status"></span><button type="button" data-calendar-clear>清空</button></div>`;
+      wrapper.appendChild(popup); input.setAttribute('aria-controls', id); trigger.setAttribute('aria-controls', id);
+      const monthLabel = popup.querySelector('[data-calendar-month]'), grid = popup.querySelector('.demo-calendar-days');
+      const previous = popup.querySelector('[data-calendar-prev]'), next = popup.querySelector('[data-calendar-next]');
+      let active = false, focused = today(), month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12);
+      const valid = date => (!input.min || iso(date) >= input.min) && (!input.max || iso(date) <= input.max);
+      function clamp(date) {
+        if (input.min && iso(date) < input.min) return parse(input.min);
+        if (input.max && iso(date) > input.max) return parse(input.max);
+        return date;
+      }
+      function validate() {
+        const date = parse(input.value);
+        input.setCustomValidity(input.value && (!date || !valid(date)) ? '请选择允许范围内的日期。' : '');
+      }
+      function render(focusDay = false) {
+        monthLabel.textContent = `${month.getFullYear()} 年 ${month.getMonth() + 1} 月`;
+        const first = new Date(month.getFullYear(), month.getMonth(), 1, 12), offset = (first.getDay() + 6) % 7;
+        const days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+        previous.disabled = !!input.min && iso(new Date(month.getFullYear(), month.getMonth(), 0, 12)) < input.min;
+        next.disabled = !!input.max && iso(new Date(month.getFullYear(), month.getMonth() + 1, 1, 12)) > input.max;
+        grid.innerHTML = Array.from({length: offset}, () => '<span aria-hidden="true"></span>').join('') + Array.from({length: days}, (_, index) => {
+          const date = new Date(month.getFullYear(), month.getMonth(), index + 1, 12), key = iso(date), selected = input.value === key;
+          return `<button type="button" data-calendar-day="${key}" tabindex="${key === iso(focused) ? '0' : '-1'}" aria-label="${month.getFullYear()}年${month.getMonth() + 1}月${index + 1}日${selected ? '，已选中' : ''}" aria-pressed="${selected}"${key === iso(today()) ? ' aria-current="date"' : ''}${valid(date) ? '' : ' disabled'}>${index + 1}</button>`;
+        }).join('');
+        popup.querySelector('[data-calendar-today]').disabled = !valid(today());
+        popup.querySelector('[data-calendar-selection]').textContent = input.value ? `已选 ${input.value.slice(5).replace('-', ' / ')}` : '尚未选择';
+        if (focusDay) grid.querySelector(`[data-calendar-day="${iso(focused)}"]`)?.focus();
+      }
+      function position() {
+        const rect = wrapper.getBoundingClientRect(), width = Math.min(304, window.innerWidth - 24);
+        popup.style.width = `${width}px`;
+        const height = popup.getBoundingClientRect().height, below = window.innerHeight - rect.bottom - 12;
+        popup.style.left = `${Math.max(12, Math.min(rect.left, window.innerWidth - width - 12))}px`;
+        popup.style.top = `${Math.max(12, below >= height || rect.top < height + 12 ? Math.min(rect.bottom + 7, window.innerHeight - height - 12) : rect.top - height - 7)}px`;
+      }
+      function close(restore = false) {
+        if (!active) return;
+        active = false;
+        if (typeof popup.hidePopover === 'function' && popup.matches(':popover-open')) popup.hidePopover();
+        popup.hidden = true; input.setAttribute('aria-expanded', 'false'); trigger.setAttribute('aria-expanded', 'false');
+        if (restore) input.focus();
+      }
+      function open() {
+        if (active) { close(true); return; }
+        focused = clamp(parse(input.value) || today()); month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12);
+        active = true; render(); popup.hidden = false;
+        if (typeof popup.showPopover === 'function') popup.showPopover();
+        input.setAttribute('aria-expanded', 'true'); trigger.setAttribute('aria-expanded', 'true'); position();
+        grid.querySelector(`[data-calendar-day="${iso(focused)}"]`)?.focus();
+      }
+      function choose(value) {
+        input.value = value; validate();
+        input.dispatchEvent(new Event('input', {bubbles: true})); input.dispatchEvent(new Event('change', {bubbles: true})); close(true);
+      }
+      function moveMonth(count) {
+        month = new Date(month.getFullYear(), month.getMonth() + count, 1, 12);
+        const end = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+        focused = clamp(new Date(month.getFullYear(), month.getMonth(), Math.min(focused.getDate(), end), 12));
+        month = new Date(focused.getFullYear(), focused.getMonth(), 1, 12); render(true); position();
+      }
+      trigger.addEventListener('click', open); input.addEventListener('click', open);
+      input.addEventListener('keydown', event => { if (['ArrowDown','Enter',' '].includes(event.key)) {event.preventDefault(); open();} });
+      input.addEventListener('input', validate); input.addEventListener('change', validate);
+      previous.addEventListener('click', () => moveMonth(-1)); next.addEventListener('click', () => moveMonth(1));
+      popup.querySelector('[data-calendar-today]').addEventListener('click', () => choose(iso(today())));
+      popup.querySelector('[data-calendar-clear]').addEventListener('click', () => choose(''));
+      grid.addEventListener('click', event => {const button = event.target.closest('[data-calendar-day]'); if (button && !button.disabled) choose(button.dataset.calendarDay);});
+      // Some fields live inside a wrapping label; calendar clicks must not activate that label again.
+      popup.addEventListener('click', event => event.preventDefault());
+      popup.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {event.preventDefault();event.stopPropagation();close(true);return;}
+        if (event.key === 'Tab') {
+          const controls = [...popup.querySelectorAll('button:not(:disabled)')].filter(button => button.tabIndex >= 0);
+          if (event.shiftKey && document.activeElement === controls[0]) {event.preventDefault(); controls.at(-1)?.focus();}
+          else if (!event.shiftKey && document.activeElement === controls.at(-1)) {event.preventDefault();controls[0]?.focus();}
+          return;
+        }
+        if (!event.target.matches('[data-calendar-day]')) return;
+        let change = ({ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7})[event.key];
+        if (event.key === 'Home') change = -((focused.getDay()+6)%7);
+        if (event.key === 'End') change = 6-((focused.getDay()+6)%7);
+        if (change !== undefined) {event.preventDefault();focused = clamp(addDays(focused,change));month = new Date(focused.getFullYear(),focused.getMonth(),1,12);render(true);position();}
+        else if (event.key === 'PageUp' || event.key === 'PageDown') {event.preventDefault();moveMonth(event.key === 'PageUp' ? -1 : 1);}
+      });
+      document.addEventListener('pointerdown', event => { if (active && !wrapper.contains(event.target)) close(); });
+      const dialog = input.closest('dialog');
+      dialog?.addEventListener('close', () => close());
+      dialog?.addEventListener('cancel', event => {if (active) {event.preventDefault(); close(true);}});
+      input.form?.addEventListener('reset', () => setTimeout(validate,0));
+      window.addEventListener('resize', () => {if (active) position();});
+      document.addEventListener('scroll', event => {if (active && !popup.contains(event.target)) position();},true);
+      validate();
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, {once:true}); else bind();
+})();</script>
 </body>
 </html>

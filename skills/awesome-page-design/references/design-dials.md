@@ -1,40 +1,40 @@
-# Design Dials
+# 设计调节项
 
-Use these dials after a layout archetype and visual style are selected. They keep one direction flexible without letting the result become vague or generic.
+选定布局原型和视觉风格后，使用这些调节项。在保持方向清晰的同时提供变化，避免结果变得含糊或模板化。
 
-Layout variance is not the same as layout archetype. Choose the archetype from the user's page job first, then use layout variance to decide how familiar or expressive that archetype should feel.
+布局变化度不等于布局原型。先根据页面任务选择原型，再决定这种原型应当多熟悉或多有表现力。
 
-## Layout Variance
+## 布局变化度
 
-Choose how much the page structure should depart from a familiar product layout.
+决定页面结构与常见产品布局的差异程度。
 
-- `Low`: Keep common navigation, section order, and grid patterns inside the chosen archetype. Use for enterprise tools, admin panels, and pages where speed of understanding matters more than novelty.
-- `Medium`: Keep the core workflow familiar, but vary section rhythm, card scale, media placement, and hierarchy inside the chosen archetype. This is the default for most websites and app screens.
-- `High`: Use asymmetric composition, editorial pacing, expressive type scale, or immersive first view while preserving the chosen archetype's required actions and orientation. Use only when the brand, campaign, or portfolio can support a stronger point of view.
+- **低**：在所选原型内保留常见导航、区块顺序和网格模式。适合企业工具、管理后台，以及理解速度比新颖性更重要的页面。
+- **中**：保持核心工作流熟悉，在所选原型内调整区块节奏、Card 尺度、媒体位置和层级。大多数网站和应用页面默认采用这一档。
+- **高**：在保留原型所需操作和方向感的前提下，使用不对称构图、编辑式节奏、富有表现力的字号层级或沉浸式首屏。只用于品牌、活动或作品集能承载鲜明表达的情况。
 
-## Motion Intensity
+## 动效强度
 
-Choose how active the interface should feel.
+决定界面的活跃程度。
 
-- `None`: Static except for required focus and state changes. Use for dense operations, documentation, government-like flows, and sensitive workflows.
-- `Subtle`: Small hover, selected, loading, and disclosure transitions. This is the default.
-- `Expressive`: Larger transitions, kinetic surfaces, staged reveals, or animated accent elements. Use for launches, creative tools, and playful brands.
+- **无**：除必要的焦点和状态变化外保持静态。适合密集操作、文档、政务类流程和敏感工作流。
+- **轻微**：小幅悬停、选中、加载和内容展开过渡。这是默认档位。
+- **鲜明**：较大的过渡、动态表面、分阶段呈现或带动画的强调元素。适合发布活动、创意工具和活泼品牌。
 
-## Visual Density
+## 视觉密度
 
-Choose how much information appears in the first usable viewport.
+决定首个可用视口中显示多少信息。
 
-- `Sparse`: Strong hero, few objects, generous breathing room. Use for premium pages, portfolios, and focused launches.
-- `Normal`: Balanced content, proof, actions, and a supporting visual. This is the default.
-- `Dense`: Tables, filters, status chips, charts, split panes, or operational queues visible early. Use for dashboards, admin panels, internal workspaces, and analytics tools.
+- **疏朗**：突出的 Hero、少量对象和充足留白。适合高端页面、作品集和聚焦型发布页。
+- **适中**：平衡内容、可信依据、操作和辅助视觉。这是默认档位。
+- **密集**：较早展示 Table、筛选器、状态 Chip、图表、分栏或操作队列。适合数据看板、管理后台、内部工作区和分析工具。
 
-## How To Apply
+## 应用方式
 
-When the user has not specified these dials, infer them from the product:
+用户没有指定时，根据产品推断：
 
-- Public landing page: `Medium` layout variance, `Subtle` motion, `Normal` density.
-- Operational dashboard: `Low` layout variance, `None` or `Subtle` motion, `Dense` density.
-- Creative campaign: `High` layout variance, `Expressive` motion, `Sparse` or `Normal` density.
-- Documentation or developer tool: `Low` to `Medium` layout variance, `Subtle` motion, `Normal` or `Dense` density.
+- 公开落地页：中等布局变化度、轻微动效、适中密度。
+- 运营数据看板：低布局变化度、无动效或轻微动效、密集信息。
+- 创意活动：高布局变化度、鲜明动效、疏朗或适中密度。
+- 文档或开发者工具：低到中等布局变化度、轻微动效、适中或密集信息。
 
-Report the selected dials briefly when explaining the design direction.
+说明设计方向时，简要报告所选调节项。

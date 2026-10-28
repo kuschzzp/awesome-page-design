@@ -1,52 +1,52 @@
-# Anti-Generic UI Rules
+# 避免模板化 UI
 
-Use these rules to keep generated pages from looking like default agent output.
+使用这些规则，避免生成页面呈现默认 Agent 输出的外观。
 
-## Avoid Generic Structure
+## 避免模板化结构
 
-- Do not default every page to hero, three cards, metrics, feature list, and final call to action.
-- Do not choose a layout before identifying the page job, primary content object, and main action model.
-- Do not use three equal cards unless the content truly has three equal choices.
-- Do not place every page section inside a floating card.
-- Do not put cards inside cards unless the nested object is a real contained item such as a row, comment, or product.
-- Do not use a decorative split hero when the actual workflow needs a dashboard, table, form, editor, or console.
-- Do not reuse the same navigation, hero split, metric strip, card grid, and bottom tab panel across multiple visual styles.
-- Do not let dashboards, admin panels, internal workspaces, analytics screens, or operational tools start with oversized marketing copy.
-- Do not hide filters, search, status, owner, priority, and next actions when the workflow depends on them.
-- Do not use equal card grids for content with different urgency, ownership, or action types.
+- 不要默认把每个页面做成 Hero、三个 Card、指标、功能列表和结尾行动入口。
+- 在确定页面任务、主要内容对象和主要操作模型前，不要先选布局。
+- 除非内容确实有三个同等选择，否则不要使用三个等大 Card。
+- 不要把每个页面区块都装进悬浮 Card。
+- 除非嵌套对象是行、评论或商品等真实的内部条目，否则不要在 Card 中再套 Card。
+- 实际工作流需要数据看板、Table、Form、Editor 或 Console 时，不要使用装饰性分栏 Hero。
+- 不要跨多种视觉风格复用同一套导航、分栏 Hero、指标条、Card 网格和底部 Tab 面板。
+- 数据看板、管理后台、内部工作区、分析页面和操作工具，不要用巨大的营销文案开场。
+- 工作流依赖筛选、搜索、状态、负责人、优先级和后续操作时，不要隐藏它们。
+- 内容的紧急程度、归属或操作类型不同时，不要使用等大 Card 网格。
 
-## Avoid Generic Visuals
+## 避免模板化视觉
 
-- Do not rely on one purple-blue gradient as the main design idea.
-- Do not use oversized rounded rectangles everywhere.
-- Do not use glow, glass, blur, or noise as a substitute for hierarchy.
-- Do not use the same neutral card grid across unrelated styles.
-- Do not use decorative media that hides the product, state, workflow, or object the user needs to understand.
-- Do not let every style share the same button silhouette. Poster, terminal, editorial, tactile, glass, pixel, and precision styles need different control language.
+- 不要把同一种紫蓝渐变当作主要设计思路。
+- 不要到处使用巨大圆角矩形。
+- 不要用发光、玻璃、模糊或噪点代替层级。
+- 不要让无关风格共享同一种中性 Card 网格。
+- 不要用装饰性媒体遮蔽用户需要理解的产品、状态、工作流或对象。
+- 不要让所有风格共享同一种 Button 轮廓。海报、终端、编辑、触感、玻璃、像素和精密风格需要不同的控件语言。
 
-## Avoid Generic Copy
+## 避免模板化文案
 
-- Avoid empty phrases such as "next generation", "seamless workflow", "powerful insights", "unlock productivity", and "built for teams" unless the surrounding content makes them specific.
-- Prefer concrete nouns: run, contract, invoice, deployment, approval, lesson, clip, brief, lead, asset, queue, risk, note, cohort.
-- Metrics should look plausible and attached to a workflow.
-- Action labels should describe the action, not the vibe.
+- 避免“下一代”“无缝工作流”“强大洞察”“释放生产力”“为团队打造”等空泛表达，除非上下文赋予它们具体含义。
+- 优先使用具体名词：运行记录、合同、发票、部署、审批、课程、片段、需求说明、线索、资产、队列、风险、笔记、群组。
+- 指标应当合理，并与工作流相关。
+- 操作标签应描述动作，而不是气氛。
 
-## Avoid Generic Component Treatment
+## 避免模板化组件处理
 
-- Do not style only the default state.
-- Do not leave hover, focus, selected, disabled, loading, empty, error, warning, and success states visually unrelated.
-- Do not mix multiple icon styles.
-- Do not leave forms, tables, modals, drawers, and filter bars in default browser or framework styling.
+- 不要只设计默认状态。
+- 不要让悬停、焦点、选中、禁用、加载、空、错误、警告和成功状态在视觉上互不相关。
+- 不要混用多种图标风格。
+- 不要让 Form、Table、Modal、Drawer 和 Filter Bar 保留浏览器或框架的默认外观。
 
-## Recovery Move
+## 修正方向
 
-When a page starts looking generic, change one of these before adding decoration:
+页面开始显得模板化时，先调整以下某一项，再考虑增加装饰：
 
-1. The product scenario.
-2. The information architecture.
-3. The layout archetype.
-4. The top-level regions and action placement.
-5. The type scale.
-6. The density.
-7. The component state system.
-8. The imagery or media direction.
+1. 产品场景。
+2. 信息架构。
+3. 布局原型。
+4. 顶层区域和操作位置。
+5. 字号层级。
+6. 信息密度。
+7. 组件状态系统。
+8. 图像或媒体方向。

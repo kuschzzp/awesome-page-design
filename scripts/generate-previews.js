@@ -65,6 +65,7 @@ function writeStyleFiles(stylesToWrite = allStyles) {
     const dir = path.join(stylesDir, style.slug);
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, `${style.slug}.html`), renderStyleHtml(style));
+    if (style.id === "01") fs.copyFileSync(path.join(__dirname, "preview-pages", "style01-icons.LICENSE"), path.join(dir, "style01-icons.LICENSE"));
   });
 }
 

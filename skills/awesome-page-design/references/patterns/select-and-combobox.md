@@ -1,54 +1,56 @@
-# Select And Combobox Pattern
+# Select 与 Combobox 模式
 
-## When To Use
+## 适用场景
 
-Read this reference when a task touches a select, dropdown, autocomplete, combobox, cascader, filter picker, status chooser, prompt picker, or page-size control.
+任务涉及 Select、Dropdown、Autocomplete、Combobox、Cascader、Filter Picker、状态选择器、提示词选择器或每页条数控件时，阅读本文件。
 
-## Resolution Order
+## 选择顺序
 
-Use this order:
+现有项目按以下顺序选择：
 
 ```text
-existing wrapper -> installed accessible library component -> styled native select for simple selection -> custom combobox only for complex behavior
+现有包装组件 → 已安装的无障碍组件库 → 用于简单选择且经过样式设计的原生 select → 仅复杂行为使用自定义 Combobox
 ```
 
-Simple selection means one value from a static option set without search, async loading, rich option content, or multi-select behavior. A deliberately styled native select preserves accessible platform behavior; option count alone does not require a custom combobox or a new dependency. For example, a country list can remain native when the user does not want search. Use an installed accessible primitive when richer interaction is actually required.
+简单选择指从静态选项集中选择单个值，不需要搜索、异步加载、富内容选项或多选。经过有意设计的原生 Select 能保留平台的无障碍行为；选项数量本身不构成使用自定义 Combobox 或新依赖的理由。例如用户不需要搜索时，国家列表仍可使用原生 Select。确实需要更丰富交互时，再使用已安装的无障碍原语。
 
-## Required States
+本 Skill 自带的风格演示页使用与页面材质、配色一致的自定义 Listbox；关闭状态和展开菜单都必须完成设计，不能以系统菜单代替。日期选择器及其他原生控件的适用边界见 [UI 基础控件契约](../ui-primitive-contract.md)。集成其他项目时，仍按其现有组件约定选择实现。
 
-- Closed, open, hover, focus-visible, selected value, focused option, disabled control, and disabled option.
-- Placeholder, clear action when valid, validation error, help text, loading, no results, and failed option loading when applicable.
-- Long selected values, long option labels, grouped results, and multi-select overflow when the feature supports them.
-- Stable trigger dimensions, menu width, overlay layer, selected marker, and open/close icon state.
+## 必需状态
 
-## Accessibility And Keyboard
+- 关闭、打开、悬停、focus-visible、已选值、聚焦选项、控件禁用和选项禁用。
+- 按需覆盖占位提示、允许时的清除操作、校验错误、帮助文字、加载、无结果和选项加载失败。
+- 功能支持时，覆盖长已选值、长选项标签、结果分组和多选溢出。
+- 稳定的 Trigger 尺寸、Menu 宽度、Overlay 层级、选中标记和开关图标状态。
 
-- Use a visible label or an accessible name; connect help and error text with the appropriate description attributes.
-- Preserve native keyboard behavior for a native select.
-- For a combobox/listbox, implement the chosen library's documented Arrow, Enter, Escape, Home/End, typeahead, active-option, and focus behavior.
-- Expose expanded state, ownership, active descendant, selected state, disabled state, and validation state with correct semantics.
-- Do not trap focus in a non-modal menu. Return focus to the trigger when an overlay picker closes if focus moved into it.
+## 无障碍与键盘
 
-## Existing Project Integration
+- 提供可见标签或无障碍名称；通过适当的描述属性关联帮助和错误文字。
+- 原生 Select 保留原生键盘行为。
+- Combobox/Listbox 应实现所选组件库文档规定的方向键、Enter、Escape、Home/End、键入查找、活动选项和焦点行为。
+- 用正确语义暴露展开状态、归属关系、活动后代、选中状态、禁用状态和校验状态。
+- 非模态 Menu 不应困住焦点。若焦点曾移入 Overlay Picker，关闭后应返回 Trigger。
 
-- Inspect sibling forms, filters, table page-size controls, validation messages, overlay containers, and z-index conventions.
-- Reuse the nearest shared wrapper and its props, slots, option model, form integration, and clear/search conventions.
-- If nearby legacy pages use inaccessible or default-looking controls, add the smallest compatible wrapper or variant rather than copying the defect.
-- Reuse an existing accessible wrapper before adding another dependency; add a library only when the required behavior cannot be supported by the current stack within the authorized scope.
+## 既有项目集成
 
-## Mobile Behavior
+- 检查相邻 Form、筛选器、Table 每页条数控件、校验信息、Overlay 容器和 z-index 约定。
+- 复用最近的共享包装组件及其 props、slots、选项模型、Form 集成和清除/搜索约定。
+- 相邻旧页面使用不可访问或默认外观控件时，添加最小兼容包装组件或变体，不要复制缺陷。
+- 添加依赖前先复用现有无障碍包装组件；只有当前技术栈无法在授权范围内支持必要行为时，才添加组件库。
 
-- Keep triggers at least as large as the project's touch target standard and prevent selected text from covering icons.
-- Prefer the project's existing sheet, popover, or native mobile selection behavior. Use a full-width sheet for dense search or multi-select flows when the current system supports it.
-- Keep the focused option visible above the software keyboard; make loading, empty, clear, cancel, and apply actions reachable.
-- Do not let a fixed menu extend beyond the viewport or sit under sticky navigation.
+## 移动端行为
 
-## Verification
+- Trigger 至少符合项目点击目标尺寸标准，已选文字不能遮住图标。
+- 现有项目优先采用已有的 Sheet、Popover 或适用的原生移动选择行为；本库演示保持自定义菜单。当前系统支持时，可对密集搜索或多选流程使用全宽 Sheet。
+- 聚焦选项保持在软键盘上方可见；加载、空、清除、取消和应用操作应可达。
+- 固定 Menu 不能伸出视口，也不能被 Sticky Navigation 压住。
 
-Check only supported states and behaviors, within the test permissions defined in [workflow.md](../workflow.md). Native selects retain platform keyboard behavior; custom comboboxes need the additional library-specific semantics above.
+## 验证
 
-- Test keyboard-only open, navigation, selection, clear, close, validation, and focus return.
-- Test short, empty, loading, failed, disabled, and longest-value states.
-- Test overlay placement near every viewport edge and at mobile width.
-- Confirm labels, roles, expanded/selected/disabled state, and error announcements in the accessibility tree.
-- Scan changed UI for raw `<select>` use and document any deliberately styled simple-selection exception.
+仅检查受支持的状态和行为，并遵守[工作流](../workflow.md)中的测试权限。原生 Select 保留平台键盘行为；自定义 Combobox 还需满足上面的组件库专属语义。
+
+- 测试纯键盘打开、导航、选择、清除、关闭、校验和焦点返回。
+- 测试短值、空、加载、失败、禁用和最长值状态。
+- 测试各视口边缘附近以及移动宽度下的 Overlay 位置。
+- 在无障碍树中确认标签、角色、展开/选中/禁用状态和错误播报。
+- 扫描修改区域中的原始 `<select>` 用法；现有项目说明有意保留的原生选择，本库演示检查生成界面中不再出现系统下拉菜单。

@@ -1,96 +1,86 @@
-# Style 11 - Structured Lines (结构线)
+# 风格 11：结构线
 
-## Summary
+## 概述
 
-Fine line frames, structured rhythm, professional seriousness, and clear information hierarchy.
+细线框、结构化、专业严肃、信息层级清晰。
 
-Chinese summary: 细线框、结构化、专业严肃、信息层级清晰。
+## 适用场景
 
-## Best For
+包裹追踪、配送进度、运输线路记录
 
-museum maps, workflow products, structured B2B sites
+## 示例场景
 
-## Example Scenario
+- 示例产品：沿途
+- 页面任务：沿途包裹追踪
+- 标题：好东西，正在来的路上。
+- 主要操作：追踪包裹
+- 次要操作：查看节点详情
 
-- Product sample: Gallery Route
-- Page job: Exhibition route map
-- Headline: Map a gallery walk from entrance wall to final listening bench.
-- Primary action: Start route
-- Secondary action: Export wall labels
+## 场景组件
 
-## Scenario Components
+- 可查询的运单：两张演示运单展示不同进度；未知单号就地提示，并保留示例入口。
+- 连续的运输线路：揽收、集散、转运与派送通过线路串联，地图、节点和时间记录互相对应。
+- 具体到每一次扫描：点击线路节点或记录条目，查看时间与处理说明，关闭后回到原操作位置。
 
-- Linework navigation: Routes, wall numbers, and object labels are drawn as a plan rather than as loose cards.
-- Public clarity: The page keeps entrance, accessible path, rest points, and labels legible.
-- Curatorial rhythm: Each stop has a purpose: look, listen, rest, or read.
+## 示例状态
 
-## Example States
+- 景德镇集散点：已完成
+- 杭州转运站：已转运
+- 拱墅区派送点：正在派送
 
-- North Wall: Stop 02
-- Sound Bench: Quiet
-- Exit Label: Needs proof
+## 布局模式
 
-## Layout Pattern
+- 模式：包裹运输线路账页
+- 结构：上方并列标题与运单查询，整行展示当前包裹；下方以大幅运输线路图和窄列时间记录构成主工作区。
+- 适配原则：应用视觉语言前，先定义用户真实的主要内容对象、顶层区域、主要操作、信息密度和响应式收拢方式。
+- 排版：标题克制，运单号与时间用等宽数字，节点采用精确编号和短说明。
+- 组件：运单输入、示例单号、线路、当前节点标记、扫描记录与节点详情组成完整追踪流程。
+- 按钮：节点操作用方正线性控件；查询使用深绿实色按钮，当前节点和键盘焦点清晰可见。
+- 图标与媒体：采用原创景德镇至杭州线路示意图、配送车辆、河流线与地点标签，不伪装成实时定位。
+- 状态：包含已完成、当前节点、待抵达、未找到运单、查询成功和节点详情状态。
+- 避免：不要把运输线路拆成无关指标卡，也不要暗示已经连接真实物流服务。
 
-- Pattern: Line Museum Plan (线框博物馆路线)
-- Archetype: Line Museum Plan
-- Structure: Floor-plan layout with route lines, numbered exhibition stops, labels, guide notes, and accessibility callouts.
-- Adaptation: Define the user's real primary content object, top-level regions, main action model, density, and responsive collapse before applying the visual language.
-- Typography: Use factual captions, exact numbering, map labels, and compact guide copy.
-- Components: Route nodes, wall labels, stop cards, rest points, and export controls should rely on lines before shadows.
-- Buttons: Use disciplined rectangular controls aligned to the plan grid.
-- Icons and media: Use gallery maps, object labels, accessibility routes, and docent timing notes.
-- States: Show current stop, quiet seat, label proof, route open, blocked path, and exported states.
-- Avoid: Do not replace the plan with decorative cards.
+## 视觉语言
 
-## Visual Language
+- 背景：`#f8f9f5`
+- 表面：`#f9faf6`
+- 正文：`#25382c`
+- 弱化文字：`#778277`
+- 主色：`#2f674e`
+- 强调色：`#81977e`
+- 边框：`#cad2c9`
+- 圆角：`4px`
+- 面板圆角：`4px`
+- 控件圆角：`2px`
+- Chip 圆角：`0`
+- 媒体圆角：`4px`
+- 几何规则：用直线、细边框和连续运输线路建立层级，节点操作接近直角。；避免把所有按钮和 Card 都做成相同的大圆角矩形。
+- 阴影：`none`
 
-- Background: `#fbfcfe`
-- Surface: `#ffffff`
-- Text: `#111827`
-- Muted text: `#6b7280`
-- Primary: `#1d4ed8`
-- Accent: `#22c55e`
-- Border: `#d7dde8`
-- Radius: `4px`
-- Panel radius: `4px`
-- Control radius: `2px`
-- Chip radius: `0`
-- Media radius: `4px`
-- Geometry rule: linework structure with almost-square components; avoid making every button and card the same large rounded rectangle.
-- Shadow: `0 18px 45px rgba(15, 23, 42, .07)`
+## 组件细节
 
-## Component Detail System
+- 按钮系统：线路与记录按钮都留在正常文档流，当前节点使用当前步骤语义，详情提供可见的关闭图标。
+- 提示与反馈：未找到运单时在输入下方显示可恢复错误，查询成功通过状态区域播报。
+- 间距系统：使用一像素分隔线、二十二至二十八像素分区间距和紧凑编号记录，不加装饰阴影。
+- 响应式策略：窄屏先显示标题和查询，再展示线路与记录；三百二十像素下保留全部四个节点操作。
 
-- Button system: Use line-based buttons, compact action labels, and focus states that strengthen the rule system.
-- Feedback and alerts: Use rule-separated banners, inline audit notes, and visible state chips without soft shadows.
-- Spacing system: Use 20-24px grid gutters, 1px dividers, 12px evidence rows, and strict alignment.
-- Responsive behavior: Desktop uses process lanes; mobile turns lanes into ordered cards with the current step and action visible.
+## 页面适配指南
 
-Chinese implementation notes:
+- 落地页：用明确送达承诺、运输线路和一个运单查询入口组织落地页。
+- 数据看板：将当前包裹、连续线路和按时序排列的处理记录放在一起。
+- 管理后台：用分隔线组织运单列表、扫描记录、异常处理和聚焦详情。
+- 表单、Table 与数据：运单输入有可见标签和行内校验，示例单号提供恢复路径。
+- 移动端：当前送达状态在前，示意线路居中，旁侧记录下移排列。
+- 不适合：不适合强烈活动海报或需要柔软情绪的生活方式叙事。
 
-- 按钮细节：使用线性按钮、紧凑动作标签，以及增强规则线系统的焦点态。
-- 提示与反馈：使用规则线分隔 banner、内联审计说明和可见状态 chip，不用柔阴影。
-- 间距系统：网格间距 20-24px，1px 分割线，证据行 12px，严格对齐。
-- 响应式策略：桌面使用流程泳道；手机把泳道变成有序卡片，并显示当前步骤和操作。
+## 使用要点
 
-## Page Adaptation Guide
+- 运输图是业务主对象，不是装饰背景。
+- 两张演示运单必须对应不同进度，未知单号提供恢复入口。
+- 节点详情保留时间与说明，关闭后恢复原按钮焦点。
 
-- Landing page: Use a structured process map, evidence panels, and precise conversion actions.
-- Dashboard: Use workflow lanes, tables, audit evidence, status chips, and rule-based grouping.
-- Admin panel: Use B2B forms, approval tables, permissions, and line-separated validation.
-- Forms, tables, and data: Use strict alignment, visible labels, compact errors, and clear section dividers.
-- Mobile: Turn lanes into ordered cards with current step and action visible before evidence.
-- Not a good fit for: Weak for playful campaigns or pages that need emotional softness.
+## 后续步骤
 
-## Usage Notes
+通过[工作流程](../workflow.md)应用这一方向，按需参考[设计参数](../design-dials.md)和[实现检查](../interface-compliance.md)。本文维护该风格的特定规则；共享流程和无障碍要求由这些引用文档统一维护。
 
-- Let borders organize information before shadows do.
-- Use diagrams, rails, and labeled groups.
-- Keep the tone factual and composed.
-
-## Continue
-
-Apply this direction through the [workflow](../workflow.md); use the shared [design dials](../design-dials.md) and [implementation checks](../interface-compliance.md) only as needed. The rules above describe this style; shared process and accessibility requirements are maintained in those references.
-
-Copy task-specific English or Chinese prompts from the [preview gallery](../../assets/previews/index.html). Adapt the sample's visual language to the real product rather than copying its brand or page structure.
+从[风格预览](../../assets/previews/index.html)复制对应任务的提示词，当前预览继续提供中英文两个版本。将示例的视觉语言适配到真实产品，不要照搬示例品牌或页面结构。

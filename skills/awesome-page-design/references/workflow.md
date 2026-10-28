@@ -1,49 +1,54 @@
-# Design Workflow
+# 设计工作流程
 
-Use the task router in [SKILL.md](../SKILL.md) to select references. This file owns the execution sequence; detailed visual, component, and implementation rules live in their focused references.
+通过 [SKILL.md](../SKILL.md) 的任务路由选择参考。符合入口中简短路径的局部外观修改无需额外加载本文件；本文件用于页面设计、交互实现和存在布局依赖的修改。
 
-## 1. Establish The Brief And Boundary
+## 1. 明确需求和边界
 
-Identify the product's main job, primary content object, main action, audience, target device, and requested change. Infer routine choices from the request and current project; ask only for missing information that changes the outcome.
+识别产品的主要任务、核心内容对象、主要操作、受众、目标设备，以及用户要求的修改。根据请求和当前项目推断常规选择；只询问会影响结果的缺失信息。
 
-For an existing implementation, inspect the latest target files before deciding a solution. Use [existing-project-integration.md](existing-project-integration.md) for reuse and [local-ui-patch.md](local-ui-patch.md) for target/neighbor boundaries. Do not turn a local repair into a redesign.
+处理现有实现时，先查看目标文件的最新内容，再决定方案。复用规则见[现有项目集成](existing-project-integration.md)，目标和相邻区域的边界见[局部 UI 修补](local-ui-patch.md)。不要把局部修复变成重设计。
 
-For page-level work, choose the layout archetype from [layout-guidance.md](layout-guidance.md) before visual treatment. Name the top-level regions, action placement, density, and responsive collapse. For a local change, retain the current layout unless that is the cause of the problem.
+页面级工作应先根据[布局指南](layout-guidance.md)选择布局原型，再处理视觉表现。明确顶层区域、操作位置、信息密度和响应式收缩方式。局部修改应保留当前布局，除非布局本身就是问题来源。
 
-## 2. Resolve Visual Direction Only When Needed
+## 2. 仅在需要时确定视觉方向
 
-For a new page or explicit redesign:
+对于新页面或明确要求的重设计：
 
-- **Style already selected:** apply it and continue.
-- **User explicitly asks you to choose and implement:** choose a fitting style, briefly state why, and continue without another approval stop.
-- **Direction remains undecided:** present a short brief and the preview gallery or a 2–3 style shortlist, explain the useful differences, and wait for selection before final implementation. A request for recommendations alone calls for options, not an assumed implementation choice.
+- **已选定风格：**直接应用并继续。
+- **用户明确委托选择并实现：**选择合适的风格，简要说明理由，然后继续，不再增加确认环节。
+- **方向尚未确定：**给出简短需求说明，以及预览页或 2–3 个候选风格，解释有用的差异；等待用户选择后再做最终实现。仅要求推荐意味着提供选项，不能自行假定实现方向。
 
-Existing-project features, local patches, component polish, and pure compliance audits retain the current system. Do not force a gallery selection for those tasks. If a broader visual change is necessary but outside the request, explain the dependency and propose it without silently widening the patch.
+现有项目功能、局部修补、组件打磨和纯实现规范审查应沿用当前系统。不要强制这些任务选择预览风格。如果更大范围的视觉修改确实必要，但超出请求，应解释依赖并提出建议，不要悄悄扩大修改范围。
 
-When previewing options is useful, serve the gallery from the repository with `npm run preview:serve`. In an installed skill with the bundled script available, use `node scripts/serve-preview.js`. Provide the printed URL ending in `/assets/previews/`; otherwise use `assets/previews/index.html` or [style-index.md](style-index.md) as a text fallback. An already chosen or directly delegated direction does not require opening the gallery. Stop any server you started when the task is finished unless the user wants it left running.
+需要预览候选时，在仓库中运行 `npm run preview:serve`。已安装的 Skill 若包含附带脚本，则使用 `node scripts/serve-preview.js`。提供命令打印的、以 `/assets/previews/` 结尾的 URL；无法启动时，使用 `assets/previews/index.html` 或[风格索引](style-index.md)作为文字替代。方向已选定或用户已直接委托选择时，不要求打开预览页。任务结束后，关闭自己启动的服务，除非用户要求保留运行。
 
-Choose the prompt type for the actual job: full, landing page, dashboard, admin panel, or mobile. When implementation is delegated, infer this choice and continue; do not add a second prompt-selection approval. Once direction is settled, read only the selected manual and its adaptation guide; infer the layout variance, motion intensity, and density from [design-dials.md](design-dials.md). For a requested sub-style, apply [variant-guidance.md](variant-guidance.md) without overriding the product's workflow.
+按实际任务选择提示词类型：完整提示词、落地页、Dashboard、后台页面或移动端。用户已委托实现时，自行判断并继续，不要再增加一次提示词类型确认。方向确定后，只阅读选中风格的说明和适配指南，并根据[设计调节项](design-dials.md)推断布局变化度、动效强度和信息密度。用户要求子风格时，应用[风格变体指南](variant-guidance.md)，同时保留产品工作流程。
 
-## 3. Implement Within Scope
+## 3. 在范围内实现
 
-Reuse project tokens/components where present; otherwise define semantic tokens and component anatomy appropriate to the chosen direction. Translate visual rules into the real content, actions, and responsive structure using [usage-principles.md](usage-principles.md). Do not import the preview's sample copy, brand, or section sequence.
+项目已有设计 Token 或组件时优先复用；没有时，根据选定方向定义语义 Token 和组件结构。按照[使用原则](usage-principles.md)，将视觉规则落实到真实内容、操作和响应式结构中。不要照搬预览中的示例文案、品牌或章节顺序。
 
-Apply only the component contracts relevant to changed interactions. For new sites/apps, implement the framework-specific metadata/favicon baseline in [new-project-shell.md](new-project-shell.md). A visual audit should produce findings first; an audit request alone does not authorize a redesign.
+只应用与所改交互相关的组件契约。新网站或应用应落实[新项目基础配置](new-project-shell.md)中对应框架的元数据和 favicon 要求。视觉审查应先给出问题；仅有审查请求，不代表允许重设计。
 
-## 4. Finish And Report
+整页或批量视觉改造时，先完成能代表设计的首屏、主要操作及一个关键交互状态，在允许范围内轻量查看实际效果，再继续扩展。批量任务先以代表页检查组件与布局问题，避免同一缺陷铺到所有页面。用户已授权执行时自行迭代，不把内部检查变成额外的用户确认步骤。
 
-For real UI code or generated HTML, check changed regions against [interface-compliance.md](interface-compliance.md), run the targeted scan from [ui-primitive-contract.md](ui-primitive-contract.md), and verify the applicable focused component contracts. For visual work, use [quality-checklist.md](quality-checklist.md). Pure style selection and text-only advice do not require implementation checks.
+## 4. 收尾和交付
 
-Verify the actual affected workflow and desktop/mobile behavior, including target and neighbors for local patches. Use available screenshots, code inspection, and proportionate project checks within the user's test permissions; a checklist does not authorize extra browser tests. Re-check changed files and any shared-component call sites affected by a new variant.
+分别判断功能正确性与视觉完成度：
 
-Finish with one compact completion record, scaled to the task:
+| 检查 | 关注点与证据 |
+|---|---|
+| 功能 | 操作结果、数据联动、校验与恢复、键盘行为；源码检查、可执行测试或实际交互分别记录 |
+| 视觉 | 层级、对齐、密度、控件与页面风格的一致性，以及相关视口和展开、选中等状态；以实际界面或截图为依据 |
 
-- **Scope:** changed regions and the resulting user behavior.
-- **Baseline and reuse:** the chosen visual direction, or concrete nearby source/component/API examples reused; mention added variants and affected call sites when relevant.
-- **States:** the interactions and meaningful loading, empty, error and success states actually delivered in the changed flow.
-- **Evidence:** checks actually run and their results. Distinguish source inspection, executable tests, browser interaction and screenshot review; one does not prove the others.
-- **Open items:** unverified behavior, missing viewport/state evidence, remaining risks and intentional primitive exceptions.
+代码校验通过不能证明界面协调，静态截图不能证明交互可用。纯风格选择和文字建议不需要实现检查。
 
-Use only applicable entries; a selection-only answer does not need an implementation report. Audits lead with highest-priority findings and source lines or page regions. Do not repeat the full checklist in the delivery, or imply a check passed when it was not run.
+实际 UI 实现按[界面实现规范](interface-compliance.md)检查修改区域，按 [UI 基础控件契约](ui-primitive-contract.md)定向扫描，并验证涉及的专项组件行为；视觉判断参考[质量检查清单](quality-checklist.md)。仅检查本次目标、必要的相邻区域及受影响的共享调用点。
 
-When maintaining this skill, use `npm run docs` for generated text only; it leaves HTML and screenshots untouched. Use `PREVIEW_SCREENSHOTS=0 npm run previews` for intended HTML-only changes, or `npm run previews` when screenshots need updating. Respect browser-test permissions and run `npm run validate`; disclose stale screenshots if capture was not performed.
+让验证规模与改动相称：局部修改检查受影响区域和相关尺寸；复杂流程选择核心路径做少量自动化抽查，并列出剩余的简短人工验证项。不要默认进行全站交互遍历或批量截图。遵守用户和项目的测试权限，已有明确许可无需重复征求；检查清单本身不授予额外测试权限。未获得视觉证据时如实说明，不自动扩大测试范围。
+
+普通交付只需说明改了什么、实际检查了什么，以及仍未验证的行为或有意保留的控件例外。复杂任务再补充组件复用、共享影响与重要状态。审查先列影响最大的问题并定位源码或页面区域；不要重复整份检查清单或暗示未执行的检查已经通过。
+
+关闭自己启动的临时服务，清理本次临时文件；用户要求保留的预览服务和交付产物除外。
+
+维护本 Skill 时，`npm run docs` 仅生成文字，不修改 HTML 和截图。有意只改 HTML 时使用 `PREVIEW_SCREENSHOTS=0 npm run previews`，需要更新截图时使用 `npm run previews`。遵守浏览器测试权限，并运行 `npm run validate`；仅修改说明文档无需刷新预览，页面变化但未截图时说明截图可能已过期。

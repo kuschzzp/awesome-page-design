@@ -1,62 +1,62 @@
-# Design System Output
+# 设计系统输出
 
-Use this reference when the user asks for a reusable project design guide or when a selected style needs to be applied across multiple pages.
+用户要求可复用的项目设计指南，或所选风格需要应用到多个页面时，使用本文件。
 
-## Purpose
+## 目的
 
-Create a project-level `DESIGN.md` that translates the selected visual style into durable implementation rules. The guide should describe what to build, not where the idea came from.
+创建项目级 `DESIGN.md`，将所选视觉风格转化为稳定的实现规则。指南应描述要构建什么，而不是创意来自哪里。
 
-## Required Structure
+## 必需结构
 
 ```markdown
-# Design System
+# 设计系统
 
-## Direction
-[Selected Style, product context, design dials, and intended mood.]
+## 方向
+[所选风格、产品背景、设计调节项和预期气质。]
 
-## Tokens
-[Background, surface, text, muted text, primary, accent, border, focus, radius, shadow, and state colors.]
+## 设计 Token
+[背景、表面、文字、弱化文字、主色、强调色、边框、焦点、圆角、阴影和状态色。]
 
-## Typography
-[Font stack, heading scale, body density, labels, metadata, numeric values, and line height rules.]
+## 字体
+[字体栈、标题层级、正文密度、标签、元数据、数值和行高规则。]
 
-## Layout
-[Page gutters, section rhythm, grid behavior, density, mobile collapse, and composition rules.]
+## 布局
+[页面留白、区块节奏、网格行为、密度、移动端收拢和构图规则。]
 
-## Responsive Behavior
-[Desktop, tablet, and mobile order for primary content, filters, sidebars, inspectors, tables, media, toolbars, and primary actions.]
+## 响应式行为
+[桌面、平板和移动端中，主要内容、筛选器、Sidebar、Inspector、Table、媒体、Toolbar 和主要操作的顺序。]
 
-## Components
-[Buttons, inputs, tabs, cards, tables, filters, modals, drawers, alerts, empty states, loading states, and disabled states.]
+## 组件
+[Button、Input、Tab、Card、Table、筛选器、Modal、Drawer、Alert、空状态、加载状态和禁用状态。]
 
-## Buttons And Feedback
-[Primary, secondary, destructive, disabled, loading, selected/toggled, success, warning, error, toast, banner, inline alert, validation, and undo behavior.]
+## Button 与反馈
+[主要、次要、破坏性、禁用、加载、选中/切换、成功、警告、错误、Toast、Banner、Inline Alert、校验和撤销行为。]
 
-## Component States
-[State matrix for buttons, links, inputs, tabs, filters, cards, tables, overlays, empty states, loading states, error states, selected states, disabled states, warning states, and success states.]
+## 组件状态
+[Button、Link、Input、Tab、筛选器、Card、Table、Overlay，以及空、加载、错误、选中、禁用、警告和成功状态的状态矩阵。]
 
-## Icons And Media
-[Icon style, sizing, stroke/fill rules, image direction, screenshot/mockup treatment, and decorative limits.]
+## 图标与媒体
+[图标风格、尺寸、描边/填充规则、图片方向、截图/Mockup 处理和装饰边界。]
 
-## Motion And States
-[Motion intensity, semantic animation patterns, reduced-motion behavior, hover, focus, pressed, selected, loading, success, warning, error, disabled, and transition timing.]
+## 动效与状态
+[动效强度、语义动画模式、减弱动效行为、悬停、焦点、按下、选中、加载、成功、警告、错误、禁用和过渡时序。]
 
-## Implementation Compliance
-[Accessibility, semantic controls, focus-visible rules, form labeling, responsive text handling, stable media dimensions, URL/state expectations, empty/error/loading recovery, and audit output expectations.]
+## 实现合规
+[无障碍、语义控件、focus-visible 规则、Form 标签、响应式文本处理、稳定媒体尺寸、URL/状态要求、空/错误/加载恢复，以及审查输出要求。]
 
-## Do
-[Specific behaviors to repeat.]
+## 应当做
+[应反复采用的具体行为。]
 
-## Do Not
-[Specific behaviors to avoid.]
+## 不应做
+[应避免的具体行为。]
 ```
 
-## Writing Rules
+## 编写规则
 
-- Keep the guide project-specific.
-- Do not include external references, source links, or inspiration labels.
-- Do not describe the bundled preview as a template.
-- Use implementation-ready language: tokens, component states, spacing, density, and responsive behavior.
-- Include button anatomy, feedback patterns, spacing rhythm, and responsive component behavior when the guide will drive implementation.
-- Include component state, motion, accessibility, and implementation compliance rules when the guide will be used for real UI code.
-- Keep examples concrete enough that a future page can follow them without reopening the preview gallery.
+- 指南应针对当前项目。
+- 不包含外部引用、来源链接或灵感标签。
+- 不把随附预览描述为模板。
+- 使用可直接实施的语言：Token、组件状态、间距、密度和响应式行为。
+- 指南用于指导实现时，包含 Button 构成、反馈模式、间距节奏和组件响应式行为。
+- 指南用于真实 UI 代码时，包含组件状态、动效、无障碍和实现合规规则。
+- 示例足够具体，让未来页面无需重新打开预览画廊也能遵循。

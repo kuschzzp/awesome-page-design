@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { describePngQuality, hasVisibleContent, readPngQuality } = require("./png-quality");
 const { validateManifest } = require("./preview-manifest");
-const { allStyles } = require("./preview-catalog");
+const { allStyles, getStyleData } = require("./preview-catalog");
 const { promptKinds: promptDefinitions, buildStylePrompt } = require("./preview-prompts");
 const { renderStyleDoc, renderStyleIndex } = require("./preview-documents");
 const { renderGallery } = require("./preview-gallery");
@@ -59,6 +59,7 @@ const uiPrimitiveBannedPatterns = [
   { label: "browser confirm()", pattern: /\b(?:window\.)?confirm\s*\(/ },
   { label: "browser prompt()", pattern: /\b(?:window\.)?prompt\s*\(/ },
   { label: "native select", pattern: /<select\b/i },
+  { label: "native date picker", pattern: /<input\b[^>]*type="date"/i },
 ];
 
 let failures = 0;
@@ -196,15 +197,15 @@ function checkMetadataAlignment() {
     plugin.interface?.longDescription,
     ...(plugin.interface?.defaultPrompt || []),
   ].join(" ");
-  assert(/existing[- ]project|existing frontend/i.test(pluginDescription), "plugin metadata mentions existing-project compatibility");
-  assert(/component|primitive/i.test(pluginDescription), "plugin metadata mentions component or primitive quality");
-  assert(/quality|polish|accessib|responsive/i.test(pluginDescription), "plugin metadata mentions UI quality verification");
+  assert(/现有项目|既有项目|existing[- ]project|existing frontend/i.test(pluginDescription), "plugin metadata mentions existing-project compatibility");
+  assert(/组件|原语|component|primitive/i.test(pluginDescription), "plugin metadata mentions component or primitive quality");
+  assert(/质量|完善|无障碍|响应式|quality|polish|accessib|responsive/i.test(pluginDescription), "plugin metadata mentions UI quality verification");
 
-  assert(/existing[- ]project|existing frontend/i.test(packageJson.description || ""), "package description mentions existing-project work");
+  assert(/现有项目|既有项目|existing[- ]project|existing frontend/i.test(packageJson.description || ""), "package description mentions existing-project work");
   assert(Array.isArray(packageJson.files) && packageJson.files.includes("catalog/"), "package files include the canonical catalog/");
 
   const agentMetadata = read(agentsOpenaiFile);
-  assert(/responsive|accessib/i.test(agentMetadata), "agents/openai.yaml mentions responsive or accessibility checks");
+  assert(/响应式|无障碍|responsive|accessib/i.test(agentMetadata), "agents/openai.yaml mentions responsive or accessibility checks");
 
   [
     ["README.md", read(readmeFile)],
@@ -243,18 +244,18 @@ function checkPreviewIndex() {
   const css = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map((match) => match[1]).join("\n");
   const cards = [...html.matchAll(/data-style-card="([^"]+)"/g)].map((match) => match[1]);
   assert(JSON.stringify(cards) === JSON.stringify(allStyles.map((style) => style.id)), "gallery contains every catalog style in order");
-  for (const id of ["search", "empty", "selection-tray", "detail-dialog", "compare-dialog", "copy-prompt", "prompt-output"]) {
+  for (const id of ["detail-dialog", "copy-prompt", "prompt-output"]) {
     assert(html.includes(`id="${id}"`), `gallery has the ${id} interaction surface`);
   }
-  assert(html.includes('type="search"'), "gallery search uses a semantic search input");
+  assert(!html.includes('id="search"') && !html.includes('class="hero"') && !html.includes('class="filter-panel"'), "gallery starts directly with the style catalog");
   assert(html.includes('<dialog id="detail-dialog" aria-labelledby='), "style detail uses a labelled native dialog");
-  assert(html.includes('<dialog id="compare-dialog" aria-labelledby='), "comparison uses a labelled native dialog");
-  assert(html.includes('role="status"') && html.includes('aria-live="polite"'), "gallery exposes filter/copy feedback");
+  assert(!html.includes('id="compare-dialog"') && !html.includes('data-compare-style='), "gallery omits comparison controls");
+  assert(html.includes('role="status"') && html.includes('aria-live="polite"'), "gallery exposes copy feedback");
   assert(!/transition\s*:\s*all\b/.test(css), "gallery avoids transition: all");
   assert(!/outline\s*:\s*none\b/.test(css), "gallery preserves focus outlines");
-  const links = [...html.matchAll(/<a class="preview-link"[^>]*>/g)].map((match) => match[0]);
-  assert(links.length === expectedStyleCount, "every gallery card opens its live sample");
-  assert(links.every((link) => link.includes('target="_blank"') && link.includes('rel="noopener noreferrer"')), "live samples open in new tabs safely");
+  const cardButtons = [...html.matchAll(/<button[^>]*class="card-open"[^>]*>/g)].map((match) => match[0]);
+  assert(cardButtons.length === expectedStyleCount, "every gallery card has one full-card detail action");
+  assert(cardButtons.every((button) => button.includes('aria-labelledby=') && button.includes('aria-haspopup="dialog"')), "card detail actions expose their style names and dialog behavior");
   try {
     const data = JSON.parse(html.match(/<script id="gallery-data" type="application\/json">([\s\S]*?)<\/script>/)?.[1]);
     assert(data.styles.length === expectedStyleCount, "gallery metadata matches the catalog size");
@@ -298,18 +299,24 @@ function checkStyleAssets() {
     if (fs.existsSync(htmlFile)) {
       const html = read(htmlFile);
       [
-        "class=\"interaction-demo\"",
-        "data-loading-demo",
-        "data-toast-trigger",
-        "class=\"state-stack\"",
-        "class=\"responsive-steps\"",
-        "<input",
+        '<main id="top" class="page">',
         "aria-live=\"polite\"",
       ].forEach((needle) => assert(html.includes(needle), `${slug} HTML includes ${needle}`));
+      const styleId = allStyles.find((style) => style.slug === slug)?.id;
+      if (styleId === "01") {
+        const licenseFile = path.join(stylesDir, slug, "style01-icons.LICENSE");
+        assert(fs.existsSync(licenseFile), `${slug} distributes its icon license with the standalone Skill`);
+        if (fs.existsSync(licenseFile)) assert(read(licenseFile) === read(path.join(rootDir, "scripts", "preview-pages", "style01-icons.LICENSE")), `${slug} icon license matches its source notice`);
+        assert(html.includes("./style01-icons.LICENSE"), `${slug} HTML identifies its icon license`);
+      }
+      if (Number(styleId) >= 3) {
+        assert(html.includes(`demo-root s${styleId}`), `${slug} includes its independent product demo`);
+        assert(!html.includes('Detailed style prompt copied') && !html.includes('>Style notes</button>'), `${slug} avoids legacy placeholder actions`);
+      }
 
       assert(html.includes('class="preview-context-shell"'), `${slug} has style-library navigation`);
       assert(html.includes(`?style=${allStyles.find((style) => style.slug === slug)?.id}#style-`), `${slug} links back to its selection detail`);
-      assert(/<details\b[^>]*class="reference-disclosure"/.test(html), `${slug} progressively discloses technical examples`);
+      assert(!/reference-disclosure|interaction-demo|style-lab|href="#details"/.test(html), `${slug} omits standalone component examples`);
 
       const css = (html.match(/<style>([\s\S]*?)<\/style>/) || [])[1] || "";
       assert(!/transition\s*:\s*all\b/.test(css), `${slug} CSS avoids transition: all`);
